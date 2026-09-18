@@ -1,6 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtempSync, rmSync, copyFileSync } from 'node:fs';
+import { mkdtempSync, rmSync, copyFileSync, readFileSync, writeFileSync, existsSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
@@ -27,4 +28,22 @@ test('initial import preserves users, clears local sessions and never overwrites
     rmSync(join(destination, 'bootstrap-applied.json'));
     await assert.rejects(importInitialData(destination), /Refusing to replace/);
   } finally { rmSync(source, { recursive: true, force: true }); rmSync(destination, { recursive: true, force: true }); }
+});
+
+test('private Render secret import validates integrity and preserves the one-time guard', async () => {
+  const source = mkdtempSync(join(tmpdir(), 'dse-private-source-'));
+  const directory = mkdtempSync(join(tmpdir(), 'dse-private-dest-'));
+  const secrets = mkdtempSync(join(tmpdir(), 'dse-private-secrets-'));
+  try {
+    createApi({ directory: source }).close();
+    const bytes = readFileSync(join(source, 'students.sqlite'));
+    const bundle = { version: 1, database: bytes.toString('base64'), sha256: 'bad-hash', adminKey: readFileSync(join(source, 'admin-key.txt'), 'utf8') };
+    writeFileSync(join(secrets, 'initial-data.json'), JSON.stringify(bundle));
+    await assert.rejects(importInitialData(directory, secrets), /Invalid private import/);
+    assert.equal(existsSync(join(directory, 'students.sqlite')), false);
+    bundle.sha256 = createHash('sha256').update(bytes).digest('hex');
+    writeFileSync(join(secrets, 'initial-data.json'), JSON.stringify(bundle));
+    assert.equal(await importInitialData(directory, secrets), true);
+    assert.equal(await importInitialData(directory, secrets), false);
+  } finally { for (const path of [source, directory, secrets]) rmSync(path, { recursive: true, force: true }); }
 });
