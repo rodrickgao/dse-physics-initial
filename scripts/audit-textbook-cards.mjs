@@ -15,7 +15,7 @@ const uniqueImages = new Map();
 const math = latex => katex.renderToString(latex, { throwOnError: true, strict: 'error', trust: false });
 
 for (const language of ['eng', 'chn']) {
-  const points = data.languages[language];
+  const points = data.languages[language].filter(p => p.sequence <= 365);
   assert.equal(points.length, 365);
   assert.equal(new Set(points.map(p => p.sequence)).size, 365);
   assert.equal(new Set(points.map(p => p.book_key)).size, 9);

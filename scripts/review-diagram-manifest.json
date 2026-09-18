@@ -1,0 +1,641 @@
+[
+  {
+    "id": "convex-images",
+    "code": "3A03",
+    "page": 13,
+    "targets": [
+      119,
+      120,
+      121,
+      124
+    ],
+    "caption": "左圖：物體在焦點外，折射線會聚成倒立實像。右圖：物體在焦點內，反向延長線相交成正立虛像。",
+    "src": "assets/textbook/review-diagrams/convex-images.png",
+    "width": 577,
+    "height": 188,
+    "source": "DSEPHY_TE_3A03_TN_.pdf",
+    "bbox_fraction": [
+      0.319,
+      0.66,
+      0.905,
+      0.806
+    ],
+    "language": "eng"
+  },
+  {
+    "id": "conduction",
+    "code": "102",
+    "page": 11,
+    "targets": [
+      5
+    ],
+    "caption": "熱沿湯匙由熱端傳向冷端，匙本身沒有整體流動。",
+    "src": "assets/textbook/review-diagrams/conduction.png",
+    "width": 508,
+    "height": 198,
+    "source": "DSEPHY_TE_102_TN_.pdf",
+    "bbox_fraction": [
+      0.38,
+      0.62,
+      0.9,
+      0.775
+    ],
+    "language": "eng"
+  },
+  {
+    "id": "convection",
+    "code": "102",
+    "page": 18,
+    "targets": [
+      6
+    ],
+    "caption": "液體和氣體的對流：較暖流體上升，較冷流體補位。",
+    "src": "assets/textbook/review-diagrams/convection.png",
+    "width": 588,
+    "height": 294,
+    "source": "DSEPHY_TE_102_TN_.pdf",
+    "bbox_fraction": [
+      0.318,
+      0.4,
+      0.92,
+      0.63
+    ],
+    "language": "eng"
+  },
+  {
+    "id": "heating-curve",
+    "code": "104",
+    "page": 4,
+    "targets": [
+      19,
+      20,
+      21
+    ],
+    "caption": "加熱曲線的平台段對應物態改變；吸熱而溫度不變。",
+    "src": "assets/textbook/review-diagrams/heating-curve.png",
+    "width": 532,
+    "height": 258,
+    "source": "DSEPHY_TE_104_TN_.pdf",
+    "bbox_fraction": [
+      0.335,
+      0.71,
+      0.875,
+      0.91
+    ],
+    "language": "eng"
+  },
+  {
+    "id": "centripetal",
+    "code": "209",
+    "page": 11,
+    "targets": [
+      97,
+      98,
+      99,
+      100,
+      101,
+      102,
+      107,
+      108
+    ],
+    "caption": "圓周運動的速度沿切線，加速度指向圓心。",
+    "src": "assets/textbook/review-diagrams/centripetal.png",
+    "width": 207,
+    "height": 180,
+    "source": "DSEPHY_TE_209_TN_.pdf",
+    "bbox_fraction": [
+      0.735,
+      0.12,
+      0.945,
+      0.26
+    ],
+    "language": "eng"
+  },
+  {
+    "id": "work-angle",
+    "code": "206",
+    "page": 3,
+    "targets": [
+      73,
+      74,
+      75
+    ],
+    "caption": "只有力沿位移方向的分量做功。",
+    "src": "assets/textbook/review-diagrams/work-angle.png",
+    "width": 435,
+    "height": 126,
+    "source": "DSEPHY_TE_206_TN_.pdf",
+    "bbox_fraction": [
+      0.398,
+      0.524,
+      0.84,
+      0.622
+    ],
+    "language": "eng"
+  },
+  {
+    "id": "series-circuit",
+    "code": "402",
+    "page": 31,
+    "targets": [
+      171,
+      175,
+      176,
+      181
+    ],
+    "caption": "串聯電阻的等效電路，原支路電流相同。",
+    "src": "assets/textbook/review-diagrams/series-circuit.png",
+    "width": 595,
+    "height": 132,
+    "source": "DSEPHY_TE_402_TN_.pdf",
+    "bbox_fraction": [
+      0.3,
+      0.81,
+      0.91,
+      0.913
+    ],
+    "language": "eng"
+  },
+  {
+    "id": "parallel-circuit",
+    "code": "402",
+    "page": 34,
+    "targets": [
+      171,
+      175,
+      182,
+      183
+    ],
+    "caption": "並聯支路接在相同兩節點，兩端電壓相同。",
+    "src": "assets/textbook/review-diagrams/parallel-circuit.png",
+    "width": 620,
+    "height": 122,
+    "source": "DSEPHY_TE_402_TN_.pdf",
+    "bbox_fraction": [
+      0.29,
+      0.23,
+      0.925,
+      0.325
+    ],
+    "language": "eng"
+  },
+  {
+    "id": "motor-commutator",
+    "code": "406",
+    "page": 18,
+    "targets": [
+      208
+    ],
+    "caption": "換向器每半圈反轉線圈電流，保持轉動作用的方向。",
+    "src": "assets/textbook/review-diagrams/motor-commutator.png",
+    "width": 822,
+    "height": 393,
+    "source": "DSEPHY_TE_406_TN_.pdf",
+    "bbox_fraction": [
+      0.075,
+      0.185,
+      0.91,
+      0.49
+    ],
+    "language": "eng"
+  },
+  {
+    "id": "lenz",
+    "code": "407",
+    "page": 6,
+    "targets": [
+      212,
+      213,
+      214,
+      220
+    ],
+    "caption": "線圈的感生磁場抗衡磁鐵靠近或遠離造成的磁通變化。",
+    "src": "assets/textbook/review-diagrams/lenz.png",
+    "width": 618,
+    "height": 138,
+    "source": "DSEPHY_TE_407_TN_.pdf",
+    "bbox_fraction": [
+      0.293,
+      0.788,
+      0.92,
+      0.895
+    ],
+    "language": "eng"
+  },
+  {
+    "id": "generator",
+    "code": "407",
+    "page": 16,
+    "targets": [
+      215
+    ],
+    "caption": "線圈轉動改變磁通鏈，換向器把外電路電流整流為同向脈動。",
+    "src": "assets/textbook/review-diagrams/generator.png",
+    "width": 852,
+    "height": 412,
+    "source": "DSEPHY_TE_407_TN_.pdf",
+    "bbox_fraction": [
+      0.065,
+      0.15,
+      0.93,
+      0.47
+    ],
+    "language": "eng"
+  },
+  {
+    "id": "decay-curve",
+    "code": "502",
+    "page": 20,
+    "targets": [
+      236,
+      237,
+      238,
+      239
+    ],
+    "caption": "衰變曲線：讀取降至原值一半所需的時間，並留意縱軸是否已扣背景。",
+    "src": "assets/textbook/review-diagrams/decay-curve.png",
+    "width": 381,
+    "height": 248,
+    "source": "DSEPHY_TE_502_TN_.pdf",
+    "bbox_fraction": [
+      0.365,
+      0.521,
+      0.755,
+      0.715
+    ],
+    "language": "eng"
+  },
+  {
+    "id": "equal-areas",
+    "code": "E102",
+    "page": 5,
+    "targets": [
+      252,
+      253,
+      254,
+      255
+    ],
+    "caption": "相等時間掃過相等面積，近日點附近速度較大。",
+    "src": "assets/textbook/review-diagrams/equal-areas.png",
+    "width": 464,
+    "height": 205,
+    "source": "DSEPHY_TE_E102_TN_.pdf",
+    "bbox_fraction": [
+      0.38,
+      0.16,
+      0.855,
+      0.32
+    ],
+    "language": "eng"
+  },
+  {
+    "id": "wall-conduction",
+    "code": "E303",
+    "page": 3,
+    "targets": [
+      290,
+      291,
+      292
+    ],
+    "caption": "熱從牆壁高溫側傳向低溫側；厚度沿傳熱方向量度。",
+    "src": "assets/textbook/review-diagrams/wall-conduction.png",
+    "width": 590,
+    "height": 280,
+    "source": "DSEPHY_TE_E303_TN.pdf",
+    "bbox_fraction": [
+      0.31,
+      0.227,
+      0.915,
+      0.446
+    ],
+    "language": "eng"
+  },
+  {
+    "id": "wind-volume",
+    "code": "E304",
+    "page": 14,
+    "targets": [
+      296
+    ],
+    "caption": "時間間隔內通過转子面積的空氣柱，長度為風速乘時間。",
+    "src": "assets/textbook/review-diagrams/wind-volume.png",
+    "width": 415,
+    "height": 187,
+    "source": "DSEPHY_TE_E304_TN.pdf",
+    "bbox_fraction": [
+      0.395,
+      0.76,
+      0.82,
+      0.906
+    ],
+    "language": "eng"
+  },
+  {
+    "id": "hydropower",
+    "code": "E304",
+    "page": 18,
+    "targets": [
+      297
+    ],
+    "caption": "水由上水庫流向下水庫，重力勢能經渦輪和發電機轉為電能。",
+    "src": "assets/textbook/review-diagrams/hydropower.png",
+    "width": 566,
+    "height": 261,
+    "source": "DSEPHY_TE_E304_TN.pdf",
+    "bbox_fraction": [
+      0.34,
+      0.191,
+      0.92,
+      0.395
+    ],
+    "language": "eng"
+  },
+  {
+    "id": "greenhouse",
+    "code": "E304",
+    "page": 37,
+    "targets": [
+      299
+    ],
+    "caption": "短波太陽輻射和地表長波紅外輻射的不同去向。",
+    "src": "assets/textbook/review-diagrams/greenhouse.png",
+    "width": 571,
+    "height": 358,
+    "source": "DSEPHY_TE_E304_TN.pdf",
+    "bbox_fraction": [
+      0.31,
+      0.375,
+      0.895,
+      0.655
+    ],
+    "language": "eng"
+  },
+  {
+    "id": "photoelectric-stop",
+    "code": "E201",
+    "page": 5,
+    "targets": [
+      300,
+      301,
+      302,
+      303,
+      307
+    ],
+    "caption": "反向電壓阻礙光電子到達收集極；遏止時光電流剛好為零。",
+    "src": "assets/textbook/review-diagrams/photoelectric-stop.png",
+    "width": 356,
+    "height": 228,
+    "source": "DSEPHY_TE_E201_TN_.pdf",
+    "bbox_fraction": [
+      0.415,
+      0.709,
+      0.78,
+      0.887
+    ],
+    "language": "eng"
+  },
+  {
+    "id": "stopping-graph",
+    "code": "E201",
+    "page": 26,
+    "targets": [
+      308
+    ],
+    "caption": "遏止電勢與入射頻率的直線關係：只在發生光電發射時適用。",
+    "src": "assets/textbook/review-diagrams/stopping-graph.png",
+    "width": 337,
+    "height": 200,
+    "source": "DSEPHY_TE_E201_TN_.pdf",
+    "bbox_fraction": [
+      0.435,
+      0.24,
+      0.78,
+      0.396
+    ],
+    "language": "eng"
+  },
+  {
+    "id": "stm",
+    "code": "E203",
+    "page": 29,
+    "targets": [
+      326
+    ],
+    "caption": "探針掃過樣本，藉極小間隙的隧穿電流取得表面資訊。",
+    "src": "assets/textbook/review-diagrams/stm.png",
+    "width": 556,
+    "height": 290,
+    "source": "DSEPHY_TE_E203_TN_.pdf",
+    "bbox_fraction": [
+      0.33,
+      0.685,
+      0.9,
+      0.912
+    ],
+    "language": "eng"
+  },
+  {
+    "id": "fibre-tir",
+    "code": "E401",
+    "page": 39,
+    "targets": [
+      338
+    ],
+    "caption": "纖芯折射率比包層高，光在界面全內反射。",
+    "src": "assets/textbook/review-diagrams/fibre-tir.png",
+    "width": 386,
+    "height": 134,
+    "source": "DSEPHY_TE_E401_TN_.pdf",
+    "bbox_fraction": [
+      0.415,
+      0.315,
+      0.81,
+      0.42
+    ],
+    "language": "eng"
+  },
+  {
+    "id": "cochlea-frequency",
+    "code": "E402",
+    "page": 5,
+    "targets": [
+      341
+    ],
+    "caption": "耳蝸底部對高頻較敏感，頂部對低頻較敏感。",
+    "src": "assets/textbook/review-diagrams/cochlea-frequency.png",
+    "width": 675,
+    "height": 263,
+    "source": "DSEPHY_TE_E402_TN_.pdf",
+    "bbox_fraction": [
+      0.218,
+      0.7,
+      0.91,
+      0.906
+    ],
+    "language": "eng"
+  },
+  {
+    "id": "piezo",
+    "code": "E402",
+    "page": 20,
+    "targets": [
+      346
+    ],
+    "caption": "上：交變電壓產生聲脈衝；下：回波令晶體產生電壓。",
+    "src": "assets/textbook/review-diagrams/piezo.png",
+    "width": 834,
+    "height": 531,
+    "source": "DSEPHY_TE_E402_TN_.pdf",
+    "bbox_fraction": [
+      0.075,
+      0.525,
+      0.93,
+      0.94
+    ],
+    "language": "eng"
+  },
+  {
+    "id": "dispersion",
+    "code": "3A02",
+    "page": 17,
+    "targets": [
+      116
+    ],
+    "caption": "不同色光在稜鏡中的折射率不同，所以偏折角不同。",
+    "src": "assets/textbook/review-diagrams/dispersion.png",
+    "width": 376,
+    "height": 170,
+    "source": "DSEPHY_TE_3A02_TN_.pdf",
+    "bbox_fraction": [
+      0.43,
+      0.515,
+      0.815,
+      0.648
+    ],
+    "language": "eng"
+  },
+  {
+    "id": "wave-refraction",
+    "code": "3B05",
+    "page": 13,
+    "targets": [
+      138,
+      139,
+      140
+    ],
+    "caption": "波由淺水進入深水時波長增大；例圖為正入射，方向不變。",
+    "src": "assets/textbook/review-diagrams/wave-refraction.png",
+    "width": 254,
+    "height": 152,
+    "source": "DSEPHY_TE_3B05_TN_.pdf",
+    "bbox_fraction": [
+      0.355,
+      0.494,
+      0.615,
+      0.613
+    ],
+    "language": "eng"
+  },
+  {
+    "id": "superposition",
+    "code": "3B05",
+    "page": 26,
+    "targets": [
+      143
+    ],
+    "caption": "兩脈衝相遇時位移相加，之後各自繼續傳播。",
+    "src": "assets/textbook/review-diagrams/superposition.png",
+    "width": 561,
+    "height": 330,
+    "source": "DSEPHY_TE_3B05_TN_.pdf",
+    "bbox_fraction": [
+      0.315,
+      0.067,
+      0.89,
+      0.325
+    ],
+    "language": "eng"
+  },
+  {
+    "id": "centre-gravity",
+    "code": "205",
+    "page": 14,
+    "targets": [
+      72
+    ],
+    "caption": "均勻對稱物體的重心位置，可位於物體沒有材料的空間。",
+    "src": "assets/textbook/review-diagrams/centre-gravity.png",
+    "width": 276,
+    "height": 188,
+    "source": "DSEPHY_TE_205_TN_.pdf",
+    "bbox_fraction": [
+      0.465,
+      0.32,
+      0.745,
+      0.466
+    ],
+    "language": "eng"
+  },
+  {
+    "id": "sine-rms",
+    "code": "404",
+    "page": 27,
+    "targets": [
+      193,
+      194,
+      195
+    ],
+    "caption": "正弦交流的零線、峰值與週期；均方根值不是峰對峰值。",
+    "src": "assets/textbook/review-diagrams/sine-rms.png",
+    "width": 561,
+    "height": 192,
+    "source": "DSEPHY_TE_404_TN_.pdf",
+    "bbox_fraction": [
+      0.34,
+      0.598,
+      0.91,
+      0.747
+    ],
+    "language": "eng"
+  },
+  {
+    "id": "rods-cones",
+    "code": "E401",
+    "page": 11,
+    "targets": [
+      328
+    ],
+    "caption": "視網膜上的視桿與視錐具有不同形狀和功能。",
+    "src": "assets/textbook/review-diagrams/rods-cones.png",
+    "width": 542,
+    "height": 335,
+    "source": "DSEPHY_TE_E401_TN_.pdf",
+    "bbox_fraction": [
+      0.34,
+      0.515,
+      0.895,
+      0.777
+    ],
+    "language": "eng"
+  },
+  {
+    "id": "radial-velocity",
+    "code": "E103",
+    "page": 35,
+    "targets": [
+      275
+    ],
+    "caption": "多普勒測量對應沿視線的徑向速度，而不是橫向速度。",
+    "src": "assets/textbook/review-diagrams/radial-velocity.png",
+    "width": 483,
+    "height": 179,
+    "source": "DSEPHY_TE_E103_TN_.pdf",
+    "bbox_fraction": [
+      0.43,
+      0.65,
+      0.925,
+      0.79
+    ],
+    "language": "eng"
+  }
+]

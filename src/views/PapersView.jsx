@@ -9,7 +9,7 @@ import { StudyQuestion } from "../components/StudyQuestion";
 import { SourceDownload } from "../components/SourceDownload";
 import './papers-directory.css';
 import { cn } from "../lib/utils";
-import { chapterLabel, knowledgeNumber, imageUrl, networkFor, networkKey, questionIdentity, yearsFor } from "../lib/data";
+import { chapterLabel, knowledgeNumber, knowledgeTitle, imageUrl, networkFor, networkKey, questionIdentity, yearsFor } from "../lib/data";
 
 function titleForPaper(paper, index, language) {
   if (language === "eng") return paper.title;
@@ -141,7 +141,8 @@ export function PapersView({ directoryVersion, onDirectory, onYearOpen, language
           </header>
           <div className="question-body">
             {paperIndex < 3 ? <StudyQuestion key={`${key}-${language}`} year={year} language={language} questionKey={key} question={question} ScanImages={ScanImages}/> : <ScanImages yearId={year.id} paths={question.question} label={`${year.year} ${question.label}`} />}
-            {!membership.active && <MemberNotice/>}{membership.active && !!network.links?.length && <section className="related-panel"><div><BookOpen /><strong>{"相关课本知识"}</strong></div><div>{network.links.map((link) => <button key={`${link.sequence}-${link.type}`} onClick={() => openKnowledge(link.sequence)}><span>{knowledgeNumber(link.sequence, language)}</span>{language === "eng" ? link.chapterEn : link.chapterZh}</button>)}</div></section>}
+            {!membership.active && <MemberNotice/>}{membership.active && !!network.links?.length && <section className="related-panel"><div><BookOpen /><strong>{"相关课本知识"}</strong></div><div>{network.links.map((link) => <button key={`${link.sequence}-${link.type}`} onClick={() => openKnowledge(link.sequence)}><span>{knowledgeNumber(link.sequence, language)}</span>{knowledgeTitle(link.sequence, language)}{link.evidence && <small className="knowledge-link-evidence">{link.evidence}</small>}</button>)}</div></section>}
+            {membership.active && !!network.relatedLinks?.length && <section className="related-panel"><div><BookOpen /><strong>定律／前置背景（不计直接题频）</strong></div><div>{network.relatedLinks.map(link => <button key={link.sequence} onClick={() => openKnowledge(link.sequence)}><span>{knowledgeNumber(link.sequence, language)}</span>{knowledgeTitle(link.sequence, language)}</button>)}</div></section>}
             {membership.active && !network.links?.length && !!network.chapters?.length && <section className="related-panel"><div><BookOpen /><strong>{'相关章节'}</strong></div><div>{network.chapters.map(code => <span className="related-chapter" key={code}>{code} · {chapterLabel(code, language)}</span>)}</div></section>}
           </div>
           <footer className="question-footer"><Button variant="outline" disabled={questionIndex === 0} onClick={previous}><ArrowLeft/>{'上一题'}</Button><span>{questionIndex + 1} / {paper.questions.length}</span><Button variant="outline" disabled={questionIndex === paper.questions.length - 1} onClick={next}>{'下一题'}<ArrowRight/></Button></footer>

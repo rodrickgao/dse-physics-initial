@@ -1,0 +1,748 @@
+{
+  "version": "2026-09-18-textbook-evidence",
+  "newCards": 45,
+  "totalCards": 410,
+  "ids": {
+    "N01": 366,
+    "N02": 367,
+    "N03": 368,
+    "N04": 369,
+    "N06": 371,
+    "N07": 372,
+    "N08": 373,
+    "N09": 374,
+    "N10": 375,
+    "N11": 376,
+    "N12": 377,
+    "N13": 378,
+    "N14": 379,
+    "N15": 380,
+    "N16": 381,
+    "N18": 383,
+    "N19": 384,
+    "N20": 385,
+    "N21": 386,
+    "N22": 387,
+    "N23": 388,
+    "N24": 389,
+    "N28": 393,
+    "N29": 394,
+    "N30": 395,
+    "N31": 396,
+    "N32": 397,
+    "N33": 398,
+    "N34": 399,
+    "N35": 400,
+    "N36": 401,
+    "N37": 402,
+    "N38": 403,
+    "N39": 404,
+    "N40": 405,
+    "N41": 406,
+    "N42": 407,
+    "N43": 408,
+    "N44": 409,
+    "N45": 410,
+    "N46": 411,
+    "N48": 413,
+    "N49": 414,
+    "T01": 415,
+    "T02": 416
+  },
+  "changes": [
+    {
+      "key": "2024|paper-1b|5",
+      "sequence": 366,
+      "role": "primary",
+      "evidence": "疏密部中心與位移圖；結構題 (a)。"
+    },
+    {
+      "key": "2025|paper-1a|15",
+      "sequence": 366,
+      "role": "primary",
+      "evidence": "疏密部中心與位移圖；結構題 (a)。"
+    },
+    {
+      "key": "2020|paper-1a|12",
+      "sequence": 367,
+      "role": "primary",
+      "evidence": "平衡位置和端點的瞬時速率；2024 (b)(i)，2025 選項速率判讀。動能曲線需再用 K∝u²。"
+    },
+    {
+      "key": "2024|paper-1b|5",
+      "sequence": 367,
+      "role": "supporting",
+      "evidence": "平衡位置和端點的瞬時速率；2024 (b)(i)，2025 選項速率判讀。動能曲線需再用 K∝u²。"
+    },
+    {
+      "key": "2025|paper-1a|15",
+      "sequence": 367,
+      "role": "supporting",
+      "evidence": "平衡位置和端點的瞬時速率；2024 (b)(i)，2025 選項速率判讀。動能曲線需再用 K∝u²。"
+    },
+    {
+      "key": "2012|paper-1a|16",
+      "sequence": 368,
+      "role": "primary",
+      "evidence": "固定端反相；非對稱輪廓還需逐段追蹤先後到達端點。"
+    },
+    {
+      "key": "2012|paper-1a|21",
+      "sequence": 369,
+      "role": "primary",
+      "evidence": "凹透鏡主光線與凸透鏡焦平面：已核對英文課本的對應概念／圖表；題目取自本地題文與教學詳解。"
+    },
+    {
+      "key": "2023|paper-1a|21",
+      "sequence": 369,
+      "role": "primary",
+      "evidence": "凹透鏡主光線與凸透鏡焦平面：已核對英文課本的對應概念／圖表；題目取自本地題文與教學詳解。"
+    },
+    {
+      "key": "2015|paper-1a|20",
+      "sequence": 371,
+      "role": "primary",
+      "evidence": "電磁波譜的次序、尺度與用途：已核對英文課本的對應概念／圖表；題目取自本地題文與教學詳解。"
+    },
+    {
+      "key": "2021|paper-1a|19",
+      "sequence": 371,
+      "role": "primary",
+      "evidence": "電磁波譜的次序、尺度與用途：已核對英文課本的對應概念／圖表；題目取自本地題文與教學詳解。"
+    },
+    {
+      "key": "2024|paper-1a|21",
+      "sequence": 371,
+      "role": "primary",
+      "evidence": "電磁波譜的次序、尺度與用途：已核對英文課本的對應概念／圖表；題目取自本地題文與教學詳解。"
+    },
+    {
+      "key": "2023|paper-1a|22",
+      "sequence": 372,
+      "role": "primary",
+      "evidence": "支援紫外線選項及不同波段吸收概念；0.5 m 窗口須讀題圖。"
+    },
+    {
+      "key": "2023|paper-1a|24",
+      "sequence": 373,
+      "role": "primary",
+      "evidence": "以電場線判讀方向與強弱：已核對英文課本的對應概念／圖表；題目取自本地題文與教學詳解。"
+    },
+    {
+      "key": "2013|paper-1a|33",
+      "sequence": 374,
+      "role": "primary",
+      "evidence": "支援電器功率量級比較；原表沒有直接列微波爐。"
+    },
+    {
+      "key": "2018|paper-1a|21",
+      "sequence": 375,
+      "role": "primary",
+      "evidence": "日常聲音的聲級量級：已核對英文課本的對應概念／圖表；題目取自本地題文與教學詳解。"
+    },
+    {
+      "key": "2016|paper-1a|23",
+      "sequence": 376,
+      "role": "primary",
+      "evidence": "超聲波的探測與能量應用：已核對英文課本的對應概念／圖表；題目取自本地題文與教學詳解。"
+    },
+    {
+      "key": "2017|paper-1a|31",
+      "sequence": 377,
+      "role": "primary",
+      "evidence": "核輻射的電荷、偏轉與探測：已核對英文課本的對應概念／圖表；題目取自本地題文與教學詳解。"
+    },
+    {
+      "key": "2017|paper-1a|32",
+      "sequence": 377,
+      "role": "primary",
+      "evidence": "核輻射的電荷、偏轉與探測：已核對英文課本的對應概念／圖表；題目取自本地題文與教學詳解。"
+    },
+    {
+      "key": "2020|paper-1a|30",
+      "sequence": 378,
+      "role": "primary",
+      "evidence": "放射性計數的隨機漲落：已核對英文課本的對應概念／圖表；題目取自本地題文與教學詳解。"
+    },
+    {
+      "key": "2020|paper-1a|32",
+      "sequence": 379,
+      "role": "primary",
+      "evidence": "核素的半衰期及衰變常數特徵。"
+    },
+    {
+      "key": "2021|paper-1a|33",
+      "sequence": 380,
+      "role": "primary",
+      "evidence": "天然背景來源；人體及海水的具體核素仍以題解為準。"
+    },
+    {
+      "key": "2025|paper-1a|31",
+      "sequence": 381,
+      "role": "primary",
+      "evidence": "放射強度（活度）與貝克 Bq：已核對英文課本的對應概念／圖表；題目取自本地題文與教學詳解。"
+    },
+    {
+      "key": "2015|paper-2|1.6",
+      "sequence": 383,
+      "role": "primary",
+      "evidence": "只支援自轉帶來的過中天順序；需結合題圖判斷夜側。"
+    },
+    {
+      "key": "2016|paper-2|1.3",
+      "sequence": 384,
+      "role": "primary",
+      "evidence": "天體系統的層級與尺度：已核對英文課本的對應概念／圖表；題目取自本地題文與教學詳解。"
+    },
+    {
+      "key": "2020|paper-2|1.1",
+      "sequence": 384,
+      "role": "primary",
+      "evidence": "天體系統的層級與尺度：已核對英文課本的對應概念／圖表；題目取自本地題文與教學詳解。"
+    },
+    {
+      "key": "2023|paper-2|1.1",
+      "sequence": 384,
+      "role": "primary",
+      "evidence": "天體系統的層級與尺度：已核對英文課本的對應概念／圖表；題目取自本地題文與教學詳解。"
+    },
+    {
+      "key": "2024|paper-2|1.1",
+      "sequence": 384,
+      "role": "primary",
+      "evidence": "天體系統的層級與尺度：已核對英文課本的對應概念／圖表；題目取自本地題文與教學詳解。"
+    },
+    {
+      "key": "2014|paper-2|1.5",
+      "sequence": 385,
+      "role": "primary",
+      "evidence": "金星相位／木星衛星；2024 僅支援敘述 (3)。"
+    },
+    {
+      "key": "2015|paper-2|1.4",
+      "sequence": 385,
+      "role": "primary",
+      "evidence": "金星相位／木星衛星；2024 僅支援敘述 (3)。"
+    },
+    {
+      "key": "2019|paper-2|1.2",
+      "sequence": 385,
+      "role": "primary",
+      "evidence": "金星相位／木星衛星；2024 僅支援敘述 (3)。"
+    },
+    {
+      "key": "2021|paper-2|1.3",
+      "sequence": 385,
+      "role": "primary",
+      "evidence": "金星相位／木星衛星；2024 僅支援敘述 (3)。"
+    },
+    {
+      "key": "2024|paper-2|1.4",
+      "sequence": 385,
+      "role": "primary",
+      "evidence": "金星相位／木星衛星；2024 僅支援敘述 (3)。"
+    },
+    {
+      "key": "2012|paper-2|1.8",
+      "sequence": 386,
+      "role": "primary",
+      "evidence": "吸收線與恆星外層氣體；2018 題另需連續及發射光譜。"
+    },
+    {
+      "key": "2018|paper-2|1.4",
+      "sequence": 386,
+      "role": "primary",
+      "evidence": "吸收線與恆星外層氣體；2018 題另需連續及發射光譜。"
+    },
+    {
+      "key": "2013|paper-2|2.6",
+      "sequence": 387,
+      "role": "primary",
+      "evidence": "以元素特徵譜線辨認物質：已核對英文課本的對應概念／圖表；題目取自本地題文與教學詳解。"
+    },
+    {
+      "key": "2013|paper-2|1.8",
+      "sequence": 388,
+      "role": "primary",
+      "evidence": "星系旋轉曲線與暗物質：已核對英文課本的對應概念／圖表；題目取自本地題文與教學詳解。"
+    },
+    {
+      "key": "2019|paper-2|1.8",
+      "sequence": 388,
+      "role": "primary",
+      "evidence": "星系旋轉曲線與暗物質：已核對英文課本的對應概念／圖表；題目取自本地題文與教學詳解。"
+    },
+    {
+      "key": "2019|paper-2|1.6",
+      "sequence": 389,
+      "role": "primary",
+      "evidence": "光譜型與赫羅圖的讀圖：已核對英文課本的對應概念／圖表；題目取自本地題文與教學詳解。"
+    },
+    {
+      "key": "2023|paper-2|1.8",
+      "sequence": 389,
+      "role": "primary",
+      "evidence": "光譜型與赫羅圖的讀圖：已核對英文課本的對應概念／圖表；題目取自本地題文與教學詳解。"
+    },
+    {
+      "key": "2012|paper-2|2.7",
+      "sequence": 393,
+      "role": "primary",
+      "evidence": "蓮葉排水及表面催化；2023 敘述 (2) 熔點機制未由本卡完整支持。"
+    },
+    {
+      "key": "2016|paper-2|2.8",
+      "sequence": 393,
+      "role": "primary",
+      "evidence": "蓮葉排水及表面催化；2023 敘述 (2) 熔點機制未由本卡完整支持。"
+    },
+    {
+      "key": "2023|paper-2|2.8",
+      "sequence": 393,
+      "role": "primary",
+      "evidence": "蓮葉排水及表面催化；2023 敘述 (2) 熔點機制未由本卡完整支持。"
+    },
+    {
+      "key": "2014|paper-2|2.8",
+      "sequence": 394,
+      "role": "primary",
+      "evidence": "二氧化鈦親水自潔與碳材料結構：已核對英文課本的對應概念／圖表；題目取自本地題文與教學詳解。"
+    },
+    {
+      "key": "2024|paper-2|2.7",
+      "sequence": 395,
+      "role": "primary",
+      "evidence": "透射電子顯微鏡的元件次序：已核對英文課本的對應概念／圖表；題目取自本地題文與教學詳解。"
+    },
+    {
+      "key": "2012|paper-2|3.8",
+      "sequence": 396,
+      "role": "primary",
+      "evidence": "減速劑、冷卻劑及分離迴路；污染與安全細节需另查。"
+    },
+    {
+      "key": "2014|paper-2|3.8",
+      "sequence": 396,
+      "role": "primary",
+      "evidence": "減速劑、冷卻劑及分離迴路；污染與安全細节需另查。"
+    },
+    {
+      "key": "2015|paper-2|3.8",
+      "sequence": 396,
+      "role": "primary",
+      "evidence": "減速劑、冷卻劑及分離迴路；污染與安全細节需另查。"
+    },
+    {
+      "key": "2025|paper-2|3.8",
+      "sequence": 396,
+      "role": "primary",
+      "evidence": "減速劑、冷卻劑及分離迴路；污染與安全細节需另查。"
+    },
+    {
+      "key": "2013|paper-2|3.1",
+      "sequence": 397,
+      "role": "primary",
+      "evidence": "LED 的能隙與發光顏色：已核對英文課本的對應概念／圖表；題目取自本地題文與教學詳解。"
+    },
+    {
+      "key": "2015|paper-2|3.2",
+      "sequence": 398,
+      "role": "primary",
+      "evidence": "太陽能電池的光伏作用：已核對英文課本的對應概念／圖表；題目取自本地題文與教學詳解。"
+    },
+    {
+      "key": "2016|paper-2|3.4",
+      "sequence": 398,
+      "role": "primary",
+      "evidence": "太陽能電池的光伏作用：已核對英文課本的對應概念／圖表；題目取自本地題文與教學詳解。"
+    },
+    {
+      "key": "2013|paper-2|3.3",
+      "sequence": 399,
+      "role": "primary",
+      "evidence": "太陽能板的入射功率與投影面積：已核對英文課本的對應概念／圖表；題目取自本地題文與教學詳解。"
+    },
+    {
+      "key": "2023|paper-2|3.6",
+      "sequence": 400,
+      "role": "primary",
+      "evidence": "太陽能電池的減反射與表面處理：已核對英文課本的對應概念／圖表；題目取自本地題文與教學詳解。"
+    },
+    {
+      "key": "2013|paper-2|3.7",
+      "sequence": 401,
+      "role": "primary",
+      "evidence": "熱水器的加熱功率：已核對英文課本的對應概念／圖表；題目取自本地題文與教學詳解。"
+    },
+    {
+      "key": "2014|paper-2|3.4",
+      "sequence": 402,
+      "role": "primary",
+      "evidence": "玻璃對不同波段的作用；2015 須另讀題給吸收圖。"
+    },
+    {
+      "key": "2015|paper-2|3.5",
+      "sequence": 402,
+      "role": "primary",
+      "evidence": "玻璃對不同波段的作用；2015 須另讀題給吸收圖。"
+    },
+    {
+      "key": "2018|paper-2|3.1",
+      "sequence": 403,
+      "role": "primary",
+      "evidence": "混合動力車的引擎與電動機分工：已核對英文課本的對應概念／圖表；題目取自本地題文與教學詳解。"
+    },
+    {
+      "key": "2020|paper-2|3.7",
+      "sequence": 404,
+      "role": "primary",
+      "evidence": "製冷循環與分體冷氣部件：已核對英文課本的對應概念／圖表；題目取自本地題文與教學詳解。"
+    },
+    {
+      "key": "2024|paper-2|3.3",
+      "sequence": 404,
+      "role": "primary",
+      "evidence": "製冷循環與分體冷氣部件：已核對英文課本的對應概念／圖表；題目取自本地題文與教學詳解。"
+    },
+    {
+      "key": "2020|paper-2|3.8",
+      "sequence": 405,
+      "role": "primary",
+      "evidence": "可再生與不可再生能源的分類：已核對英文課本的對應概念／圖表；題目取自本地題文與教學詳解。"
+    },
+    {
+      "key": "2022|paper-2|3.4",
+      "sequence": 406,
+      "role": "primary",
+      "evidence": "級別定義及耗電量比較；容量分組以題目當年規則為準。"
+    },
+    {
+      "key": "2012|paper-2|4.3",
+      "sequence": 407,
+      "role": "primary",
+      "evidence": "等響曲線與聽覺靈敏度：已核對英文課本的對應概念／圖表；題目取自本地題文與教學詳解。"
+    },
+    {
+      "key": "2020|paper-2|4.2",
+      "sequence": 407,
+      "role": "primary",
+      "evidence": "等響曲線與聽覺靈敏度：已核對英文課本的對應概念／圖表；題目取自本地題文與教學詳解。"
+    },
+    {
+      "key": "2012|paper-2|4.4",
+      "sequence": 408,
+      "role": "primary",
+      "evidence": "A/B 掃描顯示及即時影像；不以此宣稱空間解析度必較高。"
+    },
+    {
+      "key": "2021|paper-2|4.3",
+      "sequence": 408,
+      "role": "primary",
+      "evidence": "A/B 掃描顯示及即時影像；不以此宣稱空間解析度必較高。"
+    },
+    {
+      "key": "2014|paper-2|4.5",
+      "sequence": 409,
+      "role": "primary",
+      "evidence": "按表格的穿透、視野、即時性作情境比較。"
+    },
+    {
+      "key": "2021|paper-2|4.4",
+      "sequence": 409,
+      "role": "primary",
+      "evidence": "按表格的穿透、視野、即時性作情境比較。"
+    },
+    {
+      "key": "2023|paper-2|4.5",
+      "sequence": 409,
+      "role": "primary",
+      "evidence": "按表格的穿透、視野、即時性作情境比較。"
+    },
+    {
+      "key": "2015|paper-2|4.2",
+      "sequence": 410,
+      "role": "primary",
+      "evidence": "內窺鏡的觀察範圍與限制：已核對英文課本的對應概念／圖表；題目取自本地題文與教學詳解。"
+    },
+    {
+      "key": "2016|paper-2|4.4",
+      "sequence": 410,
+      "role": "primary",
+      "evidence": "內窺鏡的觀察範圍與限制：已核對英文課本的對應概念／圖表；題目取自本地題文與教學詳解。"
+    },
+    {
+      "key": "2015|paper-2|4.6",
+      "sequence": 411,
+      "role": "primary",
+      "evidence": "像素面積與影像矩陣：已核對英文課本的對應概念／圖表；題目取自本地題文與教學詳解。"
+    },
+    {
+      "key": "2018|paper-2|4.1",
+      "sequence": 413,
+      "role": "primary",
+      "evidence": "眼睛主要折射位置：已核對英文課本的對應概念／圖表；題目取自本地題文與教學詳解。"
+    },
+    {
+      "key": "2021|paper-2|4.8",
+      "sequence": 414,
+      "role": "primary",
+      "evidence": "等效劑量及加權因子；α 強電離的原因仍需輻射原理。"
+    },
+    {
+      "key": "2013|paper-1b|2",
+      "sequence": 415,
+      "role": "supporting",
+      "evidence": "只直接支援 (b)(ii) 外推；(b)(i) 內插是同一直線的應用。"
+    },
+    {
+      "key": "2013|paper-1b|2",
+      "sequence": 416,
+      "role": "supporting",
+      "evidence": "(a) 停止加熱、攪拌和等待穩定。"
+    },
+    {
+      "key": "2012|paper-1a|24",
+      "sequence": 159,
+      "role": "background",
+      "evidence": "定律／前置背景，不計直接題頻；按題目情境使用。"
+    },
+    {
+      "key": "2012|paper-1a|24",
+      "sequence": 161,
+      "role": "background",
+      "evidence": "定律／前置背景，不計直接題頻；按題目情境使用。"
+    },
+    {
+      "key": "2015|paper-1a|21",
+      "sequence": 159,
+      "role": "background",
+      "evidence": "定律／前置背景，不計直接題頻；按題目情境使用。"
+    },
+    {
+      "key": "2015|paper-1a|21",
+      "sequence": 161,
+      "role": "background",
+      "evidence": "定律／前置背景，不計直接題頻；按題目情境使用。"
+    },
+    {
+      "key": "2025|paper-1a|22",
+      "sequence": 159,
+      "role": "background",
+      "evidence": "定律／前置背景，不計直接題頻；按題目情境使用。"
+    },
+    {
+      "key": "2025|paper-1a|22",
+      "sequence": 161,
+      "role": "background",
+      "evidence": "定律／前置背景，不計直接題頻；按題目情境使用。"
+    },
+    {
+      "key": "2021|paper-1a|21",
+      "sequence": 160,
+      "role": "background",
+      "evidence": "定律／前置背景，不計直接題頻；按題目情境使用。"
+    },
+    {
+      "key": "2014|paper-1a|20",
+      "sequence": 159,
+      "role": "background",
+      "evidence": "定律／前置背景，不計直接題頻；按題目情境使用。"
+    },
+    {
+      "key": "2014|paper-1a|20",
+      "sequence": 160,
+      "role": "background",
+      "evidence": "定律／前置背景，不計直接題頻；按題目情境使用。"
+    },
+    {
+      "key": "2014|paper-1a|20",
+      "sequence": 161,
+      "role": "background",
+      "evidence": "定律／前置背景，不計直接題頻；按題目情境使用。"
+    },
+    {
+      "key": "2024|paper-1b|9",
+      "sequence": 159,
+      "role": "background",
+      "evidence": "定律／前置背景，不計直接題頻；按題目情境使用。"
+    },
+    {
+      "key": "2024|paper-1b|9",
+      "sequence": 160,
+      "role": "background",
+      "evidence": "定律／前置背景，不計直接題頻；按題目情境使用。"
+    },
+    {
+      "key": "2024|paper-1b|9",
+      "sequence": 161,
+      "role": "background",
+      "evidence": "定律／前置背景，不計直接題頻；按題目情境使用。"
+    },
+    {
+      "key": "2012|paper-2|1.5",
+      "sequence": 252,
+      "role": "background",
+      "evidence": "定律／前置背景，不計直接題頻；按題目情境使用。"
+    },
+    {
+      "key": "2012|paper-2|1.5",
+      "sequence": 253,
+      "role": "background",
+      "evidence": "定律／前置背景，不計直接題頻；按題目情境使用。"
+    },
+    {
+      "key": "2016|paper-2|1.4",
+      "sequence": 252,
+      "role": "background",
+      "evidence": "定律／前置背景，不計直接題頻；按題目情境使用。"
+    },
+    {
+      "key": "2016|paper-2|1.4",
+      "sequence": 253,
+      "role": "background",
+      "evidence": "定律／前置背景，不計直接題頻；按題目情境使用。"
+    },
+    {
+      "key": "2022|paper-1b|7",
+      "sequence": 196,
+      "role": "background",
+      "evidence": "定律／前置背景，不計直接題頻；按題目情境使用。"
+    }
+  ],
+  "skipped": [
+    {
+      "id": "N18",
+      "key": "2012|paper-2|1.4",
+      "reason": "緯度與升起方向幾何未有完整來源。"
+    },
+    {
+      "id": "N18",
+      "key": "2013|paper-2|1.5",
+      "reason": "緯度與可見時長未有完整來源。"
+    },
+    {
+      "id": "N18",
+      "key": "2014|paper-2|1.3",
+      "reason": "赤緯與中天高度未有完整來源。"
+    },
+    {
+      "id": "N18",
+      "key": "2015|paper-2|1.2",
+      "reason": "可見天球範圍未有完整來源。"
+    },
+    {
+      "id": "N20",
+      "key": "2023|paper-2|1.2",
+      "reason": "此題考周年視差，不考金星盈虧或木星衛星。"
+    },
+    {
+      "id": "N22",
+      "key": "2019|paper-2|2.1",
+      "reason": "本卡已解例題只直接支持辨識元素；吸收成因仍待本冊原文補足。"
+    },
+    {
+      "id": "N28",
+      "key": "2014|paper-2|2.8",
+      "reason": "此卡未有熔點改變的直接來源；由 N29 支援塗層及碳結構。"
+    },
+    {
+      "id": "N37",
+      "key": "2018|paper-2|3.6",
+      "reason": "此題考白色牆面反光，不考窗玻璃。"
+    }
+  ],
+  "notAdded": [
+    {
+      "id": "N05",
+      "reason": "暫緩新增／依據不足"
+    },
+    {
+      "id": "N17",
+      "reason": "暫緩新增／依據不足"
+    },
+    {
+      "id": "N25",
+      "reason": "原理或習題支持／推導"
+    },
+    {
+      "id": "N26",
+      "reason": "原理或習題支持／推導"
+    },
+    {
+      "id": "N27",
+      "reason": "併入原卡 #314，原文／例題補充"
+    },
+    {
+      "id": "N47",
+      "reason": "暫緩新增／依據不足"
+    }
+  ],
+  "chapterOnlyRemaining": 22,
+  "modifiedExisting": [
+    12,
+    13,
+    14,
+    15,
+    16,
+    29,
+    30,
+    31,
+    32,
+    50,
+    51,
+    52,
+    53,
+    69,
+    70,
+    77,
+    78,
+    85,
+    86,
+    87,
+    88,
+    104,
+    106,
+    120,
+    122,
+    123,
+    126,
+    135,
+    137,
+    157,
+    158,
+    160,
+    161,
+    162,
+    163,
+    164,
+    166,
+    167,
+    168,
+    169,
+    173,
+    174,
+    196,
+    227,
+    228,
+    235,
+    251,
+    255,
+    271,
+    277,
+    279,
+    282,
+    292,
+    298,
+    314,
+    317,
+    322,
+    323,
+    324,
+    339,
+    344,
+    345,
+    350,
+    360
+  ],
+  "scope": "local website only; no deployment, no student-data mutation"
+}

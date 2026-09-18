@@ -9,7 +9,8 @@ test('all 365 bilingual numbers match the exported documents and preserve IDs', 
   const context = { window: {} };
   vm.runInNewContext(fs.readFileSync('textbook-data.js', 'utf8'), context);
   const langs = context.window.DSE_TEXTBOOK_DATA.languages;
-  for (const points of Object.values(langs)) {
+  for (const edition of Object.values(langs)) {
+    const points = edition.filter(p => p.sequence <= 365);
     const numbered = numberKnowledgePoints(points);
     assert.equal(numbered.length, 365);
     assert.equal(new Set(numbered.map(p => p.number)).size, 365);
@@ -47,9 +48,8 @@ test('download library exposes only original papers with honest language coverag
       if (f.year === 2024) assert.deepEqual(f.sourcePages, {'paper-1a':[6,21], 'paper-1b':[22,40], 'paper-2':[41,57]}[f.paper]);
     }
   }
-  // Source archives and Git do not retain the retired, empty directories.
   for (const lang of ['eng','chn']) {
-    const folder = 'downloads/' + lang;
-    assert.deepEqual(fs.existsSync(folder) ? fs.readdirSync(folder).filter(f => f.endsWith('.pdf')) : [], []);
+    const directory = 'downloads/' + lang;
+    assert.deepEqual(fs.existsSync(directory) ? fs.readdirSync(directory).filter(f => f.endsWith('.pdf')) : [], []);
   }
 });

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { getDseCountdown } from '../lib/dse-countdown';
 import './dse-countdown.css';
 
-export function DseCountdown({ language }) {
+export function DseCountdown({ target, targetMajor }) {
   const [countdown, setCountdown] = useState(() => getDseCountdown());
   useEffect(() => {
     let timer;
@@ -22,10 +22,10 @@ export function DseCountdown({ language }) {
       document.removeEventListener('visibilitychange', refresh);
     };
   }, []);
-  const english = language === 'eng';
-  return <div className="dse-countdown" role="status" aria-live="polite" aria-atomic="true">
+  const goal = [target, targetMajor].filter(Boolean).join(' · ');
+  return <div className="dse-countdown-group"><div className="dse-countdown" role="status" aria-live="polite" aria-atomic="true">
     {countdown.examMonth
       ? <span className="dse-countdown-cheer">{'考试加油，你一定行！'}</span>
       : <><span>{'距离 DSE 还有'}</span><strong>{countdown.days}</strong><span>{'天'}</span></>}
-  </div>;
+  </div><div className="dse-goal"><span>我的目标是：</span><span className="dse-goal-value">{goal || "_____"}</span></div></div>;
 }

@@ -2,12 +2,12 @@ import { useMembership, MemberNotice } from '../components/Membership';
 import { entriesByLanguage, pointsMap, knowledgeNumber, questionLabelFromKey } from '../lib/data';
 import { profileReview } from '../lib/profile-review';
 import { useMemo, useRef, useState } from 'react';
-import { Atom, ArrowRight, Check, Camera, Upload, UserRound } from 'lucide-react';
+import { Atom, ArrowRight, Check, Camera, Upload, UserRound, Settings, LogOut } from 'lucide-react';
 import { api } from '../lib/api';
 import { Button } from '../components/ui/button';
 import { AVATARS, PHYSICISTS, GRADES, TARGETS } from '../lib/avatar-catalog';
 
-export function ProfileView({ focusTimer, user, onSaved, onLogout, onCancel, mistakes = {}, language = 'chn', openPaper, openKnowledge }) {
+export function ProfileView({ logoutError, user, onSaved, onLogout, onCancel, mistakes = {}, language = 'chn', openPaper, openKnowledge }) {
   const membership = useMembership();
   const [showAvatars, setShowAvatars] = useState(!user.profileComplete);
   const [shuffle, setShuffle] = useState(0);
@@ -16,7 +16,7 @@ export function ProfileView({ focusTimer, user, onSaved, onLogout, onCancel, mis
   function togglePicker() { setShowAvatars(true); requestAnimationFrame(() => { picker.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }); picker.current?.focus({ preventScroll: true }); }); }
   function closePicker() { setShowAvatars(false); camera.current?.focus(); }
   function visit(action) {
-    if (nickname !== (user.nickname || '') || grade !== (user.grade || '') || target !== (user.target || '') || targetMajor !== (user.targetMajor || '') || avatar !== (user.avatar || '') || image || password || confirmPassword) { setError('请先保存个人资料，再查看复习内容。'); return; }
+    if (nickname !== (user.nickname || '') || grade !== (user.grade || '') || target !== (user.target || '') || targetMajor !== (user.targetMajor || '') || avatar !== (user.avatar || '') || image || password || confirmPassword) { setError('请先保存个人设置，再查看复习内容。'); return; }
     action();
   }
   const [password, setPassword] = useState(''); const [confirmPassword, setConfirmPassword] = useState('');
@@ -54,13 +54,12 @@ export function ProfileView({ focusTimer, user, onSaved, onLogout, onCancel, mis
     try { const result = await api('profile', { nickname, grade, target, targetMajor, avatar, ...(!user.hasPassword && (password || confirmPassword) ? { password, confirmPassword } : {}), ...(image && avatar === 'upload' ? { image } : {}) }, 'PUT'); onSaved(result.user); }
     catch (e) { setError(e.message); } finally { setBusy(false); }
   }
-  return <main className="profile-page">
-    <header className="profile-header">{onCancel ? <button type="button" className="auth-brand profile-home" aria-label="DSE Physics，返回主页" disabled={busy} onClick={onCancel}><Atom /> DSE Physics</button> : <span className="auth-brand"><Atom /> DSE Physics</span>}{!onCancel && <button type="button" disabled={busy} onClick={onLogout}>切换账号</button>}</header>
-    <div className="profile-welcome"><h1>{user.profileComplete ? '你的个人资料' : '建立你的物理学习档案'}</h1>{!user.profileComplete && <ol className="profile-steps"><li><Check /> 邮箱已验证</li><li aria-current="step"><span>2</span> 完善个人资料</li></ol>}</div>
+  return <main className="profile-page page-enter">
+    <header className="profile-header">{onCancel ? <button type="button" className="auth-brand profile-home" aria-label="DSE Physics，返回主页" disabled={busy} onClick={onCancel}><Atom /> DSE Physics</button> : <span className="auth-brand"><Atom /> DSE Physics</span>}</header>
+    <div className="profile-welcome"><h1><Settings aria-hidden="true" />{user.profileComplete ? '个人设置' : '建立你的物理学习档案'}</h1>{!user.profileComplete && <ol className="profile-steps"><li><Check /> 邮箱已验证</li><li aria-current="step"><span>2</span> 完善个人资料</li></ol>}</div>
     <form className={`profile-layout ${user.profileComplete ? "profile-existing" : ""}`} onSubmit={submit}>
       <section className="profile-details"><div className="profile-preview">{preview ? <img src={preview} alt="你的头像预览" /> : <UserRound aria-label="尚未选择头像" />}<button ref={camera} className="profile-camera" type="button" aria-label="更换头像" aria-expanded={showAvatars} aria-controls="avatar-picker" disabled={busy} onClick={togglePicker}><Camera /></button></div>
         <p className="profile-email">{user.email}</p>
-        {focusTimer && <section className="profile-focus-total" aria-label="累计专注时间"><span>累计专注</span><div><strong>{(focusTimer.totalMs / 3600000).toFixed(2)}</strong><span> 小时</span></div><small>{Math.floor(focusTimer.totalMs / 3600000)} 小时 {Math.floor(focusTimer.totalMs / 60000) % 60} 分钟</small>{focusTimer.syncError && <p role="status">{focusTimer.syncError}</p>}</section>}
         <label className="profile-label" htmlFor="profile-nickname">你的昵称 <small>{[...nickname].length}/24</small></label><input id="profile-nickname" autoComplete="nickname" placeholder="大家可以怎样称呼你？" value={nickname} onChange={e => setNickname(e.target.value)} required maxLength={48} disabled={busy} />
         <fieldset disabled={busy}><legend>就读年级</legend><div className="profile-choices">{GRADES.map(value => <label key={value} className={grade === value ? 'chosen' : ''}><input type="radio" name="grade" value={value} checked={grade === value} onChange={() => setGrade(value)} required /><span>{value}</span></label>)}</div></fieldset>
         <fieldset disabled={busy}><legend>目标等级</legend><div className="profile-choices">{TARGETS.map(value => <label key={value} className={target === value ? 'chosen' : ''}><input type="radio" name="target" value={value} checked={target === value} onChange={() => setTarget(value)} required /><span>{value}</span></label>)}</div></fieldset>
@@ -69,11 +68,12 @@ export function ProfileView({ focusTimer, user, onSaved, onLogout, onCancel, mis
         {error && <p className="account-error" role="alert">{error}</p>}
         <Button className="profile-submit" disabled={busy || processing || !avatar || !nickname.trim() || !grade || !target || [...nickname.trim()].length > 24} type="submit">{busy ? '正在保存…' : user.profileComplete ? '保存个人资料' : '完成注册，开始学习'}<ArrowRight /></Button>
       </section>
-      <section hidden={!showAvatars} id="avatar-picker" ref={picker} tabIndex={-1} className="profile-avatar-panel">{user.profileComplete && <button type="button" className="profile-picker-close" onClick={closePicker}>完成选择，返回个人资料</button>}<div className="profile-panel-heading"><div><h2>选择你的头像</h2></div><span>10 位物理学家 · 50 个造型</span></div>
+      <section hidden={!showAvatars} id="avatar-picker" ref={picker} tabIndex={-1} className="profile-avatar-panel">{user.profileComplete && <button type="button" className="profile-picker-close" onClick={closePicker}>完成选择，返回个人设置</button>}<div className="profile-panel-heading"><div><h2>选择你的头像</h2></div><span>10 位物理学家 · 50 个造型</span></div>
         <div className="avatar-mode"><button type="button" aria-pressed={mode === 'physicists'} onClick={() => setMode('physicists')}>物理学家</button><button type="button" aria-pressed={mode === 'upload'} onClick={() => setMode('upload')}>上传我的图片</button></div>
         {mode === 'physicists' ? <><div className="physicist-tabs" aria-label="选择物理学家">{PHYSICISTS.map(p => <button disabled={busy} type="button" key={p.id} aria-pressed={person === p.id} onClick={() => setPerson(p.id)}>{p.name}</button>)}</div><div className="physicist-title"><h3>{PHYSICISTS.find(p => p.id === person)?.name}</h3><span>{PHYSICISTS.find(p => p.id === person)?.en}</span></div><div className="avatar-options" role="group" aria-label="选择头像姿势">{AVATARS.filter(a => a.person === person).map(a => <button disabled={busy} type="button" key={a.id} className={avatar === a.id ? 'selected' : ''} aria-pressed={avatar === a.id} aria-label={a.name} onClick={() => choose(a)}><img src={a.url} alt={a.name} loading="lazy" /><span>{a.name.split(' · ')[1]}</span>{avatar === a.id && <i><Check /></i>}</button>)}</div></> : <div className="avatar-upload"><div className="upload-preview">{preview && avatar === 'upload' ? <img src={preview} alt="上传图片预览" /> : <Upload />}</div><h3>让大家认识你</h3><input ref={fileInput} type="file" accept="image/png,image/jpeg,image/webp" aria-label="上传自订头像" onChange={upload} disabled={busy || processing} /><Button variant="outline" type="button" disabled={busy || processing} onClick={() => fileInput.current?.click()}>{processing ? '正在处理…' : '选择图片'}</Button><small>JPG、PNG、WebP · 最大 2 MB</small></div>}
       </section>
       {user.profileComplete && !showAvatars && <section className="profile-review" aria-label="个人复习推荐"><div className="profile-review-heading"><div><h2>今天复习这些</h2></div><Button type="button" variant="outline" onClick={() => setShuffle(n => n + 1)} disabled={!review.questions.length}>换一批</Button></div><h3>薄弱知识点</h3>{!membership.active && <MemberNotice/>}<div className="profile-review-list">{review.points.map(([sequence, count]) => <button type="button" key={sequence} onClick={() => visit(() => openKnowledge(sequence))}><span><strong>知识点 {knowledgeNumber(sequence, language)}</strong><small>{pointsMap[language].get(sequence)?.chapter} · {count} 道已标记错题</small></span><ArrowRight /></button>)}</div>{!review.points.length && <p className="profile-review-empty">{review.questions.length ? '目前的错题尚未连结知识点。' : '尚未标记错题。'}</p>}<h3>错题再练</h3><div className="profile-review-list">{review.questions.map(entry => <button type="button" key={entry.key} onClick={() => visit(() => openPaper(entry.key))}><span><strong>{questionLabelFromKey(entry.key)}</strong><small>{entry.paper.title} · {entry.question.label}</small></span><ArrowRight /></button>)}</div>{!review.questions.length && <p className="profile-review-empty">尚未标记错题。</p>}</section>}
     </form>
+    <footer className="profile-footer">{logoutError && <p className="account-error" role="alert">{logoutError}</p>}<Button className="profile-logout" variant="outline" type="button" disabled={busy || processing} onClick={onLogout}><LogOut aria-hidden="true" />退出登录</Button></footer>
   </main>;
 }

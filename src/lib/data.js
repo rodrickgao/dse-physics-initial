@@ -57,6 +57,19 @@ export function knowledgeNumber(sequence, language = 'eng') {
   return pointsMap[language]?.get(Number(sequence))?.number || String(sequence);
 }
 
+export function knowledgeTitle(sequence, language = 'eng') {
+  const point = pointsMap[language]?.get(Number(sequence));
+  return point?.card_title || point?.title || point?.chapter || String(sequence);
+}
+
+// Background and prerequisite exercises stay outside direct-frequency statistics.
+export function extendedPractice(point) {
+  const direct = new Set(relatedQuestionKeys(point.sequence));
+  return (entriesByLanguage.eng || []).filter(entry => !direct.has(entry.key) && (
+    entry.network.relatedLinks?.some(link => Number(link.sequence) === Number(point.sequence))
+  )).map(entry => entry.key);
+}
+
 export function chapterLabel(code, language) {
   return pointsByLanguage[language]?.find(point => point.code === code)?.chapter || code;
 }

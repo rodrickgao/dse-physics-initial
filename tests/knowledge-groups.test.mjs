@@ -13,7 +13,7 @@ const reviewedPairs = [[18,80],[55,56],[69,70],[77,86],[78,87],[85,88],[104,106]
 test('both languages render each of the 15 identical bodies once without losing identities', () => {
   for (const points of Object.values(languages)) {
     const cards = group(points);
-    assert.equal(cards.length, 350);
+    assert.equal(cards.length, points.length - 15);
     assert.equal(new Set(cards.map(knowledgeBodyKey)).size, cards.length);
     assert.deepEqual(cards.filter(card => card.members.length > 1).map(card => card.members.map(p => p.sequence)), reviewedPairs);
     assert.deepEqual(cards.flatMap(card => card.members.map(p => p.sequence)).sort((a,b) => a-b), points.map(p => p.sequence));
