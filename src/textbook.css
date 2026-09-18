@@ -1,0 +1,42 @@
+.textbook-view {letter-spacing:0}
+.textbook-view .knowledge-point-card {padding:20px;border-radius:8px;border-left:4px solid var(--point-border,var(--border));min-width:0;scroll-margin-top:90px;overflow:hidden}
+.textbook-view .knowledge-point-head {background:color-mix(in srgb,var(--point-tint) 55%,var(--card));margin:-20px -20px 18px;padding:12px 16px;border-bottom:1px solid var(--border)}
+.textbook-view .knowledge-content {font-size:16px;line-height:1.8;white-space:normal;overflow-wrap:anywhere}
+.textbook-view .knowledge-content p {margin:0 0 10px}
+.knowledge-formulas {min-width:0;margin:8px 0 20px}
+.knowledge-equation {max-width:100%;overflow-x:auto;overflow-y:hidden;padding:10px 2px;font-size:18px;color:var(--foreground)}
+.knowledge-equation .katex-display {margin:0;text-align:left}
+.knowledge-equation .katex-display>.katex {text-align:left;white-space:nowrap}
+.knowledge-notation {font-size:14px;line-height:1.9;margin:16px 0 0;padding-top:14px;border-top:1px solid var(--border);overflow-wrap:anywhere}
+.knowledge-notation .katex,.textbook-figure .katex {font-size:1.05em}
+.textbook-figure {margin:20px 0 24px;padding:0;min-width:0}
+.textbook-image-button {display:block;position:relative;width:100%;padding:8px;border:1px solid var(--border);border-radius:4px;background:#fff;cursor:zoom-in}
+.textbook-image-button img {display:block;width:auto;max-width:100%;height:auto;max-height:480px;object-fit:contain;margin:0 auto}
+.textbook-image-button>svg {position:absolute;right:8px;top:8px;width:24px;height:24px;padding:3px;background:#fff;color:#444;border:1px solid #ddd;border-radius:3px}
+.textbook-figure figcaption {font-size:14px;line-height:1.8;padding-top:10px;overflow-wrap:anywhere}
+.textbook-figure figcaption small {display:block;margin-top:6px;font-size:11px;color:var(--muted-foreground);overflow-wrap:anywhere}
+.knowledge-source {border-top:1px solid var(--border);margin:20px 0 16px;font-size:12px;line-height:1.7}
+.knowledge-source summary {cursor:pointer;padding:12px 0;color:var(--primary)}
+.knowledge-source>p {overflow-wrap:anywhere;margin:0 0 10px;color:var(--muted-foreground)}
+.textbook-image-dialog {max-width:min(1200px,96vw);max-height:94vh;margin:auto;padding:18px;border:1px solid var(--border);border-radius:6px;background:var(--card);color:var(--foreground);overflow:auto}
+.textbook-image-dialog::backdrop {background:rgb(0 0 0 / 65%)}
+.textbook-image-dialog>img {display:block;background:white;max-width:100%;height:auto;margin:12px auto}
+.textbook-image-dialog>p {font-size:14px;line-height:1.7;max-width:900px;overflow-wrap:anywhere}
+.textbook-dialog-head {display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:12px;overflow-wrap:anywhere}
+.textbook-dialog-head>button {display:grid;place-items:center;flex:0 0 36px;height:36px;border:1px solid var(--border);border-radius:4px;background:var(--card);color:var(--foreground);cursor:pointer}
+.textbook-dialog-head svg {width:18px;height:18px}
+.textbook-view .knowledge-meta {flex-wrap:wrap;gap:8px;line-height:1.6}
+.textbook-view .knowledge-browser-content,.textbook-view .knowledge-card-list {min-width:0}
+.knowledge-questions details {margin-top:8px}
+.knowledge-questions summary {cursor:pointer;padding:6px 0;color:var(--primary);font-size:12px}
+.knowledge-questions details>div {display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+.textbook-view .knowledge-questions button {font-size:12px;line-height:1.4;min-height:34px;padding:7px 8px;border-radius:4px}
+.textbook-view .knowledge-questions>span {font-size:12px}
+@media(max-width:600px){.textbook-view .knowledge-questions button{min-height:40px}}
+.related-chapter {font-size:13px;line-height:1.8;overflow-wrap:anywhere}
+.dark .textbook-view .knowledge-point-head {background:var(--card)}
+@media(max-width:600px){.textbook-view .knowledge-point-card{padding:16px}.textbook-view .knowledge-point-head{margin:-16px -16px 16px;padding:12px}.knowledge-equation{font-size:16px}.knowledge-notation,.textbook-figure figcaption{font-size:14px}.textbook-image-dialog{padding:12px}.textbook-view .knowledge-point-head>div{flex-wrap:wrap;min-width:0}}
+.knowledge-point-card {position:relative}
+.knowledge-anchor {position:absolute;top:0;left:0;scroll-margin-top:90px}
+.knowledge-point-head>div {min-width:0;flex-wrap:wrap}
+.knowledge-point-head small,.knowledge-meta span {overflow-wrap:anywhere}

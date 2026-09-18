@@ -1,0 +1,1436 @@
+[
+  {
+    "id": "position-time",
+    "sourceSequence": 50,
+    "previewRect": [
+      240,
+      285,
+      785,
+      548
+    ],
+    "targets": [
+      50
+    ],
+    "caption": {
+      "eng": "The slope is Δs/Δt: the marked rise of 4 m in 2 s gives 2 m s⁻¹. Position is read from the vertical axis; displacement is a change in position.",
+      "chn": "斜率為 Δs/Δt：圖中 2 s 內上升 4 m，故速度為 2 m s⁻¹。縱軸讀出位置，位移則是位置的變化。"
+    },
+    "src": "assets/textbook/figures/position-time.png",
+    "width": 1173,
+    "height": 566,
+    "source": "DSEPHY_TE_202_TN_.pdf",
+    "page": 10,
+    "language": "eng",
+    "crop_pixels": [
+      516,
+      613,
+      1689,
+      1179
+    ],
+    "render_scale": 3
+  },
+  {
+    "id": "velocity-time",
+    "sourceSequence": 51,
+    "previewRect": [
+      286,
+      141,
+      755,
+      533
+    ],
+    "targets": [
+      48,
+      51,
+      54
+    ],
+    "caption": {
+      "eng": "Equal increases in velocity in equal times produce a straight v–t graph. Its slope is acceleration; its signed area gives displacement.",
+      "chn": "等時間內速度增加相同，形成直線 v–t 圖。斜率表示加速度，有向面積表示位移。"
+    },
+    "src": "assets/textbook/figures/velocity-time.png",
+    "width": 1010,
+    "height": 844,
+    "source": "DSEPHY_TE_202_TN_.pdf",
+    "page": 15,
+    "language": "eng",
+    "crop_pixels": [
+      615,
+      303,
+      1625,
+      1147
+    ],
+    "render_scale": 3
+  },
+  {
+    "id": "motion-graph-links",
+    "sourceSequence": 53,
+    "previewRect": [
+      334,
+      958,
+      710,
+      1043
+    ],
+    "targets": [
+      53
+    ],
+    "caption": {
+      "eng": "Read slopes from displacement to velocity to acceleration. Read signed areas in reverse to find changes, adding the appropriate initial value.",
+      "chn": "由位移到速度再到加速度，依次取斜率；反向取有向面積得到變化量，並須加入相應初值。"
+    },
+    "src": "assets/textbook/figures/motion-graph-links.png",
+    "width": 809,
+    "height": 183,
+    "source": "DSEPHY_TE_202_TN_.pdf",
+    "page": 21,
+    "language": "eng",
+    "crop_pixels": [
+      719,
+      2061,
+      1528,
+      2244
+    ],
+    "render_scale": 3
+  },
+  {
+    "id": "force-components",
+    "sourceSequence": 67,
+    "previewRect": [
+      398,
+      475,
+      626,
+      608
+    ],
+    "targets": [
+      67
+    ],
+    "caption": {
+      "eng": "θ is measured from the horizontal component. The adjacent component is F cos θ and the opposite component is F sin θ.",
+      "chn": "θ 由水平分力方向量起；鄰邊分量為 F cos θ，對邊分量為 F sin θ。"
+    },
+    "src": "assets/textbook/figures/force-components.png",
+    "width": 496,
+    "height": 289,
+    "source": "DSEPHY_TE_204_TN_.pdf",
+    "page": 16,
+    "language": "eng",
+    "crop_pixels": [
+      864,
+      1032,
+      1360,
+      1321
+    ],
+    "render_scale": 3
+  },
+  {
+    "id": "moment-arm",
+    "sourceSequence": 69,
+    "previewRect": [
+      421,
+      188,
+      626,
+      293
+    ],
+    "targets": [
+      68,
+      69,
+      70
+    ],
+    "caption": {
+      "eng": "The lever arm is the perpendicular distance from O to the force line, not simply OA. Here d⊥ = d sin θ.",
+      "chn": "力臂是 O 至力的作用線的垂直距離，並非直接取 OA；圖中 d⊥ = d sin θ。"
+    },
+    "src": "assets/textbook/figures/moment-arm.png",
+    "width": 446,
+    "height": 229,
+    "source": "DSEPHY_TE_205_TN_.pdf",
+    "page": 3,
+    "language": "eng",
+    "crop_pixels": [
+      914,
+      408,
+      1360,
+      637
+    ],
+    "render_scale": 3
+  },
+  {
+    "id": "projectile-force",
+    "sourceSequence": 96,
+    "previewRect": [
+      324,
+      560,
+      782,
+      675
+    ],
+    "targets": [
+      96
+    ],
+    "caption": {
+      "eng": "Gravity acts downward at every point, including the highest point. With negligible air resistance, horizontal velocity stays constant.",
+      "chn": "每一位置都受向下重力，最高點亦然。忽略空氣阻力時，水平速度保持不變。"
+    },
+    "src": "assets/textbook/figures/projectile-force.png",
+    "width": 994,
+    "height": 250,
+    "source": "DSEPHY_TE_208_TN_.pdf",
+    "page": 3,
+    "language": "eng",
+    "crop_pixels": [
+      704,
+      1217,
+      1698,
+      1467
+    ],
+    "render_scale": 3
+  },
+  {
+    "id": "reflection-rays",
+    "sourceSequence": 109,
+    "previewRect": [
+      250,
+      832,
+      790,
+      1044
+    ],
+    "targets": [
+      109
+    ],
+    "caption": {
+      "eng": "The incident ray, reflected ray and normal share one plane. Both i and r are measured from the normal, giving i = r.",
+      "chn": "入射線、反射線及法線共面。i、r 都由法線量度，並滿足 i = r。"
+    },
+    "src": "assets/textbook/figures/reflection-rays.png",
+    "width": 1162,
+    "height": 456,
+    "source": "DSEPHY_TE_3A01_TN_.pdf",
+    "page": 7,
+    "language": "eng",
+    "crop_pixels": [
+      538,
+      1790,
+      1700,
+      2246
+    ],
+    "render_scale": 3
+  },
+  {
+    "id": "plane-mirror",
+    "sourceSequence": 110,
+    "previewRect": [
+      536,
+      70,
+      790,
+      270
+    ],
+    "targets": [
+      110
+    ],
+    "caption": {
+      "eng": "The original photograph shows lateral inversion. The virtual image appears behind the mirror, with the same size and perpendicular distance as the object.",
+      "chn": "原照片展示橫向倒置。虛像位於鏡後，與物體大小相同，且到鏡面的垂直距離相等。"
+    },
+    "src": "assets/textbook/figures/plane-mirror.png",
+    "width": 547,
+    "height": 430,
+    "source": "DSEPHY_TE_3A01_TN_.pdf",
+    "page": 13,
+    "language": "eng",
+    "crop_pixels": [
+      1153,
+      151,
+      1700,
+      581
+    ],
+    "render_scale": 3
+  },
+  {
+    "id": "refraction-block",
+    "sourceSequence": 111,
+    "previewRect": [
+      270,
+      277,
+      757,
+      593
+    ],
+    "targets": [
+      111,
+      112,
+      114,
+      115
+    ],
+    "caption": {
+      "eng": "At the air-to-glass boundary light slows and bends towards the normal; on leaving glass it speeds up and bends away. The frequency stays unchanged.",
+      "chn": "光由空氣進入玻璃時減速、偏向法線；離開玻璃時加速、偏離法線。頻率保持不變。"
+    },
+    "src": "assets/textbook/figures/refraction-block.png",
+    "width": 1048,
+    "height": 680,
+    "source": "DSEPHY_TE_3A02_TN_.pdf",
+    "page": 4,
+    "language": "eng",
+    "crop_pixels": [
+      581,
+      596,
+      1629,
+      1276
+    ],
+    "render_scale": 3
+  },
+  {
+    "id": "total-internal-reflection",
+    "sourceSequence": 118,
+    "previewRect": [
+      246,
+      294,
+      767,
+      489
+    ],
+    "targets": [
+      117,
+      118
+    ],
+    "caption": {
+      "eng": "At the critical angle the refracted ray runs along the boundary. Total internal reflection occurs only for incidence greater than C from the higher-index side.",
+      "chn": "入射角等於臨界角時，折射線沿介面傳播；只有由高折射率一側入射且入射角大於 C，才發生全內反射。"
+    },
+    "src": "assets/textbook/figures/total-internal-reflection.png",
+    "width": 1121,
+    "height": 419,
+    "source": "DSEPHY_TE_3A02_TN_.pdf",
+    "page": 22,
+    "language": "eng",
+    "crop_pixels": [
+      529,
+      633,
+      1650,
+      1052
+    ],
+    "render_scale": 3
+  },
+  {
+    "id": "real-image-screen",
+    "sourceSequence": 120,
+    "previewRect": [
+      462,
+      183,
+      773,
+      373
+    ],
+    "targets": [
+      119,
+      120
+    ],
+    "caption": {
+      "eng": "The converging lens forms a real inverted image on the translucent screen. The marked u and v are measured from the lens.",
+      "chn": "會聚透鏡在半透明屏幕形成倒立實像。標示的 u、v 都由透鏡量起。"
+    },
+    "src": "assets/textbook/figures/real-image-screen.png",
+    "width": 676,
+    "height": 412,
+    "source": "DSEPHY_TE_3A03_TN_.pdf",
+    "page": 19,
+    "language": "eng",
+    "crop_pixels": [
+      1003,
+      398,
+      1679,
+      810
+    ],
+    "render_scale": 3
+  },
+  {
+    "id": "diverging-lens-rays",
+    "sourceSequence": 123,
+    "previewRect": [
+      307,
+      795,
+      728,
+      1040
+    ],
+    "targets": [
+      121,
+      122,
+      123,
+      124
+    ],
+    "caption": {
+      "eng": "Diverging rays trace back to a virtual, upright, smaller image on the object side. The diagram labels distance magnitudes; signed lens calculations use v < 0.",
+      "chn": "發散光線的反向延長線相交，形成物體同側的正立縮小虛像。原圖標出距離大小；帶符號的透鏡計算須取 v < 0。"
+    },
+    "src": "assets/textbook/figures/diverging-lens-rays.png",
+    "width": 914,
+    "height": 533,
+    "source": "DSEPHY_TE_3A03_TN_.pdf",
+    "page": 30,
+    "language": "eng",
+    "crop_pixels": [
+      667,
+      1727,
+      1581,
+      2260
+    ],
+    "render_scale": 3
+  },
+  {
+    "id": "longitudinal-wave",
+    "sourceSequence": 126,
+    "previewRect": [
+      280,
+      479,
+      785,
+      660
+    ],
+    "targets": [
+      125,
+      126
+    ],
+    "caption": {
+      "eng": "The particle vibration arrows are parallel to wave travel. Energy propagates while particles oscillate about equilibrium positions.",
+      "chn": "粒子振動箭頭與波的傳播方向平行。能量向前傳播，粒子則在平衡位置附近振動。"
+    },
+    "src": "assets/textbook/figures/longitudinal-wave.png",
+    "width": 1087,
+    "height": 389,
+    "source": "DSEPHY_TE_3B04_TN_.pdf",
+    "page": 5,
+    "language": "eng",
+    "crop_pixels": [
+      602,
+      1031,
+      1689,
+      1420
+    ],
+    "render_scale": 3
+  },
+  {
+    "id": "wave-amplitude",
+    "sourceSequence": 128,
+    "previewRect": [
+      272,
+      461,
+      776,
+      596
+    ],
+    "targets": [
+      127
+    ],
+    "caption": {
+      "eng": "Amplitude is measured from the equilibrium line to a crest or trough; crest-to-trough distance is twice the amplitude.",
+      "chn": "振幅由平衡線量至波峰或波谷；波峰至波谷的距離是振幅的兩倍。"
+    },
+    "src": "assets/textbook/figures/wave-amplitude.png",
+    "width": 1085,
+    "height": 290,
+    "source": "DSEPHY_TE_3B04_TN_.pdf",
+    "page": 7,
+    "language": "eng",
+    "crop_pixels": [
+      585,
+      992,
+      1670,
+      1282
+    ],
+    "render_scale": 3
+  },
+  {
+    "id": "wave-wavelength",
+    "sourceSequence": 128,
+    "previewRect": [
+      277,
+      803,
+      774,
+      950
+    ],
+    "targets": [
+      128,
+      133
+    ],
+    "caption": {
+      "eng": "One wavelength joins adjacent points in the same phase, such as successive crests. It is a distance along wave propagation.",
+      "chn": "一個波長連接相鄰同相點，例如相鄰波峰；它是沿波傳播方向的距離。"
+    },
+    "src": "assets/textbook/figures/wave-wavelength.png",
+    "width": 1069,
+    "height": 316,
+    "source": "DSEPHY_TE_3B04_TN_.pdf",
+    "page": 7,
+    "language": "eng",
+    "crop_pixels": [
+      596,
+      1728,
+      1665,
+      2044
+    ],
+    "render_scale": 3
+  },
+  {
+    "id": "diffraction",
+    "sourceSequence": 142,
+    "previewRect": [
+      191,
+      162,
+      786,
+      648
+    ],
+    "targets": [
+      141,
+      142
+    ],
+    "caption": {
+      "eng": "Compare one variable at a time: greater wavelength at fixed gap, or a narrower gap at fixed wavelength, produces greater spreading.",
+      "chn": "每次比較一個變量：狹縫不變時增大波長，或波長不變時縮窄狹縫，均令擴散更明顯。"
+    },
+    "src": "assets/textbook/figures/diffraction.png",
+    "width": 1280,
+    "height": 1045,
+    "source": "DSEPHY_TE_3B05_TN_.pdf",
+    "page": 24,
+    "language": "eng",
+    "crop_pixels": [
+      411,
+      349,
+      1691,
+      1394
+    ],
+    "render_scale": 3
+  },
+  {
+    "id": "interference-path",
+    "sourceSequence": 145,
+    "previewRect": [
+      392,
+      576,
+      652,
+      736
+    ],
+    "targets": [
+      144,
+      145
+    ],
+    "caption": {
+      "eng": "For in-phase sources P and Q, the path difference at R is 31 − 19 = 12 cm. At wavelength 4 cm this is 3 wavelengths, giving constructive interference.",
+      "chn": "對同相波源 P、Q，R 點程差為 31 − 19 = 12 cm；波長 4 cm 時相當於 3 個波長，因此相長干涉。"
+    },
+    "src": "assets/textbook/figures/interference-path.png",
+    "width": 560,
+    "height": 345,
+    "source": "DSEPHY_TE_3B05_TN_.pdf",
+    "page": 31,
+    "language": "eng",
+    "crop_pixels": [
+      843,
+      1239,
+      1403,
+      1584
+    ],
+    "render_scale": 3
+  },
+  {
+    "id": "stationary-wave",
+    "sourceSequence": 148,
+    "previewRect": [
+      331,
+      259,
+      712,
+      395
+    ],
+    "targets": [
+      148
+    ],
+    "caption": {
+      "eng": "Nodes remain stationary; antinodes have maximum amplitude. Adjacent nodes are half a wavelength apart, and a node-to-adjacent-antinode gap is a quarter wavelength.",
+      "chn": "波節保持靜止，波腹振幅最大。相鄰波節相距半個波長，波節與相鄰波腹相距四分之一波長。"
+    },
+    "src": "assets/textbook/figures/stationary-wave.png",
+    "width": 820,
+    "height": 293,
+    "source": "DSEPHY_TE_3B05_TN_.pdf",
+    "page": 43,
+    "language": "eng",
+    "crop_pixels": [
+      712,
+      557,
+      1532,
+      850
+    ],
+    "render_scale": 3
+  },
+  {
+    "id": "double-slit",
+    "sourceSequence": 150,
+    "previewRect": [
+      256,
+      117,
+      780,
+      426
+    ],
+    "targets": [
+      149,
+      150
+    ],
+    "caption": {
+      "eng": "a is slit separation, D is screen distance and Δy is centre-to-centre fringe spacing. The small-angle approximation is required for Δy ≈ λD/a.",
+      "chn": "a 是雙縫間距，D 是屏幕距離，Δy 是條紋中心間距。使用 Δy ≈ λD/a 需要小角度近似。"
+    },
+    "src": "assets/textbook/figures/double-slit.png",
+    "width": 1138,
+    "height": 672,
+    "source": "DSEPHY_TE_3B06_TN_.pdf",
+    "page": 12,
+    "language": "eng",
+    "crop_pixels": [
+      556,
+      254,
+      1694,
+      926
+    ],
+    "render_scale": 3
+  },
+  {
+    "id": "grating",
+    "sourceSequence": 152,
+    "previewRect": [
+      267,
+      200,
+      775,
+      432
+    ],
+    "targets": [
+      151,
+      152,
+      153
+    ],
+    "caption": {
+      "eng": "Measure θ from the central direction. d is adjacent slit spacing, not the grating width; changing D changes screen positions but not diffraction angles.",
+      "chn": "θ 由中央方向量起。d 是相鄰狹縫間距，並非整塊光柵的寬度；改變 D 會改變屏幕位置，但不改變衍射角。"
+    },
+    "src": "assets/textbook/figures/grating.png",
+    "width": 1103,
+    "height": 504,
+    "source": "DSEPHY_TE_3B06_TN_.pdf",
+    "page": 20,
+    "language": "eng",
+    "crop_pixels": [
+      580,
+      435,
+      1683,
+      939
+    ],
+    "render_scale": 3
+  },
+  {
+    "id": "parallel-plate-field",
+    "sourceSequence": 165,
+    "previewRect": [
+      552,
+      806,
+      778,
+      1043
+    ],
+    "targets": [
+      165
+    ],
+    "caption": {
+      "eng": "The field is approximately uniform away from edges and points from the positive plate towards the negative plate. d is the perpendicular plate spacing.",
+      "chn": "遠離邊緣的電場近似均勻，由正板指向負板。d 是兩板的垂直間距。"
+    },
+    "src": "assets/textbook/figures/parallel-plate-field.png",
+    "width": 486,
+    "height": 510,
+    "source": "DSEPHY_TE_401_TN_.pdf",
+    "page": 32,
+    "language": "eng",
+    "crop_pixels": [
+      1188,
+      1734,
+      1674,
+      2244
+    ],
+    "render_scale": 3
+  },
+  {
+    "id": "potential-divider",
+    "sourceSequence": 187,
+    "previewRect": [
+      260,
+      378,
+      770,
+      548
+    ],
+    "targets": [
+      187
+    ],
+    "caption": {
+      "eng": "The output terminals are across R₁. This is why R₁, rather than R₂, appears in the numerator of the displayed divider formula.",
+      "chn": "輸出端接在 R₁ 兩端，因此所示分壓公式的分子是 R₁。"
+    },
+    "src": "assets/textbook/figures/potential-divider.png",
+    "width": 1107,
+    "height": 370,
+    "source": "DSEPHY_TE_403_TN_.pdf",
+    "page": 4,
+    "language": "eng",
+    "crop_pixels": [
+      565,
+      821,
+      1672,
+      1191
+    ],
+    "render_scale": 3
+  },
+  {
+    "id": "wire-right-hand",
+    "sourceSequence": 198,
+    "previewRect": [
+      438,
+      391,
+      589,
+      580
+    ],
+    "targets": [
+      197,
+      198,
+      203
+    ],
+    "caption": {
+      "eng": "Right thumb follows conventional current; curled fingers follow the circular magnetic field. Reverse the current and the field direction reverses.",
+      "chn": "右手拇指沿傳統電流，其餘四指彎曲方向表示環形磁場；電流反向，磁場方向亦反向。"
+    },
+    "src": "assets/textbook/figures/wire-right-hand.png",
+    "width": 328,
+    "height": 410,
+    "source": "DSEPHY_TE_405_TN_.pdf",
+    "page": 12,
+    "language": "eng",
+    "crop_pixels": [
+      951,
+      850,
+      1279,
+      1260
+    ],
+    "render_scale": 3
+  },
+  {
+    "id": "circular-coil",
+    "sourceSequence": 197,
+    "previewRect": [
+      249,
+      725,
+      780,
+      935
+    ],
+    "targets": [
+      199
+    ],
+    "caption": {
+      "eng": "The coil field is perpendicular to the coil plane at its centre. Field lines form closed loops around the current.",
+      "chn": "線圈中心的磁場垂直於線圈平面，磁力線繞電流形成閉合曲線。"
+    },
+    "src": "assets/textbook/figures/circular-coil.png",
+    "width": 1153,
+    "height": 456,
+    "source": "DSEPHY_TE_405_TN_.pdf",
+    "page": 12,
+    "language": "eng",
+    "crop_pixels": [
+      541,
+      1575,
+      1694,
+      2031
+    ],
+    "render_scale": 3
+  },
+  {
+    "id": "solenoid-field",
+    "sourceSequence": 200,
+    "previewRect": [
+      383,
+      477,
+      654,
+      619
+    ],
+    "targets": [
+      200,
+      204
+    ],
+    "caption": {
+      "eng": "Inside the long solenoid the nearly parallel, evenly spaced field lines indicate an approximately uniform field. Outside, they run from N towards S.",
+      "chn": "長螺線管內，近似平行且均勻排列的磁力線表示近似均勻磁場；管外磁力線由 N 指向 S。"
+    },
+    "src": "assets/textbook/figures/solenoid-field.png",
+    "width": 588,
+    "height": 309,
+    "source": "DSEPHY_TE_405_TN_.pdf",
+    "page": 13,
+    "language": "eng",
+    "crop_pixels": [
+      832,
+      1036,
+      1420,
+      1345
+    ],
+    "render_scale": 3
+  },
+  {
+    "id": "solenoid-right-hand",
+    "sourceSequence": 200,
+    "previewRect": [
+      382,
+      818,
+      681,
+      961
+    ],
+    "targets": [
+      201,
+      202
+    ],
+    "caption": {
+      "eng": "Curl the fingers along conventional current around the turns. The thumb points along the internal magnetic field and towards the north end.",
+      "chn": "四指沿每匝的傳統電流方向彎曲，拇指指出管內磁場方向及北極端。"
+    },
+    "src": "assets/textbook/figures/solenoid-right-hand.png",
+    "width": 649,
+    "height": 311,
+    "source": "DSEPHY_TE_405_TN_.pdf",
+    "page": 13,
+    "language": "eng",
+    "crop_pixels": [
+      830,
+      1777,
+      1479,
+      2088
+    ],
+    "render_scale": 3
+  },
+  {
+    "id": "fleming-left-hand",
+    "sourceSequence": 205,
+    "previewRect": [
+      589,
+      143,
+      771,
+      297
+    ],
+    "targets": [
+      205,
+      207,
+      211
+    ],
+    "caption": {
+      "eng": "First finger B, second finger I and thumb F are mutually perpendicular. I means conventional current; a negative moving charge reverses the force obtained from its velocity.",
+      "chn": "食指 B、中指 I、拇指 F 互相垂直。I 是傳統電流；以負電荷速度判斷時，受力方向須反轉。"
+    },
+    "src": "assets/textbook/figures/fleming-left-hand.png",
+    "width": 395,
+    "height": 334,
+    "source": "DSEPHY_TE_406_TN_.pdf",
+    "page": 3,
+    "language": "eng",
+    "crop_pixels": [
+      1279,
+      311,
+      1674,
+      645
+    ],
+    "render_scale": 3
+  },
+  {
+    "id": "parallel-wire-force",
+    "sourceSequence": 209,
+    "previewRect": [
+      247,
+      327,
+      780,
+      779
+    ],
+    "targets": [
+      209,
+      210
+    ],
+    "caption": {
+      "eng": "Use the field of one wire to find the force on the other. Opposite currents repel (top); currents in the same direction attract (bottom).",
+      "chn": "先求一條導線產生的磁場，再判斷另一條所受的力。上排反向電流相斥，下排同向電流相吸。"
+    },
+    "src": "assets/textbook/figures/parallel-wire-force.png",
+    "width": 1158,
+    "height": 983,
+    "source": "DSEPHY_TE_406_TN_.pdf",
+    "page": 22,
+    "language": "eng",
+    "crop_pixels": [
+      536,
+      710,
+      1694,
+      1693
+    ],
+    "render_scale": 3
+  },
+  {
+    "id": "flux-angle",
+    "sourceSequence": 217,
+    "previewRect": [
+      291,
+      282,
+      759,
+      445
+    ],
+    "targets": [
+      217
+    ],
+    "caption": {
+      "eng": "θ is between B and the area normal. Only B cos θ passes normally through the area; a field parallel to the surface gives zero flux.",
+      "chn": "θ 是 B 與面積法線之間的角。只有 B cos θ 垂直穿過面積；磁場平行表面時磁通量為零。"
+    },
+    "src": "assets/textbook/figures/flux-angle.png",
+    "width": 1016,
+    "height": 354,
+    "source": "DSEPHY_TE_407_TN_.pdf",
+    "page": 31,
+    "language": "eng",
+    "crop_pixels": [
+      632,
+      613,
+      1648,
+      967
+    ],
+    "render_scale": 3
+  },
+  {
+    "id": "flux-linkage",
+    "sourceSequence": 217,
+    "previewRect": [
+      596,
+      508,
+      785,
+      708
+    ],
+    "targets": [
+      218,
+      221
+    ],
+    "caption": {
+      "eng": "Each of N turns links flux Φ, so total flux linkage is NΦ. A change in this total determines the induced e.m.f.",
+      "chn": "N 匝每匝鏈結磁通量 Φ，總磁通鏈為 NΦ。感生電動勢取決於此總量的變化率。"
+    },
+    "src": "assets/textbook/figures/flux-linkage.png",
+    "width": 411,
+    "height": 434,
+    "source": "DSEPHY_TE_407_TN_.pdf",
+    "page": 31,
+    "language": "eng",
+    "crop_pixels": [
+      1294,
+      1104,
+      1705,
+      1538
+    ],
+    "render_scale": 3
+  },
+  {
+    "id": "transformer-comparison",
+    "sourceSequence": 222,
+    "previewRect": [
+      248,
+      387,
+      780,
+      599
+    ],
+    "targets": [
+      222,
+      223,
+      224
+    ],
+    "caption": {
+      "eng": "Step-up: more secondary turns and a higher secondary voltage. Step-down: fewer secondary turns and a lower voltage; ideal power remains conserved.",
+      "chn": "升壓：副線圈匝數較多，電壓較高。降壓：副線圈匝數較少，電壓較低；理想變壓器仍遵守功率守恆。"
+    },
+    "src": "assets/textbook/figures/transformer-comparison.png",
+    "width": 1155,
+    "height": 460,
+    "source": "DSEPHY_TE_408_TN_.pdf",
+    "page": 4,
+    "language": "eng",
+    "crop_pixels": [
+      539,
+      841,
+      1694,
+      1301
+    ],
+    "render_scale": 3
+  },
+  {
+    "id": "atomic-structure",
+    "sourceSequence": 232,
+    "previewRect": [
+      390,
+      466,
+      656,
+      624
+    ],
+    "targets": [
+      232,
+      233,
+      234
+    ],
+    "caption": {
+      "eng": "Protons and neutrons form the nucleus; electrons occupy the surrounding region. The diagram is schematic and not to scale.",
+      "chn": "質子和中子組成原子核，電子位於核外區域。此圖是示意圖，並非按比例繪製。"
+    },
+    "src": "assets/textbook/figures/atomic-structure.png",
+    "width": 573,
+    "height": 340,
+    "source": "DSEPHY_TE_502_TN_.pdf",
+    "page": 3,
+    "language": "eng",
+    "crop_pixels": [
+      839,
+      1003,
+      1412,
+      1343
+    ],
+    "render_scale": 3
+  },
+  {
+    "id": "elliptical-orbit",
+    "sourceSequence": 252,
+    "previewRect": [
+      367,
+      765,
+      660,
+      963
+    ],
+    "targets": [
+      252,
+      254,
+      255
+    ],
+    "caption": {
+      "eng": "The Sun lies at one focus F. The other focus is empty; the orbit is not centred on the Sun.",
+      "chn": "太陽位於焦點 F，另一焦點沒有天體；軌道並非以太陽為幾何中心。"
+    },
+    "src": "assets/textbook/figures/elliptical-orbit.png",
+    "width": 630,
+    "height": 426,
+    "source": "DSEPHY_TE_E102_TN_.pdf",
+    "page": 2,
+    "language": "eng",
+    "crop_pixels": [
+      790,
+      1646,
+      1420,
+      2072
+    ],
+    "render_scale": 3
+  },
+  {
+    "id": "parallax",
+    "sourceSequence": 262,
+    "previewRect": [
+      246,
+      202,
+      773,
+      381
+    ],
+    "targets": [
+      250,
+      261,
+      262,
+      263
+    ],
+    "caption": {
+      "eng": "The one-AU baseline subtends the annual parallax angle. The full apparent shift over six months is twice that angle.",
+      "chn": "1 AU 基線對應周年視差角；相隔半年的視位置總角位移是該角的兩倍。"
+    },
+    "src": "assets/textbook/figures/parallax.png",
+    "width": 1134,
+    "height": 385,
+    "source": "DSEPHY_TE_E103_TN_.pdf",
+    "page": 6,
+    "language": "eng",
+    "crop_pixels": [
+      529,
+      435,
+      1663,
+      820
+    ],
+    "render_scale": 3
+  },
+  {
+    "id": "blackbody-spectrum",
+    "sourceSequence": 270,
+    "previewRect": [
+      251,
+      335,
+      783,
+      724
+    ],
+    "targets": [
+      270,
+      271,
+      272,
+      273
+    ],
+    "caption": {
+      "eng": "A hotter blackbody has greater total emission and a shorter peak wavelength. The peak position is not itself the perceived colour of the complete spectrum.",
+      "chn": "黑體越熱，總輻射越強，峰值波長越短。整個光譜的視覺顏色並非只由峰值波長決定。"
+    },
+    "src": "assets/textbook/figures/blackbody-spectrum.png",
+    "width": 1145,
+    "height": 837,
+    "source": "DSEPHY_TE_E103_TN_.pdf",
+    "page": 21,
+    "language": "eng",
+    "crop_pixels": [
+      540,
+      721,
+      1685,
+      1558
+    ],
+    "render_scale": 3
+  },
+  {
+    "id": "heat-pump-energy",
+    "sourceSequence": 280,
+    "previewRect": [
+      65,
+      235,
+      790,
+      585
+    ],
+    "targets": [
+      279,
+      280,
+      281,
+      282
+    ],
+    "caption": {
+      "eng": "The heat delivered outside equals heat removed from the cold space plus electrical work input: Q_H = Q_C + W. The original teacher annotations are retained at the left.",
+      "chn": "送往外界的熱量等於從冷空間吸走的熱量，加上輸入電功：Q_H = Q_C + W。左側保留原書教師旁註。"
+    },
+    "src": "assets/textbook/figures/heat-pump-energy.png",
+    "width": 1560,
+    "height": 753,
+    "source": "DSEPHY_TE_E301_TN.pdf",
+    "page": 23,
+    "language": "eng",
+    "crop_pixels": [
+      140,
+      506,
+      1700,
+      1259
+    ],
+    "render_scale": 3
+  },
+  {
+    "id": "hydrogen-levels",
+    "sourceSequence": 314,
+    "previewRect": [
+      66,
+      770,
+      790,
+      1044
+    ],
+    "targets": [
+      313,
+      314,
+      315,
+      316
+    ],
+    "caption": {
+      "eng": "As quantum number n increases, bound-state energy approaches zero from below and orbit radius increases. The energy spacing becomes smaller.",
+      "chn": "量子數 n 增加時，束縛態能量由負值趨近零，軌道半徑增大，而能級間距縮小。"
+    },
+    "src": "assets/textbook/figures/hydrogen-levels.png",
+    "width": 1558,
+    "height": 589,
+    "source": "DSEPHY_TE_E202_TN_.pdf",
+    "page": 21,
+    "language": "eng",
+    "crop_pixels": [
+      142,
+      1657,
+      1700,
+      2246
+    ],
+    "render_scale": 3
+  },
+  {
+    "id": "rayleigh-resolution",
+    "sourceSequence": 323,
+    "previewRect": [
+      254,
+      787,
+      791,
+      1043
+    ],
+    "targets": [
+      323,
+      324,
+      330
+    ],
+    "caption": {
+      "eng": "Compare clearly resolved, just resolved and unresolved pairs. At the Rayleigh limit, one central maximum falls on the first minimum of the other pattern.",
+      "chn": "依次比較清楚分辨、剛好分辨及無法分辨。瑞利極限時，一個中央極大與另一圖形的第一極小重合。"
+    },
+    "src": "assets/textbook/figures/rayleigh-resolution.png",
+    "width": 1155,
+    "height": 551,
+    "source": "DSEPHY_TE_E203_TN_.pdf",
+    "page": 17,
+    "language": "eng",
+    "crop_pixels": [
+      547,
+      1693,
+      1702,
+      2244
+    ],
+    "render_scale": 3
+  },
+  {
+    "id": "eye-optics",
+    "sourceSequence": 327,
+    "previewRect": [
+      296,
+      539,
+      749,
+      891
+    ],
+    "targets": [
+      327
+    ],
+    "caption": {
+      "eng": "The cornea and lens refract light; accommodation changes the lens shape while the retina distance remains almost fixed.",
+      "chn": "角膜與晶狀體使光折射；視覺調節改變晶狀體形狀，而視網膜距離近似固定。"
+    },
+    "src": "assets/textbook/figures/eye-optics.png",
+    "width": 975,
+    "height": 757,
+    "source": "DSEPHY_TE_E401_TN_.pdf",
+    "page": 7,
+    "language": "eng",
+    "crop_pixels": [
+      637,
+      1160,
+      1612,
+      1917
+    ],
+    "render_scale": 3
+  },
+  {
+    "id": "spectacles-virtual-image",
+    "sourceSequence": 334,
+    "previewRect": [
+      252,
+      166,
+      788,
+      401
+    ],
+    "targets": [
+      334,
+      335,
+      336,
+      337
+    ],
+    "caption": {
+      "eng": "The converging spectacle lens produces a virtual image at the unaided near point. The eye then forms a real image on the retina; these are two different images.",
+      "chn": "會聚眼鏡先在裸眼近點形成虛像，再由眼睛在視網膜形成實像；這是兩個不同的成像過程。"
+    },
+    "src": "assets/textbook/figures/spectacles-virtual-image.png",
+    "width": 1154,
+    "height": 506,
+    "source": "DSEPHY_TE_E401_TN_.pdf",
+    "page": 29,
+    "language": "eng",
+    "crop_pixels": [
+      542,
+      357,
+      1696,
+      863
+    ],
+    "render_scale": 3
+  },
+  {
+    "id": "fibre-bundle",
+    "sourceSequence": 339,
+    "previewRect": [
+      310,
+      206,
+      753,
+      374
+    ],
+    "targets": [
+      339
+    ],
+    "caption": {
+      "eng": "An incoherent fibre bundle scrambles relative positions and carries illumination. Image transmission requires a coherent bundle with positions preserved.",
+      "chn": "不相干光纖束打亂相對位置，可用於照明；傳像須用保持相對位置的相干光纖束。"
+    },
+    "src": "assets/textbook/figures/fibre-bundle.png",
+    "width": 953,
+    "height": 362,
+    "source": "DSEPHY_TE_E401_TN_.pdf",
+    "page": 43,
+    "language": "eng",
+    "crop_pixels": [
+      667,
+      443,
+      1620,
+      805
+    ],
+    "render_scale": 3
+  },
+  {
+    "id": "middle-ear",
+    "sourceSequence": 340,
+    "previewRect": [
+      334,
+      166,
+      722,
+      325
+    ],
+    "targets": [
+      340
+    ],
+    "caption": {
+      "eng": "Lever action increases force and the smaller oval-window area further increases pressure. The illustrated factors multiply to give the pressure gain.",
+      "chn": "槓桿作用增大作用力，卵圓窗較小的面積進一步增大壓強；圖示兩個倍率相乘得到壓強增益。"
+    },
+    "src": "assets/textbook/figures/middle-ear.png",
+    "width": 835,
+    "height": 342,
+    "source": "DSEPHY_TE_E402_TN_.pdf",
+    "page": 4,
+    "language": "eng",
+    "crop_pixels": [
+      719,
+      357,
+      1554,
+      699
+    ],
+    "render_scale": 3
+  },
+  {
+    "id": "ultrasound-interface",
+    "sourceSequence": 349,
+    "previewRect": [
+      341,
+      423,
+      682,
+      684
+    ],
+    "targets": [
+      347,
+      348,
+      349
+    ],
+    "caption": {
+      "eng": "Incident intensity divides into reflected and transmitted parts. A larger impedance mismatch gives a larger reflected fraction at normal incidence.",
+      "chn": "入射聲強分為反射與透射部分；垂直入射時，兩介質聲阻抗差異越大，反射比例越高。"
+    },
+    "src": "assets/textbook/figures/ultrasound-interface.png",
+    "width": 734,
+    "height": 562,
+    "source": "DSEPHY_TE_E402_TN_.pdf",
+    "page": 24,
+    "language": "eng",
+    "crop_pixels": [
+      734,
+      910,
+      1468,
+      1472
+    ],
+    "render_scale": 3
+  },
+  {
+    "id": "pulse-echo-depth",
+    "sourceSequence": 350,
+    "previewRect": [
+      378,
+      365,
+      688,
+      585
+    ],
+    "targets": [
+      350
+    ],
+    "caption": {
+      "eng": "The back-surface echo travels an extra outward and return distance of 2Δd. Therefore the time difference gives Δd = cΔt/2.",
+      "chn": "背面回波多走的去回程為 2Δd，因此由回波時間差得到 Δd = cΔt/2。"
+    },
+    "src": "assets/textbook/figures/pulse-echo-depth.png",
+    "width": 667,
+    "height": 474,
+    "source": "DSEPHY_TE_E402_TN_.pdf",
+    "page": 29,
+    "language": "eng",
+    "crop_pixels": [
+      813,
+      785,
+      1480,
+      1259
+    ],
+    "render_scale": 3
+  },
+  {
+    "id": "attenuation",
+    "sourceSequence": 353,
+    "previewRect": [
+      291,
+      366,
+      741,
+      708
+    ],
+    "targets": [
+      353,
+      354,
+      357
+    ],
+    "caption": {
+      "eng": "Intensity decreases exponentially with thickness. Equal additional thicknesses reduce the intensity by equal fractions, not equal absolute amounts.",
+      "chn": "強度隨厚度呈指數減少。相同新增厚度令強度減少相同比例，並非相同絕對量。"
+    },
+    "src": "assets/textbook/figures/attenuation.png",
+    "width": 968,
+    "height": 736,
+    "source": "DSEPHY_TE_E403_TN_.pdf",
+    "page": 6,
+    "language": "eng",
+    "crop_pixels": [
+      626,
+      787,
+      1594,
+      1523
+    ],
+    "render_scale": 3
+  },
+  {
+    "id": "ct-projections",
+    "sourceSequence": 360,
+    "previewRect": [
+      417,
+      377,
+      615,
+      563
+    ],
+    "targets": [
+      360
+    ],
+    "caption": {
+      "eng": "Each beam records attenuation summed along its path. Measurements at several angles constrain the individual regions A–D used to reconstruct the slice.",
+      "chn": "每束射線記錄沿路徑的總衰減；多角度量度可求出 A–D 各區域的衰減，用以重建切面。"
+    },
+    "src": "assets/textbook/figures/ct-projections.png",
+    "width": 426,
+    "height": 400,
+    "source": "DSEPHY_TE_E403_TN_.pdf",
+    "page": 25,
+    "language": "eng",
+    "crop_pixels": [
+      897,
+      811,
+      1323,
+      1211
+    ],
+    "render_scale": 3
+  }
+]

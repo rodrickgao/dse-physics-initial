@@ -1,0 +1,73 @@
+import ExcelJS from 'exceljs';
+import { questions, pointInfo } from './catalog.mjs';
+
+// Each record type has its own grain; only student summary rows hold totals.
+export const headers = ['記錄類型', '學生ID', '電郵', '角色', '暱稱', '年級', '目標等級', '頭像', '註冊時間', '最近登入時間', '目前錯題總數', '目前知識點總數', '目前章節總數', '題目ID', '年份', '試卷', '題號', '目前仍標記', '目前標記時間', '知識點ID列表', '知識點編號列表', '章節編號列表', '知識點ID', '知識點編號', '章節編號', '關聯錯題數', '操作ID', '操作', '操作時間', '匯出時間'];
+const iso = value => value == null ? '' : new Date(value).toISOString();
+export function exportRows(users, mistakes, events, generatedAt) {
+  const rows = [headers];
+  for (const user of users) {
+    const saved = mistakes.filter(m => m.user_id === user.id);
+    const savedByKey = new Map(saved.map(m => [m.question_key, m]));
+    const byPoint = new Map(), byChapter = new Map();
+    const add = (map, key) => map.set(key, (map.get(key) || 0) + 1);
+    for (const m of saved) {
+      const links = [...new Set(questions.get(m.question_key)?.points || [])].map(pointInfo);
+      links.forEach(p => add(byPoint, p.sequence));
+      new Set(links.map(p => p.number.split('.').slice(0, 2).join('.'))).forEach(chapter => add(byChapter, chapter));
+    }
+    const base = { '學生ID': user.id, '電郵': user.email, '角色': user.role, '暱稱': user.nickname || '', '年級': user.grade || '', '目標等級': user.target || '', '頭像': user.avatar || '', '註冊時間': iso(user.created_at), '最近登入時間': iso(user.last_login), '匯出時間': generatedAt };
+    const push = record => rows.push(headers.map(h => ({ ...base, ...record })[h] ?? ''));
+    const question = key => {
+      const q = questions.get(key), [year, paper, number] = key.split('|');
+      const links = (q?.points || []).map(pointInfo);
+      return { '題目ID': key, '年份': year, '試卷': paper, '題號': number,
+        '目前仍標記': savedByKey.has(key) ? '是' : '否', '目前標記時間': iso(savedByKey.get(key)?.marked_at),
+        '知識點ID列表': JSON.stringify(links.map(p => p.sequence)), '知識點編號列表': JSON.stringify(links.map(p => p.number)),
+        '章節編號列表': JSON.stringify([...new Set(links.map(p => p.number.split('.').slice(0, 2).join('.')))]) };
+    };
+    push({ '記錄類型': '學生摘要', '目前錯題總數': saved.length, '目前知識點總數': byPoint.size, '目前章節總數': byChapter.size });
+    for (const m of saved) push({ '記錄類型': '目前錯題', ...question(m.question_key) });
+    for (const [id, count] of byPoint) {
+      const p = pointInfo(id);
+      push({ '記錄類型': '知識點統計', '知識點ID': id, '知識點編號': p.number, '章節編號': p.number.split('.').slice(0, 2).join('.'), '關聯錯題數': count });
+    }
+    for (const [chapter, count] of byChapter) push({ '記錄類型': '章節統計', '章節編號': chapter, '關聯錯題數': count });
+    for (const event of events.filter(e => e.user_id === user.id)) push({ '記錄類型': '操作歷史', ...question(event.question_key), '操作ID': event.id, '操作': ({mark:'新增錯題',unmark:'移入回收站',restore:'恢復錯題',delete:'學生徹底刪除'}[event.action] || event.action), '操作時間': iso(event.at) });
+  }
+  return rows;
+}
+export async function toWorkbook(rows) {
+  const workbook = new ExcelJS.Workbook();
+  workbook.creator = 'DSE Physics';
+  const base = ['學生ID', '電郵'];
+  const question = ['題目ID', '年份', '試卷', '題號', '目前仍標記', '目前標記時間', '知識點ID列表', '知識點編號列表', '章節編號列表'];
+  const sheets = [
+    ['學生摘要', [...base, '角色', '暱稱', '年級', '目標等級', '頭像', '註冊時間', '最近登入時間', '目前錯題總數', '目前知識點總數', '目前章節總數']],
+    ['目前錯題', [...base, ...question]],
+    ['知識點統計', [...base, '知識點ID', '知識點編號', '章節編號', '關聯錯題數']],
+    ['章節統計', [...base, '章節編號', '關聯錯題數']],
+    ['操作歷史', [...base, '操作ID', '操作', '操作時間', ...question]],
+  ];
+  for (const [name, fields] of sheets) {
+    const columns = [...fields, '匯出時間'];
+    const sheet = workbook.addWorksheet(name, { views: [{ state: 'frozen', ySplit: 1 }], pageSetup: { orientation: 'landscape', fitToPage: true, fitToWidth: 1, fitToHeight: 0, printTitlesRow: '1:1' } });
+    sheet.columns = columns.map(header => ({ header, key: header, width: header === '電郵' ? 34 : header.includes('時間') ? 28 : header.includes('列表') ? 38 : header === '題目ID' ? 27 : 18 }));
+    for (const row of rows.slice(1)) {
+      if (row[0] !== name) continue;
+      sheet.addRow(columns.map(field => {
+        const value = row[headers.indexOf(field)];
+        return field.endsWith('列表') ? JSON.parse(value || '[]').join('、') : value;
+      }));
+    }
+    sheet.autoFilter = { from: { row: 1, column: 1 }, to: { row: Math.max(1, sheet.rowCount), column: columns.length } };
+    sheet.getRow(1).height = 28;
+    sheet.getRow(1).eachCell(cell => {
+      cell.font = { name: 'Microsoft JhengHei', bold: true, color: { argb: 'FFFFFFFF' } };
+      cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF275FC7' } };
+      cell.alignment = { vertical: 'middle' };
+    });
+    sheet.eachRow((row, index) => { if (index === 1) return; row.eachCell(cell => { cell.font = { name: 'Microsoft JhengHei', size: 11 }; cell.alignment = { vertical: 'top', wrapText: true }; if (typeof cell.value === 'string') cell.numFmt = '@'; }); });
+  }
+  return workbook.xlsx.writeBuffer();
+}

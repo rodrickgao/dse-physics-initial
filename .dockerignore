@@ -1,0 +1,12 @@
+node_modules
+dist
+.git
+.github
+.local
+.wrangler
+.npm-cache
+.env*
+private
+*.sqlite*
+*.log
+tests

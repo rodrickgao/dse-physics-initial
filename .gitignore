@@ -1,0 +1,14 @@
+.wrangler/
+node_modules/
+dist/
+.DS_Store
+Thumbs.db
+*.log
+
+.local/
+.npm-cache/
+.env.local
+private/
+.env.production
+*.sqlite*
+bootstrap-admin-key.txt

@@ -1,0 +1,22 @@
+/* Student interface type sizes; formulas and exported print layouts keep their own scale. */
+body{font-size:16px}
+.app-shell button,.app-shell input,.app-shell select,.profile-page button,.profile-page input,.auth-page button,.auth-page input{font-size:16px}
+.app-shell small,.profile-page small,.auth-page small{font-size:14px;line-height:1.5}
+.nav-item span strong,.nav-item strong,.theme-button{font-size:17px}
+.brand strong{font-size:21px}.brand small{font-size:14px}
+.global-search input{font-size:16px}.account-bar,.account-bar button,.membership-status{font-size:15px}
+.view-heading h1{font-size:32px}.home-view h1{font-size:36px}
+.navigator-block>p,.question-group h3,.chapter-label,.search-results-heading{font-size:14px}
+.question-chip-grid button,.year-grid button,.paper-choice-list button,.chapter-list button{font-size:16px;min-height:40px}
+.question-header h2,.panel-title h2,.directory-heading h2{font-size:24px}
+.study-stage h3,.app-shell .study-content,.app-shell .knowledge-content{font-size:18px;line-height:1.65}
+.study-source-note,.member-notice,.source-download,.source-download-unavailable{font-size:15px}
+.knowledge-point-head strong,.knowledge-meta,.knowledge-questions>span,.knowledge-questions button,.related-panel button{font-size:15px}
+.search-result-list strong,.global-question-results strong{font-size:16px}.search-result-list small,.global-question-results small{font-size:14px}
+.mistake-row-copy>p,.mistake-row-copy>strong,.selection-toolbar,.chapter-bars,.top-points{font-size:16px}
+.book-card strong{font-size:20px}.book-card small{font-size:15px}
+.profile-label,.profile-choices,.profile-email,.profile-review-list strong{font-size:16px}.profile-review-note,.profile-review-empty,.profile-password p{font-size:15px}
+.auth-card>p,.auth-card label,.auth-note,.student-privacy{font-size:15px}
+.dse-countdown>span,.language-pill{font-size:15px}.dse-countdown>strong{font-size:30px}
+@media(max-width:1050px){.app-shell .mobile-nav{grid-template-columns:repeat(6,minmax(0,1fr))}.mobile-nav button{min-width:0;font-size:13px;padding-left:2px;padding-right:2px}.mobile-nav button span{font-size:13px;white-space:nowrap}.account-bar{flex-wrap:wrap}.membership-status{font-size:14px}}
+@media(max-width:600px){.view-heading h1{font-size:28px}.topbar .dse-countdown>span{font-size:12px}.dse-countdown>strong{font-size:25px}.brand strong{font-size:19px}.question-header-actions{gap:12px}}

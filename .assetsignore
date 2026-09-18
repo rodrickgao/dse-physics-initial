@@ -1,0 +1,15 @@
+**/.git
+**/.github
+**/.wrangler
+.gitignore
+.assetsignore
+README.md
+wrangler.toml
+cloudflare/**
+scripts/**
+server/**
+.local/**
+.env*
+.npm-cache/**
+*.cmd
+在Chrome打开.cmd

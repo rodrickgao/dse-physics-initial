@@ -1,0 +1,96 @@
+/* Study workspace: quiet chrome, white paper, and a clear reading sequence. */
+:root { --shadow-card:0 2px 8px rgb(25 48 80 / 3%); }
+body :focus-visible { outline:3px solid #3974ce; outline-offset:3px; }
+.skip-link { position:fixed;left:16px;top:-100px;z-index:100;background:#fff;color:#174896;padding:14px;border:2px solid; }
+.skip-link:focus { top:12px; }
+.workspace-breadcrumb {display:flex;align-items:center;gap:12px;font-size:13px;color:var(--muted-foreground)}
+.workspace-breadcrumb svg {width:16px}.workspace-breadcrumb strong {color:var(--foreground);font-weight:600}
+.app-shell .content {padding-top:32px;max-width:1440px}
+.app-shell .view-heading {margin-bottom:22px}
+.app-shell .view-heading h1,.app-shell .welcome-row h1 {font-size:28px;line-height:1.25;letter-spacing:0}
+.app-shell .nav-item {min-height:46px;border-radius:8px}
+.app-shell .section-grid {margin-top:24px}
+.app-shell .library-card {border-radius:8px}
+.app-shell .library-card::after {display:none}
+.app-shell .library-card-top {margin-bottom:12px}
+.app-shell .library-card .metric {padding-right:20px;flex-wrap:wrap}
+.app-shell .paper-search-wrap {margin-bottom:20px}
+.app-shell .paper-layout {gap:22px}
+.navigator-shell {position:sticky;top:88px;min-width:0}
+.app-shell .paper-navigator {position:static;box-shadow:none}
+.mobile-picker {display:none}
+.archived-years {margin-top:14px;color:var(--muted-foreground);font-size:11px}
+.archived-years summary {cursor:pointer;padding:8px 0;line-height:1.5}
+.archived-years p {line-height:1.6;margin:4px 0 10px}
+.app-shell .year-grid button,.app-shell .question-chip-grid button {min-height:36px;font-size:11px}
+.app-shell .question-header {padding:20px 24px;scroll-margin-top:88px}
+.app-shell .question-header p {font-size:11px;letter-spacing:.02em}
+.app-shell .question-header>div:first-child>span {display:none}
+.app-shell .question-body {padding:0 24px 24px}
+.app-shell .study-flow {padding:20px 8px 12px;border-radius:0}
+.app-shell .study-flow {--primary:#275fc7;--primary-foreground:#fff;--foreground:#172033;--card:#fff;--accent:#f1f5fb;--border:#d9e1ed}
+.study-steps {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));list-style:none;gap:10px;padding:20px 0;margin:0 0 24px;border-bottom:1px solid #e3e7ee}
+.study-steps li {display:flex;align-items:center;gap:8px;color:#747b86;font-size:12px;line-height:1.4}
+.study-steps li>span {display:grid;place-items:center;flex:0 0 24px;height:24px;border:1px solid #c9cfd7;border-radius:50%;font-size:12px}
+.study-steps strong {font-weight:500}.study-steps .reached {color:#224f8e}
+.study-steps .reached>span {border-color:#224f8e}.study-steps [aria-current=step]>span {background:#224f8e;color:#fff}
+.app-shell .study-stage h3 {font-size:17px;line-height:1.5;margin-top:0}
+.app-shell .study-stage h3>span {font:600 13px/1.5 system-ui;border-bottom:2px solid #9aa9bd;padding:0 3px 3px}
+.app-shell .stage-guidance {margin-bottom:20px;font-size:12px;color:#626873}
+.app-shell .study-flow .stage-toggle {display:flex;width:100%;justify-content:center;min-height:46px;margin:24px 0}
+.app-shell #official-stage,.app-shell #reasoning-stage {border-top:1px solid #dedede;padding-top:24px;margin-top:26px}
+.app-shell .study-source-note {margin:0 0 20px;padding:0 0 0 10px;border-left:2px solid #d8dde5;line-height:1.6;font-size:12px}
+.app-shell .study-content {font-size:17px;line-height:1.7}
+.app-shell .study-content p {margin-bottom:12px}
+.app-shell .scan-stack img {border:0;border-radius:0}
+.question-footer {display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid var(--border);padding:18px 24px}
+.question-footer>span {font-size:12px;color:var(--muted-foreground);white-space:nowrap}
+.app-shell .related-panel {background:var(--card);border-color:var(--border);margin-top:20px}
+.app-shell .related-panel button {font-size:11px;padding:9px 10px;line-height:1.5;text-align:left}
+.app-shell .export-controls {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;padding:24px;border:1px solid var(--border);border-radius:18px;background:var(--card);margin-bottom:24px}
+.export-title {display:flex;align-items:center;justify-content:space-between;gap:12px;grid-column:1/-1}
+.export-title p {color:var(--primary);font-size:10px;letter-spacing:.1em;margin:0 0 6px}
+.export-title h2 {font-size:20px;font-weight:650;margin:0}.export-title>span {font-size:12px;color:var(--muted-foreground);white-space:nowrap}
+.export-mode {border:1px solid var(--border);border-radius:12px;padding:18px}
+.export-mode>strong {font-size:14px}.export-mode>p {font-size:12px;line-height:1.65;color:var(--muted-foreground);margin:10px 0 16px}
+.export-mode button {width:100%}
+.export-controls .export-note {grid-column:1/-1;margin:0;font-size:12px}
+.selection-toolbar {display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0 16px;font-size:12px;color:var(--muted-foreground)}
+.selection-toolbar label {display:flex;align-items:center;gap:10px;color:var(--foreground)}
+.selection-toolbar input,.mistake-select {width:18px;height:18px;accent-color:var(--primary);cursor:pointer}
+.app-shell .mistake-row {grid-template-columns:20px 80px minmax(0,1fr) auto;gap:12px;padding:14px}
+.app-shell .mistake-thumbnail {width:80px;height:68px}
+.app-shell .mistake-row-copy strong {font-size:13px}.app-shell .mistake-row-copy small {font-size:11px}
+.app-shell .search-results-panel {position:relative;width:100%;max-height:360px;overflow:auto;margin:0 0 20px}
+.app-shell .study-stage,.app-shell .study-content,.app-shell .question-body {min-width:0}
+.app-shell .study-content .study-table-wrap {overflow-x:auto}
+.app-shell .study-content math[display=block] {overflow-x:auto;overflow-y:hidden}
+@media(min-width:821px) and (max-width:1150px) { .app-shell .content {padding-left:24px;padding-right:24px}.app-shell .paper-layout {grid-template-columns:185px minmax(0,1fr);gap:16px}.app-shell .question-header {flex-wrap:wrap}.app-shell .question-body {padding-left:16px;padding-right:16px} }
+@media(max-width:820px) {
+  .navigator-shell {position:static}
+  .mobile-picker {display:flex;width:100%;align-items:center;justify-content:space-between;gap:12px;padding:15px 18px;background:var(--card);border:1px solid var(--border);border-radius:12px;text-align:left;color:var(--foreground);cursor:pointer}
+  .mobile-picker small {display:block;margin-bottom:5px;font-size:10px;color:var(--muted-foreground)}.mobile-picker strong {font-size:13px;font-weight:600}.mobile-picker svg {width:18px}
+  .navigator-shell .paper-navigator {display:none;margin-top:8px;max-height:60vh}
+  .navigator-shell.is-open .paper-navigator {display:block}
+  .navigator-shell.is-open .mobile-picker svg {transform:rotate(180deg)}
+  .app-shell .question-header-actions {flex-direction:row;align-items:center;justify-content:space-between}
+  .app-shell .question-header-actions .stepper {width:auto}.app-shell .question-header-actions .stepper button {flex:initial}
+  .app-shell .paper-layout {gap:16px}
+}
+@media(max-width:600px) {
+  .papers-view>.view-heading .page-kicker,.papers-view>.view-heading>div>p:last-child {display:none}
+  .app-shell .papers-view>.view-heading {margin-bottom:16px}
+  .app-shell .content {padding:24px 12px 35px}
+  .app-shell .view-heading>div>p:last-child {font-size:12px;margin-top:8px}
+  .app-shell .question-header {padding:18px 16px;gap:12px;scroll-margin-top:72px}
+  .app-shell .question-body {padding:0 12px 16px}.app-shell .study-flow {padding:16px 3px 4px}
+  .study-steps {gap:6px;padding:16px 0;margin-bottom:20px}.study-steps li {font-size:11px;gap:5px}.study-steps li>span {flex-basis:20px;height:20px;font-size:10px}
+  .app-shell .study-stage h3 {font-size:16px}.app-shell .study-content {font-size:16px;line-height:1.65}
+  .question-footer {padding:14px 12px;gap:6px}.question-footer button {font-size:12px;padding:8px;gap:5px}
+  .app-shell .export-controls {padding:16px;grid-template-columns:1fr}.export-title {align-items:flex-start}.export-title h2 {font-size:18px}
+  .app-shell .mistake-row {grid-template-columns:20px minmax(0,1fr) auto;gap:10px}.app-shell .mistake-thumbnail {display:none}.app-shell .mistake-row-actions {grid-column:auto;flex-direction:column}.app-shell .mistake-row-actions button {padding:8px;font-size:11px}
+  .selection-toolbar>span {max-width:55%;font-size:11px;text-align:right}
+  .workspace-breadcrumb {gap:8px;font-size:12px}
+}
+
+.source-download{display:inline-flex;align-items:center;justify-content:center;padding:8px 12px;border:1px solid var(--border,#ddd);border-radius:8px;font-size:13px;font-weight:600;color:inherit;text-decoration:none;white-space:normal;text-align:center}.source-download:hover{background:var(--muted,#eee)}

@@ -1,0 +1,1 @@
+window.DSE_PAPER2_KNOWLEDGE = {};

@@ -1,0 +1,18 @@
+:root { --motion-duration:220ms; --motion-ease:cubic-bezier(.22,1,.36,1); }
+@keyframes content-enter {
+  from { opacity:0; transform:translateY(8px); }
+  to { opacity:1; transform:translateY(0); }
+}
+.page-enter { animation:content-enter var(--motion-duration) var(--motion-ease); }
+.study-stage { animation:content-enter var(--motion-duration) var(--motion-ease); }
+.book-card,.chapter-list button,.paper-choice-list button,.year-grid button,
+.question-chip-grid button,.knowledge-questions button,.stage-toggle,.mobile-nav button {
+  transition:background-color 160ms ease,border-color 160ms ease,color 160ms ease,box-shadow 160ms ease,transform var(--motion-duration) var(--motion-ease);
+}
+.book-card:active { transform:translateY(0) scale(.985); }
+@media (prefers-reduced-motion:reduce) {
+  html { scroll-behavior:auto; }
+  .page-enter,.study-stage { animation:none; }
+  .book-card,.library-card,.chapter-list button,.paper-choice-list button,.year-grid button,
+  .question-chip-grid button,.knowledge-questions button,.stage-toggle,.nav-item,.mobile-nav button { transition:none; }
+}

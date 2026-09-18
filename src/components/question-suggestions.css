@@ -1,0 +1,8 @@
+.topbar .global-search { position: relative; }
+.global-question-results { position: absolute; top: calc(100% + 10px); left: 0; width: 100%; min-width: 220px; max-height: 400px; overflow: auto; padding: 8px; border: 1px solid var(--border); border-radius: 14px; background: var(--card); box-shadow: var(--shadow-card); color: var(--foreground); }
+.global-question-results button { display: block; width: 100%; padding: 12px; border: 0; border-radius: 8px; background: transparent; color: inherit; text-align: left; cursor: pointer; }
+.global-question-results button:hover, .global-question-results button:focus-visible { background: var(--accent); }
+.global-question-results strong, .global-question-results small { display: block; }
+.global-question-results strong { font-size: 12px; }
+.global-question-results small { margin-top: 5px; font-size: 11px; line-height: 1.6; color: var(--muted-foreground); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.global-question-results p { margin: 10px; font-size: 12px; }

@@ -1,0 +1,11 @@
+.topbar > .global-search { min-width: 0; flex-shrink: 1; }
+.topbar-actions { flex-shrink: 0; }
+.dse-countdown { display: flex; flex: 1 0 auto; align-items: baseline; justify-content: center; gap: 9px; color: var(--muted-foreground); font-size: 13px; white-space: nowrap; }
+.dse-countdown strong { color: var(--primary); font-size: 32px; font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; letter-spacing: -.04em; }
+.dse-countdown-cheer { color: var(--primary); font-weight: 700; white-space: normal; text-align: center; }
+@media (max-width: 1100px) {
+  .app-main > .topbar { flex-wrap: wrap; height: auto; min-height: 90px; gap: 8px 16px; padding-top: 10px; padding-bottom: 10px; }
+  .topbar > .global-search, .topbar > .workspace-breadcrumb { flex: 1; width: auto; }
+  .dse-countdown { order: 3; flex-basis: 100%; font-size: 12px; }
+  .dse-countdown strong { font-size: 26px; }
+}
