@@ -17,12 +17,13 @@ export async function importInitialData(directory, secretDirectory = '/etc/secre
   if (!existsSync(sourcePath) && (existsSync(secretPath) || existsSync(part1))) {
     const bundle = JSON.parse(existsSync(part1) ? readFileSync(part1, 'utf8') + readFileSync(part2, 'utf8') : readFileSync(secretPath, 'utf8'));
     const bytes = Buffer.from(bundle.database || '', 'base64');
-    if (bundle.version !== 1 || bytes.subarray(0, 16).toString() !== 'SQLite format 3\0' || createHash('sha256').update(bytes).digest('hex') !== bundle.sha256 || typeof bundle.adminKey !== 'string' || bundle.adminKey.length < 32) throw new Error('Invalid private import bundle.');
+    if (bundle.version !== 1 || bytes.subarray(0, 16).toString() !== 'SQLite format 3\0' || createHash('sha256').update(bytes).digest('hex') !== bundle.sha256 || typeof bundle.adminKey !== 'string' || !bundle.adminKey.trim()) throw new Error('Invalid private import bundle.');
     writeFileSync(keyPath, bundle.adminKey, { mode: 0o600 });
     writeFileSync(sourcePath, bytes, { mode: 0o600 });
   }
   if (!existsSync(sourcePath)) return false;
-  if (!existsSync(keyPath) || readFileSync(keyPath, 'utf8').trim().length < 32) throw new Error('Initial import requires the original admin key.');
+  // Preserve the legacy key exactly; the original API did not impose a length.
+  if (!existsSync(keyPath) || !readFileSync(keyPath, 'utf8').trim()) throw new Error('Initial import requires the original admin key.');
   const destination = join(directory, 'students.sqlite');
   if (existsSync(destination)) {
     const current = new DatabaseSync(destination, { readOnly: true });

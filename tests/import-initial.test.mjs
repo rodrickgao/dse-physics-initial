@@ -37,7 +37,7 @@ test('private Render secret import validates integrity and preserves the one-tim
   try {
     createApi({ directory: source }).close();
     const bytes = readFileSync(join(source, 'students.sqlite'));
-    const bundle = { version: 1, database: bytes.toString('base64'), sha256: 'bad-hash', adminKey: readFileSync(join(source, 'admin-key.txt'), 'utf8') };
+    const bundle = { version: 1, database: bytes.toString('base64'), sha256: 'bad-hash', adminKey: 'legacy-key' };
     writeFileSync(join(secrets, 'initial-data.json'), JSON.stringify(bundle));
     await assert.rejects(importInitialData(directory, secrets), /Invalid private import/);
     assert.equal(existsSync(join(directory, 'students.sqlite')), false);
@@ -47,6 +47,7 @@ test('private Render secret import validates integrity and preserves the one-tim
     writeFileSync(join(secrets, 'initial-data.part1'), content.slice(0, midpoint));
     writeFileSync(join(secrets, 'initial-data.part2'), content.slice(midpoint));
     assert.equal(await importInitialData(directory, secrets), true);
+    assert.equal(readFileSync(join(directory, 'admin-key.txt'), 'utf8'), 'legacy-key');
     assert.equal(await importInitialData(directory, secrets), false);
   } finally { for (const path of [source, directory, secrets]) rmSync(path, { recursive: true, force: true }); }
 });
