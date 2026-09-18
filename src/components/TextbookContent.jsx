@@ -52,7 +52,7 @@ export function TextbookSources({ point, language }) {
  return <footer className="textbook-source-footer">
   <details className="textbook-explanation textbook-source-details">
    <summary>{en ? "Textbook sources" : "课本来源"}</summary>
-   {figures.map((f,i)=><p key={f.src} className="textbook-image-source">{figures.length>1?(en?'Figure ':'图 ')+(i+1)+' · ':''}{en ? "Original English textbook figure" : "英文课本原图"} · {f.source} · PDF {f.page}</p>)}
+   {figures.map((f,i)=><p key={f.src} className="textbook-image-source">{figures.length>1?(en?'Figure ':'图 ')+(i+1)+' · ':''}{f.language === 'chn' ? (en ? "Original Chinese textbook figure" : "中文课本原图") : (en ? "Original English textbook figure" : "英文课本原图")} · {f.source} · PDF {f.page}</p>)}
    {sources.map((source,i)=><div key={i}>{source.text&&<blockquote lang="en">{source.text}</blockquote>}<p className="textbook-citation">{source.source || source.code} · PDF {source.page}{source.printed_page ? (en?' · Printed page ':' · 书页 ')+source.printed_page:''}</p></div>)}
    {members.flatMap(p=>p.textbook_supplements||[]).map(supplement=><div key={supplement.id}>
     {supplement.source_excerpts.map((source,i)=><div key={i}><blockquote lang="en">{source.text}</blockquote><p className="textbook-citation">{source.code} · PDF {source.page}</p></div>)}
