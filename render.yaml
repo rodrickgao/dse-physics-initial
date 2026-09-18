@@ -16,7 +16,7 @@ services:
       - key: DSE_DATA_DIR
         value: /var/data
       - key: DSE_MAINTENANCE
-        value: "true"
+        sync: false
       - key: TRUST_PROXY
         value: "true"
       - key: SMTP_HOST
