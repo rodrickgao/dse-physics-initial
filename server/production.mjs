@@ -65,7 +65,7 @@ export async function startProduction(env = process.env) {
   const config = productionConfig(env);
   if (!existsSync(resolve(root, 'dist/index.html')) || !existsSync(resolve(root, 'dist/admin.html'))) throw new Error('Build student and admin pages first.');
   await importInitialData(config.directory);
-  const transport = nodemailer.createTransport({ host: env.SMTP_HOST, port: Number(env.SMTP_PORT), secure: env.SMTP_PORT === '465', requireTLS: true, auth: { user: env.SMTP_USER, pass: env.SMTP_PASS }, connectionTimeout: 10000, socketTimeout: 15000 });
+  const transport = nodemailer.createTransport({ host: env.SMTP_HOST, port: Number(env.SMTP_PORT), secure: env.SMTP_PORT === '465', requireTLS: true, auth: { user: env.SMTP_USER, pass: env.SMTP_PASS }, connectionTimeout: 10000, greetingTimeout: 10000, dnsTimeout: 10000, socketTimeout: 15000 });
   const api = createApi({ directory: config.directory, publicOrigins: config.origins, secureCookies: true, trustProxy: env.TRUST_PROXY === 'true', mailer: (email, code) => transport.sendMail({ from: env.SMTP_FROM, to: email, subject: 'DSE Physics 登录验证码', text: `你的验证码是 ${code}，10 分钟内有效。请勿分享此验证码。` }) });
   const server = createProductionServer({ api, origins: config.origins, maintenance: config.maintenance });
   server.requestTimeout = 30000;
@@ -87,6 +87,7 @@ export async function startProduction(env = process.env) {
   if (!config.maintenance) await dailyBackup();
   const timer = setInterval(dailyBackup, 86400000); timer.unref();
   console.log(`Production ready on port ${server.address().port}; maintenance=${config.maintenance}`);
+  void transport.verify().then(() => console.log('SMTP connection and authentication verified; no message sent.')).catch(error => console.error('SMTP verification failed:', error.code || 'unknown'));
   const shutdown = () => { clearInterval(timer); server.close(() => { api.close(); transport.close(); process.exit(0); }); setTimeout(() => process.exit(1), 15000).unref(); };
   process.on('SIGINT', shutdown); process.on('SIGTERM', shutdown);
   return { server, api };
