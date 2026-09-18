@@ -7,6 +7,7 @@ import { createApi } from './api.mjs';
 import { root } from './catalog.mjs';
 import { protectStudyFiles } from './premium.mjs';
 import { importInitialData } from './import-initial.mjs';
+import { resetStudents } from './reset-students.mjs';
 
 export function productionConfig(env = process.env) {
   const origins = (env.PUBLIC_ORIGINS || (env.RENDER_EXTERNAL_HOSTNAME ? `https://${env.RENDER_EXTERNAL_HOSTNAME}` : '')).split(',').map(s => s.trim()).filter(Boolean);
@@ -67,6 +68,7 @@ export async function startProduction(env = process.env) {
   await importInitialData(config.directory);
   const transport = nodemailer.createTransport({ host: env.SMTP_HOST, port: Number(env.SMTP_PORT), secure: env.SMTP_PORT === '465', requireTLS: true, auth: { user: env.SMTP_USER, pass: env.SMTP_PASS }, connectionTimeout: 10000, greetingTimeout: 10000, dnsTimeout: 10000, socketTimeout: 15000 });
   const api = createApi({ directory: config.directory, publicOrigins: config.origins, secureCookies: true, trustProxy: env.TRUST_PROXY === 'true', mailer: (email, code) => transport.sendMail({ from: env.SMTP_FROM, to: email, subject: 'DSE Physics 登录验证码', text: `你的验证码是 ${code}，10 分钟内有效。请勿分享此验证码。` }) });
+  await resetStudents(config.directory, env.DSE_RESET_STUDENTS_ONCE);
   const server = createProductionServer({ api, origins: config.origins, maintenance: config.maintenance });
   server.requestTimeout = 30000;
   server.headersTimeout = 15000;
