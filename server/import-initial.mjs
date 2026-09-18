@@ -12,8 +12,10 @@ export async function importInitialData(directory, secretDirectory = '/etc/secre
   const marker = join(directory, 'bootstrap-applied.json');
   if (existsSync(marker)) return false;
   const secretPath = join(secretDirectory, 'initial-data.json');
-  if (!existsSync(sourcePath) && existsSync(secretPath)) {
-    const bundle = JSON.parse(readFileSync(secretPath, 'utf8'));
+  const part1 = join(secretDirectory, 'initial-data.part1');
+  const part2 = join(secretDirectory, 'initial-data.part2');
+  if (!existsSync(sourcePath) && (existsSync(secretPath) || existsSync(part1))) {
+    const bundle = JSON.parse(existsSync(part1) ? readFileSync(part1, 'utf8') + readFileSync(part2, 'utf8') : readFileSync(secretPath, 'utf8'));
     const bytes = Buffer.from(bundle.database || '', 'base64');
     if (bundle.version !== 1 || bytes.subarray(0, 16).toString() !== 'SQLite format 3\0' || createHash('sha256').update(bytes).digest('hex') !== bundle.sha256 || typeof bundle.adminKey !== 'string' || bundle.adminKey.length < 32) throw new Error('Invalid private import bundle.');
     writeFileSync(keyPath, bundle.adminKey, { mode: 0o600 });

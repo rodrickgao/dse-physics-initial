@@ -42,7 +42,10 @@ test('private Render secret import validates integrity and preserves the one-tim
     await assert.rejects(importInitialData(directory, secrets), /Invalid private import/);
     assert.equal(existsSync(join(directory, 'students.sqlite')), false);
     bundle.sha256 = createHash('sha256').update(bytes).digest('hex');
-    writeFileSync(join(secrets, 'initial-data.json'), JSON.stringify(bundle));
+    rmSync(join(secrets, 'initial-data.json'));
+    const content = JSON.stringify(bundle), midpoint = Math.floor(content.length / 2);
+    writeFileSync(join(secrets, 'initial-data.part1'), content.slice(0, midpoint));
+    writeFileSync(join(secrets, 'initial-data.part2'), content.slice(midpoint));
     assert.equal(await importInitialData(directory, secrets), true);
     assert.equal(await importInitialData(directory, secrets), false);
   } finally { for (const path of [source, directory, secrets]) rmSync(path, { recursive: true, force: true }); }
