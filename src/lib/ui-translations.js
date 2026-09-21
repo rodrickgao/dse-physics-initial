@@ -1,6 +1,9 @@
 // UI labels only. Student messages, teacher replies and form values are never translated.
 const pairs = `
 学习题库=Study library
+此浏览器有=This browser contains
+道旧错题。确认属于自己后，可导入目前账号。=previously saved mistakes. Import them only if they belong to you.
+用户 #=Student #
 操作过于频繁，请稍后再试。=Too many requests. Please try again later.
 题目不存在。=This question does not exist.
 知识点不存在。=This knowledge point does not exist.
@@ -384,7 +387,7 @@ DSE Physics，返回主页=DSE Physics, return home
 移除记录 =Remove saved account 
 库=library
 `;
-export const translations=Object.fromEntries(pairs.trim().split('\n').map(line=>{const i=line.indexOf('=');return [line.slice(0,i),line.slice(i+1)];}));
+export const translations=Object.fromEntries(pairs.trim().split('\n').map(line=>{const i=line.indexOf('=');return [line.slice(0,i).trim(),line.slice(i+1)];}));
 let language;
 export function setUiLanguage(value){language=value;}
 export function getUiLanguage(){if(language)return language;try{return localStorage.getItem('dse-physics-language-v1')||'chn';}catch{return 'chn';}}

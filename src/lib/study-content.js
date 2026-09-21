@@ -81,7 +81,7 @@ export async function openMistakePrint(entries, options) {
   const tab = window.open("", "_blank");
   if (!tab) throw new Error("请允许开启打印预览窗口后再试。");
   tab.opener = null;
-  tab.document.body.textContent = "正在准备打印预览…";
+  tab.document.body.textContent = translate("正在准备打印预览…", options.language);
   try {
     if (options.mode === 'detailed') {
       const response = await fetch('/api/membership', { credentials: 'same-origin', cache: 'no-store' });
