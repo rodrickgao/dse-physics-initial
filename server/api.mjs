@@ -168,7 +168,7 @@ export function createApi({ directory, mailer, clock = Date.now, adminKey: suppl
       const user = path.startsWith('/api/admin/') ? session(req, true) || session(req) : session(req) || (/^\/api\/avatar\//.test(path) ? session(req, true) : null); if (!user) fail(401, '請先登入。');
       if (path.startsWith('/api/admin/') && user.role !== 'admin') fail(403, '只限開發者存取。');
       if (path === '/api/admin/session' && req.method === 'GET') return send({ user: publicUser(user) });
-      if (path === '/api/membership' && req.method === 'GET') return send({ membership: management.membership(user.id), accessMode: 'reasoning-and-links' });
+      if (path === '/api/membership' && req.method === 'GET') return send({ membership: management.membership(user.id), accessMode: 'chapter-downloads-links-reasoning-tutoring' });
       if (path === '/api/premium/network' && req.method === 'GET') {
         if (user.role !== 'admin' && !management.membership(user.id).active) fail(403, '知識點關聯需要有效會員。');
         return send({ network: premiumNetwork });
@@ -220,6 +220,7 @@ export function createApi({ directory, mailer, clock = Date.now, adminKey: suppl
         }
         return send({ sessions: all('SELECT id,elapsed_ms AS elapsedMs FROM focus_sessions WHERE user_id=?', user.id) });
       }
+      if (path === '/api/tutoring' && user.role !== 'admin' && !management.membership(user.id).active) fail(403, '问老师需要有效会员。');
       if (path === '/api/tutoring' && req.method === 'GET') return send({ rows:tutoring.list(user.id) });
       if (path === '/api/tutoring' && req.method === 'POST') {
         limit(`tutoring:${user.id}`,20,3600000); return send(tutoring.submit(user.id,body));

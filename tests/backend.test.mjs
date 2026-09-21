@@ -55,7 +55,10 @@ test('mastery and mistakes are mutually exclusive, atomic and account-scoped', a
 test('teacher questions preserve exact context and replies are private and admin-only', async()=>{
  const f=await fixture();
  try{
-  const a=f.client(),b=f.client(),admin=f.client(),anonymous=f.client();await register(a,'ask@example.com');await register(b,'privacy@example.com');await admin('admin/login',{key:'test-admin-key'});
+  const a=f.client(),b=f.client(),admin=f.client(),anonymous=f.client();const userA=await register(a,'ask@example.com');const userB=await register(b,'privacy@example.com');await admin('admin/login',{key:'test-admin-key'});
+  assert.equal((await a('tutoring')).status,403);
+  assert.equal((await a('tutoring',{kind:'general',message:'Member-only question'})).status,403);
+  for(const account of [userA,userB]) assert.equal((await admin('admin/membership',{userId:account.data.user.id,action:'extend',days:1,reason:'Test membership',revision:0,requestId:crypto.randomUUID()})).status,200);
   const key=[...questions.keys()][0];
   assert.equal((await anonymous('tutoring')).status,401);
   assert.equal((await a('tutoring',{kind:'question',reference:'bad',message:'Help'})).status,400);
@@ -68,6 +71,9 @@ test('teacher questions preserve exact context and replies are private and admin
   assert.equal((await a('tutoring')).data.rows.find(r=>r.id===rows[0].id).reply,'Start with the physical principle.');
   assert.equal((await b('tutoring')).data.rows.length,0);
   assert.equal((await admin('admin/tutoring/reply',{id:rows[0].id,reply:'Overwrite'})).status,409);
+  f.advance(86400001);
+  assert.equal((await a('tutoring')).status,403);
+  assert.equal((await a('tutoring',{kind:'general',message:'Expired member'})).status,403);
  }finally{await f.close();}
 });
 

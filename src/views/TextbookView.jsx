@@ -48,7 +48,7 @@ function PointCard({ point, language, openPaper }) {
   );
 }
 
-export function TextbookView({ language, targetSequence, clearTarget, openPaper }) {
+export function TextbookView({ language, targetSequence, clearTarget, openPaper }) { const membership = useMembership();
   const en = language === "eng";
   const books = useMemo(() => booksFor(language), [language]);
   const [selectedBook, setSelectedBook] = useState(null);
@@ -121,7 +121,7 @@ export function TextbookView({ language, targetSequence, clearTarget, openPaper 
           <p className="chapter-label">{en ? "Chapters" : "章节"}</p>
           <div className="chapter-list"><button className={cn(chapter === "all" && "active")} onClick={() => setChapter("all")}><span>{en ? "All chapters" : "全部章节"}</span><small>{activeBook.points.length}</small></button>{chapters.map(([code, name]) => <button key={code} className={cn(chapter === code && "active")} onClick={() => setChapter(code)}><span><b>{code}</b>{name}</span><small>{activeBook.points.filter((point) => point.code === code).length}</small></button>)}</div>
         </aside>
-        <section ref={chapterRef} className="knowledge-browser-content"><div className="knowledge-browser-heading"><p>{activeBook.name}</p><h2>{chapter === "all" ? (en ? "All knowledge points" : "全部知识点") : chapters.find(([code]) => code === chapter)?.[1]}</h2><span>{visibleCards.length} {en ? "cards" : "张卡片"}</span>{chapterPdf && <div className="chapter-download"><Button asChild variant="outline"><a href={chapterPdf.url} download={chapterPdf.filename}><Download aria-hidden="true" />{en ? `Download ${chapter} textbook PDF` : `下载 ${chapter} 课本 PDF`}</a></Button><small>{language === 'chn' ? '中文版' : 'English edition'} · {(chapterPdf.bytes / 1024 / 1024).toFixed(1)} MB</small></div>}</div><div className="knowledge-card-list">{visibleCards.map((point) => <PointCard key={point.sequence} point={point} language={language} openPaper={openPaper} />)}</div></section>
+        <section ref={chapterRef} className="knowledge-browser-content"><div className="knowledge-browser-heading"><p>{activeBook.name}</p><h2>{chapter === "all" ? (en ? "All knowledge points" : "全部知识点") : chapters.find(([code]) => code === chapter)?.[1]}</h2><span>{visibleCards.length} {en ? "cards" : "张卡片"}</span>{chapterPdf && (membership.active ? <div className="chapter-download"><Button asChild variant="outline"><a href={chapterPdf.url} download={chapterPdf.filename}><Download aria-hidden="true" />{en ? `Download ${chapter} knowledge PDF` : `下载 ${chapter} 知识点 PDF`}</a></Button><small>{language === 'chn' ? '中文版' : 'English edition'} · {(chapterPdf.bytes / 1024 / 1024).toFixed(1)} MB</small></div> : <MemberNotice>会员专享 · 分章节知识点 PDF</MemberNotice>)}</div><div className="knowledge-card-list">{visibleCards.map((point) => <PointCard key={point.sequence} point={point} language={language} openPaper={openPaper} />)}</div></section>
       </div>}
       </div>
     </div>

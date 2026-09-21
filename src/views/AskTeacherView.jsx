@@ -2,9 +2,15 @@ import { useEffect, useState } from 'react';
 import { api } from '../lib/api';
 import { entriesByLanguage, pointsByLanguage, knowledgeTitle, knowledgeNumber, questionLabelFromKey } from '../lib/data';
 import { Button } from '../components/ui/button';
+import { useMembership } from '../components/Membership';
 import './tutoring.css';
 
-export function AskTeacherView({ language, target, openPaper, openKnowledge }) {
+export function AskTeacherView(props) {
+  const membership = useMembership();
+  if (!membership.active) return <section className="tutoring-view"><h1>{props.language === 'eng' ? 'Ask a teacher' : '问老师'}</h1><p>{props.language === 'eng' ? 'Ask a teacher is a members-only benefit. Subscribe to ask about questions, knowledge points, or study methods.' : '问老师是会员专享功能。开通会员后，可以就题目、知识点或学习方法向老师提问。'}</p><Button asChild><a href="#membership">{props.language === 'eng' ? 'View membership' : '查看会员权益'}</a></Button></section>;
+  return <MemberAskTeacherView {...props} />;
+}
+function MemberAskTeacherView({ language, target, openPaper, openKnowledge }) {
   const en = language === 'eng';
   const [kind,setKind]=useState(target?.kind || 'question');
   const [reference,setReference]=useState(target?.reference || '');

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useMembership } from './Membership';
 import './teacher-float.css';
 
 const POSITION_KEY = 'dse-physics-teacher-position-v1';
@@ -24,16 +25,17 @@ function savePosition(position) {
 }
 
 export function TeacherFloat({ language, visible, onOpen }) {
+  const membership = useMembership();
   const [position, setPosition] = useState(restorePosition);
   const [dragging, setDragging] = useState(false);
   const drag = useRef(null);
   useEffect(() => {
-    if (!visible) return;
+    if (!visible || !membership.active) return;
     const resize = () => setPosition(restorePosition());
     resize(); window.addEventListener('resize', resize); window.visualViewport?.addEventListener('resize', resize);
     return () => { window.removeEventListener('resize', resize); window.visualViewport?.removeEventListener('resize', resize); };
-  }, [visible]);
-  if (!visible) return null;
+  }, [visible, membership.active]);
+  if (!visible || !membership.active) return null;
   const en = language === 'eng';
   const move = event => {
     const state = drag.current;

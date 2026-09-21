@@ -14,6 +14,8 @@ COPY --from=build /app/dist ./dist
 COPY --from=build /app/server ./server
 COPY --from=build /app/src/lib/knowledge-numbering.js ./src/lib/knowledge-numbering.js
 COPY --from=build /app/src/lib/avatar-catalog.js ./src/lib/avatar-catalog.js
+COPY --from=build /app/src/lib/textbook-downloads.json ./src/lib/textbook-downloads.json
+COPY --from=build /app/downloads/catalog.json ./downloads/catalog.json
 COPY --from=build /app/site-data.js /app/textbook-data.js /app/knowledge-network-data.js /app/paper2-knowledge-data.js /app/statistics-data.js ./
 COPY --from=build /app/text-papers ./text-papers
 RUN mkdir -p /var/data && chown node:node /var/data
