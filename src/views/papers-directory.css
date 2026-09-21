@@ -3,6 +3,8 @@
 .papers-view .paper-year-heading{display:flex;align-items:center;flex-wrap:wrap;gap:12px 24px}
 .papers-view .paper-year-heading .source-download{padding:6px 0;border:0;border-radius:0;background:transparent;color:var(--muted-foreground);font-size:14px;font-weight:500;white-space:nowrap}
 .papers-view .paper-year-heading .source-download:hover{color:var(--primary);text-decoration:underline;text-underline-offset:4px}
+.papers-view .paper-master-all{min-height:44px;white-space:nowrap}
+.papers-view .paper-master-all[data-complete="true"]{opacity:1;color:var(--primary);background:var(--secondary);border-color:transparent}
 .papers-view .question-header-actions{display:flex;flex-direction:row;flex-wrap:nowrap;justify-content:flex-end;gap:10px}
 .papers-view .question-header-actions>button{white-space:nowrap;min-height:44px}
 .papers-view .question-header-actions>button:first-child[aria-pressed="true"]{background:color-mix(in srgb,#2c9365 12%,var(--card));border-color:#2c9365;color:#24734f}

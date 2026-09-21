@@ -84,6 +84,8 @@ export function PapersView({ mastered = {}, setProgress, saving, directoryVersio
     }));
   }, [paper]);
   const key = year && paperIndex < 3 ? networkKey(year.year, paperIndex, questionIdentity(question, questionIndex)) : "";
+  const paperKeys = useMemo(() => year && paperIndex < 3 ? paper.questions.map((item, index) => networkKey(year.year, paperIndex, questionIdentity(item, index))) : [], [year, paper, paperIndex]);
+  const paperMastered = paperKeys.length > 0 && paperKeys.every(itemKey => mastered[itemKey]);
   const network = year && paperIndex < 3 ? networkFor(year.year, paperIndex, question, questionIndex) : { links: [] };
   const allResults = useMemo(() => searchReady ? searchIndex.rank(searchIndex.index, query).filter(entry => !yearOpened || entry.yearIndex === yearIndex) : [], [searchIndex, searchReady, query, yearOpened, yearIndex]);
   const results = allResults.slice(0, resultLimit);
@@ -104,7 +106,7 @@ export function PapersView({ mastered = {}, setProgress, saving, directoryVersio
   return (
     <div className="papers-view page-enter">
       <div className="view-heading">
-        <div>{yearOpened && <button type="button" className="year-back" onClick={returnToDirectory}><ArrowLeft/>全部年份</button>}<div className="paper-year-heading"><h1>{yearOpened ? `${year.year} 年真题` : "真题库"}</h1>{yearOpened && <SourceDownload language={language} year={year.year} paper={["paper-1a", "paper-1b", "paper-2"][paperIndex]} />}</div></div>
+        <div>{yearOpened && <button type="button" className="year-back" onClick={returnToDirectory}><ArrowLeft/>全部年份</button>}<div className="paper-year-heading"><h1>{yearOpened ? `${year.year} 年真题` : "真题库"}</h1>{yearOpened && <SourceDownload language={language} year={year.year} paper={["paper-1a", "paper-1b", "paper-2"][paperIndex]} />}{yearOpened && paperKeys.length > 0 && <Button className="paper-master-all" variant="outline" disabled={saving || paperMastered} data-complete={paperMastered} title={`${year.year} · ${titleForPaper(paper, paperIndex, language)} · ${paperKeys.length} ${language === 'eng' ? 'questions' : '道题'}`} onClick={() => setProgress(paperKeys, 'mastered')}><Check />{paperMastered ? '全卷已掌握' : '已掌握全卷'}</Button>}</div></div>
       </div>
 
       <div className="paper-search-wrap">
