@@ -68,7 +68,7 @@ export function TextbookContent({ point, language }) {
  useEffect(()=>{if(expanded)dialog.current?.showModal();else dialog.current?.close();},[expanded]);
  const sections=cardSections(point),grouped=sections.length>1;
  return <>
-  {sections.map((section,i)=><section className={grouped?'knowledge-subpoint':undefined} key={section.point.sequence}>
+  {sections.map((section,i)=><section data-study-knowledge={section.point.sequence} className={grouped?'knowledge-subpoint':undefined} key={section.point.sequence}>
    {section.members.filter(m=>m.sequence!==point.sequence).map(m=><span id={'point-'+m.sequence} key={m.sequence} className="knowledge-subpoint-anchor"/>)}
    {grouped&&<h4 className="knowledge-subpoint-title"><span>{section.members.map(m=>m.number).join(' · ')}</span>{section.point.card_title||section.point.title||section.point.chapter}</h4>}
    <SectionContent section={section}/>

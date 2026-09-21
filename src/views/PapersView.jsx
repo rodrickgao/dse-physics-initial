@@ -131,7 +131,7 @@ export function PapersView({ mastered = {}, setProgress, saving, directoryVersio
         </aside>
         </div>
 
-        <article className="question-card">
+        <article className="question-card" data-study-question={key || undefined}>
           <header className="question-header" id="current-question" tabIndex={-1}>
             <div><p>{year.year} · {titleForPaper(paper, paperIndex, language)}</p><h2>{question.label}</h2></div>
             <div className="question-header-actions">
