@@ -1,7 +1,7 @@
 import { useMembership, MemberNotice } from '../components/Membership';
 import { track } from '../lib/activity';
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ArrowLeft, ArrowRight, BookOpen, ChevronDown, Search, Star, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, BookOpen, Check, ChevronDown, Search, Star, X } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Card } from "../components/ui/card";
 import { Input } from "../components/ui/input";
@@ -21,7 +21,7 @@ function ScanImages({ yearId, paths, label }) {
   return <div className="scan-stack">{paths.map((path, index) => <img key={path} src={imageUrl(yearId, path)} alt={`${label} ${index + 1}`} loading={index ? "lazy" : "eager"} decoding="async" />)}</div>;
 }
 
-export function PapersView({ mastered = {}, setProgress, saving, askTeacher, directoryVersion, onDirectory, onYearOpen, language, mistakes, setMistake, targetKey, clearTarget, initialQuery = "", openKnowledge, onQuestionChange }) {
+export function PapersView({ mastered = {}, setProgress, saving, directoryVersion, onDirectory, onYearOpen, language, mistakes, setMistake, targetKey, clearTarget, initialQuery = "", openKnowledge, onQuestionChange }) {
   const membership = useMembership();
   const reportedDirectoryVersion = useRef(directoryVersion);
   const [yearOpened, setYearOpened] = useState(Boolean(targetKey));
@@ -30,8 +30,6 @@ export function PapersView({ mastered = {}, setProgress, saving, askTeacher, dir
   const [yearIndex, setYearIndex] = useState(0);
   const [paperIndex, setPaperIndex] = useState(0);
   const [questionIndex, setQuestionIndex] = useState(0);
-  const [selected, setSelected] = useState([]);
-  useEffect(() => setSelected([]),[yearIndex,paperIndex]);
   const [pickerOpen, setPickerOpen] = useState(false);
   const [query, setQuery] = useState(initialQuery);
   const [resultLimit, setResultLimit] = useState(30);
@@ -106,8 +104,7 @@ export function PapersView({ mastered = {}, setProgress, saving, askTeacher, dir
   return (
     <div className="papers-view page-enter">
       <div className="view-heading">
-        <div>{yearOpened && <button type="button" className="year-back" onClick={returnToDirectory}><ArrowLeft/>全部年份</button>}<h1>{yearOpened ? `${year.year} 年真题` : "真题库"}</h1></div>
-        {yearOpened && <div className="paper-progress"><strong>{questionIndex + 1}</strong><span>/ {paper.questions.length}</span></div>}
+        <div>{yearOpened && <button type="button" className="year-back" onClick={returnToDirectory}><ArrowLeft/>全部年份</button>}<div className="paper-year-heading"><h1>{yearOpened ? `${year.year} 年真题` : "真题库"}</h1>{yearOpened && <SourceDownload language={language} year={year.year} paper={["paper-1a", "paper-1b", "paper-2"][paperIndex]} />}</div></div>
       </div>
 
       <div className="paper-search-wrap">
@@ -128,7 +125,7 @@ export function PapersView({ mastered = {}, setProgress, saving, askTeacher, dir
         <button className="mobile-picker" aria-expanded={pickerOpen} aria-controls="paper-navigator" onClick={() => setPickerOpen(!pickerOpen)}><span><small>{'选择题目'}</small><strong>{year.year} · {titleForPaper(paper, paperIndex, language)} · {question.label}</strong></span><ChevronDown/></button>
         <aside className="paper-navigator" id="paper-navigator" aria-label={'选题目录'}>
           <div className="navigator-block"><p>{"试卷"}</p><div className="paper-choice-list">{year.papers.map((item, index) => <button key={`${item.title}-${index}`} className={cn(index === paperIndex && "active")} onClick={() => selectPaper(index)}><span>{titleForPaper(item, index, language)}</span><small>{item.questions.length}</small></button>)}</div></div>
-          {paperIndex < 3 && <div className="paper-bulk"><label><input type="checkbox" checked={selected.length === paper.questions.length} onChange={e => setSelected(e.target.checked ? paper.questions.map((q,i)=>networkKey(year.year,paperIndex,questionIdentity(q,i))) : [])}/>全选本卷</label><span>{selected.length} 道已选</span><Button disabled={saving || !selected.length} onClick={()=>setProgress(selected,'mastered')}>标为已掌握</Button><Button disabled={saving || !selected.length} onClick={()=>setProgress(selected,'mistake')}>标为错题</Button><Button variant="ghost" disabled={saving || !selected.length} onClick={()=>setProgress(selected,'clear')}>清除标记</Button></div>}<div className="navigator-block question-block"><p>{"题目／页数"}</p><div className={cn("question-groups", questionGroups.length > 1 && "sectioned")}>{questionGroups.map((group) => <section className="question-group" key={group.id}>{group.label && <h3>{group.label}</h3>}<div className="question-chip-grid">{group.questions.map(({ item, index }) => { const itemKey = paperIndex < 3 ? networkKey(year.year, paperIndex, questionIdentity(item, index)) : ""; return <div className="question-chip-item" key={`${item.label}-${index}`}>{itemKey && <input type="checkbox" aria-label={`选择 ${item.label}`} checked={selected.includes(itemKey)} onChange={e=>setSelected(current=>e.target.checked ? [...current,itemKey] : current.filter(k=>k!==itemKey))}/>}<button className={cn(index === questionIndex && "active", mistakes[itemKey] && "mistake", mastered[itemKey] && "mastered")} onClick={() => selectQuestion(index)}>{item.label.replace("Page ", "P")}{mastered[itemKey] && " ✓"}</button></div>; })}</div></section>)}</div></div>
+          <div className="navigator-block question-block"><p>{"题目／页数"}</p><div className={cn("question-groups", questionGroups.length > 1 && "sectioned")}>{questionGroups.map((group) => <section className="question-group" key={group.id}>{group.label && <h3>{group.label}</h3>}<div className="question-chip-grid">{group.questions.map(({ item, index }) => { const itemKey = paperIndex < 3 ? networkKey(year.year, paperIndex, questionIdentity(item, index)) : ""; return <button key={`${item.label}-${index}`} className={cn(index === questionIndex && "active", mistakes[itemKey] && "mistake", mastered[itemKey] && "mastered")} onClick={() => selectQuestion(index)}>{item.label.replace("Page ", "P")}{mastered[itemKey] && " ✓"}</button>; })}</div></section>)}</div></div>
         </aside>
         </div>
 
@@ -136,9 +133,7 @@ export function PapersView({ mastered = {}, setProgress, saving, askTeacher, dir
           <header className="question-header" id="current-question" tabIndex={-1}>
             <div><p>{year.year} · {titleForPaper(paper, paperIndex, language)}</p><h2>{question.label}</h2></div>
             <div className="question-header-actions">
-              <SourceDownload language={language} year={year.year} paper={["paper-1a", "paper-1b", "paper-2"][paperIndex]} />
-              {key && <><Button disabled={saving} variant={mastered[key] ? "secondary" : "outline"} aria-pressed={!!mastered[key]} onClick={()=>setProgress([key],mastered[key] ? 'clear' : 'mastered')}>{mastered[key] ? '已掌握' : '标为已掌握'}</Button><Button variant="outline" onClick={()=>askTeacher('question',key)}>问老师</Button></>}{key && <Button disabled={saving} aria-pressed={!!mistakes[key]} variant={mistakes[key] ? "secondary" : "outline"} onClick={() => setMistake(key, !mistakes[key])}><Star className={cn(mistakes[key] && "fill-current")} />{mistakes[key] ? ("已加入错题") : ("加入错题")}</Button>}
-              <div className="stepper"><Button variant="outline" size="icon" disabled={questionIndex === 0} onClick={previous} aria-label="Previous"><ArrowLeft /></Button><Button variant="outline" size="icon" disabled={questionIndex === paper.questions.length - 1} onClick={next} aria-label="Next"><ArrowRight /></Button></div>
+              {key && <><Button disabled={saving} variant={mastered[key] ? "secondary" : "outline"} aria-pressed={!!mastered[key]} onClick={()=>setProgress([key],mastered[key] ? 'clear' : 'mastered')}><Check />已掌握</Button><Button disabled={saving} aria-pressed={!!mistakes[key]} variant={mistakes[key] ? "secondary" : "outline"} onClick={() => setMistake(key, !mistakes[key])}><Star className={cn(mistakes[key] && "fill-current")} />{mistakes[key] ? ("已加入错题") : ("加入错题")}</Button></>}
             </div>
           </header>
           <div className="question-body">
