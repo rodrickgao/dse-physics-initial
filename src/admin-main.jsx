@@ -1,3 +1,4 @@
+import './lib/admin-translations';
 import { createRoot } from 'react-dom/client';
 import { AdminWorkspace } from './views/AdminWorkspace';
 import './admin.css';

@@ -1,3 +1,5 @@
+import { setUiLanguage, translate } from './lib/ui-translations';
+import { AskTeacherView } from './views/AskTeacherView';
 import { SubscriptionView, PaymentView, MemberWelcome } from './views/SubscriptionView';
 import { MembershipProvider, MembershipStatus } from './components/Membership';
 import { enableActivity, track } from './lib/activity';
@@ -30,6 +32,7 @@ const NAVIGATION = [
   { id: "textbook", zh: "课本知识库", en: "Knowledge", icon: BookOpen },
   { id: "mistakes", zh: "错题库", en: "Mistakes", icon: CircleAlert },
   { id: "membership", zh: "开通会员", en: "Membership", icon: Crown },
+  { id: "ask", zh: "问老师", en: "Ask a teacher", icon: BookOpen },
   { id: "focus", zh: "番茄钟", en: "Focus timer", icon: Timer },
 ];
 
@@ -97,27 +100,27 @@ export function App() {
     setAuthError('');
     try {
       const result = await api('auth/session'); setMailMode(result.mailMode);
-      if (result.user) { const saved = await api('mistakes'); setMistakes(saved.mistakes); }
+      if (result.user) { const saved = await api('mistakes'); setMistakes(saved.mistakes); setMastered(saved.mastered || {}); }
       rememberAccount(result.user); setUser(result.user); setAuthReady(true);
     } catch (e) { setAuthError(e.message); }
   }
   useEffect(() => { initialize(); }, []);
   async function loggedIn(nextUser) {
     rememberAccount(nextUser);
-    const saved = await api('mistakes'); setMistakes(saved.mistakes); setUser(nextUser); setSyncError('');
+    const saved = await api('mistakes'); setMistakes(saved.mistakes); setMastered(saved.mastered || {}); setUser(nextUser); setSyncError('');
     setEditingProfile(false);
     if (nextUser.role === 'admin') navigate('admin'); else navigate('home');
   }
   async function logout() {
-    if (mutation.current || !window.confirm("确认退登")) return;
-    try { await api('auth/logout', {}); setUser(null); setMistakes({}); setSyncError(''); setEditingProfile(false); }
+    if (mutation.current || !window.confirm(translate("确认退登"))) return;
+    try { await api('auth/logout', {}); setUser(null); setMistakes({}); setMastered({}); setSyncError(''); setEditingProfile(false); }
     catch (e) { setSyncError(e.message); }
   }
   async function saveMistakes(path, body, method) {
     mutation.current++; setSaving(true); setSyncError('');
     const operation = saveQueue.current.then(async () => {
-      try { const result = await api(path, body, method); setMistakes(result.mistakes); return true; }
-      catch (e) { setSyncError(e.message); if (e.status === 401) { setUser(null); setMistakes({}); } return false; }
+      try { const result = await api(path, body, method); setMistakes(result.mistakes); setMastered(result.mastered || {}); return true; }
+      catch (e) { setSyncError(e.message); if (e.status === 401) { setUser(null); setMistakes({}); setMastered({}); } return false; }
       finally { mutation.current--; setSaving(mutation.current > 0); }
     });
     saveQueue.current = operation;
@@ -131,18 +134,23 @@ export function App() {
   useEffect(() => { enableActivity(user?.role === 'student' && user.profileComplete); return () => enableActivity(false); }, [user?.id, user?.profileComplete]);
   const [page, setPage] = useState(() => readRoute(location.hash).page);
   const [language, setLanguage] = useState(() => { try { const saved = localStorage.getItem("dse-physics-language-v1"); return ["eng", "chn"].includes(saved) ? saved : "chn"; } catch { return "chn"; } });
+  setUiLanguage(language);
   const [dark, setDark] = useState(() => document.documentElement.classList.contains("dark"));
   const [mistakes, setMistakes] = useState({});
+  const [mastered, setMastered] = useState({});
+  const [askTarget, setAskTarget] = useState(null);
+  const askTeacher = (kind, reference) => { setAskTarget({kind,reference:String(reference)}); navigate('ask'); };
+  const setProgress = (keys,status) => saveMistakes('progress',{keys,status},'PUT');
   const lastPaper = useRef(readRoute(location.hash).question || readSaved('dse-physics-last-question-v1', ''));
   const [paperTarget, setPaperTarget] = useState(() => readRoute(location.hash).question || '');
   const [paperDirectoryVersion, setPaperDirectoryVersion] = useState(0);
-  const [knowledgeTarget, setKnowledgeTarget] = useState(null);
+  const [knowledgeTarget, setKnowledgeTarget] = useState(() => Number(new URLSearchParams(location.hash.split("?")[1]).get("knowledge")) || null);
   const [paperQuery, setPaperQuery] = useState("");
   useEffect(() => { if (user?.profileComplete) track('page_view', editingProfile ? 'profile' : page); }, [page, editingProfile, user?.id, user?.profileComplete]);
   const dataReady = Boolean(window.DSE_SITE_DATA && window.DSE_TEXTBOOK_DATA && window.DSE_STATISTICS);
   const navigate = useCallback((next, question = '') => { setPage(next); if (next !== "papers") setPaperQuery(""); if (next === 'papers') { setPaperTarget(question); if (!question) setPaperDirectoryVersion(v => v + 1); } const hash = pageHash(next, question); if (location.hash !== hash) history.pushState({ page: next }, "", hash); window.scrollTo({ top: 0, behavior: "instant" }); }, []);
   useEffect(() => { const handler = () => { const route = readRoute(location.hash); setPage(route.page); if (route.page === 'papers') { setPaperTarget(route.question || ''); if (!route.question) setPaperDirectoryVersion(v => v + 1); } }; addEventListener("popstate", handler); addEventListener('hashchange', handler); return () => { removeEventListener("popstate", handler); removeEventListener('hashchange', handler); }; }, []);
-  useEffect(() => { try { localStorage.setItem("dse-physics-language-v1", language); } catch { /* Reading remains available in private browsers. */ } document.documentElement.lang = "zh-CN"; }, [language]);
+  useEffect(() => { try { localStorage.setItem("dse-physics-language-v1", language); } catch { /* Reading remains available in private browsers. */ } document.documentElement.lang = language === "eng" ? "en" : "zh-CN"; }, [language]);
   const toggleDark = () => { const next = !dark; setDark(next); document.documentElement.classList.toggle("dark", next); try { localStorage.setItem(THEME_STORAGE_KEY, next ? "dark" : "light"); } catch { /* Session-only preference. */ } };
   const setMistake = (key, marked) => saveMistakes('mistakes', { key, marked }, 'PUT');
   const openPaper = (key) => { lastPaper.current = key; navigate("papers", key); };
@@ -153,8 +161,8 @@ export function App() {
   const clearKnowledgeTarget = useCallback(() => setKnowledgeTarget(null), []);
   if (page === 'admin') { location.replace('/admin.html'); return null; }
   if (!authReady) return <div className="account-loading"><p role={authError ? 'alert' : 'status'}>{authError || '正在加载账号…'}</p>{authError && <Button onClick={initialize}>重试连线</Button>}</div>;
-  if (!user) return <LoginView onLogin={loggedIn} mailMode={mailMode} />;
+  if (!user) return <LoginView language={language} setLanguage={setLanguage} onLogin={loggedIn} mailMode={mailMode} />;
   if (user.role === 'student' && (!user.profileComplete || editingProfile)) return <MembershipProvider userId={user.id}><ProfileView logoutError={syncError} key={user.id} user={user} mistakes={mistakes} language={language} openPaper={key => { setEditingProfile(false); openPaper(key); }} openKnowledge={sequence => { setEditingProfile(false); openKnowledge(sequence); }} onSaved={next => { setUser(next); setEditingProfile(false); }} onLogout={logout} onCancel={user.profileComplete ? () => { setEditingProfile(false); navigate("home"); } : undefined} /></MembershipProvider>;
   if (!dataReady) return <div className="fatal-state">Study data could not be loaded.</div>;
-  return <MembershipProvider userId={user.id}><div className="app-shell"><a className="skip-link" href="#main-content" onClick={(e) => { e.preventDefault(); document.getElementById("main-content")?.focus(); }}>{"跳至主要内容"}</a><Sidebar focusTimer={focusTimer} page={page} navigate={navigate} dark={dark} toggleDark={toggleDark} language={language} mistakeCount={Object.keys(mistakes).length} /><div className="app-main"><Topbar user={user} onSelectQuestion={openPaper} language={language} setLanguage={setLanguage} submitSearch={submitSearch} page={page} /><div className="account-bar"><MembershipStatus/>{user.avatarUrl && <img className="account-avatar" src={user.avatarUrl} alt="我的头像" />}<span>{user.role === "admin" ? "开发者" : user.nickname || user.email}</span>{user.role === "student" && <button className="account-settings" disabled={saving} onClick={() => setEditingProfile(true)}><Settings aria-hidden="true" />个人设置</button>}{saving && <span role="status">正在保存…</span>}{user.role === "admin" && <button onClick={() => navigate("admin")}>统计后台</button>}{user.role === "admin" && <button disabled={saving} onClick={logout}>退出登录</button>}</div><main id="main-content" tabIndex={-1} className="content"><PomodoroView timer={focusTimer} language={language} visible={page === "focus"} />{syncError && <p className="account-error" role="alert">{syncError}</p>}{legacy.length > 0 && user.role === 'student' && <div className="import-banner"><span>此浏览器有 {legacy.length} 道旧错题。确认属于自己后，可导入目前账号。</span><Button disabled={saving} onClick={importLegacy}>导入我的错题</Button><Button variant="ghost" onClick={() => setLegacy([])}>稍后处理</Button></div>}{page === 'admin' && (user.role === 'admin' ? <AdminView openPaper={openPaper} openKnowledge={openKnowledge} /> : <p>此页面只限开发者存取。</p>)}{(page === "activating" || page === "member-success") && <MemberWelcome navigate={navigate} activating={page === "activating"}/>} {page === "membership" && <SubscriptionView navigate={navigate}/>} {(page === "payment" || page === "receipt") && <PaymentView navigate={navigate} user={user} uploadPage={page === "receipt"}/>} {page === "home" && <HomeView language={language} navigate={navigate} mistakeCount={Object.keys(mistakes).length} />}{page === "papers" && <PapersView directoryVersion={paperDirectoryVersion} onDirectory={() => navigate("papers")} onYearOpen={openPaper} language={language} mistakes={mistakes} setMistake={setMistake} targetKey={paperTarget} clearTarget={clearPaperTarget} initialQuery={paperQuery} onQuestionChange={rememberQuestion} openKnowledge={openKnowledge} />}{page === "textbook" && <TextbookView language={language} targetSequence={knowledgeTarget} clearTarget={clearKnowledgeTarget} openPaper={openPaper} openKnowledge={openKnowledge} />}{page === "mistakes" && <MistakesView manageTrash={(action, keys) => saveMistakes('mistakes/trash', { action, keys }, 'POST')} language={language} mistakes={mistakes} setMistake={setMistake} openPaper={openPaper} browsePapers={() => navigate("papers")} />}</main></div><nav className="mobile-nav" aria-label="Mobile navigation">{NAVIGATION.map(({ id, zh, en, icon: Icon }) => <button key={id} aria-current={page === id ? "page" : undefined} className={cn(page === id && "active")} onClick={() => navigate(id)}><Icon /><span>{zh.replace("库", "")}</span></button>)}</nav></div></MembershipProvider>;
+  return <MembershipProvider userId={user.id}><div className="app-shell"><a className="skip-link" href="#main-content" onClick={(e) => { e.preventDefault(); document.getElementById("main-content")?.focus(); }}>{"跳至主要内容"}</a><Sidebar focusTimer={focusTimer} page={page} navigate={navigate} dark={dark} toggleDark={toggleDark} language={language} mistakeCount={Object.keys(mistakes).length} /><div className="app-main"><Topbar user={user} onSelectQuestion={openPaper} language={language} setLanguage={setLanguage} submitSearch={submitSearch} page={page} /><div className="account-bar"><MembershipStatus/>{user.avatarUrl && <img className="account-avatar" src={user.avatarUrl} alt="我的头像" />}<span>{user.role === "admin" ? "开发者" : user.nickname || user.email}</span>{user.role === "student" && <button className="account-settings" disabled={saving} onClick={() => setEditingProfile(true)}><Settings aria-hidden="true" />个人设置</button>}{saving && <span role="status">正在保存…</span>}{user.role === "admin" && <button onClick={() => navigate("admin")}>统计后台</button>}{user.role === "admin" && <button disabled={saving} onClick={logout}>退出登录</button>}</div><main id="main-content" tabIndex={-1} className="content"><PomodoroView timer={focusTimer} language={language} visible={page === "focus"} />{syncError && <p className="account-error" role="alert">{syncError}</p>}{legacy.length > 0 && user.role === 'student' && <div className="import-banner"><span>此浏览器有 {legacy.length} 道旧错题。确认属于自己后，可导入目前账号。</span><Button disabled={saving} onClick={importLegacy}>导入我的错题</Button><Button variant="ghost" onClick={() => setLegacy([])}>稍后处理</Button></div>}{page === 'admin' && (user.role === 'admin' ? <AdminView openPaper={openPaper} openKnowledge={openKnowledge} /> : <p>此页面只限开发者存取。</p>)}{(page === "activating" || page === "member-success") && <MemberWelcome navigate={navigate} activating={page === "activating"}/>} {page === "membership" && <SubscriptionView navigate={navigate}/>} {(page === "payment" || page === "receipt") && <PaymentView navigate={navigate} user={user} uploadPage={page === "receipt"}/>} {page === "ask" && <AskTeacherView language={language} target={askTarget} openPaper={openPaper} openKnowledge={openKnowledge}/>} {page === "home" && <HomeView language={language} navigate={navigate} mistakeCount={Object.keys(mistakes).length} />}{page === "papers" && <PapersView mastered={mastered} setProgress={setProgress} saving={saving} askTeacher={askTeacher} directoryVersion={paperDirectoryVersion} onDirectory={() => navigate("papers")} onYearOpen={openPaper} language={language} mistakes={mistakes} setMistake={setMistake} targetKey={paperTarget} clearTarget={clearPaperTarget} initialQuery={paperQuery} onQuestionChange={rememberQuestion} openKnowledge={openKnowledge} />}{page === "textbook" && <TextbookView askTeacher={askTeacher} language={language} targetSequence={knowledgeTarget} clearTarget={clearKnowledgeTarget} openPaper={openPaper} openKnowledge={openKnowledge} />}{page === "mistakes" && <MistakesView setProgress={setProgress} saving={saving} manageTrash={(action, keys) => saveMistakes('mistakes/trash', { action, keys }, 'POST')} language={language} mistakes={mistakes} setMistake={setMistake} openPaper={openPaper} browsePapers={() => navigate("papers")} />}</main></div><nav className="mobile-nav" aria-label="Mobile navigation">{NAVIGATION.map(({ id, zh, en, icon: Icon }) => <button key={id} aria-current={page === id ? "page" : undefined} className={cn(page === id && "active")} onClick={() => navigate(id)}><Icon /><span>{language === "eng" ? ({home:"Home",papers:"Papers",textbook:"Topics",mistakes:"Mistakes",membership:"Member",ask:"Teacher",focus:"Focus"}[id]) : zh.replace("库", "")}</span></button>)}</nav></div></MembershipProvider>;
 }

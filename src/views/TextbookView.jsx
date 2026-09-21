@@ -15,7 +15,7 @@ import { useContentMotion } from "../lib/use-content-motion";
 
 const BOOK_TONES = ["#a74050", "#287248", "#906e0e", "#396fd0", "#aa5722", "#576577", "#576577", "#576577", "#576577"];
 
-function PointCard({ point, language, openPaper }) {
+function PointCard({ point, language, openPaper, askTeacher }) {
   const en = language === "eng";
   const membership = useMembership();
   const [copied, setCopied] = useState(false);
@@ -39,7 +39,7 @@ function PointCard({ point, language, openPaper }) {
       </div>
       {copyError && <p role="status">{en ? 'Clipboard is unavailable.' : '无法使用剪贴簿。'}</p>}
       {(point.card_title || point.title) && <h3 className="textbook-card-title">{point.card_title || point.title}</h3>}
-      <TextbookContent point={point} language={language} />
+      <Button variant="outline" onClick={()=>askTeacher('knowledge',point.sequence)}>{en ? 'Ask a teacher' : '问老师'}</Button><TextbookContent point={point} language={language} />
       {membership.active && !!practice.length && <details className="knowledge-questions"><summary>{en ? "Further practice / background applications" : "延伸练习／背景应用"} · {practice.length}{en ? " (excluded from this card’s direct question frequency)" : "（不计本卡直接题频）"}</summary><div>{practice.map(key => <button key={key} onClick={() => openPaper(key)}>{questionLabelFromKey(key)}</button>)}</div></details>}
       <div className="knowledge-meta"><span>{books.length > 1 ? books.join(' / ') : chapters.join(' / ')}</span></div>
       {!membership.active && <MemberNotice>{en ? "Members only · Related questions" : "会员专享 · 知识点关联"}</MemberNotice>}{membership.active && !!questionKeys.length && <div className="knowledge-questions"><span><FileQuestion /> {en ? "Related past-paper questions" : "相关真题"} · {questionKeys.length}</span><div>{questionKeys.slice(0, 10).map((key) => <button key={key} onClick={() => openPaper(key)}>{questionLabelFromKey(key)}</button>)}</div>{questionKeys.length > 10 && <details><summary>{language === 'eng' ? `Show ${questionKeys.length - 10} more` : `展开其余 ${questionKeys.length - 10} 题`}</summary><div>{questionKeys.slice(10).map(key => <button key={key} onClick={() => openPaper(key)}>{questionLabelFromKey(key)}</button>)}</div></details>}</div>}
@@ -48,7 +48,7 @@ function PointCard({ point, language, openPaper }) {
   );
 }
 
-export function TextbookView({ language, targetSequence, clearTarget, openPaper }) {
+export function TextbookView({ askTeacher, language, targetSequence, clearTarget, openPaper }) {
   const en = language === "eng";
   const books = useMemo(() => booksFor(language), [language]);
   const [selectedBook, setSelectedBook] = useState(null);
@@ -109,7 +109,7 @@ export function TextbookView({ language, targetSequence, clearTarget, openPaper 
       <div className="knowledge-search-wrap"><Search /><Input ref={searchRef} value={query} onChange={(event) => setQuery(event.target.value)} placeholder={en ? "Search all knowledge points" : "搜寻全部知识点"} />{query && <button onClick={() => setQuery("")}><X /></button>}</div>
 
       <div ref={panelRef} className="knowledge-transition">
-      {query ? <section className="knowledge-search-results"><div className="directory-heading"><div><h2>{searchCards.length} {en ? "results" : "个结果"}</h2></div></div><div className="knowledge-card-list">{searchCards.map((point) => <PointCard key={point.sequence} point={point} language={language} openPaper={openPaper} />)}</div></section>
+      {query ? <section className="knowledge-search-results"><div className="directory-heading"><div><h2>{searchCards.length} {en ? "results" : "个结果"}</h2></div></div><div className="knowledge-card-list">{searchCards.map((point) => <PointCard askTeacher={askTeacher} key={point.sequence} point={point} language={language} openPaper={openPaper} />)}</div></section>
       : selectedBook === null ? <section className="book-directory">
         <div className="directory-heading"><div><h2>{en ? "Choose a textbook" : "选择课本"}</h2></div><span>{books.length} {en ? "books" : "册"}</span></div>
         <div className="book-grid">{books.map((book, index) => <button key={book.name} className="book-card" style={{ "--book-tone": BOOK_TONES[index] }} onClick={() => selectBook(index)}><span className="book-number">{String(index + 1).padStart(2, "0")}</span><span className="book-icon"><BookOpen /></span><strong>{book.name}</strong><small>{new Set(book.points.map((point) => point.code)).size} {en ? "chapters" : "章"} · {book.points.length} {en ? "knowledge points" : "个知识点"}</small></button>)}</div>
@@ -121,7 +121,7 @@ export function TextbookView({ language, targetSequence, clearTarget, openPaper 
           <p className="chapter-label">{en ? "Chapters" : "章节"}</p>
           <div className="chapter-list"><button className={cn(chapter === "all" && "active")} onClick={() => setChapter("all")}><span>{en ? "All chapters" : "全部章节"}</span><small>{activeBook.points.length}</small></button>{chapters.map(([code, name]) => <button key={code} className={cn(chapter === code && "active")} onClick={() => setChapter(code)}><span><b>{code}</b>{name}</span><small>{activeBook.points.filter((point) => point.code === code).length}</small></button>)}</div>
         </aside>
-        <section ref={chapterRef} className="knowledge-browser-content"><div className="knowledge-browser-heading"><p>{activeBook.name}</p><h2>{chapter === "all" ? (en ? "All knowledge points" : "全部知识点") : chapters.find(([code]) => code === chapter)?.[1]}</h2><span>{visibleCards.length} {en ? "cards" : "张卡片"}</span>{chapterPdf && <div className="chapter-download"><Button asChild variant="outline"><a href={chapterPdf.url} download={chapterPdf.filename}><Download aria-hidden="true" />{en ? `Download ${chapter} textbook PDF` : `下载 ${chapter} 课本 PDF`}</a></Button><small>{language === 'chn' ? '中文版' : 'English edition'} · {(chapterPdf.bytes / 1024 / 1024).toFixed(1)} MB</small></div>}</div><div className="knowledge-card-list">{visibleCards.map((point) => <PointCard key={point.sequence} point={point} language={language} openPaper={openPaper} />)}</div></section>
+        <section ref={chapterRef} className="knowledge-browser-content"><div className="knowledge-browser-heading"><p>{activeBook.name}</p><h2>{chapter === "all" ? (en ? "All knowledge points" : "全部知识点") : chapters.find(([code]) => code === chapter)?.[1]}</h2><span>{visibleCards.length} {en ? "cards" : "张卡片"}</span>{chapterPdf && <div className="chapter-download"><Button asChild variant="outline"><a href={chapterPdf.url} download={chapterPdf.filename}><Download aria-hidden="true" />{en ? `Download ${chapter} textbook PDF` : `下载 ${chapter} 课本 PDF`}</a></Button><small>{language === 'chn' ? '中文版' : 'English edition'} · {(chapterPdf.bytes / 1024 / 1024).toFixed(1)} MB</small></div>}</div><div className="knowledge-card-list">{visibleCards.map((point) => <PointCard askTeacher={askTeacher} key={point.sequence} point={point} language={language} openPaper={openPaper} />)}</div></section>
       </div>}
       </div>
     </div>

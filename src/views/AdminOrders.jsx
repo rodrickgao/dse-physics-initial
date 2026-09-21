@@ -1,7 +1,8 @@
+import { getUiLanguage } from '../lib/ui-translations';
 import { useEffect, useRef, useState } from 'react';
 import { adminApi as api } from '../lib/admin-api';
 
-const date = value => new Date(value).toLocaleString('zh-CN');
+const date = value => new Date(value).toLocaleString(getUiLanguage()==='eng'?'en-HK':'zh-CN');
 export function AdminOrders({ active, onOpen, onChanged }) {
   const [data, setData] = useState({pending: [], recent: []}), [error, setError] = useState(''), [busy, setBusy] = useState(false);
   const [rejecting, setRejecting] = useState(null), [reason, setReason] = useState('');

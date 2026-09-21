@@ -1,3 +1,4 @@
+import { getUiLanguage } from '../lib/ui-translations';
 import { clearSearchIndexes } from '../lib/question-search-loader';
 import { createContext, useContext, useEffect, useState } from 'react';
 import { api } from '../lib/api';
@@ -34,7 +35,7 @@ export function MembershipProvider({ userId, children }) {
 }
 export function MembershipStatus() {
   const membership = useMembership();
-  return <span className="membership-status">{membership.active ? `会员至 ${new Date(membership.endsAt).toLocaleDateString('zh-HK')}` : membership.status === 'revoked' ? '会员已暂停' : '普通账号'}</span>;
+  return <span className="membership-status">{membership.active ? `会员至 ${new Date(membership.endsAt).toLocaleDateString(getUiLanguage() === 'eng' ? 'en-HK' : 'zh-HK')}` : membership.status === 'revoked' ? '会员已暂停' : '普通账号'}</span>;
 }
 export function MemberNotice({ children }) {
   return <div className="member-notice">{children || '会员专享 · 知识点关联'}</div>;

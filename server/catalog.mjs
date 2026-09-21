@@ -25,5 +25,6 @@ for (const year of data.DSE_SITE_DATA.years.filter(y => y.language === 'chn')) {
 }
 export function pointInfo(id) {
   const p = points.get(id);
-  return { sequence: id, number: p.number, title: p.title || p.content || p.chapter, chapter: p.chapter };
+  const en = data.DSE_TEXTBOOK_DATA.languages.eng.find(point => Number(point.sequence) === Number(id));
+  return { sequence: id, number: p.number, titleEn: en?.card_title || en?.title || en?.chapter, title: p.card_title || p.title || p.content || p.chapter, chapter: p.chapter };
 }

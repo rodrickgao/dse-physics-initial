@@ -26,7 +26,7 @@ export function createManagement({ db, clock, fail, transaction }) {
     if (body.action === 'reasoning_view' && !membership(user.id).active) fail(403, '詳細思路需要有效會員。');
     if (['question_view', 'answer_view', 'reasoning_view'].includes(body.action) && !questions.has(body.target)) fail(400, '題目不存在。');
     if (body.action === 'knowledge_view' && !points.has(Number(body.target))) fail(400, '知識點不存在。');
-    if (body.action === 'page_view' && !['home','papers','textbook','mistakes','focus','profile','membership','payment','receipt','activating','member-success'].includes(body.target)) fail(400, '頁面不存在。');
+    if (body.action === 'page_view' && !['home','ask','papers','textbook','mistakes','focus','profile','membership','payment','receipt','activating','member-success'].includes(body.target)) fail(400, '頁面不存在。');
     record(user.id, body.action, body.target, body.eventId);
     return { ok: true };
   }

@@ -34,7 +34,8 @@ function copyStudyAssets() {
 export default defineConfig({
   base: "./",
   server: { host: "127.0.0.1", fs: { deny: [".env", ".env.*", "**/.git/**", "**/.local/**", "**/server/**", "**/*.sqlite*", "**/*.pem", "**/*.key"] } },
-  plugins: [react(), tailwindcss(), copyStudyAssets()],
+  resolve: { alias: { "@dse/localized/jsx-runtime": resolve(process.cwd(), "src/lib/localized-jsx-runtime.js"), "@dse/localized/jsx-dev-runtime": resolve(process.cwd(), "src/lib/localized-jsx-runtime.js") } },
+  plugins: [react({ jsxImportSource: "@dse/localized" }), tailwindcss(), copyStudyAssets()],
   build: {
     rollupOptions: { input: { main: resolve(process.cwd(), 'index.html'), admin: resolve(process.cwd(), 'admin.html') } },
     outDir: "dist",

@@ -1,3 +1,4 @@
+import { getUiLanguage } from '../lib/ui-translations';
 import { Check, Crown, ArrowLeft, QrCode } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { api } from '../lib/api';
@@ -12,7 +13,7 @@ export function SubscriptionView({ navigate }) {
   return <div className="subscription-view page-enter"><div className="view-heading"><h1>开通会员</h1></div>
     <div className="subscription-plans">
       <section className="subscription-plan"><span className="plan-tag">注册邮箱即可使用</span><h2>免费版</h2><div className="plan-price"><span>¥</span><strong>0</strong></div><Features items={freeFeatures}/><Button variant="outline" disabled>{membership.active ? '已包含在会员权益中' : '当前版本'}</Button></section>
-      <section className="subscription-plan featured"><span className="plan-tag"><Crown aria-hidden="true"/>会员版</span><h2>学懂每一道题</h2><div className="plan-price"><span>¥</span><strong>59</strong><span>/ 月</span></div><Features items={['免费版全部功能', '每道题的详细思路解答', '题目与知识点双向关联']}/>{membership.active && <p className="plan-status">会员有效至 {new Date(membership.endsAt).toLocaleDateString('zh-CN')}</p>}<Button size="lg" disabled={membership.active} onClick={() => navigate('payment')}>{membership.active ? '已订阅' : '订阅'}</Button></section>
+      <section className="subscription-plan featured"><span className="plan-tag"><Crown aria-hidden="true"/>会员版</span><h2>学懂每一道题</h2><div className="plan-price"><span>¥</span><strong>59</strong><span>/ 月</span></div><Features items={['免费版全部功能', '每道题的详细思路解答', '题目与知识点双向关联']}/>{membership.active && <p className="plan-status">会员有效至 {new Date(membership.endsAt).toLocaleDateString(getUiLanguage() === 'eng' ? 'en-HK' : 'zh-CN')}</p>}<Button size="lg" disabled={membership.active} onClick={() => navigate('payment')}>{membership.active ? '已订阅' : '订阅'}</Button></section>
     </div>
   </div>;
 }

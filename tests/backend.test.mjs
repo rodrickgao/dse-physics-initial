@@ -35,6 +35,42 @@ async function register(client, email) {
   return { ...login, data: profile.data, code: sent.data.developmentCode };
 }
 
+test('mastery and mistakes are mutually exclusive, atomic and account-scoped', async () => {
+ const f=await fixture();
+ try{
+  const a=f.client(), b=f.client(); await register(a,'mastery@example.com'); await register(b,'other@example.com');
+  const keys=[...questions.keys()].slice(0,36);
+  let r=await a('progress',{keys,status:'mastered'},'PUT');assert.equal(r.status,200);assert.equal(Object.keys(r.data.mastered).length,36);assert.equal(Object.keys(r.data.mistakes).length,0);
+  r=await a('mistakes',{key:keys[0],marked:true},'PUT');assert.ok(r.data.mistakes[keys[0]]);assert.ok(!r.data.mastered[keys[0]]);
+  r=await a('progress',{keys,status:'mistake'},'PUT');assert.equal(Object.keys(r.data.mastered).length,0);assert.equal(Object.keys(r.data.mistakes).length,36);
+  assert.equal((await a('progress',{keys:[keys[0],'unknown'],status:'mastered'},'PUT')).status,400);
+  assert.equal(Object.keys((await a('mistakes')).data.mistakes).length,36);
+  r=await a('progress',{keys,status:'mastered'},'PUT');assert.equal(Object.keys(r.data.mistakes).length,0);
+  r=await a('mistakes/trash',{action:'restore',keys:[keys[0]]});assert.ok(r.data.mistakes[keys[0]]);assert.ok(!r.data.mastered[keys[0]]);
+  assert.deepEqual((await b('mistakes')).data,{mistakes:{},mastered:{}});
+  r=await a('progress',{keys,status:'clear'},'PUT');assert.deepEqual(r.data,{mistakes:{},mastered:{}});
+ }finally{await f.close();}
+});
+
+test('teacher questions preserve exact context and replies are private and admin-only', async()=>{
+ const f=await fixture();
+ try{
+  const a=f.client(),b=f.client(),admin=f.client(),anonymous=f.client();await register(a,'ask@example.com');await register(b,'privacy@example.com');await admin('admin/login',{key:'test-admin-key'});
+  const key=[...questions.keys()][0];
+  assert.equal((await anonymous('tutoring')).status,401);
+  assert.equal((await a('tutoring',{kind:'question',reference:'bad',message:'Help'})).status,400);
+  for(const body of [{kind:'question',reference:key,message:'Why this option?'},{kind:'knowledge',reference:'384',message:'How do these sizes compare?'},{kind:'general',reference:'',message:'How should I pace my study?'}])assert.equal((await a('tutoring',body)).status,200);
+  const rows=(await admin('admin/tutoring')).data.rows;assert.equal(rows.length,3);assert.equal(rows.find(r=>r.kind==='question').context.key,key);assert.equal(rows.find(r=>r.kind==='knowledge').context.sequence,384);
+  assert.equal((await b('tutoring')).data.rows.length,0);assert.equal((await a('admin/tutoring')).status,403);
+  assert.equal((await a('admin/tutoring/reply',{id:rows[0].id,reply:'unauthorized'})).status,403);
+  assert.equal((await admin('admin/tutoring/reply',{id:rows[0].id,reply:'  '})).status,400);
+  assert.equal((await admin('admin/tutoring/reply',{id:rows[0].id,reply:'Start with the physical principle.'})).status,200);
+  assert.equal((await a('tutoring')).data.rows.find(r=>r.id===rows[0].id).reply,'Start with the physical principle.');
+  assert.equal((await b('tutoring')).data.rows.length,0);
+  assert.equal((await admin('admin/tutoring/reply',{id:rows[0].id,reply:'Overwrite'})).status,409);
+ }finally{await f.close();}
+});
+
 test('password enrollment requires verified session, confirmation, hashing and rate-limited login', async () => {
   const f = await fixture();
   try {

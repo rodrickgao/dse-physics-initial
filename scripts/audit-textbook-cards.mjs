@@ -52,7 +52,7 @@ for (const [src, asset] of uniqueImages) {
   assert.equal(png.readUInt32BE(20), asset.height, src + ': height');
   assert.ok(asset.width > 30 && asset.height > 30, src + ': empty crop');
 }
-assert.equal(uniqueImages.size, 776);
+assert.equal(uniqueImages.size, 820);
 assert.equal(figures.length, 46);
 const point = id => data.languages.eng.find(p => p.sequence === id);
 assert.equal(point(31).formula, 'pV\\propto T');
@@ -67,4 +67,4 @@ assert.ok(point(307).formula_notes.includes('no photoemission'));
 assert.ok(point(335).formula_notes.includes('v = −d_uncorrected'));
 assert.ok(point(350).formula.includes('\\frac12'));
 assert.match(point(198).content, /conventional current/);
-console.log('PASS: 730 bilingual cards, 410 formula cards, ' + data.review.expressions * 2 + ' display equations, 776 PNG assets and preserved classification/source metadata.');
+console.log('PASS: 820 bilingual knowledge records, ' + data.review.expressions * 2 + ' display equations, 820 PNG assets and preserved classification/source metadata.');

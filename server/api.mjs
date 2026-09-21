@@ -1,3 +1,4 @@
+import { createTutoring } from './tutoring.mjs';
 import { DatabaseSync } from 'node:sqlite';
 import { createHash, randomBytes, randomInt, timingSafeEqual } from 'node:crypto';
 import { mkdirSync, existsSync, readFileSync, writeFileSync } from 'node:fs';
@@ -30,6 +31,7 @@ export function createApi({ directory, mailer, clock = Date.now, adminKey: suppl
     CREATE TABLE IF NOT EXISTS codes(email TEXT PRIMARY KEY, digest TEXT NOT NULL, salt TEXT NOT NULL, expires INTEGER NOT NULL, attempts INTEGER NOT NULL DEFAULT 0, sent_at INTEGER NOT NULL);
     CREATE TABLE IF NOT EXISTS sessions(digest TEXT PRIMARY KEY, user_id INTEGER NOT NULL REFERENCES users(id), expires INTEGER NOT NULL);
     CREATE TABLE IF NOT EXISTS mistakes(user_id INTEGER NOT NULL REFERENCES users(id), question_key TEXT NOT NULL, marked_at INTEGER NOT NULL, PRIMARY KEY(user_id,question_key));
+    CREATE TABLE IF NOT EXISTS mastered(user_id INTEGER NOT NULL REFERENCES users(id), question_key TEXT NOT NULL, marked_at INTEGER NOT NULL, PRIMARY KEY(user_id,question_key));
     CREATE TABLE IF NOT EXISTS events(id INTEGER PRIMARY KEY, user_id INTEGER NOT NULL REFERENCES users(id), question_key TEXT NOT NULL, action TEXT NOT NULL, at INTEGER NOT NULL);
     CREATE TABLE IF NOT EXISTS focus_sessions(user_id INTEGER NOT NULL REFERENCES users(id), id TEXT NOT NULL, elapsed_ms INTEGER NOT NULL, PRIMARY KEY(user_id,id));
     CREATE TABLE IF NOT EXISTS limits(bucket TEXT NOT NULL, at INTEGER NOT NULL);
@@ -45,6 +47,9 @@ export function createApi({ directory, mailer, clock = Date.now, adminKey: suppl
   const transaction = fn => { db.exec('BEGIN IMMEDIATE'); try { const result = fn(); db.exec('COMMIT'); return result; } catch (e) { db.exec('ROLLBACK'); throw e; } };
   const management = createManagement({ db, clock, fail, transaction });
   const archive = createMistakeArchive({ db, clock, fail, transaction, record: management.record, questions });
+  const tutoring = createTutoring({ db, clock, fail });
+  const mastered = userId => Object.fromEntries(all('SELECT question_key,marked_at FROM mastered WHERE user_id=?',userId).map(r => [r.question_key,{markedAt:new Date(r.marked_at).toISOString()}]));
+  const progress = userId => ({ mistakes:marked(userId), mastered:mastered(userId) });
   const payments = createPaymentOrders({ db, clock, fail, transaction, management });
   function limit(bucket, count, interval) {
     run('DELETE FROM limits WHERE at < ?', clock() - 3600000);
@@ -72,6 +77,7 @@ export function createApi({ directory, mailer, clock = Date.now, adminKey: suppl
   }
   function setMarked(userId, key, value) {
     if (!questions.has(key)) fail(400, '題目不存在。');
+    if (value) run('DELETE FROM mastered WHERE user_id=? AND question_key=?',userId,key);
     const exists = get('SELECT 1 FROM mistakes WHERE user_id=? AND question_key=?', userId, key);
     if (Boolean(exists) === value) return;
     if (value) run('INSERT INTO mistakes VALUES(?,?,?)', userId, key, clock());
@@ -167,6 +173,8 @@ export function createApi({ directory, mailer, clock = Date.now, adminKey: suppl
         if (user.role !== 'admin' && !management.membership(user.id).active) fail(403, '知識點關聯需要有效會員。');
         return send({ network: premiumNetwork });
       }
+      if (path === '/api/admin/tutoring' && req.method === 'GET') return send({ rows:tutoring.list() });
+      if (path === '/api/admin/tutoring/reply' && req.method === 'POST') return send(tutoring.reply(user,body));
       if (path === '/api/admin/overview' && req.method === 'GET') return send(management.overview());
       if (path === '/api/admin/activity' && req.method === 'GET') return send(management.activity(url));
       if (path === '/api/admin/membership-history' && req.method === 'GET') return send({ rows: management.history(Number(url.searchParams.get('userId')) || 0) });
@@ -212,20 +220,34 @@ export function createApi({ directory, mailer, clock = Date.now, adminKey: suppl
         }
         return send({ sessions: all('SELECT id,elapsed_ms AS elapsedMs FROM focus_sessions WHERE user_id=?', user.id) });
       }
-      if (path === '/api/mistakes' && req.method === 'GET') return send({ mistakes: marked(user.id) });
+      if (path === '/api/tutoring' && req.method === 'GET') return send({ rows:tutoring.list(user.id) });
+      if (path === '/api/tutoring' && req.method === 'POST') {
+        limit(`tutoring:${user.id}`,20,3600000); return send(tutoring.submit(user.id,body));
+      }
+      if (path === '/api/progress' && req.method === 'PUT') {
+        if (!Array.isArray(body.keys) || !body.keys.length || body.keys.length>questions.size || body.keys.some(k=>!questions.has(k)) || !['mastered','mistake','clear'].includes(body.status)) fail(400,'请选择有效的题目和学习状态。');
+        transaction(() => { for (const key of new Set(body.keys)) {
+          setMarked(user.id,key,body.status==='mistake');
+          if(body.status==='mastered') run('INSERT INTO mastered VALUES(?,?,?) ON CONFLICT(user_id,question_key) DO UPDATE SET marked_at=excluded.marked_at',user.id,key,clock());
+          else run('DELETE FROM mastered WHERE user_id=? AND question_key=?',user.id,key);
+        }});
+        return send(progress(user.id));
+      }
+      if (path === '/api/mistakes' && req.method === 'GET') return send(progress(user.id));
       if (path === '/api/mistakes/trash' && req.method === 'GET') return send({ trash: archive.list(user.id) });
       if (path === '/api/mistakes/trash' && req.method === 'POST') {
         archive.act(user.id, body);
-        return send({ mistakes: marked(user.id), trash: archive.list(user.id) });
+        run('DELETE FROM mastered WHERE user_id=? AND question_key IN (SELECT question_key FROM mistakes WHERE user_id=?)',user.id,user.id);
+        return send({ ...progress(user.id), trash: archive.list(user.id) });
       }
       if (path === '/api/mistakes' && req.method === 'PUT') {
         if (typeof body.marked !== 'boolean' || typeof body.key !== 'string') fail(400, '錯題格式不正確。');
-        transaction(() => setMarked(user.id, body.key, body.marked)); return send({ mistakes: marked(user.id) });
+        transaction(() => setMarked(user.id, body.key, body.marked)); return send(progress(user.id));
       }
       if (path === '/api/mistakes/import' && req.method === 'POST') {
         if (!Array.isArray(body.keys) || body.keys.length > questions.size || body.keys.some(k => !questions.has(k))) fail(400, '匯入的題目資料不正確。');
         transaction(() => { for (const key of new Set(body.keys)) setMarked(user.id, key, true); });
-        return send({ mistakes: marked(user.id) });
+        return send(progress(user.id));
       }
       if (path === '/api/admin/export' && req.method === 'GET') {
         const generatedAt = new Date(clock()).toISOString();

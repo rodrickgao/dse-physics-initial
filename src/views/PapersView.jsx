@@ -21,7 +21,7 @@ function ScanImages({ yearId, paths, label }) {
   return <div className="scan-stack">{paths.map((path, index) => <img key={path} src={imageUrl(yearId, path)} alt={`${label} ${index + 1}`} loading={index ? "lazy" : "eager"} decoding="async" />)}</div>;
 }
 
-export function PapersView({ directoryVersion, onDirectory, onYearOpen, language, mistakes, setMistake, targetKey, clearTarget, initialQuery = "", openKnowledge, onQuestionChange }) {
+export function PapersView({ mastered = {}, setProgress, saving, askTeacher, directoryVersion, onDirectory, onYearOpen, language, mistakes, setMistake, targetKey, clearTarget, initialQuery = "", openKnowledge, onQuestionChange }) {
   const membership = useMembership();
   const reportedDirectoryVersion = useRef(directoryVersion);
   const [yearOpened, setYearOpened] = useState(Boolean(targetKey));
@@ -30,6 +30,8 @@ export function PapersView({ directoryVersion, onDirectory, onYearOpen, language
   const [yearIndex, setYearIndex] = useState(0);
   const [paperIndex, setPaperIndex] = useState(0);
   const [questionIndex, setQuestionIndex] = useState(0);
+  const [selected, setSelected] = useState([]);
+  useEffect(() => setSelected([]),[yearIndex,paperIndex]);
   const [pickerOpen, setPickerOpen] = useState(false);
   const [query, setQuery] = useState(initialQuery);
   const [resultLimit, setResultLimit] = useState(30);
@@ -126,7 +128,7 @@ export function PapersView({ directoryVersion, onDirectory, onYearOpen, language
         <button className="mobile-picker" aria-expanded={pickerOpen} aria-controls="paper-navigator" onClick={() => setPickerOpen(!pickerOpen)}><span><small>{'选择题目'}</small><strong>{year.year} · {titleForPaper(paper, paperIndex, language)} · {question.label}</strong></span><ChevronDown/></button>
         <aside className="paper-navigator" id="paper-navigator" aria-label={'选题目录'}>
           <div className="navigator-block"><p>{"试卷"}</p><div className="paper-choice-list">{year.papers.map((item, index) => <button key={`${item.title}-${index}`} className={cn(index === paperIndex && "active")} onClick={() => selectPaper(index)}><span>{titleForPaper(item, index, language)}</span><small>{item.questions.length}</small></button>)}</div></div>
-          <div className="navigator-block question-block"><p>{"题目／页数"}</p><div className={cn("question-groups", questionGroups.length > 1 && "sectioned")}>{questionGroups.map((group) => <section className="question-group" key={group.id}>{group.label && <h3>{group.label}</h3>}<div className="question-chip-grid">{group.questions.map(({ item, index }) => { const itemKey = paperIndex < 3 ? networkKey(year.year, paperIndex, questionIdentity(item, index)) : ""; return <button key={`${item.label}-${index}`} className={cn(index === questionIndex && "active", mistakes[itemKey] && "mistake")} onClick={() => selectQuestion(index)}>{item.label.replace("Page ", "P")}</button>; })}</div></section>)}</div></div>
+          {paperIndex < 3 && <div className="paper-bulk"><label><input type="checkbox" checked={selected.length === paper.questions.length} onChange={e => setSelected(e.target.checked ? paper.questions.map((q,i)=>networkKey(year.year,paperIndex,questionIdentity(q,i))) : [])}/>全选本卷</label><span>{selected.length} 道已选</span><Button disabled={saving || !selected.length} onClick={()=>setProgress(selected,'mastered')}>标为已掌握</Button><Button disabled={saving || !selected.length} onClick={()=>setProgress(selected,'mistake')}>标为错题</Button><Button variant="ghost" disabled={saving || !selected.length} onClick={()=>setProgress(selected,'clear')}>清除标记</Button></div>}<div className="navigator-block question-block"><p>{"题目／页数"}</p><div className={cn("question-groups", questionGroups.length > 1 && "sectioned")}>{questionGroups.map((group) => <section className="question-group" key={group.id}>{group.label && <h3>{group.label}</h3>}<div className="question-chip-grid">{group.questions.map(({ item, index }) => { const itemKey = paperIndex < 3 ? networkKey(year.year, paperIndex, questionIdentity(item, index)) : ""; return <div className="question-chip-item" key={`${item.label}-${index}`}>{itemKey && <input type="checkbox" aria-label={`选择 ${item.label}`} checked={selected.includes(itemKey)} onChange={e=>setSelected(current=>e.target.checked ? [...current,itemKey] : current.filter(k=>k!==itemKey))}/>}<button className={cn(index === questionIndex && "active", mistakes[itemKey] && "mistake", mastered[itemKey] && "mastered")} onClick={() => selectQuestion(index)}>{item.label.replace("Page ", "P")}{mastered[itemKey] && " ✓"}</button></div>; })}</div></section>)}</div></div>
         </aside>
         </div>
 
@@ -135,13 +137,13 @@ export function PapersView({ directoryVersion, onDirectory, onYearOpen, language
             <div><p>{year.year} · {titleForPaper(paper, paperIndex, language)}</p><h2>{question.label}</h2></div>
             <div className="question-header-actions">
               <SourceDownload language={language} year={year.year} paper={["paper-1a", "paper-1b", "paper-2"][paperIndex]} />
-              {key && <Button variant={mistakes[key] ? "secondary" : "outline"} onClick={() => setMistake(key, !mistakes[key])}><Star className={cn(mistakes[key] && "fill-current")} />{mistakes[key] ? ("已加入错题") : ("加入错题")}</Button>}
+              {key && <><Button disabled={saving} variant={mastered[key] ? "secondary" : "outline"} aria-pressed={!!mastered[key]} onClick={()=>setProgress([key],mastered[key] ? 'clear' : 'mastered')}>{mastered[key] ? '已掌握' : '标为已掌握'}</Button><Button variant="outline" onClick={()=>askTeacher('question',key)}>问老师</Button></>}{key && <Button disabled={saving} aria-pressed={!!mistakes[key]} variant={mistakes[key] ? "secondary" : "outline"} onClick={() => setMistake(key, !mistakes[key])}><Star className={cn(mistakes[key] && "fill-current")} />{mistakes[key] ? ("已加入错题") : ("加入错题")}</Button>}
               <div className="stepper"><Button variant="outline" size="icon" disabled={questionIndex === 0} onClick={previous} aria-label="Previous"><ArrowLeft /></Button><Button variant="outline" size="icon" disabled={questionIndex === paper.questions.length - 1} onClick={next} aria-label="Next"><ArrowRight /></Button></div>
             </div>
           </header>
           <div className="question-body">
             {paperIndex < 3 ? <StudyQuestion key={`${key}-${language}`} year={year} language={language} questionKey={key} question={question} ScanImages={ScanImages}/> : <ScanImages yearId={year.id} paths={question.question} label={`${year.year} ${question.label}`} />}
-            {!membership.active && <MemberNotice/>}{membership.active && !!network.links?.length && <section className="related-panel"><div><BookOpen /><strong>{"相关课本知识"}</strong></div><div>{network.links.map((link) => <button key={`${link.sequence}-${link.type}`} onClick={() => openKnowledge(link.sequence)}><span>{knowledgeNumber(link.sequence, language)}</span>{knowledgeTitle(link.sequence, language)}{link.evidence && <small className="knowledge-link-evidence">{link.evidence}</small>}</button>)}</div></section>}
+            {!membership.active && <MemberNotice/>}{membership.active && !!network.links?.length && <section className="related-panel"><div><BookOpen /><strong>{"相关课本知识"}</strong></div><div>{network.links.map((link) => <button key={`${link.sequence}-${link.type}`} onClick={() => openKnowledge(link.sequence)}><span>{knowledgeNumber(link.sequence, language)}</span>{knowledgeTitle(link.sequence, language)}</button>)}</div></section>}
             {membership.active && !!network.relatedLinks?.length && <section className="related-panel"><div><BookOpen /><strong>定律／前置背景（不计直接题频）</strong></div><div>{network.relatedLinks.map(link => <button key={link.sequence} onClick={() => openKnowledge(link.sequence)}><span>{knowledgeNumber(link.sequence, language)}</span>{knowledgeTitle(link.sequence, language)}</button>)}</div></section>}
             {membership.active && !network.links?.length && !!network.chapters?.length && <section className="related-panel"><div><BookOpen /><strong>{'相关章节'}</strong></div><div>{network.chapters.map(code => <span className="related-chapter" key={code}>{code} · {chapterLabel(code, language)}</span>)}</div></section>}
           </div>
