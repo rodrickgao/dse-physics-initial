@@ -1,15 +1,19 @@
 export const PRIMARY_YEAR = 2012;
-export const PAGES = ['home', 'ask', 'papers', 'textbook', 'mistakes', 'focus', 'membership', 'payment', 'receipt', 'activating', 'member-success', 'admin'];
+export const PAGES = ['home', 'bank', 'ask', 'papers', 'textbook', 'exercises', 'mistakes', 'focus', 'membership', 'payment', 'receipt', 'activating', 'member-success', 'admin'];
 
 export function readRoute(hash = '') {
   const [name, query = ''] = hash.replace(/^#/, '').split('?');
   const page = PAGES.includes(name) ? name : 'home';
   const key = new URLSearchParams(query).get('question') || '';
-  return {page, question: page === 'papers' && /^20\d{2}\|paper-(1a|1b|2)\|[\w.]+$/.test(key) ? key : ''};
+  const valid = page === 'papers' ? /^20\d{2}\|paper-(1a|1b|2)\|[\w.]+$/.test(key)
+    : page === 'exercises' && /^tb-E?[1-5](?:A|B)?\d{2}-\d+$/.test(key);
+  return {page, question: valid ? key : ''};
 }
 
-export function pageHash(page, question = '') {
-  return `#${PAGES.includes(page) ? page : 'home'}${page === 'papers' && question ? `?question=${encodeURIComponent(question)}` : ''}`;
+export function pageHash(page, question = '', options = {}) {
+  if(page === 'textbook' && Number.isInteger(options.knowledge) && options.knowledge>0) return `#textbook?knowledge=${options.knowledge}`;
+  if(page === 'exercises' && !question && /^(compulsory-[1-5]|elective-[1-4])$/.test(options.book || '')) return `#exercises?book=${options.book}`;
+  return `#${PAGES.includes(page) ? page : 'home'}${['papers', 'exercises'].includes(page) && question ? `?question=${encodeURIComponent(question)}` : ''}`;
 }
 
 export function readSaved(key, fallback) {
@@ -40,4 +44,9 @@ export function mistakeCoverage(entries, language) {
     }
   }
   return {points, chapters};
+}
+
+export function exerciseBookFromHash(hash) {
+  const book = new URLSearchParams(String(hash).split('?')[1] || '').get('book') || '';
+  return /^(compulsory-[1-5]|elective-[1-4])$/.test(book) ? book : '';
 }

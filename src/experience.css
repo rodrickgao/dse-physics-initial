@@ -1,0 +1,48 @@
+/* Consistent, quiet feedback across the student workspace. */
+:root { --muted-foreground:#64748b; }
+.dark { --muted-foreground:#a1afc2; }
+.app-shell :is(button,a,input,select,textarea,summary):focus-visible {
+  outline:2px solid var(--primary);outline-offset:3px;
+}
+.app-shell :is(button,a,summary) { touch-action:manipulation; }
+.app-shell button:disabled { cursor:default; }
+.app-shell :is(textarea,select) { font:inherit;line-height:1.5; }
+.app-shell input::placeholder,.app-shell textarea::placeholder { color:var(--muted-foreground);opacity:.8; }
+.app-shell :is(.nav-item,.year-back,.back-books,.account-settings,.knowledge-search-wrap>button,.paper-search-wrap>button,summary) {
+  transition:background-color 160ms ease,color 160ms ease,border-color 160ms ease;
+}
+.knowledge-search-wrap>button,.paper-search-wrap>button { display:grid;place-items:center;min-width:40px;min-height:40px;border-radius:8px; }
+.knowledge-search-wrap>button:hover,.paper-search-wrap>button:hover { background:var(--accent); }
+.knowledge-search-empty { padding:36px 24px;border:1px dashed var(--border);border-radius:14px;color:var(--muted-foreground);text-align:center;line-height:1.8; }
+.knowledge-search-empty p { margin:0 0 12px; }
+.app-shell .chapter-list button>span { font-size:14px;line-height:1.55; }
+.app-shell .chapter-list b,.app-shell .active-book-name strong { font-size:13px; }
+.app-shell .knowledge-point-head span { font-size:12px;font-weight:500; }
+.app-shell .knowledge-meta span { font-size:12px;line-height:1.6; }
+.app-shell .metric { flex-wrap:wrap;gap:6px 10px; }
+.app-shell .metric span { font-size:13px;line-height:1.6; }
+.app-shell .card-index { font-size:11px;font-weight:500; }
+.app-shell .chapter-download small { font-size:13px; }
+.app-shell details[open]>:not(summary) { animation:content-enter 180ms var(--motion-ease); }
+.app-shell .knowledge-questions button { min-height:36px;font-size:13px;padding:7px 10px; }
+.app-shell .knowledge-questions summary { padding:8px 0;cursor:pointer;line-height:1.6; }
+.knowledge-browser-content,#current-question { scroll-margin-top:90px; }
+.study-flow[aria-busy="true"] .study-stage { min-height:180px; }
+.study-flow[aria-busy="true"] .study-stage>p[role="status"] { padding:24px 0;color:var(--muted-foreground);font-size:15px; }
+.trash-confirm-backdrop { animation:dialog-backdrop 140ms ease; }
+.trash-confirm { animation:content-enter 180ms var(--motion-ease); }
+.trash-confirm:focus { outline:none; }
+@keyframes dialog-backdrop { from { opacity:0; } to { opacity:1; } }
+.focus-view:not([hidden]),.tutoring-view,.subscription-view,.payment-view { animation:content-enter 220ms var(--motion-ease); }
+@media(max-width:720px) {
+  .app-shell .mobile-nav { grid-template-columns:repeat(7,minmax(0,1fr));gap:1px;padding-inline:5px; }
+  .app-shell .mobile-nav button { min-height:48px;padding:5px 1px; }
+  .app-shell .mobile-nav button span { font-size:11px;line-height:1.4; }
+  .app-main { padding-bottom:calc(76px + env(safe-area-inset-bottom)); }
+  .knowledge-browser-content,#current-question { scroll-margin-top:76px; }
+  .app-shell .teacher-float { box-shadow:0 3px 12px #163a6b16; }
+  .chapter-download a { height:auto;white-space:normal;line-height:1.5;padding-block:10px;text-align:left; }
+}
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after { animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important; }
+}

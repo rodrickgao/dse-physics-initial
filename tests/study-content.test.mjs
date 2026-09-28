@@ -1,13 +1,17 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import {printableQuestion,printDocumentHtml,escapeHtml} from '../src/lib/study-content.js';
+import {printableQuestion,printDocumentHtml,compareMistakePrintEntries,escapeHtml} from '../src/lib/study-content.js';
 const entry={key:'2024|paper-1a|1',year:{year:2024,id:'2024-eng'},paperIndex:0,question:{label:'Q1',question:['p1a/q01.jpg'],answerText:'B'}};
 const content={question:'<p>mass / kg <sup>2</sup></p>',official:'<p>OFFICIAL B</p>',officialScreenshot:'<p><img src="OFFICIAL.png" alt="Official answer"/></p>',reasoning:'<p>REASONING</p>'};
-test('practice export excludes answers and reserves bounded writing space',()=>{
+test('choice practice uses only a localized answer line',()=>{
  const html=printableQuestion(entry,content,{language:'eng',mode:'questions',spaceMm:80});
- assert.match(html,/height:80mm/);assert.doesNotMatch(html,/OFFICIAL|REASONING/);assert.match(html,/<sup>2<\/sup>/);
- assert.match(printableQuestion(entry,content,{language:'eng',mode:'questions',spaceMm:999}),/height:120mm/);
+ assert.match(html,/Answer<span/);assert.doesNotMatch(html,/working-space/);assert.doesNotMatch(html,/OFFICIAL|REASONING/);assert.match(html,/<sup>2<\/sup>/);
+ assert.match(printableQuestion(entry,content,{language:'chn',mode:'questions'}),/答案<span/);
+ const structured={...entry,paperIndex:1};
+ assert.match(printableQuestion(structured,content,{language:'chn',mode:'questions'}),/class="working-space"><\/div>/);
+ const electiveChoice={...entry,paperIndex:2,question:{...entry.question,kind:'multiple-choice'}};
+ assert.doesNotMatch(printableQuestion(electiveChoice,content,{language:'eng',mode:'questions'}),/working-space/);
 });
 test('worked export preserves all three ordered stages without writing space',()=>{
  const html=printableQuestion(entry,content,{language:'chn',mode:'detailed'});
@@ -69,7 +73,24 @@ test('all 2012 Paper 1A questions have reviewed bilingual text and reasoning',()
   }
  }
 });
-test('Chinese translation disclosure also accompanies the printable edition',()=>{
+test('practice print omits explanatory labels and leaves an empty answer box',()=>{
  const html=printableQuestion(entry,{...content,sourceNote:'中文研習版，並非考評局官方中文原卷。'},{language:'chn',mode:'questions'});
- assert.match(html,/並非考評局官方中文原卷/);assert.doesNotMatch(html,/OFFICIAL|REASONING/);
+ assert.doesNotMatch(html,/並非考評局官方中文原卷|OFFICIAL|REASONING|study-source-note|<h3>|作答区/);
+ assert.match(html,/答案<span/);
+});
+
+test('print groups choice questions including Paper 2, then sorts by textbook position with content paired',()=>{
+ const make=(key,paperIndex,kind,sequences)=>({...entry,key,paperIndex,question:{...entry.question,kind},network:{links:sequences.map(sequence=>({sequence}))}});
+ const entries=[make('structured',1,'structured',[2]),make('later-mc',0,undefined,[1]),make('paper2-mc',2,'multiple-choice',[1,2]),make('unmapped',0,undefined,[])];
+ const points=[{sequence:2},{sequence:1}];
+ const ordered=[...entries].sort(compareMistakePrintEntries(points));
+ assert.deepEqual(ordered.map(e=>e.key),['paper2-mc','later-mc','unmapped','structured']);
+ const html=printDocumentHtml(entries,entries.map(e=>({question:`<p>CONTENT-${e.key}</p>`})),{language:'chn',mode:'questions',baseUrl:'http://localhost/',knowledgePoints:points,date:new Date(2026,8,28)});
+ assert.match(html,/<h1>2026年9月28日错题<\/h1>/);
+ assert.doesNotMatch(html,/print-intro|本册只含|关闭浏览器|作答区/);
+ assert.match(html,/@page \{size:letter;margin:0\}/);
+ assert.match(html,/border:1pt solid #555/);
+ assert.deepEqual([...html.matchAll(/data-question="([^"]+)"/g)].map(m=>m[1]),ordered.map(e=>e.key));
+ for(const article of html.matchAll(/<article[^>]+data-question="([^"]+)"[\s\S]*?<\/article>/g)) assert.ok(article[0].includes(`CONTENT-${article[1]}`));
+ assert.equal(entries[0].key,'structured');
 });

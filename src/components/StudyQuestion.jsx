@@ -18,19 +18,19 @@ export function StudyQuestion({ year, language, questionKey, question, ScanImage
     return () => {cancelled = true;};
   }, [year.year, language, questionKey, revision, membership.revision]);
   const rich = (value, type) => <div className={`study-content ${type}-content`} dangerouslySetInnerHTML={{ __html: value }} />;
-  return <div className="study-flow" data-question={questionKey}>
+  return <div className="study-flow" data-question={questionKey} aria-busy={loading}>
     <style>{STUDY_CSS}</style>
 
     <section className="study-stage"><h3><span>1</span>{"题目"}</h3>
       {loading ? <p role="status">{"正在加载文字版…"}</p> : record?.question ? rich(record.question, "question") : <><p className="study-source-note">{"原题扫描"}</p><ScanImages yearId={year.id} paths={question.question} label={question.label}/></>}
       {error && <p role="alert">{"未能加载文字版。"}<Button variant="outline" onClick={() => setRevision(revision + 1)}>{"重新加载"}</Button></p>}
     </section>
-    <Button className="stage-toggle" disabled={loading || error} aria-expanded={stage >= 2} aria-controls="official-stage" onClick={() => { if (stage < 2) track('answer_view', questionKey); setStage(stage >= 2 ? 1 : 2); }}>{stage >= 2 ? ("收起解答") : ("2. 展开考评局官方解答")}</Button>
-    {stage >= 2 && <section className="study-stage" id="official-stage"><h3><span>2</span>{"考评局官方解答／评分参考"}</h3>
+    <Button className="stage-toggle" disabled={loading || error} aria-expanded={stage >= 2} aria-controls="official-stage" onClick={() => { if (stage < 2) track('answer_view', questionKey); setStage(stage >= 2 ? 1 : 2); }}>{stage >= 2 ? ("收起标答") : ("查看标答")}</Button>
+    {stage >= 2 && <section className="study-stage" id="official-stage"><h3><span>2</span>{"标答／评分参考"}</h3>
       
       {rich(officialAnswerHtml(record, question, year.id), "official")}
-      {!membership.active && <MemberNotice>会员专享 · 详细思路</MemberNotice>}<Button disabled={!membership.active} className="stage-toggle" variant="outline" aria-expanded={stage >= 3} aria-controls="reasoning-stage" onClick={() => { if (stage < 3) track('reasoning_view', questionKey); setStage(stage >= 3 ? 2 : 3); }}>{stage >= 3 ? ("收起详细思路") : ("3. 展开详细思路解答")}</Button>
+      {!membership.active && <MemberNotice>会员专享 · 详解</MemberNotice>}<Button disabled={!membership.active} className="stage-toggle" variant="outline" aria-expanded={stage >= 3} aria-controls="reasoning-stage" onClick={() => { if (stage < 3) track('reasoning_view', questionKey); setStage(stage >= 3 ? 2 : 3); }}>{stage >= 3 ? ("收起详解") : ("查看详解")}</Button>
     </section>}
-    {membership.active && stage >= 3 && <section className="study-stage" id="reasoning-stage"><h3><span>3</span>{"详细思路解答"}</h3>{record?.reasoning ? rich(record.reasoning, "reasoning") : <p className="study-source-note">{"详细思路尚待核验。"}</p>}</section>}
+    {membership.active && stage >= 3 && <section className="study-stage" id="reasoning-stage"><h3><span>3</span>{"详解"}</h3>{record?.reasoning ? rich(record.reasoning, "reasoning") : <p className="study-source-note">{"详细思路尚待核验。"}</p>}</section>}
   </div>;
 }

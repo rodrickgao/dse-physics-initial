@@ -2,649 +2,1109 @@
   "chn": {
     "101": {
       "url": "assets/textbook/pdfs/chn/101.pdf",
-      "filename": "101-中文-课本.pdf",
-      "source": "DSEPHY_TE_101_TN_ce.pdf",
-      "bytes": 5204752,
-      "sha256": "ec72e8559c84595c7e5253616e68a597c22fdecefe00d344ab80774ea9207a97"
+      "filename": "101-中文版-知识点.pdf",
+      "source": "知识点（中文版）.pdf",
+      "sourcePages": [
+        1,
+        1
+      ],
+      "pages": 1,
+      "bytes": 363627,
+      "sha256": "25ddf1844c0640e9b5699ddddec89871616670495f690f162987810b4eaef282"
     },
     "102": {
       "url": "assets/textbook/pdfs/chn/102.pdf",
-      "filename": "102-中文-课本.pdf",
-      "source": "DSEPHY_TE_102_TN_ce.pdf",
-      "bytes": 12007371,
-      "sha256": "e80d7202056e855e6ac38781cda2e4c067fec61cda94d1a82da92422be7b4ab2"
+      "filename": "102-中文版-知识点.pdf",
+      "source": "知识点（中文版）.pdf",
+      "sourcePages": [
+        1,
+        3
+      ],
+      "pages": 3,
+      "bytes": 482726,
+      "sha256": "eb684bef14e933ca06eb89e652f660558954f68ed6114335ad259cc3c305b3f0"
     },
     "103": {
       "url": "assets/textbook/pdfs/chn/103.pdf",
-      "filename": "103-中文-课本.pdf",
-      "source": "DSEPHY_TE_103_TN_ce.pdf",
-      "bytes": 17153283,
-      "sha256": "4f3e3fb53ee00d1c4fd1a82b0820ce6ec835af02964e8ec5ade9d662292db388"
+      "filename": "103-中文版-知识点.pdf",
+      "source": "知识点（中文版）.pdf",
+      "sourcePages": [
+        3,
+        5
+      ],
+      "pages": 2,
+      "bytes": 470414,
+      "sha256": "6fd06542c6e9ae059913e3375f230522be050e5ca2e9c547d543d0c964208b14"
     },
     "104": {
       "url": "assets/textbook/pdfs/chn/104.pdf",
-      "filename": "104-中文-课本.pdf",
-      "source": "DSEPHY_TE_104_TN_ce.pdf",
-      "bytes": 15338167,
-      "sha256": "9a18f111b8517bbd72e622a4cfaec8629757bceb9ce2a10d886efdddffadc17f"
+      "filename": "104-中文版-知识点.pdf",
+      "source": "知识点（中文版）.pdf",
+      "sourcePages": [
+        5,
+        6
+      ],
+      "pages": 2,
+      "bytes": 491283,
+      "sha256": "242872a3a4451ef298fbb247f13cccb64887ad0e4df41a5bb951e355751d631a"
     },
     "105": {
       "url": "assets/textbook/pdfs/chn/105.pdf",
-      "filename": "105-中文-课本.pdf",
-      "source": "DSEPHY_TE_105_TN_ce.pdf",
-      "bytes": 17800243,
-      "sha256": "cf8531fd4902dd6deeb55be3d9b96b8f2d8fdf8cbe0695d04e31830975d76e4d"
+      "filename": "105-中文版-知识点.pdf",
+      "source": "知识点（中文版）.pdf",
+      "sourcePages": [
+        6,
+        11
+      ],
+      "pages": 4,
+      "bytes": 521206,
+      "sha256": "6e8d7bf5b50464778f6002b12202aaf2628deabe266fda3490ea9330666dc55b"
     },
     "201": {
       "url": "assets/textbook/pdfs/chn/201.pdf",
-      "filename": "201-中文-课本.pdf",
-      "source": "DSEPHY_TE_201_TN_ce.pdf",
-      "bytes": 9287389,
-      "sha256": "78acb1baddd5d36ae775f28d6b06ca6c8a7530909d755391f35441f534446238"
+      "filename": "201-中文版-知识点.pdf",
+      "source": "知识点（中文版）.pdf",
+      "sourcePages": [
+        11,
+        12
+      ],
+      "pages": 2,
+      "bytes": 470980,
+      "sha256": "ae5954d9121f0fc002ae5f271d744edb236b0f319f8787b188aff3aefd02018e"
     },
     "202": {
       "url": "assets/textbook/pdfs/chn/202.pdf",
-      "filename": "202-中文-课本.pdf",
-      "source": "DSEPHY_TE_202_TN_ce.pdf",
-      "bytes": 16579203,
-      "sha256": "4c86a761e9cbd93741a23f7dca705b5fc2f61eb91a3c4625e760d0b507eb9484"
+      "filename": "202-中文版-知识点.pdf",
+      "source": "知识点（中文版）.pdf",
+      "sourcePages": [
+        12,
+        17
+      ],
+      "pages": 4,
+      "bytes": 641928,
+      "sha256": "cf63e816ff8df3f15e30ba4159bf82072162e3e0ed35c3491feb84780fe83c60"
     },
     "203": {
       "url": "assets/textbook/pdfs/chn/203.pdf",
-      "filename": "203-中文-课本.pdf",
-      "source": "DSEPHY_TE_203_TN_ce.pdf",
-      "bytes": 31868176,
-      "sha256": "97720e77f1539402032e2cb7862ef638fcd0deb69150676c56d6800303ac3854"
+      "filename": "203-中文版-知识点.pdf",
+      "source": "知识点（中文版）.pdf",
+      "sourcePages": [
+        17,
+        18
+      ],
+      "pages": 2,
+      "bytes": 469782,
+      "sha256": "5ea12787cd0db150b95d2c81e63f512998134b71c8828f3286cf49a481527c51"
     },
     "204": {
       "url": "assets/textbook/pdfs/chn/204.pdf",
-      "filename": "204-中文-课本.pdf",
-      "source": "DSEPHY_TE_204_TN_ce.pdf",
-      "bytes": 23679554,
-      "sha256": "d2c84035881de3855e4cc8a5efa6338b35a50fc396d2e4aa54deabf047b16249"
+      "filename": "204-中文版-知识点.pdf",
+      "source": "知识点（中文版）.pdf",
+      "sourcePages": [
+        18,
+        19
+      ],
+      "pages": 1,
+      "bytes": 477705,
+      "sha256": "2588891148aa1cb34e17f76d34ec49e9c436c4f1d40daa7ab473f3792596d583"
     },
     "205": {
       "url": "assets/textbook/pdfs/chn/205.pdf",
-      "filename": "205-中文-课本.pdf",
-      "source": "DSEPHY_TE_205_TN_ce.pdf",
-      "bytes": 17239157,
-      "sha256": "95813f172c8d58aa379dcb347634120cd5c5f402e2d7e11d59ff0238ea42360f"
+      "filename": "205-中文版-知识点.pdf",
+      "source": "知识点（中文版）.pdf",
+      "sourcePages": [
+        19,
+        21
+      ],
+      "pages": 2,
+      "bytes": 503707,
+      "sha256": "8a260ddd105e9f90cdb3f86ea8667edf95bcdfe3cdc1301329b292cbc02c11d1"
     },
     "206": {
       "url": "assets/textbook/pdfs/chn/206.pdf",
-      "filename": "206-中文-课本.pdf",
-      "source": "DSEPHY_TE_206_TN_ce.pdf",
-      "bytes": 13897800,
-      "sha256": "d6a5a2e734e2dd8ce963db8d0cadf0931b5f934143ceaae18b7175c8c6a0522c"
+      "filename": "206-中文版-知识点.pdf",
+      "source": "知识点（中文版）.pdf",
+      "sourcePages": [
+        21,
+        24
+      ],
+      "pages": 3,
+      "bytes": 502358,
+      "sha256": "40ead19e9e9a72e03548d87f8b5c86480c0a6c944b35261146c4417652e42af1"
     },
     "207": {
       "url": "assets/textbook/pdfs/chn/207.pdf",
-      "filename": "207-中文-课本.pdf",
-      "source": "DSEPHY_TE_207_TN_ce.pdf",
-      "bytes": 21664962,
-      "sha256": "1d06caa6ef44ab98442235869914d95ad25a0f4d3909b1659730c8a692d2c2e0"
+      "filename": "207-中文版-知识点.pdf",
+      "source": "知识点（中文版）.pdf",
+      "sourcePages": [
+        24,
+        25
+      ],
+      "pages": 2,
+      "bytes": 468955,
+      "sha256": "be676d8656bfcdd197ecd55d4f567dbb06814f5a5eaf747051062340ef6206e6"
     },
     "208": {
       "url": "assets/textbook/pdfs/chn/208.pdf",
-      "filename": "208-中文-课本.pdf",
-      "source": "DSEPHY_TE_208_TN_ce.pdf",
-      "bytes": 16027715,
-      "sha256": "b94e6eef0ffccecd1962b079f5d6354fa99da7474c50be130b2b5146f51a7da2"
+      "filename": "208-中文版-知识点.pdf",
+      "source": "知识点（中文版）.pdf",
+      "sourcePages": [
+        25,
+        25
+      ],
+      "pages": 1,
+      "bytes": 372697,
+      "sha256": "3534b39010cf8d8a4ab8a7f80179e613b53625fae211c491616aa4906f3af764"
     },
     "209": {
       "url": "assets/textbook/pdfs/chn/209.pdf",
-      "filename": "209-中文-课本.pdf",
-      "source": "DSEPHY_TE_209_TN_ce.pdf",
-      "bytes": 27783449,
-      "sha256": "75505c8a7c411add65076b79f41dafc803f22fe7d8e58ebabb7701f35ea0e249"
+      "filename": "209-中文版-知识点.pdf",
+      "source": "知识点（中文版）.pdf",
+      "sourcePages": [
+        25,
+        27
+      ],
+      "pages": 2,
+      "bytes": 482624,
+      "sha256": "360bf9342d13284205e87560d8e8ec8777856c72901be8bccc234bfcf9d09f89"
     },
     "210": {
       "url": "assets/textbook/pdfs/chn/210.pdf",
-      "filename": "210-中文-课本.pdf",
-      "source": "DSEPHY_TE_210_TN_ce.pdf",
-      "bytes": 33345561,
-      "sha256": "3f969b995c8389b114dcc679f5c5728ed5fdcc4ac73b21f10ee0e33adcefb205"
+      "filename": "210-中文版-知识点.pdf",
+      "source": "知识点（中文版）.pdf",
+      "sourcePages": [
+        27,
+        29
+      ],
+      "pages": 2,
+      "bytes": 483531,
+      "sha256": "cd67cb92ebf54219e6d5e9015354f8f1e7f4a2c93f1114d80c78c94198d29aa0"
     },
     "401": {
       "url": "assets/textbook/pdfs/chn/401.pdf",
-      "filename": "401-中文-课本.pdf",
-      "source": "DSEPHY_TE_401_TN_ce.pdf",
-      "bytes": 9002924,
-      "sha256": "414aec6e071cd49c0628ee050f0b7c90899e4708a901a7689c3b4ed9660bbd28"
+      "filename": "401-中文版-知识点.pdf",
+      "source": "知识点（中文版）.pdf",
+      "sourcePages": [
+        46,
+        48
+      ],
+      "pages": 3,
+      "bytes": 551307,
+      "sha256": "76ff7acc51e7d54488cf7c0b3ec57af41a928a447877d63dc82354de837c960b"
     },
     "402": {
       "url": "assets/textbook/pdfs/chn/402.pdf",
-      "filename": "402-中文-课本.pdf",
-      "source": "DSEPHY_TE_402_TN_ce.pdf",
-      "bytes": 9843420,
-      "sha256": "0088fcc71f8f05f01a2396e80e14636fc5f2ab324da63052c13e7e0c08424209"
+      "filename": "402-中文版-知识点.pdf",
+      "source": "知识点（中文版）.pdf",
+      "sourcePages": [
+        48,
+        53
+      ],
+      "pages": 5,
+      "bytes": 518653,
+      "sha256": "c59136dd43f2dd5a20dfc51fdaed802149af1fe29182bdaabf1ffd14bbd900eb"
     },
     "403": {
       "url": "assets/textbook/pdfs/chn/403.pdf",
-      "filename": "403-中文-课本.pdf",
-      "source": "DSEPHY_TE_403_TN_ce.pdf",
-      "bytes": 6186810,
-      "sha256": "f57176e704def2ac3a7623c55af66bde5e1b055ad727de89de2f489690fd306b"
+      "filename": "403-中文版-知识点.pdf",
+      "source": "知识点（中文版）.pdf",
+      "sourcePages": [
+        53,
+        54
+      ],
+      "pages": 2,
+      "bytes": 501462,
+      "sha256": "dca2b6d953a243d75372d4e1a46bb9c4bbf3dcf8707531a212f0cd1acdadb502"
     },
     "404": {
       "url": "assets/textbook/pdfs/chn/404.pdf",
-      "filename": "404-中文-课本.pdf",
-      "source": "DSEPHY_TE_404_TN_ce.pdf",
-      "bytes": 19280737,
-      "sha256": "466bf8bdc7ee440bf06c38dda3a1820f74afc3a04c468150eb42160b8e668d9d"
+      "filename": "404-中文版-知识点.pdf",
+      "source": "知识点（中文版）.pdf",
+      "sourcePages": [
+        54,
+        55
+      ],
+      "pages": 2,
+      "bytes": 496439,
+      "sha256": "e3fd35892dfa278dc6dd8566c9ff71e81bcf201bf04c31fec39fe0ee98c8253a"
     },
     "405": {
       "url": "assets/textbook/pdfs/chn/405.pdf",
-      "filename": "405-中文-课本.pdf",
-      "source": "DSEPHY_TE_405_TN_ce.pdf",
-      "bytes": 13984676,
-      "sha256": "4c972497783d6279d678f5679a0fc8e8e6673dc5a5d4cb672ee1a57d5f7f7b3a"
+      "filename": "405-中文版-知识点.pdf",
+      "source": "知识点（中文版）.pdf",
+      "sourcePages": [
+        55,
+        58
+      ],
+      "pages": 3,
+      "bytes": 591714,
+      "sha256": "b128a7c0a53c1b4f422d2c2db2ab04ab7ba9766b636505cf1a395d37ffdb2076"
     },
     "406": {
       "url": "assets/textbook/pdfs/chn/406.pdf",
-      "filename": "406-中文-课本.pdf",
-      "source": "DSEPHY_TE_406_TN_ce.pdf",
-      "bytes": 12090955,
-      "sha256": "5a4389eceb7caac8f938f54109c8a14f70fd5135ef82a61a73a5a2b1e456e5a7"
+      "filename": "406-中文版-知识点.pdf",
+      "source": "知识点（中文版）.pdf",
+      "sourcePages": [
+        58,
+        60
+      ],
+      "pages": 3,
+      "bytes": 668651,
+      "sha256": "2a2454f08a39204e24a83a104483241c2287bfde2c2dfeb11f9372428bc80cc3"
     },
     "407": {
       "url": "assets/textbook/pdfs/chn/407.pdf",
-      "filename": "407-中文-课本.pdf",
-      "source": "DSEPHY_TE_407_TN_ce.pdf",
-      "bytes": 18987850,
-      "sha256": "8f5365acaeafa2220cfe79021586a8d84d719e6baa479995653aeea5cb35fca3"
+      "filename": "407-中文版-知识点.pdf",
+      "source": "知识点（中文版）.pdf",
+      "sourcePages": [
+        60,
+        63
+      ],
+      "pages": 3,
+      "bytes": 657117,
+      "sha256": "68fb5dbad01a7b6936ccb06c659d260625d6d735d3d5851cc21804c37d7a0f44"
     },
     "408": {
       "url": "assets/textbook/pdfs/chn/408.pdf",
-      "filename": "408-中文-课本.pdf",
-      "source": "DSEPHY_TE_408_TN_ce.pdf",
-      "bytes": 11361690,
-      "sha256": "5f4485d726ee3649022fb7af784b19a5c2f94e704891a41447f84a58cbd278d1"
+      "filename": "408-中文版-知识点.pdf",
+      "source": "知识点（中文版）.pdf",
+      "sourcePages": [
+        63,
+        65
+      ],
+      "pages": 1,
+      "bytes": 498937,
+      "sha256": "bbf74259a1354bd075574585ce543f7485b9c6b19c3818307b0dd284115a3f1f"
     },
     "501": {
       "url": "assets/textbook/pdfs/chn/501.pdf",
-      "filename": "501-中文-课本.pdf",
-      "source": "DSEPHY_TE_501_TN_ce.pdf",
-      "bytes": 12119871,
-      "sha256": "23e14cc129670f336e99d5d43e1a608c81d40d5d0fc1c48062a5924b542bf18c"
+      "filename": "501-中文版-知识点.pdf",
+      "source": "知识点（中文版）.pdf",
+      "sourcePages": [
+        65,
+        66
+      ],
+      "pages": 2,
+      "bytes": 474354,
+      "sha256": "42149a40b4a7dc8797ea12070fa6860be50e73c382cfb09617473069425da5db"
     },
     "502": {
       "url": "assets/textbook/pdfs/chn/502.pdf",
-      "filename": "502-中文-课本.pdf",
-      "source": "DSEPHY_TE_502_TN_ce.pdf",
-      "bytes": 8368984,
-      "sha256": "273cad9af4f871dc7b8f60761df754b1eaf517031ada9876fa60d312a817d517"
+      "filename": "502-中文版-知识点.pdf",
+      "source": "知识点（中文版）.pdf",
+      "sourcePages": [
+        66,
+        69
+      ],
+      "pages": 3,
+      "bytes": 556207,
+      "sha256": "6c2d05506dbb38e06f2e81cd4b2f7c8e8f3ef3262ebdd31f7174129fe8313aed"
     },
     "503": {
       "url": "assets/textbook/pdfs/chn/503.pdf",
-      "filename": "503-中文-课本.pdf",
-      "source": "DSEPHY_TE_503_TN_ce.pdf",
-      "bytes": 6285542,
-      "sha256": "2dbe2ff78d5ab1dc9ca134172cbdbdc498dac16e9a0772877a03ec40489dc1c5"
+      "filename": "503-中文版-知识点.pdf",
+      "source": "知识点（中文版）.pdf",
+      "sourcePages": [
+        69,
+        71
+      ],
+      "pages": 2,
+      "bytes": 471878,
+      "sha256": "5b0ab75a5866157258b0a4a860f98d48af121a2a1d7a83380feac8e77447c890"
     },
     "3A01": {
       "url": "assets/textbook/pdfs/chn/3A01.pdf",
-      "filename": "3A01-中文-课本.pdf",
-      "source": "DSEPHY_TE_3A01_TN_ce.pdf",
-      "bytes": 7409093,
-      "sha256": "b638390ebcde6ec2336af0770cb3c2900815d03c04558ba850210ce6a1df4452"
+      "filename": "3A01-中文版-知识点.pdf",
+      "source": "知识点（中文版）.pdf",
+      "sourcePages": [
+        29,
+        30
+      ],
+      "pages": 1,
+      "bytes": 422777,
+      "sha256": "f7fe616f021ef3d7ddc1cec4e0b282f9cb07a3935e66958d22b3a621589f4ee0"
     },
     "3A02": {
       "url": "assets/textbook/pdfs/chn/3A02.pdf",
-      "filename": "3A02-中文-课本.pdf",
-      "source": "DSEPHY_TE_3A02_TN_ce.pdf",
-      "bytes": 11393956,
-      "sha256": "7ecff66bdafc3d73283c6bb88cceb3d538a57d1ff02d6cbab6ec10b01f9819b1"
+      "filename": "3A02-中文版-知识点.pdf",
+      "source": "知识点（中文版）.pdf",
+      "sourcePages": [
+        30,
+        32
+      ],
+      "pages": 2,
+      "bytes": 560854,
+      "sha256": "12b3c80e8a93aab3481824c9eae8a28055eac457ea7705c35de0bcc40279966b"
     },
     "3A03": {
       "url": "assets/textbook/pdfs/chn/3A03.pdf",
-      "filename": "3A03-中文-课本.pdf",
-      "source": "DSEPHY_TE_3A03_TN_ce(1).pdf",
-      "bytes": 15599432,
-      "sha256": "9f93acdf182c7e0bfd92b28c507fca9be1d3f22f43b2ba86de2431bf09412002"
+      "filename": "3A03-中文版-知识点.pdf",
+      "source": "知识点（中文版）.pdf",
+      "sourcePages": [
+        32,
+        35
+      ],
+      "pages": 4,
+      "bytes": 616840,
+      "sha256": "57904cee8a0f3cc2e27f530a6dacae7c616d63c24abb6a56646ef5d98b92098d"
     },
     "3B04": {
       "url": "assets/textbook/pdfs/chn/3B04.pdf",
-      "filename": "3B04-中文-课本.pdf",
-      "source": "DSEPHY_TE_3B04_TN_ce.pdf",
-      "bytes": 10861733,
-      "sha256": "719143bc1d93724a7ffd6a651bc27c06d5bdf7dfaf3d342d53b6078897c1cbb9"
+      "filename": "3B04-中文版-知识点.pdf",
+      "source": "知识点（中文版）.pdf",
+      "sourcePages": [
+        35,
+        37
+      ],
+      "pages": 3,
+      "bytes": 558866,
+      "sha256": "06006fc62bb25f1f9988d47d59dbfec7e1f494690c3407cc2da484c66448cd66"
     },
     "3B05": {
       "url": "assets/textbook/pdfs/chn/3B05.pdf",
-      "filename": "3B05-中文-课本.pdf",
-      "source": "DSEPHY_TE_3B05_TN_ce.pdf",
-      "bytes": 15102856,
-      "sha256": "7d550cf0329734abb4366b515232dbfdab13de858faacd951edc349f61e2c73c"
+      "filename": "3B05-中文版-知识点.pdf",
+      "source": "知识点（中文版）.pdf",
+      "sourcePages": [
+        37,
+        41
+      ],
+      "pages": 5,
+      "bytes": 723007,
+      "sha256": "0fbff441340ddec852e5098ce26706a2524cae7997495eedf36bb0b447eb3644"
     },
     "3B06": {
       "url": "assets/textbook/pdfs/chn/3B06.pdf",
-      "filename": "3B06-中文-课本.pdf",
-      "source": "DSEPHY_TE_3B06_TN_ce.pdf",
-      "bytes": 18911945,
-      "sha256": "df5579a21d741eaadde3e2116570109b19386c1094ca3ab6cab1e9680223c164"
+      "filename": "3B06-中文版-知识点.pdf",
+      "source": "知识点（中文版）.pdf",
+      "sourcePages": [
+        41,
+        43
+      ],
+      "pages": 3,
+      "bytes": 708031,
+      "sha256": "bd4a41e37941639acd42c1f9b92943a1826e08048a3cb35d8f07728ce6d9713d"
     },
     "3B07": {
       "url": "assets/textbook/pdfs/chn/3B07.pdf",
-      "filename": "3B07-中文-课本.pdf",
-      "source": "DSEPHY_TE_3B07_TN_ce.pdf",
-      "bytes": 22124693,
-      "sha256": "76fda273629a7c3509dddf9141ac0b6a6435155e7f7eeb0b7cf99b68e6c4ebf6"
+      "filename": "3B07-中文版-知识点.pdf",
+      "source": "知识点（中文版）.pdf",
+      "sourcePages": [
+        43,
+        46
+      ],
+      "pages": 2,
+      "bytes": 558847,
+      "sha256": "55440c80c0cffab162257ce265a554527b699c2c717451a79b12e9db41d02e0f"
     },
     "E101": {
       "url": "assets/textbook/pdfs/chn/E101.pdf",
-      "filename": "E101-中文-课本.pdf",
-      "source": "DSEPHY_TE_E101_TN_ce.pdf",
-      "bytes": 21054815,
-      "sha256": "3087b49bdd79ea7c2dc406fc17106daea52718390c47ec7fc614baf1dd248bf5"
+      "filename": "E101-中文版-知识点.pdf",
+      "source": "知识点（中文版）.pdf",
+      "sourcePages": [
+        71,
+        73
+      ],
+      "pages": 3,
+      "bytes": 619838,
+      "sha256": "5bc0fc1327dffdf5563a8f71ecec66cd4a0f5b1d1f8fe45344b08a8a66d62e23"
     },
     "E102": {
       "url": "assets/textbook/pdfs/chn/E102.pdf",
-      "filename": "E102-中文-课本.pdf",
-      "source": "DSEPHY_TE_E102_TN_ce.pdf",
-      "bytes": 9349028,
-      "sha256": "4f89f4c851540c3d8272a46ba5b2548ac95a2db049d3100ec1c3cda182b7bb22"
+      "filename": "E102-中文版-知识点.pdf",
+      "source": "知识点（中文版）.pdf",
+      "sourcePages": [
+        73,
+        77
+      ],
+      "pages": 4,
+      "bytes": 534213,
+      "sha256": "e9c562dd640dae57c1a217ab178982b7c85e619b658115d27daaea1b9c819bb5"
     },
     "E103": {
       "url": "assets/textbook/pdfs/chn/E103.pdf",
-      "filename": "E103-中文-课本.pdf",
-      "source": "DSEPHY_TE_E103_TN_ce.pdf",
-      "bytes": 12380935,
-      "sha256": "1914602b1f1780e48d627a8293106e329ac8fbe737d40c580b15bc6a82e09fba"
+      "filename": "E103-中文版-知识点.pdf",
+      "source": "知识点（中文版）.pdf",
+      "sourcePages": [
+        77,
+        83
+      ],
+      "pages": 6,
+      "bytes": 747705,
+      "sha256": "60877051b67cc69db738c8df9b2472ffc89664d32a20ddd2839e3830f55fea6d"
     },
     "E301": {
       "url": "assets/textbook/pdfs/chn/E301.pdf",
-      "filename": "E301-中文-课本.pdf",
-      "source": "DSEPHY_TE_E301_TN_ce.pdf",
-      "bytes": 10649322,
-      "sha256": "4a381acc39dd98fae171f071bba875d2458aecdf2d87df85dc569cd6ad6b76b3"
+      "filename": "E301-中文版-知识点.pdf",
+      "source": "知识点（中文版）.pdf",
+      "sourcePages": [
+        83,
+        84
+      ],
+      "pages": 2,
+      "bytes": 548848,
+      "sha256": "1b91f7c86d32d545908bb88c13a0535f579c21d8e646d1aeb67ba789215fbc5d"
     },
     "E302": {
       "url": "assets/textbook/pdfs/chn/E302.pdf",
-      "filename": "E302-中文-课本.pdf",
-      "source": "DSEPHY_TE_E302_TN_ce.pdf",
-      "bytes": 10033892,
-      "sha256": "99c58ad2f5a6a872b5130fb50ac2b5270db9df7c1dd09c811b3ae99e19c3d508"
+      "filename": "E302-中文版-知识点.pdf",
+      "source": "知识点（中文版）.pdf",
+      "sourcePages": [
+        84,
+        86
+      ],
+      "pages": 2,
+      "bytes": 518738,
+      "sha256": "4d70cfaaa589cc5b084e183490d7c4f319169bcc47d9a3e01286575c82e1b280"
     },
     "E303": {
       "url": "assets/textbook/pdfs/chn/E303.pdf",
-      "filename": "E303-中文-课本.pdf",
-      "source": "DSEPHY_TE_E303_TN_ce.pdf",
-      "bytes": 9302364,
-      "sha256": "9bd2f46659adf59b8216cea8da519159e801ce2808e2e52b77981d5fd99fa19a"
+      "filename": "E303-中文版-知识点.pdf",
+      "source": "知识点（中文版）.pdf",
+      "sourcePages": [
+        86,
+        87
+      ],
+      "pages": 2,
+      "bytes": 585401,
+      "sha256": "a140a5c3d4ed692c61d417109b8d8e814292b5c63856fa9c41d9e0a1b80a005a"
     },
     "E304": {
       "url": "assets/textbook/pdfs/chn/E304.pdf",
-      "filename": "E304-中文-课本.pdf",
-      "source": "DSEPHY_TE_E304_TN_ce.pdf",
-      "bytes": 14056273,
-      "sha256": "fe67be946f6c7a0b0febd024507af8bce41fed7f65ad19662b0c0b1784b0188e"
+      "filename": "E304-中文版-知识点.pdf",
+      "source": "知识点（中文版）.pdf",
+      "sourcePages": [
+        87,
+        92
+      ],
+      "pages": 5,
+      "bytes": 856066,
+      "sha256": "13e8d8ead768ad3950e01746f71a0f0519902ae8076d604b117b3814f033cfb1"
     },
     "E201": {
       "url": "assets/textbook/pdfs/chn/E201.pdf",
-      "filename": "E201-中文-课本.pdf",
-      "source": "DSEPHY_TE_E201_TN_ce_.pdf",
-      "bytes": 5524733,
-      "sha256": "751358028ef19332e8559ae2d10b8cb5498393e049ef1033810c90e054a48195"
+      "filename": "E201-中文版-知识点.pdf",
+      "source": "知识点（中文版）.pdf",
+      "sourcePages": [
+        92,
+        94
+      ],
+      "pages": 3,
+      "bytes": 519520,
+      "sha256": "3bb4dcefd43e775c6a880a85ea144a9065ed415f90cb96c073e522cce98caef3"
     },
     "E202": {
       "url": "assets/textbook/pdfs/chn/E202.pdf",
-      "filename": "E202-中文-课本.pdf",
-      "source": "DSEPHY_TE_E202_TN_ce_.pdf",
-      "bytes": 8363804,
-      "sha256": "a1ee6ca66accab6432c2be0e1406a6d2237c41d632ccf4ad58cdb70e7c20e062"
+      "filename": "E202-中文版-知识点.pdf",
+      "source": "知识点（中文版）.pdf",
+      "sourcePages": [
+        94,
+        97
+      ],
+      "pages": 4,
+      "bytes": 611025,
+      "sha256": "109d1d1f3a26c26ef861371bc17d8ad2205e1c222d9e2a7bd1bd40d65f468a19"
     },
     "E203": {
       "url": "assets/textbook/pdfs/chn/E203.pdf",
-      "filename": "E203-中文-课本.pdf",
-      "source": "DSEPHY_TE_E203_TN_ce.pdf",
-      "bytes": 10926060,
-      "sha256": "793a7cd877a950fbd89dc714c9aeb608a1866b52f8eb6a973780ae618d9971b0"
+      "filename": "E203-中文版-知识点.pdf",
+      "source": "知识点（中文版）.pdf",
+      "sourcePages": [
+        97,
+        102
+      ],
+      "pages": 5,
+      "bytes": 688244,
+      "sha256": "048fd87bc991d30dddfdbeb01af5a7a6a576ac0f046d1ca8430636307e63b77c"
     },
     "E401": {
       "url": "assets/textbook/pdfs/chn/E401.pdf",
-      "filename": "E401-中文-课本.pdf",
-      "source": "DSEPHY_TE_E401_TN_ce_.pdf",
-      "bytes": 9478570,
-      "sha256": "f628690c22119951d4be1e8b4e33bd74267a78c9e9beb1136b53165054554578"
+      "filename": "E401-中文版-知识点.pdf",
+      "source": "知识点（中文版）.pdf",
+      "sourcePages": [
+        102,
+        107
+      ],
+      "pages": 6,
+      "bytes": 754195,
+      "sha256": "76157991f30985dfb0a4fe3059aa6e6b303f954d950d833764fdcb3fdc17c1a5"
     },
     "E402": {
       "url": "assets/textbook/pdfs/chn/E402.pdf",
-      "filename": "E402-中文-课本.pdf",
-      "source": "DSEPHY_TE_E402_TN_ce_.pdf",
-      "bytes": 13470001,
-      "sha256": "01d7fcb5f91e5125d3694fb152f5dbe19747c8f642685d17c40b3c5181b4e778"
+      "filename": "E402-中文版-知识点.pdf",
+      "source": "知识点（中文版）.pdf",
+      "sourcePages": [
+        107,
+        113
+      ],
+      "pages": 7,
+      "bytes": 810085,
+      "sha256": "443ad59fdf536b1bc9bbf0e81ee0330c6aa356e18e70e325ec1e957983c85690"
     },
     "E403": {
       "url": "assets/textbook/pdfs/chn/E403.pdf",
-      "filename": "E403-中文-课本.pdf",
-      "source": "DSEPHY_TE_E403_TN_ce_.pdf",
-      "bytes": 13815021,
-      "sha256": "f078ab1e83e67f14c7ddf266ddd2df49d43a7b655ea6a9bdd4b991204572de80"
+      "filename": "E403-中文版-知识点.pdf",
+      "source": "知识点（中文版）.pdf",
+      "sourcePages": [
+        113,
+        117
+      ],
+      "pages": 4,
+      "bytes": 559125,
+      "sha256": "e27af91a8b6055e2941c7885b1d194d9a2e33b96220b23f3ede5d912ea7861bd"
     }
   },
   "eng": {
     "101": {
       "url": "assets/textbook/pdfs/eng/101.pdf",
-      "filename": "101-English-课本.pdf",
-      "source": "DSEPHY_TE_101_TN_.pdf",
-      "bytes": 4508330,
-      "sha256": "53bdcb358080e517450586a651cfc75c38eb62d74d9b7acd3e4ba01d129e167b"
+      "filename": "101-英文版-知识点.pdf",
+      "source": "知识点（英文版）.pdf",
+      "sourcePages": [
+        1,
+        1
+      ],
+      "pages": 1,
+      "bytes": 117671,
+      "sha256": "8007be9d87e4e813f86c8f37cc1768e9b8dcde40a1e1ee5ee696373ce88b762d"
     },
     "102": {
       "url": "assets/textbook/pdfs/eng/102.pdf",
-      "filename": "102-English-课本.pdf",
-      "source": "DSEPHY_TE_102_TN_.pdf",
-      "bytes": 11164205,
-      "sha256": "de431d26cd73e44ec3e4b6af58fcc3bd1a18b50c6b9cb623acdcee79cea9fbcd"
+      "filename": "102-英文版-知识点.pdf",
+      "source": "知识点（英文版）.pdf",
+      "sourcePages": [
+        1,
+        3
+      ],
+      "pages": 3,
+      "bytes": 185822,
+      "sha256": "45a6f17ae6795f709f1923556b944034c9f63b7a6336420561b2ded8252478ee"
     },
     "103": {
       "url": "assets/textbook/pdfs/eng/103.pdf",
-      "filename": "103-English-课本.pdf",
-      "source": "DSEPHY_TE_103_TN_.pdf",
-      "bytes": 10331372,
-      "sha256": "99971787e2df61dd41ea17ffe8b9d7e0373d1697ba62cbd8a6573142ee1c61ea"
+      "filename": "103-英文版-知识点.pdf",
+      "source": "知识点（英文版）.pdf",
+      "sourcePages": [
+        3,
+        5
+      ],
+      "pages": 2,
+      "bytes": 224163,
+      "sha256": "7f3914d430dd3398291ac4b6f83dd428e2940ba82a9197cb0ad1a62ed6857726"
     },
     "104": {
       "url": "assets/textbook/pdfs/eng/104.pdf",
-      "filename": "104-English-课本.pdf",
-      "source": "DSEPHY_TE_104_TN_.pdf",
-      "bytes": 14678535,
-      "sha256": "f1f538cfc165225fe5aefb7ec190dfbefe153c47bf9a4a81f7a4475ea124ef7d"
+      "filename": "104-英文版-知识点.pdf",
+      "source": "知识点（英文版）.pdf",
+      "sourcePages": [
+        5,
+        6
+      ],
+      "pages": 2,
+      "bytes": 236684,
+      "sha256": "f8f908b802a23358ddc22505ecdee2dd9c70034aad81645b87613265cee86c32"
     },
     "105": {
       "url": "assets/textbook/pdfs/eng/105.pdf",
-      "filename": "105-English-课本.pdf",
-      "source": "DSEPHY_TE_105_TN_.pdf",
-      "bytes": 17005246,
-      "sha256": "f2ea980a59e1ef3ef5a0b728281f50e0d939400ca8387f9adbe00466a482e132"
+      "filename": "105-英文版-知识点.pdf",
+      "source": "知识点（英文版）.pdf",
+      "sourcePages": [
+        6,
+        11
+      ],
+      "pages": 5,
+      "bytes": 268396,
+      "sha256": "13c45624285f783a9450399dc8d1d87914f6fed366d6aef8624344bb7bc6bb25"
     },
     "201": {
       "url": "assets/textbook/pdfs/eng/201.pdf",
-      "filename": "201-English-课本.pdf",
-      "source": "DSEPHY_TE_201_TN_.pdf",
-      "bytes": 8892247,
-      "sha256": "ebce63f023303c2ff9b4b6a7bca10a0e9fdbd941ddfaf88cd7f900dcbdabbc9a"
+      "filename": "201-英文版-知识点.pdf",
+      "source": "知识点（英文版）.pdf",
+      "sourcePages": [
+        11,
+        12
+      ],
+      "pages": 2,
+      "bytes": 227036,
+      "sha256": "1ae9098182ddada50f74107c232214968b93fe3628606a3e0090b70c94f54815"
     },
     "202": {
       "url": "assets/textbook/pdfs/eng/202.pdf",
-      "filename": "202-English-课本.pdf",
-      "source": "DSEPHY_TE_202_TN_.pdf",
-      "bytes": 15875635,
-      "sha256": "9750bf3fecfa1ed38637373d124c4feaf8e38b73ef60b2a0c1276c7909c6412a"
+      "filename": "202-英文版-知识点.pdf",
+      "source": "知识点（英文版）.pdf",
+      "sourcePages": [
+        12,
+        17
+      ],
+      "pages": 4,
+      "bytes": 379247,
+      "sha256": "8a68abbeb0d349597b25bf7f8d23b2298d890bbd04bee40fd4dbdc620f7b2b18"
     },
     "203": {
       "url": "assets/textbook/pdfs/eng/203.pdf",
-      "filename": "203-English-课本.pdf",
-      "source": "DSEPHY_TE_203_TN_.pdf",
-      "bytes": 30797083,
-      "sha256": "1b42d5fc3cfc9ecd8f617105e599a971df40278cdd9c9364922a972310124dbb"
+      "filename": "203-英文版-知识点.pdf",
+      "source": "知识点（英文版）.pdf",
+      "sourcePages": [
+        17,
+        18
+      ],
+      "pages": 2,
+      "bytes": 224201,
+      "sha256": "d0e66d6fc57d4fcd84acf23f2fe5191af9d4546b256250eb00c6ff05aba72ce6"
     },
     "204": {
       "url": "assets/textbook/pdfs/eng/204.pdf",
-      "filename": "204-English-课本.pdf",
-      "source": "DSEPHY_TE_204_TN_.pdf",
-      "bytes": 22289820,
-      "sha256": "9a9141d1e09ff742a668f24bddc8853a9fb38bbba51f0586c6003e68e4d4b505"
+      "filename": "204-英文版-知识点.pdf",
+      "source": "知识点（英文版）.pdf",
+      "sourcePages": [
+        18,
+        19
+      ],
+      "pages": 1,
+      "bytes": 235697,
+      "sha256": "f5d75db174fe321a81cc37619113a5b177aee9963ed13b13c808eda1cd0706ca"
     },
     "205": {
       "url": "assets/textbook/pdfs/eng/205.pdf",
-      "filename": "205-English-课本.pdf",
-      "source": "DSEPHY_TE_205_TN_.pdf",
-      "bytes": 16772993,
-      "sha256": "baab07a9b2020d15cbf3254a93a1d1e0671e09d1854d3329618b3d3796fbc073"
+      "filename": "205-英文版-知识点.pdf",
+      "source": "知识点（英文版）.pdf",
+      "sourcePages": [
+        19,
+        21
+      ],
+      "pages": 2,
+      "bytes": 251777,
+      "sha256": "ca1bca61e9ae4117a7280bc2293d7de47e56d2ca62bc07c137d73da2b4c73b05"
     },
     "206": {
       "url": "assets/textbook/pdfs/eng/206.pdf",
-      "filename": "206-English-课本.pdf",
-      "source": "DSEPHY_TE_206_TN_.pdf",
-      "bytes": 13267210,
-      "sha256": "8c2864693575cda8f4d538feb0ef8e4d5597391bd831de858871c84df2ceaf21"
+      "filename": "206-英文版-知识点.pdf",
+      "source": "知识点（英文版）.pdf",
+      "sourcePages": [
+        21,
+        24
+      ],
+      "pages": 3,
+      "bytes": 249712,
+      "sha256": "dd087d832fbfc91fb56c748d5a45b91e8c798af746654d295bb06b27888789ab"
     },
     "207": {
       "url": "assets/textbook/pdfs/eng/207.pdf",
-      "filename": "207-English-课本.pdf",
-      "source": "DSEPHY_TE_207_TN_.pdf",
-      "bytes": 21067274,
-      "sha256": "ae54b7606391d6298236c3ec7af7fc9878e7ff14d5a5f628b8bcb3d2632c025e"
+      "filename": "207-英文版-知识点.pdf",
+      "source": "知识点（英文版）.pdf",
+      "sourcePages": [
+        24,
+        25
+      ],
+      "pages": 2,
+      "bytes": 224980,
+      "sha256": "01759cf49ac0a9200b88920bf60e3df7bc7d1d06ff3eaa449426f263068e24b0"
     },
     "208": {
       "url": "assets/textbook/pdfs/eng/208.pdf",
-      "filename": "208-English-课本.pdf",
-      "source": "DSEPHY_TE_208_TN_.pdf",
-      "bytes": 14754665,
-      "sha256": "d8905fc3a84b27c826a3f6ff4f7fcc9616affd8357a1e065a2672bcf383b19ca"
+      "filename": "208-英文版-知识点.pdf",
+      "source": "知识点（英文版）.pdf",
+      "sourcePages": [
+        25,
+        25
+      ],
+      "pages": 1,
+      "bytes": 136282,
+      "sha256": "0996a1b063492473215497ac40c8bfd62df56e443eee227cdada25e2b0850ffd"
     },
     "209": {
       "url": "assets/textbook/pdfs/eng/209.pdf",
-      "filename": "209-English-课本.pdf",
-      "source": "DSEPHY_TE_209_TN_.pdf",
-      "bytes": 26064234,
-      "sha256": "386a4fdd0850340dc59737d6681a76a190822ba08de42d790dc02fff444df3c4"
+      "filename": "209-英文版-知识点.pdf",
+      "source": "知识点（英文版）.pdf",
+      "sourcePages": [
+        25,
+        27
+      ],
+      "pages": 2,
+      "bytes": 230855,
+      "sha256": "a92bdddb196d07c7c0cf8f3cd6f5794f29a0cd54feb21be2701b439570eb4df9"
     },
     "210": {
       "url": "assets/textbook/pdfs/eng/210.pdf",
-      "filename": "210-English-课本.pdf",
-      "source": "DSEPHY_TE_210_TN_.pdf",
-      "bytes": 32006576,
-      "sha256": "1dd55b3db2c77bfe5d1eda2094f8a70339bc57e223d1d81bd86860bafb599e02"
+      "filename": "210-英文版-知识点.pdf",
+      "source": "知识点（英文版）.pdf",
+      "sourcePages": [
+        27,
+        29
+      ],
+      "pages": 2,
+      "bytes": 230537,
+      "sha256": "62f122df8a00344b77cbac05ee0377b7672347488df290a0dfffc3a69b5536f4"
     },
     "401": {
       "url": "assets/textbook/pdfs/eng/401.pdf",
-      "filename": "401-English-课本.pdf",
-      "source": "DSEPHY_TE_401_TN_.pdf",
-      "bytes": 8556190,
-      "sha256": "ffd7c933a586c93717eacba1e0a877ec86de6663eaf7e9a0c2784423ff8164d6"
+      "filename": "401-英文版-知识点.pdf",
+      "source": "知识点（英文版）.pdf",
+      "sourcePages": [
+        48,
+        50
+      ],
+      "pages": 3,
+      "bytes": 302690,
+      "sha256": "d8887f4b012f1ce7889075e668eb6e1e902e2108d365312ac23ea8aa001ac07d"
     },
     "402": {
       "url": "assets/textbook/pdfs/eng/402.pdf",
-      "filename": "402-English-课本.pdf",
-      "source": "DSEPHY_TE_402_TN_.pdf",
-      "bytes": 9224956,
-      "sha256": "3549ffb0d35868c692a7760eac8f7e5947a75130da062e80e11ae03f815f33df"
+      "filename": "402-英文版-知识点.pdf",
+      "source": "知识点（英文版）.pdf",
+      "sourcePages": [
+        50,
+        55
+      ],
+      "pages": 5,
+      "bytes": 262640,
+      "sha256": "fae79bf88ea1d44df6f0dbb177e157a18aaa523f1160123936054b3c531ac637"
     },
     "403": {
       "url": "assets/textbook/pdfs/eng/403.pdf",
-      "filename": "403-English-课本.pdf",
-      "source": "DSEPHY_TE_403_TN_.pdf",
-      "bytes": 5921667,
-      "sha256": "a5ab760be2e868aa9bd4ef41b211d6bfbcef8a93a58d0937dd7df9a207717bed"
+      "filename": "403-英文版-知识点.pdf",
+      "source": "知识点（英文版）.pdf",
+      "sourcePages": [
+        55,
+        56
+      ],
+      "pages": 2,
+      "bytes": 273866,
+      "sha256": "1b421e9a0a1195b8edb046c8deb13c7146c4b48487bb31c6ab67106cf7955e42"
     },
     "404": {
       "url": "assets/textbook/pdfs/eng/404.pdf",
-      "filename": "404-English-课本.pdf",
-      "source": "DSEPHY_TE_404_TN_.pdf",
-      "bytes": 18220202,
-      "sha256": "9dee793d9560b19b49d80518df93db49c370b442fa1317a8c529bc12d5e9c245"
+      "filename": "404-英文版-知识点.pdf",
+      "source": "知识点（英文版）.pdf",
+      "sourcePages": [
+        56,
+        57
+      ],
+      "pages": 2,
+      "bytes": 240522,
+      "sha256": "941a5a201cb68f1b3ea9b701873277438423dfc4d53d77f16b914deb557600f0"
     },
     "405": {
       "url": "assets/textbook/pdfs/eng/405.pdf",
-      "filename": "405-English-课本.pdf",
-      "source": "DSEPHY_TE_405_TN_.pdf",
-      "bytes": 13447519,
-      "sha256": "a81138ea5ae61f1ab48565d4200a9d3b7fe57a18108742e59e2e25f0096df495"
+      "filename": "405-英文版-知识点.pdf",
+      "source": "知识点（英文版）.pdf",
+      "sourcePages": [
+        57,
+        60
+      ],
+      "pages": 3,
+      "bytes": 391444,
+      "sha256": "40068bacfa8df5536a1125ff0b1d9ca6f585e81f4153f2a3e719e4b9338f91bd"
     },
     "406": {
       "url": "assets/textbook/pdfs/eng/406.pdf",
-      "filename": "406-English-课本.pdf",
-      "source": "DSEPHY_TE_406_TN_.pdf",
-      "bytes": 11536610,
-      "sha256": "243a47f539e30d0d86935357728d55d25ed7e4d9a51de6da3afccf0bbd620424"
+      "filename": "406-英文版-知识点.pdf",
+      "source": "知识点（英文版）.pdf",
+      "sourcePages": [
+        60,
+        62
+      ],
+      "pages": 3,
+      "bytes": 332269,
+      "sha256": "6f7269c6b4fac9f793fe20af47e0d8600c44c8fb0770cc36c2dc482ca7dd4203"
     },
     "407": {
       "url": "assets/textbook/pdfs/eng/407.pdf",
-      "filename": "407-English-课本.pdf",
-      "source": "DSEPHY_TE_407_TN_.pdf",
-      "bytes": 18305766,
-      "sha256": "1fdcab6bdb2d7fac8e99ad4b592dec4e65970375a5d12890f5477ac201f491fa"
+      "filename": "407-英文版-知识点.pdf",
+      "source": "知识点（英文版）.pdf",
+      "sourcePages": [
+        62,
+        65
+      ],
+      "pages": 3,
+      "bytes": 411549,
+      "sha256": "e595b04552446221f85baff60f3e2f70ba601cbb1122cb448553f70f9dee2c9e"
     },
     "408": {
       "url": "assets/textbook/pdfs/eng/408.pdf",
-      "filename": "408-English-课本.pdf",
-      "source": "DSEPHY_TE_408_TN_.pdf",
-      "bytes": 10621268,
-      "sha256": "1765546313c22be3b28892927db6c41acfb063408c2a7cfbdacb92330da8692f"
+      "filename": "408-英文版-知识点.pdf",
+      "source": "知识点（英文版）.pdf",
+      "sourcePages": [
+        65,
+        67
+      ],
+      "pages": 2,
+      "bytes": 285598,
+      "sha256": "128f25eb6d0b9e2270af05b1ddb3c7914c6e955023b0628e2a1b49596558ba1e"
     },
     "501": {
       "url": "assets/textbook/pdfs/eng/501.pdf",
-      "filename": "501-English-课本.pdf",
-      "source": "DSEPHY_TE_501_TN_.pdf",
-      "bytes": 11534753,
-      "sha256": "ecb5a626ff6bc6dd731ea1ba0581d479d77f3c5e62d7f6ebb5aa5b49dc6345d8"
+      "filename": "501-英文版-知识点.pdf",
+      "source": "知识点（英文版）.pdf",
+      "sourcePages": [
+        67,
+        68
+      ],
+      "pages": 2,
+      "bytes": 228708,
+      "sha256": "d27ed446a6b9cf177faa3a796c3445f6539a2f9f91f323059d864b7d7a940a00"
     },
     "502": {
       "url": "assets/textbook/pdfs/eng/502.pdf",
-      "filename": "502-English-课本.pdf",
-      "source": "DSEPHY_TE_502_TN_.pdf",
-      "bytes": 7924302,
-      "sha256": "c271d9be7bff005f07a6f868468e3e1857d57fb6671bd3ccd47527cb3b1c294c"
+      "filename": "502-英文版-知识点.pdf",
+      "source": "知识点（英文版）.pdf",
+      "sourcePages": [
+        68,
+        71
+      ],
+      "pages": 3,
+      "bytes": 303668,
+      "sha256": "3dae422a77096c9ab4dc87c2973afc878305a6a180e8a6e9e18fb0b3dadaed0a"
     },
     "503": {
       "url": "assets/textbook/pdfs/eng/503.pdf",
-      "filename": "503-English-课本.pdf",
-      "source": "DSEPHY_TE_503_TN_.pdf",
-      "bytes": 5669292,
-      "sha256": "d9a6b98adb370c90393cd28c17b3e17e19c2e342d8da344a7304b9ab68bad267"
+      "filename": "503-英文版-知识点.pdf",
+      "source": "知识点（英文版）.pdf",
+      "sourcePages": [
+        71,
+        73
+      ],
+      "pages": 2,
+      "bytes": 226807,
+      "sha256": "0bf1cccd15249cae8984e22f6f6decffadb1b83c0a0a3764ed7cccebd5ee77f5"
     },
     "3A01": {
       "url": "assets/textbook/pdfs/eng/3A01.pdf",
-      "filename": "3A01-English-课本.pdf",
-      "source": "DSEPHY_TE_3A01_TN_.pdf",
-      "bytes": 7043960,
-      "sha256": "5aabb628df309b28c7cb254e65c7f9d22b62db4640ad486b938466bb958b9adb"
+      "filename": "3A01-英文版-知识点.pdf",
+      "source": "知识点（英文版）.pdf",
+      "sourcePages": [
+        29,
+        30
+      ],
+      "pages": 1,
+      "bytes": 205288,
+      "sha256": "6eff49c1ab6e6b5a005ce40220a5e89ddaaf23fe21e8de62ef99dd77c473ef02"
     },
     "3A02": {
       "url": "assets/textbook/pdfs/eng/3A02.pdf",
-      "filename": "3A02-English-课本.pdf",
-      "source": "DSEPHY_TE_3A02_TN_.pdf",
-      "bytes": 12462207,
-      "sha256": "bf18d96d53554362866e427f666810acda727246789b07ebb7b2cd5fa677d891"
+      "filename": "3A02-英文版-知识点.pdf",
+      "source": "知识点（英文版）.pdf",
+      "sourcePages": [
+        30,
+        32
+      ],
+      "pages": 2,
+      "bytes": 335038,
+      "sha256": "57726237627079d15d5099febab24b5fa8c4eb37db819d4186eb66b4d7957a1f"
     },
     "3A03": {
       "url": "assets/textbook/pdfs/eng/3A03.pdf",
-      "filename": "3A03-English-课本.pdf",
-      "source": "DSEPHY_TE_3A03_TN_.pdf",
-      "bytes": 14851035,
-      "sha256": "fa859c3a4786f4b08f3b5d92bc6e430fbaea08a95c6ea4c051557598d4143313"
+      "filename": "3A03-英文版-知识点.pdf",
+      "source": "知识点（英文版）.pdf",
+      "sourcePages": [
+        32,
+        35
+      ],
+      "pages": 4,
+      "bytes": 318988,
+      "sha256": "f9b1c65dd9d0ea0ec250ac98fa613fd9c6aabf1a96d4167cf531a958eb242033"
     },
     "3B04": {
       "url": "assets/textbook/pdfs/eng/3B04.pdf",
-      "filename": "3B04-English-课本.pdf",
-      "source": "DSEPHY_TE_3B04_TN_.pdf",
-      "bytes": 6089117,
-      "sha256": "a32b9b79e25dcb19bca6ce3ab297bf4dfc1904969b1a4326e7fc76f621914693"
+      "filename": "3B04-英文版-知识点.pdf",
+      "source": "知识点（英文版）.pdf",
+      "sourcePages": [
+        35,
+        38
+      ],
+      "pages": 3,
+      "bytes": 366995,
+      "sha256": "9d4c70f8c72228d7f6eae2d833d55390fd14d999fdfaf22b390ea54dec9a3250"
     },
     "3B05": {
       "url": "assets/textbook/pdfs/eng/3B05.pdf",
-      "filename": "3B05-English-课本.pdf",
-      "source": "DSEPHY_TE_3B05_TN_.pdf",
-      "bytes": 12940091,
-      "sha256": "652c7fb4e0416b66e55fa76a6aee9574b647e33889410a3e49e27adf480ec8f9"
+      "filename": "3B05-英文版-知识点.pdf",
+      "source": "知识点（英文版）.pdf",
+      "sourcePages": [
+        38,
+        42
+      ],
+      "pages": 5,
+      "bytes": 495782,
+      "sha256": "968dea34b1e888ae9a4b3697de1e8f14ab835b78c45ea501874edad3e400d3cd"
     },
     "3B06": {
       "url": "assets/textbook/pdfs/eng/3B06.pdf",
-      "filename": "3B06-English-课本.pdf",
-      "source": "DSEPHY_TE_3B06_TN_.pdf",
-      "bytes": 18213310,
-      "sha256": "2c00dc4a7492aa5df519711d0350857b4b43aa590a337bba8ed6b87ca9963546"
+      "filename": "3B06-英文版-知识点.pdf",
+      "source": "知识点（英文版）.pdf",
+      "sourcePages": [
+        42,
+        45
+      ],
+      "pages": 3,
+      "bytes": 476600,
+      "sha256": "ac4ea605bd1fdd00ed89363d6228ef17023b9b00a8560be133ec2c1f2e44331b"
     },
     "3B07": {
       "url": "assets/textbook/pdfs/eng/3B07.pdf",
-      "filename": "3B07-English-课本.pdf",
-      "source": "DSEPHY_TE_3B07_TN_.pdf",
-      "bytes": 21173524,
-      "sha256": "6f856f7bf1d02bde9980b76968e4a1b843789ad2d1224eb8bb8e5f0082211749"
+      "filename": "3B07-英文版-知识点.pdf",
+      "source": "知识点（英文版）.pdf",
+      "sourcePages": [
+        45,
+        48
+      ],
+      "pages": 2,
+      "bytes": 300731,
+      "sha256": "9324c37e6272a5f189dca099ad1dcb76b5a6e235618774da8d0fe93b978555ce"
     },
     "E101": {
       "url": "assets/textbook/pdfs/eng/E101.pdf",
-      "filename": "E101-English-课本.pdf",
-      "source": "DSEPHY_TE_E101_TN_.pdf",
-      "bytes": 20363783,
-      "sha256": "91cfb0d86ad9da59a2aeabf233493e8216fd44bd910257d26714aa0a1b389b11"
+      "filename": "E101-英文版-知识点.pdf",
+      "source": "知识点（英文版）.pdf",
+      "sourcePages": [
+        73,
+        75
+      ],
+      "pages": 3,
+      "bytes": 369621,
+      "sha256": "de094800c5dd315559a41b90ed6af5fb39e2e3127d60310ac110f864ff0bf2b6"
     },
     "E102": {
       "url": "assets/textbook/pdfs/eng/E102.pdf",
-      "filename": "E102-English-课本.pdf",
-      "source": "DSEPHY_TE_E102_TN_.pdf",
-      "bytes": 9949814,
-      "sha256": "3ec778ce8bd9c9d8718c4861f591060155a70d24b779aaa0ebc94df081f83ee4"
+      "filename": "E102-英文版-知识点.pdf",
+      "source": "知识点（英文版）.pdf",
+      "sourcePages": [
+        75,
+        79
+      ],
+      "pages": 4,
+      "bytes": 272397,
+      "sha256": "2b1282fc26c616b6a7fbf6503adc2829cb22a98567ffb35058f594a1c4fe61de"
     },
     "E103": {
       "url": "assets/textbook/pdfs/eng/E103.pdf",
-      "filename": "E103-English-课本.pdf",
-      "source": "DSEPHY_TE_E103_TN_.pdf",
-      "bytes": 11667610,
-      "sha256": "fcbacd149323b60a83f3fd1dc9880debba1ed4ba130faf7220d07a2113aba424"
+      "filename": "E103-英文版-知识点.pdf",
+      "source": "知识点（英文版）.pdf",
+      "sourcePages": [
+        79,
+        85
+      ],
+      "pages": 6,
+      "bytes": 486464,
+      "sha256": "9b556f0281460ad279433b9807f78021fe136c9c66a9614984ee80002d0f0eaf"
     },
     "E301": {
       "url": "assets/textbook/pdfs/eng/E301.pdf",
-      "filename": "E301-English-课本.pdf",
-      "source": "DSEPHY_TE_E301_TN.pdf",
-      "bytes": 9921067,
-      "sha256": "209aece66e55ee29bd9225c0a7a28ba3029c1096277d004d070b5764f7c1d1fb"
+      "filename": "E301-英文版-知识点.pdf",
+      "source": "知识点（英文版）.pdf",
+      "sourcePages": [
+        85,
+        87
+      ],
+      "pages": 2,
+      "bytes": 288341,
+      "sha256": "ead3ad804ac5fcb9cba15d0eea7092cfcc56a09ef11943eb3c02ba6a97656c43"
     },
     "E302": {
       "url": "assets/textbook/pdfs/eng/E302.pdf",
-      "filename": "E302-English-课本.pdf",
-      "source": "DSEPHY_TE_E302_TN.pdf",
-      "bytes": 9508815,
-      "sha256": "dc7ede12761246caaf9e255b53b55e7e4ae27fed1f73e14fc9d443eeef83e2c2"
+      "filename": "E302-英文版-知识点.pdf",
+      "source": "知识点（英文版）.pdf",
+      "sourcePages": [
+        87,
+        88
+      ],
+      "pages": 2,
+      "bytes": 275774,
+      "sha256": "09222d39e81326ba08abd6744546851c708769714656dad735d7391206ed51e5"
     },
     "E303": {
       "url": "assets/textbook/pdfs/eng/E303.pdf",
-      "filename": "E303-English-课本.pdf",
-      "source": "DSEPHY_TE_E303_TN.pdf",
-      "bytes": 8330312,
-      "sha256": "c25e4121625595350e53735033399370f97764d3bda926982d6bff42972bc4a5"
+      "filename": "E303-英文版-知识点.pdf",
+      "source": "知识点（英文版）.pdf",
+      "sourcePages": [
+        88,
+        90
+      ],
+      "pages": 2,
+      "bytes": 305491,
+      "sha256": "5d72a4ffd9156880856df094d1195fe648f4cef141721cb54a35714e4ec2f4e1"
     },
     "E304": {
       "url": "assets/textbook/pdfs/eng/E304.pdf",
-      "filename": "E304-English-课本.pdf",
-      "source": "DSEPHY_TE_E304_TN.pdf",
-      "bytes": 13385383,
-      "sha256": "05c55c8f5dca9d1ea2b77e3ccfb3b388c277fce6ce7a09005fd2e4d70ce0fc49"
+      "filename": "E304-英文版-知识点.pdf",
+      "source": "知识点（英文版）.pdf",
+      "sourcePages": [
+        90,
+        95
+      ],
+      "pages": 5,
+      "bytes": 664540,
+      "sha256": "31c8d7ce37d6b8246e9966d3a6ce6ae1f25d3b0d1620d12bd41384c53f723acf"
     },
     "E201": {
       "url": "assets/textbook/pdfs/eng/E201.pdf",
-      "filename": "E201-English-课本.pdf",
-      "source": "DSEPHY_TE_E201_TN_.pdf",
-      "bytes": 5170698,
-      "sha256": "267b5d04a0c613bd43bbbc402df411ec3f3eea9ed62885ef0cf2d33e4129a889"
+      "filename": "E201-英文版-知识点.pdf",
+      "source": "知识点（英文版）.pdf",
+      "sourcePages": [
+        95,
+        97
+      ],
+      "pages": 3,
+      "bytes": 256527,
+      "sha256": "207df32fea45c080705636eeb51170f4bcfba217d44226290f72b648fa28afbc"
     },
     "E202": {
       "url": "assets/textbook/pdfs/eng/E202.pdf",
-      "filename": "E202-English-课本.pdf",
-      "source": "DSEPHY_TE_E202_TN_.pdf",
-      "bytes": 7876722,
-      "sha256": "2366efd9d5e120b6726c41389b2e4148c126898d228192fd232dac895a1f569b"
+      "filename": "E202-英文版-知识点.pdf",
+      "source": "知识点（英文版）.pdf",
+      "sourcePages": [
+        97,
+        100
+      ],
+      "pages": 4,
+      "bytes": 380801,
+      "sha256": "b4ffca1cf70a8d3345ee8ca97b07200770d70d81cc1f80f06893aa44d64f48e7"
     },
     "E203": {
       "url": "assets/textbook/pdfs/eng/E203.pdf",
-      "filename": "E203-English-课本.pdf",
-      "source": "DSEPHY_TE_E203_TN_.pdf",
-      "bytes": 10209581,
-      "sha256": "fbf32a90c10119329bee8f7fb79dedeed131c75a389d2df05f6510d184921df6"
+      "filename": "E203-英文版-知识点.pdf",
+      "source": "知识点（英文版）.pdf",
+      "sourcePages": [
+        100,
+        105
+      ],
+      "pages": 5,
+      "bytes": 440128,
+      "sha256": "88d76372d61860513c5aa96edf992e59b7bff379cb961a26264c393de0013fdc"
     },
     "E401": {
       "url": "assets/textbook/pdfs/eng/E401.pdf",
-      "filename": "E401-English-课本.pdf",
-      "source": "DSEPHY_TE_E401_TN_.pdf",
-      "bytes": 8851288,
-      "sha256": "736cfce7394a0ee1aa6a17b5f7e6a65514e2a3865a141dd6c298a8aa944c3194"
+      "filename": "E401-英文版-知识点.pdf",
+      "source": "知识点（英文版）.pdf",
+      "sourcePages": [
+        105,
+        111
+      ],
+      "pages": 6,
+      "bytes": 591321,
+      "sha256": "4a6c2524788adc7a28f9d0b2905356758465a4e215c95c25b40b63f13e3d54a7"
     },
     "E402": {
       "url": "assets/textbook/pdfs/eng/E402.pdf",
-      "filename": "E402-English-课本.pdf",
-      "source": "DSEPHY_TE_E402_TN_.pdf",
-      "bytes": 12744184,
-      "sha256": "123da15a05b7025e83bfcf753703d7e4ca005c2f8753601f5860e79b4c8ff339"
+      "filename": "E402-英文版-知识点.pdf",
+      "source": "知识点（英文版）.pdf",
+      "sourcePages": [
+        111,
+        117
+      ],
+      "pages": 7,
+      "bytes": 687301,
+      "sha256": "e70a576e66f81129b78543c1dc2bebf829c51d086bf6a301836d4b1c843f649f"
     },
     "E403": {
       "url": "assets/textbook/pdfs/eng/E403.pdf",
-      "filename": "E403-English-课本.pdf",
-      "source": "DSEPHY_TE_E403_TN_.pdf",
-      "bytes": 13001553,
-      "sha256": "9a74e727f836f86679aed4ead57b5a73a30cce714baefb0a410e0bd0896b4326"
+      "filename": "E403-英文版-知识点.pdf",
+      "source": "知识点（英文版）.pdf",
+      "sourcePages": [
+        117,
+        121
+      ],
+      "pages": 4,
+      "bytes": 339660,
+      "sha256": "359c6226fe4ccce1f09ffb4f61eb629fa761aa519414f17732382f1a4bc6312c"
     }
   }
 }

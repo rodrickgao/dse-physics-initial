@@ -1,0 +1,104 @@
+
+/* Shared larger screen typography, without scaling formula internals or print output. */
+@media screen {
+  .app-shell,.profile-page,.auth-page{font-size:18px;line-height:1.6}
+  .app-shell .content{width:100%;max-width:1680px;padding:32px clamp(24px,3vw,56px) 72px}
+  .app-shell :is(button,input,select,textarea),.profile-page :is(button,input,select),.auth-page :is(button,input,select){font-size:18px}
+  .app-shell .view-heading h1,.app-shell .tutoring-view>h1,.app-shell .profile-welcome h1{font-size:36px;line-height:1.35}
+  .app-shell :is(.panel-title h2,.question-header h2,.directory-heading h2,.exercise-directory h2,.exercise-list h2,.exercise-reader>h2){font-size:27px;line-height:1.4}
+  .app-shell :is(.view-heading>div>p,.study-source-note,.stage-guidance,.member-notice,.source-download,.source-download-unavailable,.question-header p){font-size:17px;line-height:1.65}
+  .app-shell :is(.study-content,.knowledge-content){font-size:21px;line-height:1.8}
+  .app-shell .study-stage h3{font-size:23px;line-height:1.5}
+  .app-shell .study-stage h3>span{font-size:17px}
+  .app-shell .knowledge-equation{font-size:22px}
+  .app-shell :is(.knowledge-notation,.knowledge-meta,.knowledge-meta span,.knowledge-point-head span){font-size:17px;line-height:1.7}
+  .app-shell .knowledge-point-head strong{font-size:21px;line-height:1.5}
+  .app-shell :is(.knowledge-questions button,.related-panel button,.exercise-knowledge button){font-size:17px;line-height:1.6;min-height:44px}
+  .app-shell :is(.knowledge-questions>span,.navigator-block>p,.question-group h3,.chapter-label,.search-results-heading){font-size:17px}
+  .app-shell :is(.question-chip-grid button,.year-grid button,.paper-choice-list button,.chapter-list button){font-size:17px;min-height:44px}
+  .app-shell .chapter-list button>span{font-size:17px;line-height:1.6}
+  .app-shell :is(.chapter-list b,.active-book-name strong,.chapter-download small){font-size:16px}
+  .app-shell :is(.study-breadcrumb,.workspace-breadcrumb,.exercise-breadcrumb,.question-footer>span){font-size:17px;line-height:1.6}
+  .app-shell .question-header-actions button{font-size:17px;min-height:46px;height:auto}
+  .app-shell .question-header{padding:26px 30px}
+  .app-shell .question-body{padding:0 30px 30px}
+  .app-shell .exercise-reader{padding:30px}
+  .app-shell .study-content :is(img,svg){max-width:100%}
+  .app-shell .study-content :is(.study-table-wrap,.katex-display){max-width:100%;overflow-x:auto;overflow-y:hidden}
+  .app-shell :is(.study-content,.knowledge-content) math[display=block]{max-width:100%;overflow-x:auto;overflow-y:hidden}
+  .app-shell .question-bank-option{padding:34px;min-height:250px}
+  .app-shell .question-bank-option strong{font-size:28px}
+  .app-shell :is(.exercise-directory strong,.exercise-list strong,.bank-search-result strong,.search-result-list strong,.global-question-results strong){font-size:21px;line-height:1.5}
+  .app-shell :is(.exercise-directory small,.exercise-list>button>span,.bank-search-result>span,.search-result-list small,.global-question-results small){font-size:17px;line-height:1.65}
+  .app-shell :is(.exercise-directory>button,.exercise-list>button,.bank-search-result){padding:25px}
+  .app-shell :is(.book-card strong,.year-directory-card>strong){font-size:26px}
+  .app-shell :is(.book-card small,.year-directory-card>strong small){font-size:17px}
+  .app-shell .selection-toolbar{font-size:18px;gap:16px;flex-wrap:wrap}
+  .app-shell .mistake-row-copy strong{font-size:21px;line-height:1.5}
+  .app-shell :is(.mistake-row-copy small,.mistake-row-copy>p,.mistake-row-actions button){font-size:17px;line-height:1.6}
+  .app-shell .mistake-row-actions button{min-height:44px;height:auto}
+  .app-shell :is(.mistake-recommendations h3,.mistake-distribution>h3){font-size:21px}
+  .app-shell :is(.mistake-recommendations p,.review-guidance,.chapter-bars,.top-points){font-size:17px;line-height:1.65}
+  .app-shell .mistake-recommendations button{font-size:17px;min-height:44px}
+  .app-shell .export-title h2{font-size:25px}
+  .app-shell :is(.export-mode>strong,.export-mode>p,.export-title>span,.export-controls .export-note){font-size:17px;line-height:1.65}
+  .app-shell .nav-item{min-height:52px}
+  .app-shell .nav-item strong,.app-shell .theme-button{font-size:19px}
+  .app-shell .brand strong{font-size:23px}
+  .app-shell .brand small{font-size:16px}
+  .app-shell :is(.account-bar,.account-bar button,.membership-status){font-size:17px}
+  .app-shell .global-search input{font-size:18px}
+  .app-shell .global-search{max-width:620px}
+  .app-shell :is(.profile-label,.profile-label small,.profile-details legend,.profile-choices span,.profile-email,.profile-password label,.profile-password p,.profile-footnote,.profile-avatar-caption){font-size:17px;line-height:1.65}
+  .app-shell .profile-password h3{font-size:21px}
+  .app-shell .profile-details{padding:34px}
+  .app-shell .profile-embedded:has(.profile-avatar-panel[hidden]) .profile-layout{grid-template-columns:minmax(0,780px)}
+  .app-shell .tutoring-view{max-width:1200px}
+  .app-shell :is(.tutoring-view label,.tutoring-message,.teacher-reply){font-size:19px;line-height:1.8}
+  .app-shell .tutoring-thread small{font-size:16px}
+  .app-shell .subscription-view{max-width:1280px}
+  .app-shell .subscription-plan{padding:38px}
+  .app-shell .subscription-plan h2{font-size:30px}
+  .app-shell :is(.plan-features li,.plan-tag,.plan-status,.payment-code-panel>p,.payment-account>span){font-size:19px;line-height:1.7}
+  .app-shell :is(.receipt-card,.member-welcome){max-width:820px}
+  .app-shell .member-welcome h1{font-size:30px}
+  .app-shell :is(.focus-view p,.focus-view label,.focus-view small){font-size:17px;line-height:1.65}
+  .auth-page .auth-card{max-width:560px}
+  .auth-page :is(.auth-card label,.auth-card>p,.login-form-heading p,.login-methods button,.remembered-accounts p,.remembered-accounts small,.remembered-email){font-size:17px;line-height:1.65}
+  .auth-page .auth-card input{min-height:48px}
+  .auth-page .auth-note{font-size:16px!important}
+  .app-shell .content>div,.app-shell .study-stage{min-width:0}
+}
+@media screen and (min-width:1201px){
+  .app-shell .paper-layout{grid-template-columns:240px minmax(0,1fr);gap:28px}
+}
+@media screen and (max-width:1100px){
+  .app-shell .question-header{flex-wrap:wrap;gap:16px}
+  .app-shell .question-header-actions{flex-wrap:wrap}
+  .app-shell .subscription-plan{padding:28px}
+  .app-shell .account-bar{flex-wrap:wrap}
+}
+@media screen and (max-width:820px){
+  .app-shell .content{padding:24px 18px 96px}
+  .app-shell .view-heading h1,.app-shell .tutoring-view>h1,.app-shell .profile-welcome h1{font-size:30px}
+  .app-shell :is(.panel-title h2,.question-header h2,.directory-heading h2,.exercise-directory h2,.exercise-list h2){font-size:24px}
+  .app-shell :is(.study-content,.knowledge-content){font-size:19px;line-height:1.75}
+  .app-shell .study-stage h3{font-size:21px}
+  .app-shell .knowledge-equation{font-size:20px}
+  .app-shell .question-header{padding:22px 18px}
+  .app-shell .question-body{padding:0 18px 22px}
+  .app-shell .exercise-reader{padding:20px}
+  .app-shell .profile-details{padding:24px}
+  .app-shell .question-bank-option{padding:26px;min-height:210px}
+  .app-shell .question-bank-option strong{font-size:25px}
+  .app-shell :is(.exercise-directory>button,.exercise-list>button,.bank-search-result){padding:20px}
+  .app-shell .question-footer{flex-wrap:wrap;gap:12px}
+  .app-shell .question-footer button{font-size:17px;min-height:44px}
+}
+@media screen and (max-width:720px){
+  .app-shell .account-bar{flex-wrap:nowrap}
+  .app-shell :is(.membership-status,.account-bar button){font-size:14px}
+  .app-shell .compact-mobile-nav>button,.app-shell .compact-mobile-nav>button span{font-size:13px}
+  .app-shell .mobile-more-menu button,.app-shell .mobile-more-menu button span{font-size:17px}
+  .app-shell .selection-toolbar>span{font-size:15px;max-width:100%;text-align:left}
+}

@@ -5,13 +5,14 @@ import { readFileSync } from 'node:fs';
 import { createApi } from './api.mjs';
 import { root } from './catalog.mjs';
 import { protectStudyFiles } from './premium.mjs';
+import { verificationEmail } from './verification-email.mjs';
 
 let mailer;
 if (process.env.SMTP_HOST) {
   if (!process.env.SMTP_FROM || !process.env.SMTP_USER || !process.env.SMTP_PASS) throw new Error('SMTP_FROM、SMTP_USER、SMTP_PASS 必須設定。');
   const { default: nodemailer } = await import('nodemailer');
   const transport = nodemailer.createTransport({ host: process.env.SMTP_HOST, port: Number(process.env.SMTP_PORT || 465), secure: process.env.SMTP_PORT !== '587', requireTLS: true, auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS }, connectionTimeout: 10000, socketTimeout: 15000 });
-  mailer = (email, code) => transport.sendMail({ from: process.env.SMTP_FROM, to: email, subject: 'DSE Physics 登入驗證碼', text: `你的驗證碼是 ${code}，10 分鐘內有效。請勿分享此驗證碼。` });
+  mailer = (email, code) => transport.sendMail(verificationEmail({from:process.env.SMTP_FROM, to:email, code}));
 }
 const api = createApi({ directory: process.env.DSE_DATA_DIR || resolve(root, '.local'), mailer });
 let vite;

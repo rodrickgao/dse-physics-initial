@@ -19,6 +19,20 @@ for (const file of readdirSync(resolve(root, 'text-papers')).filter(f => /^20\d{
     collect(record.reasoning, paidMedia);
   }
 }
+const exerciseRoot = resolve(root, 'assets/textbook-exercises');
+const exerciseIndexes = Object.fromEntries(['chn','eng'].map(lang => [lang, JSON.parse(readFileSync(resolve(exerciseRoot, `index-${lang}.json`), 'utf8'))]));
+const exerciseChapters = new Map();
+const exerciseFreeMedia = new Set(), exercisePaidMedia = new Set();
+const collectExerciseMedia = (html, target) => { for (const m of String(html || '').matchAll(/src=["'](assets\/textbook-exercises\/media\/[^"']+)["']/g)) target.add('/' + m[1]); };
+for (const [lang, index] of Object.entries(exerciseIndexes)) for (const chapter of index.books.flatMap(b => b.chapters)) {
+  const path = `/assets/textbook-exercises/${lang}/${chapter.id}.json`;
+  const records = JSON.parse(readFileSync(resolve(exerciseRoot, lang, `${chapter.id}.json`), 'utf8'));
+  exerciseChapters.set(path, records);
+  for (const record of Object.values(records)) {
+    collectExerciseMedia(record.question, exerciseFreeMedia); collectExerciseMedia(record.answer, exerciseFreeMedia);
+    collectExerciseMedia(record.reasoning, exercisePaidMedia);
+  }
+}
 // Association lists are supplied only by the authenticated API, never bootstrap scripts.
 export function protectStudyFiles(req, res, active) {
   let path;
@@ -32,6 +46,26 @@ export function protectStudyFiles(req, res, active) {
     res.setHeader('Cache-Control', 'private, no-store');
     res.setHeader('Vary', 'Cookie');
     return false;
+  }
+  if (/\/assets\/textbook-exercises(?:\/|$)/i.test(path)) {
+    res.setHeader('Vary', 'Cookie');
+    res.setHeader('Cache-Control', 'private, no-store');
+    const language = /^\/assets\/textbook-exercises\/index-(eng|chn)\.json$/.exec(path)?.[1];
+    if (language) {
+      const index = structuredClone(exerciseIndexes[language]);
+      if (!active) {
+        for (const q of index.questions) { q.knowledge = []; delete q.section; }
+        for (const chapter of index.books.flatMap(b => b.chapters)) chapter.sections = [];
+      }
+      return send(JSON.stringify(index), 'application/json; charset=utf-8');
+    }
+    if (exerciseChapters.has(path)) {
+      const records = structuredClone(exerciseChapters.get(path));
+      if (!active) for (const record of Object.values(records)) { record.hasReasoning = !!record.reasoning; delete record.reasoning; record.premiumLocked = true; }
+      return send(JSON.stringify(records), 'application/json; charset=utf-8');
+    }
+    if (exerciseFreeMedia.has(path) || (active && exercisePaidMedia.has(path))) return false;
+    return send('Not available', 'text/plain', 403);
   }
   // Only original exam papers are distributed here; full knowledge collections are unavailable.
   if (/(?:^|\/)downloads\/.*\.pdf$/i.test(path) && !originalPdfs.has(path)) return send('Download unavailable', 'text/plain', 404);

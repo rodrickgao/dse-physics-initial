@@ -44,6 +44,8 @@ export function imageUrl(yearId, path) {
 }
 
 export function questionLabelFromKey(key) {
+  const exercise = /^tb-(.+)-(\d+)$/.exec(String(key));
+  if (exercise) return `${exercise[1]} · Q${exercise[2]}`;
   const [year, paper, question] = String(key).split("|");
   const paperLabel = paper === "paper-1a" ? "1A" : paper === "paper-1b" ? "1B" : "P2";
   return `${year} · ${paperLabel} · Q${question}`;

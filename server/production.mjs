@@ -1,3 +1,4 @@
+import { verificationEmail } from './verification-email.mjs';
 import { createServer } from 'node:http';
 import { createReadStream, existsSync, readFileSync, readdirSync, statSync, mkdirSync, rmSync } from 'node:fs';
 import { resolve, relative, extname, join } from 'node:path';
@@ -67,7 +68,7 @@ export async function startProduction(env = process.env) {
   if (!existsSync(resolve(root, 'dist/index.html')) || !existsSync(resolve(root, 'dist/admin.html'))) throw new Error('Build student and admin pages first.');
   await importInitialData(config.directory);
   const transport = nodemailer.createTransport({ host: env.SMTP_HOST, port: Number(env.SMTP_PORT), secure: env.SMTP_PORT === '465', requireTLS: true, auth: { user: env.SMTP_USER, pass: env.SMTP_PASS }, connectionTimeout: 10000, greetingTimeout: 10000, dnsTimeout: 10000, socketTimeout: 15000 });
-  const api = createApi({ directory: config.directory, publicOrigins: config.origins, secureCookies: true, trustProxy: env.TRUST_PROXY === 'true', mailer: (email, code) => transport.sendMail({ from: env.SMTP_FROM, to: email, subject: 'DSE Physics 登录验证码', text: `你的验证码是 ${code}，10 分钟内有效。请勿分享此验证码。` }) });
+  const api = createApi({ directory: config.directory, publicOrigins: config.origins, secureCookies: true, trustProxy: env.TRUST_PROXY === 'true', mailer: (email, code) => transport.sendMail(verificationEmail({from:env.SMTP_FROM,to:email,code})) });
   await resetStudents(config.directory, env.DSE_RESET_STUDENTS_ONCE);
   const server = createProductionServer({ api, origins: config.origins, maintenance: config.maintenance });
   server.requestTimeout = 30000;

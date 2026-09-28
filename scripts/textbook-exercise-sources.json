@@ -1,0 +1,646 @@
+[
+  {
+    "language": "eng",
+    "chapter": "101",
+    "questions": 10,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\英文版\\课本word英文\\必修一习题\\可编辑Word\\101 Revision 1 Temperature and Thermometers.docx",
+    "sha256": "6706a6630814a938587564622f2579eac5c8e7b2203af0c4f02da79b3ce04a6a"
+  },
+  {
+    "language": "eng",
+    "chapter": "102",
+    "questions": 9,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\英文版\\课本word英文\\必修一习题\\可编辑Word\\102 Revision 2 Internal Energy, Heat and Transfer Processes.docx",
+    "sha256": "85b0e095192bf8798dadbdd9bcdd9ec28b2a204a6e1e1ea65c67339d320c92fe"
+  },
+  {
+    "language": "eng",
+    "chapter": "103",
+    "questions": 17,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\英文版\\课本word英文\\必修一习题\\可编辑Word\\103 Revision 3 Temperature Change and Heat Capacity.docx",
+    "sha256": "2dd309191e82db2626bb72feed3afc2f72406ea983f91a1af9938cdfe5a5955b"
+  },
+  {
+    "language": "eng",
+    "chapter": "104",
+    "questions": 22,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\英文版\\课本word英文\\必修一习题\\可编辑Word\\104 Revision 4 Change of State.docx",
+    "sha256": "3a7aa31f4f716a7eafba4ec900441a8bfae4b8f7079408b012c993cac95aaf73"
+  },
+  {
+    "language": "eng",
+    "chapter": "105",
+    "questions": 22,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\英文版\\课本word英文\\必修一习题\\可编辑Word\\105 Revision 5 Gases.docx",
+    "sha256": "06eba3e952b1810bda751afc39b74c8ff96c064757dc955bb136a5ac917b91c4"
+  },
+  {
+    "language": "eng",
+    "chapter": "3A01",
+    "questions": 20,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\英文版\\课本word英文\\必修三习题\\可编辑Word\\3A01 Revision 1 Reflection of Light.docx",
+    "sha256": "154e6a72ccd40dfed56888a6812ca26a45ef78782281df599ffafe3f91f7bd05"
+  },
+  {
+    "language": "eng",
+    "chapter": "3A02",
+    "questions": 24,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\英文版\\课本word英文\\必修三习题\\可编辑Word\\3A02 Revision 2 Refraction of light.docx",
+    "sha256": "6c417395447b689b73eee550d99e488ca93477974820993eb878689c1b24e7b0"
+  },
+  {
+    "language": "eng",
+    "chapter": "3A03",
+    "questions": 28,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\英文版\\课本word英文\\必修三习题\\可编辑Word\\3A03 Revision 3 Lenses.docx",
+    "sha256": "0e1078610b61fc83af510818dc571fd1927dec92875a684a52bd61ee747f4b5a"
+  },
+  {
+    "language": "eng",
+    "chapter": "3B04",
+    "questions": 19,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\英文版\\课本word英文\\必修三习题\\可编辑Word\\3B04 Revision 4 Nature of Waves.docx",
+    "sha256": "ce4955eaa02f2dfff1d869d1830f48153016d479791ee42b406abae452601c85"
+  },
+  {
+    "language": "eng",
+    "chapter": "3B05",
+    "questions": 24,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\英文版\\课本word英文\\必修三习题\\可编辑Word\\3B05 Revision 5 Wave Phenomena and Stationary Waves.docx",
+    "sha256": "a76c0ad611cd5816a7719c6cbb2bd8952af7915a3951dce94e729b971e027ef0"
+  },
+  {
+    "language": "eng",
+    "chapter": "3B06",
+    "questions": 25,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\英文版\\课本word英文\\必修三习题\\可编辑Word\\3B06 Revision 6 Wave Nature of Light and Electromagnetic Waves.docx",
+    "sha256": "2548f54587645147c07782d2c26165f5afad9c3673525260e9eed711f36a8917"
+  },
+  {
+    "language": "eng",
+    "chapter": "3B07",
+    "questions": 25,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\英文版\\课本word英文\\必修三习题\\可编辑Word\\3B07 Revision 7 Sound.docx",
+    "sha256": "20fc6ec0b8c4e289670d5206552cfbf13b5307e2f6b40f933473fbf3f1c362c6"
+  },
+  {
+    "language": "eng",
+    "chapter": "201",
+    "questions": 10,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\英文版\\课本word英文\\必修二习题\\可编辑Word\\201 Revision 1 Motion.docx",
+    "sha256": "43a24217c88c19c048694484014dc28268720aa6dd12072347772ba22184846f"
+  },
+  {
+    "language": "eng",
+    "chapter": "202",
+    "questions": 26,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\英文版\\课本word英文\\必修二习题\\可编辑Word\\202 Revision 2 Straight line Motion.docx",
+    "sha256": "1845452d9ea11db89a0b7b5be8cf645321531d3adbe3a4f1b40a5755d58eebdc"
+  },
+  {
+    "language": "eng",
+    "chapter": "203",
+    "questions": 30,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\英文版\\课本word英文\\必修二习题\\可编辑Word\\203 Revision 3 Force and Motion I.docx",
+    "sha256": "e7000c833b9ed58183253d48bddcae629bd90e9d12e0460bf570485c7144a179"
+  },
+  {
+    "language": "eng",
+    "chapter": "204",
+    "questions": 29,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\英文版\\课本word英文\\必修二习题\\可编辑Word\\204 Revision 4 Force and Motion II.docx",
+    "sha256": "83b9f4f6b88a91d37f581eca053bb9cb6a7044037faa7be50142045685fda093"
+  },
+  {
+    "language": "eng",
+    "chapter": "205",
+    "questions": 21,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\英文版\\课本word英文\\必修二习题\\可编辑Word\\205 Revision 5 Moment of a Force.docx",
+    "sha256": "de8436224f152d49241998ebecbbda43ce4917d1bed7aa3f6a367d665b14f6e4"
+  },
+  {
+    "language": "eng",
+    "chapter": "206",
+    "questions": 26,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\英文版\\课本word英文\\必修二习题\\可编辑Word\\206 Revision 6 Work Energy and Power.docx",
+    "sha256": "3b5c530c0ea13e93c54d9f64650cf7cf5b7a36a88d0d13c407008dcfa7b53501"
+  },
+  {
+    "language": "eng",
+    "chapter": "207",
+    "questions": 33,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\英文版\\课本word英文\\必修二习题\\可编辑Word\\207 Revision 7 Momentum.docx",
+    "sha256": "b1be45bed367837dacfa03274307424e65de1e17f3bf5eda526ddb13d1617354"
+  },
+  {
+    "language": "eng",
+    "chapter": "208",
+    "questions": 22,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\英文版\\课本word英文\\必修二习题\\可编辑Word\\208 Revision 8 Projectile Motion.docx",
+    "sha256": "c94936e530634927912ca91940eb279a6e5dde90d164f6199f94fd512b00952b"
+  },
+  {
+    "language": "eng",
+    "chapter": "209",
+    "questions": 24,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\英文版\\课本word英文\\必修二习题\\可编辑Word\\209 Revision 9 Uniform Circular Motion.docx",
+    "sha256": "970fb608bb6b5d61834f04da16d63683be49e1495fcd8824f6a4e3e505381264"
+  },
+  {
+    "language": "eng",
+    "chapter": "210",
+    "questions": 26,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\英文版\\课本word英文\\必修二习题\\可编辑Word\\210 Revision 10 Gravitation.docx",
+    "sha256": "5d2ec37e69fd2c0d98127512a150148ee82df49e065fa1d2dc0a7285d21382ce"
+  },
+  {
+    "language": "eng",
+    "chapter": "501",
+    "questions": 19,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\英文版\\课本word英文\\必修五习题\\可编辑Word\\501 Revision 1 Radiation and Radioactivity.docx",
+    "sha256": "c09f30dec6d8affb7e5cb0c9dd93276af8a2c12ff417e8479ce0ba7d358b93c1"
+  },
+  {
+    "language": "eng",
+    "chapter": "502",
+    "questions": 23,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\英文版\\课本word英文\\必修五习题\\可编辑Word\\502 Revision 2 Atomic Structure and Radioactive Decay.docx",
+    "sha256": "e20879cc9976a6f45d8c5844f6f7da5f96f6c55aafebbd80f60af98f681461f5"
+  },
+  {
+    "language": "eng",
+    "chapter": "503",
+    "questions": 13,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\英文版\\课本word英文\\必修五习题\\可编辑Word\\503 Revision 3 Nuclear Energy.docx",
+    "sha256": "d267a13f1712b9ee834089d5777527dffcdc4c52d966df657df5bf6366d54643"
+  },
+  {
+    "language": "eng",
+    "chapter": "401",
+    "questions": 23,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\英文版\\课本word英文\\必修四习题\\可编辑Word\\401 Revision 1 Electrostatics.docx",
+    "sha256": "f9fbdc8c4ff359c260f07e23aea1d2882aafaefac19ca26c47ea244b6161ab94"
+  },
+  {
+    "language": "eng",
+    "chapter": "402",
+    "questions": 27,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\英文版\\课本word英文\\必修四习题\\可编辑Word\\402 Revision 2 Current, Voltage and Resistance.docx",
+    "sha256": "44d513515a3983f9bc58e4635025fc067836103c86a74ac7a3daa6adeaa581c2"
+  },
+  {
+    "language": "eng",
+    "chapter": "403",
+    "questions": 21,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\英文版\\课本word英文\\必修四习题\\可编辑Word\\403 Revision 3 Circuits in Practice.docx",
+    "sha256": "7d614d8f57874e9b2f71e32d987ed08374a59123c40ca0f42e3188a95e90d5b6"
+  },
+  {
+    "language": "eng",
+    "chapter": "404",
+    "questions": 20,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\英文版\\课本word英文\\必修四习题\\可编辑Word\\404 Revision 4 Domestic Electricity.docx",
+    "sha256": "a7292872643464e2e77cc70932b5eca1b241982f8eacee81e72ea8da194d5ddd"
+  },
+  {
+    "language": "eng",
+    "chapter": "405",
+    "questions": 18,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\英文版\\课本word英文\\必修四习题\\可编辑Word\\405 Revision 5 Magnetic Fields.docx",
+    "sha256": "e10d4809bf001fbe1c0a7495efc429b2b62abfe021c231be73865c6123331b02"
+  },
+  {
+    "language": "eng",
+    "chapter": "406",
+    "questions": 20,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\英文版\\课本word英文\\必修四习题\\可编辑Word\\406 Revision 6 Force due to Magnetic Field.docx",
+    "sha256": "24667284cb89fbf83ff84bc599e2a9c7ab7661ce4dac65e5b7ebf9a2a9b25f4e"
+  },
+  {
+    "language": "eng",
+    "chapter": "407",
+    "questions": 24,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\英文版\\课本word英文\\必修四习题\\可编辑Word\\407 Revision 7 Electromagnetic Induction.docx",
+    "sha256": "c0840581c2b3034b9cdf5412503cbc1e3f4dac9da3e22b27d463d81a1a0fe1a1"
+  },
+  {
+    "language": "eng",
+    "chapter": "408",
+    "questions": 21,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\英文版\\课本word英文\\必修四习题\\可编辑Word\\408 Revision 8 Transformers and Transmission of Electricity.docx",
+    "sha256": "c826215b3b4cb8bc1f566760dd884b51489f568a583b5be3cc416a5c2b6e3741"
+  },
+  {
+    "language": "eng",
+    "chapter": "E101",
+    "questions": 17,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\英文版\\课本word英文\\选修一习题\\可编辑Word\\E101 Revision 1 Introduction to Astronomy.docx",
+    "sha256": "51653047eed5a788e0184f7c60d4fad69a74d6ba62562590b2cd8538069ed444"
+  },
+  {
+    "language": "eng",
+    "chapter": "E102",
+    "questions": 26,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\英文版\\课本word英文\\选修一习题\\可编辑Word\\E102 Revision 2 Motions of Celestial Bodies under Gravity.docx",
+    "sha256": "b44a793d6e3ea0f970c1833e11232e6a7438142ffed22f4a137cdd333d877f18"
+  },
+  {
+    "language": "eng",
+    "chapter": "E103",
+    "questions": 25,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\英文版\\课本word英文\\选修一习题\\可编辑Word\\E103 Revision 3 Stars and the Universe.docx",
+    "sha256": "909c56f0095fdc1494711cf1cdbdc56ccbbf5d451ea7510877170fcc745897df"
+  },
+  {
+    "language": "eng",
+    "chapter": "E301",
+    "questions": 23,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\英文版\\课本word英文\\选修三习题\\可编辑Word\\E301 Revision 1 Electricity at Home.docx",
+    "sha256": "a97a1d18f8e51bebd53b44706f48ffdb5682b7e33415ba7b1871428601b89faf"
+  },
+  {
+    "language": "eng",
+    "chapter": "E302",
+    "questions": 18,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\英文版\\课本word英文\\选修三习题\\可编辑Word\\E302 Revision 2 Lighting.docx",
+    "sha256": "0b9d05b38fedcb61c33f719b22f14cf4790d41b2e377347ca40100b6211548b4"
+  },
+  {
+    "language": "eng",
+    "chapter": "E303",
+    "questions": 20,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\英文版\\课本word英文\\选修三习题\\可编辑Word\\E303 Revision 3 Energy Efficiency in Building and Transportation.docx",
+    "sha256": "5dfc50b6522890a5c36b5f457d3314f709e287079dd9018d9da58a5925e38d65"
+  },
+  {
+    "language": "eng",
+    "chapter": "E304",
+    "questions": 20,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\英文版\\课本word英文\\选修三习题\\可编辑Word\\E304 Revision 4 Energy Sources and Energy Consumption.docx",
+    "sha256": "7ba0e5ad253d328099e114690b5dac3b4b257e5e0131f0a2ec8baba0b5343766"
+  },
+  {
+    "language": "eng",
+    "chapter": "E201",
+    "questions": 20,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\英文版\\课本word英文\\选修二习题\\可编辑Word\\E201 Revision 1 Particle Nature of Light.docx",
+    "sha256": "678d584ed23fc34c268f8a8771f9c0948831d98653c52f990ca42457a86215cd"
+  },
+  {
+    "language": "eng",
+    "chapter": "E202",
+    "questions": 24,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\英文版\\课本word英文\\选修二习题\\可编辑Word\\E202 Revision 2 Towards the Modern Atomic Model.docx",
+    "sha256": "773fdb24ba7a913e9102c54fb861a0c5d52d2ed19302c58d46304dfdaf1700c0"
+  },
+  {
+    "language": "eng",
+    "chapter": "E203",
+    "questions": 15,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\英文版\\课本word英文\\选修二习题\\可编辑Word\\E203 Revision 3 Probing into Nano Scale.docx",
+    "sha256": "57ea6dd098a9dd7d4702c12f5b4be853ec7b653e505c88d99598abf4b2f13f8b"
+  },
+  {
+    "language": "eng",
+    "chapter": "E401",
+    "questions": 17,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\英文版\\课本word英文\\选修四习题\\可编辑Word\\E401 Revision 1 Human Vision and Fibre Optic Endoscopy.docx",
+    "sha256": "b61df4d7865561203480a75f05064e55aadc184a4c46c61a7a74af71337c54ff"
+  },
+  {
+    "language": "eng",
+    "chapter": "E402",
+    "questions": 13,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\英文版\\课本word英文\\选修四习题\\可编辑Word\\E402 Revision 2 Human Hearing and Ultrasound Scanning.docx",
+    "sha256": "f72a71b027456bf562c35c17ac0ad2683f2997e5d89d6605e61a05677a7e1652"
+  },
+  {
+    "language": "eng",
+    "chapter": "E403",
+    "questions": 20,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\英文版\\课本word英文\\选修四习题\\可编辑Word\\E403 Revision 3 Medical Imaging Using Ionizing Radiation.docx",
+    "sha256": "15b958e28a4d850d41ec9403cd1d86f2cf0c1575f6cdd2a389ff4486c0cb33f9"
+  },
+  {
+    "language": "chn",
+    "chapter": "101",
+    "questions": 10,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\中文版\\课本word中文\\必修一习题\\可编辑Word\\101 複習 1 温度與温度計.docx",
+    "sha256": "716298a0792b5c1ef70df339496515a85fc3aa9eabc00be592e39092c2b098de"
+  },
+  {
+    "language": "chn",
+    "chapter": "102",
+    "questions": 9,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\中文版\\课本word中文\\必修一习题\\可编辑Word\\102 複習 2 內能、熱與熱傳遞.docx",
+    "sha256": "474d43e45024edafdb6d3cd327006994433a78e1f7e83af1c56952c61f38e759"
+  },
+  {
+    "language": "chn",
+    "chapter": "103",
+    "questions": 17,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\中文版\\课本word中文\\必修一习题\\可编辑Word\\103 複習 3 温度變化與熱容量.docx",
+    "sha256": "76a369aa253e2202faa52ab2c9db2f4b964dd916fafcfd652a677612f03d9820"
+  },
+  {
+    "language": "chn",
+    "chapter": "104",
+    "questions": 22,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\中文版\\课本word中文\\必修一习题\\可编辑Word\\104 複習 4 物態的改變.docx",
+    "sha256": "3422b646734ba2cce27f90c3c96b652d69e6601912d7c464180b12df8ee56b2d"
+  },
+  {
+    "language": "chn",
+    "chapter": "105",
+    "questions": 22,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\中文版\\课本word中文\\必修一习题\\可编辑Word\\105 複習 5 氣體.docx",
+    "sha256": "bc4a6efbbd4e4f35757b5bdb2e7b310e4a5fe8f88f1493b9c363dd5d37181c69"
+  },
+  {
+    "language": "chn",
+    "chapter": "3A01",
+    "questions": 20,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\中文版\\课本word中文\\必修三习题\\可编辑Word\\3A01 複習 1 光的反射.docx",
+    "sha256": "6815e81347b6482c8c143b2d9b3baa26592cc8acd27b9fa8d48b42f50b47bc8e"
+  },
+  {
+    "language": "chn",
+    "chapter": "3A02",
+    "questions": 24,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\中文版\\课本word中文\\必修三习题\\可编辑Word\\3A02 複習 2 光的折射.docx",
+    "sha256": "b55770b3268a460936cea7f542d8dfa7ddf48e0a83b69889a92c135f1ff5bb3a"
+  },
+  {
+    "language": "chn",
+    "chapter": "3A03",
+    "questions": 28,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\中文版\\课本word中文\\必修三习题\\可编辑Word\\3A03 複習 3 透鏡.docx",
+    "sha256": "0819882abc075209824b18794f02bb8d09c9d4c949c259c15ff047b61cdbde7b"
+  },
+  {
+    "language": "chn",
+    "chapter": "3B04",
+    "questions": 19,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\中文版\\课本word中文\\必修三习题\\可编辑Word\\3B04 複習 4 波的本質.docx",
+    "sha256": "c95c65c7cd323b16d65fa33bfe994a2a96073aa6122c96ce1ce3aedbd1e70cdc"
+  },
+  {
+    "language": "chn",
+    "chapter": "3B05",
+    "questions": 24,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\中文版\\课本word中文\\必修三习题\\可编辑Word\\3B05 複習 5 波的現象和駐波.docx",
+    "sha256": "0216eeec9ffd749c66b909788d56b5dc1e3aab772e0038b7de4e2661e21c05a9"
+  },
+  {
+    "language": "chn",
+    "chapter": "3B06",
+    "questions": 25,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\中文版\\课本word中文\\必修三习题\\可编辑Word\\3B06 複習 6 光的波動本質與電磁波.docx",
+    "sha256": "ee8df8822a3eda921e6202ada779516136593ed07053fd4d2268196a7070a9ba"
+  },
+  {
+    "language": "chn",
+    "chapter": "3B07",
+    "questions": 25,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\中文版\\课本word中文\\必修三习题\\可编辑Word\\3B07 複習 7 聲音.docx",
+    "sha256": "70d5531c6c583968205b536f6b028141490b18c40f58fb402cec9dd266415106"
+  },
+  {
+    "language": "chn",
+    "chapter": "201",
+    "questions": 10,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\中文版\\课本word中文\\必修二习题\\可编辑Word\\201 複習 1 運動.docx",
+    "sha256": "9f5e736fa15c46287928b94c5e93cc7efe4a285121e4323534920f0fd1a0bfd9"
+  },
+  {
+    "language": "chn",
+    "chapter": "202",
+    "questions": 26,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\中文版\\课本word中文\\必修二习题\\可编辑Word\\202 複習 2 直線運動.docx",
+    "sha256": "f70e306e5b613cc439bff7a2dc6ec5fa91510045476440456080cca52c0c677c"
+  },
+  {
+    "language": "chn",
+    "chapter": "203",
+    "questions": 30,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\中文版\\课本word中文\\必修二习题\\可编辑Word\\203 複習 3 力與運動（I）.docx",
+    "sha256": "a5daa82075094c851f699f4db91f31f4c6c3d7855c7b9b1f576fa0717d7ef77e"
+  },
+  {
+    "language": "chn",
+    "chapter": "204",
+    "questions": 29,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\中文版\\课本word中文\\必修二习题\\可编辑Word\\204 複習 4 力與運動（II）.docx",
+    "sha256": "4da174b324a2e38ba88c6bd3ca6b8d6471fa9cd6d95f413659fcb50e29a01276"
+  },
+  {
+    "language": "chn",
+    "chapter": "205",
+    "questions": 21,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\中文版\\课本word中文\\必修二习题\\可编辑Word\\205 複習 5 力矩.docx",
+    "sha256": "83b70f244b4eb1742575cacabf7f2225f4399db860dcd7c18a56f04eda4ff0b3"
+  },
+  {
+    "language": "chn",
+    "chapter": "206",
+    "questions": 26,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\中文版\\课本word中文\\必修二习题\\可编辑Word\\206 複習 6 功、能量和功率.docx",
+    "sha256": "d6f37c9f6bb2217c90afe26dcb4a8b70f1f710cd143988f202cd4793c8bd5229"
+  },
+  {
+    "language": "chn",
+    "chapter": "207",
+    "questions": 33,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\中文版\\课本word中文\\必修二习题\\可编辑Word\\207 複習 7 動量.docx",
+    "sha256": "1ceef61afd4133ffc392e1adcfe27062a54411a494b7c79ca744382fa46e7f18"
+  },
+  {
+    "language": "chn",
+    "chapter": "208",
+    "questions": 22,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\中文版\\课本word中文\\必修二习题\\可编辑Word\\208 複習 8 拋體運動.docx",
+    "sha256": "36d7702138301c500bb98a1f1f80fda368ad337f40d0b7c3162b0d2de6252f59"
+  },
+  {
+    "language": "chn",
+    "chapter": "209",
+    "questions": 24,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\中文版\\课本word中文\\必修二习题\\可编辑Word\\209 複習 9 勻速圓周運動.docx",
+    "sha256": "304538db14cf662ac70293814d23f56c987fd53666178800e51f9a9219d649b5"
+  },
+  {
+    "language": "chn",
+    "chapter": "210",
+    "questions": 26,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\中文版\\课本word中文\\必修二习题\\可编辑Word\\210 複習 10 引力.docx",
+    "sha256": "82845058e0fa115ee6bec5bb539358a6c96d7a3b74083a07532c5bc2b593ce52"
+  },
+  {
+    "language": "chn",
+    "chapter": "501",
+    "questions": 19,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\中文版\\课本word中文\\必修五习题\\可编辑Word\\501 複習 1 輻射與放射現象.docx",
+    "sha256": "af036c625ab6db4f63bb693a9021bb978926d6a0fbca0e5d0e5a21abcd1ff496"
+  },
+  {
+    "language": "chn",
+    "chapter": "502",
+    "questions": 23,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\中文版\\课本word中文\\必修五习题\\可编辑Word\\502 複習 2 原子結構與放射衰變.docx",
+    "sha256": "8a0fccf4a459f9e482c9c71369a56623feadd9818eb1d5ea68c585e6fca7acdb"
+  },
+  {
+    "language": "chn",
+    "chapter": "503",
+    "questions": 13,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\中文版\\课本word中文\\必修五习题\\可编辑Word\\503 複習 3 核能.docx",
+    "sha256": "515e92a94a4cf0f70554c7b726e4d6c60e8059ee244a92d7f6153a58d56a7c8c"
+  },
+  {
+    "language": "chn",
+    "chapter": "401",
+    "questions": 23,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\中文版\\课本word中文\\必修四习题\\可编辑Word\\401 複習 1 靜電學.docx",
+    "sha256": "8654debe53b627e5032a464a31ad435402a51ddfbb900db97432127c3f91af16"
+  },
+  {
+    "language": "chn",
+    "chapter": "402",
+    "questions": 27,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\中文版\\课本word中文\\必修四习题\\可编辑Word\\402 複習 2 電流、電壓與電阻.docx",
+    "sha256": "fb9ac1cdda0ea7b663d3571abd8c374a7e91248c3feb9d5324469a35f92a20d6"
+  },
+  {
+    "language": "chn",
+    "chapter": "403",
+    "questions": 21,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\中文版\\课本word中文\\必修四习题\\可编辑Word\\403 複習 3 實際電路.docx",
+    "sha256": "552664e48f63477d2107a3aff33155cf1fa9a14e9ed9181d69233be8e30b56c9"
+  },
+  {
+    "language": "chn",
+    "chapter": "404",
+    "questions": 20,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\中文版\\课本word中文\\必修四习题\\可编辑Word\\404 複習 4 家居電學.docx",
+    "sha256": "d45c4f62e684f707e576445a39dc58aa8affa8022690319520d1b9396a3292ec"
+  },
+  {
+    "language": "chn",
+    "chapter": "405",
+    "questions": 18,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\中文版\\课本word中文\\必修四习题\\可编辑Word\\405 複習 5 磁場.docx",
+    "sha256": "575bf52700c0e0af27eaea271878b0c4952bd6a12db63a2c74708df1c08911ba"
+  },
+  {
+    "language": "chn",
+    "chapter": "406",
+    "questions": 20,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\中文版\\课本word中文\\必修四习题\\可编辑Word\\406 複習 6 磁場產生的力.docx",
+    "sha256": "837bc5b5daa9839ff9ad00ce2477f6c79db63298ecafd0e06ecced3eaac5056f"
+  },
+  {
+    "language": "chn",
+    "chapter": "407",
+    "questions": 24,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\中文版\\课本word中文\\必修四习题\\可编辑Word\\407 複習 7 電磁感應.docx",
+    "sha256": "6de0f51e8d61d9e54d8f0f97c4a0f72358c4f225f96523fbd43e93fbf8dd2399"
+  },
+  {
+    "language": "chn",
+    "chapter": "408",
+    "questions": 21,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\中文版\\课本word中文\\必修四习题\\可编辑Word\\408 複習 8 變壓器及輸電.docx",
+    "sha256": "71071355f992bcaa9889b6eb7ae60b36f66fbf71a025b5804c9b3e4c2e566a3d"
+  },
+  {
+    "language": "chn",
+    "chapter": "E101",
+    "questions": 17,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\中文版\\课本word中文\\选修一习题\\可编辑Word\\E101 複習 1 天文學簡論.docx",
+    "sha256": "39a8a3f0d2778934f6b4b8d62460067ae406d4656261fbbdf6732bc8101772b4"
+  },
+  {
+    "language": "chn",
+    "chapter": "E102",
+    "questions": 26,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\中文版\\课本word中文\\选修一习题\\可编辑Word\\E102 複習 2 天體在重力下的運動.docx",
+    "sha256": "20d62cb277ca39dfeb545ce32350a9384b198ec45e9efe4ab0bed929894724da"
+  },
+  {
+    "language": "chn",
+    "chapter": "E103",
+    "questions": 25,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\中文版\\课本word中文\\选修一习题\\可编辑Word\\E103 複習 3 恆星和宇宙.docx",
+    "sha256": "cb1c87b07e8df49290abcdd08fba0cac8ec043858d9231ec5e94bd72ee46e36b"
+  },
+  {
+    "language": "chn",
+    "chapter": "E301",
+    "questions": 23,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\中文版\\课本word中文\\选修三习题\\可编辑Word\\E301 複習 1 家居用電.docx",
+    "sha256": "65b65126b20ba28646f9a6c262df7c7f29f51c703013a7f590e6988c4bd8ef37"
+  },
+  {
+    "language": "chn",
+    "chapter": "E302",
+    "questions": 18,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\中文版\\课本word中文\\选修三习题\\可编辑Word\\E302 複習 2 照明.docx",
+    "sha256": "f641cfaa7a31522117a94950c3a1c9d27fa1fb47fe1af65e47a37cbc3eca8b11"
+  },
+  {
+    "language": "chn",
+    "chapter": "E303",
+    "questions": 20,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\中文版\\课本word中文\\选修三习题\\可编辑Word\\E303 複習 3 建築和運輸業的能源效益.docx",
+    "sha256": "8f8e8de6100b5e6c282759156103e215bd2711de564f871f1032942c8a44ed63"
+  },
+  {
+    "language": "chn",
+    "chapter": "E304",
+    "questions": 20,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\中文版\\课本word中文\\选修三习题\\可编辑Word\\E304 複習 4 能源與能源消耗.docx",
+    "sha256": "3bf667313166355cb14d46ed7ae43ea3256be0967343bfee10c1b6c915f5a68e"
+  },
+  {
+    "language": "chn",
+    "chapter": "E201",
+    "questions": 20,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\中文版\\课本word中文\\选修二习题\\可编辑Word\\E201 複習 1 光的粒子本質.docx",
+    "sha256": "1618c0c130e9bab767e61e5279df1bde960200ebf0cceda162081b7cfca2282d"
+  },
+  {
+    "language": "chn",
+    "chapter": "E202",
+    "questions": 24,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\中文版\\课本word中文\\选修二习题\\可编辑Word\\E202 複習 2 邁向現代原子模型.docx",
+    "sha256": "1103fe4455362960cb33eaea0326d084244b4079a323d9ec32d3e12c923e71d3"
+  },
+  {
+    "language": "chn",
+    "chapter": "E203",
+    "questions": 15,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\中文版\\课本word中文\\选修二习题\\可编辑Word\\E203 複習 3 窺探納米世界.docx",
+    "sha256": "cd45e71f89c3d4d265e3efab2ee4277bc8fc3bec56ea92ce0436f0eeb85e220a"
+  },
+  {
+    "language": "chn",
+    "chapter": "E401",
+    "questions": 17,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\中文版\\课本word中文\\选修四习题\\可编辑Word\\E401 複習 1 人類視覺和光纖內窺鏡學.docx",
+    "sha256": "5f60fdfff0ed16fdfc7c41e2f34ecb0d5a40e55e8e743e476e2ce54a7dac1450"
+  },
+  {
+    "language": "chn",
+    "chapter": "E402",
+    "questions": 13,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\中文版\\课本word中文\\选修四习题\\可编辑Word\\E402 複習 2 人類聽覺和超聲波掃描.docx",
+    "sha256": "93462dcedba1e17ed21909b473f8e8b0a489e2348987e7171e29e987fabf1d9b"
+  },
+  {
+    "language": "chn",
+    "chapter": "E403",
+    "questions": 20,
+    "source": "C:\\Users\\rodri\\Desktop\\dse物理真题全解\\中文版\\课本word中文\\选修四习题\\可编辑Word\\E403 複習 3 致電離輻射醫學影像學.docx",
+    "sha256": "5e4b7aefadf91287fdb69f7ee9f22c52b18897dd197be36d170c3f1ca1c3df48"
+  }
+]

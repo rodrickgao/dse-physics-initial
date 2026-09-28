@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {readRoute, pageHash, mistakeCoverage, readSaved, writeSaved} from '../src/lib/study-state.js';
+import {readRoute, pageHash, exerciseBookFromHash, mistakeCoverage, readSaved, writeSaved} from '../src/lib/study-state.js';
 
 test('question routes round-trip including Paper 2 structured identities', () => {
   for (const key of ['2015|paper-1a|1', '2024|paper-2|4.S', '2025|paper-2|1.1']) {
@@ -21,4 +21,11 @@ test('chapter and knowledge counts deduplicate links within each question', () =
 test('unavailable storage does not interrupt reading', () => {
   assert.deepEqual(readSaved('missing', {}), {});
   assert.equal(writeSaved('missing', {}), false);
+});
+
+test('exercise question and book directory survive URL round trips',()=>{
+ for(const key of ['tb-201-1','tb-E1A01-1'])assert.deepEqual(readRoute(pageHash('exercises',key)),{page:'exercises',question:key});
+ for(const book of ['compulsory-2','elective-4'])assert.equal(exerciseBookFromHash(pageHash('exercises','',{book})),book);
+ assert.equal(pageHash('exercises','',{book:'invalid'}),'#exercises');
+ assert.equal(exerciseBookFromHash('#exercises?book=invalid'),'');
 });

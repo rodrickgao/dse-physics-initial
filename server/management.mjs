@@ -1,4 +1,14 @@
-import { questions, points } from './catalog.mjs';
+import { questions, points, pointInfo } from './catalog.mjs';
+
+export function activityContent(row) {
+  if (row.action === 'knowledge_view' && points.has(Number(row.target))) {
+    const point = pointInfo(Number(row.target));
+    return {label:`${point.number} · ${point.title}`,labelEn:`${point.number} · ${point.titleEn || point.title}`,href:`/#textbook?knowledge=${point.sequence}`};
+  }
+  const question = ['question_view','answer_view','reasoning_view','mark','unmark','restore','delete'].includes(row.action) && questions.get(row.target);
+  if (question) return {label:question.label,labelEn:question.labelEn || question.label,href:`/#${question.source==='textbook'?'exercises':'papers'}?question=${encodeURIComponent(question.key)}`};
+  return null;
+}
 
 const DAY = 86400000;
 export function createManagement({ db, clock, fail, transaction }) {
@@ -26,7 +36,7 @@ export function createManagement({ db, clock, fail, transaction }) {
     if (body.action === 'reasoning_view' && !membership(user.id).active) fail(403, '詳細思路需要有效會員。');
     if (['question_view', 'answer_view', 'reasoning_view'].includes(body.action) && !questions.has(body.target)) fail(400, '題目不存在。');
     if (body.action === 'knowledge_view' && !points.has(Number(body.target))) fail(400, '知識點不存在。');
-    if (body.action === 'page_view' && !['home','ask','papers','textbook','mistakes','focus','profile','membership','payment','receipt','activating','member-success'].includes(body.target)) fail(400, '頁面不存在。');
+    if (body.action === 'page_view' && !['home','bank','ask','papers','textbook','exercises','mistakes','focus','profile','membership','payment','receipt','activating','member-success'].includes(body.target)) fail(400, '頁面不存在。');
     record(user.id, body.action, body.target, body.eventId);
     return { ok: true };
   }
@@ -53,7 +63,7 @@ export function createManagement({ db, clock, fail, transaction }) {
   const safeStudent = "SELECT id,email,nickname,grade,target,created_at,last_login FROM users WHERE role='student'";
   function overview() {
     const now = clock();
-    const students = all(safeStudent + ' ORDER BY last_login DESC').map(u => ({ ...u, membership: membership(u.id), lastActivity: get('SELECT MAX(at) at FROM learning_activity WHERE user_id=?', u.id)?.at || null, operations: get('SELECT COUNT(*) n FROM learning_activity WHERE user_id=?', u.id).n, focusMinutes: Math.round(get('SELECT COALESCE(SUM(elapsed_ms),0) n FROM focus_sessions WHERE user_id=?', u.id).n / 60000), mistakes: get('SELECT COUNT(*) n FROM mistake_archive WHERE user_id=?', u.id).n }));
+    const students = all(safeStudent + ' ORDER BY last_login DESC').map(u => ({ ...u, membership: membership(u.id), lastActivity: get('SELECT MAX(at) at FROM learning_activity WHERE user_id=?', u.id)?.at || null, operations: get('SELECT COUNT(*) n FROM learning_activity WHERE user_id=?', u.id).n, focusMinutes: Math.round(get('SELECT COALESCE(SUM(elapsed_ms),0) n FROM focus_sessions WHERE user_id=?', u.id).n / 60000), mistakes: get('SELECT COUNT(*) n FROM mistake_archive WHERE user_id=?', u.id).n, activeMistakes: get('SELECT COUNT(*) n FROM mistakes WHERE user_id=?', u.id).n, mastered: get('SELECT COUNT(*) n FROM mastered WHERE user_id=?', u.id).n }));
     return { students, summary: { students: students.length, members: students.filter(s => s.membership.active).length, expiring: students.filter(s => s.membership.active && s.membership.endsAt <= now + 7 * DAY).length, active: get("SELECT COUNT(DISTINCT a.user_id) n FROM learning_activity a JOIN users u ON u.id=a.user_id WHERE u.role='student' AND a.at>=?", now - 7 * DAY).n, operations: get('SELECT COUNT(*) n FROM learning_activity WHERE at>=?', now - DAY).n, focusMinutes: students.reduce((sum, s) => sum + s.focusMinutes, 0) }, daily: all("SELECT strftime('%Y-%m-%d',at/1000,'unixepoch','+8 hours') day,COUNT(*) operations,COUNT(DISTINCT user_id) students FROM learning_activity WHERE at>=? GROUP BY day ORDER BY day DESC", now - 30 * DAY), generatedAt: now };
   }
   function activity(url) {
@@ -62,7 +72,7 @@ export function createManagement({ db, clock, fail, transaction }) {
     const page = Math.max(1, Math.min(100000, Number(url.searchParams.get('page')) || 1));
     const where = "WHERE u.role='student' AND (?=0 OR a.user_id=?) AND (?='' OR a.action=?)";
     const args = [id, id, action, action];
-    return { page, total: get(`SELECT COUNT(*) n FROM learning_activity a JOIN users u ON u.id=a.user_id ${where}`, ...args).n, rows: all(`SELECT a.*,u.email,u.nickname FROM learning_activity a JOIN users u ON u.id=a.user_id ${where} ORDER BY a.id DESC LIMIT 50 OFFSET ?`, ...args, (Math.floor(page) - 1) * 50).map(r => ({ ...r, label: questions.get(r.target)?.label || r.target })) };
+    return { page, total: get(`SELECT COUNT(*) n FROM learning_activity a JOIN users u ON u.id=a.user_id ${where}`, ...args).n, rows: all(`SELECT a.*,u.email,u.nickname FROM learning_activity a JOIN users u ON u.id=a.user_id ${where} ORDER BY a.id DESC LIMIT 50 OFFSET ?`, ...args, (Math.floor(page) - 1) * 50).map(r => ({ ...r, label: questions.get(r.target)?.label || r.target, content: activityContent(r) })) };
   }
   function history(id = 0) { return all('SELECT a.*,u.nickname,u.email FROM membership_audit a JOIN users u ON u.id=a.user_id WHERE (?=0 OR a.user_id=?) ORDER BY a.id DESC LIMIT 200', id, id); }
   // Import only historical operations that were actually recorded by the old site.

@@ -1,3 +1,4 @@
+import { studentLearning } from './student-learning.mjs';
 import { createTutoring } from './tutoring.mjs';
 import { DatabaseSync } from 'node:sqlite';
 import { createHash, randomBytes, randomInt, timingSafeEqual } from 'node:crypto';
@@ -31,6 +32,7 @@ export function createApi({ directory, mailer, clock = Date.now, adminKey: suppl
     CREATE TABLE IF NOT EXISTS codes(email TEXT PRIMARY KEY, digest TEXT NOT NULL, salt TEXT NOT NULL, expires INTEGER NOT NULL, attempts INTEGER NOT NULL DEFAULT 0, sent_at INTEGER NOT NULL);
     CREATE TABLE IF NOT EXISTS sessions(digest TEXT PRIMARY KEY, user_id INTEGER NOT NULL REFERENCES users(id), expires INTEGER NOT NULL);
     CREATE TABLE IF NOT EXISTS mistakes(user_id INTEGER NOT NULL REFERENCES users(id), question_key TEXT NOT NULL, marked_at INTEGER NOT NULL, PRIMARY KEY(user_id,question_key));
+    CREATE TABLE IF NOT EXISTS progress_undo(id TEXT PRIMARY KEY, user_id INTEGER NOT NULL REFERENCES users(id), snapshot TEXT NOT NULL, after_state TEXT NOT NULL, created_at INTEGER NOT NULL);
     CREATE TABLE IF NOT EXISTS mastered(user_id INTEGER NOT NULL REFERENCES users(id), question_key TEXT NOT NULL, marked_at INTEGER NOT NULL, PRIMARY KEY(user_id,question_key));
     CREATE TABLE IF NOT EXISTS events(id INTEGER PRIMARY KEY, user_id INTEGER NOT NULL REFERENCES users(id), question_key TEXT NOT NULL, action TEXT NOT NULL, at INTEGER NOT NULL);
     CREATE TABLE IF NOT EXISTS focus_sessions(user_id INTEGER NOT NULL REFERENCES users(id), id TEXT NOT NULL, elapsed_ms INTEGER NOT NULL, PRIMARY KEY(user_id,id));
@@ -73,7 +75,7 @@ export function createApi({ directory, mailer, clock = Date.now, adminKey: suppl
     return publicUser(user);
   }
   function marked(userId) {
-    return Object.fromEntries(all('SELECT question_key,marked_at FROM mistakes WHERE user_id=?', userId).map(row => [row.question_key, { markedAt: new Date(row.marked_at).toISOString() }]));
+    return Object.fromEntries(all('SELECT question_key,marked_at FROM mistakes WHERE user_id=?', userId).map(row => [row.question_key, { markedAt: new Date(row.marked_at).toISOString(), chapterCode: questions.get(row.question_key)?.chapterCode || '', primaryChapterCode: questions.get(row.question_key)?.primaryChapterCode || '' }]));
   }
   function setMarked(userId, key, value) {
     if (!questions.has(key)) fail(400, '題目不存在。');
@@ -225,14 +227,39 @@ export function createApi({ directory, mailer, clock = Date.now, adminKey: suppl
       if (path === '/api/tutoring' && req.method === 'POST') {
         limit(`tutoring:${user.id}`,20,3600000); return send(tutoring.submit(user.id,body));
       }
+      const progressSnapshot = keys => keys.map(key => ({key,
+        mistake:get('SELECT marked_at FROM mistakes WHERE user_id=? AND question_key=?',user.id,key)?.marked_at ?? null,
+        mastered:get('SELECT marked_at FROM mastered WHERE user_id=? AND question_key=?',user.id,key)?.marked_at ?? null,
+        archive:get('SELECT marked_at,status,trashed_at,deleted_at FROM mistake_archive WHERE user_id=? AND question_key=?',user.id,key) || null
+      }));
+      if (path === '/api/progress/undo' && req.method === 'POST') {
+        const undo=get('SELECT * FROM progress_undo WHERE id=? AND user_id=?',String(body.id||''),user.id);
+        if(!undo || clock()-undo.created_at>600000) fail(409,'撤销已过期，请重新调整学习状态。');
+        const snapshot=JSON.parse(undo.snapshot),keys=snapshot.map(row=>row.key);
+        transaction(()=>{
+          if(JSON.stringify(progressSnapshot(keys))!==undo.after_state) fail(409,'这些题目的状态已再次改变，请刷新后查看。');
+          for(const row of snapshot){
+            for(const table of ['mistakes','mastered','mistake_archive']) run(`DELETE FROM ${table} WHERE user_id=? AND question_key=?`,user.id,row.key);
+            if(row.mistake!==null) run('INSERT INTO mistakes VALUES(?,?,?)',user.id,row.key,row.mistake);
+            if(row.mastered!==null) run('INSERT INTO mastered VALUES(?,?,?)',user.id,row.key,row.mastered);
+            if(row.archive) run('INSERT INTO mistake_archive VALUES(?,?,?,?,?,?)',user.id,row.key,row.archive.marked_at,row.archive.status,row.archive.trashed_at,row.archive.deleted_at);
+          }
+          run('DELETE FROM progress_undo WHERE id=?',undo.id);
+        });
+        return send(progress(user.id));
+      }
       if (path === '/api/progress' && req.method === 'PUT') {
         if (!Array.isArray(body.keys) || !body.keys.length || body.keys.length>questions.size || body.keys.some(k=>!questions.has(k)) || !['mastered','mistake','clear'].includes(body.status)) fail(400,'请选择有效的题目和学习状态。');
-        transaction(() => { for (const key of new Set(body.keys)) {
+        const undoId=token(), keys=[...new Set(body.keys)];
+        transaction(() => { const snapshot=progressSnapshot(keys); for (const key of keys) {
           setMarked(user.id,key,body.status==='mistake');
           if(body.status==='mastered') run('INSERT INTO mastered VALUES(?,?,?) ON CONFLICT(user_id,question_key) DO UPDATE SET marked_at=excluded.marked_at',user.id,key,clock());
           else run('DELETE FROM mastered WHERE user_id=? AND question_key=?',user.id,key);
-        }});
-        return send(progress(user.id));
+        }
+          run('DELETE FROM progress_undo WHERE created_at<?',clock()-600000);
+          run('INSERT INTO progress_undo VALUES(?,?,?,?,?)',undoId,user.id,JSON.stringify(snapshot),JSON.stringify(progressSnapshot(keys)),clock());
+        });
+        return send({...progress(user.id),undoId});
       }
       if (path === '/api/mistakes' && req.method === 'GET') return send(progress(user.id));
       if (path === '/api/mistakes/trash' && req.method === 'GET') return send({ trash: archive.list(user.id) });
@@ -271,7 +298,9 @@ export function createApi({ directory, mailer, clock = Date.now, adminKey: suppl
         const student = get("SELECT id,email,role,created_at,last_login,nickname,grade,target,target_major,avatar,avatar_version FROM users WHERE id=? AND role='student'", Number(url.searchParams.get('id')) || 0);
         if (!student) fail(404, '找不到學生。');
         const rows = all('SELECT * FROM mistake_archive WHERE user_id=? ORDER BY marked_at DESC', student.id);
-        return send({ student, ...aggregate(rows), mistakes: rows.map(r => ({ ...questions.get(r.question_key), status: r.status, trashedAt: r.trashed_at, deletedAt: r.deleted_at, markedAt: new Date(r.marked_at).toISOString(), knowledge: (questions.get(r.question_key)?.points || []).map(pointInfo) })) });
+        const active = all('SELECT question_key,marked_at FROM mistakes WHERE user_id=?', student.id);
+        const masteredRows = all('SELECT question_key,marked_at FROM mastered WHERE user_id=? ORDER BY marked_at DESC', student.id);
+        return send({ student, learning: studentLearning(active, masteredRows, rows, Number(url.searchParams.get('batch')) || 0), ...aggregate(rows), mistakes: rows.map(r => ({ ...questions.get(r.question_key), status: r.status, trashedAt: r.trashed_at, deletedAt: r.deleted_at, markedAt: new Date(r.marked_at).toISOString(), knowledge: (questions.get(r.question_key)?.points || []).map(pointInfo) })) });
       }
       fail(404, '找不到此操作。');
     } catch (error) { res.statusCode = error.status || 500; send({ error: error.status ? error.message : '服務暫時無法使用，請重試。' }); if (!error.status) console.error(error); }

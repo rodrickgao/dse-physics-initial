@@ -9,8 +9,8 @@ export async function encodePassword(password, confirmation) {
   const key = await derive(password, salt, 64, options);
   return `scrypt:${salt}:${key.toString('hex')}`;
 }
-export async function checkPassword(password, stored) {
-  const valid = typeof password === 'string' && password.length >= 8 && password.length <= 128;
+export async function checkPassword(password, stored, minimumLength = 8) {
+  const valid = typeof password === 'string' && password.length >= minimumLength && password.length <= 128;
   const [, salt, digest] = (stored || '').split(':');
   const key = await derive(valid ? password : '', salt || '00000000000000000000000000000000', 64, options);
   return Boolean(valid && digest && timingSafeEqual(key, Buffer.from(digest, 'hex')));

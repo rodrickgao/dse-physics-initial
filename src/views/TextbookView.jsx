@@ -1,4 +1,5 @@
 import { useMembership, MemberNotice } from '../components/Membership';
+import { loadExerciseIndex, relatedExercises } from '../lib/textbook-exercises';
 import { track } from '../lib/activity';
 import { useEffect, useMemo, useRef, useState } from "react";
 import { ArrowLeft, BookOpen, Check, Clipboard, Download, FileQuestion, Search, X } from "lucide-react";
@@ -15,11 +16,12 @@ import { useContentMotion } from "../lib/use-content-motion";
 
 const BOOK_TONES = ["#a74050", "#287248", "#906e0e", "#396fd0", "#aa5722", "#576577", "#576577", "#576577", "#576577"];
 
-function PointCard({ point, language, openPaper }) {
+function PointCard({ point, language, openPaper, exerciseIndex, exerciseError, openExercise }) {
   const en = language === "eng";
   const membership = useMembership();
   const [copied, setCopied] = useState(false);
   const members = point.members || [point];
+  const exercises = relatedExercises(exerciseIndex, members.map(member => member.sequence));
   const questionKeys = relatedQuestionKeys(members.filter(member => !member.is_governing_law).map(member => member.sequence));
   const practice = [...new Set(members.flatMap(extendedPractice))].filter(key => !questionKeys.includes(key));
   const chapters = [...new Set(members.map(member => member.chapter))];
@@ -37,23 +39,50 @@ function PointCard({ point, language, openPaper }) {
         <div><span>{members.map(member => member.number).join(' · ')}</span><strong>{[...new Set(members.map(member => member.code))].join(' · ')}</strong></div>
         <Button variant="ghost" size="icon" onClick={copy} aria-label={en ? 'Copy knowledge card' : '复制知识点'} title={en ? 'Copy knowledge card' : '复制知识点'}>{copied ? <Check /> : <Clipboard />}</Button>
       </div>
-      {copyError && <p role="status">{en ? 'Clipboard is unavailable.' : '无法使用剪贴簿。'}</p>}
+      {copied && <span className="sr-only" role="status">{en ? "Copied" : "已复制"}</span>}{copyError && <p role="status">{en ? 'Clipboard is unavailable.' : '无法使用剪贴簿。'}</p>}
       {(point.card_title || point.title) && <h3 className="textbook-card-title">{point.card_title || point.title}</h3>}
       <TextbookContent point={point} language={language} />
       {membership.active && !!practice.length && <details className="knowledge-questions"><summary>{en ? "Further practice / background applications" : "延伸练习／背景应用"} · {practice.length}{en ? " (excluded from this card’s direct question frequency)" : "（不计本卡直接题频）"}</summary><div>{practice.map(key => <button key={key} onClick={() => openPaper(key)}>{questionLabelFromKey(key)}</button>)}</div></details>}
       <div className="knowledge-meta"><span>{books.length > 1 ? books.join(' / ') : chapters.join(' / ')}</span></div>
-      {!membership.active && <MemberNotice>{en ? "Members only · Related questions" : "会员专享 · 知识点关联"}</MemberNotice>}{membership.active && !!questionKeys.length && <div className="knowledge-questions"><span><FileQuestion /> {en ? "Related past-paper questions" : "相关真题"} · {questionKeys.length}</span><div>{questionKeys.slice(0, 10).map((key) => <button key={key} onClick={() => openPaper(key)}>{questionLabelFromKey(key)}</button>)}</div>{questionKeys.length > 10 && <details><summary>{language === 'eng' ? `Show ${questionKeys.length - 10} more` : `展开其余 ${questionKeys.length - 10} 题`}</summary><div>{questionKeys.slice(10).map(key => <button key={key} onClick={() => openPaper(key)}>{questionLabelFromKey(key)}</button>)}</div></details>}</div>}
+      {!membership.active && <MemberNotice>{en ? "Members only · Related questions" : "会员专享 · 知识点关联"}</MemberNotice>}{membership.active && <div className="knowledge-questions related-past-questions"><span><FileQuestion /> {en ? "Related past-paper questions" : "相关真题"} · {questionKeys.length}</span>{!questionKeys.length && <p>{en ? "No directly related past-paper questions yet." : "暂无直接关联的真题。"}</p>}<div>{questionKeys.slice(0, 10).map((key) => <button key={key} onClick={() => openPaper(key)}>{questionLabelFromKey(key)}</button>)}</div>{questionKeys.length > 10 && <details><summary>{language === 'eng' ? `Show ${questionKeys.length - 10} more` : `展开其余 ${questionKeys.length - 10} 题`}</summary><div>{questionKeys.slice(10).map(key => <button key={key} onClick={() => openPaper(key)}>{questionLabelFromKey(key)}</button>)}</div></details>}</div>}
+      {membership.active && <div className="knowledge-questions related-textbook-exercises"><span><BookOpen /> {en ? "Related textbook exercises" : "相关习题"}{exerciseIndex && <> · {exercises.length}</>}</span>{exerciseError ? <p>{en ? "Exercise links could not be loaded. Please refresh." : "习题关联暂时未能加载，请刷新重试。"}</p> : !exerciseIndex ? <p role="status">{en ? "Loading…" : "正在加载…"}</p> : !exercises.length ? <p>{en ? "No related textbook exercises yet." : "暂无相关课本习题。"}</p> : <><div>{exercises.slice(0,10).map(item => <button key={item.id} onClick={() => openExercise(item.id)}>{item.chapter} · Q{item.number}</button>)}</div>{exercises.length > 10 && <details><summary>{en ? `Show ${exercises.length - 10} more` : `展开其余 ${exercises.length - 10} 题`}</summary><div>{exercises.slice(10).map(item => <button key={item.id} onClick={() => openExercise(item.id)}>{item.chapter} · Q{item.number}</button>)}</div></details>}</>}</div>}
       <TextbookSources point={point} language={language} />
     </Card>
   );
 }
 
-export function TextbookView({ language, targetSequence, clearTarget, openPaper }) { const membership = useMembership();
+export function TextbookView({ language, targetSequence, clearTarget, openPaper, openExercise }) { const membership = useMembership();
+  const [exerciseIndex, setExerciseIndex] = useState(null);
+  const [exerciseError, setExerciseError] = useState(false);
+  useEffect(() => {
+    let active = true; setExerciseIndex(null); setExerciseError(false);
+    if (membership.active) loadExerciseIndex(language).then(data => { if (active) setExerciseIndex(data); }).catch(() => { if (active) setExerciseError(true); });
+    return () => { active = false; };
+  }, [language, membership.active]);
   const en = language === "eng";
   const books = useMemo(() => booksFor(language), [language]);
   const [selectedBook, setSelectedBook] = useState(null);
   const [chapter, setChapter] = useState("all");
   const [query, setQuery] = useState("");
+  useEffect(()=>{
+    const restore=()=>{
+      if(!location.hash.startsWith('#textbook'))return;
+      const params=new URLSearchParams(location.hash.split('?')[1]);
+      if(params.has('knowledge'))return;
+      const book=params.has('book')?Number(params.get('book')):null;
+      const valid=Number.isInteger(book)&&book>=0&&book<books.length;
+      const code=params.get('chapter')||'all';
+      setSelectedBook(valid?book:null);
+      setChapter(valid&&books[book].points.some(p=>p.code===code)?code:'all');
+      setQuery('');
+    };
+    restore();addEventListener('popstate',restore);addEventListener('hashchange',restore);
+    return()=>{removeEventListener('popstate',restore);removeEventListener('hashchange',restore);};
+  },[books]);
+  const rememberDirectory=(book,code='all')=>{
+    const params=new URLSearchParams();if(book!==null)params.set('book',book);if(book!==null&&code!=='all')params.set('chapter',code);
+    const hash='#textbook'+(params.size?'?'+params:'');if(location.hash!==hash)history.pushState({},'',hash);
+  };
   useEffect(() => { if (!query.trim()) return; const timer = setTimeout(() => track('search', query), 1000); return () => clearTimeout(timer); }, [query]);
   const searchRef = useRef(null);
   const panelRef = useRef(null);
@@ -85,8 +114,21 @@ export function TextbookView({ language, targetSequence, clearTarget, openPaper 
   }, [selectedBook, chapter, query, targetSequence]);
 
   const selectBook = (index) => {
+    rememberDirectory(index);
     setSelectedBook(index); setChapter('all');
     window.scrollTo({ top: 0, behavior: 'instant' });
+  };
+
+  const selectChapter = (code) => {
+    rememberDirectory(selectedBook,code);
+    setChapter(code);
+    requestAnimationFrame(() => {
+      const panel = chapterRef.current;
+      panel?.focus({ preventScroll: true });
+      if (panel && (window.innerWidth <= 820 || panel.getBoundingClientRect().top < 76)) {
+        panel.scrollIntoView({ block: 'start', behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+      }
+    });
   };
 
   const allPoints = pointsByLanguage[language] || [];
@@ -106,10 +148,10 @@ export function TextbookView({ language, targetSequence, clearTarget, openPaper 
         <div><h1>{en ? "Textbook knowledge library" : "课本知识库"}</h1></div>
         <div className="textbook-count"><strong>{allPoints.length}</strong><span>{en ? "knowledge points" : "个知识点"}</span></div>
       </div>
-      <div className="knowledge-search-wrap"><Search /><Input ref={searchRef} value={query} onChange={(event) => setQuery(event.target.value)} placeholder={en ? "Search all knowledge points" : "搜寻全部知识点"} />{query && <button onClick={() => setQuery("")}><X /></button>}</div>
+      <div className="knowledge-search-wrap"><Search /><Input aria-label={en ? "Search knowledge points" : "搜索知识点"} ref={searchRef} value={query} onChange={(event) => setQuery(event.target.value)} placeholder={en ? "Search all knowledge points" : "搜索全部知识点"} />{query && <button aria-label={en ? "Clear search" : "清空搜索"} onClick={() => { setQuery(""); searchRef.current?.focus(); }}><X /></button>}</div>
 
       <div ref={panelRef} className="knowledge-transition">
-      {query ? <section className="knowledge-search-results"><div className="directory-heading"><div><h2>{searchCards.length} {en ? "results" : "个结果"}</h2></div></div><div className="knowledge-card-list">{searchCards.map((point) => <PointCard key={point.sequence} point={point} language={language} openPaper={openPaper} />)}</div></section>
+      {query ? <section className="knowledge-search-results"><div className="directory-heading"><div><h2>{searchCards.length} {en ? "results" : "个结果"}</h2></div></div><div role="status" className="sr-only">{searchCards.length} {en ? "results" : "个结果"}</div>{!searchCards.length && <div className="knowledge-search-empty"><p>{en ? "No matching knowledge points. Try a chapter number or a shorter keyword." : "没有找到相关知识点，试试章节编号或更短的关键词。"}</p><Button variant="outline" onClick={() => { setQuery(""); searchRef.current?.focus(); }}>{en ? "Clear search" : "清空搜索"}</Button></div>}<div className="knowledge-card-list">{searchCards.map((point) => <PointCard key={point.sequence} point={point} language={language} openPaper={openPaper} exerciseIndex={exerciseIndex} exerciseError={exerciseError} openExercise={openExercise} />)}</div></section>
       : selectedBook === null ? <section className="book-directory">
         <div className="directory-heading"><div><h2>{en ? "Choose a textbook" : "选择课本"}</h2></div><span>{books.length} {en ? "books" : "册"}</span></div>
         <div className="book-grid">{books.map((book, index) => <button key={book.name} className="book-card" style={{ "--book-tone": BOOK_TONES[index] }} onClick={() => selectBook(index)}><span className="book-number">{String(index + 1).padStart(2, "0")}</span><span className="book-icon"><BookOpen /></span><strong>{book.name}</strong><small>{new Set(book.points.map((point) => point.code)).size} {en ? "chapters" : "章"} · {book.points.length} {en ? "knowledge points" : "个知识点"}</small></button>)}</div>
@@ -119,9 +161,9 @@ export function TextbookView({ language, targetSequence, clearTarget, openPaper 
           <Button variant="ghost" className="back-books" onClick={() => selectBook(null)}><ArrowLeft />{en ? "All textbooks" : "所有课本"}</Button>
           <div className="active-book-name" style={{ "--book-tone": BOOK_TONES[selectedBook] }}><span><BookOpen /></span><div><strong>{activeBook.name}</strong><small>{activeBook.points.length} {en ? "knowledge points" : "个知识点"}</small></div></div>
           <p className="chapter-label">{en ? "Chapters" : "章节"}</p>
-          <div className="chapter-list"><button className={cn(chapter === "all" && "active")} onClick={() => setChapter("all")}><span>{en ? "All chapters" : "全部章节"}</span><small>{activeBook.points.length}</small></button>{chapters.map(([code, name]) => <button key={code} className={cn(chapter === code && "active")} onClick={() => setChapter(code)}><span><b>{code}</b>{name}</span><small>{activeBook.points.filter((point) => point.code === code).length}</small></button>)}</div>
+          <div className="chapter-list"><button className={cn(chapter === "all" && "active")} aria-pressed={chapter === "all"} onClick={() => selectChapter("all")}><span>{en ? "All chapters" : "全部章节"}</span><small>{activeBook.points.length}</small></button>{chapters.map(([code, name]) => <button key={code} className={cn(chapter === code && "active")} aria-pressed={chapter === code} onClick={() => selectChapter(code)}><span><b>{code}</b>{name}</span><small>{activeBook.points.filter((point) => point.code === code).length}</small></button>)}</div>
         </aside>
-        <section ref={chapterRef} className="knowledge-browser-content"><div className="knowledge-browser-heading"><p>{activeBook.name}</p><h2>{chapter === "all" ? (en ? "All knowledge points" : "全部知识点") : chapters.find(([code]) => code === chapter)?.[1]}</h2><span>{visibleCards.length} {en ? "cards" : "张卡片"}</span>{chapterPdf && (membership.active ? <div className="chapter-download"><Button asChild variant="outline"><a href={chapterPdf.url} download={chapterPdf.filename}><Download aria-hidden="true" />{en ? `Download ${chapter} knowledge PDF` : `下载 ${chapter} 知识点 PDF`}</a></Button><small>{language === 'chn' ? '中文版' : 'English edition'} · {(chapterPdf.bytes / 1024 / 1024).toFixed(1)} MB</small></div> : <MemberNotice>会员专享 · 分章节知识点 PDF</MemberNotice>)}</div><div className="knowledge-card-list">{visibleCards.map((point) => <PointCard key={point.sequence} point={point} language={language} openPaper={openPaper} />)}</div></section>
+        <section ref={chapterRef} tabIndex={-1} className="knowledge-browser-content"><div className="knowledge-browser-heading"><p>{activeBook.name}</p><h2>{chapter === "all" ? (en ? "All knowledge points" : "全部知识点") : chapters.find(([code]) => code === chapter)?.[1]}</h2><span>{visibleCards.length} {en ? "cards" : "张卡片"}</span>{chapterPdf && (membership.active ? <div className="chapter-download"><Button asChild variant="outline"><a href={chapterPdf.url} download={chapterPdf.filename}><Download aria-hidden="true" />{en ? `Download ${chapter} knowledge PDF` : `下载 ${chapter} 知识点 PDF`}</a></Button><small>{language === 'chn' ? '中文版' : 'English edition'} · {(chapterPdf.bytes / 1024 / 1024).toFixed(1)} MB</small></div> : <MemberNotice>会员专享 · 分章节知识点 PDF</MemberNotice>)}</div><div className="knowledge-card-list">{visibleCards.map((point) => <PointCard key={point.sequence} point={point} language={language} openPaper={openPaper} exerciseIndex={exerciseIndex} exerciseError={exerciseError} openExercise={openExercise} />)}</div></section>
       </div>}
       </div>
     </div>

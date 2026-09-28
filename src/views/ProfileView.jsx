@@ -1,24 +1,14 @@
-import { useMembership, MemberNotice } from '../components/Membership';
-import { entriesByLanguage, pointsMap, knowledgeNumber, questionLabelFromKey } from '../lib/data';
-import { profileReview } from '../lib/profile-review';
-import { useMemo, useRef, useState } from 'react';
-import { Atom, ArrowRight, Check, Camera, Upload, UserRound, Settings, LogOut } from 'lucide-react';
+import { useRef, useState } from 'react';
+import { Atom, ArrowLeft, ArrowRight, Check, Camera, Upload, UserRound, Settings, LogOut } from 'lucide-react';
 import { api } from '../lib/api';
 import { Button } from '../components/ui/button';
 import { AVATARS, PHYSICISTS, GRADES, TARGETS } from '../lib/avatar-catalog';
 
-export function ProfileView({ logoutError, user, onSaved, onLogout, onCancel, mistakes = {}, language = 'chn', openPaper, openKnowledge }) {
-  const membership = useMembership();
+export function ProfileView({ dark, toggleDark, embedded = false, logoutError, user, onSaved, onLogout, onCancel, mistakes = {}, language = 'chn', openPaper, openKnowledge }) {
   const [showAvatars, setShowAvatars] = useState(!user.profileComplete);
-  const [shuffle, setShuffle] = useState(0);
-  const review = useMemo(() => profileReview(entriesByLanguage[language], mistakes, language), [mistakes, language, shuffle, membership.revision]);
   const picker = useRef(null); const camera = useRef(null);
   function togglePicker() { setShowAvatars(true); requestAnimationFrame(() => { picker.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }); picker.current?.focus({ preventScroll: true }); }); }
   function closePicker() { setShowAvatars(false); camera.current?.focus(); }
-  function visit(action) {
-    if (nickname !== (user.nickname || '') || grade !== (user.grade || '') || target !== (user.target || '') || targetMajor !== (user.targetMajor || '') || avatar !== (user.avatar || '') || image || password || confirmPassword) { setError('请先保存个人设置，再查看复习内容。'); return; }
-    action();
-  }
   const [password, setPassword] = useState(''); const [confirmPassword, setConfirmPassword] = useState('');
   const [nickname, setNickname] = useState(user.nickname || '');
   const [grade, setGrade] = useState(user.grade || '');
@@ -54,8 +44,8 @@ export function ProfileView({ logoutError, user, onSaved, onLogout, onCancel, mi
     try { const result = await api('profile', { nickname, grade, target, targetMajor, avatar, ...(!user.hasPassword && (password || confirmPassword) ? { password, confirmPassword } : {}), ...(image && avatar === 'upload' ? { image } : {}) }, 'PUT'); onSaved(result.user); }
     catch (e) { setError(e.message); } finally { setBusy(false); }
   }
-  return <main className="profile-page page-enter">
-    <header className="profile-header">{onCancel ? <button type="button" className="auth-brand profile-home" aria-label="DSE Physics，返回主页" disabled={busy} onClick={onCancel}><Atom /> DSE Physics</button> : <span className="auth-brand"><Atom /> DSE Physics</span>}</header>
+  return <section className={`profile-page page-enter${embedded ? ' profile-embedded' : ''}`}>
+    <header className="profile-header">{onCancel && <Button variant="ghost" onClick={onCancel}><ArrowLeft/>{language==='eng'?'Back':'返回'}</Button>}{!embedded && (onCancel ? <button type="button" className="auth-brand profile-home" aria-label="DSE Physics，返回主页" disabled={busy} onClick={onCancel}><Atom /> DSE Physics</button> : <span className="auth-brand"><Atom /> DSE Physics</span>)}</header>
     <div className="profile-welcome"><h1><Settings aria-hidden="true" />{user.profileComplete ? '个人设置' : '建立你的物理学习档案'}</h1>{!user.profileComplete && <ol className="profile-steps"><li><Check /> 邮箱已验证</li><li aria-current="step"><span>2</span> 完善个人资料</li></ol>}</div>
     <form className={`profile-layout ${user.profileComplete ? "profile-existing" : ""}`} onSubmit={submit}>
       <section className="profile-details"><div className="profile-preview">{preview ? <img src={preview} alt="你的头像预览" /> : <UserRound aria-label="尚未选择头像" />}<button ref={camera} className="profile-camera" type="button" aria-label="更换头像" aria-expanded={showAvatars} aria-controls="avatar-picker" disabled={busy} onClick={togglePicker}><Camera /></button></div>
@@ -72,8 +62,8 @@ export function ProfileView({ logoutError, user, onSaved, onLogout, onCancel, mi
         <div className="avatar-mode"><button type="button" aria-pressed={mode === 'physicists'} onClick={() => setMode('physicists')}>物理学家</button><button type="button" aria-pressed={mode === 'upload'} onClick={() => setMode('upload')}>上传我的图片</button></div>
         {mode === 'physicists' ? <><div className="physicist-tabs" aria-label="选择物理学家">{PHYSICISTS.map(p => <button disabled={busy} type="button" key={p.id} aria-pressed={person === p.id} onClick={() => setPerson(p.id)}>{p.name}</button>)}</div><div className="physicist-title"><h3>{PHYSICISTS.find(p => p.id === person)?.name}</h3><span>{PHYSICISTS.find(p => p.id === person)?.en}</span></div><div className="avatar-options" role="group" aria-label="选择头像姿势">{AVATARS.filter(a => a.person === person).map(a => <button disabled={busy} type="button" key={a.id} className={avatar === a.id ? 'selected' : ''} aria-pressed={avatar === a.id} aria-label={a.name} onClick={() => choose(a)}><img src={a.url} alt={a.name} loading="lazy" /><span>{a.name.split(' · ')[1]}</span>{avatar === a.id && <i><Check /></i>}</button>)}</div></> : <div className="avatar-upload"><div className="upload-preview">{preview && avatar === 'upload' ? <img src={preview} alt="上传图片预览" /> : <Upload />}</div><h3>让大家认识你</h3><input ref={fileInput} type="file" accept="image/png,image/jpeg,image/webp" aria-label="上传自订头像" onChange={upload} disabled={busy || processing} /><Button variant="outline" type="button" disabled={busy || processing} onClick={() => fileInput.current?.click()}>{processing ? '正在处理…' : '选择图片'}</Button><small>JPG、PNG、WebP · 最大 2 MB</small></div>}
       </section>
-      {user.profileComplete && !showAvatars && <section className="profile-review" aria-label="个人复习推荐"><div className="profile-review-heading"><div><h2>今天复习这些</h2></div><Button type="button" variant="outline" onClick={() => setShuffle(n => n + 1)} disabled={!review.questions.length}>换一批</Button></div><h3>薄弱知识点</h3>{!membership.active && <MemberNotice/>}<div className="profile-review-list">{review.points.map(([sequence, count]) => <button type="button" key={sequence} onClick={() => visit(() => openKnowledge(sequence))}><span><strong>知识点 {knowledgeNumber(sequence, language)}</strong><small>{pointsMap[language].get(sequence)?.chapter} · {count} 道已标记错题</small></span><ArrowRight /></button>)}</div>{!review.points.length && <p className="profile-review-empty">{review.questions.length ? '目前的错题尚未连结知识点。' : '尚未标记错题。'}</p>}<h3>错题再练</h3><div className="profile-review-list">{review.questions.map(entry => <button type="button" key={entry.key} onClick={() => visit(() => openPaper(entry.key))}><span><strong>{questionLabelFromKey(entry.key)}</strong><small>{entry.paper.title} · {entry.question.label}</small></span><ArrowRight /></button>)}</div>{!review.questions.length && <p className="profile-review-empty">尚未标记错题。</p>}</section>}
+
     </form>
-    <footer className="profile-footer">{logoutError && <p className="account-error" role="alert">{logoutError}</p>}<Button className="profile-logout" variant="outline" type="button" disabled={busy || processing} onClick={onLogout}><LogOut aria-hidden="true" />退出登录</Button></footer>
-  </main>;
+    {toggleDark && <section className="profile-appearance"><h2>{language==='eng'?'Appearance':'外观设置'}</h2><Button type="button" variant="outline" aria-pressed={dark} onClick={toggleDark}>{language==='eng'?(dark?'Switch to light mode':'Switch to dark mode'):(dark?'切换为浅色模式':'切换为深色模式')}</Button></section>}<footer className="profile-footer">{logoutError && <p className="account-error" role="alert">{logoutError}</p>}<Button className="profile-logout" variant="outline" type="button" disabled={busy || processing} onClick={onLogout}><LogOut aria-hidden="true" />退出登录</Button></footer>
+  </section>;
 }

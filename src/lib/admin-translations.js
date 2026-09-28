@@ -1,5 +1,8 @@
 import { translations } from './ui-translations';
 Object.assign(translations,Object.fromEntries(`
+已暂停=Paused
+暂停会员=Pause membership
+立即暂停会员权限=Pause membership access immediately
 答疑=Teacher Q&A
 总览=Overview
 用户与会员=Students and memberships
@@ -136,3 +139,9 @@ Object.assign(translations,Object.fromEntries(`
 暂停理由：=Reason for pause:
 暂无申请=No requests
 `.trim().split('\n').map(line=>{const i=line.indexOf('=');return[line.slice(0,i),line.slice(i+1)];})));
+
+Object.assign(translations, {
+ '学生学习 →':'Student learning →','答疑 →':'Teacher Q&A →','付款申请 →':'Payment requests →',
+ '当前错题':'Current mistakes','已掌握':'Mastered','专注分钟':'Focus minutes','会员管理':'Membership management',
+ '付款凭证':'Payment receipt','会员开通':'Membership activation','会员开通成功':'Membership activated','学习问题':'Study question'
+});

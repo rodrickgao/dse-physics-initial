@@ -48,8 +48,5 @@ test('download library exposes only original papers with honest language coverag
       if (f.year === 2024) assert.deepEqual(f.sourcePages, {'paper-1a':[6,21], 'paper-1b':[22,40], 'paper-2':[41,57]}[f.paper]);
     }
   }
-  for (const lang of ['eng','chn']) {
-    const directory = 'downloads/' + lang;
-    assert.deepEqual(fs.existsSync(directory) ? fs.readdirSync(directory).filter(f => f.endsWith('.pdf')) : [], []);
-  }
+  for (const lang of ['eng','chn']) assert.deepEqual((fs.existsSync('downloads/' + lang) ? fs.readdirSync('downloads/' + lang) : []).filter(f => f.endsWith('.pdf')), []);
 });

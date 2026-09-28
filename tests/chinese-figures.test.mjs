@@ -7,7 +7,7 @@ test('Chinese cards use complete Chinese-edition figure assets and preserve bili
  const expected=new Map(manifest.map(f=>[f.src,f]));const seen=new Set();
  for(const point of data.chn)for(const f of cardFigures(point)){
   assert.equal(f.language,'chn',f.id);assert.ok(expected.has(f.src),f.src);
-  assert.equal(f.source,JSON.parse(fs.readFileSync('src/lib/textbook-downloads.json','utf8')).chn[f.code].source);assert.ok(f.bbox_fraction.every(n=>n>=0&&n<=1));
+  assert.equal(f.source,data.chn.find(point=>point.code===f.code).source);assert.ok(f.bbox_fraction.every(n=>n>=0&&n<=1));
   const image=fs.readFileSync(f.src);assert.equal(image.readUInt32BE(16),f.width);assert.equal(image.readUInt32BE(20),f.height);
   assert.notEqual(createHash('sha256').update(image).digest('hex'),createHash('sha256').update(fs.readFileSync(expected.get(f.src).previous_src)).digest('hex'));
   seen.add(f.src);

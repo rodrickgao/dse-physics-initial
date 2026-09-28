@@ -48,7 +48,30 @@ test('mastery and mistakes are mutually exclusive, atomic and account-scoped', a
   r=await a('progress',{keys,status:'mastered'},'PUT');assert.equal(Object.keys(r.data.mistakes).length,0);
   r=await a('mistakes/trash',{action:'restore',keys:[keys[0]]});assert.ok(r.data.mistakes[keys[0]]);assert.ok(!r.data.mastered[keys[0]]);
   assert.deepEqual((await b('mistakes')).data,{mistakes:{},mastered:{}});
-  r=await a('progress',{keys,status:'clear'},'PUT');assert.deepEqual(r.data,{mistakes:{},mastered:{}});
+  r=await a('progress',{keys,status:'clear'},'PUT');assert.deepEqual({mistakes:r.data.mistakes,mastered:r.data.mastered},{mistakes:{},mastered:{}});assert.equal(typeof r.data.undoId,'string');
+ }finally{await f.close();}
+});
+
+test('progress undo restores original timestamps and archive, belongs to its owner, expires and rejects newer changes',async()=>{
+ const f=await fixture();
+ try{
+  const a=f.client(),b=f.client();await register(a,'undo@example.com');await register(b,'undo-other@example.com');
+  const keys=['tb-201-1','tb-201-2','2012|paper-1a|1'];
+  await a('mistakes',{key:keys[0],marked:true},'PUT');f.advance(1000);
+  await a('mistakes',{key:keys[1],marked:true},'PUT');await a('mistakes',{key:keys[1],marked:false},'PUT');
+  await a('progress',{keys:[keys[2]],status:'mastered'},'PUT');
+  const before=(await a('mistakes')).data,trash=(await a('mistakes/trash')).data;
+  f.advance(1000);
+  const changed=await a('progress',{keys,status:'mastered'},'PUT');
+  assert.equal((await b('progress/undo',{id:changed.data.undoId})).status,409);
+  const restored=await a('progress/undo',{id:changed.data.undoId});assert.equal(restored.status,200);assert.deepEqual(restored.data,before);assert.deepEqual((await a('mistakes/trash')).data,trash);
+  assert.equal((await a('progress/undo',{id:changed.data.undoId})).status,409);
+  const stale=await a('progress',{keys,status:'mastered'},'PUT');
+  await a('mistakes',{key:keys[0],marked:true},'PUT');
+  const latest=(await a('mistakes')).data;
+  assert.equal((await a('progress/undo',{id:stale.data.undoId})).status,409);assert.deepEqual((await a('mistakes')).data,latest);
+  const expired=await a('progress',{keys,status:'clear'},'PUT');f.advance(600001);
+  assert.equal((await a('progress/undo',{id:expired.data.undoId})).status,409);
  }finally{await f.close();}
 });
 

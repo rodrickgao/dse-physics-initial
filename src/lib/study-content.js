@@ -1,3 +1,4 @@
+import { loadExercise, clearExerciseCache } from './textbook-exercises.js';
 import { translate } from './ui-translations.js';
 const cache = new Map();
 export function clearStudyCache() { cache.clear(); }
@@ -41,39 +42,84 @@ export function officialAnswerHtml(content, question, yearId) {
   return content?.officialScreenshot || content?.officialOriginal || scanHtml(question?.answer, yearId);
 }
 
-export function printableQuestion(entry, content, { language, mode, spaceMm = 50 }) {
+export function printableQuestion(entry, content, { language, mode }) {
   const en = language === "eng";
-  const title = `${entry.year.year} · ${["1A", "1B", "2"][entry.paperIndex]} · ${entry.question.label}`;
+  const title = entry.source === 'textbook' ? `${en ? 'Textbook' : '课本'} ${entry.exerciseChapter} · ${entry.question.label}` : `${entry.year.year} · ${["1A", "1B", "2"][entry.paperIndex]} · ${entry.question.label}`;
   const pending = translate("详细思路尚待核验；此处不以未核验内容代替。",language);
   const question = content?.question || scanHtml(entry.question.question, entry.year.id);
-  const official = officialAnswerHtml(content, entry.question, entry.year.id);
-  return `<article class="print-question" data-question="${escapeHtml(entry.key)}"><h2>${escapeHtml(title)}</h2>
-    ${content?.sourceNote ? `<p class="study-source-note">${escapeHtml(content.sourceNote)}</p>` : ""}
-    <h3>1. ${translate("题目", en ? "eng" : "chn")}</h3><div class="study-content question-content">${question}</div>
-    ${!content?.question ? `<p class="study-source-note">${translate("文字转录尚待核验，保留原卷以免误抄。", en ? "eng" : "chn")}</p>` : ""}
-    ${mode === "questions" ? `<div class="working-space" style="height:${Math.min(120, Math.max(20, Number(spaceMm) || 50))}mm"><span>${escapeHtml(title)} — ${translate("作答区", en ? "eng" : "chn")}</span></div>` : `
-      <h3>2. ${translate("考评局官方解答／评分参考", en ? "eng" : "chn")}</h3><div class="study-content official-content">${official || `<p>${translate("暂缺官方来源。", en ? "eng" : "chn")}</p>`}</div>
-      <h3>3. ${translate("详细思路解答", en ? "eng" : "chn")}</h3><div class="study-content reasoning-content">${content?.reasoning || `<p>${pending}</p>`}</div>`}
+  const official = entry.source === 'textbook' ? content?.answer : officialAnswerHtml(content, entry.question, entry.year.id);
+  const isChoice = entry.paperIndex === 0 || entry.question.kind === 'multiple-choice';
+  return `<article class="print-question${entry.source === 'textbook' ? ' textbook-exercise' : ''}" data-question="${escapeHtml(entry.key)}"><h2>${escapeHtml(title)}</h2>
+    <div class="study-content question-content">${question}</div>
+    ${mode === "questions" ? (isChoice ? `<p class="answer-line">${en ? 'Answer' : '答案'}<span class="answer-blank"></span></p>` : `<div class="working-space"></div>`) : `
+      <h3>2. ${entry.source === 'textbook' ? (en ? 'Textbook answer / worked solution' : '课本答案／解题过程') : translate("考评局官方解答／评分参考", en ? "eng" : "chn")}</h3><div class="study-content official-content">${official || `<p>${translate("暂缺官方来源。", en ? "eng" : "chn")}</p>`}</div>
+      ${entry.source === 'textbook' && !content?.reasoning ? '' : `<h3>3. ${translate("详细思路解答", en ? "eng" : "chn")}</h3><div class="study-content reasoning-content">${content?.reasoning || `<p>${pending}</p>`}</div>`}`}
   </article>`;
+}
+
+export function preparePrintedAnswerSpaces(document) {
+  const root = document.querySelector('.print-document');
+  if (!root) return;
+  const view = document.defaultView;
+  const style = view.getComputedStyle(root);
+  const pageHeight = 11 * 96 - parseFloat(style.paddingTop) - parseFloat(style.paddingBottom);
+  const articles = [...root.querySelectorAll('.print-question')];
+  for (const article of articles) {
+    const box = article.querySelector('.working-space');
+    if (!box) continue;
+    box.classList.remove('full-page-space');
+    const top = article === articles[0]
+      ? root.getBoundingClientRect().top + parseFloat(style.paddingTop)
+      : article.getBoundingClientRect().top;
+    // Long questions get a dedicated, full-height answer page instead of a
+    // half-height box stranded on its own page. Measure after images/fonts load.
+    if (box.getBoundingClientRect().bottom - top > pageHeight) {
+      box.classList.add('full-page-space');
+    }
+  }
+}
+
+// The supplied points follow the displayed textbook order, not stable sequence IDs.
+export function compareMistakePrintEntries(points = []) {
+  const chapters = new Map();
+  const ranks = new Map(points.map(point => {
+    const chapter = point.code || `point-${point.sequence}`;
+    if (!chapters.has(chapter)) chapters.set(chapter, chapters.size);
+    return [Number(point.sequence), chapters.get(chapter)];
+  }));
+  const rank = (entry) => chapters.get(entry.sortChapter) ?? Math.min(Number.MAX_SAFE_INTEGER, ...(entry.network?.links || [])
+    .map(link => ranks.get(Number(link.sequence)) ?? Number.MAX_SAFE_INTEGER));
+  const kind = (entry) => entry.paperIndex === 0 || entry.question.kind === 'multiple-choice' ? 0 : 1;
+  return (a, b) => kind(a) - kind(b) || rank(a) - rank(b)
+    || (Date.parse(a.markedAt) || 0) - (Date.parse(b.markedAt) || 0)
+    || a.key.localeCompare(b.key, 'en', { numeric: true });
 }
 
 export function printDocumentHtml(entries, contents, options) {
   const en = options.language === "eng";
-  const intro = options.mode === "questions" ? ("本册只含原题，每题后预留作答空间，不附答案。") : ("黑色：题目｜红色：官方答案｜蓝色：详细思路。原题图表及官方扫描摘录保留原色。");
-  const title = en ? `DSE Physics Mistake Book — ${options.mode === "detailed" ? "Worked solutions" : "Practice"}` : `DSE 物理错题本 — ${options.mode === "detailed" ? "详解版" : "原题练习版"}`;
+  const date = options.date || new Date();
+  const title = `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日错题`;
+  const compare = compareMistakePrintEntries(options.knowledgePoints);
+  const rows = entries.map((entry, i) => ({ entry, content: contents[i] }))
+    .sort((a, b) => compare(a.entry, b.entry));
   return `<!doctype html><html lang="${en ? 'en' : 'zh-CN'}"><head><meta charset="utf-8"><title>${escapeHtml(title)}</title><base href="${escapeHtml(options.baseUrl)}"><style>${STUDY_CSS}
-    @page {size:letter;margin:.72in .85in .7in}
+    @page {size:letter;margin:0}
     * {box-sizing:border-box}body{margin:0;background:white;color:black;font:11pt/1.18 "Times New Roman",SimSun,"Songti SC",serif}
     h1{font-size:23pt;margin:0 0 12pt}h2{font-size:15.5pt;margin:0 0 10pt;break-after:avoid}h3{font-size:12.5pt;margin:14pt 0 8pt;break-after:avoid}
     .print-question{padding-top:12pt}.print-question+.print-question{break-before:page}
     .study-content{font-size:11pt;line-height:1.18}.reasoning-content,.official-content{font-size:10.5pt}
     .study-content p{margin-bottom:5pt}.study-content img{max-height:7.6in;max-width:100%;object-fit:contain}
+    .textbook-exercise b,.textbook-exercise strong{font-weight:inherit}.textbook-exercise i,.textbook-exercise em{font-style:normal}.textbook-exercise math{overflow:visible}
     .study-content td img{max-height:1.7in}.study-content td .study-figure{margin:5pt 0}
-    .working-space{break-inside:avoid;margin-top:15pt;min-height:20mm}.working-space span{font-size:9pt;color:#777}
-    .print-intro{font-size:10pt;margin:0 0 18pt}.print-actions{font-family:system-ui;padding:16px;background:#fff;border-bottom:1px solid #ddd;margin-bottom:20px}.print-actions button{padding:10px;margin-right:10px}
+    .answer-line{margin:24pt 0 8pt;font-size:14pt;line-height:12mm;white-space:nowrap;break-inside:avoid}
+    .answer-blank{display:inline-block;width:10ch;height:10mm;margin-left:1mm;border-bottom:1pt solid #000;vertical-align:baseline}
+    .working-space{break-inside:avoid;margin-top:15pt;height:150mm;border:1pt solid #555}
+    .working-space.full-page-space{break-before:page;margin-top:0;height:calc(11in - .72in - .7in - 2px)}
+    .print-document{padding:.72in .85in .7in;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+    .print-actions{font-family:system-ui;padding:16px;background:#fff;border-bottom:1px solid #ddd;margin-bottom:20px}.print-actions button{padding:10px;margin-right:10px}
     @media print{.print-actions{display:none}*{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
-    @media screen{body{max-width:8.5in;margin:20px auto;padding:30px}.print-question{border-top:1px solid #ddd;margin-top:30px}}
-    </style></head><body><div class="print-actions"><button id="print">${translate("打印／另存为 PDF", en ? "eng" : "chn")}</button><span>${translate("选择另存为 PDF；关闭浏览器页首页尾。", en ? "eng" : "chn")}</span></div><h1>${escapeHtml(title)}</h1><p class="print-intro">${translate(intro,options.language)}</p>${entries.map((entry, i) => printableQuestion(entry, contents[i], options)).join("")}</body></html>`;
+    @media screen{body{width:8.5in;margin:20px auto}.print-question+.print-question{margin-top:30px}}
+    </style></head><body><div class="print-actions"><button id="print">${translate("打印／另存为 PDF", en ? "eng" : "chn")}</button></div><main class="print-document"><h1>${escapeHtml(title)}</h1>${rows.map(({entry, content}) => printableQuestion(entry, content, options)).join("")}</main></body></html>`;
 }
 
 export async function openMistakePrint(entries, options) {
@@ -87,19 +133,20 @@ export async function openMistakePrint(entries, options) {
       const response = await fetch('/api/membership', { credentials: 'same-origin', cache: 'no-store' });
       const result = await response.json();
       if (!response.ok || !result.membership?.active) throw new Error('详解版 PDF 包含会员详细思路，请先开通会员。');
-      clearStudyCache();
+      clearStudyCache(); clearExerciseCache();
     }
-    const papers = await Promise.all(entries.map((entry) => loadStudyPaper(entry.year.year, options.language)));
-    const contents = entries.map((entry, i) => papers[i][entry.key]);
+    const contents = await Promise.all(entries.map(entry => entry.source === 'textbook' ? loadExercise(options.language, entry.key) : loadStudyPaper(entry.year.year, options.language).then(paper => paper[entry.key])));
     if (tab.closed) throw new Error("打印预览已关闭。");
     tab.document.open();tab.document.write(printDocumentHtml(entries, contents, { ...options, baseUrl: new URL(".", window.location.href).href }));tab.document.close();
     tab.document.getElementById("print").onclick = () => tab.print();
+    tab.addEventListener('beforeprint', () => preparePrintedAnswerSpaces(tab.document));
     const imageError = "部分图片未能加载，请重试后再打印。";
     await Promise.all([...tab.document.images].map((img) => img.complete ? (img.naturalWidth ? Promise.resolve() : Promise.reject(new Error(imageError))) : new Promise((resolve, reject) => {
       const timer = setTimeout(() => reject(new Error(imageError)), 30000);
       img.onload = () => {clearTimeout(timer);resolve();};img.onerror = () => {clearTimeout(timer);reject(new Error(imageError));};
     })));
     await tab.document.fonts.ready;
+    preparePrintedAnswerSpaces(tab.document);
     if (!tab.closed) {tab.focus();tab.print();}
   } catch (error) {if (!tab.closed) tab.close();throw error;}
 }
