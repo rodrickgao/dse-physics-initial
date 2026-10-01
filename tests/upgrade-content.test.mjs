@@ -13,3 +13,16 @@ test('E1.1.1 uses the concise Chinese title and keeps its stable identity',()=>{
 test('English UI translates status and dynamic labels without changing Chinese mode',()=>{
  for(const text of ['道已选','问老师','标为已掌握','标为错题','会员至 22/9/2026','2014 年真题','选择 Q1.1']){assert.doesNotMatch(translate(text,'eng'),/[\u3400-\u9fff]/);assert.equal(translate(text,'chn'),text);}
 });
+
+test('all Paper 1A verified letters are plain text; deleted questions retain their source',()=>{
+ let count=0,deleted=0;
+ for(const file of fs.readdirSync('text-papers').filter(f=>/^20\d{2}-(chn|eng)\.json$/.test(f)))for(const [key,r] of Object.entries(JSON.parse(fs.readFileSync(`text-papers/${file}`)))){
+  if(!key.includes('|paper-1a|'))continue;
+  const text=r.official.replace(/<[^>]*>/g,'').trim();
+  const match=text.match(/^(?:(?:官方答案|Official answer)\s*[:：]\s*)?([ABCD])$/);
+  if(match){assert.equal(officialAnswerHtml(r),`<p>${match[1]}</p>`);count++;}
+  else {assert.equal(officialAnswerHtml(r),r.officialScreenshot||r.officialOriginal);deleted++;}
+ }
+ assert.equal(count,932);assert.equal(deleted,4);
+ assert.equal(officialAnswerHtml({officialFormat:'text',official:'<p>Official answer: A because ...</p>',officialScreenshot:'source'}),'source');
+});

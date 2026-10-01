@@ -41,6 +41,13 @@ for (const q of exercises.questions) {
   questions.get(q.id).primaryChapterCode = points.get(Number(q.knowledge.find(id => points.has(Number(id)))))?.code || '';
 }
 
+const examples = JSON.parse(readFileSync(new URL('../assets/textbook-examples/index-chn.json', import.meta.url), 'utf8'));
+const exampleKnowledge = JSON.parse(readFileSync(new URL('../src/lib/textbook-example-knowledge.json', import.meta.url), 'utf8'));
+for (const q of examples.questions) {
+ const links=(exampleKnowledge[q.id] || []).filter(id=>points.has(Number(id))).map(Number);
+ questions.set(q.id,{key:q.id,source:'examples',label:`${q.chapter} · E${q.number}`,labelEn:`${q.chapter} · E${q.number}`,points:links,primaryChapterCode:points.get(links[0])?.code || ''});
+}
+
 const pointOrder = new Map([...points.keys()].map((id, i) => [id, i]));
 for (const question of questions.values()) {
   const first = [...question.points].sort((a, b) => pointOrder.get(a) - pointOrder.get(b))[0];

@@ -1,8 +1,9 @@
+import { exampleEntries } from '../lib/textbook-examples';
 import { useEffect, useMemo, useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { useMembership } from './Membership';
 import { loadExerciseIndex, exerciseMistakeEntries } from '../lib/textbook-exercises';
-import { entriesByLanguage, pointsByLanguage, questionLabelFromKey, knowledgeNumber, knowledgeTitle } from '../lib/data';
+import { entriesByLanguage, pointsByLanguage, questionLabelFromKey, sortKnowledge, knowledgeNumber, knowledgeTitle } from '../lib/data';
 import { readSaved } from '../lib/study-state';
 import { profileReview } from '../lib/profile-review';
 
@@ -18,9 +19,9 @@ export function StudyDashboard({userId, language, mistakes, openQuestion, openKn
   useEffect(()=>setBatch(0),[userId,language,mistakes,membership.revision]);
   const current=exerciseState.language===language&&exerciseState.revision===membership.revision;
   const status=current?exerciseState.status:'loading';
-  const entries=useMemo(()=>[...entriesByLanguage[language],...(current?exerciseState.entries:[])],[language,exerciseState,current]);
+  const entries=useMemo(()=>[...entriesByLanguage[language],...exampleEntries(pointsByLanguage[language],language),...(current?exerciseState.entries:[])],[language,exerciseState,current]);
   const review=useMemo(()=>profileReview(entries,mistakes,language,batch),[entries,mistakes,language,batch]);
-  const lastEntry=entries.find(e=>e.key===last?.key);
+  const lastEntry=entries.find(e=>e.key===last?.key) || (/^ex-(?:[1-5]\d{2}|3[AB]\d{2}|E[1-4]\d{2})-\d+$/.test(last?.key||'') ? last : null);
   const count=Object.keys(mistakes).length;
   const questionName=key=>`${key.startsWith('tb-')?(en?'Textbook · ':'课本习题 · '):''}${questionLabelFromKey(key)}`;
   const empty=!count?(en?'Add mistakes to get textbook exercises linked to their knowledge points.':'加入错题后，将根据涉及的知识点推荐课本习题。')
@@ -35,7 +36,7 @@ export function StudyDashboard({userId, language, mistakes, openQuestion, openKn
       {status==='ready'&&review.questions.length>0?<>
         <div className="home-review-questions">{review.questions.map(entry=><article className="home-practice-card" key={entry.key}>
           <button className="home-practice-open" onClick={()=>openQuestion(entry.key)}><strong>{questionName(entry.key)}</strong><ArrowRight/></button>
-          <div className="home-practice-reason"><div>{entry.recommendation.sequences.map(sequence=><button key={sequence} onClick={()=>openKnowledge(sequence)}>{knowledgeNumber(sequence,language)} · {knowledgeTitle(sequence,language)}</button>)}</div></div>
+          <div className="home-practice-reason"><div>{sortKnowledge(entry.recommendation.sequences,language).map(sequence=><button key={sequence} onClick={()=>openKnowledge(sequence)}>{knowledgeNumber(sequence,language)} · {knowledgeTitle(sequence,language)}</button>)}</div></div>
         </article>)}</div>
       </>:<p className="review-empty" role="status">{empty}</p>}
     </div>

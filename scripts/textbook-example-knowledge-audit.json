@@ -1,0 +1,2931 @@
+{
+  "ex-101-1": {
+    "title": "Finding temperature from a calibration graph",
+    "knowledge": [
+      2
+    ],
+    "contentSha256": "62ea98e9b646c977b3908fc82061919adc381aac9d01a753cedb1da99a61e7b6"
+  },
+  "ex-101-2": {
+    "title": "Calibration graph of a resistance thermometer",
+    "knowledge": [
+      2
+    ],
+    "contentSha256": "6307fca34a5fd8367cd4e73eeaa5e7f588fa06a8911e40daec65ad9eac6cbc37"
+  },
+  "ex-102-1": {
+    "title": "Can the water mix?",
+    "knowledge": [
+      6
+    ],
+    "contentSha256": "51c48e46107541cdd63f03141f179d48febf4082597879725f64f6a844fa9f66"
+  },
+  "ex-103-1": {
+    "title": "Energy transferred",
+    "knowledge": [
+      11
+    ],
+    "contentSha256": "6c96818919ff4123b1d777f8f5e6f3e7c15ab18bd54cc8d24b4cdcb0daf2e425"
+  },
+  "ex-103-2": {
+    "title": "Heat capacity of water of different masses",
+    "knowledge": [
+      12
+    ],
+    "contentSha256": "8dc962d8bccd0ee7de63d24837619a2c1b3c1646e4a8b0d4c68a6b60f0cd6656"
+  },
+  "ex-103-3": {
+    "title": "Energy needed to raise temperature",
+    "knowledge": [
+      16
+    ],
+    "contentSha256": "e58ddef85b6ee4d6a82ee44a67ce6206bb0f93d0c2fb15e156aa6d0ae456640f"
+  },
+  "ex-103-4": {
+    "title": "Measuring the specific heat capacity of water",
+    "knowledge": [
+      11,
+      16
+    ],
+    "contentSha256": "f912a9dfe1f024c06af9b23b6a7c8c13e83ae7f2e84f1e16068839f17bc6ff22"
+  },
+  "ex-103-5": {
+    "title": "Final temperature of a mixture",
+    "knowledge": [
+      16,
+      17
+    ],
+    "contentSha256": "2e72e464beff023edf725b554082c24e7745d096d5dfa9f51ab060f70be51b58"
+  },
+  "ex-103-6": {
+    "title": "Estimating the specific heat capacity of copper",
+    "knowledge": [
+      16,
+      17
+    ],
+    "contentSha256": "532d930c22079d627be9c4429649840771dff21f879603a18319d0ebbd43c845"
+  },
+  "ex-103-7": {
+    "title": "Heating with a fixed power",
+    "knowledge": [
+      11,
+      16
+    ],
+    "contentSha256": "64992694f8115b0df700c3e9166995efcb8cb794807361fe7f7f3b782ce9fdfe"
+  },
+  "ex-104-1": {
+    "title": "Heating curve of water",
+    "knowledge": [
+      19
+    ],
+    "contentSha256": "9bf145263a212d3f15491a815d39df7f1cb10365f7d26fdd8c971e33f7f89961"
+  },
+  "ex-104-2": {
+    "title": "Energy needed to melt ice",
+    "knowledge": [
+      21
+    ],
+    "contentSha256": "e67a221961c104eeb5e35bf19fd19b1fb1d8ea2b68d56f39af18a2f538f11dee"
+  },
+  "ex-104-3": {
+    "title": "Steam and hot water",
+    "knowledge": [
+      16,
+      20,
+      21
+    ],
+    "contentSha256": "0479f369f5750eb7f01d1f375d11d38ea73d1978eebdb344258413eb71fda252"
+  },
+  "ex-104-4": {
+    "title": "Finding the specific latent heat of fusion of ice",
+    "knowledge": [
+      11,
+      21
+    ],
+    "contentSha256": "72474a6eed4dbaecbfae87ca2d681588a8df8a3bc375a0734988a39289dcb66a"
+  },
+  "ex-104-5": {
+    "title": "Finding the specific latent heat of vaporization of water",
+    "knowledge": [
+      11,
+      21
+    ],
+    "contentSha256": "3e66332cf4a48b62000311d42bded5586124a4547e5b46b10ddf7f77f3cf335a"
+  },
+  "ex-104-6": {
+    "title": "Reheating the soup",
+    "knowledge": [
+      16,
+      17,
+      20,
+      21
+    ],
+    "contentSha256": "c9a7df39dc905e70a9a9e1424485432f2c3d0310cb40c2223afedc802d87da09"
+  },
+  "ex-104-7": {
+    "title": "Reheating vegetables",
+    "knowledge": [
+      11,
+      16,
+      17,
+      20,
+      21
+    ],
+    "contentSha256": "2c9b16f67c22b9a51d3f1aa39c7acee27d1912cd35353c5cf51d718263cdb760"
+  },
+  "ex-104-8": {
+    "title": "Heating water",
+    "knowledge": [
+      11,
+      16,
+      21
+    ],
+    "contentSha256": "79fd6a1cb8e9abe8ae2b1496b8ecde2fa6327286923bc832b4d5a7d55a867de0"
+  },
+  "ex-104-9": {
+    "title": "Cooling effect of sweating",
+    "knowledge": [
+      16,
+      19,
+      21
+    ],
+    "contentSha256": "b359016cd6b69137c3187047bf04834e298e6b532f9914adbb6cc86e25613f3c"
+  },
+  "ex-105-1": {
+    "title": "Pressure exerted on a balloon",
+    "knowledge": [
+      23
+    ],
+    "contentSha256": "11f474fd999d46969c35c3afc0f650342432c94c201c5c4736b3538f4af4524c"
+  },
+  "ex-105-2": {
+    "title": "Air toy gun",
+    "knowledge": [
+      25
+    ],
+    "contentSha256": "1673937f17c1db6fdcb51f1a323715dbd406b27466e9381e8946f1bec588ef47"
+  },
+  "ex-105-3": {
+    "title": "Investigating p−T relationship of a gas",
+    "knowledge": [
+      27,
+      415,
+      416
+    ],
+    "contentSha256": "0c8f09f94ccf46c747c96000d0648fced35aa15564c4704435edcc5a749184f1"
+  },
+  "ex-105-4": {
+    "title": "Pressure inside an air-tight jar",
+    "knowledge": [
+      28,
+      26
+    ],
+    "contentSha256": "ff0fafe855c1cd5680f3b9123c1a1505b3be50ecba5233c6b3feb76d0dd87b51"
+  },
+  "ex-105-5": {
+    "title": "Volume of air in a syringe",
+    "knowledge": [
+      30,
+      26
+    ],
+    "contentSha256": "eb4c028d5a25b43b0b6995736868ae181b5ee9a902da5e7626155a1ff8525a3e"
+  },
+  "ex-105-6": {
+    "title": "Using the general gas law to determine the change in pressure",
+    "knowledge": [
+      32,
+      26
+    ],
+    "contentSha256": "0d41714eed2c2366ece5cc098429f14705c8f9ddfab347f1e46428b973db2049"
+  },
+  "ex-105-7": {
+    "title": "Hot air balloon",
+    "knowledge": [
+      33
+    ],
+    "contentSha256": "b58268f57c07594ad8dc9e21517b6af2c7f37efaf1cc0dff6143b40036f726ba"
+  },
+  "ex-105-8": {
+    "title": "Mixing gases",
+    "knowledge": [
+      33
+    ],
+    "contentSha256": "c51bea90d4018ff22855bfa344490bb0007772e3cf7456ea967db8a810b6ab20"
+  },
+  "ex-105-9": {
+    "title": "Root-mean-square speed",
+    "knowledge": [
+      36,
+      37
+    ],
+    "contentSha256": "10aec8c86925ea567fe8f3794379dd4854e6cb87805ebd908e51bdc7339845f3"
+  },
+  "ex-105-10": {
+    "title": "Gas in a can",
+    "knowledge": [
+      33,
+      36,
+      37
+    ],
+    "contentSha256": "50777a3f69e9b484c7f8e71b27a2097d954f7e98bb8e0c9881a903356cc66076"
+  },
+  "ex-201-1": {
+    "title": "Calculating displacement",
+    "knowledge": [
+      39,
+      40
+    ],
+    "contentSha256": "dd3c4447a96a6455adb131893a210d01e5bb66a5a58b6c181ed537192d00d49f"
+  },
+  "ex-201-2": {
+    "title": "Average speed and speed limit",
+    "knowledge": [
+      42
+    ],
+    "contentSha256": "4999e40f83b03a8700630d88eda9cc0551bae4e57b4956342f67b2d82466ae4a"
+  },
+  "ex-201-3": {
+    "title": "Average speed and average velocity",
+    "knowledge": [
+      39,
+      42,
+      44
+    ],
+    "contentSha256": "32efc027d5f04e8db093e2502c3acc8ae360bb08b3189313b1c94478fe77724f"
+  },
+  "ex-201-4": {
+    "title": "Uniform motion",
+    "knowledge": [
+      46
+    ],
+    "contentSha256": "faafc95b82b27e3674b8800e18738792d8028c18911f3b215d7495692a953aa9"
+  },
+  "ex-201-5": {
+    "title": "Percentage error in timing",
+    "knowledge": [
+      47
+    ],
+    "contentSha256": "f16831e7294e9f728c30f319202eadd5cea569af6ca0e3eead369437a356b0e8"
+  },
+  "ex-201-6": {
+    "title": "Percentage error in measurement",
+    "knowledge": [
+      47
+    ],
+    "contentSha256": "ae928796b207283f94d7312edc26bbee5b6f59ffd3ca1b2ddf93665aa837a52d"
+  },
+  "ex-201-7": {
+    "title": "Reducing percentage error",
+    "knowledge": [
+      47
+    ],
+    "contentSha256": "c4a78423c143e9a601051bd7626dd19878e307e9ffca4ba03e6096a3edde2444"
+  },
+  "ex-202-1": {
+    "title": "Motion along a straight line",
+    "knowledge": [
+      48,
+      49
+    ],
+    "contentSha256": "75413172397500d7460d375b3f5adae61418a4623674254d225ff9701e29156d"
+  },
+  "ex-202-2": {
+    "title": "Average acceleration of a lion",
+    "knowledge": [
+      48
+    ],
+    "contentSha256": "af3a66e0b9f184e3495c254975b84fdfd57bef293123f75a84d2eaa2fb0fd02c"
+  },
+  "ex-202-3": {
+    "title": "Analyzing an s–t graph",
+    "knowledge": [
+      50
+    ],
+    "contentSha256": "53f6a57bbccda0e1da7192881a89d427af7ddc8714816c0d55795896b97868b4"
+  },
+  "ex-202-4": {
+    "title": "Finding acceleration from v–t graph",
+    "knowledge": [
+      51
+    ],
+    "contentSha256": "6039588fb055d97dbd3418e1e21f5d735ee75605799abca65894e9bb9ceb04f7"
+  },
+  "ex-202-5": {
+    "title": "Trolley moving along an inclined plane",
+    "knowledge": [
+      49,
+      51,
+      52
+    ],
+    "contentSha256": "a02e89e40da4d77452bc0ee5d78d25c827c8258a1c2a9ef8a28ee08dc387fdb7"
+  },
+  "ex-202-6": {
+    "title": "Relationship between motion graphs",
+    "knowledge": [
+      51,
+      53
+    ],
+    "contentSha256": "39b15c3151cba51f2d8f7daf0df82bb4fd5829a2c56098e1542e3459fc4532f7"
+  },
+  "ex-202-7": {
+    "title": "Braking a snowmobile",
+    "knowledge": [
+      54
+    ],
+    "contentSha256": "a43f24681d114cc260d66a1a0c6be8105a3d66f8468c74b90c530e9b522312ff"
+  },
+  "ex-202-8": {
+    "title": "Skid marks",
+    "knowledge": [
+      54
+    ],
+    "contentSha256": "1a3eb710dd6cb804c6a9c0d2d390c0926eb2f363cd9465a635033b915be2a07c"
+  },
+  "ex-202-9": {
+    "title": "Stopping distance",
+    "knowledge": [
+      46,
+      54
+    ],
+    "contentSha256": "081e2a3e458fc16972369fddd2f65acd17d05b6f7da323eedc46c22fd220bc39"
+  },
+  "ex-202-10": {
+    "title": "Equations of motion and motion graphs",
+    "knowledge": [
+      51,
+      52,
+      54
+    ],
+    "contentSha256": "01cc958348f6c5f8d452454040be2fa8268c7036ff19fc640abd339abdea94b1"
+  },
+  "ex-202-11": {
+    "title": "Falling object",
+    "knowledge": [
+      54,
+      55
+    ],
+    "contentSha256": "55a87c0a14cff25222435ff469edbe45b8835d67195e0b8e9766d4f4f14fff42"
+  },
+  "ex-202-12": {
+    "title": "Serving a tennis ball",
+    "knowledge": [
+      54,
+      55
+    ],
+    "contentSha256": "8bb1521f1e1a56503593e818f105ad23e80fe93362496413103ec56245211872"
+  },
+  "ex-203-1": {
+    "title": "Drawing free-body diagrams",
+    "knowledge": [
+      62
+    ],
+    "contentSha256": "bc565aa4342423f4736624d199aba6a013fdd0652fd4b4de894af9271030be3f"
+  },
+  "ex-203-2": {
+    "title": "Man inside a lift",
+    "knowledge": [
+      59,
+      62
+    ],
+    "contentSha256": "75594f984711bb50b575e1839b58311fa0ba5d21b2dc65607ed7709dcd730654"
+  },
+  "ex-203-3": {
+    "title": "Acceleration of a puck",
+    "knowledge": [
+      60
+    ],
+    "contentSha256": "f0c9e664f519b3591db099101373d23f5518d90ebcff136cf79d3755ad606bae"
+  },
+  "ex-203-4": {
+    "title": "Water skiing",
+    "knowledge": [
+      54,
+      60
+    ],
+    "contentSha256": "825df762b137c5a4debab54d9f9dbcc79fdb8e05dba9e5062867b3aab903fef4"
+  },
+  "ex-203-5": {
+    "title": "Weight of an astronaut on the Moon",
+    "knowledge": [
+      62,
+      63
+    ],
+    "contentSha256": "d065f4324e0bb8b2b92e80e983c6ca19aa147996eaf3a90cd608c7bbc7d81f0d"
+  },
+  "ex-203-6": {
+    "title": "Worker on a platform",
+    "knowledge": [
+      59,
+      60,
+      62
+    ],
+    "contentSha256": "e25a9fe63ba0cbf4ffaa1c73093659ad28b9bf2d9766cd9b494fecd44b4bf801"
+  },
+  "ex-203-7": {
+    "title": "Feeling of weight in a lift",
+    "knowledge": [
+      60,
+      62
+    ],
+    "contentSha256": "8ba31a81b099aef0cb4b4081ba649e04c8a01f21ca7d12806acd3c87f76bc310"
+  },
+  "ex-203-8": {
+    "title": "Landing of Perseverance",
+    "knowledge": [
+      60,
+      64
+    ],
+    "contentSha256": "541c48f888b70182827ec218c1f141f3dab6221fbbf16671ccee7967dd71da48"
+  },
+  "ex-203-9": {
+    "title": "Friction and applied force",
+    "knowledge": [
+      59,
+      60
+    ],
+    "contentSha256": "82f1f78df6e0dc701d04022cd0c27d8dfc2dbbdb29b086c3917f7438dbff5354"
+  },
+  "ex-203-10": {
+    "title": "Launch of a rocket",
+    "knowledge": [
+      65
+    ],
+    "contentSha256": "3b6801b61b80914147adc8763ea45da28e9afeaa93e3da9edc57c8d795bdb867"
+  },
+  "ex-203-11": {
+    "title": "Pushing a car",
+    "knowledge": [
+      59,
+      65
+    ],
+    "contentSha256": "58f189a5206c6c7c08437e129d6b58aa6745c832130d205e2c8144a585c0d66c"
+  },
+  "ex-204-1": {
+    "title": "Pushing two boxes",
+    "knowledge": [
+      60,
+      66
+    ],
+    "contentSha256": "5218e3b398bfaf1ce00e0c5cf0b7e832f5b00d1e91fcaf3ea0e8bcce0ab684b4"
+  },
+  "ex-204-2": {
+    "title": "Stacked objects",
+    "knowledge": [
+      60,
+      66
+    ],
+    "contentSha256": "784146f3574649a2d3488788931370769b136c943c09bd099d9982a96c34d8f6"
+  },
+  "ex-204-3": {
+    "title": "Objects connected by a string",
+    "knowledge": [
+      60,
+      66
+    ],
+    "contentSha256": "2c42ad883c6fa50c491f89af2ee48854c1f799955ddb0b9c65126ac5f202d237"
+  },
+  "ex-204-4": {
+    "title": "Objects connected by a string over a pulley",
+    "knowledge": [
+      60,
+      62,
+      66
+    ],
+    "contentSha256": "4467aad70acdec96f06a8b5c05d31ffba5157f851fc03a2965dd306d60182c94"
+  },
+  "ex-204-5": {
+    "title": "Tip-to-tail method",
+    "knowledge": [
+      67
+    ],
+    "contentSha256": "b248dfdcbfd2f55d1bdee7b048799f481934a8f87630d7a9497533a8a3c790fc"
+  },
+  "ex-204-6": {
+    "title": "Net force acting on a sledge",
+    "knowledge": [],
+    "contentSha256": "1e4251d94bf7f11fc1e9503b7aa4bd82017efc4ea4340c8a79493945fc445157"
+  },
+  "ex-204-7": {
+    "title": "Jumping frog",
+    "knowledge": [
+      67
+    ],
+    "contentSha256": "422327525ad53547d5a2a07bc548a27a6a33610269d63e27333873a6ca4897e5"
+  },
+  "ex-204-8": {
+    "title": "Sign board hung by ropes",
+    "knowledge": [
+      59,
+      67
+    ],
+    "contentSha256": "4b39c5f4b962b010035a2e491ef9423890ddbb4cc95b0c673106d21bed7cde47"
+  },
+  "ex-204-9": {
+    "title": "Flying jet suit",
+    "knowledge": [
+      59,
+      62,
+      67
+    ],
+    "contentSha256": "71cb1e22381b0e3c77e97af12a7082ba06529330bf0c64d90b9ee8789bf7b5b0"
+  },
+  "ex-204-10": {
+    "title": "Acceleration of a toy truck",
+    "knowledge": [
+      60,
+      62,
+      67
+    ],
+    "contentSha256": "cdf89e6ea8d4d4544625677c60502616a43a59f214b9fdb89c7aad7b7da92b7c"
+  },
+  "ex-204-11": {
+    "title": "Acceleration of a hanging object",
+    "knowledge": [
+      57,
+      60,
+      67
+    ],
+    "contentSha256": "c5a7dd3e34350a02257cda2fa8a35d2bce84280049788e7fbe233ca59193deee"
+  },
+  "ex-204-12": {
+    "title": "Component of weight along a slope",
+    "knowledge": [
+      62,
+      67
+    ],
+    "contentSha256": "0ce11b3da795335afb959292e4ae8c98acd83c17bb1046a10a019664d91c9a58"
+  },
+  "ex-204-13": {
+    "title": "Friction-compensated runway",
+    "knowledge": [
+      59,
+      67
+    ],
+    "contentSha256": "c5fd73e2e4aa1a7dfda4d65e252696a9699096ca011fa4d23cf9dc80fbd18654"
+  },
+  "ex-205-1": {
+    "title": "Moment in pulling a gate",
+    "knowledge": [
+      68,
+      69
+    ],
+    "contentSha256": "556368c203a3a64edbb7a1c714c9bec7a75ad432f087c51b3e0d22d60d7f1b2c"
+  },
+  "ex-205-2": {
+    "title": "Net moment on a wheel",
+    "knowledge": [
+      68
+    ],
+    "contentSha256": "940bf8f571292824caa0aa233e55ca4b98e98a4c926ccfe45cee6f31759fcccf"
+  },
+  "ex-205-3": {
+    "title": "Which ruler is in equilibrium?",
+    "knowledge": [
+      68,
+      71
+    ],
+    "contentSha256": "cf16527eb8000251a565339f2de1672ae099322418e67f4b5458f886457e7aef"
+  },
+  "ex-205-4": {
+    "title": "Tree trunk in equilibrium",
+    "knowledge": [
+      68,
+      71,
+      72
+    ],
+    "contentSha256": "68d6d05eea38ef8e7f3a23c088e7c46427cddf1895811cc4b99c07841963ba0c"
+  },
+  "ex-205-5": {
+    "title": "Forces acting on a ladder",
+    "knowledge": [
+      68,
+      71
+    ],
+    "contentSha256": "07c16d467c2008ddbe6af578f679beb2f914cfd9e6c939a0e8de9db1f56c958d"
+  },
+  "ex-206-1": {
+    "title": "Work done on a toy",
+    "knowledge": [
+      74,
+      75
+    ],
+    "contentSha256": "df97c8f2d42e7d6d56bdfe8e9afd2fe0e8182aed44c13e58c0cf699a4824eb48"
+  },
+  "ex-206-2": {
+    "title": "Change in energy of an object",
+    "knowledge": [
+      74,
+      77,
+      78
+    ],
+    "contentSha256": "ec429414a5946a2ab036066cedbefa60e1223ec607380afbca039a8a85170d79"
+  },
+  "ex-206-3": {
+    "title": "KE of different objects",
+    "knowledge": [
+      77
+    ],
+    "contentSha256": "f028b7399d2153e84dd16455c81b6b536d5b22a45bf99645c73625ebc05151c3"
+  },
+  "ex-206-4": {
+    "title": "PE of a hiker",
+    "knowledge": [
+      79
+    ],
+    "contentSha256": "80bd1430373ba2d73f7141c6087fe280175a170a1283b8cfd348438c1261fed6"
+  },
+  "ex-206-5": {
+    "title": "Speed of a pendulum bob",
+    "knowledge": [
+      77,
+      78,
+      81
+    ],
+    "contentSha256": "6e27aa0b5e4f8911521203576a020f6a7679eb03c7e0ab80ef2e16c2ea3f5752"
+  },
+  "ex-206-6": {
+    "title": "Bungee jumping",
+    "knowledge": [
+      74,
+      77,
+      78,
+      83
+    ],
+    "contentSha256": "a5f9ac3a592391f4220761b8265cf98de551eba340521f32ded1b80b9c3b3013"
+  },
+  "ex-206-7": {
+    "title": "Energy conversion in car braking",
+    "knowledge": [
+      74,
+      77,
+      82
+    ],
+    "contentSha256": "6583e9a2910ecd76213e55444a69a23644c863dd17dbc50d38fd9d5c411a9a41"
+  },
+  "ex-206-8": {
+    "title": "Work done by tension and elastic energy",
+    "knowledge": [
+      74,
+      83
+    ],
+    "contentSha256": "ae24b1e139dde9ad779876e41399152308756816e6aa0ad8b03da4d40644286e"
+  },
+  "ex-206-9": {
+    "title": "Average power",
+    "knowledge": [
+      84
+    ],
+    "contentSha256": "bf5e7481ece012991c036567ec6adb71f691430fbb44bc1336da039e87f75913"
+  },
+  "ex-206-10": {
+    "title": "Power of a car",
+    "knowledge": [
+      85
+    ],
+    "contentSha256": "9a415a6dd0cfee2ff7a60f0304faf12d39a04b20dfbe81edc2bbf7d591fa2613"
+  },
+  "ex-206-11": {
+    "title": "Power and conservation of energy I",
+    "knowledge": [
+      77,
+      83,
+      84
+    ],
+    "contentSha256": "7d319587ab4315c64da15b88f6f7e2e1b79c4f72c588ef7e84867b81c49f0381"
+  },
+  "ex-206-12": {
+    "title": "Power and conservation of energy II",
+    "knowledge": [
+      54,
+      74,
+      77,
+      83,
+      84
+    ],
+    "contentSha256": "33287d4574f2082002fd205e5f0ce3e9d53756c3a423833627cd6a1a71a5b4ce"
+  },
+  "ex-207-1": {
+    "title": "Calculating momenta",
+    "knowledge": [
+      89
+    ],
+    "contentSha256": "8511c451b7488a0107dcc2ea8c2a82bef8e801b3a30e64ce09852cfd81ac3bec"
+  },
+  "ex-207-2": {
+    "title": "Skaters pushing each other",
+    "knowledge": [
+      91
+    ],
+    "contentSha256": "b4e7a872efe6fe6cd725211dcf4cc526814bfd80efa858a3f62e5f2acab0745f"
+  },
+  "ex-207-3": {
+    "title": "Trolleys sticking together after collision",
+    "knowledge": [
+      91,
+      92
+    ],
+    "contentSha256": "5a0e0ba618231f81780ffe290572e82fe41e7fae2b614a9fae854542b0841f56"
+  },
+  "ex-207-4": {
+    "title": "Trolleys moving in opposite directions",
+    "knowledge": [
+      91,
+      92
+    ],
+    "contentSha256": "b8c63db6cd7796c78c454458f28952a6b48b290f9a752ad8491a71f47d53add9"
+  },
+  "ex-207-5": {
+    "title": "Force on the ejected gas",
+    "knowledge": [
+      93
+    ],
+    "contentSha256": "d2d90954d1e7b4633c1c5a4f702d3b50730a38bd05c28aa51a95f2a9f000a8bc"
+  },
+  "ex-207-6": {
+    "title": "Change in momentum",
+    "knowledge": [
+      89,
+      93
+    ],
+    "contentSha256": "66a1b672464737667ef7cbd2bd17c8b78d1ec6dca9f3d04fc66866c0aa5916b7"
+  },
+  "ex-207-7": {
+    "title": "F−t graph and average force",
+    "knowledge": [
+      93,
+      95
+    ],
+    "contentSha256": "a243093b1c3aa60424c83b519aab462a1fc927030a64378d047d4bd975382169"
+  },
+  "ex-207-8": {
+    "title": "Impact force on a falling egg",
+    "knowledge": [
+      93
+    ],
+    "contentSha256": "3c437938710956c1836134667f5d307f9a7cef88b1fbc6eccd2c041af4ae0743"
+  },
+  "ex-207-9": {
+    "title": "Falling object",
+    "knowledge": [
+      54,
+      55,
+      65,
+      93
+    ],
+    "contentSha256": "716855f67daf2f0fb79845a77ec4951853cc4d0fd14883070a4110a603deb43c"
+  },
+  "ex-207-10": {
+    "title": "Motion of a bouncing ball",
+    "knowledge": [
+      49,
+      51,
+      52,
+      93
+    ],
+    "contentSha256": "b923726ab39a473170f015715a72aa44b0f6108d5d2131c914847da7dcd1438f"
+  },
+  "ex-208-1": {
+    "title": "Tracing the position of a projectile",
+    "knowledge": [
+      96
+    ],
+    "contentSha256": "a0e4b51f459db44ca33b0661a1f52275c7ea1556d76e9ebc9235ef181928c8c6"
+  },
+  "ex-208-2": {
+    "title": "Horizontal and vertical distances travelled",
+    "knowledge": [
+      96
+    ],
+    "contentSha256": "6993723ef2c1a2ffa93b181bac66b1159091daa57a4513ab3e6b44f268ccf2ad"
+  },
+  "ex-208-3": {
+    "title": "Final speed of a projectile",
+    "knowledge": [
+      96
+    ],
+    "contentSha256": "329dc96aa99b30ca48c4c14aff0a9d4efbc2dc89532429e54d7a8bb2ea019428"
+  },
+  "ex-208-4": {
+    "title": "Time of flight and range",
+    "knowledge": [
+      96
+    ],
+    "contentSha256": "d4dc01eb05c68747186525d669ea8cc104d9eeb4e92e0db895aa67f8bad4762b"
+  },
+  "ex-208-5": {
+    "title": "Angle of projection below the horizontal",
+    "knowledge": [
+      96
+    ],
+    "contentSha256": "44799516db70d2b4d3275f2d4eee25518d8f40f948421edea34d1c15a604abe5"
+  },
+  "ex-208-6": {
+    "title": "Properties of symmetrical trajectory",
+    "knowledge": [
+      96
+    ],
+    "contentSha256": "c056e79fe04c2444a44285b9c3ea382f0bf62ddfd87ececa6a2d3df356fdc9d7"
+  },
+  "ex-208-7": {
+    "title": "Analysing projectile motion using law of conservation of energy",
+    "knowledge": [
+      77,
+      78,
+      81,
+      96
+    ],
+    "contentSha256": "cae060e2905a3a7972e4671980761e8987fa0e2afb4676f69c11b1017decb6c4"
+  },
+  "ex-209-1": {
+    "title": "Angular speed and linear speed",
+    "knowledge": [
+      98,
+      99,
+      100
+    ],
+    "contentSha256": "34c9d66a7cf12ce0d78472f82ac93a1adae4026c31bb8fbd106d60436db5f145"
+  },
+  "ex-209-2": {
+    "title": "Centripetal acceleration and radius",
+    "knowledge": [
+      101
+    ],
+    "contentSha256": "03295594c5e51c8eedf43bfefdfe6d1643aeca80f84bad54f0fc2355a80e9ad6"
+  },
+  "ex-209-3": {
+    "title": "Maximum speed for dry and wet roads",
+    "knowledge": [
+      102
+    ],
+    "contentSha256": "4764618d2df5be27c1a50f29ea4baef388d22d862661d85f54bf578c17578725"
+  },
+  "ex-209-4": {
+    "title": "The turning of an aeroplane",
+    "knowledge": [
+      67,
+      102
+    ],
+    "contentSha256": "bfdd4d14bd67f607a104b09efc7a7ac122435640b7504842dac424cdccc50c2b"
+  },
+  "ex-209-5": {
+    "title": "Ideal banking angle",
+    "knowledge": [
+      67,
+      102
+    ],
+    "contentSha256": "67546efeb1b7e94f2df8c257bf88f086d1d6878089dd503149bf741b774cd562"
+  },
+  "ex-209-6": {
+    "title": "Verifying T = mω2L with the centripetal force apparatus",
+    "knowledge": [
+      99,
+      102
+    ],
+    "contentSha256": "2ea2650a9c6aeae0e7232dad161220e160d5be3a5b208ee538209199ebbc11c9"
+  },
+  "ex-209-7": {
+    "title": "Toy plane tied to the ceiling",
+    "knowledge": [
+      67,
+      102
+    ],
+    "contentSha256": "b8e51b5c44e91dd0e8a72740fe88696d38f32a8a1aeec12f41ac5110ffa40c65"
+  },
+  "ex-210-1": {
+    "title": "Gravitational force acting on objects",
+    "knowledge": [
+      103
+    ],
+    "contentSha256": "c404023d20b9c3db967ec28f1dfdad12cb0259a3580dc221c669c7a362287acc"
+  },
+  "ex-210-2": {
+    "title": "Gravitational force, mass and distance",
+    "knowledge": [
+      103
+    ],
+    "contentSha256": "f493cbe09d98c13fd77ea46484a35a176baf6c5806d4fea2bf005894fb8134f8"
+  },
+  "ex-210-3": {
+    "title": "Weight on the Moon",
+    "knowledge": [
+      104
+    ],
+    "contentSha256": "612b7cd4fae353f8866c808e651ba42f580489e2f56251e1c615f268b2152baa"
+  },
+  "ex-210-4": {
+    "title": "Weight of astronaut",
+    "knowledge": [
+      104
+    ],
+    "contentSha256": "f4d7e48ab29b3dbcae330755fa99a8b5f7a0f2ea3cb4ad40f66c0f5314b56c8a"
+  },
+  "ex-210-5": {
+    "title": "Effect of the Sun's gravity",
+    "knowledge": [
+      103,
+      104
+    ],
+    "contentSha256": "8a9360a5558c7321d5672c83bf7788bf7c0a18775624302d784fc34ef1c14550"
+  },
+  "ex-210-6": {
+    "title": "Gravitational field strength above the Earth’s surface",
+    "knowledge": [
+      104
+    ],
+    "contentSha256": "df145c5bf371dc76f3abb02e09f08ddf5c7a43eda6a27abafc520896077dc53f"
+  },
+  "ex-210-7": {
+    "title": "Orbital speed of a space station",
+    "knowledge": [
+      107,
+      108
+    ],
+    "contentSha256": "de8c17fa33f9d9a33c140c2fd370ee1711c8b90e62ef876d5448590b7f8e5b34"
+  },
+  "ex-210-8": {
+    "title": "Geostationary orbit",
+    "knowledge": [
+      100,
+      107,
+      108
+    ],
+    "contentSha256": "34871b5676f6e9dc65c56015db85a3e46153a67104f95c706b02fadcd5ebb071"
+  },
+  "ex-3A01-1": {
+    "title": "Applying the laws of reflection",
+    "knowledge": [
+      109
+    ],
+    "contentSha256": "0131bfa1fd541bebb3d4019acf5ec11d9db750959ea126f3bb7077759731cb28"
+  },
+  "ex-3A01-2": {
+    "title": "Drawing the reflected ray",
+    "knowledge": [
+      109
+    ],
+    "contentSha256": "74c4478c8b7ba1fa3541a1888b986aa1cbfb3f802f9379385be56de299c3a272"
+  },
+  "ex-3A01-3": {
+    "title": "Size and orientation of an image",
+    "knowledge": [
+      110
+    ],
+    "contentSha256": "71d5830696f769a92c23456bf0e71f23098b5ab6fd07d2bcaebfbf9393a4d9e8"
+  },
+  "ex-3A01-4": {
+    "title": "Location of images",
+    "knowledge": [
+      110
+    ],
+    "contentSha256": "86cb16902ff98cdabc3bd132baa2d9e54cce530445e6367ceebdb6c9fc18ef92"
+  },
+  "ex-3A01-5": {
+    "title": "Who can see the image?",
+    "knowledge": [
+      109,
+      110
+    ],
+    "contentSha256": "d8abba5b174949eff2b08aae7261108362d872fe34ddeceb2654ec2d9a99b7c0"
+  },
+  "ex-3A01-6": {
+    "title": "Position of a dressing mirror",
+    "knowledge": [
+      109,
+      110
+    ],
+    "contentSha256": "b5537a658b270eb0b34df4bde27dee102fd7a342f1f3a5176d8ed068deacfced"
+  },
+  "ex-3A01-7": {
+    "title": "Walking in front of a plane mirror",
+    "knowledge": [
+      110
+    ],
+    "contentSha256": "804a39fe7b91320f491942711519ec279688f648d493e3c3aeb827d66fcbf94d"
+  },
+  "ex-3A02-1": {
+    "title": "Applying Snell’s law",
+    "knowledge": [
+      112
+    ],
+    "contentSha256": "3dea830b5446b5de92e236078708ee4639dde954b2e2ed89a8989432438526fb"
+  },
+  "ex-3A02-2": {
+    "title": "Refractive index",
+    "knowledge": [
+      113
+    ],
+    "contentSha256": "396be86ab8c40cbe226db7f590c4946a83880619962fd2a608695e7ff31bd8c8"
+  },
+  "ex-3A02-3": {
+    "title": "General form of Snell’s law",
+    "knowledge": [
+      114
+    ],
+    "contentSha256": "77bb059e9addd321dbda956d634236114d4ad902e92d7dc5173cfc7c0b43cb4c"
+  },
+  "ex-3A02-4": {
+    "title": "Finding the speed of light in different media",
+    "knowledge": [
+      115
+    ],
+    "contentSha256": "d1167e42b07a4904b2c6b0e8a71e380311190338ee346cd1769a0e0c158a9e94"
+  },
+  "ex-3A02-5": {
+    "title": "Speed of light in different media",
+    "knowledge": [
+      115
+    ],
+    "contentSha256": "12f9e309d177976fc9a58d1c2927ca50ecbfbd238f7833d1a54e5106adccdc76"
+  },
+  "ex-3A02-6": {
+    "title": "Total internal reflection",
+    "knowledge": [
+      117,
+      118
+    ],
+    "contentSha256": "7fa28d84954d0568898704782155b48970cbf9c4b7fbcb43bf24f7e4a33b63fa"
+  },
+  "ex-3A02-7": {
+    "title": "Light ray through a block (I)",
+    "knowledge": [
+      114,
+      117,
+      118
+    ],
+    "contentSha256": "3d8787e5404df8f8cccd1ce41ec2a441afdc4dfacd21886ea32b08a75ec6b919"
+  },
+  "ex-3A02-8": {
+    "title": "Mirage",
+    "knowledge": [
+      111,
+      118
+    ],
+    "contentSha256": "9f2e59494cd36d84335cc9dad027f7661b11ec2e29433f13f0f50f85d7dd63d3"
+  },
+  "ex-3A02-9": {
+    "title": "Radius of a diver’s view",
+    "knowledge": [
+      117,
+      118
+    ],
+    "contentSha256": "f229f2f0cfed5f36e01f8e5cec575ae78a0482d7598feb88531e86523229a4d1"
+  },
+  "ex-3A02-10": {
+    "title": "Use of cladding in optical fibres",
+    "knowledge": [
+      114,
+      117,
+      118
+    ],
+    "contentSha256": "ed8aaa6aa5a61af7da4f41e435d4bdbc535e64037a0d5c1f4f8733142bd35637"
+  },
+  "ex-3A03-1": {
+    "title": "Image formed by a convex lens (I)",
+    "knowledge": [
+      119,
+      120
+    ],
+    "contentSha256": "f86a8ff2bc49bd334e7e85e00b6671eddcd3c1d9974b6637dc466f4bc6ad6361"
+  },
+  "ex-3A03-2": {
+    "title": "Image formed by a convex lens (II)",
+    "knowledge": [
+      119,
+      120
+    ],
+    "contentSha256": "844934fe817253728d8bdc663b6d0120a82543dea7ba11e127394b2916bb8f0f"
+  },
+  "ex-3A03-3": {
+    "title": "Parallel rays through a convex lens",
+    "knowledge": [
+      120
+    ],
+    "contentSha256": "aca1824cbf5558a93789b39cdc6a43925907dda9565e8513312af8b49de01ac4"
+  },
+  "ex-3A03-4": {
+    "title": "Magnification of an image formed by a convex lens",
+    "knowledge": [
+      120,
+      121
+    ],
+    "contentSha256": "b790ca384d8158570dee404996460c4dd8d7b9f36007c58fec2399082cf8c684"
+  },
+  "ex-3A03-5": {
+    "title": "Image formed by a concave lens",
+    "knowledge": [
+      123,
+      369
+    ],
+    "contentSha256": "837f2afc7c1e61072854d909786788d26de59699231e42598e551088eda15ee6"
+  },
+  "ex-3A03-6": {
+    "title": "Parallel rays through a concave lens",
+    "knowledge": [
+      369
+    ],
+    "contentSha256": "889191aba88a3113aa252c7c6c0c437ffdfaa92de2f6e2b68e34c2a8fa52b379"
+  },
+  "ex-3A03-7": {
+    "title": "Magnification of an image formed by a concave lens",
+    "knowledge": [
+      121,
+      123
+    ],
+    "contentSha256": "503b4e0b1009807d82c62e1d491d154931f1000668496861ef74e5376907ddf4"
+  },
+  "ex-3A03-8": {
+    "title": "Locating foci and images from one light ray",
+    "knowledge": [
+      123,
+      369
+    ],
+    "contentSha256": "f8053ec3e3b21f825cd7adfcbb4d8c72769fcbe930fd4eb8d23d228615cb25bf"
+  },
+  "ex-3A03-9": {
+    "title": "Wide-angle adapter",
+    "knowledge": [
+      123,
+      369
+    ],
+    "contentSha256": "2568916f27968a543e6efd6822f71bbb05569cbf3472aad2b7ff11c39b6bb126"
+  },
+  "ex-3A03-10": {
+    "title": "Lens formula",
+    "knowledge": [
+      124
+    ],
+    "contentSha256": "e49397a1db9dd8df756f17c0990ffab602eabea7e5b35c38f14ce08a635f0a18"
+  },
+  "ex-3A03-12": {
+    "title": "Graph of 1v against 1u",
+    "knowledge": [
+      124
+    ],
+    "contentSha256": "ac6f96026a4e48e9c17bce21608143bc491dc6bba81e7733569e51dcf5ab2e48"
+  },
+  "ex-3B04-1": {
+    "title": "Describing wave motion",
+    "knowledge": [
+      127,
+      128,
+      131
+    ],
+    "contentSha256": "52d403f8fd8c9ba10e342ae5e1084b2985a85c07abb65041662a73aedfcb1c4a"
+  },
+  "ex-3B04-2": {
+    "title": "Sketching waveform",
+    "knowledge": [
+      129,
+      133,
+      135
+    ],
+    "contentSha256": "2d6e5c65d82d678059a119d68f702d25de6c409779311fb0046ae9196662fe8a"
+  },
+  "ex-3B04-3": {
+    "title": "Wave speed",
+    "knowledge": [
+      133
+    ],
+    "contentSha256": "4f88f96be05768ed96dbe22150efc28381bb5e0a87a0c10724c1b3f96230a264"
+  },
+  "ex-3B04-4": {
+    "title": "Wave travelling along two strings connected together",
+    "knowledge": [
+      133,
+      134
+    ],
+    "contentSha256": "edfab5069712bc26967881a90a53b3cbbde6dbcaee7c42618aa0c25e8c518edc"
+  },
+  "ex-3B04-5": {
+    "title": "Motion of particles on a wave",
+    "knowledge": [
+      135
+    ],
+    "contentSha256": "933440cafb3dff83c55a166b3777dc86474f236944a9055065fe44bbea3b938b"
+  },
+  "ex-3B04-6": {
+    "title": "s–d graphs at different instants",
+    "knowledge": [
+      133,
+      135
+    ],
+    "contentSha256": "0cf300b443233f15dc26ab8ebd5aba4fe73a2db49b0204b89dbc8e52e26b5139"
+  },
+  "ex-3B04-7": {
+    "title": "Reading an s–t graph",
+    "knowledge": [
+      127,
+      131,
+      133,
+      135
+    ],
+    "contentSha256": "1e5cfc3daebf3744e1efdf56a56d15167ec663d00954afb2dda599734cf3349d"
+  },
+  "ex-3B04-8": {
+    "title": "Drawing s–t graphs of different particles",
+    "knowledge": [
+      135
+    ],
+    "contentSha256": "afe97ce758d8ba89a5b30ab7288b93c6d50db4f2b513f18b3d11e18fc269071c"
+  },
+  "ex-3B04-9": {
+    "title": "Different graphs of wave motion",
+    "knowledge": [
+      127,
+      135
+    ],
+    "contentSha256": "ea45070323da43d84a28dea176e0de2cc71c9e6e2e0d280c4b28bba2f6a9e2ce"
+  },
+  "ex-3B05-1": {
+    "title": "Wave pattern produced in a ripple tank",
+    "knowledge": [
+      136
+    ],
+    "contentSha256": "46b246fd72e28897f167e5e9bd58c74e1292645b67d8f107e17445b9ff8420ff"
+  },
+  "ex-3B05-2": {
+    "title": "A wave entering a deep region",
+    "knowledge": [
+      138,
+      140
+    ],
+    "contentSha256": "78dfd82f1b5af72a186e0e91bf6a602a3e94dc75a7344dd59661e92c2bff247e"
+  },
+  "ex-3B05-3": {
+    "title": "Refraction of a wave",
+    "knowledge": [
+      138,
+      140
+    ],
+    "contentSha256": "e56c9ee665714e51f4e42c8a7388be01d9ecf85935ef797d74ce45b4390d2e11"
+  },
+  "ex-3B05-4": {
+    "title": "Snell’s law",
+    "knowledge": [
+      140
+    ],
+    "contentSha256": "a6ed266e8e0343ba77f036e5cf8c564f9a16aff3112667a3295cf6fb301da31f"
+  },
+  "ex-3B05-5": {
+    "title": "Determining the type of interference",
+    "knowledge": [
+      145
+    ],
+    "contentSha256": "7024c0357d430b76e0f24226ac9c88a5cba6133f73345fa9f50037ed8f7d26c4"
+  },
+  "ex-3B05-6": {
+    "title": "Interference pattern",
+    "knowledge": [
+      145,
+      146
+    ],
+    "contentSha256": "a43b873f3ad2e6f9bf0d4db5fefbd3b88e01adc4527ef8db116a42f007bd3823"
+  },
+  "ex-3B05-7": {
+    "title": "Interference and vibrations",
+    "knowledge": [
+      143,
+      145
+    ],
+    "contentSha256": "caa488e01219aabe84694cf413d4c7f964395f8968c98b3950d89c754eda1a47"
+  },
+  "ex-3B05-8": {
+    "title": "Wavelength, frequency and number of loops",
+    "knowledge": [
+      133,
+      148
+    ],
+    "contentSha256": "04f2cee055bffabd6418f8b3f7dc7418c5ebd37ef74ad97528a54b54604bc541"
+  },
+  "ex-3B05-9": {
+    "title": "Particle motion on a wave",
+    "knowledge": [
+      135,
+      148
+    ],
+    "contentSha256": "357d10dd0607c7cb84b42e0f004e1ad427c50073801cd6e0cb5978bdb4f03e62"
+  },
+  "ex-3B06-1": {
+    "title": "Estimating the wavelength",
+    "knowledge": [
+      150
+    ],
+    "contentSha256": "7c965592cdc4e349f58b04b836eb61eb121644beb61ddc6ebec8a03bc91e26ea"
+  },
+  "ex-3B06-2": {
+    "title": "Fringes formed by a grating",
+    "knowledge": [
+      152,
+      153
+    ],
+    "contentSha256": "7297d975cb2d041a7370b155ec96a2ce140893772632c36364839c0538acd80a"
+  },
+  "ex-3B06-3": {
+    "title": "Multi-coloured interference pattern",
+    "knowledge": [
+      150
+    ],
+    "contentSha256": "09e22ade9a18941fea4258e158ce589e76f646959a747a21dfb120865c599e9e"
+  },
+  "ex-3B06-4": {
+    "title": "Estimating wavelength using a grating",
+    "knowledge": [
+      152
+    ],
+    "contentSha256": "b2d38892c2282dca5486da25fa7f493c2677524ca7e33fc05b16c4355e140bdf"
+  },
+  "ex-3B06-5": {
+    "title": "Radar",
+    "knowledge": [
+      133,
+      371
+    ],
+    "contentSha256": "9eba0866ba76893b727acfa5792a93d4547fb0329adaaeceb8372a933ff6a05f"
+  },
+  "ex-3B06-6": {
+    "title": "Using walkie-talkies",
+    "knowledge": [
+      133,
+      371
+    ],
+    "contentSha256": "2aaaaa9ab4324c90229a87ed753c5a37a012e8bac4681bcf6fbb5a02e234e1f9"
+  },
+  "ex-3B07-1": {
+    "title": "Describing a longitudinal wave",
+    "knowledge": [
+      127,
+      128,
+      131,
+      133,
+      366
+    ],
+    "contentSha256": "6f095b6fa28fbeb5b704a4bf708fd33d5bc386eb5126143e8727b2697b28a8e1"
+  },
+  "ex-3B07-2": {
+    "title": "Possible frequencies of a wave",
+    "knowledge": [
+      131,
+      133
+    ],
+    "contentSha256": "0d97c5609e677c52158696a2f9954d3ead20683821f83e0ff22a1ea16d24e4e6"
+  },
+  "ex-3B07-3": {
+    "title": "Motion of particles",
+    "knowledge": [
+      135,
+      367
+    ],
+    "contentSha256": "ea44c210c90b78adc27436949b410b93f9d39db293814fd9d1a655f5279c5f12"
+  },
+  "ex-3B07-4": {
+    "title": "The s–t graph of a longitudinal wave",
+    "knowledge": [
+      127,
+      131,
+      135,
+      367
+    ],
+    "contentSha256": "9faf96ca2276fdedcca7267883979fc79c45407495d74a4799a3672667679e60"
+  },
+  "ex-3B07-5": {
+    "title": "The s–d graph of a longitudinal wave",
+    "knowledge": [
+      128,
+      366,
+      367
+    ],
+    "contentSha256": "9511b6f00cffa3f3c5968760b5d095fbf807308e4b06987199cdc3524c8030ca"
+  },
+  "ex-3B07-6": {
+    "title": "Measuring the speed of sound in air",
+    "knowledge": [
+      133,
+      154
+    ],
+    "contentSha256": "4a5374903930bcb01bd09a234e19ff7c89be3c5dc733340f7a5eff073299c1b7"
+  },
+  "ex-3B07-7": {
+    "title": "Echoes",
+    "knowledge": [
+      133,
+      155
+    ],
+    "contentSha256": "a70b28425a0527be1a34ee2ae986033ded593a16450d9001628455bd7e188c44"
+  },
+  "ex-3B07-8": {
+    "title": "Interference of sound",
+    "knowledge": [
+      145,
+      155
+    ],
+    "contentSha256": "76ea0dea3c8c0ff4ddb4b47851b56626970431289bce2697a22a64bea646df05"
+  },
+  "ex-3B07-9": {
+    "title": "Musical notes",
+    "knowledge": [
+      158
+    ],
+    "contentSha256": "a461886d0eabf3259165123ba1fdf8fff4483e86898c22765e3b5f61bcddfab8"
+  },
+  "ex-401-1": {
+    "title": "Sharing charge",
+    "knowledge": [
+      160
+    ],
+    "contentSha256": "ea6194e250c6daaa907da414fcf523f68dbf4a8755ed051742d806544c8a174e"
+  },
+  "ex-401-2": {
+    "title": "Flying aluminium foil",
+    "knowledge": [
+      159,
+      160,
+      161
+    ],
+    "contentSha256": "7a46a69d59832ad0784fdf340a212f800365d9a0645774e22feda6a6c4385f9f"
+  },
+  "ex-401-3": {
+    "title": "Van de Graaff generator",
+    "knowledge": [
+      159,
+      161
+    ],
+    "contentSha256": "641bcbf3c60ab65fb0727cd97ed2bc1df8ac9db585b4c0f57acc3f815dc9c99a"
+  },
+  "ex-401-4": {
+    "title": "Electrostatic forces between point charges",
+    "knowledge": [
+      159,
+      162
+    ],
+    "contentSha256": "d8a7758bc94f6aef9c781f56af34ec811c8b17261d49219752e23155732d3c67"
+  },
+  "ex-401-5": {
+    "title": "How F is related to Q and r",
+    "knowledge": [
+      162
+    ],
+    "contentSha256": "6f51f29e2c76db2e6c80708bcf5a248c844c83e14dd6b67e54a366c6853c6251"
+  },
+  "ex-401-6": {
+    "title": "Finding the charge of a particle",
+    "knowledge": [
+      159,
+      162
+    ],
+    "contentSha256": "5bea389fc411f757dcb8fd92a7ea8546b73803d62e701e5c0832bac8fb586719"
+  },
+  "ex-401-7": {
+    "title": "Finding resultant electrostatic force",
+    "knowledge": [
+      67,
+      162
+    ],
+    "contentSha256": "a36a3634e07ef36f53a76baa362fd4d7fb93224e73af211ffe7b4d55da631304"
+  },
+  "ex-401-8": {
+    "title": "Electric field strength at a point",
+    "knowledge": [
+      163
+    ],
+    "contentSha256": "60bfb718200be5ad42f9dc6e68482b4a7881cbed858ced5be24f94ed5abc915f"
+  },
+  "ex-401-9": {
+    "title": "Electric field strength near a point charge",
+    "knowledge": [
+      164
+    ],
+    "contentSha256": "39f026577abbca0428690278ac6871551146d9c82a6cf78d58f5780920d23428"
+  },
+  "ex-401-10": {
+    "title": "Resultant field strength (1-dimension)",
+    "knowledge": [
+      164
+    ],
+    "contentSha256": "3f19041a2cc28f79339814ffc3b0473ecf6425c607948cf8ee4a148b73030df8"
+  },
+  "ex-401-11": {
+    "title": "Resultant field strength (2-dimension)",
+    "knowledge": [
+      67,
+      164
+    ],
+    "contentSha256": "7f153b0f73301b303981cc8012f56f664974e9e529b18c805d9cbb3e2c60d17c"
+  },
+  "ex-401-12": {
+    "title": "Electric field strength between parallel plates",
+    "knowledge": [
+      163,
+      165
+    ],
+    "contentSha256": "ee0ba88a6141b433a8feef80dd975d98cdb4a42344b07f5cbb7c30ecf240fa95"
+  },
+  "ex-402-1": {
+    "title": "Current through an electric car",
+    "knowledge": [
+      169
+    ],
+    "contentSha256": "5a64abc6a72d457f445525bfee7d17a574ac792f2a226a6304763d99356757bb"
+  },
+  "ex-402-2": {
+    "title": "Finding currents",
+    "knowledge": [
+      171
+    ],
+    "contentSha256": "bd62156fa2b6c5558a4462679077ca653a566bd4fb3ac516087022a109d02acf"
+  },
+  "ex-402-3": {
+    "title": "Energy in a rechargeable battery",
+    "knowledge": [
+      172,
+      173
+    ],
+    "contentSha256": "50660781c0053445a614fc5efe04351a278f7b0166f6fcb9f77361b7999d3a63"
+  },
+  "ex-402-4": {
+    "title": "Voltages in circuits",
+    "knowledge": [
+      175,
+      176
+    ],
+    "contentSha256": "65b66cb0004ce4d2d516a003461487408dbc41541751448564933bdcae806e94"
+  },
+  "ex-402-5": {
+    "title": "Resistance of a bulb",
+    "knowledge": [
+      177
+    ],
+    "contentSha256": "e8e35467c3b7741415b0da3b7cd4cf0ec56f4ce34f28e91c7464a79f05656d8d"
+  },
+  "ex-402-6": {
+    "title": "V−I graphs of ohmic conductors",
+    "knowledge": [
+      177,
+      178
+    ],
+    "contentSha256": "1a7b0d1f89d6596b8c1d3dbf765308b2913c4ee77e18632e36562f634abedb4e"
+  },
+  "ex-402-7": {
+    "title": "I−V graph of a conductor",
+    "knowledge": [
+      177,
+      178
+    ],
+    "contentSha256": "3d644d9991e34db97880d58fde2045b5e469e2c83683e4e878c9a8b15410a97d"
+  },
+  "ex-402-8": {
+    "title": "Resistivity and resistance",
+    "knowledge": [
+      179
+    ],
+    "contentSha256": "af8c5a1eef0d3e3a3d03701812c340be2912bca3fd31dd3ec225d4ba43ada4d0"
+  },
+  "ex-402-9": {
+    "title": "Series connection",
+    "knowledge": [
+      175,
+      177,
+      181
+    ],
+    "contentSha256": "c88e7d97fd25729e2a737fcc31e46411643fd4526ba911334030a8c82e176822"
+  },
+  "ex-402-10": {
+    "title": "Parallel connection",
+    "knowledge": [
+      171,
+      177,
+      183
+    ],
+    "contentSha256": "deeb30434e9878566405d45fbdcf1ed683c6f869f7ce18e479317d354eb28e75"
+  },
+  "ex-402-11": {
+    "title": "Resistor network",
+    "knowledge": [
+      177,
+      181,
+      183
+    ],
+    "contentSha256": "054061a1e72a3c831653db57b94cbc09a21d4dcb030a7b6a9699af2c8d0814f2"
+  },
+  "ex-402-12": {
+    "title": "Brightness of two light bulbs",
+    "knowledge": [
+      175,
+      185,
+      186
+    ],
+    "contentSha256": "248257588cb37b355e9ac7ad32371de207ec8d18661e5135c2d3a7f56b79fdc3"
+  },
+  "ex-402-13": {
+    "title": "The power consumed by a heater",
+    "knowledge": [
+      185,
+      186
+    ],
+    "contentSha256": "ac75a3c907ac50706aae04a0317ff1f9d9ee2af94cbde1dee24314c58e3b1b9a"
+  },
+  "ex-403-1": {
+    "title": "Short circuit",
+    "knowledge": [
+      177,
+      181,
+      183
+    ],
+    "contentSha256": "70798cb12920c3d08fcd82f4b50e2474bf1846e5c5d73ebd00bdec09f5cd9674"
+  },
+  "ex-403-2": {
+    "title": "Potential divider",
+    "knowledge": [
+      187
+    ],
+    "contentSha256": "9188b8b597d5d4c8a3b582bd3caba4e2fe6f611c5be6f86d00478c21506aef69"
+  },
+  "ex-403-3": {
+    "title": "Complicated network",
+    "knowledge": [
+      177,
+      181,
+      183
+    ],
+    "contentSha256": "25f9e02bb74b97880b783474dddf841426d28314db0dce35ec2ba95121ccecd1"
+  },
+  "ex-403-4": {
+    "title": "Variable resistor and resistor network",
+    "knowledge": [
+      177,
+      181,
+      183
+    ],
+    "contentSha256": "493202fb99f96b3a4adb19a0e36adadee3764145a7cecb1d6d726bca113e850a"
+  },
+  "ex-403-5": {
+    "title": "Effect of internal resistance of voltmeter",
+    "knowledge": [
+      177,
+      183,
+      189
+    ],
+    "contentSha256": "97a46b83c5a2e0fc5d2a5c379d2107f0178d833ef85017edee3cfe62aa6d0d50"
+  },
+  "ex-403-6": {
+    "title": "Network with ideal ammeter and voltmeter",
+    "knowledge": [
+      175,
+      177,
+      181,
+      183,
+      188,
+      189
+    ],
+    "contentSha256": "e96ab42ab1035d6fb7a1619107e6dec0f19125f2bf5052d6ae221c50723727cd"
+  },
+  "ex-403-7": {
+    "title": "Voltmeter-ammeter method",
+    "knowledge": [
+      188,
+      189
+    ],
+    "contentSha256": "397b688bc0935412117170a85eb8fa32b41063ef2001931afc32d1c9976ca0b7"
+  },
+  "ex-403-8": {
+    "title": "Experiment on internal resistance of battery",
+    "knowledge": [
+      190
+    ],
+    "contentSha256": "7a1dfd162c64af2ef365bf398f52cc7e44c2de11269437ebc30ab7d18f249e70"
+  },
+  "ex-403-9": {
+    "title": "Practical battery and ideal battery",
+    "knowledge": [
+      177,
+      190
+    ],
+    "contentSha256": "9713a142a03eac8eef7a4b451435d618fa3d14a19d0d33cd0ec786d92b0436a0"
+  },
+  "ex-404-1": {
+    "title": "An appliance operating at different voltages (I)",
+    "knowledge": [
+      186,
+      374
+    ],
+    "contentSha256": "96c17e3aefb73053c1e9bdd87278dc86b0af5f7d1fa2a2ef18af7ee571869539"
+  },
+  "ex-404-2": {
+    "title": "An appliance operating at different voltages (II)",
+    "knowledge": [
+      186,
+      374
+    ],
+    "contentSha256": "f0d16469fc5c93a9720a280e84d19654c4b9c9998aca1f83c7808c7abdfce9cd"
+  },
+  "ex-404-3": {
+    "title": "An appliance operating at different voltages (III)",
+    "knowledge": [
+      186,
+      374
+    ],
+    "contentSha256": "ea19a9aad3c66419256f87d436ed127ff60625710cd0aedbaee6bbb06f291b85"
+  },
+  "ex-404-4": {
+    "title": "Energy consumed by heater",
+    "knowledge": [
+      184,
+      185
+    ],
+    "contentSha256": "02ea2bbe648bd90698856cc7cf7472a482e21985f58cd5c4e05d7074a0392aff"
+  },
+  "ex-404-5": {
+    "title": "Fuse value",
+    "knowledge": [
+      185,
+      192
+    ],
+    "contentSha256": "1cbfa325256866f4599ff6dee2fe132d14864789dca9efea2e0d1ee66e43f522"
+  },
+  "ex-404-6": {
+    "title": "Choice of cables",
+    "knowledge": [
+      179,
+      186,
+      192
+    ],
+    "contentSha256": "084a91502b2a24a6e1b9eaad349515fcac338f5f5432e9375739ec516cfa510f"
+  },
+  "ex-404-7": {
+    "title": "R.m.s. value and peak value",
+    "knowledge": [
+      194,
+      195
+    ],
+    "contentSha256": "9be3dfd063ec3781ba5b157e9abf2e5d7f05e6da8541ab09fd470986c3c5a0f7"
+  },
+  "ex-405-1": {
+    "title": "Direction of magnetic field",
+    "knowledge": [
+      198,
+      201
+    ],
+    "contentSha256": "0d481fb2032c8ec86d79157b2d1f01bc4e7d13a0b7ea15dd883d5964692570fb"
+  },
+  "ex-405-2": {
+    "title": "Direction of resultant magnetic field",
+    "knowledge": [
+      197,
+      198
+    ],
+    "contentSha256": "6b3b852b0bec00495b79a0eb560345a95d24204dcfd8affde52c955c30ecb224"
+  },
+  "ex-405-3": {
+    "title": "Electromagnets",
+    "knowledge": [
+      201,
+      202
+    ],
+    "contentSha256": "508ec6d380d6cb1b6a5cf2bc909434d85a638c1b0cd7c182fb64be0ef7979b6e"
+  },
+  "ex-405-4": {
+    "title": "Electric bell",
+    "knowledge": [
+      196,
+      201,
+      202
+    ],
+    "contentSha256": "4f8a931763e0600bff4147ac918a2310766ea92df3c6375e7e4a89fe120cd98c"
+  },
+  "ex-405-5": {
+    "title": "Distance from wire",
+    "knowledge": [
+      203
+    ],
+    "contentSha256": "a0bd77dbec3f26761849401f14ca929320c0c0c2abfce005a3f58b14e810dd6f"
+  },
+  "ex-405-6": {
+    "title": "The neutral point between two wires",
+    "knowledge": [
+      198,
+      203
+    ],
+    "contentSha256": "df33d58e3bc8d5b2430922b82086e8cf52c8294b4d66817741ce6a42accca87b"
+  },
+  "ex-405-7": {
+    "title": "Calculating resultant magnetic field",
+    "knowledge": [
+      198,
+      203
+    ],
+    "contentSha256": "e2c42ecb09fb439867c256038c357d82ed6c46dd5c1d0538e225a4a1fe8d19ad"
+  },
+  "ex-405-8": {
+    "title": "Estimating the permeability of free space",
+    "knowledge": [
+      203
+    ],
+    "contentSha256": "b27997f670c7144fcc210208b822899bfbc29409e9d18a841eb39ae57d64bc8d"
+  },
+  "ex-405-9": {
+    "title": "Magnetic field inside a long solenoid",
+    "knowledge": [
+      204
+    ],
+    "contentSha256": "f3add0cd30efc44defa93be16ae3a0b9c586f8f5e13ad2c02542fb9fe1dc55dc"
+  },
+  "ex-406-1": {
+    "title": "Applying Fleming’s left-hand rule",
+    "knowledge": [
+      205
+    ],
+    "contentSha256": "0d7d5416b7a8181c7c6807410e226e8160f7b46ffa357b539cf5b3376623c877"
+  },
+  "ex-406-2": {
+    "title": "Catapult field",
+    "knowledge": [
+      197,
+      205
+    ],
+    "contentSha256": "ccf0e54646b4438dffd8943b2d3d8a7cbadc27cacaa083793fdc2cd54c81a3ec"
+  },
+  "ex-406-3": {
+    "title": "Finding magnetic force using a current balance",
+    "knowledge": [
+      205,
+      207
+    ],
+    "contentSha256": "e3014d0fc148a44ab09b4596af8a0147fdb8ab4eb26d4ee83c94bd3414e8cb70"
+  },
+  "ex-406-4": {
+    "title": "Calculating magnetic force on a rod",
+    "knowledge": [
+      205,
+      207
+    ],
+    "contentSha256": "37b32d8052ee12471ef9597e749b478c60498bf82c0f6b67ee3b32d7562dd7db"
+  },
+  "ex-406-5": {
+    "title": "Calculating the turning effect on a coil",
+    "knowledge": [
+      68,
+      207
+    ],
+    "contentSha256": "8a1b15de01e40711de082da34d901663613178dfad15c63601cf48ca7ca26aa6"
+  },
+  "ex-406-6": {
+    "title": "A simple d.c. motor",
+    "knowledge": [
+      205,
+      208
+    ],
+    "contentSha256": "88213ef3b132b99b342dea0e29ff88e09ac47a80f2342a02358ce96d63e54fb7"
+  },
+  "ex-406-7": {
+    "title": " HKDSE 2019 Paper 1A Q27 A simple motor with electromagnets",
+    "knowledge": [
+      201,
+      205,
+      208
+    ],
+    "contentSha256": "1e7e47be1330b8f023f99ab82fabf79c2980d392bec46a2afe461599884a172a"
+  },
+  "ex-406-8": {
+    "title": "Interaction between two parallel wires",
+    "knowledge": [
+      209,
+      210
+    ],
+    "contentSha256": "e33cc6a65f83233d322b91398579c39f18fe60da30e557ce4a23049658ea38ca"
+  },
+  "ex-406-9": {
+    "title": "Interaction between three parallel wires",
+    "knowledge": [
+      209,
+      210
+    ],
+    "contentSha256": "d754dd5b5513b663b52c76f17a290a12d43fb15f70e9a49b2dca54aca5498b3b"
+  },
+  "ex-406-10": {
+    "title": "A charge moving in a magnetic field",
+    "knowledge": [
+      211
+    ],
+    "contentSha256": "1e7441e03026f0c1921751e6358752854c416406bd0b3ce06706fea830e45fe3"
+  },
+  "ex-406-11": {
+    "title": "Circular motion of a charge particle in a magnetic field",
+    "knowledge": [
+      102,
+      211
+    ],
+    "contentSha256": "ba3638a360ecb5d2d31a55fe8c8c620b91a0493b87f09869b85570726cb6baee"
+  },
+  "ex-406-12": {
+    "title": "Two charged particles moving in a magnetic field",
+    "knowledge": [
+      102,
+      211
+    ],
+    "contentSha256": "6952412b1efcd042ef0f413ad73c2d82b1cdbfc140724acfbc75928c88271931"
+  },
+  "ex-406-13": {
+    "title": "An electron in a magnetic field and an electric field",
+    "knowledge": [
+      163,
+      165,
+      211
+    ],
+    "contentSha256": "9da3cc12f81f7de06231f221a9f81aaffdec92453f8f6a541b26edc11a4e34e4"
+  },
+  "ex-407-1": {
+    "title": "A magnet passing through a coil",
+    "knowledge": [
+      212,
+      214
+    ],
+    "contentSha256": "646bb5cba9ce908dca16cd0079071f18d411f999de612c71904da8744c117c0e"
+  },
+  "ex-407-2": {
+    "title": "A coil entering a uniform magnetic field",
+    "knowledge": [
+      212,
+      214
+    ],
+    "contentSha256": "20848c2c60281eda846896e25f8334a904ab4465e25185291bf00f2af4bf2643"
+  },
+  "ex-407-3": {
+    "title": "A conductor cutting through a magnetic field",
+    "knowledge": [
+      205,
+      212,
+      214
+    ],
+    "contentSha256": "76cb1be7e56a6cea79b6c490882358bf4cc39cf590ff5d83003225c369b33135"
+  },
+  "ex-407-4": {
+    "title": " HKDSE 2014 Paper 1A Q27 A coil beside a straight wire",
+    "knowledge": [
+      197,
+      212,
+      214
+    ],
+    "contentSha256": "da9f474998a692574ba7e83334e43633239ab447c129c55403a8c987f9adfedd"
+  },
+  "ex-407-5": {
+    "title": "A bar magnet falling through a coil",
+    "knowledge": [
+      214,
+      216
+    ],
+    "contentSha256": "3122bbd561d318847cac70894ef6ac509a9184d9e3416c99d9e9c9ad524e6382"
+  },
+  "ex-407-6": {
+    "title": "Current produced by an a.c. generator",
+    "knowledge": [
+      215
+    ],
+    "contentSha256": "7a092ef2d8f16c34f386ceee7e7a8630dfd5ca2404ac751dd6af00de1fc6c7e5"
+  },
+  "ex-407-7": {
+    "title": "Calculation of flux linkage",
+    "knowledge": [
+      217,
+      218
+    ],
+    "contentSha256": "a6ec396d78278d29fa93099bd1ae8e7e7bc5dc6846cfba4e193f632122a610c7"
+  },
+  "ex-407-8": {
+    "title": "A changing magnetic field and a rotating coil  HKDSE 2019 Paper 1B Q9(b)",
+    "knowledge": [
+      217,
+      218,
+      221
+    ],
+    "contentSha256": "a1eb76713584d7cb908cffd3267739322d335bc5128a30615462247b51e3bd67"
+  },
+  "ex-407-9": {
+    "title": "Rate of flux cutting",
+    "knowledge": [
+      217,
+      221
+    ],
+    "contentSha256": "5269040150d62941457f5386d50888385d6517ce72694717de4f0355cf8be99b"
+  },
+  "ex-408-1": {
+    "title": "Turns ratio and voltage ratio",
+    "knowledge": [
+      222
+    ],
+    "contentSha256": "e19d6659b936370beefb9bccaa7ce53e30b13f2fdc4ede2330b2820aea052d1c"
+  },
+  "ex-408-2": {
+    "title": "A multi-tapped transformer",
+    "knowledge": [
+      222
+    ],
+    "contentSha256": "165e0a9f3d2df50a33d646cceb1aa06fd87a96f832c4029036dcf9f511bd68c2"
+  },
+  "ex-408-3": {
+    "title": "Efficiency of a transformer",
+    "knowledge": [
+      224
+    ],
+    "contentSha256": "f1fca3b24f2395fa05ff34fcb2afd85957fec9e66ac269392c0e453317643833"
+  },
+  "ex-408-4": {
+    "title": "Ideal and practical transformers",
+    "knowledge": [
+      222,
+      223,
+      224
+    ],
+    "contentSha256": "26d58a7e885e60f1bf45466d221a32a442674dd5f0498b9958b6328fa2b079ee"
+  },
+  "ex-408-5": {
+    "title": "Power loss in transmission cables",
+    "knowledge": [
+      186,
+      225
+    ],
+    "contentSha256": "c50897f5d5ab74473a9d7955e7385f404c70ee5fcf7bb31fdb5d519e5f12874c"
+  },
+  "ex-408-6": {
+    "title": "A power transmission system",
+    "knowledge": [
+      186,
+      222,
+      223,
+      225
+    ],
+    "contentSha256": "3ffe1e317edb22acb4d531230c1670c5b1ab05f3520be78ee79760e5fba93330"
+  },
+  "ex-501-1": {
+    "title": "Range of α radiation in air",
+    "knowledge": [
+      229,
+      230
+    ],
+    "contentSha256": "554388c117c6d651e09cf2057657b0b3314bd044e8e689a1c22f0e334fef0540"
+  },
+  "ex-501-2": {
+    "title": "Distinguish radiation using different absorbers",
+    "knowledge": [
+      230,
+      231,
+      377
+    ],
+    "contentSha256": "bd901234a4d1f2f5636f8419f328fd174aea5e2881b2f8884594d8ffe842fb0f"
+  },
+  "ex-501-3": {
+    "title": "Film badge",
+    "knowledge": [
+      231
+    ],
+    "contentSha256": "3490c00738eaa043801262520733fc9f9c6e5fefbe7ec34f6ba28c6ab6f8c736"
+  },
+  "ex-502-1": {
+    "title": "Identifying isotopes",
+    "knowledge": [
+      233,
+      234
+    ],
+    "contentSha256": "5e328a4baeaa8ca050afd4ec7504658c4bff16e0acbbc79bf6c8b5936baf5eab"
+  },
+  "ex-502-2": {
+    "title": "An α decay of radium-226",
+    "knowledge": [
+      233
+    ],
+    "contentSha256": "c3aab8e9a403bf28822135270e28f30d2227fdcf9dc5e6073e4323f03b232ec9"
+  },
+  "ex-502-3": {
+    "title": "Decay series of uranium-235",
+    "knowledge": [
+      233
+    ],
+    "contentSha256": "8925814d8acfc7dc4287247d4537747598a863925d9d8b640f0d1556b8548c91"
+  },
+  "ex-502-4": {
+    "title": "Finding half-life from count rate",
+    "knowledge": [
+      236,
+      237
+    ],
+    "contentSha256": "192b4769ce29993f06b7ff6d3d8dc67a64da08894b71dcaa1e519eb0e8677bfe"
+  },
+  "ex-502-5": {
+    "title": "Activity and half-life",
+    "knowledge": [
+      235,
+      237,
+      239
+    ],
+    "contentSha256": "d7094c92bfadeaf493bbc3ed2488e2cd60dafd1c96058331e116be183142e7c0"
+  },
+  "ex-502-6": {
+    "title": "Exponential decay",
+    "knowledge": [
+      238,
+      239
+    ],
+    "contentSha256": "c2d472184036a0b1259492228592bdb9068d3bda1b9a2cbd02a03d3101ff8e88"
+  },
+  "ex-502-7": {
+    "title": "Decay of radium-226",
+    "knowledge": [
+      235,
+      238,
+      239
+    ],
+    "contentSha256": "5c6c133536b5fa46f27f5169d1704565e3a555c128a110b7021e7662d20f773b"
+  },
+  "ex-502-8": {
+    "title": "Filling bottles of juice",
+    "knowledge": [
+      237
+    ],
+    "contentSha256": "4d979aa7f903dfa0ab08c4ec0c7767100fa95fcedecc3150e099947b83690d51"
+  },
+  "ex-502-9": {
+    "title": "Carbon-14 dating",
+    "knowledge": [
+      237,
+      238
+    ],
+    "contentSha256": "b5d54e3d0b2300f431ed84f4bc4c1a4be6862741eb4e7304aee7b933ddcba348"
+  },
+  "ex-503-1": {
+    "title": "Fission of plutonium",
+    "knowledge": [
+      233,
+      240
+    ],
+    "contentSha256": "7d951ca92fb21445613953f81a58dfde83245b87b0bb52291188e5b095f13c3f"
+  },
+  "ex-503-2": {
+    "title": "Mass-energy relationship",
+    "knowledge": [
+      243
+    ],
+    "contentSha256": "d7d4ba24e4045c0309a5d98fec7eb4204c834e9f8ed569126ca26edea0e50a64"
+  },
+  "ex-503-3": {
+    "title": "Units of mass and energy",
+    "knowledge": [
+      244,
+      245,
+      246
+    ],
+    "contentSha256": "f66f62157a0b119d9b052ef18e09ea4ec8b945580744fe18b789966c97699821"
+  },
+  "ex-503-4": {
+    "title": "Energy released in nuclear fission",
+    "knowledge": [
+      240,
+      243,
+      246
+    ],
+    "contentSha256": "4b92bc5e426c55930002dd72e854a6a67da51b6c8bad79d5bc85df4bc392b734"
+  },
+  "ex-503-5": {
+    "title": "Energy released in nuclear fusion",
+    "knowledge": [
+      242,
+      243,
+      246
+    ],
+    "contentSha256": "4da33e0e5416f74aa30ac8c3f4f1df8eebb8657f85e705b963df714ade3cf764"
+  },
+  "ex-E101-1": {
+    "title": "Distances of different planets from the Sun",
+    "knowledge": [
+      247
+    ],
+    "contentSha256": "709065cd897d5f386ed22fd0e5571bd3389476b924c62970cc6decdbfa711b54"
+  },
+  "ex-E101-2": {
+    "title": "Position of Venus in its orbit",
+    "knowledge": [
+      385
+    ],
+    "contentSha256": "14a83a56adb7339d3c8365712366db79675d7ff37877bfe4191a226a9964648b"
+  },
+  "ex-E102-1": {
+    "title": "Period of Saturn",
+    "knowledge": [
+      254
+    ],
+    "contentSha256": "67e9e4c98e7cf7d99ad598761698f2d76e5879940542ea468b2bd73860571997"
+  },
+  "ex-E102-2": {
+    "title": "Galilean satellites",
+    "knowledge": [
+      254
+    ],
+    "contentSha256": "1d12780d1f7f958a1534664faaf7ff1ac2acf42b40ac5d1de9ea7a57d1b2af5a"
+  },
+  "ex-E102-3": {
+    "title": "Comet Halley",
+    "knowledge": [
+      252,
+      253,
+      254
+    ],
+    "contentSha256": "563ed88516ae977732879e8ff25dcac972141f9e5a5629dee7289ee786d7bf38"
+  },
+  "ex-E102-4": {
+    "title": "Artificial satellites around the Earth",
+    "knowledge": [
+      255,
+      256
+    ],
+    "contentSha256": "b726203de2ae271b27d46f73376f91fbb691f147e40f9131eb9e077aa6789f1c"
+  },
+  "ex-E102-5": {
+    "title": "Satellites of different planets",
+    "knowledge": [
+      255
+    ],
+    "contentSha256": "c2e4e74a88d6333c6589f2cd1ac3059ee3a0f97f0c0f37c2d68320cb5f4cad09"
+  },
+  "ex-E102-6": {
+    "title": "Orbital period of Tiangong",
+    "knowledge": [
+      255
+    ],
+    "contentSha256": "a5472e8f2868c0121615622da9fbb93f6bc3e8378aa6dadd4a79476979952316"
+  },
+  "ex-E102-7": {
+    "title": "Potential energy due to the Earth",
+    "knowledge": [
+      257
+    ],
+    "contentSha256": "89400c58dfd30d137ae2887d24cdfeca85bfe83eebd5eabe235525cac3562167"
+  },
+  "ex-E102-8": {
+    "title": "Total mechanical energy in a circular orbit",
+    "knowledge": [
+      257,
+      258
+    ],
+    "contentSha256": "de2153e72336a4e790bfc6bf597f1d6f9f4497824e4639e2bd5bb5eb195f8ebc"
+  },
+  "ex-E102-9": {
+    "title": "Orbital speed of a spacecraft",
+    "knowledge": [
+      257,
+      258
+    ],
+    "contentSha256": "ed304563ab20208f2a75be22d17df03b0bc5f263996ed13d7d4a695892593586"
+  },
+  "ex-E102-10": {
+    "title": "Escape velocity from the Earth",
+    "knowledge": [
+      259
+    ],
+    "contentSha256": "d8b844e73fd8ed7c011a2fa1a9315b19995ba2689564d0bf6a0e536861c9a6f0"
+  },
+  "ex-E103-1": {
+    "title": "Finding the distance to a star using parallax",
+    "knowledge": [
+      260,
+      262,
+      263
+    ],
+    "contentSha256": "0590e5c3e487c948c12174ef6b2f66d01d13f3b549a1cbf70dcbfe154dedff6e"
+  },
+  "ex-E103-2": {
+    "title": "Luminosity and apparent brightness of Vega",
+    "knowledge": [
+      264,
+      265
+    ],
+    "contentSha256": "b18539653acc7c6de1db16bd1b529000338bf93524998324030f1c5485ae623f"
+  },
+  "ex-E103-3": {
+    "title": "Relating magnitudes with luminosities and apparent brightness",
+    "knowledge": [
+      265,
+      266,
+      268
+    ],
+    "contentSha256": "b1757a9d147364a40e523e04792bacd292f7f5d1ece936a281553f959818b57b"
+  },
+  "ex-E103-4": {
+    "title": "Arcturus",
+    "knowledge": [
+      265,
+      267,
+      268
+    ],
+    "contentSha256": "08f12b8d666067cf34e8d9427398c6a90ac4003d389892f9a29d10c52942e96a"
+  },
+  "ex-E103-5": {
+    "title": "Sizes of stars",
+    "knowledge": [
+      270,
+      273,
+      274
+    ],
+    "contentSha256": "68bc3cf72e5337dfed9350140a24aaa8293e06555a7bbe47f2fcf89b39529385"
+  },
+  "ex-E103-6": {
+    "title": "Comparing Altair and the Sun",
+    "knowledge": [
+      273,
+      274
+    ],
+    "contentSha256": "6651544c15ac0c4109f63fec06119358b30ef3c73ee3a177b2f444d5c99b299b"
+  },
+  "ex-E103-7": {
+    "title": "Doppler effect of a star",
+    "knowledge": [
+      275
+    ],
+    "contentSha256": "81e2630f4ef467449f83a5b31764e52cbe8ddbb124245e4475fd68ca50d84cd7"
+  },
+  "ex-E103-8": {
+    "title": "The radial velocity curve of 51 Pegasi",
+    "knowledge": [
+      275
+    ],
+    "contentSha256": "b096007ca20b2d50713ec7635a594176c7d9b107b88f5e52730fd701277cb39c"
+  },
+  "ex-E103-9": {
+    "title": "Stars in a binary system",
+    "knowledge": [
+      265,
+      273,
+      275
+    ],
+    "contentSha256": "fb5b7520d7340730d13017c6d29d36f405890751087faa53667a53011ab82b29"
+  },
+  "ex-E201-1": {
+    "title": "Photoelectric effect experiment",
+    "knowledge": [
+      300,
+      301
+    ],
+    "contentSha256": "ce3f3b54f1457303da9587d252f70099a2ca321ef62ef9c049d9141df00ad149"
+  },
+  "ex-E201-2": {
+    "title": "Time delay according to wave theory",
+    "knowledge": [
+      300,
+      304
+    ],
+    "contentSha256": "032155e98a97f501539e98e03931434d2e6dfb2369e4c4557e0f9088b95805d2"
+  },
+  "ex-E201-3": {
+    "title": "Energy of a photon of red light",
+    "knowledge": [
+      304
+    ],
+    "contentSha256": "c255c16b65fa6d4e63a7cd9f0f861b9ef32d41340b5df81f3891274fe518f8e8"
+  },
+  "ex-E201-4": {
+    "title": "Number of photons hitting a surface in each second",
+    "knowledge": [
+      304
+    ],
+    "contentSha256": "5c205b3479f2d6422dc82b64c45c01b204427ca4b9adac212b2e875f39458c5e"
+  },
+  "ex-E201-5": {
+    "title": "Work function and threshold frequency of sodium",
+    "knowledge": [
+      304,
+      306
+    ],
+    "contentSha256": "220c2bd9ffbe8221d2d5e771f0ddba56a0bcf66e57fb8a4989f688b96e0e42a8"
+  },
+  "ex-E201-6": {
+    "title": "Maximum KE of photoelectrons",
+    "knowledge": [
+      307
+    ],
+    "contentSha256": "a4e8a882e66b08c36b7254857d77bf096a756ecacc0e2c6032c7ed44e1a307be"
+  },
+  "ex-E201-7": {
+    "title": "I–V graph",
+    "knowledge": [
+      301,
+      302,
+      307
+    ],
+    "contentSha256": "91f71bb4bb058035342cf152698a45bdbeb5c6ef604f350a48f6254e5e0a5768"
+  },
+  "ex-E201-8": {
+    "title": "Vs–f graph",
+    "knowledge": [
+      308
+    ],
+    "contentSha256": "4b8f4e0b73e40b030c9acedb93790dbe08da33e54495a8e249807bbc3a9106f5"
+  },
+  "ex-E202-1": {
+    "title": "Path of an α particle",
+    "knowledge": [
+      310
+    ],
+    "contentSha256": "d8fe2e538d29331695872805b37f899bdf8eb44f5ef96427068da9201f1d5423"
+  },
+  "ex-E202-2": {
+    "title": "Line spectra",
+    "knowledge": [
+      387
+    ],
+    "contentSha256": "ed8edac0fc1f376341ca1712db464937dfa216b00e240e64c16cc6d5e6b6e213"
+  },
+  "ex-E202-3": {
+    "title": "Bohr orbit",
+    "knowledge": [
+      311,
+      312,
+      313
+    ],
+    "contentSha256": "d8d3f7ebdba4a26139267171c19f3641cd8dc255b91473ff6ad72bf61366a51c"
+  },
+  "ex-E202-4": {
+    "title": "Raising an electron to higher energy states",
+    "knowledge": [
+      314,
+      315
+    ],
+    "contentSha256": "2e15bbb1d468886ea5b4b325d8b4ec29ee25ee9cc5e67a7b3d35d514971b9ebf"
+  },
+  "ex-E202-5": {
+    "title": "Possible electron transitions",
+    "knowledge": [
+      314,
+      317
+    ],
+    "contentSha256": "474c46b97d9e1867053b8e44ba7e8068694cf8967f0aa717491f57bb8dd86856"
+  },
+  "ex-E202-6": {
+    "title": "Ionizing a hydrogen atom",
+    "knowledge": [
+      314,
+      316
+    ],
+    "contentSha256": "67b43459426bc89bce7b70ef4c83c712ed1f66bb5e590b0f35a83bb7f2edcbb7"
+  },
+  "ex-E202-7": {
+    "title": "Photons and electron transitions",
+    "knowledge": [
+      304,
+      317,
+      318
+    ],
+    "contentSha256": "f8a4a7db2efc4f0259b68832ea5d3c1c67c546bfa0ee677615aa14ab7baae97a"
+  },
+  "ex-E202-8": {
+    "title": "Excitation by electron and photon",
+    "knowledge": [
+      314,
+      315,
+      317
+    ],
+    "contentSha256": "0762b3c0ed2106b91284c56bd277d1b1498d5d21b2dd3422637ee467e715489d"
+  },
+  "ex-E202-9": {
+    "title": "Momentum of a photon",
+    "knowledge": [
+      319
+    ],
+    "contentSha256": "05f950e15abb71afb36971be77e897776b0cf9a5c255c1cc13145540ad1368ee"
+  },
+  "ex-E202-10": {
+    "title": "Wavelengths of moving objects",
+    "knowledge": [
+      320
+    ],
+    "contentSha256": "4c884ac352615f19bd6ca314266b56e84e942dff54899ef749ca501171b34ea3"
+  },
+  "ex-E202-11": {
+    "title": "Wavelengths of electrons with known KE",
+    "knowledge": [
+      320
+    ],
+    "contentSha256": "9a86ac916019905449d665eec8a226a33ccca2036e483b4b74efda61507e78b9"
+  },
+  "ex-E202-12": {
+    "title": "Wavelength of an electron in a hydrogen atom",
+    "knowledge": [
+      312,
+      313,
+      320
+    ],
+    "contentSha256": "577132f5464518733144ddfaab4558918e4d6b369ef8775db21a9543394f1c92"
+  },
+  "ex-E203-1": {
+    "title": "Surface-area-to-volume ratio",
+    "knowledge": [
+      321,
+      393
+    ],
+    "contentSha256": "0a899c91f9eeae2a82ccfc58ade9add23a2e9eb0f7301ba37a7c9314c5e6ed7e"
+  },
+  "ex-E203-2": {
+    "title": "Dividing a cube",
+    "knowledge": [
+      321,
+      393
+    ],
+    "contentSha256": "7e57fe217c730f9eee104fda659b37a791dac99d99a60ff5401e9f4a3974e8c8"
+  },
+  "ex-E203-3": {
+    "title": "Resolving power of the eye",
+    "knowledge": [
+      324
+    ],
+    "contentSha256": "ac417791154623238272b563d0db091779276cbacef47778eb3425d98ea2c4a9"
+  },
+  "ex-E203-4": {
+    "title": "Resolving power of a camera",
+    "knowledge": [
+      324
+    ],
+    "contentSha256": "1203f6eee083f998a4a35ef8958528460f5efa797bf8aefdce92ef206a12427b"
+  },
+  "ex-E203-5": {
+    "title": "Resolving power of TEM",
+    "knowledge": [
+      320,
+      324,
+      325
+    ],
+    "contentSha256": "3c116068736a7b50e42e2291669209883b5b6549d65b037aa62e2f1d6342f5cb"
+  },
+  "ex-E301-1": {
+    "title": "End-use energy efficiency of a kettle",
+    "knowledge": [
+      277,
+      401
+    ],
+    "contentSha256": "91489cc71659e8b1c17cb628bcce4d28848cb1dbfcf5a04bb03d9a82f169808c"
+  },
+  "ex-E301-2": {
+    "title": "Energy label",
+    "knowledge": [
+      406
+    ],
+    "contentSha256": "1b22a4c82175ac51adb70cc8c6a2a675972bc4361dd0f374fdf0267f1cf5d9ab"
+  },
+  "ex-E301-3": {
+    "title": "Energy output of a microwave oven",
+    "knowledge": [
+      277,
+      278
+    ],
+    "contentSha256": "f7dd35d217ed7601d2fbcb60255363f952781ca65fa22edae06e50c4f48c5d32"
+  },
+  "ex-E301-4": {
+    "title": "Running cost",
+    "knowledge": [
+      277
+    ],
+    "contentSha256": "4ebb4c6584c81116ae4e4c10ee91c592ff5bd1de9cf996dd89cc5ac5de1480b3"
+  },
+  "ex-E301-5": {
+    "title": "Cooling capacity",
+    "knowledge": [
+      281
+    ],
+    "contentSha256": "96c80ca48d8a06cb89520b5989aa4948bc945bb36955bc22e04a6c387081a809"
+  },
+  "ex-E301-6": {
+    "title": "COP",
+    "knowledge": [
+      280,
+      282
+    ],
+    "contentSha256": "d83c0bc82b83e0b513da3389576ef87b421b008d27468358001a0731df10a503"
+  },
+  "ex-E301-7": {
+    "title": "Energy label of air conditioner",
+    "knowledge": [
+      281,
+      282,
+      406
+    ],
+    "contentSha256": "87eac0bca385c69d20be786e748fd2a78487edf0f5432ea82a3530f142ac7968"
+  },
+  "ex-E302-1": {
+    "title": "Cost effectiveness of lamps",
+    "knowledge": [
+      287
+    ],
+    "contentSha256": "88fb4ba05e63794b6ca9349e97315a0f6ed76aa29f1ebad0abd41303501b6b74"
+  },
+  "ex-E302-2": {
+    "title": "Parallel light beam",
+    "knowledge": [
+      284
+    ],
+    "contentSha256": "bdea0fdcf90f8e97b9c1da1464db5fca6d4a1b5301377d1067b839e4077458d0"
+  },
+  "ex-E302-3": {
+    "title": "Illuminance on the desk (perpendicularly)",
+    "knowledge": [
+      286
+    ],
+    "contentSha256": "729b44e76ed78b551c9636adc394e87751ceea2777265b09d9da0f91ccf541d2"
+  },
+  "ex-E302-4": {
+    "title": "Illuminance on the desk (at an angle)",
+    "knowledge": [
+      286
+    ],
+    "contentSha256": "09f88a00236ceb91b46a17a1d8e3a9135018efa9851cfff51b072d018e398d73"
+  },
+  "ex-E302-5": {
+    "title": "Blue light and green light",
+    "knowledge": [
+      283
+    ],
+    "contentSha256": "ae36b8f703dc7a63157d33f207d5500243d50830ce65c7f02ad2257b3e4d68c0"
+  },
+  "ex-E302-6": {
+    "title": "Energy label on an LED lamp",
+    "knowledge": [
+      287
+    ],
+    "contentSha256": "2652848a71f509dea1439921855723bf79574cc309a508c76d0bcf90c9e1523a"
+  },
+  "ex-E303-1": {
+    "title": "Rate of heat transfer by conduction",
+    "knowledge": [
+      290
+    ],
+    "contentSha256": "52782cf6f391f539e8c3382ad96d9c95d1a5e56171fedc49a833d99286cc7c94"
+  },
+  "ex-E303-2": {
+    "title": "Rate of heat transfer and U-value",
+    "knowledge": [
+      290,
+      291
+    ],
+    "contentSha256": "a48811bab54a71d76eab15187e4bba66492e0e8bae4674a5851915ec65e5e9ca"
+  },
+  "ex-E303-3": {
+    "title": "U-value of a composite wall",
+    "knowledge": [
+      290,
+      291
+    ],
+    "contentSha256": "fdbde9e597c8814f2a50283ee1caf8d6b2a9f979cf8d7f86df860c7bfb67e549"
+  },
+  "ex-E303-4": {
+    "title": "Total rate of heat transfer by conduction through a wall with windows",
+    "knowledge": [
+      290,
+      291
+    ],
+    "contentSha256": "b32f6ea20a832c8ad7178821050411dbe458264ed631448b50a8d1cc23c2e1a6"
+  },
+  "ex-E303-5": {
+    "title": "Radiation through different windows",
+    "knowledge": [
+      402
+    ],
+    "contentSha256": "673995029f6f3694d586a19ec15c126fa8ce549fc2264c846bee701cfc6c5eb0"
+  },
+  "ex-E303-6": {
+    "title": "OTTV of a building",
+    "knowledge": [
+      292
+    ],
+    "contentSha256": "92750967fa8ac5024084a961de9676bd92eb525b1e1b73352895eb7864094a8f"
+  },
+  "ex-E303-7": {
+    "title": "Charging a battery pack of an electric vehicle",
+    "knowledge": [],
+    "contentSha256": "899fdb3a41ccf2bc4ef3ad8ce75d0551472254ef110e6664ab29cb48f6860c27"
+  },
+  "ex-E303-8": {
+    "title": "Battery capacity and range of an electric vehicle",
+    "knowledge": [
+      277
+    ],
+    "contentSha256": "0fb82eb7ece6e7b3e28753eccb0a31423a3e8508ad4f0a935c7cc5e409bb592a"
+  },
+  "ex-E303-9": {
+    "title": "Running costs of cars",
+    "knowledge": [
+      277,
+      293
+    ],
+    "contentSha256": "47d3822a3df912ce73783707878df390f8457bb9ae56113d22b058f2cb56703c"
+  },
+  "ex-E303-10": {
+    "title": "Charging battery directly by engine",
+    "knowledge": [
+      403
+    ],
+    "contentSha256": "3193208cefe570336c1dd3dc3d9e2a90dabd7caf75e0d1bbb25ad00dff776af1"
+  },
+  "ex-E303-11": {
+    "title": "Energy consumed by buses and cars",
+    "knowledge": [],
+    "contentSha256": "a88fc8160ceb11f6e8a9db22f4c5b37fd6510a3e06ea336a7ce7eb8041e704cc"
+  },
+  "ex-E304-1": {
+    "title": "Comparing stability of different nucleus",
+    "knowledge": [
+      294,
+      295
+    ],
+    "contentSha256": "6c951cf273cb6682cb96d50390376b97bb7afc027c2d09ac443990efa4484a42"
+  },
+  "ex-E304-2": {
+    "title": "Energy released in a fission reaction",
+    "knowledge": [
+      295
+    ],
+    "contentSha256": "381764d4c1ea1c6205e4fd05058f47d1bbf2ef54ef2bf26d81c356a041361caf"
+  },
+  "ex-E304-3": {
+    "title": "Determine type of reaction from binding energy curve",
+    "knowledge": [
+      294
+    ],
+    "contentSha256": "66a8f3b82a2c8a258d443f6951d23ff2f0203cc7ab2f5d8e9c180af3a5e6aa30"
+  },
+  "ex-E304-4": {
+    "title": "Power of Lamma Winds",
+    "knowledge": [
+      296
+    ],
+    "contentSha256": "75c45978c6bd99d90be2cc6768b5560136047d52cc9249e886c8210043207737"
+  },
+  "ex-E304-5": {
+    "title": "Efficiency of a hydroelectric power station",
+    "knowledge": [
+      297
+    ],
+    "contentSha256": "35ad5420574e84d35cd8d3f1b4a122eaaffb604dca824f72df501a9af61293b4"
+  },
+  "ex-E304-6": {
+    "title": "Power received by a surface",
+    "knowledge": [
+      298,
+      399
+    ],
+    "contentSha256": "3b4eac8f2056a086755cf10e5bbe166800ae14a284ac88fdbaccc0be1240746e"
+  },
+  "ex-E304-7": {
+    "title": "Solar water heater",
+    "knowledge": [
+      298,
+      399
+    ],
+    "contentSha256": "7301705241fe6daf94d7ccdffe273420991bb5b303771cdbba86b50fa932e5df"
+  },
+  "ex-E401-1": {
+    "title": "Can two objects be resolved?",
+    "knowledge": [
+      329,
+      330
+    ],
+    "contentSha256": "e97cd5ed0184c0f84b24a38e93a9d83788438fe6be6ecd39fe72e3084a6ead27"
+  },
+  "ex-E401-2": {
+    "title": "Power of the refracting parts of an eye",
+    "knowledge": [
+      331,
+      332
+    ],
+    "contentSha256": "02444c752326bb9fb970846d1bdabd3ba3656321fb067d98f4fb06921c9ac86f"
+  },
+  "ex-E401-3": {
+    "title": "Correction for short sight",
+    "knowledge": [
+      333,
+      334,
+      335
+    ],
+    "contentSha256": "04fb291e727c375cd167e39dcc8d0b785d7faf0445ba0c3c568b5ec74d0b1dd0"
+  },
+  "ex-E401-4": {
+    "title": "Correction for long sight",
+    "knowledge": [
+      333,
+      334,
+      335
+    ],
+    "contentSha256": "9ff2f9b02cd72a888cec83557548411913fc7999c85f0dcd8060e246148e7652"
+  },
+  "ex-E401-5": {
+    "title": "Refractive index of cladding in an optical fibre",
+    "knowledge": [
+      338
+    ],
+    "contentSha256": "51dbeacb0357fb858bfac4ef5cbe09c9f61cf71ded7cb82c9a19760852006247"
+  },
+  "ex-E402-1": {
+    "title": "Sound intensity",
+    "knowledge": [
+      342,
+      343
+    ],
+    "contentSha256": "b85d498fb26327966f33508c36ea1711a6f18418f577eebb622cbd9cfd5e0c35"
+  },
+  "ex-E402-2": {
+    "title": "Sound intensity (using proportion)",
+    "knowledge": [
+      343
+    ],
+    "contentSha256": "75a518b39d490cfcc6e58358039ff0c6119a026dedb200d6c75453aee1cff45c"
+  },
+  "ex-E402-3": {
+    "title": "Sound intensity and sound intensity level",
+    "knowledge": [
+      343,
+      344
+    ],
+    "contentSha256": "5b6ae1378ed4087807ff7f8cad1c1b2f9c62bde4b359bb258588cec45a7e44b4"
+  },
+  "ex-E402-4": {
+    "title": "Curves of equal loudness",
+    "knowledge": [
+      407
+    ],
+    "contentSha256": "82e498c5d9ea25a2a3e405c63db1a2f06b38eae57c6d19bc6dd38f4f42815bcf"
+  },
+  "ex-E402-5": {
+    "title": "Hearing loss",
+    "knowledge": [
+      345,
+      407
+    ],
+    "contentSha256": "2cbaa1f93e601f02fc5b77e28c3e9eea9a121e3609d130d4baa8f514e7f20603"
+  },
+  "ex-E402-7": {
+    "title": "Proportion of energy reflected and transmitted",
+    "knowledge": [
+      347,
+      349
+    ],
+    "contentSha256": "fac98606629d0ce2c51a6d28963be869f0194bbd151ffca841e8f3f2e48b89da"
+  },
+  "ex-E402-8": {
+    "title": "Depth and thickness",
+    "knowledge": [
+      350
+    ],
+    "contentSha256": "72eca89bb6e29ea76748619bf207f05e1f3d25e71281d9742495b19e59d38e97"
+  },
+  "ex-E402-9": {
+    "title": "Finding thickness of a structure",
+    "knowledge": [
+      350,
+      408
+    ],
+    "contentSha256": "d1e54d8951888d813dad603485e6c1e9ae1f41808efd129394d87b9e73f9b914"
+  },
+  "ex-E402-10": {
+    "title": "Intensity of echoes in A-scan image",
+    "knowledge": [
+      349,
+      350,
+      408
+    ],
+    "contentSha256": "66d547072365f5ade34517d8ab0cf247708dcf342073c850de320a425f13c876"
+  },
+  "ex-E403-1": {
+    "title": "Half-value thickness",
+    "knowledge": [
+      353,
+      354
+    ],
+    "contentSha256": "2af787bef1a12e81b2bb16136777f126ba4e445041520c54b98d7970cb9270d9"
+  },
+  "ex-E403-2": {
+    "title": "Linear attenuation coefficient",
+    "knowledge": [
+      353,
+      354
+    ],
+    "contentSha256": "3ade6e40f4497196c8c01c2aa4b0ba9fa2b0e8ef39c723302594f836ff542a0c"
+  },
+  "ex-E403-3": {
+    "title": "X-ray image",
+    "knowledge": [
+      355,
+      356,
+      357,
+      358
+    ],
+    "contentSha256": "04f9d795ebda316a2e43ec5c363047efc0631cb20af42885c1a5d0ec2ed04280"
+  },
+  "ex-E403-4": {
+    "title": "Matrix size",
+    "knowledge": [
+      411
+    ],
+    "contentSha256": "0a45d57c0ec43a3f8b5338fad8f358e1ec68333ad750abb6113ea10d93e92e21"
+  },
+  "ex-E403-6": {
+    "title": "Effective half-life",
+    "knowledge": [
+      362,
+      363,
+      364
+    ],
+    "contentSha256": "159145e6a3a8c9901f353dd10b2a088a22e93d19c204df46cd9027ed89572564"
+  }
+}

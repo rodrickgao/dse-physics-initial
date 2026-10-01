@@ -1,0 +1,305 @@
+{
+  "chapter": "202",
+  "title": "Straight-line Motion",
+  "language": "eng",
+  "source": "DSEPHY_TE_202_TN_.pdf",
+  "sha256": "9750bf3fecfa1ed38637373d124c4feaf8e38b73ef60b2a0c1276c7909c6412a",
+  "examples": [
+    {
+      "number": 1,
+      "title": "Motion along a straight line",
+      "pages": [
+        37
+      ],
+      "id": "ex-202-1",
+      "question": [
+        {
+          "src": "assets/textbook-examples/eng/202/example-01-question-1.jpg",
+          "width": 1155,
+          "height": 795,
+          "page": 3
+        }
+      ],
+      "answer": [
+        {
+          "src": "assets/textbook-examples/eng/202/example-01-answer-1.jpg",
+          "width": 1569,
+          "height": 444,
+          "page": 3
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Average acceleration of a lion",
+      "pages": [
+        38
+      ],
+      "id": "ex-202-2",
+      "question": [
+        {
+          "src": "assets/textbook-examples/eng/202/example-02-question-1.jpg",
+          "width": 1155,
+          "height": 576,
+          "page": 4
+        }
+      ],
+      "answer": [
+        {
+          "src": "assets/textbook-examples/eng/202/example-02-answer-1.jpg",
+          "width": 1569,
+          "height": 348,
+          "page": 4
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Analyzing an s–t graph",
+      "pages": [
+        45
+      ],
+      "id": "ex-202-3",
+      "question": [
+        {
+          "src": "assets/textbook-examples/eng/202/example-03-question-1.jpg",
+          "width": 1155,
+          "height": 1212,
+          "page": 11
+        }
+      ],
+      "answer": [
+        {
+          "src": "assets/textbook-examples/eng/202/example-03-answer-1.jpg",
+          "width": 1569,
+          "height": 873,
+          "page": 11
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "Finding acceleration from v–t graph",
+      "pages": [
+        50
+      ],
+      "id": "ex-202-4",
+      "question": [
+        {
+          "src": "assets/textbook-examples/eng/202/example-04-question-1.jpg",
+          "width": 1155,
+          "height": 474,
+          "page": 16
+        }
+      ],
+      "answer": [
+        {
+          "src": "assets/textbook-examples/eng/202/example-04-answer-1.jpg",
+          "width": 1569,
+          "height": 528,
+          "page": 16
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "Trolley moving along an inclined plane",
+      "pages": [
+        52,
+        53
+      ],
+      "id": "ex-202-5",
+      "question": [
+        {
+          "src": "assets/textbook-examples/eng/202/example-05-question-1.jpg",
+          "width": 1155,
+          "height": 1017,
+          "page": 18
+        }
+      ],
+      "answer": [
+        {
+          "src": "assets/textbook-examples/eng/202/example-05-answer-1.jpg",
+          "width": 1569,
+          "height": 927,
+          "page": 19
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "title": "Relationship between motion graphs",
+      "pages": [
+        56
+      ],
+      "id": "ex-202-6",
+      "question": [
+        {
+          "src": "assets/textbook-examples/eng/202/example-06-question-1.jpg",
+          "width": 1569,
+          "height": 807,
+          "page": 22
+        }
+      ],
+      "answer": [
+        {
+          "src": "assets/textbook-examples/eng/202/example-06-answer-1.jpg",
+          "width": 1569,
+          "height": 486,
+          "page": 22
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "title": "Braking a snowmobile",
+      "pages": [
+        64
+      ],
+      "id": "ex-202-7",
+      "question": [
+        {
+          "src": "assets/textbook-examples/eng/202/example-07-question-1.jpg",
+          "width": 1569,
+          "height": 654,
+          "page": 30
+        }
+      ],
+      "answer": [
+        {
+          "src": "assets/textbook-examples/eng/202/example-07-answer-1.jpg",
+          "width": 1569,
+          "height": 837,
+          "page": 30
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "title": "Skid marks",
+      "pages": [
+        65
+      ],
+      "id": "ex-202-8",
+      "question": [
+        {
+          "src": "assets/textbook-examples/eng/202/example-08-question-1.jpg",
+          "width": 1569,
+          "height": 297,
+          "page": 31
+        }
+      ],
+      "answer": [
+        {
+          "src": "assets/textbook-examples/eng/202/example-08-answer-1.jpg",
+          "width": 1569,
+          "height": 546,
+          "page": 31
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "title": "Stopping distance",
+      "pages": [
+        65
+      ],
+      "id": "ex-202-9",
+      "question": [
+        {
+          "src": "assets/textbook-examples/eng/202/example-09-question-1.jpg",
+          "width": 1155,
+          "height": 555,
+          "page": 31
+        }
+      ],
+      "answer": [
+        {
+          "src": "assets/textbook-examples/eng/202/example-09-answer-1.jpg",
+          "width": 1569,
+          "height": 705,
+          "page": 31
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "title": "Equations of motion and motion graphs",
+      "pages": [
+        69
+      ],
+      "id": "ex-202-10",
+      "question": [
+        {
+          "src": "assets/textbook-examples/eng/202/example-10-question-1.jpg",
+          "width": 1155,
+          "height": 924,
+          "page": 35
+        }
+      ],
+      "answer": [
+        {
+          "src": "assets/textbook-examples/eng/202/example-10-answer-1.jpg",
+          "width": 1569,
+          "height": 543,
+          "page": 35
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "title": "Falling object",
+      "pages": [
+        74,
+        75
+      ],
+      "id": "ex-202-11",
+      "question": [
+        {
+          "src": "assets/textbook-examples/eng/202/example-11-question-1.jpg",
+          "width": 1569,
+          "height": 906,
+          "page": 40
+        }
+      ],
+      "answer": [
+        {
+          "src": "assets/textbook-examples/eng/202/example-11-answer-1.jpg",
+          "width": 1569,
+          "height": 1191,
+          "page": 41
+        },
+        {
+          "src": "assets/textbook-examples/eng/202/example-11-answer-2.jpg",
+          "width": 1128,
+          "height": 153,
+          "page": 41
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "title": "Serving a tennis ball",
+      "pages": [
+        78
+      ],
+      "id": "ex-202-12",
+      "question": [
+        {
+          "src": "assets/textbook-examples/eng/202/example-12-question-1.jpg",
+          "width": 1155,
+          "height": 663,
+          "page": 44
+        }
+      ],
+      "answer": [
+        {
+          "src": "assets/textbook-examples/eng/202/example-12-answer-1.jpg",
+          "width": 1569,
+          "height": 1422,
+          "page": 44
+        }
+      ]
+    }
+  ]
+}

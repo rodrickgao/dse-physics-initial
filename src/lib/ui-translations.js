@@ -1,5 +1,12 @@
 // UI labels only. Student messages, teacher replies and form values are never translated.
 const pairs = `
+课本例题、课本解答与思考题解答=Textbook examples, solutions and Think about answers
+知识点关联真题、课本习题与例题=Knowledge links to past papers, exercises and examples
+问老师：真题、课本习题、例题与知识点=Ask a teacher about past papers, exercises, examples and knowledge
+原题版 · 打印／保存 PDF=Questions · Print / save PDF
+详解版 · 打印／保存 PDF=Solutions · Print / save PDF
+错题最多的章节=Chapter with the most mistakes
+
 收起标答=Hide model answer
 详解=Explanation
 会员专享 · 详解=Members only · Explanations
@@ -358,11 +365,9 @@ JPG、PNG、WebP · 最大 2 MB=JPG, PNG, WebP · Maximum 2 MB
 当前版本=Current plan
 免费版全部功能=All free features
 每道题的详细思路解答=Worked explanations for every question
-按章节下载知识点 PDF（每章一份）=Download knowledge PDFs by chapter (one PDF per chapter)
 每个知识点关联具体题目=Specific past-paper questions linked to each knowledge point
 问老师：题目、知识点与学习问题=Ask a teacher about questions, knowledge points, and study methods
 问老师需要有效会员。=Ask a teacher requires an active membership.
-会员专享 · 分章节知识点 PDF=Members only · Chapter knowledge PDFs
 题目与知识点双向关联=Links between questions and knowledge points
 含详细思路的错题 PDF 导出=Mistake PDFs with worked explanations
 订阅会员=Subscribe

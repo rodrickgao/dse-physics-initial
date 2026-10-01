@@ -1,3 +1,5 @@
+import { NavigatorToggle } from '../components/NavigatorToggle';
+import { SearchReturn } from '../components/SearchReturn';
 import { useMembership, MemberNotice } from '../components/Membership';
 import { track } from '../lib/activity';
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -10,7 +12,7 @@ import { SourceDownload } from "../components/SourceDownload";
 import './papers-directory.css';
 import { useContentMotion } from '../lib/use-content-motion';
 import { cn } from "../lib/utils";
-import { chapterLabel, knowledgeNumber, knowledgeTitle, imageUrl, networkFor, networkKey, questionIdentity, yearsFor } from "../lib/data";
+import { chapterLabel, sortKnowledge, knowledgeNumber, knowledgeTitle, imageUrl, networkFor, networkKey, questionIdentity, yearsFor } from "../lib/data";
 
 function titleForPaper(paper, index, language) {
   if (language === "eng") return paper.title;
@@ -115,7 +117,7 @@ export function PapersView({ mastered = {}, setProgress, saving, directoryVersio
       {!yearOpened && <section className="year-directory" aria-label="真题年份目录">{years.map((item,index)=>({item,index})).sort((a,b)=>a.item.year-b.item.year).map(({item,index})=><button className="year-directory-card" key={item.id} onClick={()=>selectYear(index)} aria-label={item.year+' 年真题'}><strong>{item.year}</strong><ArrowRight aria-hidden="true" /></button>)}</section>}
       {yearOpened && <div className="paper-layout">
         <div className={cn('navigator-shell', pickerOpen && 'is-open')}>
-        <button className="mobile-picker" aria-expanded={pickerOpen} aria-controls="paper-navigator" onClick={() => setPickerOpen(!pickerOpen)}><span><small>{'选择题目'}</small><strong>{year.year} · {titleForPaper(paper, paperIndex, language)} · {question.label}</strong></span><ChevronDown/></button>
+        <NavigatorToggle language={language} controls="paper-navigator"/><button className="mobile-picker" aria-expanded={pickerOpen} aria-controls="paper-navigator" onClick={() => setPickerOpen(!pickerOpen)}><span><small>{'选择题目'}</small><strong>{year.year} · {titleForPaper(paper, paperIndex, language)} · {question.label}</strong></span><ChevronDown/></button>
         <aside className="paper-navigator" id="paper-navigator" aria-label={'选题目录'}>
           <div className="navigator-block"><p>{"试卷"}</p><div className="paper-choice-list">{year.papers.map((item, index) => <button key={`${item.title}-${index}`} className={cn(index === paperIndex && "active")} onClick={() => selectPaper(index)}><span>{titleForPaper(item, index, language)}</span><small>{item.questions.length}</small></button>)}</div></div>
           <div className="navigator-block question-block"><p>{"题目／页数"}</p><div className={cn("question-groups", questionGroups.length > 1 && "sectioned")}>{questionGroups.map((group) => <section className="question-group" key={group.id}>{group.label && <h3>{group.label}</h3>}<div className="question-chip-grid">{group.questions.map(({ item, index }) => { const itemKey = paperIndex < 3 ? networkKey(year.year, paperIndex, questionIdentity(item, index)) : ""; return <button key={`${item.label}-${index}`} className={cn(index === questionIndex && "active", mistakes[itemKey] && "mistake", mastered[itemKey] && "mastered")} onClick={() => selectQuestion(index)}>{item.label.replace("Page ", "P")}{mastered[itemKey] && " ✓"}</button>; })}</div></section>)}</div></div>
@@ -123,7 +125,7 @@ export function PapersView({ mastered = {}, setProgress, saving, directoryVersio
         </div>
 
         <article className="question-card" data-study-question={key || undefined}>
-          <header className="question-header" id="current-question" tabIndex={-1}>
+          <div className="reader-utilities"><SearchReturn language={language} questionKey={key}/></div><header className="question-header" id="current-question" tabIndex={-1}>
             <div><p>{year.year} · {titleForPaper(paper, paperIndex, language)}</p><h2>{question.label}</h2></div>
             <div className="question-header-actions">
               {key && <><Button variant="outline" onClick={onAsk}>问这道题</Button><Button disabled={saving} variant={mastered[key] ? "secondary" : "outline"} aria-pressed={!!mastered[key]} onClick={()=>setProgress([key],mastered[key] ? 'clear' : 'mastered')}><Check />{mastered[key] ? "已掌握 ✓" : "标为已掌握"}</Button><Button disabled={saving} aria-pressed={!!mistakes[key]} variant={mistakes[key] ? "secondary" : "outline"} onClick={() => setMistake(key, !mistakes[key])}><Star className={cn(mistakes[key] && "fill-current")} />{mistakes[key] ? ("已加入错题") : ("加入错题")}</Button></>}
@@ -131,8 +133,8 @@ export function PapersView({ mastered = {}, setProgress, saving, directoryVersio
           </header>
           <div className="question-body">
             {paperIndex < 3 ? <StudyQuestion key={`${key}-${language}`} year={year} language={language} questionKey={key} question={question} ScanImages={ScanImages}/> : <ScanImages yearId={year.id} paths={question.question} label={`${year.year} ${question.label}`} />}
-            {!membership.active && <MemberNotice/>}{membership.active && !!network.links?.length && <section className="related-panel"><div><BookOpen /><strong>{"关联知识点"}</strong></div><div>{network.links.map((link) => <button key={`${link.sequence}-${link.type}`} onClick={() => openKnowledge(link.sequence)}><span>{knowledgeNumber(link.sequence, language)}</span>{knowledgeTitle(link.sequence, language)}</button>)}</div></section>}
-            {membership.active && !!network.relatedLinks?.length && <section className="related-panel"><div><BookOpen /><strong>定律／前置背景（不计直接题频）</strong></div><div>{network.relatedLinks.map(link => <button key={link.sequence} onClick={() => openKnowledge(link.sequence)}><span>{knowledgeNumber(link.sequence, language)}</span>{knowledgeTitle(link.sequence, language)}</button>)}</div></section>}
+            {!membership.active && <MemberNotice/>}{membership.active && !!network.links?.length && <section className="related-panel"><div><BookOpen /><strong>{"关联知识点"}</strong></div><div>{sortKnowledge(network.links,language).map((link) => <button key={`${link.sequence}-${link.type}`} onClick={() => openKnowledge(link.sequence)}><span>{knowledgeNumber(link.sequence, language)}</span> · {knowledgeTitle(link.sequence, language)}</button>)}</div></section>}
+            {membership.active && !!network.relatedLinks?.length && <section className="related-panel"><div><BookOpen /><strong>定律／前置背景（不计直接题频）</strong></div><div>{sortKnowledge(network.relatedLinks,language).map(link => <button key={link.sequence} onClick={() => openKnowledge(link.sequence)}><span>{knowledgeNumber(link.sequence, language)}</span> · {knowledgeTitle(link.sequence, language)}</button>)}</div></section>}
             {membership.active && !network.links?.length && !!network.chapters?.length && <section className="related-panel"><div><BookOpen /><strong>{'相关章节'}</strong></div><div>{network.chapters.map(code => <span className="related-chapter" key={code}>{code} · {chapterLabel(code, language)}</span>)}</div></section>}
           </div>
           <footer className="question-footer"><Button variant="outline" disabled={questionIndex === 0} onClick={previous}><ArrowLeft/>{'上一题'}</Button><span>{questionIndex + 1} / {paper.questions.length}</span><Button variant="outline" disabled={questionIndex === paper.questions.length - 1} onClick={next}>{'下一题'}<ArrowRight/></Button></footer>

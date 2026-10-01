@@ -1,4 +1,5 @@
 import { loadExercise, clearExerciseCache } from './textbook-exercises.js';
+import { loadExample } from './textbook-examples.js';
 import { translate } from './ui-translations.js';
 const cache = new Map();
 export function clearStudyCache() { cache.clear(); }
@@ -37,23 +38,28 @@ export function scanHtml(paths, yearId) {
 }
 
 export function officialAnswerHtml(content, question, yearId) {
-  if (content?.officialFormat === 'text' && /^<p>\s*[ABCD]\s*<\/p>$/.test(content?.official || '')) return content.official;
-  if (content?.officialFormat === 'text' && /^<p>\s*[ABCD]\s*<\/p>$/.test(content?.official || '')) return content.official;
+  // Normalize verified answer text, never infer a letter from a scan or explanation.
+  if (content?.officialFormat === 'text' && !/<img\b/i.test(content.official || '')) {
+    const text = (content.official || '').replace(/<[^>]*>/g, '').replace(/&nbsp;|&#160;/gi, ' ').trim();
+    const letter = text.match(/^(?:(?:官方答案|Official answer)\s*[:：]\s*)?([ABCD])\s*$/i);
+    if (letter) return `<p>${letter[1].toUpperCase()}</p>`;
+  }
   return content?.officialScreenshot || content?.officialOriginal || scanHtml(question?.answer, yearId);
 }
 
 export function printableQuestion(entry, content, { language, mode }) {
   const en = language === "eng";
-  const title = entry.source === 'textbook' ? `${en ? 'Textbook' : '课本'} ${entry.exerciseChapter} · ${entry.question.label}` : `${entry.year.year} · ${["1A", "1B", "2"][entry.paperIndex]} · ${entry.question.label}`;
+  const example = entry.source === 'examples';
+  const title = example ? `${en?'Textbook example':'课本例题'} ${entry.exerciseChapter} · ${entry.question.label}` : entry.source === 'textbook' ? `${en ? 'Textbook' : '课本'} ${entry.exerciseChapter} · ${entry.question.label}` : `${entry.year.year} · ${["1A", "1B", "2"][entry.paperIndex]} · ${entry.question.label}`;
   const pending = translate("详细思路尚待核验；此处不以未核验内容代替。",language);
   const question = content?.question || scanHtml(entry.question.question, entry.year.id);
-  const official = entry.source === 'textbook' ? content?.answer : officialAnswerHtml(content, entry.question, entry.year.id);
+  const official = example || entry.source === 'textbook' ? content?.answer : officialAnswerHtml(content, entry.question, entry.year.id);
   const isChoice = entry.paperIndex === 0 || entry.question.kind === 'multiple-choice';
   return `<article class="print-question${entry.source === 'textbook' ? ' textbook-exercise' : ''}" data-question="${escapeHtml(entry.key)}"><h2>${escapeHtml(title)}</h2>
     <div class="study-content question-content">${question}</div>
     ${mode === "questions" ? (isChoice ? `<p class="answer-line">${en ? 'Answer' : '答案'}<span class="answer-blank"></span></p>` : `<div class="working-space"></div>`) : `
-      <h3>2. ${entry.source === 'textbook' ? (en ? 'Textbook answer / worked solution' : '课本答案／解题过程') : translate("考评局官方解答／评分参考", en ? "eng" : "chn")}</h3><div class="study-content official-content">${official || `<p>${translate("暂缺官方来源。", en ? "eng" : "chn")}</p>`}</div>
-      ${entry.source === 'textbook' && !content?.reasoning ? '' : `<h3>3. ${translate("详细思路解答", en ? "eng" : "chn")}</h3><div class="study-content reasoning-content">${content?.reasoning || `<p>${pending}</p>`}</div>`}`}
+      <h3>2. ${example ? 'Textbook solution' : entry.source === 'textbook' ? (en ? 'Textbook answer / worked solution' : '课本答案／解题过程') : translate("考评局官方解答／评分参考", en ? "eng" : "chn")}</h3><div class="study-content official-content">${official || `<p>${translate("暂缺官方来源。", en ? "eng" : "chn")}</p>`}</div>
+      ${example ? `${content?.tips ? `<h3>Tips</h3><div class="study-content reasoning-content">${content.tips}</div>` : ''}${content?.think ? `<h3>Think about</h3><div class="study-content question-content">${content.think}</div><div class="study-content official-content">${content.thinkAnswer || ''}</div>` : ''}` : entry.source === 'textbook' && !content?.reasoning ? '' : `<h3>3. ${translate("详细思路解答", en ? "eng" : "chn")}</h3><div class="study-content reasoning-content">${content?.reasoning || `<p>${pending}</p>`}</div>`}`}
   </article>`;
 }
 
@@ -135,7 +141,7 @@ export async function openMistakePrint(entries, options) {
       if (!response.ok || !result.membership?.active) throw new Error('详解版 PDF 包含会员详细思路，请先开通会员。');
       clearStudyCache(); clearExerciseCache();
     }
-    const contents = await Promise.all(entries.map(entry => entry.source === 'textbook' ? loadExercise(options.language, entry.key) : loadStudyPaper(entry.year.year, options.language).then(paper => paper[entry.key])));
+    const contents = await Promise.all(entries.map(entry => entry.source === 'examples' ? loadExample(entry.key) : entry.source === 'textbook' ? loadExercise(options.language, entry.key) : loadStudyPaper(entry.year.year, options.language).then(paper => paper[entry.key])));
     if (tab.closed) throw new Error("打印预览已关闭。");
     tab.document.open();tab.document.write(printDocumentHtml(entries, contents, { ...options, baseUrl: new URL(".", window.location.href).href }));tab.document.close();
     tab.document.getElementById("print").onclick = () => tab.print();

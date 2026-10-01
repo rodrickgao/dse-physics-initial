@@ -26,7 +26,7 @@ export function QuestionSuggestions({ query, language, onSelect }) {
   return <div className="global-question-results" aria-label={'题目建议'}>
     {!ready ? <p role="status">{language==='eng'?'Searching…':'正在搜索…'}</p>
       : state.error ? <p>{language==='eng'?'Press Enter to open search and try again.':'请按 Enter 打开搜索并重试。'}</p>
-      : state.results.length ? state.results.map(entry => <button type="button" key={entry.key} onClick={() => onSelect(entry.key)}><strong>{entry.source === 'textbook' ? (language === 'eng' ? 'Textbook · ' : '课本习题 · ') : ''}{questionLabelFromKey(entry.key)}</strong><small>{entry.excerpt}</small></button>)
+      : state.results.length ? state.results.map(entry => <button type="button" key={entry.key} onClick={() => onSelect(entry.key)}><strong>{entry.source === 'textbook' ? (language === 'eng' ? 'Textbook · ' : '课本习题 · ') : ''}{entry.label || questionLabelFromKey(entry.key)}</strong><small>{entry.source==='knowledge'&&!membership.active?entry.chapter:entry.excerpt}</small></button>)
       : <p>{'找不到相符题目。'}</p>}
   </div>;
 }

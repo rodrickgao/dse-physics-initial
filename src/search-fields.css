@@ -1,0 +1,10 @@
+/* One soft focus treatment, on the outside of each search field. */
+:root { --search-focus-border: #9baec7; --search-focus-halo: rgb(100 130 170 / 10%); }
+.dark { --search-focus-border: #728eaf; --search-focus-halo: rgb(140 172 212 / 12%); }
+body input[type="search"] { transition: border-color .16s, box-shadow .16s; }
+body input[type="search"]:focus { outline: none; border-color: var(--search-focus-border); box-shadow: 0 0 0 3px var(--search-focus-halo); }
+body :is(.global-search,.bank-search,.exercise-search) { transition: border-color .16s, box-shadow .16s; }
+body :is(.global-search,.bank-search,.exercise-search):focus-within { border-color: var(--search-focus-border); box-shadow: 0 0 0 3px var(--search-focus-halo); }
+body :is(.global-search,.bank-search,.exercise-search) input:focus { outline: none; box-shadow: none; }
+body :is(.knowledge-search-wrap,.paper-search-wrap) input:focus { outline: none; border-color: var(--search-focus-border); box-shadow: 0 0 0 3px var(--search-focus-halo); }
+@media (prefers-reduced-motion: reduce) { body input[type="search"], body :is(.global-search,.bank-search,.exercise-search) { transition: none; } }

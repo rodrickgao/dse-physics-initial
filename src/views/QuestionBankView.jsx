@@ -1,41 +1,53 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useMembership } from '../components/Membership';
 import { loadUnifiedQuestionSearch } from '../lib/question-search-loader';
-import { rankQuestionEntries } from '../lib/question-search';
+import { rankQuestionEntries, searchIntent } from '../lib/question-search';
 import { questionLabelFromKey } from '../lib/data';
+import { readSaved } from '../lib/study-state';
+import { readSearchSession, saveSearchSession } from '../lib/search-session';
 import { ArrowLeft, ArrowRight, BookOpen, FileQuestion } from 'lucide-react';
 import './question-bank.css';
 
-export function QuestionBankView({ language, navigate, initialQuery = '', openQuestion }) {
-  const en = language === 'eng';
-  const membership = useMembership();
-  const [query,setQuery] = useState(initialQuery);
-  const [source,setSource] = useState('all');
-  const [data,setData] = useState(null);
-  const [error,setError] = useState(false);
-  const [retry,setRetry] = useState(0);
-  const [limit,setLimit] = useState(30);
-  useEffect(()=>{setQuery(initialQuery);},[initialQuery]);
-  useEffect(()=>{setLimit(30);},[query,source]);
+export function QuestionBankView({ language, navigate, initialQuery = '', openQuestion, openKnowledge }) {
+  const en=language==='eng', membership=useMembership();
+  const params=new URLSearchParams(location.hash.split('?')[1]||'');
+  const [query,setQuery]=useState(()=>params.get('q')??initialQuery);
+  const [data,setData]=useState(null), [error,setError]=useState(false), [retry,setRetry]=useState(0);
+  const [limit,setLimit]=useState(()=>readSearchSession(membership.userId)?.hash===location.hash?readSearchSession(membership.userId).limit:30);
+  const [search,setSearch]=useState(query);
+  const restored=useRef(false);
+  useEffect(()=>{const timer=setTimeout(()=>setSearch(query),180);return()=>clearTimeout(timer);},[query]);
+  useEffect(()=>{const handler=()=>{if(location.hash.startsWith('#bank')){const p=new URLSearchParams(location.hash.split('?')[1]);setQuery(p.get('q')||'');}};addEventListener('popstate',handler);addEventListener('hashchange',handler);return()=>{removeEventListener('popstate',handler);removeEventListener('hashchange',handler);};},[]);
+  useEffect(()=>{const p=new URLSearchParams({q:query});history.replaceState(history.state,'',`#bank?${p}`);},[query]);
   useEffect(()=>{
     let live=true;setData(null);setError(false);
-    if(query.trim()) loadUnifiedQuestionSearch(language).then(index=>{if(live)setData(index);}).catch(()=>{if(live)setError(true);});
-    return ()=>{live=false;};
-  },[language,!!query.trim(),membership.revision,retry]);
-  const results=data ? rankQuestionEntries(data,query).filter(entry=>source==='all'||entry.source===source) : [];
-
+    loadUnifiedQuestionSearch(language).then(index=>{if(live)setData(index);}).catch(()=>{if(live)setError(true);});
+    return()=>{live=false;};
+  },[language,membership.revision,retry]);
+  const ranked=useMemo(()=>data?rankQuestionEntries(data,search):[],[data,search]);
+  const results=ranked;
+  const intent=useMemo(()=>searchIntent(search),[search]);
+  useEffect(()=>{if(!data||restored.current)return;restored.current=true;const saved=readSearchSession(membership.userId);if(saved?.hash===location.hash)requestAnimationFrame(()=>window.scrollTo({top:saved.scroll,behavior:'instant'}));},[data,membership.userId]);
+  const updateQuery=value=>{setQuery(value);setLimit(30);restored.current=true;};
+  const sources=[['all',en?'All':'全部'],['past-paper',en?'Past papers':'真题'],['textbook',en?'Exercises':'课本习题'],['examples',en?'Examples':'课本例题'],['knowledge',en?'Knowledge':'知识点']];
+  const sourceLabel=id=>sources.find(s=>s[0]===id)?.[1]||'';
+  const open=entry=>{saveSearchSession(membership.userId,{key:entry.key,hash:location.hash,scroll:scrollY,limit});entry.source==='knowledge'?openKnowledge(entry.sequence):openQuestion(entry.key);};
+  const last=readSaved(`dse-last-study-${membership.userId}`,null);
   return <div className="question-bank-view page-enter">
-    <div className="view-heading"><h1>{en ? 'Question bank' : '题库'}</h1></div>
-    <form className="bank-search" onSubmit={event=>event.preventDefault()}><input id="bank-search" aria-label={en?'Search all questions':'搜索全部题目'} placeholder={en?'Search question text, number or topic':'搜索题目全文、题号或知识点'} value={query} onChange={event=>setQuery(event.target.value)}/>{query && <button type="button" onClick={()=>setQuery('')} aria-label={en?'Clear search':'清空搜索'}>×</button>}</form>
-    <div className="bank-source-filter" role="group" aria-label={en?'Question source':'题目来源'}>{[['all',en?'All':'全部'],['past-paper',en?'Past papers':'真题'],['textbook',en?'Textbook exercises':'课本习题']].map(([id,title])=><button key={id} aria-pressed={source===id} onClick={()=>setSource(id)}>{title}</button>)}</div>
-    {query.trim() ? <section className="bank-search-results" aria-live="polite">{error ? <p>{en?'Search could not be loaded.':'搜索加载失败。'}<button onClick={()=>setRetry(v=>v+1)}>{en?'Retry':'重试'}</button></p> : !data ? <p>{en?'Searching…':'正在搜索…'}</p> : <><p>{results.length} {en?'results':'条结果'}</p>{results.slice(0,limit).map(entry=><button className="bank-search-result" key={entry.key} onClick={()=>openQuestion(entry.key)}><strong>{entry.source==='textbook'?(en?'Textbook · ':'课本习题 · '):''}{questionLabelFromKey(entry.key)}</strong><span>{entry.excerpt}</span></button>)}{!results.length&&<p>{en?'Try a different keyword.':'试试其他关键词。'}</p>}{results.length>limit&&<button onClick={()=>setLimit(v=>v+30)}>{en?'Show more':'显示更多'}</button>}</>}</section> : <div className="question-bank-options">
-      {[{id:'papers', title:en?'Past papers':'真题库', detail:'2012–2025', Icon:FileQuestion},
-        {id:'exercises', title:en?'Textbook exercises':'课本习题库', detail:en?'9 textbooks · Chapter review exercises':'9 本课本 · 章节复习题', Icon:BookOpen}].filter(({id})=>source==='all'||(source==='past-paper'?id==='papers':id==='exercises')).map(({id,title,detail,Icon}) =>
-        <button key={id} className="question-bank-option" onClick={()=>navigate(id)}><span className="library-icon"><Icon/></span><strong>{title}</strong><span>{detail}</span><ArrowRight className="question-bank-arrow"/></button>)}
-    </div>}
+    <div className="view-heading"><h1>{en?'Question bank':'题库'}</h1></div>
+    <form className="bank-search" onSubmit={event=>{event.preventDefault();setSearch(query);}}><input type="search" id="bank-search" aria-label={en?'Describe what you want to practise':'描述你想练习的内容'} placeholder={en?'Describe a topic, situation or question you want to practise':'想练什么？描述知识点、情境或解题方法'} value={query} onChange={event=>updateQuery(event.target.value)}/>{query&&<button type="button" onClick={()=>updateQuery('')} aria-label={en?'Clear search':'清空搜索'}>×</button>}</form>
+    {query.trim()?<section className="bank-search-results" aria-live="polite" aria-busy={!error&&(!data||query!==search)}>
+      {error?<p role="alert">{en?'Search could not be loaded.':'搜索加载失败。'}<button onClick={()=>setRetry(v=>v+1)}>{en?'Retry':'重试'}</button></p>:!data?<p role="status">{en?'Preparing question search…':'正在准备题目索引…'}</p>:<>
+        <p className="search-summary">{en?'Sorted by relevance':'按相关程度排序'} · {results.length} {en?'results':'条结果'}</p>
+        {!!intent.concepts.length&&<p className="search-understood">{en?'Topics recognised: ':'识别到：'}{intent.concepts.map(c=>en?c.aliases.find(a=>/^[a-z]/.test(a)):c.label).join(' · ')}</p>}
+        {results.slice(0,limit).map(entry=><button className="bank-search-result" key={entry.key} onClick={()=>open(entry)}><small className="search-source">{sourceLabel(entry.source)}</small><strong>{entry.label||questionLabelFromKey(entry.key)}</strong><span>{entry.source==='knowledge'&&!membership.active?entry.chapter:entry.excerpt}</span>{!!entry.matchLabels?.length&&<small className="search-match">{en?'Related concepts':'匹配概念'} · {(en?entry.matchLabelsEn||entry.matchLabels:entry.matchLabels).slice(0,3).join(' · ')}</small>}</button>)}
+        {!results.length&&<p>{en?'No close matches. Try naming a physical quantity or removing a restriction.':'暂未找到接近的内容。可以补充物理量或情境，也可以减少限制条件。'}</p>}
+        {results.length>limit&&<button className="search-more" onClick={()=>setLimit(v=>v+30)}>{en?'Show more':'显示更多'}</button>}
+      </>}
+    </section>:<>
+      {last?.key&&<button className="bank-continue" onClick={()=>openQuestion(last.key)}><span>{en?'Continue learning':'继续上次学习'} · {questionLabelFromKey(last.key)}</span><ArrowRight/></button>}
+      <div className="question-bank-options">{[{id:'papers',source:'past-paper',title:en?'Past papers':'真题库',detail:'2012–2025',Icon:FileQuestion},{id:'exercises',source:'textbook',title:en?'Textbook exercises':'课本习题',detail:en?'9 books · Chapter review':'9 个分册 · 章节复习题',Icon:BookOpen},{id:'examples',source:'examples',title:en?'Textbook examples':'课本例题',detail:en?'46 chapters · 373 examples':'46 章 · 373 道例题',Icon:BookOpen}].map(({id,title,detail,Icon})=><button key={id} className="question-bank-option" onClick={()=>navigate(id)}><Icon/><strong>{title}</strong><span>{detail}</span><ArrowRight className="question-bank-arrow"/></button>)}</div>
+    </>}
   </div>;
 }
-
-export function QuestionBankBack({language,navigate}) {
-  return <button className="question-bank-back" onClick={()=>navigate('bank')}><ArrowLeft/>{language==='eng'?'Question bank':'题库'}</button>;
-}
+export function QuestionBankBack({language,navigate}) {return <button className="question-bank-back" onClick={()=>navigate('bank')}><ArrowLeft/>{language==='eng'?'Question bank':'题库'}</button>;}

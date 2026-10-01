@@ -20,6 +20,7 @@
 .focus-duration label { display: flex; justify-content: space-between; font-size: 14px; }
 .focus-duration label strong { color: var(--primary); }
 .focus-duration input { width: 100%; height: 30px; margin-top: 14px; accent-color: var(--primary); cursor: pointer; }
+.focus-duration input[type="range"]:focus { outline: none; }
 .focus-duration input:disabled { cursor: default; opacity: .55; }
 .focus-range-labels { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted-foreground); }
 .focus-buttons { display: flex; justify-content: center; gap: 12px; margin-top: 28px; }

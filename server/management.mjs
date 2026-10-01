@@ -6,7 +6,7 @@ export function activityContent(row) {
     return {label:`${point.number} · ${point.title}`,labelEn:`${point.number} · ${point.titleEn || point.title}`,href:`/#textbook?knowledge=${point.sequence}`};
   }
   const question = ['question_view','answer_view','reasoning_view','mark','unmark','restore','delete'].includes(row.action) && questions.get(row.target);
-  if (question) return {label:question.label,labelEn:question.labelEn || question.label,href:`/#${question.source==='textbook'?'exercises':'papers'}?question=${encodeURIComponent(question.key)}`};
+  if (question) return {label:question.label,labelEn:question.labelEn || question.label,href:`/#${question.source==='examples'?'examples':question.source==='textbook'?'exercises':'papers'}?question=${encodeURIComponent(question.key)}`};
   return null;
 }
 

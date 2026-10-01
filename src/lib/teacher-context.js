@@ -1,5 +1,9 @@
 // Resolve the content being read before navigating away to the teacher page.
 export function currentTeacherContext(page, root = document) {
+  if (page === 'examples') {
+    const reference = root.querySelector('[data-example]')?.dataset.example;
+    if (reference) return {kind:'question',reference};
+  }
   if (page === 'exercises') {
     const reference = root.querySelector('[data-exercise]')?.dataset.exercise;
     if (reference) return {kind:'question',reference};

@@ -1,5 +1,6 @@
 import { createKnowledgeGrouper } from './knowledge-groups.js';
 import { numberKnowledgePoints } from './knowledge-numbering.js';
+import { orderKnowledge } from './knowledge-order.js';
 
 export const siteData = window.DSE_SITE_DATA;
 export const textbookData = window.DSE_TEXTBOOK_DATA;
@@ -44,6 +45,8 @@ export function imageUrl(yearId, path) {
 }
 
 export function questionLabelFromKey(key) {
+  const example=/^ex-(.+)-(\d+)$/.exec(String(key));
+  if(example)return `${example[1]} · E${example[2]}`;
   const exercise = /^tb-(.+)-(\d+)$/.exec(String(key));
   if (exercise) return `${exercise[1]} · Q${exercise[2]}`;
   const [year, paper, question] = String(key).split("|");
@@ -57,6 +60,9 @@ export const pointsMap = Object.fromEntries(Object.entries(pointsByLanguage).map
 
 export function knowledgeNumber(sequence, language = 'eng') {
   return pointsMap[language]?.get(Number(sequence))?.number || String(sequence);
+}
+export function sortKnowledge(items,language='eng') {
+  return orderKnowledge(items,sequence=>knowledgeNumber(sequence,language));
 }
 
 export function knowledgeTitle(sequence, language = 'eng') {

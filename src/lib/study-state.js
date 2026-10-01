@@ -1,19 +1,20 @@
 export const PRIMARY_YEAR = 2012;
-export const PAGES = ['home', 'bank', 'ask', 'papers', 'textbook', 'exercises', 'mistakes', 'focus', 'membership', 'payment', 'receipt', 'activating', 'member-success', 'admin'];
+export const PAGES = ['home', 'bank', 'ask', 'papers', 'textbook', 'exercises', 'examples', 'mistakes', 'focus', 'membership', 'payment', 'receipt', 'activating', 'member-success', 'admin'];
 
 export function readRoute(hash = '') {
   const [name, query = ''] = hash.replace(/^#/, '').split('?');
   const page = PAGES.includes(name) ? name : 'home';
   const key = new URLSearchParams(query).get('question') || '';
   const valid = page === 'papers' ? /^20\d{2}\|paper-(1a|1b|2)\|[\w.]+$/.test(key)
+    : page === 'examples' ? /^ex-(?:[1-5]\d{2}|3[AB]\d{2}|E[1-4]\d{2})-[1-9]\d*$/.test(key)
     : page === 'exercises' && /^tb-E?[1-5](?:A|B)?\d{2}-\d+$/.test(key);
   return {page, question: valid ? key : ''};
 }
 
 export function pageHash(page, question = '', options = {}) {
   if(page === 'textbook' && Number.isInteger(options.knowledge) && options.knowledge>0) return `#textbook?knowledge=${options.knowledge}`;
-  if(page === 'exercises' && !question && /^(compulsory-[1-5]|elective-[1-4])$/.test(options.book || '')) return `#exercises?book=${options.book}`;
-  return `#${PAGES.includes(page) ? page : 'home'}${['papers', 'exercises'].includes(page) && question ? `?question=${encodeURIComponent(question)}` : ''}`;
+  if(['exercises', 'examples'].includes(page) && !question && /^(compulsory-[1-5]|elective-[1-4])$/.test(options.book || '')) return `#${page}?book=${options.book}`;
+  return `#${PAGES.includes(page) ? page : 'home'}${['papers', 'exercises', 'examples'].includes(page) && question ? `?question=${encodeURIComponent(question)}` : ''}`;
 }
 
 export function readSaved(key, fallback) {

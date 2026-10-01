@@ -1,0 +1,60 @@
+/* Shared reading controls: content and source-specific sections are preserved. */
+.app-shell :is(.papers-view,.exercises-view) .question-card{min-width:0;overflow:visible}
+.app-shell .reader-utilities{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 24px;border-bottom:1px solid var(--border)}
+.reader-bookmark,.search-return{font-size:14px;background:none;border:0;color:var(--primary);padding:6px 0;text-decoration:none;cursor:pointer}
+.reader-bookmark{margin-left:auto}.reader-bookmark[aria-pressed=true]{font-weight:600}
+.app-shell :is(.papers-view,.exercises-view) .stage-toggle{width:auto;min-height:42px;max-width:100%;padding:10px 20px;margin:18px 0;border-radius:9px;box-shadow:none;white-space:normal}
+.app-shell :is(.papers-view,.exercises-view) .question-header-actions{display:flex;flex-wrap:wrap;gap:8px}
+.app-shell :is(.papers-view,.exercises-view) .question-header-actions button{min-height:46px;font-size:18px;padding:10px 16px}
+.app-shell :is(.papers-view,.exercises-view) .question-footer{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:20px 24px}
+.app-shell :is(.papers-view,.exercises-view) .study-content{font-size:22px;line-height:1.85}
+.app-shell :is(.papers-view,.exercises-view) .study-content math{overflow:visible;vertical-align:middle}
+.app-shell :is(.papers-view,.exercises-view) .study-content math:has(mfrac){font-size:1.15em;math-style:normal;margin-block:.35em}
+.app-shell :is(.papers-view,.exercises-view) .study-content img{cursor:zoom-in}
+.study-content img:focus-visible{outline:3px solid var(--primary);outline-offset:4px}
+/* Word figure widths are print-sized; give standalone diagrams a readable screen size. */
+.app-shell .study-content .study-figure img{width:clamp(340px,calc(var(--study-image-width,240px) * 2),800px)!important;max-width:100%;height:auto}
+.study-image-dialog{width:min(96vw,1500px);max-width:96vw;max-height:94vh;border:1px solid var(--border);border-radius:12px;padding:16px;background:var(--card);color:var(--foreground)}
+.study-image-dialog::backdrop{background:#0f172acc}.study-image-dialog form{display:flex;justify-content:flex-end}.study-image-dialog>div{overflow:auto;max-height:80vh;margin-top:10px}.study-image-dialog img{display:block;max-width:none;height:auto;margin:auto}
+.app-shell .question-bank-options{gap:16px}.app-shell .question-bank-option{min-height:155px;padding:24px;gap:10px;box-shadow:none}.app-shell .question-bank-option strong{font-size:20px}.question-bank-option>svg:first-child{width:24px;color:var(--primary)}
+.search-prompts{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin:20px 0 26px;font-size:14px;color:var(--muted-foreground)}
+.search-prompts button{border:1px solid var(--border);border-radius:18px;padding:7px 12px;background:var(--card);color:var(--foreground);text-align:left;cursor:pointer}
+.bank-continue{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;padding:16px 20px;margin-bottom:20px;background:var(--accent);color:var(--foreground);border:1px solid var(--border);border-radius:12px;text-align:left;cursor:pointer}.bank-continue svg{width:18px;flex-shrink:0}
+.search-understood,.search-summary{font-size:14px;color:var(--muted-foreground);line-height:1.7;margin:8px 0}.search-source,.search-match{font-size:12px;color:var(--primary)}
+.app-shell .bank-search-result{gap:8px;padding:18px 20px}.app-shell .bank-search-result strong{line-height:1.6}.app-shell .bank-search-result span{line-height:1.75}.search-more{display:block;margin:20px auto;border:1px solid var(--border);padding:10px 24px;border-radius:9px;background:var(--card);color:var(--foreground)}
+.bank-bookmarks{margin:18px 0}.bank-bookmarks summary{cursor:pointer;padding:10px 0}.bank-bookmarks>button{display:block;border:0;background:none;color:var(--primary);padding:10px;text-align:left;cursor:pointer}
+.timer-compact{display:flex;justify-content:center;gap:10px;margin:12px 0;font-size:14px;font-variant-numeric:tabular-nums}.timer-compact button,.timer-collapse{border:0;background:none;color:var(--muted-foreground);padding:8px;cursor:pointer}.timer-collapse{display:block;margin:auto}.timer-compact-mobile,.timer-expanded-mobile{display:none}
+@media(max-width:720px){.timer-expanded-mobile{display:block}.timer-expanded-mobile .timer-collapse{position:fixed;bottom:calc(167px + env(safe-area-inset-bottom));left:12px;z-index:36;background:var(--card);border-radius:8px}.timer-compact-mobile{display:flex;position:static;margin:0;padding:6px 12px 90px;background:var(--background)}.app-shell :is(.papers-view,.exercises-view) .study-content{font-size:20px}.app-shell .reader-utilities{padding:10px 16px}.app-shell :is(.papers-view,.exercises-view) .question-footer{padding:16px}.app-shell .bank-source-filter{flex-wrap:wrap}.search-prompts{align-items:flex-start;flex-direction:column}}
+@media print{.reader-utilities,.timer-compact,.timer-collapse,.search-return{display:none}}
+.app-shell :is(.papers-view,.exercises-view) .study-content p:has(math){max-width:100%;overflow-x:auto;overflow-y:hidden;padding-block:4px}
+
+.navigator-toggle{display:none}
+.app-shell :is(.papers-view,.exercises-view) .reader-bookmark{font-size:17px}
+.app-shell :is(.papers-view,.exercises-view) .question-header{flex-wrap:wrap}
+@media screen and (min-width:821px){
+ .app-shell .content:has(.paper-layout){max-width:none;padding-left:24px;padding-right:24px}
+ .app-shell .paper-layout{grid-template-columns:240px minmax(0,1fr);gap:20px}
+ .app-shell .navigator-toggle{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:44px;margin-bottom:10px;padding:8px 12px;border:1px solid var(--border);border-radius:10px;background:var(--card);color:var(--foreground);font-size:17px;cursor:pointer}
+ .navigator-toggle svg{width:20px;height:20px;flex-shrink:0}
+ .app-shell .paper-layout:has(.navigator-toggle[aria-expanded=false]){grid-template-columns:minmax(0,1fr);gap:8px}
+ .app-shell .navigator-shell:has(.navigator-toggle[aria-expanded=false]){position:static}
+ .app-shell .navigator-toggle[aria-expanded=false]{width:auto;margin:0}
+ .app-shell .navigator-shell:has(.navigator-toggle[aria-expanded=false]) .paper-navigator{display:none}
+ .app-shell .navigator-shell .paper-navigator{max-height:calc(100vh - 160px)}
+}
+@media(max-width:820px){.app-shell :is(.papers-view,.exercises-view) .question-header-actions button{font-size:16px;min-height:44px;padding:8px 12px}}
+/* Match the sidebar navigation's icon and label columns. */
+.app-shell .sidebar-footer .timer-compact{position:relative;display:block;margin:0;width:100%}
+.app-shell .sidebar-footer .timer-open,.app-shell .sidebar-footer .theme-button{display:grid;grid-template-columns:35px 1fr;align-items:center;gap:10px;width:100%;min-height:56px;padding:7px 10px;text-align:left;font-size:19px}
+.app-shell .sidebar-footer .timer-open{padding-right:36px}
+.app-shell .sidebar-footer :is(.timer-open,.theme-button)>svg{width:19px;height:19px;justify-self:center}
+.app-shell .sidebar-footer .timer-expand{position:absolute;right:0;top:50%;transform:translateY(-50%);width:36px;min-height:44px;padding:4px;font-size:19px}
+.timer-compact-mobile .timer-open{display:flex;align-items:center;gap:8px}.timer-compact-mobile .timer-open svg{width:18px;height:18px}
+/* Consistent knowledge links and compact reader utilities. */
+.app-shell .reader-utilities:not(:has(a,button)){display:none}
+.app-shell :is(.related-panel>div:first-child,.exercise-knowledge>span){font-size:17px;line-height:1.6;gap:8px}
+.app-shell :is(.related-panel button,.exercise-knowledge button){font-size:18px;line-height:1.6;padding:9px 12px;border-radius:8px}
+.app-shell .related-panel button span{color:inherit;font-weight:inherit;margin-right:0}
+.app-shell .related-panel svg{width:18px;height:18px}
+.reader-return{display:inline-flex;align-items:center;margin-bottom:16px;padding:10px 14px;border:1px solid var(--border);border-radius:9px;color:var(--primary);font-size:17px}
+@media(max-width:720px){.app-shell :is(.related-panel button,.exercise-knowledge button){font-size:16px}}
