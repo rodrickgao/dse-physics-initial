@@ -1,0 +1,43 @@
+import fs from 'node:fs';
+import {tmpdir} from 'node:os';
+import {join,resolve,sep,extname} from 'node:path';
+import {createServer} from 'node:http';
+import assert from 'node:assert/strict';
+import {createApi} from '../server/api.mjs';
+import {chromium} from 'file:///C:/Users/rodri/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs';
+
+// Isolated database and explicitly synthetic QDNA: never edits the user's preview progress.
+const directory=fs.mkdtempSync(join(tmpdir(),'dse-qdna-browser-')),dnaDirectory=join(directory,'dna');
+const out=resolve('../output/qdna-learning');fs.mkdirSync(out,{recursive:true});
+for(const label of ['中文版','英文版']){const dir=join(dnaDirectory,label,'json');fs.mkdirSync(dir,{recursive:true});fs.writeFileSync(join(dir,'QDNA.json'),JSON.stringify(Array.from({length:16},(_,i)=>({question_id:`2012|paper-1a|${i+1}`,knowledge_weights:[{knowledge_id:16,weight:1,evidence:'QA fixture'}],reasoning_steps:[],issues:[]}))));}
+const api=createApi({directory,adminKey:'qdna-browser-local-only',qdnaDirectory:dnaDirectory,contentLimits:{similar:1000}}),dist=resolve('dist');
+const mime={'.html':'text/html; charset=utf-8','.js':'text/javascript','.css':'text/css','.json':'application/json','.png':'image/png','.webp':'image/webp','.svg':'image/svg+xml','.woff2':'font/woff2'};
+const server=createServer((req,res)=>api.handler(req,res,()=>{if(api.protectFiles(req,res))return;try{const pathname=decodeURIComponent(new URL(req.url,'http://localhost').pathname);const file=resolve(dist,'.'+(pathname==='/'?'/index.html':pathname));if(!file.startsWith(dist+sep)||!fs.statSync(file).isFile())throw new Error();res.setHeader('Content-Type',mime[extname(file)]||'application/octet-stream');fs.createReadStream(file).pipe(res);}catch{res.writeHead(404);res.end();}}));
+await new Promise(r=>server.listen(0,'127.0.0.1',r));const base=`http://127.0.0.1:${server.address().port}`;
+const browser=await chromium.launch({channel:'chrome',headless:true}),context=await browser.newContext({viewport:{width:1440,height:1050}}),page=await context.newPage(),errors=[];
+page.on('pageerror',e=>errors.push(e.message));
+await page.addInitScript(()=>localStorage.setItem('dse-physics-language-v1','chn'));
+const request=async(path,body,method='post')=>{const r=body?await context.request[method](base+'/api/'+path,{data:body}):await context.request.get(base+'/api/'+path);assert.ok(r.ok(),`${path}: ${r.status()}`);return r.json();};
+const home=async()=>{await page.goto(base+'/#home');await page.locator('.qdna-counts').waitFor();};
+const reader=async i=>{await page.goto(base+'/#papers?question='+encodeURIComponent(`2012|paper-1a|${i}`));await page.locator('[data-question][aria-busy=false]').waitFor();};
+try{
+ const sent=await request('auth/code',{email:'qdna-ui@local.test'});const login=await request('auth/verify',{email:'qdna-ui@local.test',code:sent.developmentCode});
+ await request('profile',{nickname:'QDNA 验证',grade:'中五',target:'5',avatar:'newton-wave',password:'Study-pass-123',confirmPassword:'Study-pass-123'},'put');
+ await home();assert.match(await page.locator('.qdna-recommendations').innerText(),/积累足够/);assert.doesNotMatch(await page.locator('.qdna-profile').innerText(),/50%/);await page.screenshot({path:join(out,'cold-start.png')});
+ for(let i=1;i<=3;i++){await reader(i);await page.getByRole('button',{name:'加入错题',exact:true}).click();await page.getByRole('button',{name:'已加入错题',exact:true}).waitFor();}
+ await home();assert.equal(await page.locator('.qdna-question-grid').first().locator('article').count(),8);assert.equal(await page.locator('.qdna-question-grid').nth(1).locator('article').count(),3);assert.equal(await page.locator('.qdna-counts>span').count(),2);assert.match(await page.locator('.qdna-counts').innerText(),/错题\s*3/);await page.screenshot({path:join(out,'student-profile.png'),fullPage:true});
+ await page.locator('.qdna-highlights button').first().click();await page.locator('.qdna-detail table tbody tr').first().waitFor();assert.match(await page.locator('.qdna-detail').innerText(),/该知识点权重/);await page.locator('.qdna-detail').getByRole('button',{name:/错题 \(3\)/}).click();await page.waitForFunction(()=>document.querySelectorAll('.qdna-detail tbody tr').length===3);
+ await page.locator('.qdna-detail').getByRole('button',{name:'关闭',exact:true}).click();await page.locator('.qdna-all-points summary').click();assert.equal(await page.locator('.qdna-all-points tbody tr').count(),20);await page.locator('.qdna-all-points').getByRole('button',{name:'下一页',exact:true}).click();await page.waitForFunction(()=>document.querySelector('.qdna-pages span')?.textContent.startsWith('2 /'));await page.locator('.qdna-all-points summary').click();
+ await page.locator('.qdna-recommendations').first().getByRole('link',{name:'查看题目 →'}).first().click();await page.locator('[data-question][aria-busy=false]').waitFor();assert.match(page.url(),/papers\?question=/);
+ await reader(1);await page.getByRole('button',{name:'标为已掌握',exact:true}).click();await page.getByRole('button',{name:'已掌握',exact:true}).waitFor();await home();assert.match(await page.locator('.qdna-counts').innerText(),/已掌握\s*1/);assert.match(await page.locator('.qdna-counts').innerText(),/错题\s*2/);
+ await reader(1);await page.getByRole('button',{name:'已掌握',exact:true}).click();await page.getByRole('button',{name:'标为已掌握',exact:true}).waitFor();await home();assert.match(await page.locator('.qdna-recommendations').innerText(),/积累足够/);
+ await reader(1);await page.getByRole('button',{name:'加入错题',exact:true}).click();await page.getByRole('button',{name:'已加入错题',exact:true}).waitFor();await home();await page.locator('.language-switch').click();await page.getByRole('heading',{name:'Your Knowledge Profile'}).waitFor();await page.waitForFunction(()=>document.querySelector('.qdna-recommendations small')?.textContent.includes('Heat'));
+ await page.setViewportSize({width:390,height:844});assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));await page.screenshot({path:join(out,'mobile-profile.png'),fullPage:true});
+ await page.locator('.qdna-all-points summary').click();assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
+ await page.setViewportSize({width:1440,height:1050});await request('admin/login',{key:'qdna-browser-local-only'});await page.goto(base+'/admin.html');await page.locator('.qdna-admin tbody tr').first().waitFor();await page.locator('.qdna-admin details summary').first().click();assert.match(await page.locator('.qdna-admin').innerText(),/#16/);await page.locator('.qdna-admin').getByRole('button',{name:/Knowledge|知识点/,exact:true}).click();await page.waitForFunction(()=>document.querySelector('.qdna-admin thead')?.textContent.includes('需要复习')||document.querySelector('.qdna-admin thead')?.textContent.includes('Needs Review'));
+ await page.screenshot({path:join(out,'admin-knowledge.png'),fullPage:true});
+ await page.locator('.management-shell>aside').getByRole('button',{name:/用户与会员|Users/}).click();await page.locator('td button').filter({hasText:/管理|Manage/}).first().click();await page.locator('.admin-learning .qdna-counts').waitFor();await page.getByRole('button',{name:/预览本周周报|Preview weekly report/}).click();await page.locator('.qdna-weekly-preview').waitFor();assert.match(await page.locator('.qdna-weekly-preview').innerText(),/新增错题：3|Wrong Book: 3/);await page.screenshot({path:join(out,'admin-student-weekly.png'),fullPage:true});
+ const dashboard=await request('learning/dashboard'),weekly=await request(`admin/learning/weekly?studentId=${login.user.id}`);assert.deepEqual(weekly.report.recommended_questions,dashboard.recommendations.new_questions.slice(0,3));assert.deepEqual(errors,[]);
+ fs.writeFileSync(join(out,'weekly-preview.html'),weekly.email.html);fs.writeFileSync(join(out,'browser-validation.json'),JSON.stringify({passed:true,fixture:'Isolated synthetic QDNA and temporary student; real preview progress untouched',checks:['cold start','8 new recommendations + 3 wrong review','point weights and status filters','pagination','existing reader links','mastery switch and cancellation','bilingual','mobile table overflow','admin QDNA and knowledge counts','student analytics and weekly preview','same dashboard/email results'],pageErrors:errors},null,2));console.log('QDNA browser validation passed.');
+}catch(e){await page.screenshot({path:join(out,'failure.png'),fullPage:true});console.error('QDNA UI failure page',page.url());throw e;}
+finally{await browser.close();await new Promise(r=>server.close(r));api.close();fs.rmSync(directory,{recursive:true});}

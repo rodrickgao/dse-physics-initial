@@ -23,3 +23,5 @@ import "./site-scale.css";
 
 import "./search-fields.css";
 import "./reader-experience.css";
+
+import "./sidebar-layout.css";

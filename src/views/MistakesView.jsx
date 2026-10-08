@@ -1,11 +1,12 @@
+import { exerciseNumber } from '../lib/exercise-numbering';
+import {QdnaProfile} from '../components/QdnaProfile';
 import { exampleEntries } from '../lib/textbook-examples';
 import { MistakeStatistics } from '../components/MistakeStatistics';
-import { analyzeMistakes } from '../lib/mistake-analysis';
 import { ChapterPie } from '../components/ChapterPie';
 import { loadExerciseIndex, exerciseMistakeEntries } from '../lib/textbook-exercises';
 import { MistakeTrash } from '../components/MistakeTrash';
 import { useMembership, MemberNotice } from '../components/Membership';
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ArrowRight, BarChart3, BookOpen, CircleAlert, Download, LoaderCircle, Star, Trash2 } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Card } from "../components/ui/card";
@@ -20,8 +21,9 @@ function readReviewFilter() {
   return chapter && /^(?:[A-Za-z0-9.]+|unclassified)$/.test(chapter) ? {kind:'chapter',value:chapter} : null;
 }
 
-export function MistakesView({ setProgress, saving, language, mistakes, setMistake, openPaper, browsePapers, manageTrash, openKnowledge }) {
+export function MistakesView({ mastered, setProgress, saving, language, mistakes, setMistake, openPaper, browsePapers, manageTrash, openKnowledge }) {
   const en = language === 'eng';
+  const qdnaRevision=useMemo(()=>({mastered,mistakes}),[mastered,mistakes]);
   const membership = useMembership();
   const [filter, setFilter] = useState(readReviewFilter);
   useEffect(() => {
@@ -43,15 +45,17 @@ export function MistakesView({ setProgress, saving, language, mistakes, setMista
   const [exporting, setExporting] = useState(false);
   const [exportError, setExportError] = useState("");
   const [selected, setSelected] = useState(null);
-  const exerciseEntries = exerciseData?.language === language ? exerciseMistakeEntries(exerciseData.data, pointsByLanguage[language], language) : [];
+  const exerciseEntries = Object.keys(mistakes).filter(key=>key.startsWith('tb-')).map(key=>({key,source:'textbook',exerciseChapter:key.split('-')[1],year:{year:0,id:''},paperIndex:1,questionIndex:Number(key.split('-').at(-1)),question:{label:'Q'+exerciseNumber(key),kind:'structured'},paper:{title:en?'Textbook exercises':'课本习题'},chapter:key.split('-')[1],network:{links:[]}}));
   const map = new Map([...entriesByLanguage[language], ...exerciseEntries, ...exampleEntries(pointsByLanguage[language],language)].map(entry => [entry.key, entry]));
   const entries = Object.keys(mistakes).filter(key => map.has(key)).map(key => ({...map.get(key), markedAt: mistakes[key].markedAt, sortChapter: mistakes[key].chapterCode, primaryChapterCode: mistakes[key].primaryChapterCode})).sort(compareMistakePrintEntries(pointsByLanguage[language]));
-  const analysis = analyzeMistakes(entries, pointsByLanguage[language], language);
+  const [summary,setSummary]=useState(null);
+  useEffect(()=>{let live=true;setSummary(null);const params=new URLSearchParams({language});if(filter?.kind==='point'&&membership.active)params.set('point',filter.value);fetch(`/api/content/mistake-summary?${params}`,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error();return r.json();}).then(data=>{if(live)setSummary(data);}).catch(()=>{if(live)setLoadError(en?'Statistics unavailable. Please retry.':'统计暂时无法加载，请重试。');});return()=>{live=false;};},[language,mistakes,filter,membership.revision]);
+  const analysis = summary || {chapters:[],recommendations:[],pointCount:0};
   const chapters = analysis.chapters.map(row => [row.name, row.keys.length]);
   const activeFilter = filter?.kind === 'point' && !membership.active ? null : filter;
   const filterLabel = !activeFilter ? '' : activeFilter.kind === 'point' ? knowledgeTitle(activeFilter.value, language) : activeFilter.value === 'unclassified' ? (en ? 'Unclassified' : '未分类') : chapterLabel(activeFilter.value, language);
   const displayedEntries = !activeFilter ? entries : entries.filter(entry => activeFilter.kind === 'point'
-    ? entry.network.links?.some(link => Number(link.sequence) === activeFilter.value)
+    ? summary?.filterKeys?.includes(entry.key)
     : analysis.chapters.find(row => row.code === activeFilter.value)?.keys.includes(entry.key));
   const selectedEntries = selected === null ? displayedEntries : displayedEntries.filter(entry => selected.has(entry.key));
   const toggleSelection = (key) => { const next = new Set(selected === null ? displayedEntries.map(e => e.key) : selected); if (next.has(key)) next.delete(key); else next.add(key); setSelected(next); };
@@ -74,29 +78,22 @@ export function MistakesView({ setProgress, saving, language, mistakes, setMista
   if (needsExercises && exerciseData?.language !== language) return <div className="mistakes-view"><h1>{language === 'eng' ? 'Mistakes' : '错题库'}</h1>{loadError ? <p role="alert">{loadError}<Button onClick={() => setLoadVersion(v => v + 1)}>{language === 'eng' ? 'Retry' : '重试'}</Button></p> : <p role="status">{language === 'eng' ? 'Loading…' : '正在加载…'}</p>}</div>;
   return (
     <div className="mistakes-view page-enter">
-      <div className="view-heading mistakes-heading"><div><h1>{"错题库"}</h1></div><div className="mistake-heading-actions"><Button onClick={browsePapers}>{"浏览题库"} <ArrowRight /></Button></div></div>
-      <div className="mistake-tabs"><Button variant={view==='active'?'default':'outline'} onClick={()=>setView('active')}>错题库</Button><Button variant={view==='trash'?'default':'outline'} onClick={()=>setView('trash')}>回收站</Button></div>
+      <div className="view-heading mistakes-heading"><div><h1>{"错题库"}</h1></div></div>
+      <div data-tour="mistake-tabs" className="mistake-tabs"><Button data-tour="mistake-active-tab" variant={view==='active'?'default':'outline'} onClick={()=>setView('active')}>错题库</Button><Button data-tour="mistake-trash-tab" variant={view==='trash'?'default':'outline'} onClick={()=>setView('trash')}>回收站</Button></div>
       {view==='trash' ? <MistakeTrash onAction={manageTrash} openPaper={openPaper}/> : <>
-      {!!entries.length && <section className="export-controls"><div className="export-title"><div><h2>{"选择错题本版本"}</h2></div><span>{selectedEntries.length} / {displayedEntries.length} {"题已选"}</span></div><div className="export-mode"><strong>{"01 · 先独立练习"}</strong><Button disabled={exporting || !selectedEntries.length} onClick={() => exportPdf("questions")}>{exporting ? <LoaderCircle className="spin"/> : <Download/>}{"原题版 · 打印／保存 PDF"}</Button></div><div className="export-mode"><strong>{"02 · 再核对思路"}</strong><Button disabled={exporting || !selectedEntries.length} onClick={() => exportPdf("detailed")}><Download/>{"详解版 · 打印／保存 PDF"}</Button></div></section>}
+      {!!entries.length && <section data-tour="mistake-export" className="export-controls"><div className="export-title"><div><h2>{"选择错题本版本"}</h2></div><span>{selectedEntries.length} / {displayedEntries.length} {"题已选"}</span></div><div className="export-mode"><strong>{"01 · 先独立练习"}</strong><Button disabled={exporting || !selectedEntries.length} onClick={() => exportPdf("questions")}>{exporting ? <LoaderCircle className="spin"/> : <Download/>}{en?'Questions':'原题版'}</Button></div><div className="export-mode"><strong>{"02 · 再核对思路"}</strong><Button disabled={exporting || !selectedEntries.length} onClick={() => exportPdf("detailed")}><Download/>{en?'Solutions':'详解版'}</Button></div></section>}
       {exportError && <p className="export-error" role="alert">{exportError}</p>}
+      <QdnaProfile language={language} revision={qdnaRevision} openQuestion={openPaper}/>
       {!!entries.length && <section className="mistake-kpis">
         <Card><span className="kpi-icon rose"><CircleAlert /></span><div><strong>{entries.length}</strong><small>{"道错题"}</small></div></Card>
         <Card><span className="kpi-icon blue"><BookOpen /></span><div><strong>{membership.active ? analysis.pointCount : '—'}</strong><small>{"个相关知识点"}</small></div></Card>
         <Card><span className="kpi-icon amber"><BarChart3 /></span><div><strong>{chapters[0]?.[0] || "—"}</strong><small>{"错题最多的章节"}</small></div></Card>
       </section>}
 
-      {!entries.length ? <Card className="mistake-empty"><span><Star /></span><h2>{"错题库还是空的"}</h2><Button onClick={browsePapers}>{"开始练习"}<ArrowRight /></Button></Card>
+      {!entries.length ? <Card data-tour="mistake-empty" className="mistake-empty"><span><Star /></span><h2>{"错题库还是空的"}</h2><Button onClick={browsePapers}>{"开始练习"}<ArrowRight /></Button></Card>
       : <div className="mistake-dashboard">
-        <section className="mistake-question-panel" id="mistake-question-list" tabIndex={-1}><div className="panel-title"><div><h2>{activeFilter ? (en ? "Review these questions" : "复习这组错题") : (en ? "Questions to review" : "待复习错题")}</h2></div><span>{displayedEntries.length}</span></div>{activeFilter && <div className="mistake-review-filter"><span>{filterLabel}</span><button onClick={clearFilter}>{en ? "Show all mistakes" : "查看全部错题"}</button></div>}<div className="selection-toolbar"><label><input type="checkbox" aria-label={"选取全部题目"} checked={displayedEntries.length > 0 && selectedEntries.length === displayedEntries.length} disabled={!displayedEntries.length} onChange={(e) => setSelected(e.target.checked ? null : new Set())}/>{"全选"}</label></div><div className="mistake-list">{displayedEntries.map((entry) => <Card key={entry.key} data-mistake={entry.key} className="mistake-row"><input className="mistake-select" type="checkbox" aria-label={`${"选取"} ${questionLabelFromKey(entry.key)}`} checked={selected === null || selected.has(entry.key)} onChange={() => toggleSelection(entry.key)}/><div className="mistake-row-copy"><p>{questionLabelFromKey(entry.key)}</p><strong>{entry.paper.title} · {entry.question.label}</strong><small>{entry.chapter || ("历届试题")}</small><div>{sortKnowledge(entry.network.links,language).slice(0, 3).map((link) => <span key={`${entry.key}-${link.sequence}`}>{knowledgeNumber(link.sequence, language)}</span>)}</div></div><div className="mistake-row-actions"><Button variant="outline" disabled={saving} onClick={()=>setProgress([entry.key],"mastered")}>标为已掌握</Button><Button variant="outline" onClick={() => openPaper(entry.key)}>{"打开"}<ArrowRight /></Button><Button variant="danger" size="icon" onClick={() => setMistake(entry.key, false)} aria-label="移入回收站" title="移入回收站"><Trash2 /></Button></div></Card>)}</div>{!displayedEntries.length && <div className="mistake-review-complete"><p>{en ? "No questions left in this group." : "这组已没有待复习错题。"}</p><Button variant="outline" onClick={clearFilter}>{en ? "Review other questions" : "继续复习其他错题"}</Button></div>}</section>
-        <aside className="mistake-analysis"><Card className="analysis-card mistake-review-card">
-          <div className="panel-title"><h2>{en ? 'Suggested review' : '建议先复习'}</h2></div>
-          {membership.active ? <>
-            <div className="mistake-recommendations">{analysis.recommendations.map(item => <section key={item.sequence} data-review-point={item.sequence}>
-              <h3>{knowledgeTitle(item.sequence, language)}</h3>
-              <div><Button size="sm" variant="outline" onClick={() => openKnowledge(item.sequence)}>{en ? 'Knowledge card' : '查看知识卡'}</Button><Button size="sm" onClick={() => review('point', item.sequence)}>{en ? 'Retry questions' : '重做错题'}</Button></div>
-            </section>)}</div>
-            {!analysis.recommendations.length && <p className="review-guidance">{en ? 'No linked knowledge points yet. Start with the questions on the left.' : '这些错题暂无知识点关联，可先重做左侧题目。'}</p>}
-          </> : <MemberNotice>{en ? 'Members · Knowledge cards and targeted review' : '会员专享 · 知识卡关联与针对性复习'}</MemberNotice>}
+        <section data-tour="mistake-list" className="mistake-question-panel" id="mistake-question-list" tabIndex={-1}><div className="panel-title"><div><h2>{activeFilter ? (en ? "Review these questions" : "复习这组错题") : (en ? "Questions to review" : "待复习错题")}</h2></div><span>{displayedEntries.length}</span></div>{activeFilter && <div className="mistake-review-filter"><span>{filterLabel}</span><button onClick={clearFilter}>{en ? "Show all mistakes" : "查看全部错题"}</button></div>}<div className="selection-toolbar"><label><input type="checkbox" aria-label={"选取全部题目"} checked={displayedEntries.length > 0 && selectedEntries.length === displayedEntries.length} disabled={!displayedEntries.length} onChange={(e) => setSelected(e.target.checked ? null : new Set())}/>{"全选"}</label></div><div className="mistake-list">{displayedEntries.map((entry) => <Card key={entry.key} data-mistake={entry.key} className="mistake-row"><input className="mistake-select" type="checkbox" aria-label={`${"选取"} ${questionLabelFromKey(entry.key)}`} checked={selected === null || selected.has(entry.key)} onChange={() => toggleSelection(entry.key)}/><div className="mistake-row-copy"><p>{questionLabelFromKey(entry.key)}</p><strong>{entry.paper.title} · {entry.question.label}</strong><small>{entry.chapter || ("历届试题")}</small><div>{sortKnowledge(entry.network.links,language).slice(0, 3).map((link) => <span key={`${entry.key}-${link.sequence}`}>{knowledgeNumber(link.sequence, language)}</span>)}</div></div><div className="mistake-row-actions"><Button variant="outline" disabled={saving} onClick={()=>setProgress([entry.key],"mastered")}>标为已掌握</Button><Button data-tour={entry.key==='ex-101-1'?'tour-mistake-open':undefined} variant="outline" onClick={() => openPaper(entry.key)}>{"打开"}<ArrowRight /></Button><Button variant="danger" size="icon" onClick={() => setMistake(entry.key, false)} aria-label="移入回收站" title="移入回收站"><Trash2 /></Button></div></Card>)}</div>{!displayedEntries.length && <div className="mistake-review-complete"><p>{en ? "No questions left in this group." : "这组已没有待复习错题。"}</p><Button variant="outline" onClick={clearFilter}>{en ? "Review other questions" : "继续复习其他错题"}</Button></div>}</section>
+        <aside data-tour="mistake-analysis" className="mistake-analysis"><Card className="analysis-card mistake-review-card">
           <section className="mistake-distribution"><h3>{en ? 'Chapter overview' : '章节分布概览'}</h3><ChapterPie chapters={chapters} language={language} onDetails={() => setStatisticsOpen(true)}/></section>
         </Card></aside>
       </div>}

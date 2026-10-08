@@ -10,7 +10,7 @@ export function SourceDownload({ language, year, paper }) {
       ? '2025 原卷仅有英文版，请切换至 ENG 下载。'
       : '此年份的中文原卷暂未提供。'}</span>;
   }
-  return <a onClick={() => track('download', file.url)} className="source-download" href={file.url} download={file.name}>
+  return <a data-tour="source-download" onClick={() => track('download', file.url)} className="source-download" href={file.url} download={file.name}>
     {'下载原卷 PDF'}
   </a>;
 }

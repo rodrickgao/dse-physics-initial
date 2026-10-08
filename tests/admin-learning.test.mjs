@@ -7,21 +7,14 @@ import { join } from 'node:path';
 import { createApi } from '../server/api.mjs';
 import { questions } from '../server/catalog.mjs';
 import { studentLearning } from '../server/student-learning.mjs';
-import { profileReview } from '../src/lib/profile-review.js';
 
-test('admin recommendations use the student algorithm and only current mistakes', () => {
- const entries = [...questions.values()].map(q=>({...q,network:{links:q.points.map(sequence=>({sequence}))}}));
- const key = '2012|paper-1a|1';
- const rows = [{question_key:key,marked_at:123}];
- const archive = [{...rows[0],status:'active'},{question_key:'2012|paper-1a|8',status:'trash'},{question_key:'2012|paper-1a|23',status:'deleted'}];
- for (const batch of [0,1,2]) {
-  const result = studentLearning(rows,[],archive,batch);
-  const expected = profileReview(entries,{[key]:true},'chn',batch);
-  assert.deepEqual(result.review.questions.map(q=>q.key),expected.questions.map(q=>q.key));
-  assert.deepEqual(result.counts,{active:1,mastered:0,trash:1,deleted:1});
-  assert.ok(result.review.questions.every(q=>q.key.startsWith('tb-')&&q.knowledge.length));
- }
- assert.equal(studentLearning([],[],archive).review.questions.length,0);
+test('legacy admin record DTO keeps current, trash and deleted counts separate', () => {
+ const row={question_key:'2012|paper-1a|1',marked_at:123};
+ const archive=[{...row,status:'active'},{question_key:'2012|paper-1a|8',status:'trash'},{question_key:'2012|paper-1a|23',status:'deleted'}];
+ const result=studentLearning([row],[],archive);
+ assert.deepEqual(result.counts,{active:1,mastered:0,trash:1,deleted:1});
+ assert.equal(result.active[0].key,row.question_key);
+ assert.deepEqual(result.review.questions,[],'no independent legacy recommendation engine');
 });
 
 test('admin learning detail and overview follow mastery, trash and restoration without leaking to students',async()=>{

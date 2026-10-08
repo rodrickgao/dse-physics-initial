@@ -13,9 +13,8 @@ export function QuestionSuggestions({ query, language, onSelect }) {
     let cancelled = false;
     const timer = setTimeout(async () => {
       try {
-        const [loader, engine] = await Promise.all([import('../lib/question-search-loader'), import('../lib/question-search')]);
-        const index = await loader.loadUnifiedQuestionSearch(language);
-        const results = engine.rankQuestionEntries(index, query).slice(0, 8);
+        const {searchQuestions}=await import('../lib/question-search-loader');
+        const {results}=await searchQuestions(language,query,{limit:8});
         if (!cancelled) setState({ query, language, results });
       } catch { if (!cancelled) setState({ query, language, error: true }); }
     }, 120);

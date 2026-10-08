@@ -1,3 +1,4 @@
+import { exerciseNumber } from './exercise-numbering.js';
 import { createKnowledgeGrouper } from './knowledge-groups.js';
 import { numberKnowledgePoints } from './knowledge-numbering.js';
 import { orderKnowledge } from './knowledge-order.js';
@@ -48,7 +49,7 @@ export function questionLabelFromKey(key) {
   const example=/^ex-(.+)-(\d+)$/.exec(String(key));
   if(example)return `${example[1]} · E${example[2]}`;
   const exercise = /^tb-(.+)-(\d+)$/.exec(String(key));
-  if (exercise) return `${exercise[1]} · Q${exercise[2]}`;
+  if (exercise) return `${exercise[1]} · Q${exerciseNumber(key)}`;
   const [year, paper, question] = String(key).split("|");
   const paperLabel = paper === "paper-1a" ? "1A" : paper === "paper-1b" ? "1B" : "P2";
   return `${year} · ${paperLabel} · Q${question}`;

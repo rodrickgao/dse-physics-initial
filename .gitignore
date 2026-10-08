@@ -12,3 +12,5 @@ private/
 .env.production
 *.sqlite*
 bootstrap-admin-key.txt
+
+.local-membership-preview/

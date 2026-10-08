@@ -2,10 +2,10 @@ import test from 'node:test';import assert from 'node:assert/strict';import fs f
 import {questions,points} from '../server/catalog.mjs';
 import {exampleEntries,relatedExamples} from '../src/lib/textbook-examples.js';
 import {printableQuestion} from '../src/lib/study-content.js';
-test('all examples use the same identities and knowledge links in readers and account catalog',()=>{
+test('example navigation preserves identities without shipping the knowledge mapping',()=>{
  const entries=exampleEntries([...points.values()]);assert.equal(entries.length,373);
- for(const e of entries){assert.equal(questions.get(e.key).label,`${e.chapter} · E${e.number}`);assert.deepEqual(questions.get(e.key).points,e.knowledge);}
- assert.deepEqual(relatedExamples([48]).map(e=>e.key),['ex-202-1','ex-202-2']);
+ for(const e of entries){assert.equal(questions.get(e.key).label,`${e.chapter} · E${e.number}`);assert.deepEqual(e.knowledge,[]);assert.ok(Array.isArray(questions.get(e.key).points));}
+ assert.deepEqual(relatedExamples([48]),[]);assert.deepEqual([...questions.values()].filter(q=>q.source==='examples'&&q.points.includes(48)).map(q=>q.key),['ex-202-1','ex-202-2']);
 });
 test('example print modes preserve source content and keep answers out of the question edition',()=>{
  const e=exampleEntries().find(e=>e.key==='ex-103-6');const r=JSON.parse(fs.readFileSync('assets/textbook-examples/eng/103.json'))[e.key];

@@ -1,0 +1,25 @@
+DDPhysics 使用教程 v4（仅本地）
+
+顶部账号栏「使用教程」是固定入口，个人设置中的旧入口已移除。
+一个完整流程共 10 步：打开例题 → 查看解答 → 标记掌握 → 改为错题 → 错题库打开 → 题目跳知识点 → 知识点跳题目 → 打开错误分析 → 阅读报告 → 完成。
+标记必须由学生自己点击，保存成功后推进；已有目标状态时不会切换取消。此演示使用同一道题，两种标记互斥，最终保留为错题，文案会提前说明。教程退出不会撤销学生的操作。
+不再自动弹出各页面的零散邀请。已有 v1/v2 已完成或已跳过状态保留，不强制重播新版。
+进度按账号保存在 localStorage：ddphysics-tour:v4:<编码用户 ID>。不跨设备同步。
+刷新提示继续或重新开始，退出与 Escape 清理高亮并恢复焦点。
+
+配置与维护
+src/lib/tour-steps.js 集中配置步骤，CORE_STEP_COUNT 自动由步骤数组计算。
+src/lib/tour-state.js 负责版本迁移和步骤进度。
+src/components/LearningTour.jsx 负责目标等待、完成条件、位置和键盘交互。
+新增实际操作用 mode:action 和 React 提交状态对应的 complete 选择器；用稳定 data-tour 标记，不以点击事件作为成功依据。
+跨页使用 route；不在教程中自动调用标记、购买或删除接口。
+整个教程禁用界面位移动画与平滑滚动，目标仅在不可见时立即滚到最近可见位置，切换直接高亮。
+
+验证
+node --test tests/learning-tour.test.mjs
+node scripts/qa-learning-tour.mjs（调用当前完整流程脚本，独立临时数据库）
+node scripts/qa-learning-tour-mobile.mjs（320px 英文流程）
+node scripts/export-tour-inventory.mjs
+输出保存在 ../output/learning-tour/。
+新版浏览器验证覆盖真实掌握/错题保存、失败不推进、刷新继续、双向关联、错误分析、首页不显示推荐、顶部重播与退出。
+知识点信号及推荐在数据不足时保留真实空态，不伪造分析结果或推荐题。

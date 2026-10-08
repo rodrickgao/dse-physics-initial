@@ -1,6 +1,8 @@
+import {QdnaProfile} from '../components/QdnaProfile';
+import {AdminWeeklyPreview} from './AdminQdna';
 import { pageHash } from '../lib/study-state';
 
-const questionUrl = q => '/' + pageHash(q.key?.startsWith('tb-') ? 'exercises' : 'papers', q.key);
+const questionUrl = q => '/' + pageHash(q.key?.startsWith('tb-') ? 'exercises' : q.key?.startsWith('ex-') ? 'examples' : 'papers', q.key);
 export function AdminLearning({ detail, nextBatch, language, tab, setTab }) {
   const en = language === 'eng';
   const learning = detail.learning;
@@ -10,11 +12,8 @@ export function AdminLearning({ detail, nextBatch, language, tab, setTab }) {
   const pointLinks = points => <div className="admin-point-links">{points.map(p=><a key={p.sequence} href={`/#textbook?knowledge=${p.sequence}`} target="_blank" rel="noreferrer">{p.number} · {en ? p.titleEn || p.title : p.title}</a>)}</div>;
   return <div className="admin-learning">
     <div className="learning-tabs" role="tablist" aria-label={en?'Learning status':'学习状态'}>{Object.entries(labels).map(([id,label])=><button key={id} role="tab" aria-selected={tab===id} aria-controls="learning-records" id={`learning-tab-${id}`} onClick={()=>setTab(id)}>{label}<strong>{learning.counts[id]}</strong></button>)}</div>
-    <section className="admin-recommendations">
-      <div className="toolbar"><h3 className="grow">{en?'Recommended textbook practice':'推荐课本习题'}</h3>{learning.review.candidateCount>3&&<button onClick={nextBatch}>{en?'Next set':'换一批'}</button>}</div>
-      <div className="admin-practice-grid">{learning.review.questions.map(q=><article key={q.key}><a className="question-link" href={questionUrl(q)} target="_blank" rel="noreferrer">{en ? q.labelEn || q.label : q.label} ↗</a>{pointLinks(q.knowledge)}</article>)}</div>
-      {!learning.review.questions.length&&<p role="status">{en?'No matching exercises':'暂无匹配习题'}</p>}
-    </section>
+    <QdnaProfile language={language} studentId={detail.student.id} initialData={detail.analytics} revision={detail.analytics?.generated_at}/>
+    <AdminWeeklyPreview studentId={detail.student.id} language={language}/>
     <section id="learning-records" role="tabpanel" aria-labelledby={`learning-tab-${tab}`}>
       <h3>{labels[tab]}</h3>
       <div className="admin-question-list">{records.map(q=><article key={q.key}>

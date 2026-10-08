@@ -1,3 +1,5 @@
+import { exerciseNumber } from '../lib/exercise-numbering';
+import { QuestionMarks } from '../components/QuestionMarks';
 import { readerStage, isReaderReturn } from '../lib/reader-return';
 import { NavigatorToggle } from '../components/NavigatorToggle';
 import { useSourceSearch } from '../lib/use-source-search';
@@ -13,7 +15,7 @@ import { sortKnowledge, knowledgeNumber, knowledgeTitle, searchable } from '../l
 import { STUDY_CSS } from '../lib/study-content';
 import './exercises.css';
 
-const TONES = ['#a74050','#287248','#906e0e','#396fd0','#aa5722','#576577','#576577','#576577','#576577'];
+const TONES = ['#a74050','#287248','#906e0e','#396fd0','#aa5722','#009ca0','#009ca0','#009ca0','#009ca0'];
 export function ExercisesView({ mastered = {}, mistakes = {}, setProgress, setMistake, saving, targetBook, language, targetKey, openExercise, openKnowledge, onAsk, onBank }) {
   const en = language === 'eng';
   const membership = useMembership();
@@ -29,9 +31,9 @@ export function ExercisesView({ mastered = {}, mistakes = {}, setProgress, setMi
   const [pickerOpen, setPickerOpen] = useState(false);
   useEffect(() => {
     let active = true; setIndex(null); setError(false);
-    loadExerciseIndex(language).then(data => { if (active) setIndex(data); }).catch(() => { if (active) setError(true); });
+    loadExerciseIndex(language,targetKey).then(data => { if (active) setIndex(data); }).catch(() => { if (active) setError(true); });
     return () => { active = false; };
-  }, [language, revision, membership.revision]);
+  }, [language, revision, membership.revision, targetKey]);
   useEffect(() => {
     let active = true; setRecord(null); setStage(readerStage(targetKey)); setError(false);
     if (targetKey && index) {
@@ -54,7 +56,7 @@ export function ExercisesView({ mastered = {}, mistakes = {}, setProgress, setMi
   const chapterLabel = item => en ? `${item.id} Review exercises` : `${item.id}复习题`;
   const selected = questions.find(item => item.id === targetKey);
   const search=useSourceSearch(query,language,'textbook');
-  const visible=query.trim()?search.results.map(entry=>questions.find(q=>q.id===entry.key)).filter(Boolean):chapterQuestions;
+  const visible=query.trim()?search.results.map(entry=>({id:entry.key,chapter:entry.chapter,number:entry.key.split("-").at(-1),preview:entry.excerpt})):chapterQuestions;
   const selectLevel = level => {
     openExercise('', level === 'books' ? '' : bookId); setQuery('');
     if (level === 'books') { setBookId(''); setChapterId(''); }
@@ -62,37 +64,36 @@ export function ExercisesView({ mastered = {}, mistakes = {}, setProgress, setMi
   };
   const chooseQuestion = id => { setPickerOpen(false); openExercise(id); };
   const chooseChapter = id => {
-    const first = questions.filter(item => item.chapter === id).sort((a, b) => Number(a.number) - Number(b.number))[0];
-    if (first) chooseQuestion(first.id);
+    const firstId=index.books.flatMap(b=>b.chapters).find(c=>c.id===id)?.firstId;
+    if(firstId)chooseQuestion(firstId);
   };
   const siblings = chapterQuestions.map(item => item.id);
   const position = siblings.indexOf(targetKey);
   const chapterMastered = siblings.length > 0 && siblings.every(key => mastered[key]);
   const rich = (value,type) => <StudyContent html={value} type={type} language={language}/>;
-  return <div className="exercises-view page-enter">
+  return <div data-tour={record?'exercise-ready':undefined} className="exercises-view page-enter">
     <style>{STUDY_CSS}</style>
     <div className="exercise-toolbar"><nav className="exercise-breadcrumb study-breadcrumb" aria-label={en ? 'Exercise location' : '习题位置'}>
       <button onClick={onBank}>{en?'Question bank':'题库'}</button><ChevronRight/><button onClick={() => selectLevel('books')}>{en ? 'Textbook exercises' : '课本习题'}</button>
       {book && <><ChevronRight/><button onClick={() => selectLevel('chapters')}>{book.title}</button></>}
       {chapter && <><ChevronRight/><button onClick={() => chooseChapter(chapter.id)}>{chapterLabel(chapter)}</button></>}
     </nav>
-    <div className="view-heading exercise-page-heading">{!targetKey && <h1>{en ? 'Textbook exercises' : '课本习题'}</h1>}{targetKey && <div className="exercise-chapter-progress"><Button variant={chapterMastered ? 'secondary' : 'outline'} disabled={saving || !siblings.length} aria-pressed={chapterMastered} onClick={() => setProgress(siblings, chapterMastered ? 'clear' : 'mastered')}><Check/>{chapterMastered ? (en ? 'Chapter mastered' : '本章已掌握 ✓') : (en ? 'Master this chapter' : '标记本章已掌握')}</Button></div>}</div></div>
+    <div className="view-heading exercise-page-heading">{!targetKey && <h1>{en ? 'Textbook exercises' : '课本习题'}</h1>}{targetKey && <div className="exercise-chapter-progress"><Button variant={chapterMastered ? 'secondary' : 'outline'} disabled={saving || !siblings.length} aria-pressed={chapterMastered} onClick={() => setProgress(siblings, chapterMastered ? 'clear' : 'mastered')}><Check/>{chapterMastered ? (en ? 'Chapter mastered' : '本章已掌握') : (en ? 'Master this chapter' : '标记本章已掌握')}</Button></div>}</div></div>
 
     {!targetKey && <input className="example-search" type="search" value={query} onChange={e=>setQuery(e.target.value)} aria-label={en?'Search exercises':'搜索习题'} placeholder={en?'Describe a topic, situation or method':'描述知识点、情境或解题方法'}/>}
     {error ? <Card className="exercise-message"><p role="alert">{en ? 'Unable to load exercises.' : '暂时无法加载习题。'}</p><Button onClick={() => setRevision(v => v + 1)}>{en ? 'Retry' : '重试'}</Button></Card>
     : !index ? <p role="status">{en ? 'Loading…' : '正在加载…'}</p>
     : targetKey ? <div className="paper-layout exercise-workspace">
       <div className={`navigator-shell${pickerOpen ? ' is-open' : ''}`}>
-        <NavigatorToggle language={language} controls="exercise-navigator"/><button className="mobile-picker" aria-expanded={pickerOpen} aria-controls="exercise-navigator" onClick={() => setPickerOpen(!pickerOpen)}><span><small>{en ? 'Choose question' : '选择题目'}</small><strong>{chapter?.id} · Q{selected?.number}</strong></span><ChevronDown/></button>
+        <NavigatorToggle language={language} controls="exercise-navigator"/><button className="mobile-picker" aria-expanded={pickerOpen} aria-controls="exercise-navigator" onClick={() => setPickerOpen(!pickerOpen)}><span><small>{en ? 'Choose question' : '选择题目'}</small><strong>{chapter?.id} · Q{exerciseNumber(selected?.id)}</strong></span><ChevronDown/></button>
         <aside className="paper-navigator" id="exercise-navigator" aria-label={en ? 'Exercise directory' : '习题目录'}>
 
-          <div className="navigator-block question-block"><p>{en ? 'Questions' : '题目'}</p><div className="question-chip-grid">{chapterQuestions.map(item => <button key={item.id} className={[item.id === targetKey && 'active', mistakes[item.id] && 'mistake', mastered[item.id] && 'mastered'].filter(Boolean).join(' ')} aria-current={item.id === targetKey ? 'true' : undefined} onClick={() => chooseQuestion(item.id)}>Q{item.number}{mastered[item.id] && " ✓"}</button>)}</div></div>
+          <div className="navigator-block question-block"><p>{en ? 'Questions' : '题目'}</p><div className="question-chip-grid">{chapterQuestions.map(item => <button key={item.id} className={[item.id === targetKey && 'active', mistakes[item.id] && 'mistake', mastered[item.id] && 'mastered'].filter(Boolean).join(' ')} aria-current={item.id === targetKey ? 'true' : undefined} onClick={() => chooseQuestion(item.id)}>Q{exerciseNumber(item.id)}{mastered[item.id] && " ✓"}</button>)}</div></div>
         </aside>
       </div>
       <article className="question-card exercise-reader" key={`${language}:${targetKey}`}>
-        <div className="reader-utilities"><SearchReturn language={language} questionKey={targetKey}/></div><header className="question-header" id="current-question" tabIndex={-1}><div><p>{chapter && chapterLabel(chapter)} · {chapter?.title}</p><h2>Q{selected?.number}</h2></div><div className="question-header-actions"><Button variant="outline" onClick={onAsk}>{en ? "Ask about this question" : "问这道题"}</Button>
-          <Button disabled={saving} variant={mastered[targetKey] ? 'secondary' : 'outline'} aria-pressed={!!mastered[targetKey]} onClick={() => setProgress([targetKey], mastered[targetKey] ? 'clear' : 'mastered')}><Check/>{mastered[targetKey] ? (en ? 'Mastered ✓' : '已掌握 ✓') : (en ? 'Mark as mastered' : '标为已掌握')}</Button>
-          <Button disabled={saving} variant={mistakes[targetKey] ? 'secondary' : 'outline'} aria-pressed={!!mistakes[targetKey]} onClick={() => setMistake(targetKey, !mistakes[targetKey])}><Star className={mistakes[targetKey] ? 'fill-current' : ''}/>{mistakes[targetKey] ? (en ? 'Added to mistakes' : '已加入错题') : (en ? 'Add to mistakes' : '加入错题')}</Button>
+        <div className="reader-utilities"><SearchReturn language={language} questionKey={targetKey}/></div><header className="question-header" id="current-question" tabIndex={-1}><div><p>{chapter && chapterLabel(chapter)} · {chapter?.title}</p><h2>Q{exerciseNumber(selected?.id)}</h2></div><div className="question-header-actions"><Button variant="outline" onClick={onAsk}>{en ? "Ask about this question" : "问这道题"}</Button>
+          <QuestionMarks language={language} questionKey={targetKey} mastered={mastered} mistakes={mistakes} saving={saving} setProgress={setProgress} setMistake={setMistake}/>
         </div></header>
         <div className="question-body">
         <div className="study-flow" data-exercise={targetKey} data-focus-target={record ? `question:${targetKey}` : undefined} aria-busy={!record}>
@@ -102,11 +103,11 @@ export function ExercisesView({ mastered = {}, mistakes = {}, setProgress, setMi
             {(record.reasoning || record.hasReasoning) && <>{!membership.active && <MemberNotice>{en ? 'Members · Detailed explanations' : '会员专享 · 详解'}</MemberNotice>}<Button disabled={!membership.active} className="stage-toggle" aria-expanded={stage >= 3} onClick={() => setStage(stage >= 3 ? 2 : 3)}>{stage >= 3 ? (en ? 'Hide explanation' : '收起详解') : (en ? 'Show explanation' : '查看详解')}</Button>{membership.active && stage >= 3 && <section className="study-stage"><h3><span>3</span>{en ? 'Explanation' : '详解'}</h3>{rich(record.reasoning, 'reasoning')}</section>}</>}
           </section>}
         </div>
-        <div className="knowledge-questions exercise-knowledge"><span><BookOpen/>{en ? 'Related knowledge' : '关联知识点'}</span>{membership.active ? <div>{sortKnowledge(selected?.knowledge,language).map(sequence => <button key={sequence} onClick={() => openKnowledge(sequence)}>{knowledgeNumber(sequence, language)} · {knowledgeTitle(sequence, language)}</button>)}</div> : <MemberNotice/>}</div>
+        <div className="knowledge-questions exercise-knowledge"><span><BookOpen/>{en ? 'Related knowledge' : '关联知识点'}</span>{record?.linksAvailable ? <div>{sortKnowledge((record?.knowledge || []),language).map(sequence => <button key={sequence} onClick={() => openKnowledge(sequence)}>{knowledgeNumber(sequence, language)} · {knowledgeTitle(sequence, language)}</button>)}</div> : <MemberNotice/>}</div>
         </div>
       <div className="question-footer exercise-paging"><Button variant="outline" disabled={position <= 0} onClick={() => chooseQuestion(siblings[position - 1])}><ArrowLeft/>{en ? 'Previous' : '上一题'}</Button><span>{position + 1} / {siblings.length}</span><Button variant="outline" disabled={position < 0 || position >= siblings.length - 1} onClick={() => chooseQuestion(siblings[position + 1])}>{en ? 'Next' : '下一题'}<ArrowRight/></Button></div>
       </article>
-    </div> : query.trim() ? <section className="exercise-list"><h2>{query.trim() ? (en ? 'Search results' : '搜索结果') : chapterLabel(chapter)} <small>{visible.length} {en ? 'questions' : '题'}</small></h2>{search.loading ? <p role="status">{en?'Searching…':'正在搜索…'}</p> : search.error ? <p role="alert">{en?'Search unavailable. Please retry.':'搜索暂不可用，请重新搜索。'}</p> : visible.length ? visible.map(item => <button key={item.id} onClick={() => openExercise(item.id)}><strong>{item.chapter} · Q{item.number}</strong><span>{item.preview}</span><ChevronRight/></button>) : <p>{en ? 'No matching exercises.' : '没有找到相关习题。'}</p>}</section>
+    </div> : query.trim() ? <section className="exercise-list"><h2>{query.trim() ? (en ? 'Search results' : '搜索结果') : chapterLabel(chapter)} <small>{visible.length} {en ? 'questions' : '题'}</small></h2>{search.loading ? <p role="status">{en?'Searching…':'正在搜索…'}</p> : search.error ? <p role="alert">{en?'Search unavailable. Please retry.':'搜索暂不可用，请重新搜索。'}</p> : visible.length ? visible.map(item => <button key={item.id} onClick={() => openExercise(item.id)}><strong>{item.chapter} · Q{exerciseNumber(item.id)}</strong><span>{item.preview}</span><ChevronRight/></button>) : <p>{en ? 'No matching exercises.' : '没有找到相关习题。'}</p>}</section>
     : !book ? <section className="book-directory"><div className="book-grid">{index.books.map((item, i) => <button key={item.id} className="book-card" style={{'--book-tone':TONES[i]}} onClick={() => openExercise('', item.id)}><span className="book-number">{String(i + 1).padStart(2,'0')}</span><span className="book-icon"><BookOpen/></span><strong>{item.title}</strong><small>{item.chapters.length} {en ? 'chapters' : '章'} · {item.count} {en ? 'exercises' : '题'}</small></button>)}</div></section>
     : <section className="exercise-directory"><h2>{book.title}</h2>{book.chapters.map(item => <button key={item.id} onClick={() => chooseChapter(item.id)}><strong>{chapterLabel(item)} · {item.title}</strong><small>{item.count} {en ? 'questions' : '题'}</small><ChevronRight/></button>)}</section>}
   </div>;

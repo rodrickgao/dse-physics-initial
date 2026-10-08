@@ -1,0 +1,24 @@
+/* Desktop navigation retains icon shortcuts when collapsed; mobile uses its existing bottom bar. */
+@media(min-width:721px){
+ .app-shell{--main-sidebar-width:260px}
+ .app-shell.sidebar-collapsed{--main-sidebar-width:76px}
+ .app-shell .sidebar{width:var(--main-sidebar-width);padding:24px 12px 18px;overflow-y:auto;overflow-x:hidden}
+ .app-shell .app-main{padding-left:var(--main-sidebar-width)}
+ .app-shell .sidebar-heading{display:flex;align-items:center;gap:6px;margin-bottom:24px;flex-shrink:0}
+ .app-shell .sidebar-heading .brand{flex:1;min-width:0;gap:9px;padding:0;text-align:left}
+ .app-shell .brand-mark{flex-shrink:0}
+ .app-shell .brand-copy{white-space:nowrap}
+ .app-shell .sidebar-toggle{display:grid;place-items:center;flex-shrink:0;width:32px;height:38px;padding:5px;border:0;border-radius:8px;background:transparent;color:var(--muted-foreground);cursor:pointer}
+ .app-shell .sidebar-toggle:hover{background:var(--accent);color:var(--primary)}
+ .app-shell .sidebar-toggle svg{width:20px;height:20px}
+ .app-shell .nav-item{grid-template-columns:28px minmax(0,1fr) auto;gap:9px;padding:9px 10px}
+ .app-shell .sidebar-footer{padding-top:24px}
+ .app-shell.sidebar-collapsed .sidebar-heading{flex-direction:column;gap:14px}
+ .app-shell.sidebar-collapsed .sidebar-heading .brand{flex:none;justify-content:center}
+ .app-shell.sidebar-collapsed :is(.brand-copy,.nav-label,.nav-dot,.theme-label){display:none}
+ .app-shell.sidebar-collapsed .nav-item{display:grid;grid-template-columns:1fr;place-items:center;padding:10px 0;min-height:48px}
+ .app-shell.sidebar-collapsed .nav-count{position:absolute;right:0;top:2px;min-width:16px;height:16px;padding:0 3px;font-size:10px;line-height:16px}
+ .app-shell.sidebar-collapsed .sidebar-footer .theme-button,.app-shell .sidebar-focus-shortcut{display:grid;grid-template-columns:1fr;place-items:center;width:100%;min-height:48px;padding:10px 0;border:0;border-radius:10px;background:transparent;color:var(--muted-foreground);cursor:pointer}
+ .app-shell .sidebar-focus-shortcut:hover{background:var(--accent);color:var(--foreground)}
+ .app-shell .sidebar-focus-shortcut svg{width:19px;height:19px}
+}

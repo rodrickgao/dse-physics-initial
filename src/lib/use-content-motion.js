@@ -8,7 +8,7 @@ export function useContentMotion(ref, key, scope = '') {
     previous.current = { key, scope };
     if (old.key === key || old.scope !== scope || !ref.current) return;
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
-    if (reduced.matches || !ref.current.animate) return;
+    if (document.documentElement.dataset.tourActive || reduced.matches || !ref.current.animate) return;
     const animation = ref.current.animate(
       [{ opacity: 0, transform: 'translateY(8px)' }, { opacity: 1, transform: 'translateY(0)' }],
       { duration: 220, easing: 'cubic-bezier(.22,1,.36,1)' },

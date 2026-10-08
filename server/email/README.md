@@ -6,4 +6,4 @@ The local SMTP entry point (`server/dev.mjs`) uses this template. The isolated p
 
 Run `node scripts/preview-verification-email.mjs` after a build to create the local sample at `/verification-email-preview.html` (dummy code `123456`, no email sent). This preview is not part of the production build.
 
-The production entry point uses the same template while preserving its SMTP configuration and production security settings.
+Production synchronization is pending explicit publishing authorization. At that time, copy the template and PNG to the release server and replace only the `sendMail` message object in `server/production.mjs` with `verificationEmail({from:env.SMTP_FROM,to:email,code})`; preserve its SMTP configuration and all production security settings.

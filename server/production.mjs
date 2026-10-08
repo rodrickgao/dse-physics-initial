@@ -6,7 +6,6 @@ import { DatabaseSync, backup } from 'node:sqlite';
 import nodemailer from 'nodemailer';
 import { createApi } from './api.mjs';
 import { root } from './catalog.mjs';
-import { protectStudyFiles } from './premium.mjs';
 import { importInitialData } from './import-initial.mjs';
 import { resetStudents } from './reset-students.mjs';
 
@@ -50,7 +49,7 @@ export function createProductionServer({ api, origins, directory = resolve(root,
     Promise.resolve(api.handler(req, res, () => {
       if (!['GET', 'HEAD'].includes(req.method)) return end(405, 'Method not allowed');
       if (path === '/admin' || path === '/admin/') { res.writeHead(302, { Location: '/admin.html' }); res.end(); return; }
-      if (protectStudyFiles(req, res, api.hasPremium(req))) return;
+      if (api.protectFiles(req, res)) return;
       const name = path === '/' ? 'index.html' : path === '/admin' || path === '/admin/' ? 'admin.html' : path.slice(1);
       if (!allowed.has(name)) return end(404, 'Not found');
       const file = resolve(directory, name);
@@ -68,7 +67,7 @@ export async function startProduction(env = process.env) {
   if (!existsSync(resolve(root, 'dist/index.html')) || !existsSync(resolve(root, 'dist/admin.html'))) throw new Error('Build student and admin pages first.');
   await importInitialData(config.directory);
   const transport = nodemailer.createTransport({ host: env.SMTP_HOST, port: Number(env.SMTP_PORT), secure: env.SMTP_PORT === '465', requireTLS: true, auth: { user: env.SMTP_USER, pass: env.SMTP_PASS }, connectionTimeout: 10000, greetingTimeout: 10000, dnsTimeout: 10000, socketTimeout: 15000 });
-  const api = createApi({ directory: config.directory, publicOrigins: config.origins, secureCookies: true, trustProxy: env.TRUST_PROXY === 'true', mailer: (email, code) => transport.sendMail(verificationEmail({from:env.SMTP_FROM,to:email,code})) });
+  const api = createApi({ directory: config.directory, qdnaDirectory: env.DSE_QDNA_DIR || resolve(root, 'server-data/qdna'), publicOrigins: config.origins, secureCookies: true, trustProxy: env.TRUST_PROXY === 'true', mailer: (email, code) => transport.sendMail(verificationEmail({from:env.SMTP_FROM,to:email,code})) });
   await resetStudents(config.directory, env.DSE_RESET_STUDENTS_ONCE);
   const server = createProductionServer({ api, origins: config.origins, maintenance: config.maintenance });
   server.requestTimeout = 30000;

@@ -1,0 +1,23 @@
+{
+  "chn": {
+    "original": "<p><b>下列哪幅線圖描述物體從靜止均勻加速的情</b><b>況？</b></p><p class=\"study-figure\"><img src=\"assets/textbook-exercises/media/8e72951fd5077c034e0f3a9c.png\" alt=\"\" style=\"width:331.5px\"/></p><p>A  只有 (1)</p><p>B  只有 (2)</p><p>C  只有 (1) 和 (3)</p><p>D  只有 (2) 和 (3)</p>",
+    "replacement": "<p><b>下列哪幅線圖描述物體從靜止均勻加速的情</b><b>況？</b></p><p class=\"study-figure\"><img src=\"assets/textbook-exercises/media/202-5-complete-axes.png\" alt=\"三幅位移圖：(1) s–t，(2) s–t²，(3) s–v²\" style=\"width:460px\"/></p><p>A  只有 (1)</p><p>B  只有 (2)</p><p>C  只有 (1) 和 (3)</p><p>D  只有 (2) 和 (3)</p>"
+  },
+  "eng": {
+    "original": "<p><i><b>Which of the following graphs describe(s) an object </b></i><i><b>accelerating uniformly from rest?</b></i></p><p class=\"study-figure\"><img src=\"assets/textbook-exercises/media/81103a0de47f3b2ab8994751.png\" alt=\"\" style=\"width:317.8px\"/></p><p><i><b> </b></i><i><b> </b></i><i><b>v</b></i><i><b><sup>2</sup></b></i><i><b> </b></i><i><b>/ m</b></i><i><b><sup>2</sup></b></i><i><b> s</b></i><i><b><sup>–2</sup></b></i></p><p><i><b>A </b></i><i><b>(1) only </b></i></p><p><i><b>B </b></i><i><b>(2) only</b></i></p><p><i><b>C </b></i><i><b>(1) and (3) only </b></i></p><p><i><b>D </b></i><i><b>(2) and (3) only</b></i></p>",
+    "replacement": "<p><i><b>Which of the following graphs describe(s) an object </b></i><i><b>accelerating uniformly from rest?</b></i></p><p class=\"study-figure\"><img src=\"assets/textbook-exercises/media/202-5-complete-axes.png\" alt=\"Displacement graphs: (1) s–t, (2) s–t², (3) s–v²\" style=\"width:460px\"/></p><p><i><b>A </b></i><i><b>(1) only </b></i></p><p><i><b>B </b></i><i><b>(2) only</b></i></p><p><i><b>C </b></i><i><b>(1) and (3) only </b></i></p><p><i><b>D </b></i><i><b>(2) and (3) only</b></i></p>"
+  },
+  "source": {
+    "pdf": "D:\\牛津生活与物理\\英文版\\1-備課資源-課本PDFLesson Preparation-Textbook PDF\\2\\学生版\\DSEPHY_TE_202_TN_.pdf",
+    "page": 50,
+    "printed_page": 84,
+    "clip": [
+      325,
+      309,
+      555,
+      461
+    ],
+    "sha256": "9750bf3fecfa1ed38637373d124c4feaf8e38b73ef60b2a0c1276c7909c6412a",
+    "image": "assets\\textbook-exercises\\media\\202-5-complete-axes.png"
+  }
+}

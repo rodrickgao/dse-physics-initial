@@ -38,9 +38,8 @@ test('public production server protects accounts and premium files while serving
     const logout = await fetchLocal(server, '/api/auth/logout', { body: {}, headers: { cookie: login.headers['set-cookie'][0].split(';')[0] } });
     assert.match(logout.headers['set-cookie'][0], /; Secure/);
     const paper = await fetchLocal(server, '/text-papers/2025-eng.json');
-    assert.equal(paper.status, 200);
-    for (const record of Object.values(JSON.parse(paper.text))) { assert.equal(record.reasoning, undefined); assert.equal(record.premiumLocked, true); }
-    assert.equal((await fetchLocal(server, '/knowledge-network-data.js')).text, 'window.DSE_KNOWLEDGE_NETWORK = {};');
+    assert.equal(paper.status, 404);
+    assert.equal((await fetchLocal(server, '/knowledge-network-data.js')).text, 'window.DSE_KNOWLEDGE_NETWORK={};');
     const admin = await fetchLocal(server, '/api/admin/login', { body: { key: 'production-test-only' } });
     assert.equal(admin.status, 200); assert.match(admin.headers['set-cookie'][0], /^dse_admin_session=.*; Secure$/);
   } finally { await new Promise(done => server.close(done)); api.close(); rmSync(directory, { recursive: true, force: true }); }

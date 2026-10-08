@@ -3,7 +3,7 @@ import { StudyContent } from './StudyContent';
 import { useMembership, MemberNotice } from './Membership';
 import { track } from '../lib/activity';
 import { useEffect, useState } from "react";
-import { loadStudyPaper, officialAnswerHtml, STUDY_CSS } from "../lib/study-content";
+import { loadStudyQuestion, officialAnswerHtml, STUDY_CSS } from "../lib/study-content";
 import { Button } from "./ui/button";
 
 export function StudyQuestion({ year, language, questionKey, question, ScanImages }) {
@@ -16,7 +16,7 @@ export function StudyQuestion({ year, language, questionKey, question, ScanImage
   const en = language === "eng";
   useEffect(() => {
     let cancelled = false;setRecord(null);setStage(readerStage(questionKey));setLoading(true);setError(false);
-    loadStudyPaper(year.year, language).then((data) => {if (!cancelled) setRecord(data[questionKey] || null);}).catch(() => {if (!cancelled) setError(true);}).finally(() => {if (!cancelled) setLoading(false);});
+    loadStudyQuestion(questionKey, language).then((data) => {if (!cancelled) setRecord(data);}).catch(() => {if (!cancelled) setError(true);}).finally(() => {if (!cancelled) setLoading(false);});
     return () => {cancelled = true;};
   }, [year.year, language, questionKey, revision, membership.revision]);
   const rich = (value,type) => <StudyContent html={value} type={type} language={language}/>;
@@ -27,7 +27,7 @@ export function StudyQuestion({ year, language, questionKey, question, ScanImage
       {loading ? <p role="status">{"正在加载文字版…"}</p> : record?.question ? rich(record.question, "question") : <><p className="study-source-note">{"原题扫描"}</p><ScanImages yearId={year.id} paths={question.question} label={question.label}/></>}
       {error && <p role="alert">{"未能加载文字版。"}<Button variant="outline" onClick={() => setRevision(revision + 1)}>{"重新加载"}</Button></p>}
     </section>
-    <Button className="stage-toggle" disabled={loading || error} aria-expanded={stage >= 2} aria-controls="official-stage" onClick={() => { if (stage < 2) track('answer_view', questionKey); setStage(stage >= 2 ? 1 : 2); }}>{stage >= 2 ? ("收起解答") : ("查看解答")}</Button>
+    <Button data-tour="paper-solution" className="stage-toggle" disabled={loading || error} aria-expanded={stage >= 2} aria-controls="official-stage" onClick={() => { if (stage < 2) track('answer_view', questionKey); setStage(stage >= 2 ? 1 : 2); }}>{stage >= 2 ? ("收起解答") : ("查看解答")}</Button>
     {stage >= 2 && <section className="study-stage" id="official-stage"><h3><span>2</span>{"标答／评分参考"}</h3>
       
       {rich(officialAnswerHtml(record, question, year.id), "official")}

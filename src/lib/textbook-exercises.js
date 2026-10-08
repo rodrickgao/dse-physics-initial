@@ -1,3 +1,4 @@
+import { exerciseNumber } from './exercise-numbering.js';
 const requests = new Map();
 export function clearExerciseCache() { requests.clear(); }
 function load(url) {
@@ -7,17 +8,14 @@ function load(url) {
   }).catch(error => { requests.delete(url); throw error; }));
   return requests.get(url);
 }
-export function loadExerciseIndex(language) {
+export function loadExerciseIndex(language, id = '') {
   if (!['eng', 'chn'].includes(language)) return Promise.reject(new Error('Invalid language'));
-  return load(`assets/textbook-exercises/index-${language}.json`);
+  return load(`/api/content/directory?${new URLSearchParams({source:"textbook",language,id})}`);
 }
 export function loadExercise(language, id) {
   const match = /^tb-(E?[1-5](?:A|B)?\d{2})-\d+$/.exec(id);
   if (!match || !['eng', 'chn'].includes(language)) return Promise.reject(new Error('Invalid exercise'));
-  return load(`assets/textbook-exercises/${language}/${match[1]}.json`).then(data => {
-    if (!data[id]) throw new Error('Exercise not found');
-    return data[id];
-  });
+  return fetch(`/api/content/question?${new URLSearchParams({id,language})}`,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('Exercise unavailable');return r.json();});
 }
 export function relatedExercises(index, sequences) {
   const wanted = new Set(sequences.map(Number));
@@ -38,7 +36,7 @@ export function exerciseMistakeEntries(index, points, language) {
   return index.questions.map(q => ({
     key: q.id, source: 'textbook', exerciseChapter: q.chapter,
     year: { year: 0, id: '' }, paperIndex: q.kind === 'multiple-choice' ? 0 : 1,
-    questionIndex: Number(q.number), question: { label: `Q${q.number}`, kind: q.kind },
+    questionIndex: Number(q.number), question: { label: `Q${exerciseNumber(q.id)}`, kind: q.kind },
     paper: { title: language === 'eng' ? 'Textbook exercises' : '课本习题' },
     chapter: `${q.chapter} · ${chapters.get(q.chapter)?.title || ''}`,
     network: { links: q.knowledge.map(sequence => ({ sequence, chapterEn: pointMap.get(sequence)?.chapter, chapterZh: pointMap.get(sequence)?.chapter })) }

@@ -1,0 +1,43 @@
+import {chromium} from 'playwright';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const browser=await chromium.launch({channel:'chrome',headless:true});
+const context=await browser.newContext({viewport:{width:1440,height:1000},reducedMotion:'reduce'});
+const page=await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
+fs.mkdirSync('../tmp/search-login-qa',{recursive:true});
+try {
+ await page.goto('http://127.0.0.1:5178/');
+ await page.evaluate(()=>localStorage.setItem('dse-remembered-emails-v1',JSON.stringify(['rodrick_gao@163.com','free@local.test'])));
+ await page.reload();
+ await page.getByRole('button',{name:'选择之前登录的邮箱',exact:true}).click();
+ await page.getByRole('button',{name:'rodrick_gao@163.com',exact:true}).click();
+ assert.equal(await page.locator('#login-email').inputValue(),'rodrick_gao@163.com');
+ assert.equal(await page.locator('input[autocomplete="one-time-code"]').evaluate(e=>e===document.activeElement),true);
+ assert.equal(await page.locator('.login-account-suggestions').count(),0);
+ await page.getByRole('button',{name:'选择之前登录的邮箱',exact:true}).click();
+ assert.equal(await page.getByRole('button',{name:'free@local.test',exact:true}).count(),1);
+ await page.locator('.login-form-heading').click();
+ assert.equal(await page.locator('.login-account-suggestions').count(),0);
+ await page.getByRole('button',{name:'密码登录',exact:true}).click();
+ await page.locator('#login-email').fill('free');
+ await page.locator('#login-email').press('ArrowDown');await page.keyboard.press('Enter');
+ assert.equal(await page.locator('#login-email').inputValue(),'free@local.test');
+ assert.equal(await page.locator('input[type="password"]').evaluate(e=>e===document.activeElement),true);
+ await page.getByRole('button',{name:'选择之前登录的邮箱',exact:true}).click();
+ await page.screenshot({path:'../tmp/search-login-qa/login.png',fullPage:true});
+ await page.getByRole('button',{name:'移除记录 free@local.test',exact:true}).click();
+ assert.equal(await page.getByRole('button',{name:'free@local.test',exact:true}).count(),0);
+ await page.getByRole('button',{name:'rodrick_gao@163.com',exact:true}).click();
+ await page.getByRole('button',{name:'验证码登录 / 注册',exact:true}).click();
+ await page.getByRole('button',{name:'获取验证码',exact:true}).click();await page.locator('.local-code strong').waitFor();
+ await page.locator('input[autocomplete="one-time-code"]').fill(await page.locator('.local-code strong').innerText());await page.locator('.auth-submit').click();await page.locator('.sidebar').waitFor();
+ async function check(selector,wrapper){const input=page.locator(selector);await input.focus();const result=await input.evaluate((e,w)=>({outline:getComputedStyle(e).outlineStyle,shadow:getComputedStyle(w?e.closest(w):e).boxShadow}),wrapper);assert.equal(result.outline,'none');assert.notEqual(result.shadow,'none');}
+ await check('.global-search input','.global-search');await page.screenshot({path:'../tmp/search-login-qa/global.png',fullPage:true});
+ await page.locator('.nav-list').getByRole('button',{name:'题库',exact:true}).click();await check('#bank-search','.bank-search');
+ await page.locator('#bank-search').fill('力');await page.locator('.bank-search-results').waitFor();
+ await page.locator('.nav-list').getByRole('button',{name:'课本知识库',exact:true}).click();await check('.knowledge-search-wrap input');
+ await page.getByRole('button',{name:'深色模式',exact:true}).click();await check('.knowledge-search-wrap input');await page.screenshot({path:'../tmp/search-login-qa/knowledge-dark.png',fullPage:true});
+ assert.deepEqual(errors,[]);
+ console.log('PASS desktop saved email click, keyboard selection, modes, dismissal, removal, login, global/question/knowledge search focus and dark mode.');
+ const mobile=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true});const m=await mobile.newPage();await m.goto('http://127.0.0.1:5178/');await m.evaluate(()=>localStorage.setItem('dse-remembered-emails-v1',JSON.stringify(['rodrick_gao@163.com'])));await m.reload();await m.getByRole('button',{name:'选择之前登录的邮箱',exact:true}).tap();await m.getByRole('button',{name:'rodrick_gao@163.com',exact:true}).tap();assert.equal(await m.locator('#login-email').inputValue(),'rodrick_gao@163.com');console.log('PASS mobile touch selection.');await mobile.close();
+} finally {await browser.close();}

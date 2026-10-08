@@ -55,7 +55,7 @@ test('activity links identify actual knowledge and bilingual exercises without l
   const exercise=activityContent({action:'question_view',target:'tb-103-1'});
   assert.match(exercise.labelEn,/Compulsory Book 1.*Temperature Changes and Heat Capacity.*Q1/);
   assert.equal(exercise.href,'/#exercises?question=tb-103-1');
-  const review=studentLearning([{question_key:'2012|paper-1a|1',marked_at:1}],[],[]).review.questions;
+  const review=studentLearning([{question_key:'2012|paper-1a|1',marked_at:1}],[],[],{new_questions:[{question_id:'tb-103-1',question_title:'Q1',primary_knowledge:{knowledge_id:'17'}}]}).review.questions;
   assert.ok(review.length);
   assert.ok(review.every(q=>q.labelEn===questions.get(q.key).labelEn && !/[\u3400-\u9fff]/.test(q.labelEn)));
 });

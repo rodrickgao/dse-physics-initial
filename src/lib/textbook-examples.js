@@ -1,4 +1,4 @@
-import exampleKnowledge from './textbook-example-knowledge.json' with { type: 'json' };
+import exampleKnowledge from './example-navigation.json' with { type: 'json' };
 export function exampleEntries(points=[],language='chn') {
  const pointMap=new Map(points.map(p=>[Number(p.sequence),p]));
  return Object.entries(exampleKnowledge).map(([key,sequences])=>{
@@ -10,10 +10,10 @@ export function relatedExamples(sequences) {
  const wanted=new Set(sequences.map(Number));
  return exampleEntries().filter(q=>q.knowledge.some(s=>wanted.has(s))).sort((a,b)=>a.chapter.localeCompare(b.chapter,'en',{numeric:true})||Number(a.number)-Number(b.number));
 }
-export async function loadExample(id) {
+export async function loadExample(id, language='eng') {
  const match=/^ex-(E?[1-5](?:A|B)?\d{2})-\d+$/.exec(id);
  if(!match)throw new Error('Invalid example');
- const response=await fetch(`assets/textbook-examples/eng/${match[1]}.json`);
+ const response=await fetch(`/api/content/question?${new URLSearchParams({id,language})}`,{cache:'no-store'});
  if(!response.ok)throw new Error('Example unavailable');
- const data=await response.json();if(!data[id])throw new Error('Example missing');return data[id];
+ return response.json();
 }

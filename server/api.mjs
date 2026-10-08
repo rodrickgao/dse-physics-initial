@@ -1,3 +1,9 @@
+import {studentLearningView} from './qdna-learning.mjs';
+import { createQuestionStatus } from './question-status.mjs';
+import { createQdnaLearning } from './qdna-learning.mjs';
+import { createContentLimiter } from './content-limits.mjs';
+import { weeklyReportEmail } from './weekly-report-email.mjs';
+import { createContent } from './content.mjs';
 import { studentLearning } from './student-learning.mjs';
 import { createTutoring } from './tutoring.mjs';
 import { DatabaseSync } from 'node:sqlite';
@@ -9,7 +15,6 @@ import { exportRows, toWorkbook } from './student-export.mjs';
 import { publicProfile, validateProfile } from './profile.mjs';
 import { encodePassword, checkPassword } from './password.mjs';
 import { createManagement } from './management.mjs';
-import { premiumNetwork } from './premium.mjs';
 import { createMistakeArchive } from './mistake-archive.mjs';
 import { createPaymentOrders } from './payment-orders.mjs';
 
@@ -18,7 +23,7 @@ const token = () => randomBytes(32).toString('hex');
 const fail = (status, message) => { throw Object.assign(new Error(message), { status }); };
 const publicUser = publicProfile;
 
-export function createApi({ directory, mailer, clock = Date.now, adminKey: suppliedKey, publicOrigins = [], secureCookies = false, trustProxy = false } = {}) {
+export function createApi({ directory, mailer, clock = Date.now, adminKey: suppliedKey, publicOrigins = [], secureCookies = false, trustProxy = false, contentLimits, qdnaDirectory = process.env.DSE_QDNA_DIR } = {}) {
   const allowedOrigins = new Set(publicOrigins);
   const allowedHosts = new Set(publicOrigins.map(value => new URL(value).host));
   if (secureCookies && (!mailer || !allowedOrigins.size)) throw new Error('Production requires email delivery and an explicit HTTPS origin.');
@@ -48,7 +53,12 @@ export function createApi({ directory, mailer, clock = Date.now, adminKey: suppl
   const run = (sql, ...params) => db.prepare(sql).run(...params);
   const transaction = fn => { db.exec('BEGIN IMMEDIATE'); try { const result = fn(); db.exec('COMMIT'); return result; } catch (e) { db.exec('ROLLBACK'); throw e; } };
   const management = createManagement({ db, clock, fail, transaction });
-  const archive = createMistakeArchive({ db, clock, fail, transaction, record: management.record, questions });
+  const content = createContent({ db, clock, secret: adminKey, membership: management.membership, limiterConfig: contentLimits, qdnaDirectory });
+  const statusStore = createQuestionStatus({db,clock});
+  const learning = createQdnaLearning({db,clock,statusStore});
+  content.setLearning(learning);
+  const learningLimit=createContentLimiter({db,clock,config:contentLimits});
+  const archive = createMistakeArchive({ db, clock, fail, transaction, record: management.record, questions, statusStore });
   const tutoring = createTutoring({ db, clock, fail });
   const mastered = userId => Object.fromEntries(all('SELECT question_key,marked_at FROM mastered WHERE user_id=?',userId).map(r => [r.question_key,{markedAt:new Date(r.marked_at).toISOString()}]));
   const progress = userId => ({ mistakes:marked(userId), mastered:mastered(userId) });
@@ -102,6 +112,7 @@ export function createApi({ directory, mailer, clock = Date.now, adminKey: suppl
     return { points: list(byPoint), questions: list(byQuestion), chapters: list(byChapter) };
   }
   async function handler(req, res, next) {
+    req.contentClientIp = (trustProxy && String(req.headers['x-forwarded-for'] || '').split(',').at(-1).trim()) || req.socket.remoteAddress;
     if (!req.url.startsWith('/api/')) return next();
     res.setHeader('Content-Type', 'application/json; charset=utf-8');
     res.setHeader('Cache-Control', 'no-store');
@@ -120,8 +131,8 @@ export function createApi({ directory, mailer, clock = Date.now, adminKey: suppl
         try { body = JSON.parse(raw || '{}'); } catch { fail(400, '資料格式錯誤。'); }
         if (!body || typeof body !== 'object' || Array.isArray(body)) fail(400, '資料格式錯誤。');
       }
-      // Enable only behind a trusted proxy that appends the actual client address.
-      const ip = (trustProxy && String(req.headers['x-forwarded-for'] || '').split(',').at(-1).trim()) || req.socket.remoteAddress;
+      if (content.handle(req,res,url,session(req) || session(req,true))) return;
+      const ip = req.contentClientIp;
       if (path === '/api/auth/session' && req.method === 'GET') {
         const user = session(req); return send({ user: user ? publicUser(user) : null, mailMode: mailer ? 'smtp' : 'local' });
       }
@@ -169,11 +180,29 @@ export function createApi({ directory, mailer, clock = Date.now, adminKey: suppl
       }
       const user = path.startsWith('/api/admin/') ? session(req, true) || session(req) : session(req) || (/^\/api\/avatar\//.test(path) ? session(req, true) : null); if (!user) fail(401, '請先登入。');
       if (path.startsWith('/api/admin/') && user.role !== 'admin') fail(403, '只限開發者存取。');
+      if (path.startsWith('/api/learning/') || path.startsWith('/api/admin/learning/')) {
+        if(req.method!=='GET')fail(405,'只支持 GET。');
+        const admin=path.startsWith('/api/admin/'),kind=path.split('/').at(-1);
+        const allowed=kind==='dashboard'?['language','offset','limit','studentId']:kind==='knowledge'?['language','id','status','offset','limit','studentId']:kind==='weekly'?['language','studentId','start','end']:['language','type','offset','limit'];
+        for(const key of url.searchParams.keys())if(!allowed.includes(key)||url.searchParams.getAll(key).length!==1||(!admin&&key==='studentId'))fail(400,'请求参数不正确。');
+        const language=url.searchParams.get('language')||'chn';if(!['chn','eng'].includes(language))fail(400,'语言不正确。');
+        const number=(key,fallback,max)=>{const value=url.searchParams.get(key);if(value===null)return fallback;if(!/^\d+$/.test(value)||Number(value)>max)fail(400,'分页参数不正确。');return Number(value);};
+        const offset=number('offset',0,10000),size=number('limit',20,50);if(size<1)fail(400,'分页参数不正确。');
+        const studentId=admin?number('studentId',0,Number.MAX_SAFE_INTEGER):user.id;
+        if(admin&&kind!=='overview'&&!get("SELECT id FROM users WHERE id=? AND role='student'",studentId))fail(404,'找不到学生。');
+        learningLimit(req,res,user,'similar');res.setHeader('Cache-Control','private, no-store');res.setHeader('Vary','Cookie');
+        if(kind==='dashboard'){const result=learning.dashboard(studentId,{language,offset,limit:size});return send(admin?result:studentLearningView(result));}
+        if(kind==='knowledge'){const status=url.searchParams.get('status')||'ALL';if(!['ALL','MASTERED','WRONG','UNMARKED'].includes(status))fail(400,'状态不正确。');const result=learning.knowledge(studentId,url.searchParams.get('id'),{language,status,offset,limit:size});if(!result)fail(404,'找不到知识点。');return send(admin?result:studentLearningView(result));}
+        if(admin&&kind==='overview'){const type=url.searchParams.get('type')||'questions';if(!['questions','knowledge'].includes(type))fail(400,'统计类型不正确。');return send(learning.adminOverview({language,type,offset,limit:size}));}
+        if(admin&&kind==='weekly'){const end=number('end',clock(),clock()),start=number('start',end-7*86400000,end);if(start>=end||end-start>31*86400000)fail(400,'周报时间范围不正确。');const report=learning.weekly(studentId,{language,start,end});const email=await weeklyReportEmail({from:'preview@local.invalid',to:'preview@local.invalid',report});return send({report,email:{subject:email.subject,html:email.html,text:email.text}});}
+        fail(404,'找不到此操作。');
+      }
+      if (path === '/api/admin/content/dna'  && req.method === 'GET') return send(content.adminDna(url));
       if (path === '/api/admin/session' && req.method === 'GET') return send({ user: publicUser(user) });
-      if (path === '/api/membership' && req.method === 'GET') return send({ membership: management.membership(user.id), accessMode: 'chapter-downloads-links-reasoning-tutoring' });
+      if (path === '/api/membership' && req.method === 'GET') return send({ membership: management.membership(user.id), accessMode: 'links-reasoning-tutoring' });
       if (path === '/api/premium/network' && req.method === 'GET') {
         if (user.role !== 'admin' && !management.membership(user.id).active) fail(403, '知識點關聯需要有效會員。');
-        return send({ network: premiumNetwork });
+        fail(410, '请使用按题目或知识点分页的内容接口。');
       }
       if (path === '/api/admin/tutoring' && req.method === 'GET') return send({ rows:tutoring.list() });
       if (path === '/api/admin/tutoring/reply' && req.method === 'POST') return send(tutoring.reply(user,body));
@@ -237,6 +266,7 @@ export function createApi({ directory, mailer, clock = Date.now, adminKey: suppl
         if(!undo || clock()-undo.created_at>600000) fail(409,'撤销已过期，请重新调整学习状态。');
         const snapshot=JSON.parse(undo.snapshot),keys=snapshot.map(row=>row.key);
         transaction(()=>{
+          const before=statusStore.snapshot(user.id);
           if(JSON.stringify(progressSnapshot(keys))!==undo.after_state) fail(409,'这些题目的状态已再次改变，请刷新后查看。');
           for(const row of snapshot){
             for(const table of ['mistakes','mastered','mistake_archive']) run(`DELETE FROM ${table} WHERE user_id=? AND question_key=?`,user.id,row.key);
@@ -245,19 +275,21 @@ export function createApi({ directory, mailer, clock = Date.now, adminKey: suppl
             if(row.archive) run('INSERT INTO mistake_archive VALUES(?,?,?,?,?,?)',user.id,row.key,row.archive.marked_at,row.archive.status,row.archive.trashed_at,row.archive.deleted_at);
           }
           run('DELETE FROM progress_undo WHERE id=?',undo.id);
+          statusStore.record(user.id,before);
         });
         return send(progress(user.id));
       }
       if (path === '/api/progress' && req.method === 'PUT') {
         if (!Array.isArray(body.keys) || !body.keys.length || body.keys.length>questions.size || body.keys.some(k=>!questions.has(k)) || !['mastered','mistake','clear'].includes(body.status)) fail(400,'请选择有效的题目和学习状态。');
         const undoId=token(), keys=[...new Set(body.keys)];
-        transaction(() => { const snapshot=progressSnapshot(keys); for (const key of keys) {
+        transaction(() => { const before=statusStore.snapshot(user.id); const snapshot=progressSnapshot(keys); for (const key of keys) {
           setMarked(user.id,key,body.status==='mistake');
           if(body.status==='mastered') run('INSERT INTO mastered VALUES(?,?,?) ON CONFLICT(user_id,question_key) DO UPDATE SET marked_at=excluded.marked_at',user.id,key,clock());
           else run('DELETE FROM mastered WHERE user_id=? AND question_key=?',user.id,key);
         }
           run('DELETE FROM progress_undo WHERE created_at<?',clock()-600000);
           run('INSERT INTO progress_undo VALUES(?,?,?,?,?)',undoId,user.id,JSON.stringify(snapshot),JSON.stringify(progressSnapshot(keys)),clock());
+          statusStore.record(user.id,before);
         });
         return send({...progress(user.id),undoId});
       }
@@ -265,16 +297,15 @@ export function createApi({ directory, mailer, clock = Date.now, adminKey: suppl
       if (path === '/api/mistakes/trash' && req.method === 'GET') return send({ trash: archive.list(user.id) });
       if (path === '/api/mistakes/trash' && req.method === 'POST') {
         archive.act(user.id, body);
-        run('DELETE FROM mastered WHERE user_id=? AND question_key IN (SELECT question_key FROM mistakes WHERE user_id=?)',user.id,user.id);
         return send({ ...progress(user.id), trash: archive.list(user.id) });
       }
       if (path === '/api/mistakes' && req.method === 'PUT') {
         if (typeof body.marked !== 'boolean' || typeof body.key !== 'string') fail(400, '錯題格式不正確。');
-        transaction(() => setMarked(user.id, body.key, body.marked)); return send(progress(user.id));
+        transaction(() => {const before=statusStore.snapshot(user.id);setMarked(user.id, body.key, body.marked);statusStore.record(user.id,before);}); return send(progress(user.id));
       }
       if (path === '/api/mistakes/import' && req.method === 'POST') {
         if (!Array.isArray(body.keys) || body.keys.length > questions.size || body.keys.some(k => !questions.has(k))) fail(400, '匯入的題目資料不正確。');
-        transaction(() => { for (const key of new Set(body.keys)) setMarked(user.id, key, true); });
+        transaction(() => {const before=statusStore.snapshot(user.id); for (const key of new Set(body.keys)) setMarked(user.id, key, true);statusStore.record(user.id,before); });
         return send(progress(user.id));
       }
       if (path === '/api/admin/export' && req.method === 'GET') {
@@ -300,10 +331,11 @@ export function createApi({ directory, mailer, clock = Date.now, adminKey: suppl
         const rows = all('SELECT * FROM mistake_archive WHERE user_id=? ORDER BY marked_at DESC', student.id);
         const active = all('SELECT question_key,marked_at FROM mistakes WHERE user_id=?', student.id);
         const masteredRows = all('SELECT question_key,marked_at FROM mastered WHERE user_id=? ORDER BY marked_at DESC', student.id);
-        return send({ student, learning: studentLearning(active, masteredRows, rows, Number(url.searchParams.get('batch')) || 0), ...aggregate(rows), mistakes: rows.map(r => ({ ...questions.get(r.question_key), status: r.status, trashedAt: r.trashed_at, deletedAt: r.deleted_at, markedAt: new Date(r.marked_at).toISOString(), knowledge: (questions.get(r.question_key)?.points || []).map(pointInfo) })) });
+        const analytics=learning.dashboard(student.id,{language:url.searchParams.get("language")==="eng"?"eng":"chn"});
+        return send({ student, analytics, learning: studentLearning(active, masteredRows, rows, analytics.recommendations), ...aggregate(rows), mistakes: rows.map(r => ({ ...questions.get(r.question_key), status: r.status, trashedAt: r.trashed_at, deletedAt: r.deleted_at, markedAt: new Date(r.marked_at).toISOString(), knowledge: (questions.get(r.question_key)?.points || []).map(pointInfo) })) });
       }
       fail(404, '找不到此操作。');
-    } catch (error) { res.statusCode = error.status || 500; send({ error: error.status ? error.message : '服務暫時無法使用，請重試。' }); if (!error.status) console.error(error); }
+    } catch (error) { res.statusCode = error.status || 500; send({ error: error.status ? error.message : '服務暫時無法使用，請重試。' }); if (!error.status) console.error('API request failed', {path:req.url.split('?')[0],type:error.name}); }
   }
-  return { handler, hasPremium: req => { const user = session(req); return Boolean(user && (user.role === 'admin' || management.membership(user.id).active)); }, close: () => db.close(), adminKeyPath: keyPath };
+  return { handler, buildWeeklyReport: (studentId,options) => learning.weekly(studentId,options), protectFiles: (req,res) => content.file(req,res,session(req) || session(req,true)), hasPremium: req => { const user = session(req); return Boolean(user && (user.role === 'admin' || management.membership(user.id).active)); }, close: () => db.close(), adminKeyPath: keyPath };
 }

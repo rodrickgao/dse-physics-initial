@@ -5,14 +5,10 @@ const cache = new Map();
 export function clearStudyCache() { cache.clear(); }
 export const escapeHtml = (value) => String(value ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
-export function loadStudyPaper(year, language) {
-  if (!/^20\d{2}$/.test(String(year)) || !["eng", "chn"].includes(language)) return Promise.reject(new Error("Invalid paper"));
-  const id = `${year}-${language}`;
-  if (!cache.has(id)) cache.set(id, fetch(`text-papers/${id}.json`, { signal: AbortSignal.timeout(30000) }).then((response) => {
-    if (!response.ok) throw new Error("Study content could not be loaded");
-    return response.json();
-  }).catch((error) => { cache.delete(id); throw error; }));
-  return cache.get(id);
+export async function loadStudyQuestion(id, language) {
+  const response=await fetch(`/api/content/question?${new URLSearchParams({id,language})}`,{credentials:'same-origin',cache:'no-store'});
+  if(!response.ok) throw new Error(response.status===429?'请求过于频繁，请稍后重试。':'Study content could not be loaded');
+  return response.json();
 }
 
 export const STUDY_CSS = `
@@ -54,7 +50,7 @@ export function printableQuestion(entry, content, { language, mode }) {
   const pending = translate("详细思路尚待核验；此处不以未核验内容代替。",language);
   const question = content?.question || scanHtml(entry.question.question, entry.year.id);
   const official = example || entry.source === 'textbook' ? content?.answer : officialAnswerHtml(content, entry.question, entry.year.id);
-  const isChoice = entry.paperIndex === 0 || entry.question.kind === 'multiple-choice';
+  const isChoice = entry.paperIndex === 0 || content?.kind === 'multiple-choice' || entry.question.kind === 'multiple-choice';
   return `<article class="print-question${entry.source === 'textbook' ? ' textbook-exercise' : ''}" data-question="${escapeHtml(entry.key)}"><h2>${escapeHtml(title)}</h2>
     <div class="study-content question-content">${question}</div>
     ${mode === "questions" ? (isChoice ? `<p class="answer-line">${en ? 'Answer' : '答案'}<span class="answer-blank"></span></p>` : `<div class="working-space"></div>`) : `
@@ -129,6 +125,7 @@ export function printDocumentHtml(entries, contents, options) {
 }
 
 export async function openMistakePrint(entries, options) {
+  if (entries.length > 30) throw new Error(options.language==='eng'?'Please export up to 30 questions at a time.':'每次最多导出 30 道题，请减少选择。');
   // Open synchronously during the click, then prepare all assets before printing.
   const tab = window.open("", "_blank");
   if (!tab) throw new Error("请允许开启打印预览窗口后再试。");
@@ -141,7 +138,7 @@ export async function openMistakePrint(entries, options) {
       if (!response.ok || !result.membership?.active) throw new Error('详解版 PDF 包含会员详细思路，请先开通会员。');
       clearStudyCache(); clearExerciseCache();
     }
-    const contents = await Promise.all(entries.map(entry => entry.source === 'examples' ? loadExample(entry.key) : entry.source === 'textbook' ? loadExercise(options.language, entry.key) : loadStudyPaper(entry.year.year, options.language).then(paper => paper[entry.key])));
+    const contents = await Promise.all(entries.map(entry => entry.source === 'examples' ? loadExample(entry.key, options.language) : entry.source === 'textbook' ? loadExercise(options.language, entry.key) : loadStudyQuestion(entry.key, options.language)));
     if (tab.closed) throw new Error("打印预览已关闭。");
     tab.document.open();tab.document.write(printDocumentHtml(entries, contents, { ...options, baseUrl: new URL(".", window.location.href).href }));tab.document.close();
     tab.document.getElementById("print").onclick = () => tab.print();

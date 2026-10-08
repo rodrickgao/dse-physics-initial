@@ -58,6 +58,28 @@ test('manual payment approval is isolated, persistent and grants membership exac
     assert.equal((await admin('admin/membership-history')).rows.length,4);
     api.close();api=createApi({directory,adminKey:'payment-test'});
     assert.equal((await admin('admin/orders')).recent.length,3); assert.equal((await a('membership')).membership.active,false);
+
+    // No screenshot is needed for either payment method. Pending requests remain reviewable.
+    assert.equal((await b('orders',{requestId:randomUUID(),paymentMethod:'invalid'})).status,400);
+    const directId=randomUUID();
+    const direct=await Promise.all([b('orders',{requestId:directId,paymentMethod:'alipay'}),b('orders',{requestId:randomUUID(),paymentMethod:'alipay'})]);
+    assert.equal(direct[0].status,200);assert.equal(direct[0].order.id,direct[1].order.id);
+    const directOrder=direct[0].order;
+    assert.equal(directOrder.payment_method,'alipay');assert.equal(directOrder.status,'pending');assert.ok(directOrder.granted_at);
+    const directMembership=(await b('membership')).membership;
+    assert.equal(directMembership.active,true);assert.equal(directMembership.revision,1);
+    assert.equal((await admin('admin/orders')).pending.find(o=>o.id===directOrder.id).hasReceipt,0);
+    assert.equal((await admin('admin/orders/receipt?id='+directOrder.id)).status,404);
+    api.close();api=createApi({directory,adminKey:'payment-test'});
+    assert.equal((await b('orders')).order.payment_method,'alipay');assert.equal((await b('membership')).membership.active,true);
+    await admin('admin/orders/review',{orderId:directOrder.id,action:'approve'});
+    assert.equal((await b('membership')).membership.endsAt,directMembership.endsAt);
+    assert.equal((await b('orders',{requestId:directId,paymentMethod:'alipay'})).order.id,directOrder.id);
+    assert.equal((await b('membership')).membership.revision,1);
+    const wechat=(await b('orders',{requestId:randomUUID(),paymentMethod:'wechat'})).order;
+    assert.equal(wechat.payment_method,'wechat');assert.equal((await b('membership')).membership.revision,2);
+    await admin('admin/orders/review',{orderId:wechat.id,action:'reject',reason:'未查到付款'});
+    assert.equal((await b('membership')).membership.active,false);
   } finally { await new Promise(r=>server.close(r));api.close();rmSync(directory,{recursive:true}); }
 });
 

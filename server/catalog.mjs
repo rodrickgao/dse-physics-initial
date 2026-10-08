@@ -2,6 +2,7 @@ import { readFileSync } from 'node:fs';
 import { runInNewContext } from 'node:vm';
 import { fileURLToPath } from 'node:url';
 import { numberKnowledgePoints } from '../src/lib/knowledge-numbering.js';
+import { exerciseNumber } from '../src/lib/exercise-numbering.js';
 
 export const root = fileURLToPath(new URL('../', import.meta.url));
 const context = { window: {} };
@@ -20,6 +21,7 @@ for (const year of data.DSE_SITE_DATA.years.filter(y => y.language === 'chn')) {
       const key = `${year.year}|${paperId}|${q.id || number}`;
       const links = (network[key] || network[`${year.year}|${paperId}|${Number(q.knowledgeQuestion) || number}`] || {}).links || [];
       questions.set(key, { key, label: `${year.year} · ${['1A', '1B', '2'][index]} · ${q.label || number}`, points: [...new Set(links.map(l => Number(l.sequence)))].filter(id => points.has(id)) });
+      questions.get(key).relatedPoints = ((network[key] || network[`${year.year}|${paperId}|${Number(q.knowledgeQuestion) || number}`] || {}).relatedLinks || []).map(l=>Number(l.sequence)).filter(id=>points.has(id));
       const primary = links.find(link => link.type === 'primary' && points.has(Number(link.sequence))) || links.find(link => points.has(Number(link.sequence)));
       questions.get(key).primaryChapterCode = points.get(Number(primary?.sequence))?.code || '';
     });
@@ -28,7 +30,7 @@ for (const year of data.DSE_SITE_DATA.years.filter(y => y.language === 'chn')) {
 export function pointInfo(id) {
   const p = points.get(id);
   const en = data.DSE_TEXTBOOK_DATA.languages.eng.find(point => Number(point.sequence) === Number(id));
-  return { sequence: id, number: p.number, titleEn: en?.card_title || en?.title || en?.chapter, title: p.card_title || p.title || p.content || p.chapter, chapter: p.chapter };
+  return { sequence: id, number: p.number, titleEn: en?.card_title || en?.title || en?.chapter, title: p.card_title || p.title || p.content || p.chapter, chapter: p.chapter, chapterEn: en?.chapter || p.chapter };
 }
 
 // Textbook exercises share persistent progress and mistake history with past papers.
@@ -37,7 +39,7 @@ const exercisesEn = JSON.parse(readFileSync(new URL('../assets/textbook-exercise
 const exerciseNames = index => new Map(index.books.flatMap(book => book.chapters.map(chapter => [chapter.id, `${book.title} · ${chapter.title}`])));
 const namesZh = exerciseNames(exercises), namesEn = exerciseNames(exercisesEn);
 for (const q of exercises.questions) {
-  questions.set(q.id, { key: q.id, source: 'textbook', label: `${namesZh.get(q.chapter)} · Q${q.number}`, labelEn: `${namesEn.get(q.chapter)} · Q${q.number}`, points: q.knowledge.filter(id => points.has(Number(id))).map(Number) });
+  questions.set(q.id, { key: q.id, source: 'textbook', label: `${namesZh.get(q.chapter)} · Q${exerciseNumber(q.id)}`, labelEn: `${namesEn.get(q.chapter)} · Q${exerciseNumber(q.id)}`, points: q.knowledge.filter(id => points.has(Number(id))).map(Number) });
   questions.get(q.id).primaryChapterCode = points.get(Number(q.knowledge.find(id => points.has(Number(id)))))?.code || '';
 }
 

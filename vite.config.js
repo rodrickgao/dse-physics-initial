@@ -4,6 +4,9 @@ import tailwindcss from "@tailwindcss/vite";
 import { copyFileSync, cpSync, mkdirSync, readFileSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 
+import { navigation, publicStatistics, publicTextbook } from './server/content.mjs';
+import { writeFileSync } from 'node:fs';
+
 function copyStudyAssets() {
   return {
     name: "copy-study-assets",
@@ -12,10 +15,14 @@ function copyStudyAssets() {
       const output = resolve(root, "dist");
       mkdirSync(output, { recursive: true });
       [
-        "site-data.js", "textbook-data.js", "knowledge-network-data.js",
-        "paper2-knowledge-data.js", "statistics-data.js", "mistake-pdf.js", "og.png",
+        "mistake-pdf.js", "og.png",
       ].forEach((file) => copyFileSync(resolve(root, file), resolve(output, file)));
-      cpSync(resolve(root, "assets"), resolve(output, "assets"), { recursive: true });
+      cpSync(resolve(root, "assets"), resolve(output, "assets"), { recursive: true, filter: (source) => !/[/\\](?:textbook-exercises|textbook-examples|20\d{2}[^/\\]*)(?:[/\\]|$)/.test(source) && source !== resolve(root, "assets/textbook/pdfs") });
+      writeFileSync(resolve(output,'textbook-data.js'),`window.DSE_TEXTBOOK_DATA=${JSON.stringify(publicTextbook)};`);
+      writeFileSync(resolve(output,'site-data.js'),`window.DSE_SITE_DATA=${JSON.stringify(navigation)};`);
+      writeFileSync(resolve(output,'statistics-data.js'),`window.DSE_STATISTICS=${JSON.stringify(publicStatistics)};`);
+      writeFileSync(resolve(output,'knowledge-network-data.js'),'window.DSE_KNOWLEDGE_NETWORK={};');
+      writeFileSync(resolve(output,'paper2-knowledge-data.js'),'window.DSE_PAPER2_KNOWLEDGE={};');
       const catalog = JSON.parse(readFileSync(resolve(root, 'downloads/catalog.json'), 'utf8'));
       mkdirSync(resolve(output, 'downloads'), { recursive: true });
       copyFileSync(resolve(root, 'downloads/catalog.json'), resolve(output, 'downloads/catalog.json'));
@@ -23,10 +30,10 @@ function copyStudyAssets() {
         if (file.kind !== 'paper' || file.edition !== 'original') throw new Error('Worked papers must not be published');
         if (!/^downloads\/(?:originals\/(?:eng|chn)\/20\d{2}-paper-(?:1a|1b|2)|(?:eng|chn)\/knowledge)\.pdf$/.test(file.url)) throw new Error('Invalid download path');
         mkdirSync(dirname(resolve(output, file.url)), { recursive: true });
-        copyFileSync(resolve(root, file.url), resolve(output, file.url));
+        // Original downloads are streamed by the server after request checks.
       }
       cpSync(resolve(root, "vendor"), resolve(output, "vendor"), { recursive: true });
-      cpSync(resolve(root, "text-papers"), resolve(output, "text-papers"), { recursive: true });
+      // Full question records and diagrams are never published as static build assets.
     },
   };
 }

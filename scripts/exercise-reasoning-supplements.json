@@ -1,0 +1,772 @@
+{
+  "tb-101-1": {
+    "chn": [
+      "攝氏溫標的低定點是標準大氣壓下純冰與水共存、正在熔化時的溫度，定為 0 °C，因此選 A。",
+      "冰箱內的冰可低於 0 °C，並非固定溫度；純水的沸點是高定點，而一般蒸汽的溫度也不一定是沸點。"
+    ],
+    "eng": [
+      "The lower fixed point is the temperature of pure melting ice in equilibrium with water at standard atmospheric pressure. It is assigned 0 °C, so A is correct.",
+      "Ice in a freezer need not be at 0 °C. The boiling point of pure water is the upper fixed point, and steam need not be at that temperature unless the specified equilibrium conditions apply."
+    ]
+  },
+  "tb-101-2": {
+    "chn": [
+      "校準時先以正在熔化的純冰標記 0 °C，再以標準大氣壓下沸水上方的蒸汽標記 100 °C，最後把兩標記間的範圍分成 100 等份。",
+      "直接用本生燈火焰加熱不能提供已知而穩定的定點溫度，亦可能損壞溫度計，因此 B 不是校準步驟。"
+    ],
+    "eng": [
+      "Mark the liquid levels at 0 °C using pure melting ice and at 100 °C using steam above boiling pure water at standard atmospheric pressure. Divide the interval into 100 equal parts.",
+      "A Bunsen flame does not provide a known, stable fixed-point temperature and may damage the thermometer. Therefore B is not a calibration step."
+    ]
+  },
+  "tb-101-3": {
+    "chn": [
+      "測溫性質必須隨溫度有可測量且可重複的變化。物體可熱脹冷縮，某些物質會變色，電阻或導電能力也可隨溫度改變。",
+      "在沒有物質流失的情況下，普通加熱不會令物體的質量產生可用作測溫的變化，因此最不適合的是 C。"
+    ],
+    "eng": [
+      "A thermometric property must change measurably and reproducibly with temperature. Dimensions, the colour of suitable materials, and electrical resistance or conductivity can do so.",
+      "Without loss of material, ordinary heating does not produce a useful change in mass for measuring temperature. Hence C is the least suitable property."
+    ]
+  },
+  "tb-103-1": {
+    "chn": [
+      "兩液體的放熱功率相同。由放熱量 Q=C|Δθ|，溫度—時間圖的斜率大小為功率除以熱容量。P 降溫較慢，因此 Cₚ>Cᵩ；兩者質量相同，由 C=mc 得 cₚ>cᵩ。",
+      "在時間 T，P 的溫度高於 Q，所以 P 分子的平均動能較高。三項均正確，選 D。"
+    ],
+    "eng": [
+      "Both liquids lose energy at the same power. Since Q=C|Δθ|, the magnitude of the temperature–time gradient equals power divided by heat capacity. P cools more slowly, so Cₚ>Cᵩ. Their masses are equal, hence C=mc also gives cₚ>cᵩ.",
+      "At time T, P has a higher temperature and therefore a higher average molecular kinetic energy. All three statements are correct: D."
+    ]
+  },
+  "tb-103-4": {
+    "chn": [
+      "攪拌器使液體各處溫度較均勻，令溫度計讀數能代表整體液體；蓋子減少與周圍環境的能量交換，尤其是對流和蒸發造成的散失。",
+      "焦耳計量度輸入加熱器的電能，實驗中用它估計供給液體的能量；精確計算須考慮容器吸熱和熱散失。因此按此實驗的用途，三項均正確，選 D。"
+    ],
+    "eng": [
+      "The stirrer makes the liquid's temperature more uniform, so the thermometer better represents the whole liquid. The lid reduces energy loss, particularly through convection and evaporation.",
+      "The joulemeter measures electrical energy supplied to the heater, used to estimate energy supplied to the liquid. A precise analysis also allows for the container and heat losses. Thus all three stated apparatus functions are correct in this experiment: D."
+    ]
+  },
+  "tb-104-2": {
+    "chn": [
+      "蒸發需要汽化潛熱，能量可由液體本身或周圍環境提供，因此 (1) 正確。較高能量的分子較易逸出，若沒有足夠外來補熱，剩餘液體會冷卻，不是必定升溫。",
+      "空氣濕度較高時，淨蒸發速率一般較低；乾燥空氣較有利於蒸發。因此 (2)、(3) 錯，選 A。"
+    ],
+    "eng": [
+      "Evaporation requires latent heat, supplied by the liquid or its surroundings, so (1) is correct. Faster molecules preferentially escape; without sufficient replacement energy the remaining liquid cools rather than necessarily warming.",
+      "Higher humidity generally reduces the net evaporation rate. Dry air favours evaporation. Statements (2) and (3) are false, so A is correct."
+    ]
+  },
+  "tb-104-3": {
+    "chn": [
+      "恆定加熱功率下，非相變階段的斜率 dT/dt=P/(mc)。圖中固態升溫線的斜率小於氣態線，因此固態比熱容較大，B 正確。",
+      "熔化平台在 −10 °C，80 °C 是沸點。Q 位於熔化平台，固液共存；汽化平台較長，由 E=Pt=ml 可知汽化比潛熱較大。因此 A、C、D 不正確。"
+    ],
+    "eng": [
+      "At constant heating power, outside a phase change dT/dt=P/(mc). The solid-state heating line is less steep than the gas-state line, so the solid has the larger specific heat capacity. B is correct.",
+      "The melting plateau is at −10 °C; 80 °C is the boiling point. Q lies on the melting plateau, where solid and liquid coexist. The longer vaporization plateau implies a larger specific latent heat, since E=Pt=ml. Thus A, C and D are incorrect."
+    ]
+  },
+  "tb-104-4": {
+    "chn": [
+      "t₁ 至 t₂ 是熔化過程，溫度保持不變，所以平均分子動能不變；吸收的潛熱使平均分子勢能增加。圖 P 只在這一段上升，故代表平均分子勢能。",
+      "整段時間都以恆定功率加熱，內能持續以恆定速率增加，符合圖 Q。因此選 D。"
+    ],
+    "eng": [
+      "Between t₁ and t₂ the substance melts at constant temperature, so its average molecular kinetic energy stays constant. The absorbed latent heat increases average molecular potential energy. P rises only during this interval and represents that potential energy.",
+      "Energy is supplied at constant power throughout, so internal energy increases steadily, as in Q. Therefore D is correct."
+    ]
+  },
+  "tb-104-5": {
+    "chn": [
+      "在沸點汽化時，供應能量 E=mlᵥ，因此能量—質量圖的斜率 E/m 就是汽化比潛熱，單位 J kg⁻¹。",
+      "圖中沒有溫度或溫度變化資料，不能求比熱容，也不能讀出沸點。只有 (2) 可求，選 A。"
+    ],
+    "eng": [
+      "For vaporization at the boiling point, E=mlᵥ. The gradient of the energy–mass graph is therefore the specific latent heat of vaporization, in J kg⁻¹.",
+      "The graph supplies neither a temperature nor a temperature change, so it cannot give the boiling point or specific heat capacity. Only (2) can be found: A."
+    ]
+  },
+  "tb-105-1": {
+    "chn": [
+      "壓強 p=F/A。穿雪鞋後，承托同一人的力仍約等於其重量，但與雪接觸的面積增大，故施於雪面的壓強減小。",
+      "雪較不容易被壓陷，所以行走較容易。原因是接觸面積增大，不是重量減少或壓強增大，選 A。"
+    ],
+    "eng": [
+      "Pressure is p=F/A. The supporting force is still approximately the person's weight, but snowshoes spread it over a larger contact area, reducing pressure on the snow.",
+      "The snow is less likely to give way, making walking easier. The reason is the increased area, not a reduction in weight or an increase in pressure: A."
+    ]
+  },
+  "tb-105-2": {
+    "chn": [
+      "N 是分子總數，Nₐ 是阿伏伽德羅常數，所以物質的量為 N/Nₐ mol；每個分子的質量為 m，氣體總質量便是 Nm。故 (1)、(3) 正確。",
+      "式中的 c² 上劃線表示速率平方的平均值，不代表每個分子速率相同。氣體分子有不同速率，因此 (2) 錯，選 B。"
+    ],
+    "eng": [
+      "N is the number of molecules and Nₐ is Avogadro's constant, so the amount is N/Nₐ mol. With mass m per molecule, the total gas mass is Nm. Statements (1) and (3) are correct.",
+      "The overbar on c² denotes a mean square speed, not a common speed of every molecule. Molecules have a distribution of speeds, so (2) is false. Choose B."
+    ]
+  },
+  "tb-105-4": {
+    "chn": [
+      "氣體會充滿整個可用空間，所以剩餘氦氣仍充滿氣球內部，(2) 錯。氣球在平衡時內壓須平衡外界氣壓及橡膠的收縮作用，不能說內壓較外壓小，(1) 錯。",
+      "外界氣壓降低時，原有內壓會使氣球膨脹，直至達到新的平衡，故 (3) 正確，選 B。"
+    ],
+    "eng": [
+      "A gas fills all available space, so the remaining helium still fills the balloon: (2) is false. At equilibrium its pressure balances external pressure and the rubber's inward elastic effect; it is not lower than external pressure, so (1) is false.",
+      "Reducing external pressure allows the gas to expand until a new equilibrium is reached. Only (3) is correct: B."
+    ]
+  },
+  "tb-201-1": {
+    "chn": [
+      "路程是實際路徑的總長。走到 Z 須先走 X→Y 再走 Y→Z，路程必然比只走到 Y 長，且彎曲路徑長於 XZ 的直線距離，所以 (1)、(2) 錯。",
+      "位移大小只看起點與終點的直線距離。圖中 XY 和 XZ 都是三格，大小相同，只有 (3) 正確，選 A。"
+    ],
+    "eng": [
+      "Distance is the total path length. Reaching Z requires both X→Y and Y→Z, so it is longer than the journey to Y alone. The curved path also exceeds the straight-line distance XZ. Thus (1) and (2) are false.",
+      "Displacement magnitude is the straight-line separation of the endpoints. XY and XZ are both three grid squares, so only (3) is correct: A."
+    ]
+  },
+  "tb-201-2": {
+    "chn": [
+      "總路程=平均速率×時間=3×1=3 km。位移大小不會超過路程，因此全程平均速度的大小不會超過 3 km h⁻¹，D 是錯誤敍述。",
+      "平均值不是瞬時值的上限：她可以某段走得較快、另一段較慢，所以瞬時速率和瞬時速度大小均可大於 3 km h⁻¹。"
+    ],
+    "eng": [
+      "Total distance=average speed×time=3×1=3 km. Displacement magnitude cannot exceed distance, so the magnitude of average velocity over the trip cannot exceed 3 km h⁻¹. D is incorrect.",
+      "An average is not an upper limit on instantaneous values. She can walk faster during one interval and slower during another, so instantaneous speed and velocity magnitude can exceed 3 km h⁻¹."
+    ]
+  },
+  "tb-202-3": {
+    "chn": [
+      "忽略空氣阻力，2H=½g(2T)²=2gT²，所以 H=gT²。跌下距離 H 後，由 v₁²=2gH 得 v₁=√2 gT。",
+      "跌下時間 T 後，v₂=gT。因此 v₁=√2 v₂>v₂，選 A。物體越跌越快，前半段時間只跌完整高度的四分之一。"
+    ],
+    "eng": [
+      "Neglecting air resistance, 2H=½g(2T)²=2gT², hence H=gT². After falling through H, v₁²=2gH gives v₁=√2 gT.",
+      "After time T, v₂=gT. Thus v₁=√2 v₂>v₂, so A is correct. Because the object speeds up, the first half of the total time covers only a quarter of the total height."
+    ]
+  },
+  "tb-202-4": {
+    "chn": [
+      "速度—時間圖下的有正負面積代表位移。由 P 至 Q，速度為負，物體一直遠離起點；Q 的速度為零，之後速度轉正，物體開始返回。",
+      "Q 之後的正面積使原有負位移減少；比較各段有正負面積可見，R、S 及之後的位移大小均未超過 Q 時。因此最遠時刻是 Q，選 B。"
+    ],
+    "eng": [
+      "Signed area under a velocity–time graph gives displacement. From P to Q the velocity is negative, so the object moves away from its starting position. At Q the velocity is zero; it then becomes positive and the object returns.",
+      "The positive area after Q reduces the accumulated negative displacement. Comparing the signed areas shows that the displacement magnitudes at R, S and afterwards do not exceed the value at Q. The furthest point is therefore Q: B."
+    ]
+  },
+  "tb-202-8": {
+    "chn": [
+      "取向上為正，離開跳板後的加速度為 −g。由 v²=u²−2gs，v²–s 圖是負斜率直線；由 v=u−gt，v–t 圖也是負斜率直線，越過零點表示由上升轉為下降。",
+      "位移 s=ut−½gt²，s–t 圖應為曲線，不是恆定斜率的直線。因此 (1)、(2) 正確，選 B。"
+    ],
+    "eng": [
+      "Taking upward as positive, the acceleration after leaving the board is −g. From v²=u²−2gs, the v²–s graph is a straight line with negative gradient. From v=u−gt, the v–t graph is also a straight line with negative gradient, crossing zero at the top.",
+      "Displacement is s=ut−½gt², so the s–t graph is curved rather than a constant-gradient straight line. Statements (1) and (2) are correct: B."
+    ]
+  },
+  "tb-203-1": {
+    "chn": [
+      "重量是引力，有大小和方向；加速度描述速度的改變，也有大小和方向，所以兩者均為矢量。",
+      "速率只有大小，是標量；有方向的是速度。因此只有 (1)、(2)，選 B。"
+    ],
+    "eng": [
+      "Weight is a gravitational force and has magnitude and direction. Acceleration, the rate of change of velocity, also has both. They are vectors.",
+      "Speed has magnitude only and is a scalar; velocity is the corresponding vector. Therefore (1) and (2) only are correct: B."
+    ]
+  },
+  "tb-203-2": {
+    "chn": [
+      "真空中沒有空氣阻力，近地面自由落體的加速度均為 g，與質量無關，(1) 正確。",
+      "合力是重量 mg，質量不同時合力不同；在此近地面模型中 g 視為恆定，合力不會持續減小。因此 (2)、(3) 不成立，選 A。"
+    ],
+    "eng": [
+      "In a vacuum there is no air resistance. Near Earth's surface, free-fall acceleration is g for both objects, independent of mass, so (1) is correct.",
+      "The resultant force is mg and can differ if the masses differ. In this near-surface model g is constant, so the force does not keep decreasing. Thus (2) and (3) are false: A."
+    ]
+  },
+  "tb-203-3": {
+    "chn": [
+      "作用力與反作用力是同一相互作用中，一物體對另一物體的力，以及後者對前者的力。兩力等大反向，作用在不同物體上。",
+      "男孩對牆的推力與牆對男孩的力正好是一對，選 B。重量與地面支持力雖可能平衡，但都作用於男孩，並非第三定律的力對。"
+    ],
+    "eng": [
+      "An action–reaction pair consists of the force of one object on another and the force of the second on the first in the same interaction. The forces are equal, opposite and act on different objects.",
+      "The boy's push on the wall and the wall's force on the boy form such a pair: B. Weight and normal reaction may balance, but both act on the boy and are not a third-law pair."
+    ]
+  },
+  "tb-203-4": {
+    "chn": [
+      "渡輪以恆定速度移動，加速度為零。由牛頓第二定律，水平方向的合力也為零。",
+      "向前拉力 T 與向後水阻力 f 平衡，即 T−f=0，所以 T=f，選 B。維持勻速並不需要向前的淨力。"
+    ],
+    "eng": [
+      "The ferry moves at constant velocity, so its acceleration is zero. Newton's second law therefore requires zero horizontal resultant force.",
+      "The forward tension balances the backward water resistance: T−f=0, hence T=f. Choose B. Constant velocity does not require a forward net force."
+    ]
+  },
+  "tb-203-5": {
+    "chn": [
+      "扶手電梯突然停下時，身體因慣性傾向保持原來速度；握着扶手可提供使身體減速的力，避免失去平衡，故 (3) 正確。",
+      "勻速移動不需要扶手持續提供向前淨力；摩擦力反對相對滑動的趨勢，不一定反對人的運動方向。因此只有 (3)，選 B。"
+    ],
+    "eng": [
+      "If the escalator stops suddenly, inertia tends to keep the body moving. Holding the handrail provides a force that helps slow the body and prevents loss of balance, so (3) is correct.",
+      "Steady motion does not require a continuing forward resultant force from the handrail. Friction opposes relative slipping, not necessarily the person's direction of motion. Only (3) is correct: B."
+    ]
+  },
+  "tb-203-8": {
+    "chn": [
+      "巴士起動時，男孩上身因慣性傾向保持靜止，而腳隨車向前，因而相對車廂向後傾；並非真的受到向後拉力，(1) 是慣性的直接表現。",
+      "推人後自己後退是作用力與反作用力的結果；不同質量物體自由落體有相同加速度則由 mg=ma 解釋。因此只有 (1)，選 A。"
+    ],
+    "eng": [
+      "When the bus starts, the boy's upper body tends to remain at rest while his feet move forward with the bus. He leans backward relative to the bus without a real backward pulling force. This directly illustrates inertia.",
+      "Moving backward after pushing someone is explained by action and reaction. Equal free-fall accelerations follow from mg=ma. Only (1) is a direct illustration of inertia: A."
+    ]
+  },
+  "tb-203-10": {
+    "chn": [
+      "兩條圖線的速度均為正，所以兩物體沿相同方向移動，(1) 錯。X 的加速度為 (3−7)/5=−0.8 m s⁻²，Y 為 (7−3)/5=+0.8 m s⁻²。",
+      "由 F=ma，合力方向與各自加速度同向，因此兩合力反向；但未知兩者質量，不能斷定合力大小相同。只有 (2)，選 B。"
+    ],
+    "eng": [
+      "Both velocities are positive, so the objects move in the same direction and (1) is false. X has acceleration (3−7)/5=−0.8 m s⁻²; Y has (7−3)/5=+0.8 m s⁻².",
+      "By F=ma the resultant forces point in opposite directions. Their magnitudes need not be equal because the masses are unknown. Only (2) must hold: B."
+    ]
+  },
+  "tb-204-4": {
+    "chn": [
+      "貨車與箱子均勻速運動，箱子加速度為零。垂直方向只有向下重量和地板向上的支持力，兩者平衡。",
+      "箱子只是靠近牆，並沒有因水平加速而壓向牆；在題設下不需水平力來維持運動，也不需摩擦力。因此符合的受力圖為 A。"
+    ],
+    "eng": [
+      "The truck and box move at constant velocity, so the box has zero acceleration. Its downward weight and the upward normal force from the floor balance.",
+      "Merely being against the wall does not imply a horizontal force: there is no horizontal acceleration pressing the box into it. No frictional force is needed to maintain uniform motion. Diagram A is correct."
+    ]
+  },
+  "tb-207-1": {
+    "chn": [
+      "運動員由相同落地速度停下，動量改變並不因軟墊而減少，所以 (1) 錯。軟墊變形，延長停止所需的時間。",
+      "由平均合力 F=Δp/Δt，動量改變相同但撞擊時間較長，動量變化率及平均撞擊力便較小。因此 (2)、(3) 正確，選 D。"
+    ],
+    "eng": [
+      "Stopping from the same landing velocity produces the same momentum change, so the mat does not reduce Δp and (1) is false. The mat deforms, extending the stopping time.",
+      "From average resultant force F=Δp/Δt, the longer time reduces the rate of momentum change and the average impact force. Statements (2) and (3) are correct: D."
+    ]
+  },
+  "tb-202-5": {
+    "chn": [
+      "由靜止作勻加速運動，s=½at²，故 s–t² 圖應為通過原點的直線，符合 (2)。s–t 圖的斜率是速度，直線代表勻速，不符合 (1)。",
+      "由 v²=2as，s–v² 圖也應通過原點；(3) 有非零橫截距，表示初速不為零。因此只有 (2)，選 B。"
+    ],
+    "eng": [
+      "For uniform acceleration from rest, s=½at², so an s–t² graph is a straight line through the origin, as in (2). A straight s–t graph has constant velocity and does not fit (1).",
+      "Also v²=2as, so the s–v² graph must pass through the origin. The non-zero horizontal intercept in (3) implies a non-zero initial speed. Only (2) fits: B."
+    ]
+  },
+  "tb-209-2": {
+    "chn": [
+      "線速度沿圓周的切線，方向與轉動方向一致。圖示順時針轉動，在點心所在位置，切線方向為 s。",
+      "速率雖不變，速度方向持續改變，故有指向圓心的向心加速度 a=ω²r，方向為 p。因此 v 沿 s、a 沿 p，選 C。"
+    ],
+    "eng": [
+      "Linear velocity is tangent to the circle in the direction of rotation. For the clockwise rotation shown, its direction at the dish is s.",
+      "Although speed is constant, velocity changes direction. The centripetal acceleration a=ω²r points towards the centre, along p. Thus v is along s and a along p: C."
+    ]
+  },
+  "tb-3A01-1": {
+    "chn": [
+      "平面鏡的像距等於物距。男孩離鏡面遠 2 m，他的像亦在鏡後離鏡面遠 2 m。",
+      "人與像的距離是物距加像距，合共增加 2+2=4 m，選 B。"
+    ],
+    "eng": [
+      "A plane-mirror image is as far behind the mirror as the object is in front. When the boy moves 2 m away, his image also moves 2 m farther behind it.",
+      "The object–image separation increases by 2+2=4 m. Therefore B is correct."
+    ]
+  },
+  "tb-3A01-2": {
+    "chn": [
+      "Mike 的像在鏡後 1 m。Vicky 在鏡前 2 m，且與 Mike 橫向相隔 4 m，所以她與像的直線距離為 √[4²+(2+1)²]=5 m。平面鏡的像左右倒置，(1)、(2) 正確。",
+      "連接 Vicky 與 Mike 的虛像，這條視線在鏡面所在直線上的交點位於 Mike 左方 4/3 m；實際鏡面只伸至其左方 1 m，光線無法由鏡面反射至 Vicky。因此 (3) 也正確，選 D。"
+    ],
+    "eng": [
+      "Mike's image is 1 m behind the mirror. Vicky is 2 m in front and 4 m sideways from Mike, so her distance from the image is √[4²+(2+1)²]=5 m. A plane mirror also produces lateral inversion. Thus (1) and (2) are correct.",
+      "The line joining Vicky to the virtual image meets the mirror plane 4/3 m to Mike's left. The actual mirror extends only 1 m to his left, so this ray cannot reach Vicky by reflection at the mirror. Statement (3) is also correct: D."
+    ]
+  },
+  "tb-3A01-3": {
+    "chn": [
+      "本題把光滑金屬面視為平面反射面。各處法線平行，由反射角等於入射角，平行入射光反射後仍平行，(1) 正確。",
+      "平面反射不會把會聚光自動變成平行光，也不會把發散光變成會聚光；這需要具合適曲率的光學元件。因此只有 (1)，選 A。"
+    ],
+    "eng": [
+      "The smooth metal surface is treated as a plane reflector. Its normals are parallel, and the law of reflection makes parallel incident rays remain parallel: (1) is correct.",
+      "A plane reflector does not turn a convergent beam into a parallel beam or a divergent beam into a convergent one. Suitable optical curvature would be needed. Only (1) is correct: A."
+    ]
+  },
+  "tb-3A01-4": {
+    "chn": [
+      "刺眼反光是白板的較光滑表面把強光集中反射至眼睛，主要屬鏡面反射，不是漫反射，故 (1) 錯。",
+      "窗簾減少入射光；較粗糙的板面把光散射到不同方向，減少特定方向的強反光。因此 (2)、(3) 正確，選 D。"
+    ],
+    "eng": [
+      "Glare occurs when the relatively smooth board sends strong light towards the eyes by specular reflection. It is not caused by diffuse reflection, so (1) is false.",
+      "Curtains reduce incoming light. A rougher board distributes reflected light over more directions, reducing concentrated glare. Statements (2) and (3) are correct: D."
+    ]
+  },
+  "tb-3A01-8": {
+    "chn": [
+      "把 F 的各個端點沿鏡面的法線投影，在鏡後相同垂直距離處取對應像點，再連成像。物與像大小相同，且相對鏡面對稱。",
+      "鏡面傾斜時不能只把 F 在紙面上水平翻轉；須以鏡面本身作對稱軸。只有 A 的位置和方向符合，故選 A。"
+    ],
+    "eng": [
+      "For each endpoint of F, place its image the same perpendicular distance behind the mirror, then join the corresponding image points. The image has the same size and is symmetric about the mirror.",
+      "For an inclined mirror, simply flipping F horizontally on the page is not sufficient; the mirror itself is the symmetry axis. Only diagram A has the correct position and orientation."
+    ]
+  },
+  "tb-3A01-9": {
+    "chn": [
+      "平面鏡形成虛像：進入眼睛的光線實際由物體經鏡面反射而來，只是其反向延長線看似從鏡後的像點發出。像點本身不發光，也不反射光。",
+      "因此 D 正確。平面鏡的線性放大率為 1，物體遠離鏡面時，像的實際大小不變，雖然看起來的角大小可變小。"
+    ],
+    "eng": [
+      "A plane mirror forms a virtual image. Light entering the eye comes from the object and reflects at the mirror; only the backward extensions appear to originate behind it. The image position neither emits nor reflects light.",
+      "Therefore D is correct. A plane mirror has magnification 1, so the image's actual size does not shrink as the object moves away, though its angular size can decrease."
+    ]
+  },
+  "tb-3A03-1": {
+    "chn": [
+      "對實物而言，凹透鏡形成正立縮小虛像；平面鏡形成正立等大虛像。凸透鏡在物體位於透鏡與焦點之間時，形成正立放大虛像。",
+      "三種元件都能形成虛像。關鍵是凸透鏡的成像性質取決於物距，不能一概說只形成實像，故選 D。"
+    ],
+    "eng": [
+      "For a real object, a concave lens forms an upright diminished virtual image and a plane mirror forms an upright same-size virtual image. A convex lens forms an upright magnified virtual image when the object is inside its focal length.",
+      "All three can therefore form virtual images. A convex lens does not always produce a real image; its behaviour depends on object distance. Choose D."
+    ]
+  },
+  "tb-3B04-1": {
+    "chn": [
+      "週期 T 是完成一次完整振動的時間，也等於波形前進一個波長所需時間。一次完整振動中，質點走過的總路程是 4A。",
+      "質點每半個週期可再次經過平衡位置，但此時運動方向相反，尚未完成一週。因此「返回平衡位置的時間」不能直接當作週期，錯誤敍述是 D。"
+    ],
+    "eng": [
+      "The period T is the time for one complete oscillation, also the time for a wave feature to travel one wavelength. A particle travels a total distance 4A in one complete oscillation.",
+      "A particle can return to equilibrium after half a period, moving in the opposite direction. Returning to equilibrium alone does not define a complete cycle. D is incorrect."
+    ]
+  },
+  "tb-3B05-1": {
+    "chn": [
+      "障礙物前有反射波，顯示反射；障礙物邊緣附近的波紋彎曲並傳入後方區域，顯示繞射。",
+      "入射波與反射波重疊，形成明暗相間的波紋分佈，顯示干涉。因此三種現象均可見，選 D。"
+    ],
+    "eng": [
+      "Reflected waves are visible in front of the barrier. Curving wavefronts spreading around its edge into the region behind it show diffraction.",
+      "The incident and reflected waves overlap, producing the interference pattern seen in the image. All three phenomena are present: D."
+    ]
+  },
+  "tb-3B06-2": {
+    "chn": [
+      "光柵主極大的條件是 d sinθ=nλ，正、負級次的角度大小相同，因此圖樣關於中央亮紋對稱，(2) 正確。",
+      "屏上位置為 y=L tanθ，並非對 n 精確線性，故亮紋一般不等距。單色光只有一個 λ，相鄰級次對應不同方向，不會像不同波長的光譜級次般重疊。因此選 A。"
+    ],
+    "eng": [
+      "Grating principal maxima satisfy d sinθ=nλ. Positive and negative orders have equal angular magnitudes, so the pattern is symmetric about the central maximum: (2) is correct.",
+      "Screen position is y=L tanθ, which is not exactly proportional to order n; the fringes are generally not equally spaced. With one wavelength, adjacent orders have distinct directions rather than overlapping like orders of different wavelengths. Choose A."
+    ]
+  },
+  "tb-3B06-6": {
+    "chn": [
+      "電磁波涵蓋很廣的波長範圍，例如無線電波可以有很長的波長，所以 (1) 錯。所有電磁波在真空中的速率都是 c，但在物質介質中的速率可不同。",
+      "電磁波能傳遞能量，例如太陽輻射加熱物體。因此 (2)、(3) 正確，選 C。"
+    ],
+    "eng": [
+      "Electromagnetic waves span a broad wavelength range; radio waves can have very long wavelengths, so (1) is false. All travel at c in vacuum, but their speeds can differ in material media.",
+      "They carry energy, as illustrated by heating due to sunlight. Statements (2) and (3) are correct: C."
+    ]
+  },
+  "tb-3B07-4": {
+    "chn": [
+      "繞射是聲波繞過障礙物或穿過孔隙後擴散；干涉是聲波疊加造成增強和相消。這兩種現象是波動性的強證據。",
+      "單看反射或路徑彎折，仍可用粒子運動模型作某些類比，證據不及繞射與干涉直接。因此選 (3)、(4)，即 D。"
+    ],
+    "eng": [
+      "Diffraction is the spreading of sound around obstacles or through openings. Interference involves reinforcement and cancellation through superposition. These are strong signatures of wave behaviour.",
+      "Reflection or a change of path alone can also have particle-model analogies and is less decisive evidence. Choose (3) and (4): D."
+    ]
+  },
+  "tb-401-1": {
+    "chn": [
+      "絕緣體中的多餘電荷不能像導體中那樣自由移動。短暫把一處接地，不能令整個帶電絕緣體的電荷流走而完全中和，因此 D 錯。",
+      "塑膠可摩擦起電，也可使中性金屬箔感應出電荷分離而吸引它；但一般導體式的靜電感應起電步驟不適用於電荷不能自由遷移的塑膠。"
+    ],
+    "eng": [
+      "Excess charge cannot move freely through an insulator as it does through a conductor. Briefly earthing one point therefore does not drain charge from the whole object and make it neutral. D is incorrect.",
+      "Plastic can be charged by friction and can attract neutral metal foil by inducing charge separation in it. However, the usual conductor-based induction charging procedure does not apply to plastic, whose charges cannot migrate freely."
+    ]
+  },
+  "tb-401-2": {
+    "chn": [
+      "正電棒吸引電子移向 X，使接觸中的兩金屬球電荷重新分佈，Y 原先因缺電子而帶正電。接地後，地球的電子流入相連的金屬球。",
+      "流入的電子中和遠端 Y 的正電荷，而靠近電棒的 X 保留受吸引的負電荷。移動的是電子，不是金屬原子核。因此選 B。"
+    ],
+    "eng": [
+      "The positive rod attracts electrons towards X, leaving the remote sphere Y electron-deficient. When the connected spheres are earthed, electrons flow from Earth into them.",
+      "These electrons neutralize the positive charge on the remote sphere Y, while negative charge remains attracted near the rod on X. Electrons move through the metal, not its nuclei. Therefore B is correct."
+    ]
+  },
+  "tb-405-5": {
+    "chn": [
+      "圖中兩導線之間的磁場均指向上方，表示兩個磁場在中間同向疊加。用右手握線定則，左導線電流穿出平面、右導線電流穿入平面，才有此方向。",
+      "(2) 的兩直導線電流相反，(3) 的線圈兩側穿過平面的電流也相反，均符合；(1) 電流同向，中間磁場會互相抵消。因此選 D。"
+    ],
+    "eng": [
+      "Between the two wires, the field points upward and the two contributions reinforce. The right-hand grip rule requires the left current to emerge from the plane and the right current to enter it.",
+      "Arrangement (2) has these opposite currents, as do the two sides of the loop in (3). In (1) the currents run in the same direction and their fields oppose between the wires. Choose D."
+    ]
+  },
+  "tb-501-4": {
+    "chn": [
+      "即使枱面沒有放射源，附近實驗用的放射源仍可能有輻射到達探測器；宇宙射線也是背景輻射來源。",
+      "牆壁等建築材料含有微量天然放射性物質，亦可產生計數。三者都是可能來源，因此選 D。"
+    ],
+    "eng": [
+      "Even with a clear bench, radiation from an experimental source elsewhere nearby may reach the detector. Cosmic rays also contribute to background radiation.",
+      "Building materials such as laboratory walls contain traces of naturally radioactive substances and can contribute counts. All listed sources are possible, so D is correct."
+    ]
+  },
+  "tb-501-5": {
+    "chn": [
+      "把碰撞視為 α 粒子與原先靜止的氦核的彈性碰撞。相同質量時，動量守恆給出 u=v₁+v₂（矢量式），動能守恆給出 u²=v₁²+v₂²。",
+      "兩式合併得 2v₁·v₂=0，所以碰後兩軌跡互相垂直。直角分叉支持 α 粒子與氦核質量相同，選 B；單憑軌跡角度不能確定其內部質子、中子數。"
+    ],
+    "eng": [
+      "Treat the collision between the alpha particle and an initially stationary helium nucleus as elastic. For equal masses, momentum conservation gives u=v₁+v₂ as a vector equation, while energy conservation gives u²=v₁²+v₂².",
+      "Combining them gives 2v₁·v₂=0, so the outgoing tracks are perpendicular. The right-angle fork supports equal masses: B. The angle alone does not determine the numbers of protons and neutrons inside the alpha particle."
+    ]
+  },
+  "tb-502-2": {
+    "chn": [
+      "核子是質子和中子的統稱。在核素符號中，A 為質量數，即核子總數；Z 為原子序數，即質子數。",
+      "中子數是 A−Z，故核子總數為 Z+(A−Z)=A，選 A。"
+    ],
+    "eng": [
+      "Nucleons are protons and neutrons. In nuclide notation, A is the mass number, or total nucleon number, while Z is the atomic number, or proton number.",
+      "There are A−Z neutrons, so the total is Z+(A−Z)=A. Choose A."
+    ]
+  },
+  "tb-E101-2": {
+    "chn": [
+      "星團是由互相受引力束縛的一群恆星組成，因此 D 正確。",
+      "星系是規模更大的恆星、氣體、塵埃等系統，可包含許多星團；星團不是小星系，也不是星系的集合。星雲則主要是氣體和塵埃。"
+    ],
+    "eng": [
+      "A star cluster is a group of stars bound together by gravity, so D is correct.",
+      "A galaxy is a much larger system of stars, gas and dust that can contain many star clusters. A cluster is neither a small galaxy nor an assembly of galaxies. A nebula consists mainly of gas and dust."
+    ]
+  },
+  "tb-E103-3": {
+    "chn": [
+      "宇宙膨脹使大尺度上星系間的距離增加，故大多數星系相對我們退行。附近少數受局部引力影響的星系可接近我們，並不否定 (1)。",
+      "在本題採用的哈勃定律範圍，v=H₀d，退行速率與距離成正比；膨脹亦使光的波長變長，出現紅移。因此三項均正確，選 D。"
+    ],
+    "eng": [
+      "Cosmic expansion increases separations between galaxies on large scales, so most galaxies recede from us. Some nearby galaxies can approach because of local gravitational motions without invalidating (1).",
+      "Within the Hubble-law regime used here, v=H₀d, so recession speed is proportional to distance. Expansion also stretches light to longer wavelengths, producing redshift. All three statements are correct: D."
+    ]
+  },
+  "tb-E103-11": {
+    "chn": [
+      "理想黑體的光譜只由溫度決定。溫度升高時，各波長的單位面積光譜輻射強度都增加；由維恩位移定律 λₘₐₓT=常數，峰值位置只取決於溫度。",
+      "把恆星近似為黑體，可利用峰值位置推斷其表面溫度及大致顏色：較熱偏藍白、較冷偏紅。顏色取決於整個可見光譜，並不是只看單一峰值波長。因此按本題近似，三項均正確，選 D。"
+    ],
+    "eng": [
+      "An ideal blackbody spectrum is determined by temperature. Raising the temperature increases spectral intensity per unit area at every wavelength. Wien's law, λₘₐₓT=constant, makes the peak position depend only on temperature.",
+      "Approximating a star as a blackbody, the peak indicates its surface temperature and broad colour trend: hotter stars are blue-white and cooler stars reddish. Perceived colour uses the whole visible spectrum, not just one wavelength. Under this approximation all three statements are correct: D."
+    ]
+  },
+  "tb-E203-1": {
+    "chn": [
+      "電子帶電，運動時可受磁場力而改變方向。透射電子顯微鏡以電磁鐵產生適當磁場，把電子束聚焦，作用類似凸透鏡聚焦光線。",
+      "這些「透鏡」不是供可見光通過的玻璃或鑽石透鏡，也不是由電子本身組成，因此選 C。"
+    ],
+    "eng": [
+      "Moving electrons are charged and can be deflected by magnetic forces. In a TEM, electromagnets create fields that focus the electron beam, analogous to an optical convex lens focusing light.",
+      "These lenses are not glass or diamond optical lenses, nor are they made of electrons. Choose C."
+    ]
+  },
+  "tb-E203-2": {
+    "chn": [
+      "TiO₂ 納米粒子可吸收或散射紫外線，因此能阻隔紫外線。在合適光照下，其光催化作用可分解有機污物，並有助抑制或破壞細菌。",
+      "這些作用帶來防紫外線、抗菌及自潔功能；實際效果取決於配方和光照等條件。本題列出的三種功能均成立，選 D。"
+    ],
+    "eng": [
+      "TiO₂ nanoparticles can absorb or scatter ultraviolet radiation. Under suitable illumination their photocatalytic activity can break down organic dirt and help suppress or destroy bacteria.",
+      "These mechanisms provide UV blocking, antibacterial and self-cleaning properties, with effectiveness depending on formulation and lighting. All three listed functions apply: D."
+    ]
+  },
+  "tb-E203-3": {
+    "chn": [
+      "STM 探針可在適當條件下操控表面原子，而且量度表面的隧穿電流，不需要電子穿透樣品，所以無須把樣品製成極薄切片。",
+      "STM 和 TEM 均可達到原子尺度的分辨能力，不能概括說 STM 的分辨本領必然高很多。因此 (2)、(3) 是所列優點，選 C。"
+    ],
+    "eng": [
+      "An STM tip can manipulate surface atoms under suitable conditions. It measures tunnelling current at the surface, so electrons need not pass through the sample and an ultrathin specimen is unnecessary.",
+      "Both STM and TEM can achieve atomic-scale resolution; STM does not categorically have a much higher resolving power. Statements (2) and (3) are the listed advantages: C."
+    ]
+  },
+  "tb-E203-6": {
+    "chn": [
+      "縮小至納米尺度後，表面原子比例增大，且電子的能級和運動可受尺寸限制。這些效應可改變熔點、光的吸收與散射，以及電荷輸運。",
+      "因此熔點、透明度和導電性都有可能改變，但變化方向視物料而定。三項均有可能，選 D。"
+    ],
+    "eng": [
+      "At nanoscale sizes, a larger fraction of atoms lies at the surface, and size confinement can affect electronic states and motion. These effects can alter melting, light absorption or scattering, and charge transport.",
+      "Melting point, transparency and electrical conductivity may all change. The direction of each change depends on the material. All three are possible: D."
+    ]
+  },
+  "tb-E301-1": {
+    "chn": [
+      "最終用途效率=有用輸出能量÷輸入能量×100%。電風扇的用途是使空氣流動，因此有用輸出是空氣的動能 E₃，輸入是電能 E₁。",
+      "扇葉的動能不是最終提供給空氣的能量，馬達內能屬能量損耗。因此效率為 E₃/E₁×100%，選 A。"
+    ],
+    "eng": [
+      "End-use efficiency=useful output energy/input energy×100%. The fan's purpose is to move air, so useful output is the air's kinetic energy E₃ and input is electrical energy E₁.",
+      "Energy stored in the blades is not the final energy delivered to the air, and motor heating is a loss. The efficiency is E₃/E₁×100%: A."
+    ]
+  },
+  "tb-E301-6": {
+    "chn": [
+      "電熱板的電阻線通電發熱，再把熱傳到鍋，因此 (1) 正確。電磁爐在鍋內產生感應電流使鍋發熱，熱鍋可反過來加熱爐面，所以 (2) 正確。",
+      "微波爐主要讓食物吸收微波能量而升溫，不是先把內壁加熱再向食物傳熱。因此 (3) 錯，選 B。"
+    ],
+    "eng": [
+      "In a hotplate, the resistance wire heats electrically and transfers heat to the pot, so (1) is correct. An induction cooker heats the pot through induced currents; the hot pot can then warm the top plate, so (2) is correct.",
+      "A microwave oven primarily heats food by absorption of microwave energy, not by first heating the inner casing. Thus (3) is false: B."
+    ]
+  },
+  "tb-E301-9": {
+    "chn": [
+      "把相同質量的水由相同溫度加熱至沸點，所需有用能量 Q=mcΔT 相同。兩壺有用輸出功率相同，所以所需時間 t=Q/Pₒᵤₜ 相同，不是效率較高便更快，故 B 錯。",
+      "η=Pₒᵤₜ/Pᵢₙ，在相同輸出下效率較高意味着輸入功率較低。由 Eᵢₙ=Pᵢₙt，效率較低的壺消耗更多電能，散失能量也更多。"
+    ],
+    "eng": [
+      "Heating equal masses of water through the same temperature rise requires the same useful energy Q=mcΔT. Equal useful output powers give equal times t=Q/Pₒᵤₜ, so greater efficiency does not make boiling faster here. B is incorrect.",
+      "Since η=Pₒᵤₜ/Pᵢₙ, higher efficiency at fixed output means lower input power. With the same heating time, Eᵢₙ=Pᵢₙt is larger for the less efficient kettle, as is wasted energy."
+    ]
+  },
+  "tb-E302-1": {
+    "chn": [
+      "照度是單位面積接收的光通量，E=Φ/A。光通量單位是流明 lm，面積單位是 m²。",
+      "因此照度的單位為 lm m⁻²，又稱勒克斯 lx，選 D。lm W⁻¹ 則是發光效能的單位。"
+    ],
+    "eng": [
+      "Illuminance is luminous flux received per unit area: E=Φ/A. Luminous flux is measured in lumens and area in square metres.",
+      "Thus illuminance is measured in lm m⁻², also called lux (lx): D. The unit lm W⁻¹ instead measures luminous efficacy."
+    ]
+  },
+  "tb-E302-2": {
+    "chn": [
+      "白熾燈靠高溫燈絲產生連續光譜的熱輻射；微觀上涉及材料中帶電粒子的運動和能量轉移。本題以電子能量轉移描述發光，因此 (1) 按課本語境成立，不應理解為氣體原子的離散線光譜。",
+      "不同功率的燈不能只按種類判斷總光通量大小，(2) 並非一般必然關係。白熾燈較多能量以紅外線散失，發光效能通常低於慳電膽，(3) 錯。因此選 A。"
+    ],
+    "eng": [
+      "An incandescent lamp emits continuous-spectrum thermal radiation from a hot filament, microscopically involving charged-particle motion and energy exchanges in the material. Statement (1) is accepted in the textbook's broad description of electronic energy changes; it should not be read as a discrete gas-atom line spectrum.",
+      "Total luminous flux cannot be compared from lamp type alone without specifying power, so (2) is not a general necessary relation. Much filament radiation is infrared, making incandescent efficacy generally lower than CFL efficacy; (3) is false. Choose A."
+    ]
+  },
+  "tb-E302-3": {
+    "chn": [
+      "P 和 Q 的光功率及顏色相同，但 X 距光源較遠。按照度的反平方關係，X 的照度低於 Y。",
+      "Y 和 Z 與各自光源距離相同，而人眼對約 550 nm 的綠光比約 630 nm 的橙光敏感；相同輻射功率下，綠光的光通量較大。因此照度次序為 X<Y<Z，選 A。"
+    ],
+    "eng": [
+      "P and Q have equal radiant power and the same colour, but X is farther from its source. The inverse-square relation makes illuminance at X lower than at Y.",
+      "Y and Z are equally far from their sources. The eye is more sensitive to green light near 550 nm than orange light near 630 nm, so equal radiant power gives greater luminous flux for R. Hence X<Y<Z: A."
+    ]
+  },
+  "tb-E302-5": {
+    "chn": [
+      "光通量是按人眼對不同波長的敏感程度加權的可見光輸出，單位為 lm，不是單純以 W 計的可見光輻射功率，所以 (2) 正確、(3) 不正確。",
+      "光源的總光通量不因觀察距離改變；對各向均勻點光源而言，隨距離平方反比減少的是接收面的照度。因此 (1) 錯，選 A。"
+    ],
+    "eng": [
+      "Luminous flux is visible output weighted by the eye's wavelength sensitivity and is measured in lumens. It is not simply visible radiant power measured in watts. Thus (2) is correct and (3) is false.",
+      "A source's total luminous flux does not change with viewing distance. It is illuminance on a receiving surface that obeys the inverse-square relation for an isotropic point source. Hence (1) is false: A."
+    ]
+  },
+  "tb-E302-9": {
+    "chn": [
+      "人眼對綠光比對紅光敏感。要產生相同光通量，紅光燈 P 必須輸出較大的可見光輻射功率，所以 (3) 正確。",
+      "電力輸入還取決於各燈把電能轉為光的效率，題目沒有提供。發光效能為光通量除以電力輸入，因此不能判定輸入功率或發光效能的高低。只有 (3)，選 B。"
+    ],
+    "eng": [
+      "The eye is more sensitive to green than red light. To produce the same luminous flux, red lamp P must emit greater visible radiant power, so (3) is correct.",
+      "Electrical input also depends on each lamp's electrical-to-light conversion efficiency, which is unspecified. Luminous efficacy is flux divided by electrical input, so neither input power nor efficacy can be ordered. Only (3) must hold: B."
+    ]
+  },
+  "tb-E303-1": {
+    "chn": [
+      "比較交通工具的能源效率，應考慮每名乘客每公里的耗能。巴士可載較多人，在合理載客率下把耗能分攤給更多乘客，因此 (1) 是原因。",
+      "巴士行駛相同距離的總耗能不一定少於私家車，而且並非所有巴士都有再生制動。因此不能以 (2)、(3) 作一般原因，選 A。"
+    ],
+    "eng": [
+      "Transport efficiency should be compared per passenger per unit distance. A bus carries more passengers and, at a reasonable occupancy, spreads its energy use among more people. This supports (1).",
+      "A bus need not consume less total energy than a car over the same distance, and not all buses have regenerative braking. Neither (2) nor (3) is a general explanation. Choose A."
+    ]
+  },
+  "tb-E303-2": {
+    "chn": [
+      "玻璃幕牆讓較多日光進入室內，可減少人工照明所需電能，所以 (1) 正確。",
+      "在本題未指定隔熱或遮陽處理的一般比較下，更多玻璃通常令太陽熱增益較大，不能推斷空調耗能或整體熱傳送值 OTTV 降低。因此只有 (1)，選 A。"
+    ],
+    "eng": [
+      "A glass curtain wall admits more daylight and can reduce the electricity needed for artificial lighting, so (1) is correct.",
+      "In this general comparison, with no special insulation or shading specified, increased glazing usually admits more solar heat. Reduced air-conditioning demand or OTTV cannot be inferred. Only (1) is correct: A."
+    ]
+  },
+  "tb-E303-3": {
+    "chn": [
+      "熱導率 k 表示物料傳熱的能力；由傳導熱流率 P=kAΔT/L，在相同面積、厚度和溫差下，k 越小，傳入熱量的速率越低，可降低圍護結構的 OTTV。",
+      "表面顏色主要影響輻射吸收與發射，不是同一物料本體熱導率的決定因素。因此 (1)、(3) 正確，選 B。"
+    ],
+    "eng": [
+      "Thermal conductivity k measures a material's ability to conduct heat. From P=kAΔT/L, a lower k reduces conductive heat gain for the same area, thickness and temperature difference, helping reduce envelope OTTV.",
+      "Surface colour mainly affects radiative absorption and emission, rather than determining the bulk thermal conductivity of the same material. Statements (1) and (3) are correct: B."
+    ]
+  },
+  "tb-E303-5": {
+    "chn": [
+      "由 P=kAΔT/L，增加牆厚 L 可減少傳導熱流。礦物棉的熱導率低，加在牆上會增加熱阻，亦可減少室外傳入的熱。",
+      "把外牆塗黑一般會增加太陽輻射的吸收，不是減少熱增益的方法。因此 (2)、(3) 正確，選 C。"
+    ],
+    "eng": [
+      "From P=kAΔT/L, increasing wall thickness reduces conductive heat flow. Mineral wool has low thermal conductivity, so adding it increases thermal resistance and reduces heat gain.",
+      "Painting the outside black generally increases absorption of solar radiation rather than reducing heat gain. Statements (2) and (3) are correct: C."
+    ]
+  },
+  "tb-E304-1": {
+    "chn": [
+      "化石燃料燃燒直接排放二氧化碳；砍伐森林減少吸收二氧化碳的能力，亦可能釋放碳；人口增長通常增加能源需求。",
+      "核電的發電過程不靠燃燒含碳燃料，不是溫室氣體快速增加的主要直接原因，因此選 C。這不表示核電整個建設和燃料供應週期完全零排放。"
+    ],
+    "eng": [
+      "Burning fossil fuels directly emits carbon dioxide. Deforestation reduces carbon uptake and may release stored carbon, while population growth generally raises energy demand.",
+      "Nuclear generation does not rely on burning carbon-containing fuel and is not the listed major direct cause of rapidly increasing greenhouse gases. Choose C. This does not mean its entire construction and fuel-supply lifecycle has zero emissions."
+    ]
+  },
+  "tb-E304-3": {
+    "chn": [
+      "天然溫室效應讓地球表面保持適合人類生活的溫度，因此 (1) 正確。水蒸氣和二氧化碳等天然存在的氣體已可產生此效應，不是完全由人類造成，(2) 錯。",
+      "二氧化碳能吸收地球放出的部分紅外線，其含量改變會影響溫室效應。因此 (3) 正確，選 B。"
+    ],
+    "eng": [
+      "The natural greenhouse effect keeps Earth's surface warm enough for human life, so (1) is correct. Naturally occurring water vapour and carbon dioxide already produce it; it is not entirely human-made, so (2) is false.",
+      "Carbon dioxide absorbs parts of Earth's outgoing infrared radiation, so changing its abundance affects the greenhouse effect. Statement (3) is correct: B."
+    ]
+  },
+  "tb-E304-5": {
+    "chn": [
+      "本題按核子總數守恆的放能核反應理解。產物的總靜止質量較小，質量差以 E=Δmc² 釋出，所以 (1) 錯。",
+      "較低的總靜止質量對應較大的總核結合能，故 (3) 正確。粒子數可隨反應種類增加或減少，並非必定增加，因此選 C。"
+    ],
+    "eng": [
+      "For the nucleon-conserving, energy-releasing nuclear reaction considered here, the products have lower total rest mass. The mass difference releases energy E=Δmc², so (1) is false.",
+      "The lower rest mass corresponds to increased total nuclear binding energy, so (3) is correct. Particle number depends on the particular reaction and need not increase. Choose C."
+    ]
+  },
+  "tb-E304-8": {
+    "chn": [
+      "興建水壩會淹沒土地、改變河流流量和生物遷移路徑，因此可能嚴重影響天然棲息地，B 正確。",
+      "有水庫調節的水電可按需要控制輸出，並非一概不穩定；水電需合適地形和水源，不能用於任何地方，水輪機及發電機的轉換效率也通常較高。"
+    ],
+    "eng": [
+      "A dam can flood land, alter river flow and obstruct migration routes, seriously affecting habitats. B is correct.",
+      "Reservoir storage allows output to be controlled, so hydropower is not inherently unstable. It requires suitable geography and water supply and is not suitable everywhere; turbine–generator conversion efficiency is generally high."
+    ]
+  },
+  "tb-E401-4": {
+    "chn": [
+      "內窺鏡只可到達適合插入或經手術開口接近的部位，不能檢查人體所有部分，(1) 錯。照明只需把光送到目標，不需保持光纖排列，因此可用較便宜的非相干光纖束。",
+      "包層的折射率低於纖芯，使光在適當入射角下全內反射，減少漏光及纖維間串擾；不是保證完全無損。因此 (2)、(3) 正確，選 C。"
+    ],
+    "eng": [
+      "Endoscopy can inspect only regions accessible through suitable passages or openings, not every body part, so (1) is false. Illumination does not require preserved fibre ordering, allowing cheaper incoherent bundles.",
+      "Lower-index cladding permits total internal reflection at suitable angles, reducing light leakage and crosstalk; it does not guarantee zero loss. Statements (2) and (3) are correct: C."
+    ]
+  },
+  "tb-E402-1": {
+    "chn": [
+      "中耳聽小骨的槓桿作用提高傳至卵圓窗的力，而卵圓窗面積較鼓膜小。由 p=F/A，力增大和面積減小都令壓強增加。",
+      "內耳與外耳聲阻抗不同，是需要這種匹配機制的原因，但不是直接產生壓強放大的機械步驟。因此 (1)、(2) 正確，選 A。"
+    ],
+    "eng": [
+      "The ossicles' lever action increases the force delivered to the oval window, whose area is smaller than the eardrum's. From p=F/A, both greater force and smaller area increase pressure.",
+      "The impedance difference explains why matching is needed, but is not itself the mechanical mechanism that amplifies pressure. Statements (1) and (2) are correct: A."
+    ]
+  },
+  "tb-E301-4": {
+    "chn": [
+      "壓縮機對製冷劑做功，使其壓力及溫度上升，因此 (2)、(3) 成立，原標答列 C。",
+      "須分清固定管道的容積與一定質量製冷劑的體積：若 (1) 指後者，壓縮時體積減小，三項應都成立，選 D。原題未說清此區別，不能用 C 推論製冷劑受壓縮時比容不變。"
+    ],
+    "eng": [
+      "The compressor does work on the refrigerant, increasing its pressure and temperature. Statements (2) and (3) hold, and the supplied answer is C.",
+      "The fixed volume of a pipe is different from the volume occupied by a fixed mass of refrigerant. If (1) means the latter, compression reduces that volume and all three statements give D. The question does not distinguish these meanings; C must not be taken to mean unchanged specific volume during compression."
+    ]
+  },
+  "tb-E301-5": {
+    "chn": [
+      "製冷劑在蒸發器吸收室內能量並汽化，內能增加，令室內降溫。因此 (1)、(3) 正確，原標答列 B。",
+      "若考慮一定質量製冷劑由液態變成氣態，其體積通常會增加，(2) 也成立，應選 D。固定蒸發管道容積不變不代表製冷劑的比容不變，原題對「體積」的用法有歧義。"
+    ],
+    "eng": [
+      "In the evaporator, refrigerant absorbs energy from the room and vaporizes, increasing its internal energy and cooling the room. Statements (1) and (3) hold; the supplied answer is B.",
+      "For a fixed mass changing from liquid to gas, occupied volume normally increases, making (2) true as well and giving D. A fixed coil volume is not the same as unchanged specific volume of the refrigerant. The wording is ambiguous."
+    ]
+  },
+  "tb-E301-10": {
+    "chn": [
+      "比較同類、同一參考能耗的產品，能耗比等於效率指數比。要找最少節省，取第 2 級的最高指數 90，及第 4 級的下界 105。",
+      "節省比例的邊界值為 (105−90)/105×100%=14.2857…%≈14.3%，所以選 B。嚴格而言第 4 級不包含 105，實際比例大於此邊界值；14.3% 是按邊界取近似下限。"
+    ],
+    "eng": [
+      "For comparable products using the same reference consumption, energy-use ratios equal index ratios. To minimize the saving, use the largest grade-2 index, 90, and the lower grade-4 boundary, 105.",
+      "The boundary saving is (105−90)/105×100%=14.2857…%≈14.3%, giving B. Strictly, grade 4 excludes 105, so the actual saving exceeds this boundary value; 14.3% is its rounded limiting estimate."
+    ]
+  },
+  "tb-E302-4": {
+    "chn": [
+      "發光效能=光通量÷輸入功率。兩燈輸入功率相同而 X 效能較高，所以 X 的總光通量較大；在相同照射、距離和觀察條件下，按本題意思 X 較亮，(1) 成立。",
+      "相同功率及使用時間的電費相同，(2) 錯。效能差異也可來自電能轉光效率，不一定是人眼光譜敏感度造成，(3) 不一定成立。因此按相同觀察條件選 A，不能推廣到任意方向和距離。"
+    ],
+    "eng": [
+      "Efficacy=luminous flux/input power. With equal input power, X's higher efficacy means greater total luminous flux. Under the same illumination, distance and viewing conditions intended here, X appears brighter, supporting (1).",
+      "Equal power used for equal time costs the same, so (2) is false. Efficacy can differ through energy-conversion efficiency, not necessarily eye sensitivity, so (3) need not hold. A is intended under matched viewing conditions, not for arbitrary directions or distances."
+    ]
+  },
+  "tb-E302-7": {
+    "chn": [
+      "單色 LED 的光譜範圍較窄，主要發光頻率由半導體能隙決定，並非像調旋鈕般由端電壓任意決定，因此 (1)、(3) 不成立。",
+      "原答案 B 採用課本以直流正向偏壓驅動 LED 的簡化說法。但單顆 LED 在交流正向半週也可發光，反向半週通常不發光，且需限制電流及反向電壓。因此 (2) 不能按字面理解成交流時絕不發光。"
+    ],
+    "eng": [
+      "A single-colour LED has a relatively narrow spectrum. Its principal emission frequency is set mainly by the semiconductor band gap, not freely selected by the applied voltage. Thus (1) and (3) are false.",
+      "The supplied B uses the textbook simplification of forward-bias d.c. operation. A single LED can also emit during the forward half-cycle of an a.c. supply, with suitable current and reverse-voltage protection; it normally does not emit during the reverse half-cycle. Statement (2) is not literally a prohibition on any a.c. emission."
+    ]
+  },
+  "tb-E403-5": {
+    "chn": [
+      "CT 利用多個方向的 X 光投影重建切片，可再組合成立體影像，所以 (3) 是相對一般 X 光平片的優點。",
+      "常規 CT 的輻射劑量通常較單張平片高，(1) 錯；按課本一般結構成像的比較，器官功能評估也不是必然具備的功能，(2) 不成立。因此選 A；本題不涵蓋灌注等專門 CT 技術。"
+    ],
+    "eng": [
+      "CT reconstructs cross-sectional slices from X-ray projections taken in multiple directions. These can be combined into three-dimensional images, so (3) is an advantage over conventional radiography.",
+      "Routine CT usually gives a higher radiation dose than a single radiograph, so (1) is false. In the textbook's general structural-imaging comparison, organ function is not necessarily assessed, so (2) does not apply. Choose A; specialized techniques such as perfusion CT are outside this comparison."
+    ]
+  }
+}

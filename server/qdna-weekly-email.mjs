@@ -1,0 +1,19 @@
+const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+// Presentation only: the shared learning service supplies analysis and rankings.
+export function qdnaWeeklyEmail({from,to,report}) {
+ const en=report.language==='eng',pick=(zh,english)=>en?english:zh;
+ const subject=pick('你的 DDPhysics 学习周报','Your DDPhysics weekly report');
+ const date=t=>new Date(t).toLocaleDateString(en?'en-HK':'zh-CN',{timeZone:'Asia/Hong_Kong'});
+ const period=`${date(report.start)} – ${date(report.end)}`,url=path=>new URL(path,'https://ddphysics.com').href;
+ const activity=pick(`本周新增已掌握：${report.activity.newly_mastered} 题；新增错题：${report.activity.newly_wrong} 题。`,`Newly mastered: ${report.activity.newly_mastered}; newly added to Wrong Book: ${report.activity.newly_wrong}.`);
+ const history=report.partial_history?pick('状态变更记录自 '+date(report.history_since)+' 起保存；此前的活动不包含在本周计数中。','Status history starts on '+date(report.history_since)+'. Earlier activity is not included in these counts.'):'';
+ const note=pick('知识点薄弱信号基于你的自主标记，不是考试错误率或客观掌握概率。','Knowledge Weakness Signal is based on your own marks, not an exam error rate or an objective mastery probability.');
+ const emptyFocus=pick('目前没有足够数据支持的待复习知识点；继续按实际学习情况标记题目。','No topics currently qualify for review. Keep marking questions as you learn.');
+ const emptyQuestions=report.personalized?pick('暂时没有匹配的新题，可回网站复习错题。','No matching new questions remain. You can review saved mistakes on the site.'):pick('相关标记数据不足，暂不提供个性化推荐。可先浏览题库并标记已掌握题目和错题。','There is not enough related marking data for personalised recommendations yet. Browse the question bank and mark mastered questions and mistakes.');
+ const focus=report.focus_areas.map(r=>`${r.name} · ${pick('薄弱信号','Weakness signal')} ${Math.round(r.weakness_signal*100)}% · ${r.marked_question_count} ${pick('道相关标记','related marks')}`);
+ const questions=report.recommended_questions.map(q=>`${q.question_title}\n${q.recommendation_reason}\n${url(q.question_url)}`);
+ const headings=[pick('本周学习活动','Weekly activity'),pick('当前关注知识点','Your focus areas'),pick('推荐练习','Recommended questions'),pick('继续学习','Continue learning')];
+ const text=[subject,period,`${report.name},`,headings[0],activity,history,headings[1],focus.join('\n')||emptyFocus,note,headings[2],questions.join('\n\n')||emptyQuestions,headings[3],url(report.continue_url)].filter(Boolean).join('\n\n');
+ const html=`<!doctype html><html lang="${en?'en':'zh-CN'}"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${subject}</title><body style="margin:0;background:#f2f5fa;color:#223650;font-family:Arial,'Microsoft YaHei',sans-serif;line-height:1.7"><main style="max-width:580px;margin:24px auto;padding:28px;background:white;border-radius:16px"><strong style="color:#245dcc">DDPhysics · WEEKLY REPORT</strong><h1 style="font-size:26px">${subject}</h1><p>${escape(report.name)} · ${escape(period)}</p><h2 style="font-size:18px">${headings[0]}</h2><p>${activity}</p>${history?`<p style="color:#66748a">${escape(history)}</p>`:''}<h2 style="font-size:18px">${headings[1]}</h2>${focus.length?`<ul>${focus.map(s=>`<li>${escape(s)}</li>`).join('')}</ul>`:`<p>${emptyFocus}</p>`}<p style="font-size:12px;color:#66748a">${note}</p><h2 style="font-size:18px">${headings[2]}</h2>${questions.length?report.recommended_questions.map(q=>`<p><a style="color:#245dcc" href="${escape(url(q.question_url))}">${escape(q.question_title)}</a><br><span style="font-size:13px">${escape(q.recommendation_reason)}</span></p>`).join(''):`<p>${emptyQuestions}</p>`}<p style="margin-top:28px"><a href="${escape(url(report.continue_url))}" style="display:inline-block;padding:10px 22px;background:#245dcc;color:white;border-radius:9px;text-decoration:none">${headings[3]} →</a></p></main></body></html>`;
+ return {from,to,subject,html,text,attachments:[]};
+}

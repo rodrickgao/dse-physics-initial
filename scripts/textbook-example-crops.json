@@ -1,0 +1,365 @@
+{
+  "source": "C:/Users/rodri/Desktop/dse/phy/physics textbook/2/学生版/DSEPHY_TE_202_TN_.pdf",
+  "coordinateSystem": "PDF points from top-left; screenshots include original side notes",
+  "examples": [
+    {
+      "number": 1,
+      "title": "Motion along a straight line",
+      "pages": [
+        37
+      ],
+      "question": [
+        {
+          "page": 3,
+          "crop": [
+            180,
+            333,
+            565,
+            598
+          ]
+        }
+      ],
+      "answer": [
+        {
+          "page": 3,
+          "crop": [
+            42,
+            598,
+            565,
+            746
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Average acceleration of a lion",
+      "pages": [
+        38
+      ],
+      "question": [
+        {
+          "page": 4,
+          "crop": [
+            180,
+            438,
+            565,
+            630
+          ]
+        }
+      ],
+      "answer": [
+        {
+          "page": 4,
+          "crop": [
+            42,
+            630,
+            565,
+            746
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Analyzing an s–t graph",
+      "pages": [
+        45
+      ],
+      "question": [
+        {
+          "page": 11,
+          "crop": [
+            180,
+            51,
+            565,
+            455
+          ]
+        }
+      ],
+      "answer": [
+        {
+          "page": 11,
+          "crop": [
+            42,
+            455,
+            565,
+            746
+          ]
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "Finding acceleration from v–t graph",
+      "pages": [
+        50
+      ],
+      "question": [
+        {
+          "page": 16,
+          "crop": [
+            180,
+            51,
+            565,
+            209
+          ]
+        }
+      ],
+      "answer": [
+        {
+          "page": 16,
+          "crop": [
+            42,
+            209,
+            565,
+            385
+          ]
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "Trolley moving along an inclined plane",
+      "pages": [
+        52,
+        53
+      ],
+      "question": [
+        {
+          "page": 18,
+          "crop": [
+            180,
+            407,
+            565,
+            746
+          ]
+        }
+      ],
+      "answer": [
+        {
+          "page": 19,
+          "crop": [
+            42,
+            51,
+            565,
+            360
+          ]
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "title": "Relationship between motion graphs",
+      "pages": [
+        56
+      ],
+      "question": [
+        {
+          "page": 22,
+          "crop": [
+            42,
+            51,
+            565,
+            320
+          ]
+        }
+      ],
+      "answer": [
+        {
+          "page": 22,
+          "crop": [
+            42,
+            320,
+            565,
+            482
+          ]
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "title": "Braking a snowmobile",
+      "pages": [
+        64
+      ],
+      "question": [
+        {
+          "page": 30,
+          "crop": [
+            42,
+            249,
+            565,
+            467
+          ]
+        }
+      ],
+      "answer": [
+        {
+          "page": 30,
+          "crop": [
+            42,
+            467,
+            565,
+            746
+          ]
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "title": "Skid marks",
+      "pages": [
+        65
+      ],
+      "question": [
+        {
+          "page": 31,
+          "crop": [
+            42,
+            51,
+            565,
+            150
+          ]
+        }
+      ],
+      "answer": [
+        {
+          "page": 31,
+          "crop": [
+            42,
+            150,
+            565,
+            332
+          ]
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "title": "Stopping distance",
+      "pages": [
+        65
+      ],
+      "question": [
+        {
+          "page": 31,
+          "crop": [
+            180,
+            344,
+            565,
+            529
+          ]
+        }
+      ],
+      "answer": [
+        {
+          "page": 31,
+          "crop": [
+            42,
+            529,
+            565,
+            764
+          ]
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "title": "Equations of motion and motion graphs",
+      "pages": [
+        69
+      ],
+      "question": [
+        {
+          "page": 35,
+          "crop": [
+            180,
+            51,
+            565,
+            359
+          ]
+        }
+      ],
+      "answer": [
+        {
+          "page": 35,
+          "crop": [
+            42,
+            359,
+            565,
+            540
+          ]
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "title": "Falling object",
+      "pages": [
+        74,
+        75
+      ],
+      "question": [
+        {
+          "page": 40,
+          "crop": [
+            42,
+            444,
+            565,
+            746
+          ]
+        }
+      ],
+      "answer": [
+        {
+          "page": 41,
+          "crop": [
+            42,
+            51,
+            565,
+            448
+          ]
+        },
+        {
+          "page": 41,
+          "crop": [
+            184,
+            454,
+            560,
+            505
+          ]
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "title": "Serving a tennis ball",
+      "pages": [
+        78
+      ],
+      "question": [
+        {
+          "page": 44,
+          "crop": [
+            180,
+            51,
+            565,
+            272
+          ]
+        }
+      ],
+      "answer": [
+        {
+          "page": 44,
+          "crop": [
+            42,
+            272,
+            565,
+            746
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -2,3 +2,12 @@
 .example-search{width:100%;padding:12px 16px;border:1px solid var(--border);border-radius:12px;background:var(--card);color:var(--foreground);margin-bottom:24px}.examples-view .study-content img{cursor:zoom-in}.examples-view .study-content math{overflow:visible;vertical-align:middle}.examples-view .study-table-wrap{overflow-x:auto}.examples-view .study-content td{border:1px solid #ddd}.example-supplement h4{font-size:14px;margin:18px 0 10px}.examples-view .study-stage{min-width:0}
 .examples-view .study-content table{table-layout:auto;width:max-content;min-width:100%}.examples-view .study-content td math{max-width:none;overflow:visible}.examples-view .study-content img:focus-visible{outline:3px solid var(--primary);outline-offset:3px}
 .examples-view .study-content math:has(mfrac){font-size:1.15em;math-style:normal;margin-block:0.35em}
+.examples-view .study-content .katex {
+  display: inline-block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-block: .2em;
+  vertical-align: middle;
+  font-size: 1em;
+}

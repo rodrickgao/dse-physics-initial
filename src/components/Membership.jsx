@@ -23,7 +23,7 @@ export function MembershipProvider({ userId, children }) {
         const { membership } = await api('membership');
         const next = JSON.stringify(membership);
         if (next !== signature) {
-          const network = membership.active ? (await api('premium/network')).network : {};
+          const network = {};
           if (!alive) return;
           replaceKnowledgeNetwork(network); clearStudyCache(); clearExerciseCache(); clearSearchIndexes(); signature = next;
           setValue({ ...membership, userId, revision: Date.now(), loading: false, error: false });

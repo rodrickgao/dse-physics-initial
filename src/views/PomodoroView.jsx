@@ -7,7 +7,7 @@ export function PomodoroView({ timer, language, visible }) {
   const en = language === 'eng';
   return <section className="focus-view" hidden={!visible}>
     <div className="view-heading"><div><h1>{'番茄钟'}</h1></div></div>
-    <div className="focus-panel">
+    <div data-tour="focus-controls" className="focus-panel">
       <div className="focus-ring">
         <svg viewBox="0 0 240 240" aria-hidden="true"><circle className="focus-track" cx="120" cy="120" r="108" /><circle className="focus-progress" cx="120" cy="120" r="108" pathLength="100" strokeDasharray="100" strokeDashoffset={100 * (1 - remaining / (session.minutes * 60000))} /></svg>
         <div className="focus-readout"><span>{'剩余时间'}</span><strong role="timer" aria-label={'剩余时间'}>{time}</strong><small role="status">{remaining === 0 ? ('专注完成！休息一下吧。') : running ? ('专注中，加油！') : remaining < session.minutes * 60000 ? ('已暂停') : ('准备好就开始吧')}</small></div>

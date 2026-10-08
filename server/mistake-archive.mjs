@@ -1,4 +1,4 @@
-export function createMistakeArchive({ db, clock, fail, transaction, record, questions }) {
+export function createMistakeArchive({ db, clock, fail, transaction, record, questions, statusStore }) {
   const all = (sql,...args) => db.prepare(sql).all(...args);
   const get = (sql,...args) => db.prepare(sql).get(...args);
   const run = (sql,...args) => db.prepare(sql).run(...args);
@@ -22,18 +22,21 @@ export function createMistakeArchive({ db, clock, fail, transaction, record, que
   function act(userId,body) {
     if (!['restore','delete'].includes(body.action) || !Array.isArray(body.keys) || !body.keys.length || body.keys.length>500 || body.keys.some(key=>typeof key!=='string'||!questions.has(key))) fail(400,'请选择有效的错题和操作。');
     transaction(() => {
+      const before=statusStore?.snapshot(userId);
       for (const key of new Set(body.keys)) {
         const row=get('SELECT * FROM mistake_archive WHERE user_id=? AND question_key=?',userId,key);
         if (!row) fail(404,'回收站中找不到这道题。');
         if ((body.action==='restore' && row.status==='active') || (body.action==='delete' && row.status==='deleted')) continue;
         if(row.status!=='trash') fail(409,'错题状态已变化，请刷新回收站。');
         if(body.action==='restore') {
+          run('DELETE FROM mastered WHERE user_id=? AND question_key=?',userId,key);
           run('INSERT INTO mistakes(user_id,question_key,marked_at) VALUES(?,?,?) ON CONFLICT(user_id,question_key) DO NOTHING',userId,key,row.marked_at);
           run("UPDATE mistake_archive SET status='active',trashed_at=NULL,deleted_at=NULL WHERE user_id=? AND question_key=?",userId,key);
         } else run("UPDATE mistake_archive SET status='deleted',deleted_at=? WHERE user_id=? AND question_key=?",clock(),userId,key);
         const event=run('INSERT INTO events(user_id,question_key,action,at) VALUES(?,?,?,?)',userId,key,body.action,clock());
         record(userId,body.action,key,`legacy-${event.lastInsertRowid}`);
       }
+      if(before)statusStore.record(userId,before);
     });
   }
   return {mark,list,act};

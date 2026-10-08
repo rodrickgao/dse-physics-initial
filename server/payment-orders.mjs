@@ -8,31 +8,39 @@ export function createPaymentOrders({ db, clock, fail, transaction, management }
   const columns = all('PRAGMA table_info(payment_orders)').map(c => c.name);
   if (!columns.includes('granted_at')) db.exec('ALTER TABLE payment_orders ADD COLUMN granted_at INTEGER');
   if (!columns.includes('rejection_reason')) db.exec('ALTER TABLE payment_orders ADD COLUMN rejection_reason TEXT');
+  if (!columns.includes('payment_method')) db.exec('ALTER TABLE payment_orders ADD COLUMN payment_method TEXT');
   function grant(order, actorId) {
     const before=management.membership(order.user_id), end=Math.max(clock(),before.active?before.endsAt:0)+order.days*86400000;
     run('INSERT INTO memberships VALUES(?,?,0,?) ON CONFLICT(user_id) DO UPDATE SET ends_at=excluded.ends_at,revoked=0,revision=excluded.revision',order.user_id,end,before.revision+1);
-    run('INSERT INTO membership_audit(request_id,user_id,actor_id,action,days,reason,before_end,after_end,at) VALUES(?,?,?,?,?,?,?,?,?)','payment-'+order.id,order.user_id,actorId,'extend',order.days,'付款截图提交后开通 · '+order.id,before.endsAt,end,clock());
+    run('INSERT INTO membership_audit(request_id,user_id,actor_id,action,days,reason,before_end,after_end,at) VALUES(?,?,?,?,?,?,?,?,?)','payment-'+order.id,order.user_id,actorId,'extend',order.days,'用户确认付款后开通 · '+order.id,before.endsAt,end,clock());
     run('UPDATE payment_orders SET granted_at=? WHERE id=?',clock(),order.id);
   }
   async function submit(user,body) {
     if(user.role!=='student')fail(403,'仅学生可提交付款申请。');
     if(typeof body.requestId!=='string'||!/^[a-zA-Z0-9-]{16,80}$/.test(body.requestId))fail(400,'无效的申请编号。');
+    const paymentMethod = body.paymentMethod ?? null;
+    if (paymentMethod !== null && !['wechat','alipay'].includes(paymentMethod)) fail(400, '请选择微信或支付宝。');
+    if (!body.receipt && !paymentMethod) fail(400, '请选择支付方式。');
+    let receipt;
+    // Existing clients and historical receipts remain supported.
+    if (body.receipt !== undefined) {
     const match = typeof body.receipt === 'string' && /^data:image\/(?:png|jpeg|webp);base64,([A-Za-z0-9+/]+={0,2})$/.exec(body.receipt);
     if (!match) fail(400, '请上传付款成功截图（JPG、PNG 或 WebP）。');
     const input = Buffer.from(match[1], 'base64');
     if (input.length > 5 * 1024 * 1024) fail(413, '截图不能超过 5MB。');
-    let receipt;
     try {
       const photo = sharp(input, {limitInputPixels: 24000000, animated: false});
       const metadata = await photo.metadata();
       if (!['png','jpeg','webp'].includes(metadata.format) || (metadata.pages || 1) > 1) throw new Error('Invalid image');
       receipt = await photo.rotate().resize({width:2400,height:3600,fit:'inside',withoutEnlargement:true}).webp({quality:90}).toBuffer();
     } catch { fail(400, '截图无法读取，请重新选择 JPG、PNG 或 WebP 图片。'); }
+    }
     return transaction(()=>{
       const prior=get('SELECT * FROM payment_orders WHERE user_id=? AND request_id=?',user.id,body.requestId)||get("SELECT * FROM payment_orders WHERE user_id=? AND status='pending'",user.id);
       if(prior)return {order:prior};
       const id=randomUUID();run("INSERT INTO payment_orders(id,user_id,request_id,amount_fen,days,status,created_at) VALUES(?,?,?,?,?,'pending',?)",id,user.id,body.requestId,5900,30,clock());
-      run('INSERT INTO payment_receipts VALUES(?,?)',id,receipt);
+      run('UPDATE payment_orders SET payment_method=? WHERE id=?',paymentMethod,id);
+      if (receipt) run('INSERT INTO payment_receipts VALUES(?,?)',id,receipt);
       grant(get('SELECT * FROM payment_orders WHERE id=?',id),user.id);
       return {order:get('SELECT * FROM payment_orders WHERE id=?',id)};
     });
