@@ -2,11 +2,11 @@ import { readFileSync } from 'node:fs';
 import sharp from 'sharp';
 import { qdnaWeeklyEmail } from './qdna-weekly-email.mjs';
 
-const logo = readFileSync(new URL('./email/brand-mark.png', import.meta.url));
+const logo = readFileSync(new URL('../assets/brand/signature-chn.png', import.meta.url));
 const cid = 'weekly-brand@ddphysics.com';
 const escape = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
-// Presentation-only template. No scheduled delivery or student-data query is connected.
+// Presentation-only template; delivery is handled by weekly-report-scheduler.mjs.
 export async function weeklyReportEmail({from, to, report}) {
   if (report.kind === 'qdna-weekly') return qdnaWeeklyEmail({from,to,report});
   const metrics = [

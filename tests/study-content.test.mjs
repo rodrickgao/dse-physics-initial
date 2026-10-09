@@ -25,7 +25,7 @@ test('missing transcription remains an explicitly labelled original scan',()=>{
 });
 test('print format matches bilingual Word typography and colours',()=>{
  const html=printDocumentHtml([entry],[content],{language:'chn',mode:'detailed',baseUrl:'https://example.org/papers/'});
- for(const value of ['Times New Roman','SimSun','color:#f00','color:#0000ff','size:letter','break-before:page','border:0'])assert.ok(html.includes(value),value);
+ for(const value of ['Times New Roman','SimSun','color:#f00','color:#0000ff','size:A4','break-before:page','border:0'])assert.ok(html.includes(value),value);
  assert.equal(escapeHtml('<script>"&'),'&lt;script&gt;&quot;&amp;');
 });
 test('published study blocks contain only local assets and no active content',()=>{
@@ -84,13 +84,25 @@ test('print groups choice questions including Paper 2, then sorts by textbook po
  const entries=[make('structured',1,'structured',[2]),make('later-mc',0,undefined,[1]),make('paper2-mc',2,'multiple-choice',[1,2]),make('unmapped',0,undefined,[])];
  const points=[{sequence:2},{sequence:1}];
  const ordered=[...entries].sort(compareMistakePrintEntries(points));
- assert.deepEqual(ordered.map(e=>e.key),['paper2-mc','later-mc','unmapped','structured']);
+ assert.deepEqual(ordered.map(e=>e.key),['paper2-mc','structured','later-mc','unmapped']);
  const html=printDocumentHtml(entries,entries.map(e=>({question:`<p>CONTENT-${e.key}</p>`})),{language:'chn',mode:'questions',baseUrl:'http://localhost/',knowledgePoints:points,date:new Date(2026,8,28)});
  assert.match(html,/<h1>2026年9月28日错题<\/h1>/);
  assert.doesNotMatch(html,/print-intro|本册只含|关闭浏览器|作答区/);
- assert.match(html,/@page \{size:letter;margin:0\}/);
+ assert.match(html,/@page \{size:A4;margin:0\}/);
  assert.match(html,/border:1pt solid #555/);
  assert.deepEqual([...html.matchAll(/data-question="([^"]+)"/g)].map(m=>m[1]),ordered.map(e=>e.key));
  for(const article of html.matchAll(/<article[^>]+data-question="([^"]+)"[\s\S]*?<\/article>/g)) assert.ok(article[0].includes(`CONTENT-${article[1]}`));
  assert.equal(entries[0].key,'structured');
+});
+
+
+test('both export languages and modes use a printable image watermark, including continued pages',()=>{
+ for(const language of ['chn','eng']) for(const mode of ['questions','detailed']) {
+  const html=printDocumentHtml([entry],[content],{language,mode,baseUrl:'http://localhost/'});
+  assert.ok(html.includes(`class="print-watermark" src="assets/brand/signature-${language}.png"`));
+  assert.match(html,/\.print-watermark\{position:fixed/);
+  assert.ok(html.includes("top:148.5mm;left:105mm;width:190mm"));
+  assert.ok(html.includes("translate(-50%,-50%) rotate(-35deg)"));
+  assert.doesNotMatch(html,/background:url\("assets\/brand/);
+ }
 });

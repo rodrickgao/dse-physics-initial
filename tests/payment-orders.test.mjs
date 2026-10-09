@@ -10,7 +10,8 @@ import { createApi } from '../server/api.mjs';
 
 test('manual payment approval is isolated, persistent and grants membership exactly once', async () => {
   const directory = mkdtempSync(join(tmpdir(), 'dse-payments-'));
-  let api = createApi({directory, adminKey:'payment-test'});
+  const notifications=[]; const paymentNotifier=async message=>{notifications.push(message);};
+  let api = createApi({directory, adminKey:'payment-test',paymentNotifier});
   const server = createServer((req,res) => api.handler(req,res,() => {res.statusCode=404;res.end();}));
   await new Promise(r => server.listen(0,'127.0.0.1',r));
   const base = `http://127.0.0.1:${server.address().port}/api/`;
@@ -27,19 +28,20 @@ test('manual payment approval is isolated, persistent and grants membership exac
     assert.equal((await a('orders',{requestId:randomUUID(),receipt:'data:image/png;base64,YWJj'})).status,400);
     const results=await Promise.all([a('orders',{receipt,requestId:randomUUID(),amount_fen:1,days:9999}),a('orders',{receipt,requestId:randomUUID()})]);
     const order=results[0].order;
+    assert.equal(notifications.length,1);assert.equal(notifications[0].to,'rodrickgao@gmail.com');assert.match(notifications[0].text,/pay@example.com/);
     assert.equal(order.id,results[1].order.id); assert.equal(order.amount_fen,5900);assert.equal(order.days,30);
     assert.equal((await b('orders')).order,null);
     assert.equal((await b('admin/orders/receipt?id='+order.id)).status,403);
     assert.equal((await admin('admin/orders')).pending[0].hasReceipt,1);
     assert.equal((await a('membership')).membership.active,true); assert.equal((await a('membership')).membership.revision,1);
     assert.equal((await a('admin/orders/review',{orderId:order.id,action:'approve'})).status,403);
-    api.close(); api=createApi({directory,adminKey:'payment-test'});
+    api.close(); api=createApi({directory,adminKey:'payment-test',paymentNotifier});
     assert.equal((await admin('admin/orders')).pending.length,1);
     const saved=await admin('admin/orders/receipt?id='+order.id); assert.equal(saved.status,200); assert.equal((await sharp(saved.image).metadata()).format,'webp');
     const reviews=await Promise.all([admin('admin/orders/review',{orderId:order.id,action:'approve'}),admin('admin/orders/review',{orderId:order.id,action:'approve'})]);
     assert.ok(reviews.every(r=>r.status===200));
     const membership=(await a('membership')).membership;
-    assert.equal(membership.active,true);assert.equal(membership.revision,1);
+    assert.equal(membership.active,true);assert.equal(membership.revision,1);assert.equal(notifications.length,1,'approval and restart do not resend');
     assert.ok(Math.abs(membership.endsAt-Date.now()-30*86400000)<5000);
     assert.equal((await a('orders')).order.status,'approved');
     const next=(await a('orders',{receipt,requestId:randomUUID()})).order;
@@ -56,7 +58,7 @@ test('manual payment approval is isolated, persistent and grants membership exac
     assert.equal((await admin('admin/orders/review',{orderId:rejected.id,action:'approve'})).status,409);
     assert.equal((await a('membership')).membership.revision,4);
     assert.equal((await admin('admin/membership-history')).rows.length,4);
-    api.close();api=createApi({directory,adminKey:'payment-test'});
+    api.close();api=createApi({directory,adminKey:'payment-test',paymentNotifier});
     assert.equal((await admin('admin/orders')).recent.length,3); assert.equal((await a('membership')).membership.active,false);
 
     // No screenshot is needed for either payment method. Pending requests remain reviewable.
@@ -65,12 +67,13 @@ test('manual payment approval is isolated, persistent and grants membership exac
     const direct=await Promise.all([b('orders',{requestId:directId,paymentMethod:'alipay'}),b('orders',{requestId:randomUUID(),paymentMethod:'alipay'})]);
     assert.equal(direct[0].status,200);assert.equal(direct[0].order.id,direct[1].order.id);
     const directOrder=direct[0].order;
+    assert.equal(notifications.filter(n=>n.messageId.includes(directOrder.id)).length,1);
     assert.equal(directOrder.payment_method,'alipay');assert.equal(directOrder.status,'pending');assert.ok(directOrder.granted_at);
     const directMembership=(await b('membership')).membership;
     assert.equal(directMembership.active,true);assert.equal(directMembership.revision,1);
     assert.equal((await admin('admin/orders')).pending.find(o=>o.id===directOrder.id).hasReceipt,0);
     assert.equal((await admin('admin/orders/receipt?id='+directOrder.id)).status,404);
-    api.close();api=createApi({directory,adminKey:'payment-test'});
+    api.close();api=createApi({directory,adminKey:'payment-test',paymentNotifier});
     assert.equal((await b('orders')).order.payment_method,'alipay');assert.equal((await b('membership')).membership.active,true);
     await admin('admin/orders/review',{orderId:directOrder.id,action:'approve'});
     assert.equal((await b('membership')).membership.endsAt,directMembership.endsAt);

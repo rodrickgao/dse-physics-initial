@@ -1,6 +1,6 @@
 import { randomUUID } from 'node:crypto';
 import sharp from 'sharp';
-export function createPaymentOrders({ db, clock, fail, transaction, management }) {
+export function createPaymentOrders({ db, clock, fail, transaction, management, notifications }) {
   const get=(sql,...args)=>db.prepare(sql).get(...args), all=(sql,...args)=>db.prepare(sql).all(...args), run=(sql,...args)=>db.prepare(sql).run(...args);
   db.exec(`CREATE TABLE IF NOT EXISTS payment_orders(id TEXT PRIMARY KEY,user_id INTEGER NOT NULL REFERENCES users(id),request_id TEXT NOT NULL,amount_fen INTEGER NOT NULL,days INTEGER NOT NULL,status TEXT NOT NULL CHECK(status IN ('pending','approved','rejected')),created_at INTEGER NOT NULL,reviewed_at INTEGER,reviewed_by INTEGER REFERENCES users(id),UNIQUE(user_id,request_id));
     CREATE UNIQUE INDEX IF NOT EXISTS one_pending_payment ON payment_orders(user_id) WHERE status='pending';`);
@@ -14,6 +14,7 @@ export function createPaymentOrders({ db, clock, fail, transaction, management }
     run('INSERT INTO memberships VALUES(?,?,0,?) ON CONFLICT(user_id) DO UPDATE SET ends_at=excluded.ends_at,revoked=0,revision=excluded.revision',order.user_id,end,before.revision+1);
     run('INSERT INTO membership_audit(request_id,user_id,actor_id,action,days,reason,before_end,after_end,at) VALUES(?,?,?,?,?,?,?,?,?)','payment-'+order.id,order.user_id,actorId,'extend',order.days,'用户确认付款后开通 · '+order.id,before.endsAt,end,clock());
     run('UPDATE payment_orders SET granted_at=? WHERE id=?',clock(),order.id);
+    notifications?.enqueue({...order,granted_at:clock()},get('SELECT email,nickname FROM users WHERE id=?',order.user_id),end);
   }
   async function submit(user,body) {
     if(user.role!=='student')fail(403,'仅学生可提交付款申请。');

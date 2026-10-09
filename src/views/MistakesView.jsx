@@ -47,8 +47,9 @@ export function MistakesView({ mastered, setProgress, saving, language, mistakes
   const [selected, setSelected] = useState(null);
   const exerciseEntries = Object.keys(mistakes).filter(key=>key.startsWith('tb-')).map(key=>({key,source:'textbook',exerciseChapter:key.split('-')[1],year:{year:0,id:''},paperIndex:1,questionIndex:Number(key.split('-').at(-1)),question:{label:'Q'+exerciseNumber(key),kind:'structured'},paper:{title:en?'Textbook exercises':'课本习题'},chapter:key.split('-')[1],network:{links:[]}}));
   const map = new Map([...entriesByLanguage[language], ...exerciseEntries, ...exampleEntries(pointsByLanguage[language],language)].map(entry => [entry.key, entry]));
-  const entries = Object.keys(mistakes).filter(key => map.has(key)).map(key => ({...map.get(key), markedAt: mistakes[key].markedAt, sortChapter: mistakes[key].chapterCode, primaryChapterCode: mistakes[key].primaryChapterCode})).sort(compareMistakePrintEntries(pointsByLanguage[language]));
   const [summary,setSummary]=useState(null);
+  const order = new Map((summary?.orderedKeys || []).map((key,index)=>[key,index]));
+  const entries = Object.keys(mistakes).filter(key => map.has(key)).map(key => ({...map.get(key), mistakeOrder: order.get(key), markedAt: mistakes[key].markedAt, sortChapter: mistakes[key].chapterCode, primaryChapterCode: mistakes[key].primaryChapterCode})).sort(compareMistakePrintEntries(pointsByLanguage[language]));
   useEffect(()=>{let live=true;setSummary(null);const params=new URLSearchParams({language});if(filter?.kind==='point'&&membership.active)params.set('point',filter.value);fetch(`/api/content/mistake-summary?${params}`,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error();return r.json();}).then(data=>{if(live)setSummary(data);}).catch(()=>{if(live)setLoadError(en?'Statistics unavailable. Please retry.':'统计暂时无法加载，请重试。');});return()=>{live=false;};},[language,mistakes,filter,membership.revision]);
   const analysis = summary || {chapters:[],recommendations:[],pointCount:0};
   const chapters = analysis.chapters.map(row => [row.name, row.keys.length]);

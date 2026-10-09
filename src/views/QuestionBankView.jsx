@@ -41,7 +41,7 @@ export function QuestionBankView({ language, navigate, initialQuery = '', openQu
         <p className="search-summary">{en?'Sorted by relevance':'按相关程度排序'} · {data?.total || 0} {en?'results':'条结果'}</p>
         {!!intent.concepts.length&&<p className="search-understood">{en?'Topics recognised: ':'识别到：'}{intent.concepts.map(c=>en?c.aliases.find(a=>/^[a-z]/.test(a)):c.label).join(' · ')}</p>}
         {results.slice(0,limit).map(entry=><button className="bank-search-result" key={entry.key} onClick={()=>open(entry)}><small className="search-source">{sourceLabel(entry.source)}</small><strong>{entry.label||questionLabelFromKey(entry.key)}</strong><span>{entry.source==='knowledge'&&!membership.active?entry.chapter:entry.excerpt}</span>{!!entry.matchLabels?.length&&<small className="search-match">{en?'Related concepts':'匹配概念'} · {(en?entry.matchLabelsEn||entry.matchLabels:entry.matchLabels).slice(0,3).join(' · ')}</small>}</button>)}
-        {!results.length&&<p>{en?'No close matches. Try naming a physical quantity or removing a restriction.':'暂未找到接近的内容。可以补充物理量或情境，也可以减少限制条件。'}</p>}
+        {!results.length&&<p>{en?'No results. Try fewer filters.':'暂无结果，请调整关键词或筛选。'}</p>}
         {limit>30&&<button className="search-more" onClick={()=>setLimit(v=>Math.max(30,v-30))}>{en?'Previous page':'上一页'}</button>}{data?.hasMore&&<button className="search-more" onClick={()=>setLimit(v=>v+30)}>{en?'Next page':'下一页'}</button>}
       </>}
     </section>:<>

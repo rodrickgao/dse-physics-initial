@@ -67,7 +67,7 @@ export async function startProduction(env = process.env) {
   if (!existsSync(resolve(root, 'dist/index.html')) || !existsSync(resolve(root, 'dist/admin.html'))) throw new Error('Build student and admin pages first.');
   await importInitialData(config.directory);
   const transport = nodemailer.createTransport({ host: env.SMTP_HOST, port: Number(env.SMTP_PORT), secure: env.SMTP_PORT === '465', requireTLS: true, auth: { user: env.SMTP_USER, pass: env.SMTP_PASS }, connectionTimeout: 10000, greetingTimeout: 10000, dnsTimeout: 10000, socketTimeout: 15000 });
-  const api = createApi({ directory: config.directory, qdnaDirectory: env.DSE_QDNA_DIR || resolve(root, 'server-data/qdna'), publicOrigins: config.origins, secureCookies: true, trustProxy: env.TRUST_PROXY === 'true', mailer: (email, code) => transport.sendMail(verificationEmail({from:env.SMTP_FROM,to:email,code})) });
+  const api = createApi({ directory: config.directory, qdnaDirectory: env.DSE_QDNA_DIR || resolve(root, 'server-data/qdna'), paymentNotifier: config.maintenance ? undefined : message => transport.sendMail({...message,from:env.SMTP_FROM}), weeklyMailer: config.maintenance ? undefined : message => transport.sendMail(message), weeklyFrom: env.SMTP_FROM, publicOrigins: config.origins, secureCookies: true, trustProxy: env.TRUST_PROXY === 'true', mailer: (email, code) => transport.sendMail(verificationEmail({from:env.SMTP_FROM,to:email,code})) });
   await resetStudents(config.directory, env.DSE_RESET_STUDENTS_ONCE);
   const server = createProductionServer({ api, origins: config.origins, maintenance: config.maintenance });
   server.requestTimeout = 30000;

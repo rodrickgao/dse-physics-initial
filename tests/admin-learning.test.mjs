@@ -19,7 +19,8 @@ test('legacy admin record DTO keeps current, trash and deleted counts separate',
 
 test('admin learning detail and overview follow mastery, trash and restoration without leaking to students',async()=>{
  const directory=mkdtempSync(join(tmpdir(),'dse-admin-learning-'));
- const api=createApi({directory,adminKey:'test-admin-learning'});
+ let now=Date.now();
+ const api=createApi({directory,adminKey:'test-admin-learning',clock:()=>now});
  const server=createServer((req,res)=>api.handler(req,res,()=>{res.statusCode=404;res.end();}));
  await new Promise(r=>server.listen(0,'127.0.0.1',r));
  const base=`http://127.0.0.1:${server.address().port}/api/`;
@@ -32,6 +33,22 @@ test('admin learning detail and overview follow mastery, trash and restoration w
   await student('profile',{nickname:'测试学生',grade:'中五',target:'5',avatar:'newton-wave',password:'Study-pass-123',confirmPassword:'Study-pass-123'},'PUT');
   assert.equal((await student(`admin/student?id=${id}`)).status,403);
   await admin('admin/login',{key:'test-admin-learning'});
+  assert.equal((await student('admin/question-stats')).status,403);
+  assert.equal((await student('admin/page-visits')).status,403);
+  const visit={visitId:'test-visit-00000001',target:'papers',durationMs:0};
+  assert.equal((await student('page-visits',visit)).status,200);
+  now+=60000;
+  await student('page-visits',{...visit,durationMs:60000});
+  assert.equal((await admin('admin/page-visits')).total,0,'strictly more than a minute');
+  now+=1000;
+  await student('page-visits',{...visit,durationMs:61000});
+  await student('page-visits',{...visit,durationMs:61000});
+  await student('page-visits',{...visit,durationMs:50000});
+  const visits=await admin('admin/page-visits');
+  assert.equal(visits.total,1);assert.equal(visits.rows[0].duration_ms,61000);
+  assert.equal((await admin('admin/page-visits?userId=999')).total,0);
+  assert.equal((await student('page-visits',{...visit,target:'home'})).status,409);
+  assert.equal((await student('page-visits',{...visit,durationMs:999999})).status,400);
   const key='tb-103-1';
   await student('mistakes',{key,marked:true},'PUT');
   let detail=await admin(`admin/student?id=${id}`);
@@ -41,6 +58,10 @@ test('admin learning detail and overview follow mastery, trash and restoration w
   detail=await admin(`admin/student?id=${id}`);
   assert.equal(detail.learning.counts.active,0);assert.equal(detail.learning.counts.mastered,1);
   assert.equal(detail.learning.mastered[0].key,key);
+  const stats=await admin('admin/question-stats');
+  const question=stats.rows.find(q=>q.key===key);
+  assert.deepEqual([question.marked,question.active,question.mastered],[1,0,1]);
+  assert.ok(stats.rows.some(q=>q.marked===0),'unmarked catalog questions remain visible');
   let overview=await admin('admin/overview');
   assert.equal(overview.students.find(s=>s.id===id).mastered,1);
   assert.equal(overview.students.find(s=>s.id===id).activeMistakes,0);
@@ -51,5 +72,7 @@ test('admin learning detail and overview follow mastery, trash and restoration w
   await student('mistakes/trash',{action:'restore',keys:[key]});
   detail=await admin(`admin/student?id=${id}`);
   assert.equal(detail.learning.counts.active,1);assert.equal(detail.learning.counts.trash,0);
+  const restored=(await admin('admin/question-stats')).rows.find(q=>q.key===key);
+  assert.deepEqual([restored.marked,restored.active,restored.mastered],[1,1,0]);
  }finally{await new Promise(r=>server.close(r));api.close();rmSync(directory,{recursive:true});}
 });

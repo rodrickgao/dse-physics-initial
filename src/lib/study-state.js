@@ -1,5 +1,5 @@
 export const PRIMARY_YEAR = 2012;
-export const PAGES = ['home', 'bank', 'ask', 'papers', 'textbook', 'exercises', 'examples', 'mistakes', 'focus', 'membership', 'payment', 'receipt', 'activating', 'member-success', 'admin'];
+export const PAGES = ['home', 'support', 'bank', 'ask', 'papers', 'textbook', 'exercises', 'examples', 'mistakes', 'focus', 'membership', 'payment', 'receipt', 'activating', 'member-success', 'admin'];
 
 export function readRoute(hash = '') {
   const [name, query = ''] = hash.replace(/^#/, '').split('?');

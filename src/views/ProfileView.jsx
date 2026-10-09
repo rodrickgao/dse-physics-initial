@@ -1,3 +1,4 @@
+import { BrandLogo } from '../components/BrandLogo';
 import { useRef, useState } from 'react';
 import { Atom, ArrowLeft, ArrowRight, Check, Camera, Upload, UserRound, Settings, LogOut } from 'lucide-react';
 import { api } from '../lib/api';
@@ -45,7 +46,7 @@ export function ProfileView({ dark, toggleDark, embedded = false, logoutError, u
     catch (e) { setError(e.message); } finally { setBusy(false); }
   }
   return <section className={`profile-page page-enter${embedded ? ' profile-embedded' : ''}`}>
-    <header className="profile-header">{onCancel && <Button variant="ghost" onClick={onCancel}><ArrowLeft/>{language==='eng'?'Back':'返回'}</Button>}{!embedded && (onCancel ? <button type="button" className="auth-brand profile-home" aria-label="DSE Physics，返回主页" disabled={busy} onClick={onCancel}><Atom /> DSE Physics</button> : <span className="auth-brand"><Atom /> DSE Physics</span>)}</header>
+    <header className="profile-header">{onCancel && <Button variant="ghost" onClick={onCancel}><ArrowLeft/>{language==='eng'?'Back':'返回'}</Button>}{!embedded && (onCancel ? <button type="button" className="auth-brand profile-home" aria-label="DSE Physics，返回主页" disabled={busy} onClick={onCancel}><BrandLogo language={language}/></button> : <span className="auth-brand"><BrandLogo language={language}/></span>)}</header>
     <div className="profile-welcome"><h1><Settings aria-hidden="true" />{user.profileComplete ? '个人设置' : '建立你的物理学习档案'}</h1>{!user.profileComplete && <ol className="profile-steps"><li><Check /> 邮箱已验证</li><li aria-current="step"><span>2</span> 完善个人资料</li></ol>}</div>
     <form className={`profile-layout ${user.profileComplete ? "profile-existing" : ""}`} onSubmit={submit}>
       <section className="profile-details"><div className="profile-preview">{preview ? <img src={preview} alt="你的头像预览" /> : <UserRound aria-label="尚未选择头像" />}<button ref={camera} className="profile-camera" type="button" aria-label="更换头像" aria-expanded={showAvatars} aria-controls="avatar-picker" disabled={busy} onClick={togglePicker}><Camera /></button></div>

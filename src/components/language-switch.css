@@ -8,3 +8,6 @@ body .management-shell>main{padding-top:80px}
 body .admin-login{padding-top:80px}
 @media(max-width:1100px){.app-shell .app-main>.topbar{display:grid;grid-template-columns:minmax(0,1fr) 88px;gap:8px 12px;padding:10px 16px;height:auto;min-height:72px}.app-shell .topbar>.global-search,.app-shell .topbar>.workspace-breadcrumb{grid-column:1;min-width:0;min-height:44px}.app-shell .topbar>.dse-countdown-group{grid-column:1/-1;grid-row:2}}
 @media(max-width:800px){body .auth-page.login-page{padding-top:80px}body .management-shell>aside{padding-top:76px}}
+
+.top-support{position:fixed;top:max(12px,env(safe-area-inset-top));right:calc(max(16px,env(safe-area-inset-right)) + 98px);z-index:45;min-height:44px;display:flex;align-items:center;justify-content:center;gap:8px;padding:8px 12px;border:1px solid var(--border,#dce5f3);border-radius:12px;background:var(--card,#fff);color:var(--foreground,#183c73);font:600 14px/1.2 Inter,"Microsoft YaHei",sans-serif;cursor:pointer}.top-support svg{width:19px;height:19px}.top-support:focus-visible{outline:3px solid var(--primary,#2563eb);outline-offset:3px}.app-shell .app-main>.topbar{padding-right:310px}
+@media(max-width:1100px){.top-support{width:44px;padding:8px}.top-support span{display:none}.app-shell .app-main>.topbar{padding-right:16px;grid-template-columns:minmax(0,1fr) 142px}}

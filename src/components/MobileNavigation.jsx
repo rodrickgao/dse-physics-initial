@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Home, FileQuestion, BookOpen, CircleAlert, MoreHorizontal, Crown, MessageCircle } from 'lucide-react';
+import { Home, FileQuestion, BookOpen, CircleAlert, LifeBuoy, MoreHorizontal, Crown, MessageCircle } from 'lucide-react';
 import { useMembership } from './Membership';
 export function MobileNavigation({page,language,navigate}) {
   const [open,setOpen]=useState(false),root=useRef(null),membership=useMembership();const en=language==='eng';

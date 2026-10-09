@@ -3,7 +3,7 @@
 .dse-countdown-group { display: flex; flex: 1; min-width: 0; align-items: baseline; justify-content: center; flex-wrap: wrap; gap: 8px 24px; }
 .dse-goal { display: flex; align-items: baseline; justify-content: center; gap: 4px; max-width: 100%; line-height: 1.5; color: var(--muted-foreground); }
 .dse-goal > span:first-child { flex-shrink: 0; }
-.dse-goal-value { color: var(--primary); font-weight: 600; overflow-wrap: anywhere; }
+.topbar .dse-goal > .dse-goal-value { color: var(--primary); font-size: 30px; font-weight: 800; line-height: 1.1; white-space: nowrap; }
 .dse-countdown { display: flex; align-items: baseline; justify-content: center; gap: 9px; color: var(--muted-foreground); font-size: 13px; white-space: nowrap; }
 .dse-countdown strong { color: var(--primary); font-size: 32px; font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; letter-spacing: -.04em; }
 .dse-countdown-cheer { color: var(--primary); font-weight: 700; white-space: normal; text-align: center; }

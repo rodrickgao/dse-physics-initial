@@ -1,5 +1,26 @@
 import { translations } from './ui-translations';
 Object.assign(translations,Object.fromEntries(`
+学生资料=Student profiles
+逐题统计=Question statistics
+停留超过一分钟=Visits over one minute
+停留超过一分钟的页面=Pages visited for over one minute
+标记错题数=Current mistakes
+已掌握错题数=Mastered mistakes
+学生详情=Student details
+查看 Profile=View profile
+每道题的学生掌握情况=Student mastery by question
+唯一编号=Unique ID
+历史标记总人数=Students who marked this question
+当前错题人数=Students with current mistakes
+已掌握总人数=Students who mastered this question
+前台停留时长=Visible page time
+访问开始时间=Visit started
+页面 / 题目=Page / question
+搜索题目=Search questions
+唯一编号或题目名称=Unique ID or question title
+历史标记最多=Most marked historically
+当前错题最多=Most current mistakes
+已掌握最多=Most mastered
 已暂停=Paused
 暂停会员=Pause membership
 立即暂停会员权限=Pause membership access immediately

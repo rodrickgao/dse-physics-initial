@@ -47,3 +47,5 @@ table{font-size:17px}th{font-size:16px;color:#243b59;padding:16px;text-align:lef
 @media(max-width:440px){.panel{padding:16px}.management-shell nav{grid-template-columns:repeat(2,minmax(0,1fr))}.metrics span{font-size:16px}.metrics>div{padding:16px}.learning-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.learning-tabs button{width:100%;justify-content:space-between;padding:10px;font-size:16px}.toolbar>button{max-width:100%}.membership-form{padding:16px}.pagination{justify-content:center}}
 
 .admin-membership{border-block:1px solid #dce5ef;padding:18px 0;margin-top:20px}.admin-membership summary{font-size:21px;font-weight:650;cursor:pointer}.admin-membership[open] summary{margin-bottom:18px}.badge{width:fit-content}
+
+.question-identifier{display:block;margin-top:8px;color:#526780;font-family:monospace;overflow-wrap:anywhere}.admin-insights{margin-top:24px}.admin-insights code{overflow-wrap:anywhere}

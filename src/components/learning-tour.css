@@ -4,12 +4,21 @@
 
 .tour-help{border:1px solid var(--border);border-radius:8px;background:var(--card);color:var(--primary);padding:6px 12px;font-size:15px;white-space:nowrap;cursor:pointer}
 .account-bar:has(.tour-help){flex-wrap:wrap}.account-bar:has(.tour-help)>.membership-status{flex-shrink:0;white-space:nowrap}
-html[data-tour-active] *,html[data-tour-active] *::before,html[data-tour-active] *::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}
+html[data-tour-active] *,html[data-tour-active] *::before,html[data-tour-active] *::after{animation:none!important;transition:none!important}
 .tour-help:focus-visible{outline:3px solid var(--primary);outline-offset:3px}
 
-/* Only fade the new copy and highlight; never tween the page, mask or panel position. */
+/* Keep the spotlight aligned to its real target while easing the guidance panel. */
 @keyframes tour-reveal{from{opacity:.45}to{opacity:1}}
 @media(prefers-reduced-motion:no-preference){
  html[data-tour-active] .learning-tour #tour-body,
- html[data-tour-active] .learning-tour .tour-highlight{animation:tour-reveal 120ms ease-out both!important}
+ html[data-tour-active] .learning-tour .tour-highlight{animation:tour-reveal 180ms ease-out both!important}
 }
+
+/* One painted surface avoids fractional-pixel seams between shade panels. */
+.tour-mask{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;overflow:hidden}.tour-mask path{fill:rgba(12,24,45,.58);pointer-events:fill}
+
+@media(prefers-reduced-motion:no-preference){html[data-tour-active] .learning-tour .tour-panel.tour-positioned{transition:left 320ms cubic-bezier(.22,1,.36,1),top 320ms cubic-bezier(.22,1,.36,1)!important}}
+
+/* Place the next step while invisible; reveal only after its target settles. */
+.learning-tour .tour-panel.tour-pending{opacity:0;visibility:hidden;pointer-events:none;transition:none!important}
+@media(prefers-reduced-motion:no-preference){html[data-tour-active] .learning-tour .tour-panel:not(.tour-pending){transition:opacity 180ms ease-out,left 320ms cubic-bezier(.22,1,.36,1),top 320ms cubic-bezier(.22,1,.36,1)!important}}

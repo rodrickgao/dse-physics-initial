@@ -114,7 +114,7 @@ test('API status transitions, history, own-user isolation, admin counts, bounded
 });
 
 test('weekly renderer escapes names and keeps cold-start honest in both languages without sending mail',async()=>{
- for(const language of ['chn','eng']){const message=await weeklyReportEmail({from:'test@local.invalid',to:'test@local.invalid',report:{kind:'qdna-weekly',language,name:'<script>bad()</script>',start:1000000000,end:1000600000,partial_history:false,activity:{newly_mastered:0,newly_wrong:0},focus_areas:[],recommended_questions:[],personalized:false,continue_url:'/#home'}});assert.doesNotMatch(message.html,/<script>/);assert.match(message.html,/&lt;script&gt;/);assert.doesNotMatch(message.text,/50%/);assert.match(message.html,/https:\/\/ddphysics.com\/#home/);assert.equal(message.attachments.length,0);}
+ for(const language of ['chn','eng']){const message=await weeklyReportEmail({from:'test@local.invalid',to:'test@local.invalid',report:{kind:'qdna-weekly',language,name:'<script>bad()</script>',start:1000000000,end:1000600000,partial_history:false,activity:{newly_mastered:0,newly_wrong:0},focus_areas:[],recommended_questions:[],personalized:false,continue_url:'/#home'}});assert.doesNotMatch(message.html,/<script>/);assert.match(message.html,/&lt;script&gt;/);assert.doesNotMatch(message.text,/50%/);assert.match(message.html,/https:\/\/ddphysics.com\/#mistakes/);assert.equal(message.attachments.length,1);}
 });
 
 test('QDNA startup index adapts existing weights, deduplicates IDs, uses language fallback, and versions reloads',()=>{

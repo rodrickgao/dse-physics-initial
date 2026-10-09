@@ -50,7 +50,7 @@ export function createQdnaLearning({db,clock,statusStore,config=weaknessConfigur
   start??=end-7*86400000;const current=snapshot(studentId,language,8),user=db.prepare('SELECT nickname FROM users WHERE id=?').get(studentId);
   const counts=db.prepare("SELECT to_status,COUNT(DISTINCT question_id) n FROM question_status_events WHERE user_id=? AND at>=? AND at<? AND to_status IN ('MASTERED','WRONG') GROUP BY to_status").all(studentId,start,end);
   return {kind:'qdna-weekly',name:user?.nickname|| (language==='eng'?'Student':'同学'),language,start,end,generated_at:current.generated_at,qdna_version:version,history_since:statusStore.historySince,partial_history:start<statusStore.historySince,
-   activity:{newly_mastered:counts.find(r=>r.to_status==='MASTERED')?.n||0,newly_wrong:counts.find(r=>r.to_status==='WRONG')?.n||0},focus_areas:current.signals.rows.filter(r=>r.status==='NEEDS_REVIEW').slice(0,3),recommended_questions:current.recommendations.new_questions.slice(0,3),continue_url:'/#home',personalized:current.recommendations.personalized};
+   activity:{newly_mastered:counts.find(r=>r.to_status==='MASTERED')?.n||0,newly_wrong:counts.find(r=>r.to_status==='WRONG')?.n||0},focus_areas:current.signals.rows.filter(r=>r.status==='NEEDS_REVIEW').slice(0,3),recommended_questions:current.recommendations.new_questions.slice(0,3),continue_url:'/#mistakes',personalized:current.recommendations.personalized};
  }
  return {snapshot,dashboard,knowledge,adminOverview,weekly,version};
 }

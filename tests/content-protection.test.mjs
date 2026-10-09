@@ -21,6 +21,8 @@ test('content boundary: trial, membership, static bypasses, bounded results, coo
  const login=async(c,email)=>{const sent=await c('/api/auth/code',{email});assert.equal(sent.status,200);const verified=await c('/api/auth/verify',{email,code:sent.data.developmentCode});assert.equal(verified.status,200);return verified.data.user;};
  try {
   const memberUser=await login(member,'member@test.example');await login(free,'free@test.example');
+  const emptySummary=await free('/api/content/mistake-summary?language=eng');
+  assert.equal(emptySummary.status,200);assert.deepEqual(emptySummary.data.orderedKeys,[]);
   assert.equal((await admin('/api/admin/login',{key:'fixture-only-key'})).status,200);
   assert.equal((await admin('/api/admin/membership',{userId:memberUser.id,action:'extend',days:1,reason:'test',revision:0,requestId:crypto.randomUUID()})).status,200);
   const dna='/api/admin/content/dna?id=2012%7Cpaper-1a%7C1&language=chn';

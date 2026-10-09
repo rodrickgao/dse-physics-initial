@@ -1,3 +1,6 @@
+import { createWeeklyReportScheduler } from './weekly-report-scheduler.mjs';
+import { createPaymentNotifications } from './payment-notifications.mjs';
+import { createAdminInsights } from './admin-insights.mjs';
 import {studentLearningView} from './qdna-learning.mjs';
 import { createQuestionStatus } from './question-status.mjs';
 import { createQdnaLearning } from './qdna-learning.mjs';
@@ -23,7 +26,7 @@ const token = () => randomBytes(32).toString('hex');
 const fail = (status, message) => { throw Object.assign(new Error(message), { status }); };
 const publicUser = publicProfile;
 
-export function createApi({ directory, mailer, clock = Date.now, adminKey: suppliedKey, publicOrigins = [], secureCookies = false, trustProxy = false, contentLimits, qdnaDirectory = process.env.DSE_QDNA_DIR } = {}) {
+export function createApi({ directory, mailer, paymentNotifier, weeklyMailer, weeklyFrom, clock = Date.now, adminKey: suppliedKey, publicOrigins = [], secureCookies = false, trustProxy = false, contentLimits, qdnaDirectory = process.env.DSE_QDNA_DIR } = {}) {
   const allowedOrigins = new Set(publicOrigins);
   const allowedHosts = new Set(publicOrigins.map(value => new URL(value).host));
   if (secureCookies && (!mailer || !allowedOrigins.size)) throw new Error('Production requires email delivery and an explicit HTTPS origin.');
@@ -52,17 +55,20 @@ export function createApi({ directory, mailer, clock = Date.now, adminKey: suppl
   const all = (sql, ...params) => db.prepare(sql).all(...params);
   const run = (sql, ...params) => db.prepare(sql).run(...params);
   const transaction = fn => { db.exec('BEGIN IMMEDIATE'); try { const result = fn(); db.exec('COMMIT'); return result; } catch (e) { db.exec('ROLLBACK'); throw e; } };
+  const insights = createAdminInsights({db,clock,fail});
   const management = createManagement({ db, clock, fail, transaction });
   const content = createContent({ db, clock, secret: adminKey, membership: management.membership, limiterConfig: contentLimits, qdnaDirectory });
   const statusStore = createQuestionStatus({db,clock});
   const learning = createQdnaLearning({db,clock,statusStore});
   content.setLearning(learning);
+  const weeklyReports=createWeeklyReportScheduler({db,clock,buildReport:(id,options)=>learning.weekly(id,options),sendMail:weeklyMailer,from:weeklyFrom});
   const learningLimit=createContentLimiter({db,clock,config:contentLimits});
   const archive = createMistakeArchive({ db, clock, fail, transaction, record: management.record, questions, statusStore });
   const tutoring = createTutoring({ db, clock, fail });
   const mastered = userId => Object.fromEntries(all('SELECT question_key,marked_at FROM mastered WHERE user_id=?',userId).map(r => [r.question_key,{markedAt:new Date(r.marked_at).toISOString()}]));
   const progress = userId => ({ mistakes:marked(userId), mastered:mastered(userId) });
-  const payments = createPaymentOrders({ db, clock, fail, transaction, management });
+  const paymentNotifications = createPaymentNotifications({db,clock,sendMail:paymentNotifier});
+  const payments = createPaymentOrders({ db, clock, fail, transaction, management, notifications:paymentNotifications });
   function limit(bucket, count, interval) {
     run('DELETE FROM limits WHERE at < ?', clock() - 3600000);
     if (get('SELECT count(*) n FROM limits WHERE bucket=? AND at>?', bucket, clock() - interval).n >= count) fail(429, '操作過於頻繁，請稍後再試。');
@@ -206,14 +212,18 @@ export function createApi({ directory, mailer, clock = Date.now, adminKey: suppl
       }
       if (path === '/api/admin/tutoring' && req.method === 'GET') return send({ rows:tutoring.list() });
       if (path === '/api/admin/tutoring/reply' && req.method === 'POST') return send(tutoring.reply(user,body));
-      if (path === '/api/admin/overview' && req.method === 'GET') return send(management.overview());
+      if (path === '/api/page-visits' && req.method === 'POST') return send(insights.track(user,body));
+      if (path === '/api/admin/page-visits' && req.method === 'GET') return send(insights.visits(url));
+      if (path === '/api/admin/question-stats' && req.method === 'GET') return send(insights.questionStats());
+      if (path === '/api/admin/weekly-status' && req.method === 'GET') return send(weeklyReports.status());
+      if (path === '/api/admin/overview' && req.method === 'GET') return send({...management.overview(),...insights.dailyUsage()});
       if (path === '/api/admin/activity' && req.method === 'GET') return send(management.activity(url));
       if (path === '/api/admin/membership-history' && req.method === 'GET') return send({ rows: management.history(Number(url.searchParams.get('userId')) || 0) });
       if (path === '/api/admin/membership' && req.method === 'POST') return send(management.change(user, body));
       if (path === '/api/orders' && req.method === 'GET') return send({order:payments.latest(user.id)});
       if (path === '/api/admin/orders' && req.method === 'GET') return send(payments.list());
       if (path === '/api/admin/orders/receipt' && req.method === 'GET') { const image = payments.receipt(url.searchParams.get('id')); res.setHeader('Content-Type','image/webp'); return res.end(image); }
-      if (path === '/api/admin/orders/review' && req.method === 'POST') return send(payments.review(user,body));
+      if (path === '/api/admin/orders/review' && req.method === 'POST') { const result=payments.review(user,body); void paymentNotifications.flush(); return send(result); }
       if (path === '/api/profile' && req.method === 'PUT') {
         if (user.role !== 'student') fail(403, '此功能供學生使用。');
         limit(`profile:${user.id}`, 30, 60000);
@@ -238,7 +248,7 @@ export function createApi({ directory, mailer, clock = Date.now, adminKey: suppl
       if (user.role === 'student' && !publicUser(user).profileComplete && req.method !== 'GET') fail(403, '請先完成學生資料。');
       if (path === '/api/orders' && req.method === 'POST') {
         limit(`payment:${user.id}`,20,60000);
-        return send(await payments.submit(user,body));
+        const result=await payments.submit(user,body); void paymentNotifications.flush(); return send(result);
       }
       if (path === '/api/activity' && req.method === 'POST') {
         limit(`activity:${user.id}`, 180, 60000);
@@ -310,11 +320,11 @@ export function createApi({ directory, mailer, clock = Date.now, adminKey: suppl
       }
       if (path === '/api/admin/export' && req.method === 'GET') {
         const generatedAt = new Date(clock()).toISOString();
-        const rows = transaction(() => exportRows(
+        const exportData = transaction(() => ({ rows: exportRows(
           all("SELECT id,email,role,created_at,last_login,nickname,grade,target,target_major,avatar FROM users WHERE role='student' ORDER BY id"),
           all('SELECT user_id,question_key,marked_at FROM mistakes ORDER BY user_id,marked_at,question_key'),
-          all('SELECT id,user_id,question_key,action,at FROM events ORDER BY user_id,at,id'), generatedAt));
-        const bytes = await toWorkbook(rows);
+          all('SELECT id,user_id,question_key,action,at FROM events ORDER BY user_id,at,id'), generatedAt), extra:{generatedAt,students:management.overview().students,mastered:all('SELECT user_id,question_key,marked_at FROM mastered ORDER BY user_id,marked_at,question_key')} }));
+        const bytes = await toWorkbook(exportData.rows,exportData.extra);
         return send({ filename: '學生完整學習資料.xlsx', base64: Buffer.from(bytes).toString('base64'), generatedAt });
       }
       if (path === '/api/admin/stats' && req.method === 'GET') {
@@ -337,5 +347,5 @@ export function createApi({ directory, mailer, clock = Date.now, adminKey: suppl
       fail(404, '找不到此操作。');
     } catch (error) { res.statusCode = error.status || 500; send({ error: error.status ? error.message : '服務暫時無法使用，請重試。' }); if (!error.status) console.error('API request failed', {path:req.url.split('?')[0],type:error.name}); }
   }
-  return { handler, buildWeeklyReport: (studentId,options) => learning.weekly(studentId,options), protectFiles: (req,res) => content.file(req,res,session(req) || session(req,true)), hasPremium: req => { const user = session(req); return Boolean(user && (user.role === 'admin' || management.membership(user.id).active)); }, close: () => db.close(), adminKeyPath: keyPath };
+  return { handler, buildWeeklyReport: (studentId,options) => learning.weekly(studentId,options), protectFiles: (req,res) => content.file(req,res,session(req) || session(req,true)), hasPremium: req => { const user = session(req); return Boolean(user && (user.role === 'admin' || management.membership(user.id).active)); }, close: () => { weeklyReports.close(); paymentNotifications.close(); db.close(); }, adminKeyPath: keyPath };
 }

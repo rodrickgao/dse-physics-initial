@@ -9,13 +9,13 @@ import { questions } from '../server/catalog.mjs';
 import { compareMistakePrintEntries, printableQuestion, printDocumentHtml } from '../src/lib/study-content.js';
 import { exerciseMistakeEntries } from '../src/lib/textbook-exercises.js';
 
-test('mixed mistakes sort by type, chapter order, then collection time, with identical print order',()=>{
+test('mixed mistakes sort by knowledge order, type, then collection time, with identical print order',()=>{
  const points=[{sequence:50,code:'101'},{sequence:2,code:'101'},{sequence:1,code:'201'}];
  const make=(key,seq,date,kind='multiple-choice')=>({key,paperIndex:kind==='multiple-choice'?0:1,year:{year:2012,id:'2012-chn'},question:{label:key,kind},network:{links:[{sequence:seq}]},markedAt:date});
  const entries=[make('late-first-point',50,'2026-09-20'),make('early-second-point',2,'2026-09-01'),make('structured',50,'2026-08-01','structured'),make('later-chapter',1,'2026-07-01')];
- const order=['early-second-point','late-first-point','later-chapter','structured'];
+ const order=['late-first-point','structured','early-second-point','later-chapter'];
  assert.deepEqual([...entries].sort(compareMistakePrintEntries(points)).map(e=>e.key),order);
- const privateLinksRemoved=entries.map(e=>({...e,sortChapter:points.find(p=>p.sequence===e.network.links[0].sequence).code,network:{links:[]}}));
+ const privateLinksRemoved=entries.map(e=>({...e,mistakeOrder:order.indexOf(e.key),network:{links:[]}}));
  assert.deepEqual(privateLinksRemoved.sort(compareMistakePrintEntries(points)).map(e=>e.key),order,'sorting must also work without premium links');
  const html=printDocumentHtml(entries,entries.map(e=>({question:`<p>${e.key}</p>`})),{language:'chn',mode:'questions',knowledgePoints:points,baseUrl:'http://localhost/'});
  assert.deepEqual([...html.matchAll(/data-question="([^"]+)"/g)].map(m=>m[1]),order);

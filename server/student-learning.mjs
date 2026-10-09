@@ -1,7 +1,7 @@
 import { questions, pointInfo } from './catalog.mjs';
 
 export function studentLearning(active, mastered, archive, recommendations = {new_questions:[]}) {
-  const record = q => ({...questions.get(q.question_key), markedAt: q.marked_at,
+  const record = q => ({key:q.question_key,label:q.question_key,...questions.get(q.question_key), markedAt: q.marked_at,
     knowledge: (questions.get(q.question_key)?.points || []).map(pointInfo)});
   return {
     counts: {active: active.length, mastered: mastered.length,

@@ -1,3 +1,5 @@
+import { compareMistakePrintEntries } from '../src/lib/study-content.js';
+import { numberKnowledgePoints } from '../src/lib/knowledge-numbering.js';
 import { readFileSync, readdirSync, createReadStream, statSync, existsSync } from 'node:fs';
 import { resolve, extname } from 'node:path';
 import { runInNewContext } from 'node:vm';
@@ -163,11 +165,16 @@ export function createContent({ db, clock, membership, limiterConfig, qdnaDirect
       }
       if(route==='mistake-summary') {
         validate(url,['language','point']);if(!user)fail(401,'请先登录。');limit(req,res,user,'links');
-        const owned=db.prepare('SELECT question_key FROM mistakes WHERE user_id=?').all(user.id).map(r=>questions.get(r.question_key)).filter(Boolean);
+        const saved=db.prepare('SELECT question_key, marked_at FROM mistakes WHERE user_id=?').all(user.id);
+        const owned=saved.map(r=>questions.get(r.question_key)).filter(Boolean);
         const entries=owned.map(q=>{const row=records.get(lang).get(q.key);return {key:q.key,network:premium(user)?links(q.key,user):{links:[]},primaryChapterCode:q.primaryChapterCode,sortChapter:q.chapterCode,paperIndex:q.key.includes('paper-1a')?0:1,question:{kind:row?.body.kind}};});
         const summary=analyzeMistakes(entries,context.window.DSE_TEXTBOOK_DATA.languages[lang],lang);
         summary.recommendations=learning.snapshot(user.id,lang).signals.rows.filter(r=>r.status==='NEEDS_REVIEW').slice(0,3).map(r=>({sequence:Number(r.knowledge_id),count:r.wrong_question_count}));
         if(url.searchParams.has('point')){requirePremium(user);const point=integer(url,'point',0,1000);summary.filterKeys=owned.filter(q=>q.points.includes(point)).map(q=>q.key);}
+        // Return only this user's ordered identities; keep knowledge mappings on the server.
+        const marked = new Map(saved.map(r=>[r.question_key,r.marked_at]));
+        summary.orderedKeys=entries.map(entry=>({...entry,markedAt:new Date(marked.get(entry.key)).toISOString(),network:{links:questions.get(entry.key).points.map(sequence=>({sequence}))}}))
+          .sort(compareMistakePrintEntries(numberKnowledgePoints(context.window.DSE_TEXTBOOK_DATA.languages[lang]))).map(entry=>entry.key);
         return send(summary);
       }
       if(route==='recommendations') {

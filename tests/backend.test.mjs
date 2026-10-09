@@ -212,7 +212,7 @@ test('registration, persistent sessions, isolation, idempotent marks, import and
     assert.equal(exported.data.filename, '學生完整學習資料.xlsx');
     const workbook = new ExcelJS.Workbook(); await workbook.xlsx.load(Buffer.from(exported.data.base64, 'base64'));
     const exportedText = JSON.stringify(workbook.worksheets.map(s => ({name:s.name, rows:s.getSheetValues()})));
-    assert.equal(workbook.worksheets.length, 5);
+    assert.equal(workbook.worksheets.length, 8);
     for (const expected of ['學生摘要', '目前錯題', '知識點統計', '章節統計', '操作歷史', '移入回收站', 'studenta@example.com', 'studentb@example.com', keys[0], keys[1]]) assert.ok(exportedText.includes(expected), expected);
     for (const excluded of ['developer@local.invalid', 'test-admin-key', 'digest', 'salt', first.code]) assert.ok(!exportedText.includes(excluded));
     await a('auth/logout', {}); assert.equal((await a('mistakes')).status, 401);

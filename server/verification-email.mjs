@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 
-const logo = readFileSync(new URL('./email/brand-mark.png', import.meta.url));
+const logo = readFileSync(new URL('../assets/brand/signature-chn.png', import.meta.url));
 const logoCid = 'dse-physics-brand@ddphysics.com';
 
 // Inline styles, presentation tables and a CID image also work without remote images.
@@ -17,8 +17,8 @@ export function verificationEmail({ from, to, code }) {
 <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:520px;border:1px solid #e4e9f1;border-radius:16px;">
 <tr><td style="padding:32px 28px 28px;">
 <table role="presentation" cellspacing="0" cellpadding="0" border="0"><tr>
-<td width="44" valign="middle"><img src="cid:${logoCid}" alt="DSE Physics" width="40" height="40" style="display:block;border:0;border-radius:10px;"></td>
-<td valign="middle" style="padding-left:12px;"><span style="font-size:21px;line-height:26px;font-weight:700;letter-spacing:-0.4px;color:#172b46;">DSE Physics</span><br><a href="https://ddphysics.com" style="font-size:12px;line-height:19px;letter-spacing:0.4px;color:#708095;text-decoration:none;">ddphysics.com</a></td>
+<td width="200" valign="middle"><img src="cid:${logoCid}" alt="DSE Physics" width="190" style="display:block;width:190px;height:auto;border:0;"></td>
+
 </tr></table>
 <h1 style="margin:34px 0 12px;font-size:23px;line-height:32px;font-weight:700;color:#172b46;">登录验证码</h1>
 <p style="margin:0 0 24px;font-size:14px;line-height:24px;color:#627086;">请在 DSE Physics 登录页面输入以下验证码。</p>

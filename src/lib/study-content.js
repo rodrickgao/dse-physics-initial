@@ -64,7 +64,7 @@ export function preparePrintedAnswerSpaces(document) {
   if (!root) return;
   const view = document.defaultView;
   const style = view.getComputedStyle(root);
-  const pageHeight = 11 * 96 - parseFloat(style.paddingTop) - parseFloat(style.paddingBottom);
+  const pageHeight = (297 / 25.4) * 96 - parseFloat(style.paddingTop) - parseFloat(style.paddingBottom);
   const articles = [...root.querySelectorAll('.print-question')];
   for (const article of articles) {
     const box = article.querySelector('.working-space');
@@ -83,16 +83,12 @@ export function preparePrintedAnswerSpaces(document) {
 
 // The supplied points follow the displayed textbook order, not stable sequence IDs.
 export function compareMistakePrintEntries(points = []) {
-  const chapters = new Map();
-  const ranks = new Map(points.map(point => {
-    const chapter = point.code || `point-${point.sequence}`;
-    if (!chapters.has(chapter)) chapters.set(chapter, chapters.size);
-    return [Number(point.sequence), chapters.get(chapter)];
-  }));
-  const rank = (entry) => chapters.get(entry.sortChapter) ?? Math.min(Number.MAX_SAFE_INTEGER, ...(entry.network?.links || [])
+  const ranks = new Map(points.map((point, index) => [Number(point.sequence), index]));
+  const rank = entry => Math.min(Number.MAX_SAFE_INTEGER, ...(entry.network?.links || [])
     .map(link => ranks.get(Number(link.sequence)) ?? Number.MAX_SAFE_INTEGER));
-  const kind = (entry) => entry.paperIndex === 0 || entry.question.kind === 'multiple-choice' ? 0 : 1;
-  return (a, b) => kind(a) - kind(b) || rank(a) - rank(b)
+  const kind = entry => entry.paperIndex === 0 || entry.question?.kind === 'multiple-choice' ? 0 : 1;
+  return (a, b) => (Number.isInteger(a.mistakeOrder) && Number.isInteger(b.mistakeOrder)
+    ? a.mistakeOrder - b.mistakeOrder : rank(a) - rank(b) || kind(a) - kind(b))
     || (Date.parse(a.markedAt) || 0) - (Date.parse(b.markedAt) || 0)
     || a.key.localeCompare(b.key, 'en', { numeric: true });
 }
@@ -105,10 +101,11 @@ export function printDocumentHtml(entries, contents, options) {
   const rows = entries.map((entry, i) => ({ entry, content: contents[i] }))
     .sort((a, b) => compare(a.entry, b.entry));
   return `<!doctype html><html lang="${en ? 'en' : 'zh-CN'}"><head><meta charset="utf-8"><title>${escapeHtml(title)}</title><base href="${escapeHtml(options.baseUrl)}"><style>${STUDY_CSS}
-    @page {size:letter;margin:0}
+    @page {size:A4;margin:0}
     * {box-sizing:border-box}body{margin:0;background:white;color:black;font:11pt/1.18 "Times New Roman",SimSun,"Songti SC",serif}
     h1{font-size:23pt;margin:0 0 12pt}h2{font-size:15.5pt;margin:0 0 10pt;break-after:avoid}h3{font-size:12.5pt;margin:14pt 0 8pt;break-after:avoid}
-    .print-question{padding-top:12pt}.print-question+.print-question{break-before:page}
+    .print-question{padding-top:12pt;position:relative}
+    .print-watermark{position:fixed;top:148.5mm;left:105mm;width:190mm;height:auto;transform:translate(-50%,-50%) rotate(-35deg);transform-origin:center;opacity:.07;z-index:10;pointer-events:none;user-select:none}.print-question+.print-question{break-before:page}
     .study-content{font-size:11pt;line-height:1.18}.reasoning-content,.official-content{font-size:10.5pt}
     .study-content p{margin-bottom:5pt}.study-content img{max-height:7.6in;max-width:100%;object-fit:contain}
     .textbook-exercise b,.textbook-exercise strong{font-weight:inherit}.textbook-exercise i,.textbook-exercise em{font-style:normal}.textbook-exercise math{overflow:visible}
@@ -116,12 +113,12 @@ export function printDocumentHtml(entries, contents, options) {
     .answer-line{margin:24pt 0 8pt;font-size:14pt;line-height:12mm;white-space:nowrap;break-inside:avoid}
     .answer-blank{display:inline-block;width:10ch;height:10mm;margin-left:1mm;border-bottom:1pt solid #000;vertical-align:baseline}
     .working-space{break-inside:avoid;margin-top:15pt;height:150mm;border:1pt solid #555}
-    .working-space.full-page-space{break-before:page;margin-top:0;height:calc(11in - .72in - .7in - 2px)}
+    .working-space.full-page-space{break-before:page;margin-top:0;height:calc(297mm - .72in - .7in - 2px)}
     .print-document{padding:.72in .85in .7in;box-decoration-break:clone;-webkit-box-decoration-break:clone}
     .print-actions{font-family:system-ui;padding:16px;background:#fff;border-bottom:1px solid #ddd;margin-bottom:20px}.print-actions button{padding:10px;margin-right:10px}
     @media print{.print-actions{display:none}*{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
-    @media screen{body{width:8.5in;margin:20px auto}.print-question+.print-question{margin-top:30px}}
-    </style></head><body><div class="print-actions"><button id="print">${translate("打印／另存为 PDF", en ? "eng" : "chn")}</button></div><main class="print-document"><h1>${escapeHtml(title)}</h1>${rows.map(({entry, content}) => printableQuestion(entry, content, options)).join("")}</main></body></html>`;
+    @media screen{body{width:210mm;margin:20px auto}.print-question+.print-question{margin-top:30px}}
+    </style></head><body><img class="print-watermark" src="assets/brand/signature-${en?'eng':'chn'}.png" alt="" aria-hidden="true"/><div class="print-actions"><button id="print">${translate("打印／另存为 PDF", en ? "eng" : "chn")}</button></div><main class="print-document"><h1>${escapeHtml(title)}</h1>${rows.map(({entry, content}) => printableQuestion(entry, content, options)).join("")}</main></body></html>`;
 }
 
 export async function openMistakePrint(entries, options) {
