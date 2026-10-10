@@ -861,7 +861,8 @@
             "label": "2014|paper-1a|23"
           }
         ],
-        "card_title": "點電荷的電場"
+        "card_title": "點電荷的電場",
+        "card_summary": "點電荷的電場大小與場源電荷量成正比、與距離平方成反比。正電荷的場向外，負電荷的場向內。多個場源同時存在時，須逐一求該點的電場矢量再合成。某點電場為零，不表示附近沒有電荷或每個場都為零。"
       },
       "eng": {
         "card_references": [
@@ -871,7 +872,8 @@
             "label": "2014|paper-1a|23"
           }
         ],
-        "card_title": "Electric field of a point charge"
+        "card_title": "Electric field of a point charge",
+        "card_summary": "A point charge's electric field magnitude is proportional to source charge magnitude and inversely proportional to distance squared. It points outwards from positive charge and inwards towards negative charge. Add fields from multiple sources as vectors at the specified point. A zero resultant field does not imply absent charges or zero individual fields."
       }
     },
     "167": {
@@ -883,7 +885,8 @@
             "label": "2014|paper-1a|23"
           }
         ],
-        "card_title": "點電荷的電場"
+        "card_title": "點電荷的電場",
+        "card_summary": "點電荷的電場大小與場源電荷量成正比、與距離平方成反比。正電荷的場向外，負電荷的場向內。多個場源同時存在時，須逐一求該點的電場矢量再合成。某點電場為零，不表示附近沒有電荷或每個場都為零。"
       },
       "eng": {
         "card_references": [
@@ -893,7 +896,8 @@
             "label": "2014|paper-1a|23"
           }
         ],
-        "card_title": "Electric field of a point charge"
+        "card_title": "Electric field of a point charge",
+        "card_summary": "A point charge's electric field magnitude is proportional to source charge magnitude and inversely proportional to distance squared. It points outwards from positive charge and inwards towards negative charge. Add fields from multiple sources as vectors at the specified point. A zero resultant field does not imply absent charges or zero individual fields."
       }
     },
     "177": {
@@ -4632,12 +4636,7 @@
         "evidence": "An unequal pressure across the eardrum impairs vibration; the Eustachian tube helps equalise pressure."
       }
     ],
-    "2014|paper-1a|23": [
-      {
-        "sequence": 164,
-        "evidence": "Explicitly labelled asterisked extension: isolated point-charge potential varies as 1/r with zero at infinity."
-      }
-    ]
+    "2014|paper-1a|23": []
   },
   "supersededLinkDecisions": [
     {
@@ -4668,5 +4667,25 @@
       "reason": "The 2026-10-10 source review expanded this card to explain the previously missing application.",
       "evidence": "Solar noon altitude depends on latitude and seasonal solar declination."
     }
-  ]
+  ],
+  "questionLinkRemovals": [
+    {
+      "key": "2014|paper-1a|23",
+      "sequence": 164,
+      "reason": "Extension removed from the electric-field card; retain chapter-only association for the potential question.",
+      "reviewVersion": "2026-10-11-knowledge-only"
+    }
+  ],
+  "knowledgeOnlyReview": {
+    "date": "2026-10-11",
+    "removedExtensionSourceIds": [
+      164,
+      167
+    ],
+    "languages": [
+      "chn",
+      "eng"
+    ],
+    "policy": "Knowledge explanations contain concepts, formulas, conditions and diagrams; no extension-question paragraphs or numbered exam applications."
+  }
 }

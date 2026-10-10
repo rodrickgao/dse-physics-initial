@@ -7,6 +7,12 @@ const ctx={window:{}};
 for(const file of ['textbook-data.js','knowledge-network-data.js','paper2-knowledge-data.js','statistics-data.js'])vm.runInNewContext(fs.readFileSync(new URL(file,site),'utf8'),ctx);
 const d=ctx.window.DSE_TEXTBOOK_DATA,network={...ctx.window.DSE_KNOWLEDGE_NETWORK,...ctx.window.DSE_PAPER2_KNOWLEDGE},stats=ctx.window.DSE_STATISTICS;
 let added=0;
+// Explicit removals persist when reviewed data is regenerated.
+for(const {key,sequence}of coverage.questionLinkRemovals||[]){
+ const entry=network[key];assert.ok(entry,key);
+ entry.links=(entry.links||[]).filter(link=>link.sequence!==sequence);
+ entry.relatedLinks=(entry.relatedLinks||[]).filter(link=>link.sequence!==sequence);
+}
 for(const [key,links]of Object.entries(coverage.questionLinks||{})){
  if(key.startsWith('tb-')){
   for(const language of ['chn','eng']){

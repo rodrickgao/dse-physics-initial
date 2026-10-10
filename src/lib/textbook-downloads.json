@@ -189,8 +189,8 @@
         38
       ],
       "pages": 3,
-      "bytes": 1744272,
-      "sha256": "763a09973d3e43628e41b51a0ca96ca32f255bbf6f5bd231216c25d26a60ddf2"
+      "bytes": 1738303,
+      "sha256": "a05707fed34e7d5b304dd62d8802446aab8d92359b96500a7b3776c22415aa92"
     },
     "402": {
       "url": "assets/textbook/pdfs/chn/402.pdf",
@@ -743,8 +743,8 @@
         40
       ],
       "pages": 4,
-      "bytes": 2035349,
-      "sha256": "cd5a511c85e5a3635239d2f6ec8c81f96958818d4b899e786fc452f04dbb2b48"
+      "bytes": 2027138,
+      "sha256": "5ae433fb5aea4a582f4bd58a0d1914a496bbf98f68899ac8852ca806c01e20dc"
     },
     "402": {
       "url": "assets/textbook/pdfs/eng/402.pdf",

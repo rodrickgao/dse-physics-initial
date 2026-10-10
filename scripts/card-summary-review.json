@@ -622,8 +622,8 @@
       "eng": "Electric field is electric force per unit positive test charge. Its direction is the force direction on a positive charge. A negative charge feels the opposite force. A test charge must be small enough not to appreciably disturb the source distribution. Using a larger test charge does not itself make the original field stronger."
     },
     "164": {
-      "chn": "點電荷的電場大小與場源電荷量成正比、與距離平方成反比。正電荷的場向外，負電荷的場向內。多個場源同時存在時，須逐一求該點的電場矢量再合成。某點電場為零，不表示附近沒有電荷或每個場都為零。\n\n＊延伸題：取無限遠處電勢為零，孤立點電荷的電勢 \\(V=\\frac{Q}{4\\pi\\varepsilon_0r}\\)，與距離成反比；同一電荷有 \\(V_Y/V_X=r_X/r_Y\\)。這是 2014 卷一甲第 23 題標有＊的應用。",
-      "eng": "A point charge's electric field magnitude is proportional to source charge magnitude and inversely proportional to distance squared. It points outwards from positive charge and inwards towards negative charge. Add fields from multiple sources as vectors at the specified point. A zero resultant field does not imply absent charges or zero individual fields.\n\n* Extension question: with potential zero at infinity, an isolated point charge has \\(V=\\frac{Q}{4\\pi\\varepsilon_0r}\\), inversely proportional to distance. For the same charge, \\(V_Y/V_X=r_X/r_Y\\). This is the asterisked application in 2014 Paper 1A Q23."
+      "chn": "點電荷的電場大小與場源電荷量成正比、與距離平方成反比。正電荷的場向外，負電荷的場向內。多個場源同時存在時，須逐一求該點的電場矢量再合成。某點電場為零，不表示附近沒有電荷或每個場都為零。",
+      "eng": "A point charge's electric field magnitude is proportional to source charge magnitude and inversely proportional to distance squared. It points outwards from positive charge and inwards towards negative charge. Add fields from multiple sources as vectors at the specified point. A zero resultant field does not imply absent charges or zero individual fields."
     },
     "165": {
       "chn": "大平行板之間遠離邊緣處的電場近似均勻，大小等於板間電勢差除以板距，方向由高電勢指向低電勢。固定電壓下縮小板距會增強電場。粒子受力還須乘其電荷，負電荷受力與場方向相反。",
@@ -634,8 +634,8 @@
       "eng": "For point charges in vacuum, or approximately in air, force magnitude is proportional to the product of charge magnitudes and inversely proportional to separation squared. It acts along their joining line. Calculate the magnitude first, then determine attraction or repulsion from the signs. With multiple charges, add the individual forces as vectors."
     },
     "167": {
-      "chn": "點電荷的電場大小與場源電荷量成正比、與距離平方成反比。正電荷的場向外，負電荷的場向內。多個場源同時存在時，須逐一求該點的電場矢量再合成。某點電場為零，不表示附近沒有電荷或每個場都為零。\n\n＊延伸題：取無限遠處電勢為零，孤立點電荷的電勢 \\(V=\\frac{Q}{4\\pi\\varepsilon_0r}\\)，與距離成反比；同一電荷有 \\(V_Y/V_X=r_X/r_Y\\)。這是 2014 卷一甲第 23 題標有＊的應用。",
-      "eng": "A point charge's electric field magnitude is proportional to source charge magnitude and inversely proportional to distance squared. It points outwards from positive charge and inwards towards negative charge. Add fields from multiple sources as vectors at the specified point. A zero resultant field does not imply absent charges or zero individual fields.\n\n* Extension question: with potential zero at infinity, an isolated point charge has \\(V=\\frac{Q}{4\\pi\\varepsilon_0r}\\), inversely proportional to distance. For the same charge, \\(V_Y/V_X=r_X/r_Y\\). This is the asterisked application in 2014 Paper 1A Q23."
+      "chn": "點電荷的電場大小與場源電荷量成正比、與距離平方成反比。正電荷的場向外，負電荷的場向內。多個場源同時存在時，須逐一求該點的電場矢量再合成。某點電場為零，不表示附近沒有電荷或每個場都為零。",
+      "eng": "A point charge's electric field magnitude is proportional to source charge magnitude and inversely proportional to distance squared. It points outwards from positive charge and inwards towards negative charge. Add fields from multiple sources as vectors at the specified point. A zero resultant field does not imply absent charges or zero individual fields."
     },
     "168": {
       "chn": "電流是每單位時間通過截面的電荷量，1 A 表示每秒通過 1 C。傳統電流按正電荷移動方向定義，在外電路由電源正極流向負極。金屬中實際移動的電子方向相反。流過元件時能量可被轉換，但電荷不會被「用光」。",
@@ -1594,5 +1594,17 @@
     "date": "2026-10-10",
     "findings": 40,
     "points": 413
+  },
+  "knowledgeOnlyReview": {
+    "date": "2026-10-11",
+    "removedExtensionSourceIds": [
+      164,
+      167
+    ],
+    "languages": [
+      "chn",
+      "eng"
+    ],
+    "policy": "Knowledge explanations contain concepts, formulas, conditions and diagrams; no extension-question paragraphs or numbered exam applications."
   }
 }
