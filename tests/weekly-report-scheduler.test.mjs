@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {DatabaseSync} from 'node:sqlite';
 import {setImmediate as settle} from 'node:timers/promises';
 import {createWeeklyReportScheduler,latestWeeklySlot,nextWeeklySlot} from '../server/weekly-report-scheduler.mjs';
+import {memberWeeklyReport} from '../server/qdna-learning.mjs';
 
 const sunday=Date.parse('2026-10-11T11:00:00Z'),week=7*86400000;
 const report=(id,{start,end,language})=>({kind:'qdna-weekly',name:`Student ${id}`,start,end,language,activity:{newly_mastered:2,newly_wrong:1},focus_areas:[],recommended_questions:[]});
@@ -48,4 +49,11 @@ test('local preview never sends and first activation does not backfill historic 
  const db=database();let now=sunday+1000,builds=0;
  const scheduler=createWeeklyReportScheduler({db,clock:()=>now,buildReport:()=>{builds++;throw Error('unexpected');}});
  try {now+=week;await scheduler.tick();assert.equal(builds,0);assert.equal(scheduler.status().enabled,false);assert.equal(scheduler.status().nextAt,sunday+week);assert.equal(db.prepare('SELECT COUNT(*) n FROM weekly_report_deliveries').get().n,0);}finally{scheduler.close();db.close();}
+});
+
+test('queued recommendation emails recheck membership before retry without changing saved activity',async()=>{
+ const db=database();db.prepare('DELETE FROM users WHERE id<>1').run();let now=sunday-1000,active=true,attempts=0;const sent=[];
+ const options={db,clock:()=>now,from:'sender@test.invalid',buildReport:(id,options)=>({...report(id,options),personalized:true,recommended_questions:[{question_title:'Private recommended question',question_url:'/#paper?id=private',chapter:'Chapter',primary_knowledge:{name:'Topic'}}]}),prepareReport:(_id,saved)=>memberWeeklyReport(saved,active),sendMail:async message=>{sent.push(message);if(++attempts===1)throw Error('Fixture SMTP failure');}};
+ const scheduler=createWeeklyReportScheduler(options);
+ try{now=sunday;await scheduler.tick();assert.match(sent[0].text,/Private recommended question/);active=false;now+=60000;await scheduler.tick();assert.equal(sent.length,2);assert.doesNotMatch(sent[1].text,/Private recommended question|id=private/);assert.doesNotMatch(sent[1].html,/Private recommended question|id=private/);assert.match(sent[1].text,/会员专享/);assert.match(sent[1].text,/本周新增已掌握：2/);assert.equal(sent[0].messageId,sent[1].messageId);assert.equal(JSON.parse(db.prepare('SELECT report FROM weekly_report_deliveries WHERE user_id=1').get().report).recommended_questions.length,1,'Persisted report is not rewritten');assert.equal(scheduler.status().pending,0);}finally{scheduler.close();db.close();}
 });

@@ -4,6 +4,7 @@ const pairs = `
 必修一题目与知识点双向关联=Compulsory 1 question–knowledge links in both directions
 课本例题、课本解答与思考题解答=Textbook examples, solutions and Think about answers
 知识点关联真题、课本习题与例题=Knowledge links to past papers, exercises and examples
+智能推荐练习题=Personalised practice recommendations
 问老师：真题、课本习题、例题与知识点=Ask a teacher about past papers, exercises, examples and knowledge
 原题版 · 打印／保存 PDF=Questions · Print / save PDF
 详解版 · 打印／保存 PDF=Solutions · Print / save PDF

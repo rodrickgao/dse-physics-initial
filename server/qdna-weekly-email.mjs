@@ -10,7 +10,7 @@ export function qdnaWeeklyEmail({from,to,report}) {
  const history=report.partial_history?pick('状态变更记录自 '+date(report.history_since)+' 起保存；此前的活动不包含在本周计数中。','Status history starts on '+date(report.history_since)+'. Earlier activity is not included in these counts.'):'';
  const note=pick('根据你目前的错题标记整理。','Based on your current mistake marks.');
  const emptyFocus=pick('暂无待复习知识点，继续学习吧。','No topics currently qualify for review. Keep marking questions as you learn.');
- const emptyQuestions=report.personalized?pick('暂时没有匹配的新题，可回网站复习错题。','No matching new questions remain. You can review saved mistakes on the site.'):pick('相关标记数据不足，暂不提供个性化推荐。可先浏览题库并标记已掌握题目和错题。','There is not enough related marking data for personalised recommendations yet. Browse the question bank and mark mastered questions and mistakes.');
+ const emptyQuestions=report.recommendations_locked?pick('会员专享 · 智能推荐练习','Members only · Recommended practice'):report.personalized?pick('暂时没有匹配的新题，可回网站复习错题。','No matching new questions remain. You can review saved mistakes on the site.'):pick('相关标记数据不足，暂不提供个性化推荐。可先浏览题库并标记已掌握题目和错题。','There is not enough related marking data for personalised recommendations yet. Browse the question bank and mark mastered questions and mistakes.');
  const focus=report.focus_areas.map(r=>r.name);
  const questions=report.recommended_questions.map(q=>`${q.question_title} · ${q.primary_knowledge?.name || q.chapter || ''}\n${url(q.question_url)}`);
  const headings=[pick('本周学习记录','This week'),pick('需要复习的知识点','Topics to review'),pick('对应练习','Practice questions'),pick('进入错题库','Open Mistake Book')];

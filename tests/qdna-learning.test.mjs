@@ -76,6 +76,10 @@ test('API status transitions, history, own-user isolation, admin counts, bounded
   assert.equal((await guest('learning/dashboard')).status,401);assert.equal((await a('admin/learning/overview')).status,403);
   let r=await dash();const version=r.qdna_version;assert.equal(r.counts.marked,0);assert.equal(r.recommendations.personalized,false);assert.ok(r.signals.rows.every(k=>k.weakness_signal===null));
   await mark(1,'mistake');r=await dash();assert.equal(signal(r).wrong_question_count,1);assert.equal(signal(r).weakness_signal,null);assert.equal(r.recommendations.personalized,true);assert.ok(r.recommendations.new_questions.length);assert.equal((await a('learning/dashboard')).weak_points[0].knowledge_id,'16');
+  const checkLocked=async()=>{for(const language of ['chn','eng']){const guidance=await a(`learning/dashboard?language=${language}`);assert.equal(guidance.status,200);assert.ok(guidance.weak_points.length,'Free users retain review topics');assert.deepEqual(guidance.recommendations,{locked:true});const detail=await a(`learning/knowledge?id=16&language=${language}`);assert.equal(detail.status,200);assert.ok(detail.knowledge);assert.deepEqual(detail.recommendations,{locked:true});assert.equal((await a(`content/recommendations?language=${language}`)).status,403);const weekly=api.buildWeeklyReport(id,{language});assert.deepEqual(weekly.recommended_questions,[]);assert.equal(weekly.recommendations_locked,true);assert.equal(weekly.personalized,false);}};
+  await checkLocked();
+  assert.equal((await admin('admin/membership',{userId:id,action:'extend',days:1,reason:'Recommendation membership fixture',revision:0,requestId:crypto.randomUUID()})).status,200);
+  for(const language of ['chn','eng']){const paid=await a(`learning/dashboard?language=${language}`);assert.ok(paid.recommendations.new_questions.length);assert.equal(paid.recommendations.locked,undefined);assert.equal((await a(`content/recommendations?language=${language}`)).status,200);}
   await mark(1,'mistake');r=await dash();assert.equal(signal(r).wrong_question_count,1);
   await mark(1,'mastered');r=await dash();assert.equal(signal(r).wrong_weight,0);assert.equal(signal(r).mastered_weight,1);
   await mark(1,'mistake');r=await dash();assert.equal(signal(r).wrong_weight,1);assert.equal(signal(r).mastered_weight,0);
@@ -86,6 +90,7 @@ test('API status transitions, history, own-user isolation, admin counts, bounded
   const changed=await mark(1,'mastered');await a('progress/undo',{id:changed.undoId});r=await dash();assert.equal(r.counts.wrong,1);assert.equal(r.counts.mastered,0);
   await mark(2,'mistake');await mark(3,'mistake');r=await dash();assert.equal(signal(r).weakness_signal,.875);assert.equal(r.recommendations.new_questions.length,3);assert.equal(r.recommendations.wrong_review.length,3);
   assert.deepEqual((await b('learning/dashboard')).weak_points,[]);
+  assert.deepEqual((await b('learning/dashboard')).recommendations,{locked:true},'Another free user cannot inherit member recommendations');
   const guidance=await a('learning/dashboard');assert.equal(guidance.weak_points[0].knowledge_id,'16');assert.equal(guidance.recommendations.new_questions.length,3);
   assert.doesNotMatch(JSON.stringify(guidance),/recommendation_score|weakness_signal|qdna_version|missing_dna|marked_question_count|wrong_weight|counts|signals/);
   const studentDetail=await a('learning/knowledge?id=16');assert.ok(studentDetail.knowledge);assert.equal(studentDetail.rows,undefined);assert.equal(studentDetail.signal,undefined);assert.doesNotMatch(JSON.stringify(studentDetail),/recommendation_score|weight/);
@@ -109,6 +114,9 @@ test('API status transitions, history, own-user isolation, admin counts, bounded
   const inspector=new DatabaseSync(join(directory,'students.sqlite'),{readOnly:true});
   const events=inspector.prepare('SELECT * FROM question_status_events WHERE user_id=? ORDER BY id').all(id);assert.ok(events.every(e=>e.from_status!==e.to_status));assert.equal(events.filter(e=>e.question_id===q(1)&&e.to_status==='WRONG').length,6);inspector.close();
   for(const [file,body] of files)assert.equal(readFileSync(file,'utf8'),body,'source QDNA must not be rewritten');
+  assert.equal((await admin('admin/membership',{userId:id,action:'revoke',reason:'Fixture revoke',revision:1,requestId:crypto.randomUUID()})).status,200);await checkLocked();
+  assert.equal((await admin('admin/membership',{userId:id,action:'extend',days:1,reason:'Fixture renewal',revision:2,requestId:crypto.randomUUID()})).status,200);assert.ok((await a('learning/dashboard')).recommendations.new_questions.length);
+  now+=86400001;await checkLocked();await admin('admin/login',{key:'qdna-local-test'});assert.ok((await dash()).recommendations.new_questions.length,'Admin retains analysis after student expiry');
   api.close();api=createApi({directory,adminKey:'qdna-local-test',clock:()=>now,qdnaDirectory:dnaDirectory,contentLimits:{similar:1000}});assert.equal((await dash()).qdna_version,version);assert.deepEqual((await dash()).counts,before.counts);
  }finally{await new Promise(r=>server.close(r));api.close();rmSync(directory,{recursive:true});}
 });

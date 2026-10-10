@@ -4,7 +4,7 @@ import { questionStatsWorkbook } from './question-stats-export.mjs';
 import { createWeeklyReportScheduler } from './weekly-report-scheduler.mjs';
 import { createPaymentNotifications } from './payment-notifications.mjs';
 import { createAdminInsights } from './admin-insights.mjs';
-import {studentLearningView} from './qdna-learning.mjs';
+import {studentLearningView,memberWeeklyReport} from './qdna-learning.mjs';
 import { createQuestionStatus } from './question-status.mjs';
 import { createQdnaLearning } from './qdna-learning.mjs';
 import { createContentLimiter } from './content-limits.mjs';
@@ -43,7 +43,8 @@ export function createApi({ directory, mailer, paymentNotifier, weeklyMailer, we
   const statusStore = createQuestionStatus({db,clock});
   const learning = createQdnaLearning({db,clock,statusStore});
   content.setLearning(learning);
-  const weeklyReports=createWeeklyReportScheduler({db,clock,buildReport:(id,options)=>learning.weekly(id,options),sendMail:weeklyMailer,from:weeklyFrom});
+  const weeklyForStudent=(id,options)=>memberWeeklyReport(learning.weekly(id,options),management.membership(id).active);
+  const weeklyReports=createWeeklyReportScheduler({db,clock,buildReport:weeklyForStudent,prepareReport:(id,report)=>memberWeeklyReport(report,management.membership(id).active),sendMail:weeklyMailer,from:weeklyFrom});
   const learningLimit=createContentLimiter({db,clock,config:contentLimits});
   const archive = createMistakeArchive({ db, clock, fail, transaction, record: management.record, questions, statusStore });
   const tutoring = createTutoring({ db, clock, fail });
@@ -152,10 +153,11 @@ export function createApi({ directory, mailer, paymentNotifier, weeklyMailer, we
         const studentId=admin?number('studentId',0,Number.MAX_SAFE_INTEGER):user.id;
         if(admin&&kind!=='overview'&&!get("SELECT id FROM users WHERE id=? AND role='student'",studentId))fail(404,'找不到学生。');
         learningLimit(req,res,user,'similar');res.setHeader('Cache-Control','private, no-store');res.setHeader('Vary','Cookie');
-        if(kind==='dashboard'){const result=learning.dashboard(studentId,{language,offset,limit:size});return send(admin?result:studentLearningView(result));}
-        if(kind==='knowledge'){const status=url.searchParams.get('status')||'ALL';if(!['ALL','MASTERED','WRONG','UNMARKED'].includes(status))fail(400,'状态不正确。');const result=learning.knowledge(studentId,url.searchParams.get('id'),{language,status,offset,limit:size});if(!result)fail(404,'找不到知识点。');return send(admin?result:studentLearningView(result));}
+        const recommendationAccess=admin||management.membership(user.id).active;
+        if(kind==='dashboard'){const result=learning.dashboard(studentId,{language,offset,limit:size});return send(admin?result:studentLearningView(result,{recommendationAccess}));}
+        if(kind==='knowledge'){const status=url.searchParams.get('status')||'ALL';if(!['ALL','MASTERED','WRONG','UNMARKED'].includes(status))fail(400,'状态不正确。');const result=learning.knowledge(studentId,url.searchParams.get('id'),{language,status,offset,limit:size});if(!result)fail(404,'找不到知识点。');return send(admin?result:studentLearningView(result,{recommendationAccess}));}
         if(admin&&kind==='overview'){const type=url.searchParams.get('type')||'questions';if(!['questions','knowledge'].includes(type))fail(400,'统计类型不正确。');return send(learning.adminOverview({language,type,offset,limit:size}));}
-        if(admin&&kind==='weekly'){const end=number('end',clock(),clock()),start=number('start',end-7*86400000,end);if(start>=end||end-start>31*86400000)fail(400,'周报时间范围不正确。');const report=learning.weekly(studentId,{language,start,end});const email=await weeklyReportEmail({from:'preview@local.invalid',to:'preview@local.invalid',report});return send({report,email:{subject:email.subject,html:email.html,text:email.text}});}
+        if(admin&&kind==='weekly'){const end=number('end',clock(),clock()),start=number('start',end-7*86400000,end);if(start>=end||end-start>31*86400000)fail(400,'周报时间范围不正确。');const report=weeklyForStudent(studentId,{language,start,end});const email=await weeklyReportEmail({from:'preview@local.invalid',to:'preview@local.invalid',report});return send({report,email:{subject:email.subject,html:email.html,text:email.text}});}
         fail(404,'找不到此操作。');
       }
       if (path === '/api/admin/content/dna'  && req.method === 'GET') return send(content.adminDna(url));
@@ -240,5 +242,5 @@ export function createApi({ directory, mailer, paymentNotifier, weeklyMailer, we
       fail(404, '找不到此操作。');
     } catch (error) { res.statusCode = error.status || 500; send({ error: error.status ? error.message : '服務暫時無法使用，請重試。' }); if (!error.status) console.error('API request failed', {path:req.url.split('?')[0],type:error.name}); }
   }
-  return { handler, buildWeeklyReport: (studentId,options) => learning.weekly(studentId,options), protectFiles: (req,res) => content.file(req,res,session(req) || session(req,true)), hasPremium: req => { const user = session(req); return Boolean(user && (user.role === 'admin' || management.membership(user.id).active)); }, close: () => { weeklyReports.close(); paymentNotifications.close(); db.close(); }, adminKeyPath: keyPath };
+  return { handler, buildWeeklyReport: weeklyForStudent, protectFiles: (req,res) => content.file(req,res,session(req) || session(req,true)), hasPremium: req => { const user = session(req); return Boolean(user && (user.role === 'admin' || management.membership(user.id).active)); }, close: () => { weeklyReports.close(); paymentNotifications.close(); db.close(); }, adminKeyPath: keyPath };
 }

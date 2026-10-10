@@ -10,7 +10,7 @@ export function latestWeeklySlot(now) {
 }
 export function nextWeeklySlot(now) {return latestWeeklySlot(now)+WEEK;}
 
-export function createWeeklyReportScheduler({db,clock=Date.now,buildReport,sendMail,from}) {
+export function createWeeklyReportScheduler({db,clock=Date.now,buildReport,prepareReport=(_id,report)=>report,sendMail,from}) {
  db.exec(`CREATE TABLE IF NOT EXISTS weekly_report_schedule(key TEXT PRIMARY KEY,value INTEGER NOT NULL);
  CREATE TABLE IF NOT EXISTS weekly_report_deliveries (
   user_id INTEGER NOT NULL REFERENCES users(id), week_end INTEGER NOT NULL,
@@ -46,7 +46,7 @@ export function createWeeklyReportScheduler({db,clock=Date.now,buildReport,sendM
    for(const row of rows) {
     if(closed)break;
     try {
-     const message=await weeklyReportEmail({from,to:row.recipient,report:JSON.parse(row.report)});
+     const message=await weeklyReportEmail({from,to:row.recipient,report:prepareReport(row.user_id,JSON.parse(row.report))});
      message.messageId=`<weekly-${row.user_id}-${row.week_end}@ddphysics.com>`;
      await sendMail(message);
      if(!closed)db.prepare('UPDATE weekly_report_deliveries SET sent_at=?,attempts=attempts+1 WHERE user_id=? AND week_end=?').run(clock(),row.user_id,row.week_end);
