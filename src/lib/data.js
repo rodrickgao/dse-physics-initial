@@ -1,7 +1,11 @@
 import { exerciseNumber } from './exercise-numbering.js';
 import { createKnowledgeGrouper } from './knowledge-groups.js';
 import { numberKnowledgePoints } from './knowledge-numbering.js';
+import { sharedFigureCards } from './shared-figure-cards.js';
 import { orderKnowledge } from './knowledge-order.js';
+import { Converter } from 'opencc-js/t2cn';
+
+const toSimplified = Converter({ from: 'hk', to: 'cn' });
 
 export const siteData = window.DSE_SITE_DATA;
 export const textbookData = window.DSE_TEXTBOOK_DATA;
@@ -56,6 +60,8 @@ export function questionLabelFromKey(key) {
 }
 
 export const pointsByLanguage = Object.fromEntries(Object.entries(textbookData?.languages || { eng: [], chn: [] }).map(([lang, points]) => [lang, numberKnowledgePoints(points)]));
+export const cardsByLanguage = Object.fromEntries(Object.entries(pointsByLanguage).map(([lang, points]) => [lang, sharedFigureCards(points)]));
+const cardsMap = Object.fromEntries(Object.entries(cardsByLanguage).map(([lang, cards]) => [lang, new Map(cards.flatMap(card => (card.members || [card]).map(point => [Number(point.sequence), card])))]));
 export const groupKnowledgePoints = createKnowledgeGrouper(pointsByLanguage);
 export const pointsMap = Object.fromEntries(Object.entries(pointsByLanguage).map(([language, points]) => [language, new Map(points.map((point) => [Number(point.sequence), point]))]));
 
@@ -63,11 +69,16 @@ export function knowledgeNumber(sequence, language = 'eng') {
   return pointsMap[language]?.get(Number(sequence))?.number || String(sequence);
 }
 export function sortKnowledge(items,language='eng') {
-  return orderKnowledge(items,sequence=>knowledgeNumber(sequence,language));
+  const seen = new Set();
+  return orderKnowledge(items,sequence=>knowledgeNumber(sequence,language)).filter(sequence => {
+    const number = knowledgeNumber(typeof sequence === 'object' ? sequence.sequence : sequence, language);
+    if (seen.has(number)) return false;
+    seen.add(number); return true;
+  });
 }
 
 export function knowledgeTitle(sequence, language = 'eng') {
-  const point = pointsMap[language]?.get(Number(sequence));
+  const point = cardsMap[language]?.get(Number(sequence));
   return point?.card_title || point?.title || point?.chapter || String(sequence);
 }
 
@@ -129,7 +140,7 @@ export function relatedQuestionKeys(sequence) {
 }
 
 export function searchable(value) {
-  return String(value || "").toLowerCase().normalize("NFKC").replace(/[^\p{L}\p{N}]+/gu, " ").trim();
+  return toSimplified(String(value || "").normalize("NFKC")).toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim();
 }
 
 export function searchEntries(language, query) {

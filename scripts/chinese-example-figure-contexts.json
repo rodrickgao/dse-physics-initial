@@ -1,0 +1,9 @@
+{
+  "assets/textbook-examples/media/7e1dca67bccc387cf98365bb.png": {"normal": "法向"},
+  "assets/textbook-examples/media/de6731435aee6d70390cfb43.png": {"normal": "正常"},
+  "assets/textbook-examples/media/6ee3af4be4e1158befe7c599.png": {
+    "points to the end": "指向",
+    "with higher": "電勢較高",
+    "potential": "的一端"
+  }
+}

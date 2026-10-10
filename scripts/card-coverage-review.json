@@ -1,0 +1,4672 @@
+{
+  "date": "2026-10-10",
+  "basedOn": "output/content-review-20261010/report.json",
+  "overrides": {
+    "19": {
+      "chn": {
+        "card_table": {
+          "label": "蒸發與沸騰",
+          "headers": [
+            "比較",
+            "蒸發",
+            "沸騰"
+          ],
+          "rows": [
+            [
+              "發生位置",
+              "液體表面",
+              "液體內部及表面，內部有氣泡形成"
+            ],
+            [
+              "温度條件",
+              "可在沸點以下發生",
+              "固定壓強下，在沸點發生"
+            ],
+            [
+              "能量轉移",
+              "吸收汽化潛熱",
+              "吸收汽化潛熱"
+            ]
+          ],
+          "source": "DSEPHY_TE_104_TN_ce.pdf",
+          "page": 28,
+          "table_label": "比較整理"
+        },
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2013|paper-1a|1",
+            "label": "2013|paper-1a|1"
+          },
+          {
+            "kind": "question",
+            "key": "2012|paper-1a|2",
+            "label": "2012|paper-1a|2"
+          },
+          {
+            "kind": "question",
+            "key": "2017|paper-1a|3",
+            "label": "2017|paper-1a|3"
+          },
+          {
+            "kind": "textbook",
+            "source": "DSEPHY_TE_104_TN_ce.pdf",
+            "page": 28
+          }
+        ]
+      },
+      "eng": {
+        "card_table": {
+          "label": "Evaporation and boiling",
+          "headers": [
+            "Feature",
+            "Evaporation",
+            "Boiling"
+          ],
+          "rows": [
+            [
+              "Location",
+              "At the liquid surface",
+              "Throughout the liquid, with bubbles forming inside"
+            ],
+            [
+              "Temperature",
+              "Can occur below the boiling point",
+              "At the boiling point for the given pressure"
+            ],
+            [
+              "Energy transfer",
+              "Absorbs latent heat of vaporisation",
+              "Absorbs latent heat of vaporisation"
+            ]
+          ],
+          "source": "DSEPHY_TE_104_TN_.pdf",
+          "page": 28,
+          "table_label": "comparison summary"
+        },
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2013|paper-1a|1",
+            "label": "2013|paper-1a|1"
+          },
+          {
+            "kind": "question",
+            "key": "2012|paper-1a|2",
+            "label": "2012|paper-1a|2"
+          },
+          {
+            "kind": "question",
+            "key": "2017|paper-1a|3",
+            "label": "2017|paper-1a|3"
+          },
+          {
+            "kind": "textbook",
+            "source": "DSEPHY_TE_104_TN_.pdf",
+            "page": 28
+          }
+        ]
+      }
+    },
+    "20": {
+      "chn": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2013|paper-1a|1",
+            "label": "2013|paper-1a|1"
+          },
+          {
+            "kind": "question",
+            "key": "2012|paper-1a|2",
+            "label": "2012|paper-1a|2"
+          },
+          {
+            "kind": "question",
+            "key": "2017|paper-1a|3",
+            "label": "2017|paper-1a|3"
+          }
+        ]
+      },
+      "eng": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2013|paper-1a|1",
+            "label": "2013|paper-1a|1"
+          },
+          {
+            "kind": "question",
+            "key": "2012|paper-1a|2",
+            "label": "2012|paper-1a|2"
+          },
+          {
+            "kind": "question",
+            "key": "2017|paper-1a|3",
+            "label": "2017|paper-1a|3"
+          }
+        ]
+      }
+    },
+    "21": {
+      "chn": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2013|paper-1a|1",
+            "label": "2013|paper-1a|1"
+          },
+          {
+            "kind": "question",
+            "key": "2012|paper-1a|2",
+            "label": "2012|paper-1a|2"
+          },
+          {
+            "kind": "question",
+            "key": "2017|paper-1a|3",
+            "label": "2017|paper-1a|3"
+          }
+        ]
+      },
+      "eng": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2013|paper-1a|1",
+            "label": "2013|paper-1a|1"
+          },
+          {
+            "kind": "question",
+            "key": "2012|paper-1a|2",
+            "label": "2012|paper-1a|2"
+          },
+          {
+            "kind": "question",
+            "key": "2017|paper-1a|3",
+            "label": "2017|paper-1a|3"
+          }
+        ]
+      }
+    },
+    "24": {
+      "chn": {
+        "card_references": [],
+        "card_title": "波以耳定律"
+      },
+      "eng": {
+        "card_references": [],
+        "card_title": "Boyle's law"
+      }
+    },
+    "25": {
+      "chn": {
+        "card_references": [],
+        "card_title": "波以耳定律"
+      },
+      "eng": {
+        "card_references": [],
+        "card_title": "Boyle's law"
+      }
+    },
+    "31": {
+      "chn": {
+        "card_references": [],
+        "card_title": "綜合氣體定律"
+      },
+      "eng": {
+        "card_references": [],
+        "card_title": "The combined gas law"
+      }
+    },
+    "32": {
+      "chn": {
+        "card_title": "綜合氣體定律"
+      },
+      "eng": {
+        "card_title": "The combined gas law"
+      }
+    },
+    "33": {
+      "chn": {
+        "card_references": []
+      },
+      "eng": {
+        "card_references": []
+      }
+    },
+    "59": {
+      "chn": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2017|paper-1a|7",
+            "label": "2017|paper-1a|7"
+          }
+        ]
+      },
+      "eng": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2017|paper-1a|7",
+            "label": "2017|paper-1a|7"
+          }
+        ]
+      }
+    },
+    "66": {
+      "chn": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-204-30",
+            "label": "tb-204-30"
+          }
+        ]
+      },
+      "eng": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-204-30",
+            "label": "tb-204-30"
+          }
+        ]
+      }
+    },
+    "67": {
+      "chn": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-204-30",
+            "label": "tb-204-30"
+          }
+        ]
+      },
+      "eng": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-204-30",
+            "label": "tb-204-30"
+          }
+        ]
+      }
+    },
+    "81": {
+      "chn": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2019|paper-1b|3",
+            "label": "2019|paper-1b|3"
+          },
+          {
+            "kind": "question",
+            "key": "2022|paper-1b|4",
+            "label": "2022|paper-1b|4"
+          }
+        ]
+      },
+      "eng": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2019|paper-1b|3",
+            "label": "2019|paper-1b|3"
+          },
+          {
+            "kind": "question",
+            "key": "2022|paper-1b|4",
+            "label": "2022|paper-1b|4"
+          }
+        ]
+      }
+    },
+    "83": {
+      "chn": {
+        "card_formula_notes": "W_ext：在此能量收支中，未以勢能變化表示的其餘力所做的淨功（J）。先選定系統和勢能零點。",
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2019|paper-1b|3",
+            "label": "2019|paper-1b|3"
+          },
+          {
+            "kind": "question",
+            "key": "2022|paper-1b|4",
+            "label": "2022|paper-1b|4"
+          }
+        ]
+      },
+      "eng": {
+        "card_formula_notes": "W_ext: net work (J) of forces whose energy transfer is not already represented by a potential-energy change in this balance. Choose the system and potential-energy zero first.",
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2019|paper-1b|3",
+            "label": "2019|paper-1b|3"
+          },
+          {
+            "kind": "question",
+            "key": "2022|paper-1b|4",
+            "label": "2022|paper-1b|4"
+          }
+        ]
+      }
+    },
+    "96": {
+      "chn": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2019|paper-1b|3",
+            "label": "2019|paper-1b|3"
+          }
+        ]
+      },
+      "eng": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2019|paper-1b|3",
+            "label": "2019|paper-1b|3"
+          }
+        ]
+      }
+    },
+    "107": {
+      "chn": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-E102-19",
+            "label": "tb-E102-19"
+          },
+          {
+            "kind": "question",
+            "key": "2021|paper-1b|5",
+            "label": "2021|paper-1b|5"
+          },
+          {
+            "kind": "question",
+            "key": "ex-210-8",
+            "label": "ex-210-8"
+          }
+        ],
+        "card_title": "圓軌道的速度"
+      },
+      "eng": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-E102-19",
+            "label": "tb-E102-19"
+          },
+          {
+            "kind": "question",
+            "key": "2021|paper-1b|5",
+            "label": "2021|paper-1b|5"
+          },
+          {
+            "kind": "question",
+            "key": "ex-210-8",
+            "label": "ex-210-8"
+          }
+        ],
+        "card_title": "Speed in a circular orbit"
+      }
+    },
+    "108": {
+      "chn": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-E102-19",
+            "label": "tb-E102-19"
+          },
+          {
+            "kind": "question",
+            "key": "2021|paper-1b|5",
+            "label": "2021|paper-1b|5"
+          },
+          {
+            "kind": "question",
+            "key": "ex-210-8",
+            "label": "ex-210-8"
+          }
+        ],
+        "card_title": "圓軌道的速度"
+      },
+      "eng": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-E102-19",
+            "label": "tb-E102-19"
+          },
+          {
+            "kind": "question",
+            "key": "2021|paper-1b|5",
+            "label": "2021|paper-1b|5"
+          },
+          {
+            "kind": "question",
+            "key": "ex-210-8",
+            "label": "ex-210-8"
+          }
+        ],
+        "card_title": "Speed in a circular orbit"
+      }
+    },
+    "109": {
+      "chn": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-3A01-14",
+            "label": "tb-3A01-14"
+          },
+          {
+            "kind": "question",
+            "key": "tb-3A01-17",
+            "label": "tb-3A01-17"
+          },
+          {
+            "kind": "question",
+            "key": "tb-3A01-4",
+            "label": "tb-3A01-4"
+          }
+        ]
+      },
+      "eng": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-3A01-14",
+            "label": "tb-3A01-14"
+          },
+          {
+            "kind": "question",
+            "key": "tb-3A01-17",
+            "label": "tb-3A01-17"
+          },
+          {
+            "kind": "question",
+            "key": "tb-3A01-4",
+            "label": "tb-3A01-4"
+          }
+        ]
+      }
+    },
+    "120": {
+      "chn": {
+        "card_table": {
+          "label": "凸透鏡主光線",
+          "headers": [
+            "入射光線",
+            "出射光線",
+            "作圖要點"
+          ],
+          "rows": [
+            [
+              "平行主軸",
+              "通過另一側焦點",
+              "使用出射側焦點"
+            ],
+            [
+              "通過入射側焦點",
+              "平行主軸",
+              "使用物體側焦點"
+            ],
+            [
+              "通過光心",
+              "近似沿原方向直行",
+              "適用於薄透鏡模型"
+            ]
+          ],
+          "source": "DSEPHY_TE_3A03_TN_ce(1).pdf",
+          "page": 13,
+          "table_label": "比較整理"
+        },
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-3A03-3",
+            "label": "tb-3A03-3"
+          },
+          {
+            "kind": "question",
+            "key": "ex-3A03-3",
+            "label": "ex-3A03-3"
+          }
+        ]
+      },
+      "eng": {
+        "card_table": {
+          "label": "Convex-lens principal rays",
+          "headers": [
+            "Incident ray",
+            "Emergent ray",
+            "Construction"
+          ],
+          "rows": [
+            [
+              "Parallel to the principal axis",
+              "Through the far focus",
+              "Use the focus on the image side"
+            ],
+            [
+              "Through the near focus",
+              "Parallel to the principal axis",
+              "Use the focus on the object side"
+            ],
+            [
+              "Through the optical centre",
+              "Approximately undeviated",
+              "Thin-lens model"
+            ]
+          ],
+          "source": "DSEPHY_TE_3A03_TN_.pdf",
+          "page": 13,
+          "table_label": "comparison summary"
+        },
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-3A03-3",
+            "label": "tb-3A03-3"
+          },
+          {
+            "kind": "question",
+            "key": "ex-3A03-3",
+            "label": "ex-3A03-3"
+          }
+        ]
+      }
+    },
+    "128": {
+      "chn": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2013|paper-1a|18",
+            "label": "2013|paper-1a|18"
+          },
+          {
+            "kind": "question",
+            "key": "2016|paper-1a|18",
+            "label": "2016|paper-1a|18"
+          },
+          {
+            "kind": "question",
+            "key": "2025|paper-1b|10",
+            "label": "2025|paper-1b|10"
+          },
+          {
+            "kind": "question",
+            "key": "ex-3B05-9",
+            "label": "ex-3B05-9"
+          }
+        ]
+      },
+      "eng": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2013|paper-1a|18",
+            "label": "2013|paper-1a|18"
+          },
+          {
+            "kind": "question",
+            "key": "2016|paper-1a|18",
+            "label": "2016|paper-1a|18"
+          },
+          {
+            "kind": "question",
+            "key": "2025|paper-1b|10",
+            "label": "2025|paper-1b|10"
+          },
+          {
+            "kind": "question",
+            "key": "ex-3B05-9",
+            "label": "ex-3B05-9"
+          }
+        ]
+      }
+    },
+    "135": {
+      "chn": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2013|paper-1a|18",
+            "label": "2013|paper-1a|18"
+          },
+          {
+            "kind": "question",
+            "key": "2016|paper-1a|18",
+            "label": "2016|paper-1a|18"
+          },
+          {
+            "kind": "question",
+            "key": "2025|paper-1b|10",
+            "label": "2025|paper-1b|10"
+          },
+          {
+            "kind": "question",
+            "key": "ex-3B05-9",
+            "label": "ex-3B05-9"
+          }
+        ]
+      },
+      "eng": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2013|paper-1a|18",
+            "label": "2013|paper-1a|18"
+          },
+          {
+            "kind": "question",
+            "key": "2016|paper-1a|18",
+            "label": "2016|paper-1a|18"
+          },
+          {
+            "kind": "question",
+            "key": "2025|paper-1b|10",
+            "label": "2025|paper-1b|10"
+          },
+          {
+            "kind": "question",
+            "key": "ex-3B05-9",
+            "label": "ex-3B05-9"
+          }
+        ]
+      }
+    },
+    "148": {
+      "chn": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2013|paper-1a|18",
+            "label": "2013|paper-1a|18"
+          },
+          {
+            "kind": "question",
+            "key": "2016|paper-1a|18",
+            "label": "2016|paper-1a|18"
+          },
+          {
+            "kind": "question",
+            "key": "2025|paper-1b|10",
+            "label": "2025|paper-1b|10"
+          },
+          {
+            "kind": "question",
+            "key": "ex-3B05-9",
+            "label": "ex-3B05-9"
+          }
+        ]
+      },
+      "eng": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2013|paper-1a|18",
+            "label": "2013|paper-1a|18"
+          },
+          {
+            "kind": "question",
+            "key": "2016|paper-1a|18",
+            "label": "2016|paper-1a|18"
+          },
+          {
+            "kind": "question",
+            "key": "2025|paper-1b|10",
+            "label": "2025|paper-1b|10"
+          },
+          {
+            "kind": "question",
+            "key": "ex-3B05-9",
+            "label": "ex-3B05-9"
+          }
+        ]
+      }
+    },
+    "161": {
+      "chn": {
+        "card_title": "靜電感應與感應充電",
+        "review_figures": [
+          {
+            "id": "induction-earthing-steps",
+            "code": "401",
+            "page": 11,
+            "printed_page": 11,
+            "source": "DSEPHY_TE_401_TN_ce.pdf",
+            "src": "assets/textbook/figures-chn/induction-earthing-steps.png",
+            "width": 857,
+            "height": 180,
+            "caption": "由左至右：正棒使電子重新分布；保持棒並接地，電子流入；先斷開接地再移走棒，球帶負電。",
+            "language": "chn",
+            "bbox_fraction": [
+              0.595,
+              0.28,
+              0.773,
+              0.395
+            ],
+            "crop_regions": [
+              [
+                0.595,
+                0.28,
+                0.773,
+                0.395
+              ],
+              [
+                0.46,
+                0.552,
+                0.9,
+                0.684
+              ],
+              [
+                0.605,
+                0.777,
+                0.767,
+                0.889
+              ]
+            ],
+            "render_scale": 1.7,
+            "source_sha256": "414aec6e071cd49c0628ee050f0b7c90899e4708a901a7689c3b4ed9660bbd28"
+          }
+        ],
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2024|paper-1b|9",
+            "label": "2024|paper-1b|9"
+          },
+          {
+            "kind": "textbook",
+            "source": "DSEPHY_TE_401_TN_ce.pdf",
+            "page": 11
+          }
+        ]
+      },
+      "eng": {
+        "card_title": "Electrostatic induction and charging",
+        "review_figures": [
+          {
+            "id": "induction-earthing-steps",
+            "code": "401",
+            "page": 11,
+            "printed_page": 11,
+            "source": "DSEPHY_TE_401_TN_.pdf",
+            "src": "assets/textbook/review-diagrams/induction-earthing-steps.png",
+            "width": 849,
+            "height": 181,
+            "caption": "Left to right: a positive rod redistributes electrons; earthing with the rod held lets electrons enter; disconnect earth before removing the rod, leaving a negative sphere.",
+            "language": "eng",
+            "bbox_fraction": [
+              0.595,
+              0.31,
+              0.77,
+              0.43
+            ],
+            "crop_regions": [
+              [
+                0.595,
+                0.31,
+                0.77,
+                0.43
+              ],
+              [
+                0.46,
+                0.571,
+                0.9,
+                0.704
+              ],
+              [
+                0.615,
+                0.791,
+                0.773,
+                0.903
+              ]
+            ],
+            "render_scale": 1.7,
+            "source_sha256": "ffd7c933a586c93717eacba1e0a877ec86de6663eaf7e9a0c2784423ff8164d6"
+          }
+        ],
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2024|paper-1b|9",
+            "label": "2024|paper-1b|9"
+          },
+          {
+            "kind": "textbook",
+            "source": "DSEPHY_TE_401_TN_.pdf",
+            "page": 11
+          }
+        ]
+      }
+    },
+    "164": {
+      "chn": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2014|paper-1a|23",
+            "label": "2014|paper-1a|23"
+          }
+        ],
+        "card_title": "點電荷的電場"
+      },
+      "eng": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2014|paper-1a|23",
+            "label": "2014|paper-1a|23"
+          }
+        ],
+        "card_title": "Electric field of a point charge"
+      }
+    },
+    "167": {
+      "chn": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2014|paper-1a|23",
+            "label": "2014|paper-1a|23"
+          }
+        ],
+        "card_title": "點電荷的電場"
+      },
+      "eng": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2014|paper-1a|23",
+            "label": "2014|paper-1a|23"
+          }
+        ],
+        "card_title": "Electric field of a point charge"
+      }
+    },
+    "177": {
+      "chn": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2022|paper-1b|8",
+            "label": "2022|paper-1b|8"
+          }
+        ],
+        "card_title": "電阻與歐姆定律"
+      },
+      "eng": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2022|paper-1b|8",
+            "label": "2022|paper-1b|8"
+          }
+        ],
+        "card_title": "Resistance and Ohm's law"
+      }
+    },
+    "178": {
+      "chn": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2022|paper-1b|8",
+            "label": "2022|paper-1b|8"
+          }
+        ],
+        "card_title": "電阻與歐姆定律"
+      },
+      "eng": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2022|paper-1b|8",
+            "label": "2022|paper-1b|8"
+          }
+        ],
+        "card_title": "Resistance and Ohm's law"
+      }
+    },
+    "191": {
+      "chn": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-404-20",
+            "label": "tb-404-20"
+          },
+          {
+            "kind": "question",
+            "key": "2024|paper-1a|31",
+            "label": "2024|paper-1a|31"
+          },
+          {
+            "kind": "question",
+            "key": "2018|paper-1b|8",
+            "label": "2018|paper-1b|8"
+          }
+        ]
+      },
+      "eng": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-404-20",
+            "label": "tb-404-20"
+          },
+          {
+            "kind": "question",
+            "key": "2024|paper-1a|31",
+            "label": "2024|paper-1a|31"
+          },
+          {
+            "kind": "question",
+            "key": "2018|paper-1b|8",
+            "label": "2018|paper-1b|8"
+          }
+        ]
+      }
+    },
+    "192": {
+      "chn": {
+        "card_table": {
+          "label": "過流與漏電保護",
+          "headers": [
+            "裝置",
+            "觸發條件",
+            "主要作用"
+          ],
+          "rows": [
+            [
+              "保險絲／過流斷路器",
+              "電流超過容許值",
+              "防止電線或器具過熱"
+            ],
+            [
+              "漏電斷路器（RCCB）",
+              "活線與中線的電流有足夠差異",
+              "偵測部分電流經其他路徑漏走，迅速切斷供電"
+            ]
+          ],
+          "source": "DSEPHY_TE_404_TN_ce.pdf",
+          "page": 10,
+          "table_label": "比較整理",
+          "source_note": "過流保護整理自第 404 章的保護措施；漏電斷路器條件參考 2018 卷一乙第 8 題的題干。"
+        },
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-404-20",
+            "label": "tb-404-20"
+          },
+          {
+            "kind": "question",
+            "key": "2024|paper-1a|31",
+            "label": "2024|paper-1a|31"
+          },
+          {
+            "kind": "question",
+            "key": "2018|paper-1b|8",
+            "label": "2018|paper-1b|8"
+          }
+        ]
+      },
+      "eng": {
+        "card_table": {
+          "label": "Overcurrent and residual-current protection",
+          "headers": [
+            "Device",
+            "Trigger",
+            "Main function"
+          ],
+          "rows": [
+            [
+              "Fuse / overcurrent circuit breaker",
+              "Current exceeds its limit",
+              "Reduces overheating of wires or appliances"
+            ],
+            [
+              "Residual-current circuit breaker (RCCB)",
+              "A sufficient difference between live and neutral currents",
+              "Detects current escaping by another path and disconnects the supply rapidly"
+            ]
+          ],
+          "source": "DSEPHY_TE_404_TN_.pdf",
+          "page": 10,
+          "table_label": "comparison summary",
+          "source_note": "Overcurrent protection follows Chapter 404; the RCCB condition follows the description supplied in 2018 Paper 1B Q8."
+        },
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-404-20",
+            "label": "tb-404-20"
+          },
+          {
+            "kind": "question",
+            "key": "2024|paper-1a|31",
+            "label": "2024|paper-1a|31"
+          },
+          {
+            "kind": "question",
+            "key": "2018|paper-1b|8",
+            "label": "2018|paper-1b|8"
+          }
+        ]
+      }
+    },
+    "208": {
+      "chn": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-406-20",
+            "label": "tb-406-20"
+          },
+          {
+            "kind": "question",
+            "key": "ex-406-6",
+            "label": "ex-406-6"
+          }
+        ]
+      },
+      "eng": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-406-20",
+            "label": "tb-406-20"
+          },
+          {
+            "kind": "question",
+            "key": "ex-406-6",
+            "label": "ex-406-6"
+          }
+        ]
+      }
+    },
+    "226": {
+      "chn": {
+        "review_figures": [
+          {
+            "id": "x-ray-tube-path",
+            "code": "501",
+            "page": 3,
+            "printed_page": 3,
+            "source": "DSEPHY_TE_501_TN_ce.pdf",
+            "src": "assets/textbook/figures-chn/x-ray-tube-path.png",
+            "width": 349,
+            "height": 193,
+            "caption": "電子由負極燈絲飛向正極金屬靶；X 射線在靶處產生。",
+            "language": "chn",
+            "bbox_fraction": [
+              0.59,
+              0.61,
+              0.927,
+              0.752
+            ],
+            "crop_regions": [
+              [
+                0.59,
+                0.61,
+                0.927,
+                0.752
+              ]
+            ],
+            "render_scale": 1.7,
+            "source_sha256": "23e14cc129670f336e99d5d43e1a608c81d40d5d0fc1c48062a5924b542bf18c"
+          }
+        ],
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2012|paper-1a|34",
+            "label": "2012|paper-1a|34"
+          },
+          {
+            "kind": "textbook",
+            "source": "DSEPHY_TE_501_TN_ce.pdf",
+            "page": 3
+          }
+        ]
+      },
+      "eng": {
+        "review_figures": [
+          {
+            "id": "x-ray-tube-path",
+            "code": "501",
+            "page": 3,
+            "printed_page": 3,
+            "source": "DSEPHY_TE_501_TN_.pdf",
+            "src": "assets/textbook/review-diagrams/x-ray-tube-path.png",
+            "width": 339,
+            "height": 210,
+            "caption": "Electrons move from the negative filament to the positive metal target, where X-rays are produced.",
+            "language": "eng",
+            "bbox_fraction": [
+              0.6,
+              0.587,
+              0.927,
+              0.742
+            ],
+            "crop_regions": [
+              [
+                0.6,
+                0.587,
+                0.927,
+                0.742
+              ]
+            ],
+            "render_scale": 1.7,
+            "source_sha256": "ecb5a626ff6bc6dd731ea1ba0581d479d77f3c5e62d7f6ebb5aa5b49dc6345d8"
+          }
+        ],
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2012|paper-1a|34",
+            "label": "2012|paper-1a|34"
+          },
+          {
+            "kind": "textbook",
+            "source": "DSEPHY_TE_501_TN_.pdf",
+            "page": 3
+          }
+        ]
+      }
+    },
+    "227": {
+      "chn": {
+        "card_table": {
+          "label": "核衰變中的質量數和原子序數",
+          "headers": [
+            "衰變",
+            "核內變化",
+            "衰變後的 A、Z"
+          ],
+          "rows": [
+            [
+              "α",
+              "放出含 2 質子、2 中子的氦核",
+              "A 減 4；Z 減 2"
+            ],
+            [
+              "β⁻",
+              "一個中子轉為質子，並放出電子",
+              "A 不變；Z 加 1"
+            ],
+            [
+              "γ",
+              "原子核由較高能量狀態轉至較低能量狀態",
+              "A、Z 均不變"
+            ]
+          ],
+          "source": "DSEPHY_TE_502_TN_ce.pdf",
+          "page": 3,
+          "table_label": "比較整理",
+          "source_note": "整理自第 502 章的衰變及核子數說明，並對照 2014 卷一甲第 31 題、2023 卷一乙第 9 題。"
+        },
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2014|paper-1a|31",
+            "label": "2014|paper-1a|31"
+          },
+          {
+            "kind": "question",
+            "key": "2023|paper-1b|9",
+            "label": "2023|paper-1b|9"
+          },
+          {
+            "kind": "question",
+            "key": "2025|paper-1b|12",
+            "label": "2025|paper-1b|12"
+          }
+        ]
+      },
+      "eng": {
+        "card_table": {
+          "label": "Mass and atomic numbers in nuclear decay",
+          "headers": [
+            "Decay",
+            "Nuclear change",
+            "A and Z after decay"
+          ],
+          "rows": [
+            [
+              "Alpha",
+              "Emits a helium nucleus with 2 protons and 2 neutrons",
+              "A decreases by 4; Z decreases by 2"
+            ],
+            [
+              "Beta-minus",
+              "A neutron becomes a proton and an electron is emitted",
+              "A unchanged; Z increases by 1"
+            ],
+            [
+              "Gamma",
+              "Nucleus moves from a higher to a lower energy state",
+              "A and Z unchanged"
+            ]
+          ],
+          "source": "DSEPHY_TE_502_TN_.pdf",
+          "page": 3,
+          "table_label": "comparison summary",
+          "source_note": "Compiled from Chapter 502 on decay and nucleon numbers, with 2014 Paper 1A Q31 and 2023 Paper 1B Q9 as applications."
+        },
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2014|paper-1a|31",
+            "label": "2014|paper-1a|31"
+          },
+          {
+            "kind": "question",
+            "key": "2023|paper-1b|9",
+            "label": "2023|paper-1b|9"
+          },
+          {
+            "kind": "question",
+            "key": "2025|paper-1b|12",
+            "label": "2025|paper-1b|12"
+          }
+        ]
+      }
+    },
+    "228": {
+      "chn": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-501-16",
+            "label": "tb-501-16"
+          }
+        ]
+      },
+      "eng": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-501-16",
+            "label": "tb-501-16"
+          }
+        ]
+      }
+    },
+    "229": {
+      "chn": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-501-16",
+            "label": "tb-501-16"
+          }
+        ]
+      },
+      "eng": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-501-16",
+            "label": "tb-501-16"
+          }
+        ]
+      }
+    },
+    "231": {
+      "chn": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-501-16",
+            "label": "tb-501-16"
+          }
+        ]
+      },
+      "eng": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-501-16",
+            "label": "tb-501-16"
+          }
+        ]
+      }
+    },
+    "233": {
+      "chn": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2014|paper-1a|31",
+            "label": "2014|paper-1a|31"
+          },
+          {
+            "kind": "question",
+            "key": "2023|paper-1b|9",
+            "label": "2023|paper-1b|9"
+          },
+          {
+            "kind": "question",
+            "key": "2025|paper-1b|12",
+            "label": "2025|paper-1b|12"
+          }
+        ]
+      },
+      "eng": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2014|paper-1a|31",
+            "label": "2014|paper-1a|31"
+          },
+          {
+            "kind": "question",
+            "key": "2023|paper-1b|9",
+            "label": "2023|paper-1b|9"
+          },
+          {
+            "kind": "question",
+            "key": "2025|paper-1b|12",
+            "label": "2025|paper-1b|12"
+          }
+        ]
+      }
+    },
+    "234": {
+      "chn": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2014|paper-1a|31",
+            "label": "2014|paper-1a|31"
+          },
+          {
+            "kind": "question",
+            "key": "2023|paper-1b|9",
+            "label": "2023|paper-1b|9"
+          },
+          {
+            "kind": "question",
+            "key": "2025|paper-1b|12",
+            "label": "2025|paper-1b|12"
+          }
+        ]
+      },
+      "eng": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2014|paper-1a|31",
+            "label": "2014|paper-1a|31"
+          },
+          {
+            "kind": "question",
+            "key": "2023|paper-1b|9",
+            "label": "2023|paper-1b|9"
+          },
+          {
+            "kind": "question",
+            "key": "2025|paper-1b|12",
+            "label": "2025|paper-1b|12"
+          }
+        ]
+      }
+    },
+    "236": {
+      "chn": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-502-4",
+            "label": "tb-502-4"
+          },
+          {
+            "kind": "question",
+            "key": "tb-502-19",
+            "label": "tb-502-19"
+          },
+          {
+            "kind": "question",
+            "key": "ex-502-9",
+            "label": "ex-502-9"
+          }
+        ],
+        "card_title": "半衰期與剩餘比例"
+      },
+      "eng": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-502-4",
+            "label": "tb-502-4"
+          },
+          {
+            "kind": "question",
+            "key": "tb-502-19",
+            "label": "tb-502-19"
+          },
+          {
+            "kind": "question",
+            "key": "ex-502-9",
+            "label": "ex-502-9"
+          }
+        ],
+        "card_title": "Half-life and the remaining fraction"
+      }
+    },
+    "237": {
+      "chn": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-502-4",
+            "label": "tb-502-4"
+          },
+          {
+            "kind": "question",
+            "key": "tb-502-19",
+            "label": "tb-502-19"
+          },
+          {
+            "kind": "question",
+            "key": "ex-502-9",
+            "label": "ex-502-9"
+          }
+        ],
+        "card_title": "半衰期與剩餘比例"
+      },
+      "eng": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-502-4",
+            "label": "tb-502-4"
+          },
+          {
+            "kind": "question",
+            "key": "tb-502-19",
+            "label": "tb-502-19"
+          },
+          {
+            "kind": "question",
+            "key": "ex-502-9",
+            "label": "ex-502-9"
+          }
+        ],
+        "card_title": "Half-life and the remaining fraction"
+      }
+    },
+    "238": {
+      "chn": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-502-4",
+            "label": "tb-502-4"
+          },
+          {
+            "kind": "question",
+            "key": "tb-502-19",
+            "label": "tb-502-19"
+          },
+          {
+            "kind": "question",
+            "key": "ex-502-9",
+            "label": "ex-502-9"
+          }
+        ]
+      },
+      "eng": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-502-4",
+            "label": "tb-502-4"
+          },
+          {
+            "kind": "question",
+            "key": "tb-502-19",
+            "label": "tb-502-19"
+          },
+          {
+            "kind": "question",
+            "key": "ex-502-9",
+            "label": "ex-502-9"
+          }
+        ]
+      }
+    },
+    "251": {
+      "chn": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-E101-18",
+            "label": "tb-E101-18"
+          },
+          {
+            "kind": "question",
+            "key": "2013|paper-2|1.2",
+            "label": "2013|paper-2|1.2"
+          },
+          {
+            "kind": "question",
+            "key": "2017|paper-2|1.1",
+            "label": "2017|paper-2|1.1"
+          },
+          {
+            "kind": "textbook",
+            "source": "DSEPHY_TE_E101_TN_ce.pdf",
+            "page": 19
+          },
+          {
+            "kind": "textbook",
+            "source": "DSEPHY_TE_E101_TN_ce.pdf",
+            "page": 20
+          }
+        ]
+      },
+      "eng": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-E101-18",
+            "label": "tb-E101-18"
+          },
+          {
+            "kind": "question",
+            "key": "2013|paper-2|1.2",
+            "label": "2013|paper-2|1.2"
+          },
+          {
+            "kind": "question",
+            "key": "2017|paper-2|1.1",
+            "label": "2017|paper-2|1.1"
+          },
+          {
+            "kind": "textbook",
+            "source": "DSEPHY_TE_E101_TN_.pdf",
+            "page": 19
+          },
+          {
+            "kind": "textbook",
+            "source": "DSEPHY_TE_E101_TN_.pdf",
+            "page": 20
+          }
+        ]
+      }
+    },
+    "254": {
+      "chn": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-E102-19",
+            "label": "tb-E102-19"
+          },
+          {
+            "kind": "question",
+            "key": "2021|paper-1b|5",
+            "label": "2021|paper-1b|5"
+          },
+          {
+            "kind": "question",
+            "key": "ex-210-8",
+            "label": "ex-210-8"
+          }
+        ]
+      },
+      "eng": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-E102-19",
+            "label": "tb-E102-19"
+          },
+          {
+            "kind": "question",
+            "key": "2021|paper-1b|5",
+            "label": "2021|paper-1b|5"
+          },
+          {
+            "kind": "question",
+            "key": "ex-210-8",
+            "label": "ex-210-8"
+          }
+        ]
+      }
+    },
+    "275": {
+      "chn": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2016|paper-2|1.8",
+            "label": "2016|paper-2|1.8"
+          }
+        ]
+      },
+      "eng": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2016|paper-2|1.8",
+            "label": "2016|paper-2|1.8"
+          }
+        ]
+      }
+    },
+    "276": {
+      "chn": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2016|paper-2|1.8",
+            "label": "2016|paper-2|1.8"
+          },
+          {
+            "kind": "textbook",
+            "source": "DSEPHY_TE_E103_TN_ce.pdf",
+            "page": 45
+          }
+        ]
+      },
+      "eng": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2016|paper-2|1.8",
+            "label": "2016|paper-2|1.8"
+          },
+          {
+            "kind": "textbook",
+            "source": "DSEPHY_TE_E103_TN_.pdf",
+            "page": 45
+          }
+        ]
+      }
+    },
+    "283": {
+      "chn": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-E302-17",
+            "label": "tb-E302-17"
+          },
+          {
+            "kind": "question",
+            "key": "tb-E302-20",
+            "label": "tb-E302-20"
+          },
+          {
+            "kind": "question",
+            "key": "2018|paper-2|3.S",
+            "label": "2018|paper-2|3.S"
+          }
+        ]
+      },
+      "eng": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-E302-17",
+            "label": "tb-E302-17"
+          },
+          {
+            "kind": "question",
+            "key": "tb-E302-20",
+            "label": "tb-E302-20"
+          },
+          {
+            "kind": "question",
+            "key": "2018|paper-2|3.S",
+            "label": "2018|paper-2|3.S"
+          }
+        ]
+      }
+    },
+    "287": {
+      "chn": {
+        "card_table": {
+          "label": "常見燈的發光機制",
+          "headers": [
+            "燈",
+            "發光過程",
+            "能量與可見光"
+          ],
+          "rows": [
+            [
+              "白熾燈",
+              "電流加熱燈絲，使電子受激；電子回到較低能級時放出輻射",
+              "大部分能量成為熱及紅外線，可見光佔比較小"
+            ],
+            [
+              "螢光燈",
+              "放電使汞原子受激並發出紫外線；螢光粉吸收後發出可見光",
+              "較有效把輸入能量轉為可見光"
+            ],
+            [
+              "LED",
+              "電子與空穴在 p–n 結復合，釋放能量",
+              "可直接發出可見光，顏色取決於材料"
+            ]
+          ],
+          "source": "DSEPHY_TE_E302_TN_ce.pdf",
+          "page": 3,
+          "table_label": "比較整理",
+          "source_note": "整理自 E302 課本的白熾燈、螢光燈和 LED 說明（PDF 3–8）。"
+        },
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-E302-17",
+            "label": "tb-E302-17"
+          },
+          {
+            "kind": "question",
+            "key": "tb-E302-20",
+            "label": "tb-E302-20"
+          },
+          {
+            "kind": "question",
+            "key": "2018|paper-2|3.S",
+            "label": "2018|paper-2|3.S"
+          }
+        ],
+        "card_title": "光視效能"
+      },
+      "eng": {
+        "card_table": {
+          "label": "How common lamps produce light",
+          "headers": [
+            "Lamp",
+            "Light-production process",
+            "Energy and visible output"
+          ],
+          "rows": [
+            [
+              "Incandescent",
+              "Current heats the filament and excites electrons; radiation is emitted as electrons return to lower energy levels.",
+              "Much energy becomes heat and infrared; visible output is a small fraction"
+            ],
+            [
+              "Fluorescent",
+              "Discharge excites mercury atoms to emit ultraviolet; phosphor absorbs it and emits visible light",
+              "Converts input energy to visible light more effectively"
+            ],
+            [
+              "LED",
+              "Electrons and holes recombine at a p–n junction",
+              "Can emit visible light directly; material determines colour"
+            ]
+          ],
+          "source": "DSEPHY_TE_E302_TN.pdf",
+          "page": 3,
+          "table_label": "comparison summary",
+          "source_note": "Compiled from E302 textbook descriptions of incandescent, fluorescent and LED lamps (PDF 3–8)."
+        },
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-E302-17",
+            "label": "tb-E302-17"
+          },
+          {
+            "kind": "question",
+            "key": "tb-E302-20",
+            "label": "tb-E302-20"
+          },
+          {
+            "kind": "question",
+            "key": "2018|paper-2|3.S",
+            "label": "2018|paper-2|3.S"
+          }
+        ],
+        "card_title": "Luminous efficacy"
+      }
+    },
+    "289": {
+      "chn": {
+        "card_table": {
+          "label": "常見燈的發光機制",
+          "headers": [
+            "燈",
+            "發光過程",
+            "能量與可見光"
+          ],
+          "rows": [
+            [
+              "白熾燈",
+              "電流加熱燈絲，使電子受激；電子回到較低能級時放出輻射",
+              "大部分能量成為熱及紅外線，可見光佔比較小"
+            ],
+            [
+              "螢光燈",
+              "放電使汞原子受激並發出紫外線；螢光粉吸收後發出可見光",
+              "較有效把輸入能量轉為可見光"
+            ],
+            [
+              "LED",
+              "電子與空穴在 p–n 結復合，釋放能量",
+              "可直接發出可見光，顏色取決於材料"
+            ]
+          ],
+          "source": "DSEPHY_TE_E302_TN_ce.pdf",
+          "page": 3,
+          "table_label": "比較整理",
+          "source_note": "整理自 E302 課本的白熾燈、螢光燈和 LED 說明（PDF 3–8）。"
+        },
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-E302-17",
+            "label": "tb-E302-17"
+          },
+          {
+            "kind": "question",
+            "key": "tb-E302-20",
+            "label": "tb-E302-20"
+          },
+          {
+            "kind": "question",
+            "key": "2018|paper-2|3.S",
+            "label": "2018|paper-2|3.S"
+          }
+        ],
+        "card_title": "光視效能"
+      },
+      "eng": {
+        "card_table": {
+          "label": "How common lamps produce light",
+          "headers": [
+            "Lamp",
+            "Light-production process",
+            "Energy and visible output"
+          ],
+          "rows": [
+            [
+              "Incandescent",
+              "Current heats the filament and excites electrons; radiation is emitted as electrons return to lower energy levels.",
+              "Much energy becomes heat and infrared; visible output is a small fraction"
+            ],
+            [
+              "Fluorescent",
+              "Discharge excites mercury atoms to emit ultraviolet; phosphor absorbs it and emits visible light",
+              "Converts input energy to visible light more effectively"
+            ],
+            [
+              "LED",
+              "Electrons and holes recombine at a p–n junction",
+              "Can emit visible light directly; material determines colour"
+            ]
+          ],
+          "source": "DSEPHY_TE_E302_TN.pdf",
+          "page": 3,
+          "table_label": "comparison summary",
+          "source_note": "Compiled from E302 textbook descriptions of incandescent, fluorescent and LED lamps (PDF 3–8)."
+        },
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-E302-17",
+            "label": "tb-E302-17"
+          },
+          {
+            "kind": "question",
+            "key": "tb-E302-20",
+            "label": "tb-E302-20"
+          },
+          {
+            "kind": "question",
+            "key": "2018|paper-2|3.S",
+            "label": "2018|paper-2|3.S"
+          }
+        ],
+        "card_title": "Luminous efficacy"
+      }
+    },
+    "294": {
+      "chn": {
+        "card_title": "總結合能、每核子結合能與核反應能量",
+        "review_figures": [
+          {
+            "id": "binding-energy-curve",
+            "code": "E304",
+            "page": 7,
+            "printed_page": 137,
+            "source": "DSEPHY_TE_E304_TN_ce.pdf",
+            "src": "assets/textbook/figures-chn/binding-energy-curve.png",
+            "width": 482,
+            "height": 362,
+            "caption": "每核子結合能在鐵附近較高；輕核聚變和重核裂變可朝較穩定的產物轉變。",
+            "language": "chn",
+            "bbox_fraction": [
+              0.38,
+              0.145,
+              0.845,
+              0.411
+            ],
+            "crop_regions": [
+              [
+                0.38,
+                0.145,
+                0.845,
+                0.411
+              ]
+            ],
+            "render_scale": 1.7,
+            "source_sha256": "fe67be946f6c7a0b0febd024507af8bce41fed7f65ad19662b0c0b1784b0188e"
+          }
+        ],
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-E304-20",
+            "label": "tb-E304-20"
+          },
+          {
+            "kind": "question",
+            "key": "2014|paper-2|3.7",
+            "label": "2014|paper-2|3.7"
+          },
+          {
+            "kind": "question",
+            "key": "2019|paper-2|3.8",
+            "label": "2019|paper-2|3.8"
+          },
+          {
+            "kind": "question",
+            "key": "2020|paper-2|3.S",
+            "label": "2020|paper-2|3.S"
+          },
+          {
+            "kind": "question",
+            "key": "2024|paper-2|3.8",
+            "label": "2024|paper-2|3.8"
+          },
+          {
+            "kind": "textbook",
+            "source": "DSEPHY_TE_E304_TN_ce.pdf",
+            "page": 4
+          },
+          {
+            "kind": "textbook",
+            "source": "DSEPHY_TE_E304_TN_ce.pdf",
+            "page": 7
+          }
+        ]
+      },
+      "eng": {
+        "card_title": "Total binding energy, binding energy per nucleon and reaction energy",
+        "review_figures": [
+          {
+            "id": "binding-energy-curve",
+            "code": "E304",
+            "page": 7,
+            "printed_page": 137,
+            "source": "DSEPHY_TE_E304_TN_.pdf",
+            "src": "assets/textbook/review-diagrams/binding-energy-curve.png",
+            "width": 549,
+            "height": 280,
+            "caption": "Binding energy per nucleon is high near iron. Light-nucleus fusion and heavy-nucleus fission can form more tightly bound products.",
+            "language": "eng",
+            "bbox_fraction": [
+              0.345,
+              0.151,
+              0.875,
+              0.357
+            ],
+            "crop_regions": [
+              [
+                0.345,
+                0.151,
+                0.875,
+                0.357
+              ]
+            ],
+            "render_scale": 1.7,
+            "source_sha256": "9502175ec6992be8849d0ebc078eaef709a11e021d72ecb3ab4268bd9d26ac75"
+          }
+        ],
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-E304-20",
+            "label": "tb-E304-20"
+          },
+          {
+            "kind": "question",
+            "key": "2014|paper-2|3.7",
+            "label": "2014|paper-2|3.7"
+          },
+          {
+            "kind": "question",
+            "key": "2019|paper-2|3.8",
+            "label": "2019|paper-2|3.8"
+          },
+          {
+            "kind": "question",
+            "key": "2020|paper-2|3.S",
+            "label": "2020|paper-2|3.S"
+          },
+          {
+            "kind": "question",
+            "key": "2024|paper-2|3.8",
+            "label": "2024|paper-2|3.8"
+          },
+          {
+            "kind": "textbook",
+            "source": "DSEPHY_TE_E304_TN.pdf",
+            "page": 4
+          },
+          {
+            "kind": "textbook",
+            "source": "DSEPHY_TE_E304_TN.pdf",
+            "page": 7
+          }
+        ]
+      }
+    },
+    "295": {
+      "chn": {
+        "card_title": "總結合能、每核子結合能與核反應能量",
+        "review_figures": [
+          {
+            "id": "binding-energy-curve",
+            "code": "E304",
+            "page": 7,
+            "printed_page": 137,
+            "source": "DSEPHY_TE_E304_TN_ce.pdf",
+            "src": "assets/textbook/figures-chn/binding-energy-curve.png",
+            "width": 482,
+            "height": 362,
+            "caption": "每核子結合能在鐵附近較高；輕核聚變和重核裂變可朝較穩定的產物轉變。",
+            "language": "chn",
+            "bbox_fraction": [
+              0.38,
+              0.145,
+              0.845,
+              0.411
+            ],
+            "crop_regions": [
+              [
+                0.38,
+                0.145,
+                0.845,
+                0.411
+              ]
+            ],
+            "render_scale": 1.7,
+            "source_sha256": "fe67be946f6c7a0b0febd024507af8bce41fed7f65ad19662b0c0b1784b0188e"
+          }
+        ],
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-E304-20",
+            "label": "tb-E304-20"
+          },
+          {
+            "kind": "question",
+            "key": "2014|paper-2|3.7",
+            "label": "2014|paper-2|3.7"
+          },
+          {
+            "kind": "question",
+            "key": "2019|paper-2|3.8",
+            "label": "2019|paper-2|3.8"
+          },
+          {
+            "kind": "question",
+            "key": "2020|paper-2|3.S",
+            "label": "2020|paper-2|3.S"
+          },
+          {
+            "kind": "question",
+            "key": "2024|paper-2|3.8",
+            "label": "2024|paper-2|3.8"
+          },
+          {
+            "kind": "textbook",
+            "source": "DSEPHY_TE_E304_TN_ce.pdf",
+            "page": 4
+          },
+          {
+            "kind": "textbook",
+            "source": "DSEPHY_TE_E304_TN_ce.pdf",
+            "page": 7
+          }
+        ]
+      },
+      "eng": {
+        "card_title": "Total binding energy, binding energy per nucleon and reaction energy",
+        "review_figures": [
+          {
+            "id": "binding-energy-curve",
+            "code": "E304",
+            "page": 7,
+            "printed_page": 137,
+            "source": "DSEPHY_TE_E304_TN_.pdf",
+            "src": "assets/textbook/review-diagrams/binding-energy-curve.png",
+            "width": 549,
+            "height": 280,
+            "caption": "Binding energy per nucleon is high near iron. Light-nucleus fusion and heavy-nucleus fission can form more tightly bound products.",
+            "language": "eng",
+            "bbox_fraction": [
+              0.345,
+              0.151,
+              0.875,
+              0.357
+            ],
+            "crop_regions": [
+              [
+                0.345,
+                0.151,
+                0.875,
+                0.357
+              ]
+            ],
+            "render_scale": 1.7,
+            "source_sha256": "9502175ec6992be8849d0ebc078eaef709a11e021d72ecb3ab4268bd9d26ac75"
+          }
+        ],
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-E304-20",
+            "label": "tb-E304-20"
+          },
+          {
+            "kind": "question",
+            "key": "2014|paper-2|3.7",
+            "label": "2014|paper-2|3.7"
+          },
+          {
+            "kind": "question",
+            "key": "2019|paper-2|3.8",
+            "label": "2019|paper-2|3.8"
+          },
+          {
+            "kind": "question",
+            "key": "2020|paper-2|3.S",
+            "label": "2020|paper-2|3.S"
+          },
+          {
+            "kind": "question",
+            "key": "2024|paper-2|3.8",
+            "label": "2024|paper-2|3.8"
+          },
+          {
+            "kind": "textbook",
+            "source": "DSEPHY_TE_E304_TN.pdf",
+            "page": 4
+          },
+          {
+            "kind": "textbook",
+            "source": "DSEPHY_TE_E304_TN.pdf",
+            "page": 7
+          }
+        ]
+      }
+    },
+    "296": {
+      "chn": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-E304-20",
+            "label": "tb-E304-20"
+          },
+          {
+            "kind": "question",
+            "key": "2014|paper-2|3.7",
+            "label": "2014|paper-2|3.7"
+          },
+          {
+            "kind": "question",
+            "key": "2019|paper-2|3.8",
+            "label": "2019|paper-2|3.8"
+          },
+          {
+            "kind": "question",
+            "key": "2020|paper-2|3.S",
+            "label": "2020|paper-2|3.S"
+          },
+          {
+            "kind": "question",
+            "key": "2024|paper-2|3.8",
+            "label": "2024|paper-2|3.8"
+          }
+        ]
+      },
+      "eng": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-E304-20",
+            "label": "tb-E304-20"
+          },
+          {
+            "kind": "question",
+            "key": "2014|paper-2|3.7",
+            "label": "2014|paper-2|3.7"
+          },
+          {
+            "kind": "question",
+            "key": "2019|paper-2|3.8",
+            "label": "2019|paper-2|3.8"
+          },
+          {
+            "kind": "question",
+            "key": "2020|paper-2|3.S",
+            "label": "2020|paper-2|3.S"
+          },
+          {
+            "kind": "question",
+            "key": "2024|paper-2|3.8",
+            "label": "2024|paper-2|3.8"
+          }
+        ]
+      }
+    },
+    "300": {
+      "chn": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2016|paper-2|2.S",
+            "label": "2016|paper-2|2.S"
+          },
+          {
+            "kind": "question",
+            "key": "2014|paper-2|2.6",
+            "label": "2014|paper-2|2.6"
+          },
+          {
+            "kind": "question",
+            "key": "2019|paper-2|2.2",
+            "label": "2019|paper-2|2.2"
+          },
+          {
+            "kind": "question",
+            "key": "tb-E201-21",
+            "label": "tb-E201-21"
+          }
+        ],
+        "card_title": "光電效應與閾頻"
+      },
+      "eng": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2016|paper-2|2.S",
+            "label": "2016|paper-2|2.S"
+          },
+          {
+            "kind": "question",
+            "key": "2014|paper-2|2.6",
+            "label": "2014|paper-2|2.6"
+          },
+          {
+            "kind": "question",
+            "key": "2019|paper-2|2.2",
+            "label": "2019|paper-2|2.2"
+          },
+          {
+            "kind": "question",
+            "key": "tb-E201-21",
+            "label": "tb-E201-21"
+          }
+        ],
+        "card_title": "The photoelectric effect and threshold frequency"
+      }
+    },
+    "301": {
+      "chn": {
+        "card_title": "光電流—電壓圖、飽和電流與遏止電勢",
+        "review_figures": [
+          {
+            "id": "photoelectric-stop",
+            "code": "E201",
+            "page": 5,
+            "caption": "反向電壓阻礙光電子到達收集極；遏止時光電流剛好為零。",
+            "src": "assets/textbook/figures-chn/photoelectric-stop.png",
+            "width": 524,
+            "height": 348,
+            "source": "DSEPHY_TE_E201_TN_ce_.pdf",
+            "bbox_fraction": [
+              0.446,
+              0.613,
+              0.79,
+              0.787
+            ],
+            "language": "chn"
+          },
+          {
+            "id": "photoelectric-current-voltage",
+            "code": "E201",
+            "page": 6,
+            "printed_page": 6,
+            "source": "DSEPHY_TE_E201_TN_ce_.pdf",
+            "src": "assets/textbook/figures-chn/photoelectric-current-voltage.png",
+            "width": 203,
+            "height": 175,
+            "caption": "曲線左端的零電流位置給出遏止電勢，右端平台給出飽和電流。",
+            "language": "chn",
+            "bbox_fraction": [
+              0.695,
+              0.593,
+              0.891,
+              0.722
+            ],
+            "crop_regions": [
+              [
+                0.695,
+                0.593,
+                0.891,
+                0.722
+              ]
+            ],
+            "render_scale": 1.7,
+            "source_sha256": "751358028ef19332e8559ae2d10b8cb5498393e049ef1033810c90e054a48195"
+          }
+        ],
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2016|paper-2|2.S",
+            "label": "2016|paper-2|2.S"
+          },
+          {
+            "kind": "question",
+            "key": "2014|paper-2|2.6",
+            "label": "2014|paper-2|2.6"
+          },
+          {
+            "kind": "question",
+            "key": "2019|paper-2|2.2",
+            "label": "2019|paper-2|2.2"
+          },
+          {
+            "kind": "question",
+            "key": "tb-E201-21",
+            "label": "tb-E201-21"
+          },
+          {
+            "kind": "textbook",
+            "source": "DSEPHY_TE_E201_TN_ce_.pdf",
+            "page": 4
+          },
+          {
+            "kind": "textbook",
+            "source": "DSEPHY_TE_E201_TN_ce_.pdf",
+            "page": 6
+          }
+        ]
+      },
+      "eng": {
+        "card_title": "Photocurrent-voltage graphs, saturation and stopping potential",
+        "review_figures": [
+          {
+            "id": "photoelectric-stop",
+            "code": "E201",
+            "page": 5,
+            "caption": "Reverse voltage prevents photoelectrons reaching the collector; at the stopping potential the photocurrent just reaches zero.",
+            "src": "assets/textbook/review-diagrams/photoelectric-stop.png",
+            "width": 356,
+            "height": 228,
+            "source": "DSEPHY_TE_E201_TN_.pdf",
+            "bbox_fraction": [
+              0.415,
+              0.709,
+              0.78,
+              0.887
+            ],
+            "language": "eng"
+          },
+          {
+            "id": "photoelectric-current-voltage",
+            "code": "E201",
+            "page": 6,
+            "printed_page": 6,
+            "source": "DSEPHY_TE_E201_TN_.pdf",
+            "src": "assets/textbook/review-diagrams/photoelectric-current-voltage.png",
+            "width": 203,
+            "height": 174,
+            "caption": "The zero-current intercept gives stopping potential; the plateau gives saturation current.",
+            "language": "eng",
+            "bbox_fraction": [
+              0.695,
+              0.567,
+              0.891,
+              0.695
+            ],
+            "crop_regions": [
+              [
+                0.695,
+                0.567,
+                0.891,
+                0.695
+              ]
+            ],
+            "render_scale": 1.7,
+            "source_sha256": "267b5d04a0c613bd43bbbc402df411ec3f3eea9ed62885ef0cf2d33e4129a889"
+          }
+        ],
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2016|paper-2|2.S",
+            "label": "2016|paper-2|2.S"
+          },
+          {
+            "kind": "question",
+            "key": "2014|paper-2|2.6",
+            "label": "2014|paper-2|2.6"
+          },
+          {
+            "kind": "question",
+            "key": "2019|paper-2|2.2",
+            "label": "2019|paper-2|2.2"
+          },
+          {
+            "kind": "question",
+            "key": "tb-E201-21",
+            "label": "tb-E201-21"
+          },
+          {
+            "kind": "textbook",
+            "source": "DSEPHY_TE_E201_TN_.pdf",
+            "page": 4
+          },
+          {
+            "kind": "textbook",
+            "source": "DSEPHY_TE_E201_TN_.pdf",
+            "page": 6
+          }
+        ]
+      }
+    },
+    "302": {
+      "chn": {
+        "card_title": "光電流—電壓圖、飽和電流與遏止電勢"
+      },
+      "eng": {
+        "card_title": "Photocurrent-voltage graphs, saturation and stopping potential"
+      }
+    },
+    "303": {
+      "chn": {
+        "card_references": [],
+        "card_title": "光電效應與閾頻"
+      },
+      "eng": {
+        "card_references": [],
+        "card_title": "The photoelectric effect and threshold frequency"
+      }
+    },
+    "304": {
+      "chn": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2016|paper-2|2.S",
+            "label": "2016|paper-2|2.S"
+          },
+          {
+            "kind": "question",
+            "key": "2014|paper-2|2.6",
+            "label": "2014|paper-2|2.6"
+          },
+          {
+            "kind": "question",
+            "key": "2019|paper-2|2.2",
+            "label": "2019|paper-2|2.2"
+          },
+          {
+            "kind": "question",
+            "key": "tb-E201-21",
+            "label": "tb-E201-21"
+          }
+        ]
+      },
+      "eng": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2016|paper-2|2.S",
+            "label": "2016|paper-2|2.S"
+          },
+          {
+            "kind": "question",
+            "key": "2014|paper-2|2.6",
+            "label": "2014|paper-2|2.6"
+          },
+          {
+            "kind": "question",
+            "key": "2019|paper-2|2.2",
+            "label": "2019|paper-2|2.2"
+          },
+          {
+            "kind": "question",
+            "key": "tb-E201-21",
+            "label": "tb-E201-21"
+          }
+        ]
+      }
+    },
+    "307": {
+      "chn": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2016|paper-2|2.S",
+            "label": "2016|paper-2|2.S"
+          },
+          {
+            "kind": "question",
+            "key": "2014|paper-2|2.6",
+            "label": "2014|paper-2|2.6"
+          },
+          {
+            "kind": "question",
+            "key": "2019|paper-2|2.2",
+            "label": "2019|paper-2|2.2"
+          },
+          {
+            "kind": "question",
+            "key": "tb-E201-21",
+            "label": "tb-E201-21"
+          }
+        ]
+      },
+      "eng": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2016|paper-2|2.S",
+            "label": "2016|paper-2|2.S"
+          },
+          {
+            "kind": "question",
+            "key": "2014|paper-2|2.6",
+            "label": "2014|paper-2|2.6"
+          },
+          {
+            "kind": "question",
+            "key": "2019|paper-2|2.2",
+            "label": "2019|paper-2|2.2"
+          },
+          {
+            "kind": "question",
+            "key": "tb-E201-21",
+            "label": "tb-E201-21"
+          }
+        ]
+      }
+    },
+    "310": {
+      "chn": {
+        "review_figures": [
+          {
+            "id": "rutherford-scattering",
+            "code": "E202",
+            "page": 2,
+            "printed_page": 42,
+            "source": "DSEPHY_TE_E202_TN_ce_.pdf",
+            "src": "assets/textbook/figures-chn/rutherford-scattering.png",
+            "width": 462,
+            "height": 265,
+            "caption": "薄金箔讓大多數 α 粒子直穿，少數粒子偏轉；探測器可移動以量度不同方向的散射。",
+            "language": "chn",
+            "bbox_fraction": [
+              0.39,
+              0.713,
+              0.835,
+              0.908
+            ],
+            "crop_regions": [
+              [
+                0.39,
+                0.713,
+                0.835,
+                0.908
+              ]
+            ],
+            "render_scale": 1.7,
+            "source_sha256": "a1ee6ca66accab6432c2be0e1406a6d2237c41d632ccf4ad58cdb70e7c20e062"
+          }
+        ],
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2019|paper-2|2.S",
+            "label": "2019|paper-2|2.S"
+          },
+          {
+            "kind": "question",
+            "key": "tb-E202-21",
+            "label": "tb-E202-21"
+          },
+          {
+            "kind": "question",
+            "key": "2020|paper-2|2.1",
+            "label": "2020|paper-2|2.1"
+          },
+          {
+            "kind": "textbook",
+            "source": "DSEPHY_TE_E202_TN_ce_.pdf",
+            "page": 2
+          },
+          {
+            "kind": "textbook",
+            "source": "DSEPHY_TE_E202_TN_ce_.pdf",
+            "page": 3
+          }
+        ]
+      },
+      "eng": {
+        "review_figures": [
+          {
+            "id": "rutherford-scattering",
+            "code": "E202",
+            "page": 2,
+            "printed_page": 42,
+            "source": "DSEPHY_TE_E202_TN_.pdf",
+            "src": "assets/textbook/review-diagrams/rutherford-scattering.png",
+            "width": 466,
+            "height": 269,
+            "caption": "Most alpha particles pass through thin gold foil, while a few are deflected. The detector can be moved to measure scattering in different directions.",
+            "language": "eng",
+            "bbox_fraction": [
+              0.365,
+              0.711,
+              0.815,
+              0.909
+            ],
+            "crop_regions": [
+              [
+                0.365,
+                0.711,
+                0.815,
+                0.909
+              ]
+            ],
+            "render_scale": 1.7,
+            "source_sha256": "2366efd9d5e120b6726c41389b2e4148c126898d228192fd232dac895a1f569b"
+          }
+        ],
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2019|paper-2|2.S",
+            "label": "2019|paper-2|2.S"
+          },
+          {
+            "kind": "question",
+            "key": "tb-E202-21",
+            "label": "tb-E202-21"
+          },
+          {
+            "kind": "question",
+            "key": "2020|paper-2|2.1",
+            "label": "2020|paper-2|2.1"
+          },
+          {
+            "kind": "textbook",
+            "source": "DSEPHY_TE_E202_TN_.pdf",
+            "page": 2
+          },
+          {
+            "kind": "textbook",
+            "source": "DSEPHY_TE_E202_TN_.pdf",
+            "page": 3
+          }
+        ]
+      }
+    },
+    "315": {
+      "chn": {
+        "card_table": {
+          "label": "入射電子與原子的碰撞",
+          "headers": [
+            "過程",
+            "能量條件",
+            "結果"
+          ],
+          "rows": [
+            [
+              "彈性碰撞",
+              "沒有能量轉為原子內部激發能",
+              "原子不被激發；可有很小的整體動能轉移"
+            ],
+            [
+              "激發",
+              "入射動能足以提供某個允許的能級差",
+              "束縛電子升至較高能級；入射電子保留餘下動能"
+            ],
+            [
+              "電離",
+              "入射動能足以移走束縛電子",
+              "原子失去束縛電子；多餘能量由碰撞後粒子帶走"
+            ]
+          ],
+          "source": "DSEPHY_TE_E202_TN_ce_.pdf",
+          "page": 23,
+          "table_label": "比較整理",
+          "source_note": "束縛態能級與激發整理自 E202；碰撞過程對照 2024 卷二第 2.2 題的題目與答案。"
+        },
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2024|paper-2|2.2",
+            "label": "2024|paper-2|2.2"
+          }
+        ]
+      },
+      "eng": {
+        "card_table": {
+          "label": "Electron-atom collisions",
+          "headers": [
+            "Process",
+            "Energy condition",
+            "Result"
+          ],
+          "rows": [
+            [
+              "Elastic collision",
+              "No energy enters internal excitation",
+              "Atom remains unexcited; a small recoil-energy transfer is possible"
+            ],
+            [
+              "Excitation",
+              "Incident energy can supply an allowed level gap",
+              "A bound electron rises to a higher level; the incident electron retains excess energy"
+            ],
+            [
+              "Ionisation",
+              "Incident energy is sufficient to remove a bound electron",
+              "The atom loses a bound electron; outgoing particles carry excess energy"
+            ]
+          ],
+          "source": "DSEPHY_TE_E202_TN_.pdf",
+          "page": 23,
+          "table_label": "comparison summary",
+          "source_note": "Bound levels and excitation follow E202; collision processes are checked against 2024 Paper 2 Q2.2 and its answer."
+        },
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2024|paper-2|2.2",
+            "label": "2024|paper-2|2.2"
+          }
+        ]
+      }
+    },
+    "316": {
+      "chn": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2024|paper-2|2.2",
+            "label": "2024|paper-2|2.2"
+          }
+        ]
+      },
+      "eng": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2024|paper-2|2.2",
+            "label": "2024|paper-2|2.2"
+          }
+        ]
+      }
+    },
+    "323": {
+      "chn": {
+        "card_references": [],
+        "card_title": "瑞利判據與分辨能力"
+      },
+      "eng": {
+        "card_references": [],
+        "card_title": "Rayleigh's criterion and resolving power"
+      }
+    },
+    "324": {
+      "chn": {
+        "card_references": [],
+        "card_title": "瑞利判據與分辨能力"
+      },
+      "eng": {
+        "card_references": [],
+        "card_title": "Rayleigh's criterion and resolving power"
+      }
+    },
+    "327": {
+      "chn": {
+        "review_figures": [
+          {
+            "id": "eye-optics",
+            "caption": "角膜與晶狀體使光折射；視覺調節改變晶狀體形狀，而視網膜距離近似固定。",
+            "src": "assets/textbook/figures-chn/eye-optics.png",
+            "width": 787,
+            "height": 545,
+            "source": "DSEPHY_TE_E401_TN_ce_.pdf",
+            "page": 7,
+            "language": "chn",
+            "code": "E401",
+            "bbox_fraction": [
+              0.35,
+              0.46,
+              0.866,
+              0.733
+            ]
+          },
+          {
+            "id": "eye-accommodation-muscles",
+            "code": "E401",
+            "page": 57,
+            "printed_page": 57,
+            "source": "DSEPHY_TE_E401_TN_ce_.pdf",
+            "src": "assets/textbook/figures-chn/eye-accommodation-muscles.png",
+            "width": 629,
+            "height": 398,
+            "caption": "左：看近物，睫狀肌收縮、晶體變厚。右：看遠物，睫狀肌放鬆、晶體變薄。",
+            "language": "chn",
+            "bbox_fraction": [
+              0.29,
+              0.177,
+              0.897,
+              0.47
+            ],
+            "crop_regions": [
+              [
+                0.29,
+                0.177,
+                0.897,
+                0.47
+              ]
+            ],
+            "render_scale": 1.7,
+            "source_sha256": "f628690c22119951d4be1e8b4e33bd74267a78c9e9beb1136b53165054554578"
+          }
+        ],
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2020|paper-2|4.1",
+            "label": "2020|paper-2|4.1"
+          },
+          {
+            "kind": "question",
+            "key": "tb-E401-24",
+            "label": "tb-E401-24"
+          },
+          {
+            "kind": "textbook",
+            "source": "DSEPHY_TE_E401_TN_ce_.pdf",
+            "page": 8
+          },
+          {
+            "kind": "textbook",
+            "source": "DSEPHY_TE_E401_TN_ce_.pdf",
+            "page": 57
+          }
+        ]
+      },
+      "eng": {
+        "review_figures": [
+          {
+            "id": "eye-optics",
+            "caption": "The cornea and lens refract light; accommodation changes the lens shape while the retina distance remains almost fixed.",
+            "src": "assets/textbook/figures/eye-optics.png",
+            "width": 975,
+            "height": 757,
+            "source": "DSEPHY_TE_E401_TN_.pdf",
+            "page": 7,
+            "language": "eng"
+          },
+          {
+            "id": "eye-accommodation-muscles",
+            "code": "E401",
+            "page": 57,
+            "printed_page": 57,
+            "source": "DSEPHY_TE_E401_TN_.pdf",
+            "src": "assets/textbook/review-diagrams/eye-accommodation-muscles.png",
+            "width": 656,
+            "height": 369,
+            "caption": "Left: near vision, with contracted ciliary muscles and a thicker lens. Right: distant vision, with relaxed muscles and a thinner lens.",
+            "language": "eng",
+            "bbox_fraction": [
+              0.275,
+              0.202,
+              0.907,
+              0.474
+            ],
+            "crop_regions": [
+              [
+                0.275,
+                0.202,
+                0.907,
+                0.474
+              ]
+            ],
+            "render_scale": 1.7,
+            "source_sha256": "736cfce7394a0ee1aa6a17b5f7e6a65514e2a3865a141dd6c298a8aa944c3194"
+          }
+        ],
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2020|paper-2|4.1",
+            "label": "2020|paper-2|4.1"
+          },
+          {
+            "kind": "question",
+            "key": "tb-E401-24",
+            "label": "tb-E401-24"
+          },
+          {
+            "kind": "textbook",
+            "source": "DSEPHY_TE_E401_TN_.pdf",
+            "page": 8
+          },
+          {
+            "kind": "textbook",
+            "source": "DSEPHY_TE_E401_TN_.pdf",
+            "page": 57
+          }
+        ]
+      }
+    },
+    "330": {
+      "chn": {
+        "card_references": []
+      },
+      "eng": {
+        "card_references": []
+      }
+    },
+    "331": {
+      "chn": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2020|paper-2|4.1",
+            "label": "2020|paper-2|4.1"
+          },
+          {
+            "kind": "question",
+            "key": "tb-E401-24",
+            "label": "tb-E401-24"
+          }
+        ]
+      },
+      "eng": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2020|paper-2|4.1",
+            "label": "2020|paper-2|4.1"
+          },
+          {
+            "kind": "question",
+            "key": "tb-E401-24",
+            "label": "tb-E401-24"
+          }
+        ]
+      }
+    },
+    "340": {
+      "chn": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2025|paper-2|4.S",
+            "label": "2025|paper-2|4.S"
+          },
+          {
+            "kind": "question",
+            "key": "2024|paper-2|4.2",
+            "label": "2024|paper-2|4.2"
+          },
+          {
+            "kind": "question",
+            "key": "2016|paper-2|4.3",
+            "label": "2016|paper-2|4.3"
+          }
+        ]
+      },
+      "eng": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2025|paper-2|4.S",
+            "label": "2025|paper-2|4.S"
+          },
+          {
+            "kind": "question",
+            "key": "2024|paper-2|4.2",
+            "label": "2024|paper-2|4.2"
+          },
+          {
+            "kind": "question",
+            "key": "2016|paper-2|4.3",
+            "label": "2016|paper-2|4.3"
+          }
+        ]
+      }
+    },
+    "341": {
+      "chn": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2025|paper-2|4.S",
+            "label": "2025|paper-2|4.S"
+          },
+          {
+            "kind": "question",
+            "key": "2024|paper-2|4.2",
+            "label": "2024|paper-2|4.2"
+          },
+          {
+            "kind": "question",
+            "key": "2016|paper-2|4.3",
+            "label": "2016|paper-2|4.3"
+          }
+        ]
+      },
+      "eng": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2025|paper-2|4.S",
+            "label": "2025|paper-2|4.S"
+          },
+          {
+            "kind": "question",
+            "key": "2024|paper-2|4.2",
+            "label": "2024|paper-2|4.2"
+          },
+          {
+            "kind": "question",
+            "key": "2016|paper-2|4.3",
+            "label": "2016|paper-2|4.3"
+          }
+        ]
+      }
+    },
+    "346": {
+      "chn": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2020|paper-2|4.4",
+            "label": "2020|paper-2|4.4"
+          },
+          {
+            "kind": "textbook",
+            "source": "DSEPHY_TE_E402_TN_ce_.pdf",
+            "page": 20
+          }
+        ]
+      },
+      "eng": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2020|paper-2|4.4",
+            "label": "2020|paper-2|4.4"
+          },
+          {
+            "kind": "textbook",
+            "source": "DSEPHY_TE_E402_TN_.pdf",
+            "page": 20
+          }
+        ]
+      }
+    },
+    "361": {
+      "chn": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2015|paper-2|4.8",
+            "label": "2015|paper-2|4.8"
+          }
+        ]
+      },
+      "eng": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2015|paper-2|4.8",
+            "label": "2015|paper-2|4.8"
+          }
+        ]
+      }
+    },
+    "362": {
+      "chn": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2015|paper-2|4.8",
+            "label": "2015|paper-2|4.8"
+          }
+        ]
+      },
+      "eng": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2015|paper-2|4.8",
+            "label": "2015|paper-2|4.8"
+          }
+        ]
+      }
+    },
+    "363": {
+      "chn": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2015|paper-2|4.8",
+            "label": "2015|paper-2|4.8"
+          }
+        ]
+      },
+      "eng": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2015|paper-2|4.8",
+            "label": "2015|paper-2|4.8"
+          }
+        ]
+      }
+    },
+    "364": {
+      "chn": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2015|paper-2|4.8",
+            "label": "2015|paper-2|4.8"
+          }
+        ]
+      },
+      "eng": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2015|paper-2|4.8",
+            "label": "2015|paper-2|4.8"
+          }
+        ]
+      }
+    },
+    "369": {
+      "chn": {
+        "card_title": "凹透鏡的主光線",
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-3A03-3",
+            "label": "tb-3A03-3"
+          },
+          {
+            "kind": "question",
+            "key": "ex-3A03-3",
+            "label": "ex-3A03-3"
+          }
+        ]
+      },
+      "eng": {
+        "card_title": "Principal rays of a concave lens",
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-3A03-3",
+            "label": "tb-3A03-3"
+          },
+          {
+            "kind": "question",
+            "key": "ex-3A03-3",
+            "label": "ex-3A03-3"
+          }
+        ]
+      }
+    },
+    "377": {
+      "chn": {
+        "card_table": {
+          "label": "核輻射的主要性質",
+          "headers": [
+            "輻射",
+            "性質與電荷",
+            "電離、穿透與屏蔽"
+          ],
+          "rows": [
+            [
+              "α",
+              "氦核，+2e",
+              "電離最強，穿透最弱；紙可阻擋"
+            ],
+            [
+              "β⁻",
+              "高速電子，−e",
+              "電離和穿透居中；數毫米鋁可阻擋"
+            ],
+            [
+              "γ",
+              "電磁波，不帶電",
+              "电離較弱，穿透最強；厚鉛或混凝土可大幅衰減"
+            ]
+          ],
+          "source": "DSEPHY_TE_501_TN_ce.pdf",
+          "page": 24,
+          "table_label": "比較整理"
+        },
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-501-16",
+            "label": "tb-501-16"
+          }
+        ]
+      },
+      "eng": {
+        "card_table": {
+          "label": "Main properties of nuclear radiation",
+          "headers": [
+            "Radiation",
+            "Nature and charge",
+            "Ionisation, penetration and shielding"
+          ],
+          "rows": [
+            [
+              "Alpha",
+              "Helium nucleus, +2e",
+              "Strongest ionisation, weakest penetration; stopped by paper"
+            ],
+            [
+              "Beta-minus",
+              "Fast electron, −e",
+              "Intermediate ionisation and penetration; stopped by millimetres of aluminium"
+            ],
+            [
+              "Gamma",
+              "Electromagnetic radiation, uncharged",
+              "Weaker ionisation, strongest penetration; thick lead or concrete provides substantial attenuation"
+            ]
+          ],
+          "source": "DSEPHY_TE_501_TN_.pdf",
+          "page": 24,
+          "table_label": "comparison summary"
+        },
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-501-16",
+            "label": "tb-501-16"
+          }
+        ]
+      }
+    },
+    "383": {
+      "chn": {
+        "card_title": "地球自轉、天球與觀察緯度",
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2012|paper-2|1.4",
+            "label": "2012|paper-2|1.4"
+          },
+          {
+            "kind": "question",
+            "key": "2013|paper-2|1.5",
+            "label": "2013|paper-2|1.5"
+          },
+          {
+            "kind": "question",
+            "key": "2014|paper-2|1.3",
+            "label": "2014|paper-2|1.3"
+          },
+          {
+            "kind": "question",
+            "key": "2015|paper-2|1.2",
+            "label": "2015|paper-2|1.2"
+          },
+          {
+            "kind": "question",
+            "key": "tb-E101-18",
+            "label": "tb-E101-18"
+          },
+          {
+            "kind": "question",
+            "key": "2013|paper-2|1.2",
+            "label": "2013|paper-2|1.2"
+          },
+          {
+            "kind": "question",
+            "key": "2017|paper-2|1.1",
+            "label": "2017|paper-2|1.1"
+          },
+          {
+            "kind": "textbook",
+            "source": "DSEPHY_TE_E101_TN_ce.pdf",
+            "page": 44
+          }
+        ]
+      },
+      "eng": {
+        "card_title": "Earth rotation, the celestial sphere and latitude",
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2012|paper-2|1.4",
+            "label": "2012|paper-2|1.4"
+          },
+          {
+            "kind": "question",
+            "key": "2013|paper-2|1.5",
+            "label": "2013|paper-2|1.5"
+          },
+          {
+            "kind": "question",
+            "key": "2014|paper-2|1.3",
+            "label": "2014|paper-2|1.3"
+          },
+          {
+            "kind": "question",
+            "key": "2015|paper-2|1.2",
+            "label": "2015|paper-2|1.2"
+          },
+          {
+            "kind": "question",
+            "key": "tb-E101-18",
+            "label": "tb-E101-18"
+          },
+          {
+            "kind": "question",
+            "key": "2013|paper-2|1.2",
+            "label": "2013|paper-2|1.2"
+          },
+          {
+            "kind": "question",
+            "key": "2017|paper-2|1.1",
+            "label": "2017|paper-2|1.1"
+          },
+          {
+            "kind": "textbook",
+            "source": "DSEPHY_TE_E101_TN_.pdf",
+            "page": 44
+          }
+        ]
+      }
+    },
+    "385": {
+      "chn": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-E101-18",
+            "label": "tb-E101-18"
+          },
+          {
+            "kind": "question",
+            "key": "2013|paper-2|1.2",
+            "label": "2013|paper-2|1.2"
+          },
+          {
+            "kind": "question",
+            "key": "2017|paper-2|1.1",
+            "label": "2017|paper-2|1.1"
+          }
+        ]
+      },
+      "eng": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-E101-18",
+            "label": "tb-E101-18"
+          },
+          {
+            "kind": "question",
+            "key": "2013|paper-2|1.2",
+            "label": "2013|paper-2|1.2"
+          },
+          {
+            "kind": "question",
+            "key": "2017|paper-2|1.1",
+            "label": "2017|paper-2|1.1"
+          }
+        ]
+      }
+    },
+    "394": {
+      "chn": {
+        "card_table": {
+          "label": "碳材料的結構與性質",
+          "headers": [
+            "材料",
+            "原子排列",
+            "相關性質"
+          ],
+          "rows": [
+            [
+              "金剛石",
+              "三維共價網絡",
+              "硬度高；電子受束縛，通常不導電"
+            ],
+            [
+              "石墨",
+              "多層六角網，層間作用較弱",
+              "層可相對滑動；層內可導電"
+            ],
+            [
+              "石墨烯",
+              "單層蜂窩狀碳網",
+              "薄而強韌，可導電"
+            ],
+            [
+              "碳納米管",
+              "呈管狀的碳網",
+              "強韌；導電性取決於管的結構"
+            ]
+          ],
+          "source": "DSEPHY_TE_E203_TN_ce.pdf",
+          "page": 4,
+          "table_label": "比較整理"
+        },
+        "card_references": [
+          {
+            "kind": "textbook",
+            "source": "DSEPHY_TE_E203_TN_ce.pdf",
+            "page": 4
+          },
+          {
+            "kind": "textbook",
+            "source": "DSEPHY_TE_E203_TN_ce.pdf",
+            "page": 11
+          }
+        ]
+      },
+      "eng": {
+        "card_table": {
+          "label": "Carbon structures and properties",
+          "headers": [
+            "Material",
+            "Atomic arrangement",
+            "Related properties"
+          ],
+          "rows": [
+            [
+              "Diamond",
+              "Three-dimensional covalent network",
+              "Hard; bound electrons make it normally insulating"
+            ],
+            [
+              "Graphite",
+              "Stacked hexagonal layers with weaker forces between layers",
+              "Layers slide; conducts within layers"
+            ],
+            [
+              "Graphene",
+              "One honeycomb carbon sheet",
+              "Thin, strong and conducting"
+            ],
+            [
+              "Carbon nanotube",
+              "Tubular carbon network",
+              "Strong; electrical behaviour depends on tube structure"
+            ]
+          ],
+          "source": "DSEPHY_TE_E203_TN_.pdf",
+          "page": 4,
+          "table_label": "comparison summary"
+        },
+        "card_references": [
+          {
+            "kind": "textbook",
+            "source": "DSEPHY_TE_E203_TN_.pdf",
+            "page": 4
+          },
+          {
+            "kind": "textbook",
+            "source": "DSEPHY_TE_E203_TN_.pdf",
+            "page": 11
+          }
+        ]
+      }
+    },
+    "397": {
+      "chn": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-E302-17",
+            "label": "tb-E302-17"
+          },
+          {
+            "kind": "question",
+            "key": "tb-E302-20",
+            "label": "tb-E302-20"
+          },
+          {
+            "kind": "question",
+            "key": "2018|paper-2|3.S",
+            "label": "2018|paper-2|3.S"
+          }
+        ]
+      },
+      "eng": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "tb-E302-17",
+            "label": "tb-E302-17"
+          },
+          {
+            "kind": "question",
+            "key": "tb-E302-20",
+            "label": "tb-E302-20"
+          },
+          {
+            "kind": "question",
+            "key": "2018|paper-2|3.S",
+            "label": "2018|paper-2|3.S"
+          }
+        ]
+      }
+    },
+    "398": {
+      "chn": {
+        "card_references": []
+      },
+      "eng": {
+        "card_references": []
+      }
+    },
+    "418": {
+      "chn": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2017|paper-1a|7",
+            "label": "2017|paper-1a|7"
+          },
+          {
+            "kind": "question",
+            "key": "2023|paper-1b|3",
+            "label": "2023|paper-1b|3"
+          },
+          {
+            "kind": "question",
+            "key": "2017|paper-1b|5",
+            "label": "2017|paper-1b|5"
+          }
+        ]
+      },
+      "eng": {
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2017|paper-1a|7",
+            "label": "2017|paper-1a|7"
+          },
+          {
+            "kind": "question",
+            "key": "2023|paper-1b|3",
+            "label": "2023|paper-1b|3"
+          },
+          {
+            "kind": "question",
+            "key": "2017|paper-1b|5",
+            "label": "2017|paper-1b|5"
+          }
+        ]
+      }
+    },
+    "419": {
+      "chn": {
+        "review_figures": [
+          {
+            "id": "elastic-spring-energy",
+            "code": "206",
+            "page": 11,
+            "printed_page": 239,
+            "source": "DSEPHY_TE_206_TN_ce.pdf",
+            "src": "assets/textbook/figures-chn/elastic-spring-energy.png",
+            "width": 343,
+            "height": 212,
+            "caption": "彈簧被壓縮或拉長時儲存彈性勢能；放鬆狀態作為零勢能參考。",
+            "language": "chn",
+            "bbox_fraction": [
+              0.455,
+              0.753,
+              0.783,
+              0.908
+            ],
+            "crop_regions": [
+              [
+                0.455,
+                0.753,
+                0.783,
+                0.908
+              ]
+            ],
+            "render_scale": 1.7,
+            "source_sha256": "d6a5a2e734e2dd8ce963db8d0cadf0931b5f934143ceaae18b7175c8c6a0522c"
+          }
+        ],
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2019|paper-1b|3",
+            "label": "2019|paper-1b|3"
+          },
+          {
+            "kind": "question",
+            "key": "2022|paper-1b|4",
+            "label": "2022|paper-1b|4"
+          },
+          {
+            "kind": "question",
+            "key": "tb-207-29",
+            "label": "tb-207-29"
+          }
+        ]
+      },
+      "eng": {
+        "review_figures": [
+          {
+            "id": "elastic-spring-energy",
+            "code": "206",
+            "page": 11,
+            "printed_page": 239,
+            "source": "DSEPHY_TE_206_TN_.pdf",
+            "src": "assets/textbook/review-diagrams/elastic-spring-energy.png",
+            "width": 343,
+            "height": 218,
+            "caption": "A compressed or stretched spring stores elastic potential energy, with the relaxed state used as the zero reference.",
+            "language": "eng",
+            "bbox_fraction": [
+              0.455,
+              0.748,
+              0.783,
+              0.907
+            ],
+            "crop_regions": [
+              [
+                0.455,
+                0.748,
+                0.783,
+                0.907
+              ]
+            ],
+            "render_scale": 1.7,
+            "source_sha256": "8c2864693575cda8f4d538feb0ef8e4d5597391bd831de858871c84df2ceaf21"
+          }
+        ],
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2019|paper-1b|3",
+            "label": "2019|paper-1b|3"
+          },
+          {
+            "kind": "question",
+            "key": "2022|paper-1b|4",
+            "label": "2022|paper-1b|4"
+          },
+          {
+            "kind": "question",
+            "key": "tb-207-29",
+            "label": "tb-207-29"
+          }
+        ]
+      }
+    }
+  },
+  "additions": [
+    {
+      "sequence": 418,
+      "chn": {
+        "sequence": 418,
+        "code": "203",
+        "page": 4,
+        "box": null,
+        "source": "DSEPHY_TE_203_TN_ce.pdf",
+        "source_kind": "textbook-excerpt",
+        "source_language": "eng",
+        "source_excerpts": [
+          {
+            "text": "The direction of friction is always opposite to the relative motion or the tendency of relative motion between two surfaces.",
+            "code": "203",
+            "page": 4,
+            "source": "DSEPHY_TE_203_TN_.pdf",
+            "language": "eng",
+            "printed_page": 96
+          }
+        ],
+        "content": "The direction of friction is always opposite to the relative motion or the tendency of relative motion between two surfaces.",
+        "figures": [],
+        "book_key": "compulsory-2",
+        "category": "2.基本概念",
+        "category_code": "2",
+        "category_zh": "基本概念",
+        "category_en": "Basic concept",
+        "importance": null,
+        "is_governing_law": false,
+        "link_policy": "linkable",
+        "card_style": {
+          "background": "#EAF2FF",
+          "border": "#ABC4EC",
+          "label_zh": "淡蓝"
+        },
+        "book": "必修第二冊",
+        "chapter": "力與運動（I）",
+        "card_title": "摩擦力與相對滑動趨勢",
+        "card_summary": "摩擦力阻礙兩個接觸面的相對滑動，或相對滑動的趨勢。已滑動時是滑動摩擦；接觸處未滑動而有滑動趨勢時是靜摩擦。判斷方向時，先想像沒有摩擦力，接觸面會往哪邊相對滑動，摩擦力便向相反方向。\n\n斜面上靜止的物體有下滑趨勢，所以摩擦力沿斜面向上。驅動輪向後推地面時，地面對輪胎的靜摩擦力向前。隨水平平台轉動而未滑動的物體，靜摩擦力可指向圓心，提供向心合力。",
+        "card_format": "paragraph-and-diagrams",
+        "card_formula_notes": "",
+        "review_version": "2026-10-10-coverage",
+        "textbook_order": {
+          "chapter": 7,
+          "page": 4,
+          "y": 0.11
+        },
+        "review_figures": [],
+        "card_summary_language": "chn",
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2017|paper-1a|7",
+            "label": "2017|paper-1a|7"
+          },
+          {
+            "kind": "question",
+            "key": "2023|paper-1b|3",
+            "label": "2023|paper-1b|3"
+          },
+          {
+            "kind": "question",
+            "key": "2017|paper-1b|5",
+            "label": "2017|paper-1b|5"
+          }
+        ]
+      },
+      "eng": {
+        "sequence": 418,
+        "code": "203",
+        "page": 4,
+        "box": null,
+        "source": "DSEPHY_TE_203_TN_.pdf",
+        "source_kind": "textbook-excerpt",
+        "source_language": "eng",
+        "source_excerpts": [
+          {
+            "text": "The direction of friction is always opposite to the relative motion or the tendency of relative motion between two surfaces.",
+            "code": "203",
+            "page": 4,
+            "source": "DSEPHY_TE_203_TN_.pdf",
+            "language": "eng",
+            "printed_page": 96
+          }
+        ],
+        "content": "The direction of friction is always opposite to the relative motion or the tendency of relative motion between two surfaces.",
+        "figures": [],
+        "book_key": "compulsory-2",
+        "category": "2.基本概念",
+        "category_code": "2",
+        "category_zh": "基本概念",
+        "category_en": "Basic concept",
+        "importance": null,
+        "is_governing_law": false,
+        "link_policy": "linkable",
+        "card_style": {
+          "background": "#EAF2FF",
+          "border": "#ABC4EC",
+          "label_zh": "淡蓝"
+        },
+        "book": "Compulsory Book 2",
+        "chapter": "Force and Motion (I)",
+        "card_title": "Friction and the tendency of relative sliding",
+        "card_summary": "Friction opposes relative sliding, or the tendency of relative sliding, between contacting surfaces. Sliding friction acts when they slide; static friction acts when the contact does not slide. To find direction, imagine how the surfaces would slide relative to one another without friction. Friction opposes that tendency.\n\nA stationary object on a slope tends to slide down, so friction acts up the slope. A driven tyre pushes the ground backwards and receives forward static friction. For an object rotating with a horizontal platform without slipping, static friction can point towards the centre and provide centripetal force.",
+        "card_format": "paragraph-and-diagrams",
+        "card_formula_notes": "",
+        "review_version": "2026-10-10-coverage",
+        "textbook_order": {
+          "chapter": 7,
+          "page": 4,
+          "y": 0.11
+        },
+        "review_figures": [],
+        "card_summary_language": "eng",
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2017|paper-1a|7",
+            "label": "2017|paper-1a|7"
+          },
+          {
+            "kind": "question",
+            "key": "2023|paper-1b|3",
+            "label": "2023|paper-1b|3"
+          },
+          {
+            "kind": "question",
+            "key": "2017|paper-1b|5",
+            "label": "2017|paper-1b|5"
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 419,
+      "chn": {
+        "sequence": 419,
+        "code": "206",
+        "page": 11,
+        "box": null,
+        "source": "DSEPHY_TE_206_TN_ce.pdf",
+        "source_kind": "textbook-excerpt",
+        "source_language": "eng",
+        "source_excerpts": [
+          {
+            "text": "Elastic potential energy is the energy possessed by an elastic object when the object is stretched, compressed, or bent.",
+            "code": "206",
+            "page": 11,
+            "source": "DSEPHY_TE_206_TN_.pdf",
+            "language": "eng",
+            "printed_page": 239
+          }
+        ],
+        "content": "Elastic potential energy is the energy possessed by an elastic object when the object is stretched, compressed, or bent.",
+        "figures": [],
+        "book_key": "compulsory-2",
+        "category": "2.基本概念",
+        "category_code": "2",
+        "category_zh": "基本概念",
+        "category_en": "Basic concept",
+        "importance": null,
+        "is_governing_law": false,
+        "link_policy": "linkable",
+        "card_style": {
+          "background": "#EAF2FF",
+          "border": "#ABC4EC",
+          "label_zh": "淡蓝"
+        },
+        "book": "必修第二冊",
+        "chapter": "功、能量和功率",
+        "card_title": "彈性勢能",
+        "card_summary": "彈性物體被拉長、壓縮或彎曲時，可把能量儲存為彈性勢能。物體回復原狀時，儲存的能量可轉為動能或其他形式。\n\n例如，救生網或蹦床被向下壓時，落下物體的動能和重力勢能可轉為網或床的彈性勢能；回彈時，彈性勢能再轉為物體的動能。實際過程也可能有內能和聲音等能量轉移。",
+        "card_format": "paragraph-and-diagrams",
+        "card_formula_notes": "",
+        "review_version": "2026-10-10-coverage",
+        "textbook_order": {
+          "chapter": 10,
+          "page": 11,
+          "y": 0.18
+        },
+        "review_figures": [
+          {
+            "id": "elastic-spring-energy",
+            "code": "206",
+            "page": 11,
+            "printed_page": 239,
+            "source": "DSEPHY_TE_206_TN_ce.pdf",
+            "src": "assets/textbook/figures-chn/elastic-spring-energy.png",
+            "width": 343,
+            "height": 212,
+            "caption": "彈簧被壓縮或拉長時儲存彈性勢能；放鬆狀態作為零勢能參考。",
+            "language": "chn",
+            "bbox_fraction": [
+              0.455,
+              0.753,
+              0.783,
+              0.908
+            ],
+            "crop_regions": [
+              [
+                0.455,
+                0.753,
+                0.783,
+                0.908
+              ]
+            ],
+            "render_scale": 1.7,
+            "source_sha256": "d6a5a2e734e2dd8ce963db8d0cadf0931b5f934143ceaae18b7175c8c6a0522c"
+          }
+        ],
+        "card_summary_language": "chn",
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2019|paper-1b|3",
+            "label": "2019|paper-1b|3"
+          },
+          {
+            "kind": "question",
+            "key": "2022|paper-1b|4",
+            "label": "2022|paper-1b|4"
+          },
+          {
+            "kind": "question",
+            "key": "tb-207-29",
+            "label": "tb-207-29"
+          }
+        ]
+      },
+      "eng": {
+        "sequence": 419,
+        "code": "206",
+        "page": 11,
+        "box": null,
+        "source": "DSEPHY_TE_206_TN_.pdf",
+        "source_kind": "textbook-excerpt",
+        "source_language": "eng",
+        "source_excerpts": [
+          {
+            "text": "Elastic potential energy is the energy possessed by an elastic object when the object is stretched, compressed, or bent.",
+            "code": "206",
+            "page": 11,
+            "source": "DSEPHY_TE_206_TN_.pdf",
+            "language": "eng",
+            "printed_page": 239
+          }
+        ],
+        "content": "Elastic potential energy is the energy possessed by an elastic object when the object is stretched, compressed, or bent.",
+        "figures": [],
+        "book_key": "compulsory-2",
+        "category": "2.基本概念",
+        "category_code": "2",
+        "category_zh": "基本概念",
+        "category_en": "Basic concept",
+        "importance": null,
+        "is_governing_law": false,
+        "link_policy": "linkable",
+        "card_style": {
+          "background": "#EAF2FF",
+          "border": "#ABC4EC",
+          "label_zh": "淡蓝"
+        },
+        "book": "Compulsory Book 2",
+        "chapter": "Work, Energy and Power",
+        "card_title": "Elastic potential energy",
+        "card_summary": "An elastic object can store energy as elastic potential energy when stretched, compressed or bent. As it returns towards its original shape, this energy can become kinetic energy or other forms.\n\nFor example, a falling object's kinetic and gravitational potential energies can be stored as elastic potential energy when a safety net or trampoline stretches. During rebound, stored energy becomes kinetic energy again. A real process can also transfer energy to internal energy and sound.",
+        "card_format": "paragraph-and-diagrams",
+        "card_formula_notes": "",
+        "review_version": "2026-10-10-coverage",
+        "textbook_order": {
+          "chapter": 10,
+          "page": 11,
+          "y": 0.18
+        },
+        "review_figures": [
+          {
+            "id": "elastic-spring-energy",
+            "code": "206",
+            "page": 11,
+            "printed_page": 239,
+            "source": "DSEPHY_TE_206_TN_.pdf",
+            "src": "assets/textbook/review-diagrams/elastic-spring-energy.png",
+            "width": 343,
+            "height": 218,
+            "caption": "A compressed or stretched spring stores elastic potential energy, with the relaxed state used as the zero reference.",
+            "language": "eng",
+            "bbox_fraction": [
+              0.455,
+              0.748,
+              0.783,
+              0.907
+            ],
+            "crop_regions": [
+              [
+                0.455,
+                0.748,
+                0.783,
+                0.907
+              ]
+            ],
+            "render_scale": 1.7,
+            "source_sha256": "8c2864693575cda8f4d538feb0ef8e4d5597391bd831de858871c84df2ceaf21"
+          }
+        ],
+        "card_summary_language": "eng",
+        "card_references": [
+          {
+            "kind": "question",
+            "key": "2019|paper-1b|3",
+            "label": "2019|paper-1b|3"
+          },
+          {
+            "kind": "question",
+            "key": "2022|paper-1b|4",
+            "label": "2022|paper-1b|4"
+          },
+          {
+            "kind": "question",
+            "key": "tb-207-29",
+            "label": "tb-207-29"
+          }
+        ]
+      }
+    }
+  ],
+  "findings": [
+    {
+      "id": "01",
+      "title": "灯丝曲线的斜率与工作点电阻",
+      "points": [
+        177,
+        178
+      ],
+      "status": "implemented",
+      "questions": [
+        "2022|paper-1b|8"
+      ]
+    },
+    {
+      "id": "02",
+      "title": "蒸发、沸腾和蒸发冷却",
+      "points": [
+        19
+      ],
+      "status": "implemented",
+      "questions": [
+        "2013|paper-1a|1",
+        "2012|paper-1a|2",
+        "2017|paper-1a|3"
+      ]
+    },
+    {
+      "id": "03",
+      "title": "静摩擦力的方向",
+      "points": [
+        418
+      ],
+      "status": "implemented",
+      "questions": [
+        "2017|paper-1a|7",
+        "2023|paper-1b|3",
+        "2017|paper-1b|5"
+      ]
+    },
+    {
+      "id": "04",
+      "title": "弹性势能",
+      "points": [
+        419
+      ],
+      "status": "implemented",
+      "questions": [
+        "2019|paper-1b|3",
+        "2022|paper-1b|4",
+        "tb-207-29"
+      ]
+    },
+    {
+      "id": "05",
+      "title": "α、β⁻ 衰变后的 A 和 Z",
+      "points": [
+        227
+      ],
+      "status": "implemented",
+      "questions": [
+        "2014|paper-1a|31",
+        "2023|paper-1b|9",
+        "2025|paper-1b|12"
+      ]
+    },
+    {
+      "id": "06",
+      "title": "每核子结合能和结合能曲线",
+      "points": [
+        294,
+        295
+      ],
+      "status": "implemented",
+      "questions": [
+        "tb-E304-20",
+        "2014|paper-2|3.7",
+        "2019|paper-2|3.8",
+        "2020|paper-2|3.S",
+        "2024|paper-2|3.8"
+      ]
+    },
+    {
+      "id": "07",
+      "title": "规则反射和漫反射",
+      "points": [
+        109
+      ],
+      "status": "implemented",
+      "questions": [
+        "tb-3A01-14",
+        "tb-3A01-17",
+        "tb-3A01-4"
+      ]
+    },
+    {
+      "id": "08",
+      "title": "凸透镜主光线与遮住半个透镜",
+      "points": [
+        120,
+        369
+      ],
+      "status": "implemented",
+      "questions": [
+        "tb-3A03-3",
+        "ex-3A03-3"
+      ]
+    },
+    {
+      "id": "09",
+      "title": "波的同相、反相与驻波比较",
+      "points": [
+        128,
+        135,
+        148
+      ],
+      "status": "implemented",
+      "questions": [
+        "2013|paper-1a|18",
+        "2016|paper-1a|18",
+        "2025|paper-1b|10",
+        "ex-3B05-9"
+      ]
+    },
+    {
+      "id": "10",
+      "title": "感应充电的接地与移除顺序",
+      "points": [
+        161
+      ],
+      "status": "implemented",
+      "questions": [
+        "2024|paper-1b|9"
+      ]
+    },
+    {
+      "id": "11",
+      "title": "家居用电保护措施的作用",
+      "points": [
+        191,
+        192
+      ],
+      "status": "implemented",
+      "questions": [
+        "tb-404-20",
+        "2024|paper-1a|31",
+        "2018|paper-1b|8"
+      ]
+    },
+    {
+      "id": "12",
+      "title": "电动机经过零转矩位置",
+      "points": [
+        208
+      ],
+      "status": "implemented",
+      "questions": [
+        "tb-406-20",
+        "ex-406-6"
+      ]
+    },
+    {
+      "id": "13",
+      "title": "X 射线管内电子的完整路径",
+      "points": [
+        226
+      ],
+      "status": "implemented",
+      "questions": [
+        "2012|paper-1a|34"
+      ]
+    },
+    {
+      "id": "14",
+      "title": "碳-14 测年的依据和适用对象",
+      "points": [
+        236,
+        237
+      ],
+      "status": "implemented",
+      "questions": [
+        "tb-502-4",
+        "tb-502-19",
+        "ex-502-9"
+      ]
+    },
+    {
+      "id": "15",
+      "title": "地球同步静止轨道的条件",
+      "points": [
+        107,
+        108
+      ],
+      "status": "implemented",
+      "questions": [
+        "tb-E102-19",
+        "2021|paper-1b|5",
+        "ex-210-8"
+      ]
+    },
+    {
+      "id": "16",
+      "title": "观察纬度与天体升落路径",
+      "points": [
+        383
+      ],
+      "status": "implemented",
+      "questions": [
+        "2012|paper-2|1.4",
+        "2013|paper-2|1.5",
+        "2014|paper-2|1.3",
+        "2015|paper-2|1.2"
+      ]
+    },
+    {
+      "id": "17",
+      "title": "托勒密模型的本轮和均轮",
+      "points": [
+        251
+      ],
+      "status": "implemented",
+      "questions": [
+        "tb-E101-18",
+        "2013|paper-2|1.2",
+        "2017|paper-2|1.1"
+      ]
+    },
+    {
+      "id": "18",
+      "title": "光电流 I–V 图和饱和电流",
+      "points": [
+        300,
+        301,
+        303,
+        304
+      ],
+      "status": "implemented",
+      "questions": [
+        "2016|paper-2|2.S",
+        "2014|paper-2|2.6",
+        "2019|paper-2|2.2",
+        "tb-E201-21"
+      ]
+    },
+    {
+      "id": "19",
+      "title": "卢瑟福实验的观察与模型限制",
+      "points": [
+        310
+      ],
+      "status": "implemented",
+      "questions": [
+        "2019|paper-2|2.S",
+        "tb-E202-21",
+        "2020|paper-2|2.1"
+      ]
+    },
+    {
+      "id": "20",
+      "title": "电子碰撞激发与光子吸收",
+      "points": [
+        315,
+        316
+      ],
+      "status": "implemented",
+      "questions": [
+        "2024|paper-2|2.2"
+      ]
+    },
+    {
+      "id": "21",
+      "title": "白炽灯与荧光灯如何发光",
+      "points": [
+        287,
+        289
+      ],
+      "status": "implemented",
+      "questions": [
+        "tb-E302-17",
+        "tb-E302-20",
+        "2018|paper-2|3.S"
+      ]
+    },
+    {
+      "id": "22",
+      "title": "眼睛调节的肌肉与晶状体变化",
+      "points": [
+        327
+      ],
+      "status": "implemented",
+      "questions": [
+        "2020|paper-2|4.1",
+        "tb-E401-24"
+      ]
+    },
+    {
+      "id": "23",
+      "title": "耳朵的传递过程和压强平衡",
+      "points": [
+        340,
+        341
+      ],
+      "status": "implemented",
+      "questions": [
+        "2025|paper-2|4.S",
+        "2024|paper-2|4.2",
+        "2016|paper-2|4.3"
+      ]
+    },
+    {
+      "id": "24",
+      "title": "压电晶体厚度与频率",
+      "points": [
+        346
+      ],
+      "status": "implemented",
+      "questions": [
+        "2020|paper-2|4.4"
+      ]
+    },
+    {
+      "id": "25",
+      "title": "放射源实验的操作与防护",
+      "points": [
+        377
+      ],
+      "status": "implemented",
+      "questions": [
+        "tb-501-16"
+      ]
+    },
+    {
+      "id": "26",
+      "title": "医学示踪物的半衰期选择",
+      "points": [
+        361
+      ],
+      "status": "implemented",
+      "questions": [
+        "2015|paper-2|4.8"
+      ]
+    },
+    {
+      "id": "27",
+      "title": "哈勃关系的定量含义",
+      "points": [
+        276
+      ],
+      "status": "implemented",
+      "questions": [
+        "2016|paper-2|1.8"
+      ]
+    },
+    {
+      "id": "28",
+      "title": "绝对压强这个词缺少入口",
+      "points": [
+        24,
+        25,
+        31,
+        33
+      ],
+      "status": "implemented",
+      "questions": []
+    },
+    {
+      "id": "29",
+      "title": "物质的量如何从题目数据得到",
+      "points": [
+        33
+      ],
+      "status": "implemented",
+      "questions": []
+    },
+    {
+      "id": "30",
+      "title": "牛顿第一定律开头的术语",
+      "points": [
+        59
+      ],
+      "status": "implemented",
+      "questions": [
+        "2017|paper-1a|7"
+      ]
+    },
+    {
+      "id": "31",
+      "title": "机械能段落的保守力和系统边界",
+      "points": [
+        81,
+        83
+      ],
+      "status": "implemented",
+      "questions": [
+        "2019|paper-1b|3",
+        "2022|paper-1b|4"
+      ]
+    },
+    {
+      "id": "32",
+      "title": "连体问题中“相同加速度”的含义",
+      "points": [
+        66
+      ],
+      "status": "implemented",
+      "questions": [
+        "tb-204-30"
+      ]
+    },
+    {
+      "id": "33",
+      "title": "抛体分解后怎样开始列式",
+      "points": [
+        96
+      ],
+      "status": "implemented",
+      "questions": [
+        "2019|paper-1b|3"
+      ]
+    },
+    {
+      "id": "34",
+      "title": "光电效应里的额外限定",
+      "points": [
+        300,
+        303
+      ],
+      "status": "implemented",
+      "questions": []
+    },
+    {
+      "id": "35",
+      "title": "瑞利判据的抽象名称",
+      "points": [
+        323,
+        324,
+        330
+      ],
+      "status": "implemented",
+      "questions": []
+    },
+    {
+      "id": "36",
+      "title": "LED 和太阳能电池的术语",
+      "points": [
+        397,
+        398
+      ],
+      "status": "implemented",
+      "questions": []
+    },
+    {
+      "id": "37",
+      "title": "一张卡混放两组纳米材料内容",
+      "points": [
+        394
+      ],
+      "status": "implemented",
+      "questions": []
+    },
+    {
+      "id": "38",
+      "title": "α、β、γ 的大量比较写成一长段",
+      "points": [
+        377
+      ],
+      "status": "implemented",
+      "questions": []
+    },
+    {
+      "id": "39",
+      "title": "有效半衰期中的“分半衰期”",
+      "points": [
+        364
+      ],
+      "status": "implemented",
+      "questions": []
+    },
+    {
+      "id": "40",
+      "title": "带星号的点电荷电势题",
+      "points": [
+        164,
+        167
+      ],
+      "status": "implemented",
+      "questions": [
+        "2014|paper-1a|23"
+      ],
+      "scope": "Asterisked historical exam extension, labelled explicitly; not presented as a core textbook rule"
+    }
+  ],
+  "questionLinks": {
+    "2017|paper-1a|7": [
+      {
+        "sequence": 418,
+        "evidence": "Static friction opposes the tendency to slide down the incline; the card explains the force direction."
+      }
+    ],
+    "2017|paper-1b|5": [
+      {
+        "sequence": 418,
+        "evidence": "Static friction supplies the inward resultant for motion with the rotating platform."
+      }
+    ],
+    "2023|paper-1b|3": [
+      {
+        "sequence": 418,
+        "evidence": "The driven bicycle tyre receives forward static friction from the ground."
+      }
+    ],
+    "2019|paper-1b|3": [
+      {
+        "sequence": 419,
+        "evidence": "The falling person transfers energy to elastic potential energy of the stretched safety net."
+      }
+    ],
+    "2022|paper-1b|4": [
+      {
+        "sequence": 419,
+        "evidence": "The trampoline stores elastic potential energy when deformed."
+      }
+    ],
+    "tb-207-29": [
+      {
+        "sequence": 419,
+        "evidence": "The bungee cord stores elastic potential energy as it stretches."
+      }
+    ],
+    "2012|paper-2|1.4": [
+      {
+        "sequence": 383,
+        "evidence": "Observer latitude determines celestial-pole altitude and the path relative to the horizon."
+      }
+    ],
+    "2013|paper-2|1.5": [
+      {
+        "sequence": 383,
+        "evidence": "The observer horizon and Earth axis determine the apparent daily celestial path."
+      }
+    ],
+    "2014|paper-2|1.3": [
+      {
+        "sequence": 383,
+        "evidence": "Solar meridian altitude follows latitude and solar declination."
+      }
+    ],
+    "2015|paper-2|1.2": [
+      {
+        "sequence": 383,
+        "evidence": "Solar noon altitude depends on latitude and seasonal solar declination."
+      }
+    ],
+    "2016|paper-2|4.3": [
+      {
+        "sequence": 340,
+        "evidence": "An unequal pressure across the eardrum impairs vibration; the Eustachian tube helps equalise pressure."
+      }
+    ],
+    "2014|paper-1a|23": [
+      {
+        "sequence": 164,
+        "evidence": "Explicitly labelled asterisked extension: isolated point-charge potential varies as 1/r with zero at infinity."
+      }
+    ]
+  },
+  "supersededLinkDecisions": [
+    {
+      "proposal": "N18",
+      "key": "2012|paper-2|1.4",
+      "sequence": 383,
+      "reason": "The 2026-10-10 source review expanded this card to explain the previously missing application.",
+      "evidence": "Observer latitude determines celestial-pole altitude and the path relative to the horizon."
+    },
+    {
+      "proposal": "N18",
+      "key": "2013|paper-2|1.5",
+      "sequence": 383,
+      "reason": "The 2026-10-10 source review expanded this card to explain the previously missing application.",
+      "evidence": "The observer horizon and Earth axis determine the apparent daily celestial path."
+    },
+    {
+      "proposal": "N18",
+      "key": "2014|paper-2|1.3",
+      "sequence": 383,
+      "reason": "The 2026-10-10 source review expanded this card to explain the previously missing application.",
+      "evidence": "Solar meridian altitude follows latitude and solar declination."
+    },
+    {
+      "proposal": "N18",
+      "key": "2015|paper-2|1.2",
+      "sequence": 383,
+      "reason": "The 2026-10-10 source review expanded this card to explain the previously missing application.",
+      "evidence": "Solar noon altitude depends on latitude and seasonal solar declination."
+    }
+  ]
+}

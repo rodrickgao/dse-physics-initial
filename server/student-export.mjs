@@ -1,8 +1,9 @@
 import ExcelJS from 'exceljs';
+import { regionLabel } from '../src/lib/region-catalog.js';
 import { questions, pointInfo } from './catalog.mjs';
 
 // Each record type has its own grain; only student summary rows hold totals.
-export const headers = ['記錄類型', '學生ID', '電郵', '角色', '暱稱', '年級', '目標等級', '頭像', '註冊時間', '最近登入時間', '目前錯題總數', '目前知識點總數', '目前章節總數', '題目ID', '年份', '試卷', '題號', '目前仍標記', '目前標記時間', '知識點ID列表', '知識點編號列表', '章節編號列表', '知識點ID', '知識點編號', '章節編號', '關聯錯題數', '操作ID', '操作', '操作時間', '匯出時間'];
+export const headers = ['記錄類型', '學生ID', '電郵', '角色', '暱稱', '年級', '地區', '目標等級', '頭像', '註冊時間', '最近登入時間', '目前錯題總數', '目前知識點總數', '目前章節總數', '題目ID', '年份', '試卷', '題號', '目前仍標記', '目前標記時間', '知識點ID列表', '知識點編號列表', '章節編號列表', '知識點ID', '知識點編號', '章節編號', '關聯錯題數', '操作ID', '操作', '操作時間', '匯出時間'];
 const iso = value => value == null ? '' : new Date(value).toISOString();
 export function exportRows(users, mistakes, events, generatedAt) {
   const rows = [headers];
@@ -16,7 +17,7 @@ export function exportRows(users, mistakes, events, generatedAt) {
       links.forEach(p => add(byPoint, p.sequence));
       new Set(links.map(p => p.number.split('.').slice(0, 2).join('.'))).forEach(chapter => add(byChapter, chapter));
     }
-    const base = { '學生ID': user.id, '電郵': user.email, '角色': user.role, '暱稱': user.nickname || '', '年級': user.grade || '', '目標等級': user.target || '', '頭像': user.avatar || '', '註冊時間': iso(user.created_at), '最近登入時間': iso(user.last_login), '匯出時間': generatedAt };
+    const base = { '學生ID': user.id, '電郵': user.email, '角色': user.role, '暱稱': user.nickname || '', '年級': user.grade || '', '地區': user.region ? regionLabel(user.region) : '', '目標等級': user.target || '', '頭像': user.avatar || '', '註冊時間': iso(user.created_at), '最近登入時間': iso(user.last_login), '匯出時間': generatedAt };
     const push = record => rows.push(headers.map(h => ({ ...base, ...record })[h] ?? ''));
     const question = key => {
       const q = questions.get(key), [year, paper, number] = key.includes('|') ? key.split('|') : ['', key.startsWith('ex-') ? '课本例题' : '课本习题', key.split('-').at(-1)];
@@ -45,9 +46,9 @@ export async function toWorkbook(rows, extra = null) {
     sheet.columns=[{header:'指标',width:28},{header:'数值 / 说明',width:80}];
     sheet.addRows([['导出时间',extra.generatedAt],['导出范围','全部学生，不受后台搜索和会员筛选影响'],['学生人数',extra.students.length],['有效会员',extra.students.filter(s=>s.membership.active).length],['当前错题',extra.students.reduce((n,s)=>n+s.activeMistakes,0)],['当前已掌握',extra.students.reduce((n,s)=>n+s.mastered,0)],['时间格式','ISO 8601（UTC），末尾 Z 表示 UTC 时间'],['统计说明','已掌握与错题来自自主标记；不是作答次数或正确率。知识点关联可重叠。']]);
     const student=workbook.addWorksheet('学生学习与会员',{views:[{state:'frozen',ySplit:1}]});
-    student.columns=['学生ID','昵称','邮箱','年级','目标等级','会员状态','会员到期时间','当前错题','当前已掌握','累计专注分钟','最近活动时间'].map(header=>({header,width:header.includes('时间')?28:header==='邮箱'?34:18}));
+    student.columns=['学生ID','昵称','邮箱','年级','地区','目标等级','会员状态','会员到期时间','当前错题','当前已掌握','累计专注分钟','最近活动时间'].map(header=>({header,width:header.includes('时间')?28:header==='邮箱'?34:18}));
     const states={none:'未开通',active:'有效会员',expired:'已到期',revoked:'已暂停'};
-    student.addRows(extra.students.map(s=>[s.id,s.nickname||'',s.email,s.grade||'',s.target||'',states[s.membership.status]||s.membership.status,iso(s.membership.endsAt),s.activeMistakes,s.mastered,s.focusMinutes,iso(s.lastActivity)]));
+    student.addRows(extra.students.map(s=>[s.id,s.nickname||'',s.email,s.grade||'',s.region ? regionLabel(s.region) : '',s.target||'',states[s.membership.status]||s.membership.status,iso(s.membership.endsAt),s.activeMistakes,s.mastered,s.focusMinutes,iso(s.lastActivity)]));
     const mastered=workbook.addWorksheet('已掌握明细',{views:[{state:'frozen',ySplit:1}]});
     mastered.columns=['学生ID','邮箱','题目ID','标记时间'].map(header=>({header,width:header==='邮箱'?34:28}));
     const users=new Map(extra.students.map(s=>[s.id,s]));
@@ -56,7 +57,7 @@ export async function toWorkbook(rows, extra = null) {
   const base = ['學生ID', '電郵'];
   const question = ['題目ID', '年份', '試卷', '題號', '目前仍標記', '目前標記時間', '知識點ID列表', '知識點編號列表', '章節編號列表'];
   const sheets = [
-    ['學生摘要', [...base, '角色', '暱稱', '年級', '目標等級', '頭像', '註冊時間', '最近登入時間', '目前錯題總數', '目前知識點總數', '目前章節總數']],
+    ['學生摘要', [...base, '角色', '暱稱', '年級', '地區', '目標等級', '頭像', '註冊時間', '最近登入時間', '目前錯題總數', '目前知識點總數', '目前章節總數']],
     ['目前錯題', [...base, ...question]],
     ['知識點統計', [...base, '知識點ID', '知識點編號', '章節編號', '關聯錯題數']],
     ['章節統計', [...base, '章節編號', '關聯錯題數']],

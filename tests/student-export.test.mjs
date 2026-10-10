@@ -53,7 +53,7 @@ test('enriched export contains membership overview and account-scoped mastery wi
  const extra={generatedAt:'2026-10-09T00:00:00Z',students:[{id:4,email:'=test@example.com',nickname:'=1+1',membership:{status:'active',active:true,endsAt:0},activeMistakes:2,mastered:1,focusMinutes:12,lastActivity:0}],mastered:[{user_id:4,question_key:'tb-101-1',marked_at:0},{user_id:99,question_key:'private',marked_at:0}]};
  const book=new ExcelJS.Workbook();await book.xlsx.load(await toWorkbook(rows,extra));
  assert.equal(book.worksheets[0].name,'总览');assert.equal(book.worksheets.length,8);
- const students=book.getWorksheet('学生学习与会员');assert.equal(students.getCell('B2').value,'=1+1');assert.equal(students.getCell('B2').type,ExcelJS.ValueType.String);assert.equal(students.getCell('H2').value,2);assert.equal(students.getCell('I2').value,1);
+ const students=book.getWorksheet('学生学习与会员');assert.equal(students.getCell('B2').value,'=1+1');assert.equal(students.getCell('B2').type,ExcelJS.ValueType.String);assert.equal(students.getCell('I2').value,2);assert.equal(students.getCell('J2').value,1);
  assert.equal(book.getWorksheet('已掌握明细').rowCount,2);assert.equal(book.getWorksheet('已掌握明细').getCell('C2').value,'tb-101-1');
  const empty=new ExcelJS.Workbook();await empty.xlsx.load(await toWorkbook(rows,{...extra,students:[],mastered:[]}));assert.equal(empty.getWorksheet('学生学习与会员').rowCount,1);
 });

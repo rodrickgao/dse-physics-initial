@@ -59,7 +59,7 @@ export function createManagement({ db, clock, fail, transaction }) {
       return { membership: membership(id) };
     });
   }
-  const safeStudent = "SELECT id,email,nickname,grade,target,created_at,last_login FROM users WHERE role='student'";
+  const safeStudent = "SELECT id,email,nickname,grade,region,target,created_at,last_login FROM users WHERE role='student'";
   function overview() {
     const now = clock();
     const students = all(safeStudent + ' ORDER BY last_login DESC').map(u => ({ ...u, membership: membership(u.id), lastActivity: get('SELECT MAX(at) at FROM learning_activity WHERE user_id=?', u.id)?.at || null, operations: get('SELECT COUNT(*) n FROM learning_activity WHERE user_id=?', u.id).n, focusMinutes: Math.round(get('SELECT COALESCE(SUM(elapsed_ms),0) n FROM focus_sessions WHERE user_id=?', u.id).n / 60000), mistakes: get('SELECT COUNT(*) n FROM mistake_archive WHERE user_id=?', u.id).n, activeMistakes: get('SELECT COUNT(*) n FROM mistakes WHERE user_id=?', u.id).n, mastered: get('SELECT COUNT(*) n FROM mastered WHERE user_id=?', u.id).n }));

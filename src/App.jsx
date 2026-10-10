@@ -69,7 +69,7 @@ export function App() {
   async function saveMistakes(path, body, method) {
     mutation.current++; setSaving(true); setSyncError('');
     const operation = saveQueue.current.then(async () => {
-      try { const result = await api(path, body, method); setMistakes(result.mistakes); setMastered(result.mastered || {}); return result; }
+      try { const result = await api(path, body, method); setMistakes(result.mistakes); setMastered(result.mastered || {}); setFeedback(null); return result; }
       catch (e) { setSyncError(e.message); if (e.status === 401) { setUser(null); setMistakes({}); setMastered({}); } return false; }
       finally { mutation.current--; setSaving(mutation.current > 0); }
     });

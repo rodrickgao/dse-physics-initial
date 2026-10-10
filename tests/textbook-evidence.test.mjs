@@ -7,9 +7,10 @@ const ctx={window:{}};
 for(const name of ['textbook-data.js','knowledge-network-data.js','paper2-knowledge-data.js','statistics-data.js'])vm.runInNewContext(fs.readFileSync(name,'utf8'),ctx);
 const d=ctx.window.DSE_TEXTBOOK_DATA,n={...ctx.window.DSE_KNOWLEDGE_NETWORK,...ctx.window.DSE_PAPER2_KNOWLEDGE};
 const report=JSON.parse(fs.readFileSync('scripts/textbook-evidence-update.json','utf8'));
+const coverage=JSON.parse(fs.readFileSync('scripts/card-coverage-review.json','utf8'));
 test('stable identities follow textbook order and readable cards retain source provenance',()=>{
  for(const lang of ['eng','chn']){
-  const points=d.languages[lang];assert.equal(points.length,411);assert.equal(new Set(points.map(p=>p.sequence)).size,411);
+  const points=d.languages[lang];assert.equal(points.length,413);assert.equal(new Set(points.map(p=>p.sequence)).size,413);
   const all=numberKnowledgePoints(points);
   assert.deepEqual(all.map(p=>p.sequence).sort((a,b)=>a-b),Array.from(points,p=>p.sequence).sort((a,b)=>a-b));
   assert.deepEqual(all.map(p=>p.sequence),numberKnowledgePoints(d.languages[lang==='eng'?'chn':'eng']).map(p=>p.sequence));
@@ -37,9 +38,18 @@ test('knowledge cards have no cross-card relations and question evidence stays i
  assert.ok(n['2021|paper-1a|21'].relatedLinks.some(l=>l.sequence===160));
  assert.ok(!n['2021|paper-1a|21'].links.some(l=>l.sequence===160));
 });
-test('withdrawn proposals and mismatched question candidates are not adopted',()=>{
+test('withdrawn proposals stay excluded and later source-supported applications retain their review history',()=>{
  for(const id of ['N05','N17','N25','N26','N27','N47'])assert.ok(!d.languages.eng.some(p=>p.proposal_id===id));
  assert.ok(d.languages.eng.find(p=>p.sequence===314).textbook_supplements.some(s=>s.id==='N27'));
- for(const s of report.skipped)assert.ok(!n[s.key].links.some(l=>l.sequence===report.ids[s.id]),s.id+' '+s.key);
+ for(const s of report.skipped){
+  const sequence=report.ids[s.id];
+  const expansion=coverage.supersededLinkDecisions.find(r=>r.proposal===s.id&&r.key===s.key&&r.sequence===sequence);
+  if(expansion){
+   assert.ok(expansion.reason.length>40&&expansion.evidence.length>20);
+   assert.equal(coverage.questionLinks[s.key].find(l=>l.sequence===sequence)?.evidence,expansion.evidence);
+   assert.equal(n[s.key].links.find(l=>l.sequence===sequence)?.evidence,expansion.evidence);
+   assert.ok(d.languages.eng.find(p=>p.sequence===sequence).card_references.some(r=>r.kind==='question'&&r.key===s.key));
+  }else assert.ok(!n[s.key].links.some(l=>l.sequence===sequence),s.id+' '+s.key);
+ }
  for(const c of report.changes){const field=c.role==='background'?'relatedLinks':'links';const link=n[c.key][field].find(l=>l.sequence===c.sequence);assert.ok(link.evidence.length>10);}
 });

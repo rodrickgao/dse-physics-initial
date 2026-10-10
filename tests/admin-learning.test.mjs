@@ -7,6 +7,7 @@ import { join } from 'node:path';
 import { createApi } from '../server/api.mjs';
 import { questions } from '../server/catalog.mjs';
 import { studentLearning } from '../server/student-learning.mjs';
+import ExcelJS from 'exceljs';
 
 test('legacy admin record DTO keeps current, trash and deleted counts separate', () => {
  const row={question_key:'2012|paper-1a|1',marked_at:123};
@@ -34,6 +35,11 @@ test('admin learning detail and overview follow mastery, trash and restoration w
   assert.equal((await student(`admin/student?id=${id}`)).status,403);
   await admin('admin/login',{key:'test-admin-learning'});
   assert.equal((await student('admin/question-stats')).status,403);
+  assert.equal((await client()('admin/question-stats/export')).status,401);
+  assert.equal((await student('admin/question-stats/export')).status,403);
+  assert.equal((await admin('admin/question-stats/export?language=invalid')).status,400);
+  assert.equal((await admin('admin/question-stats/export?language=chn&language=eng')).status,400);
+  assert.equal((await admin('admin/question-stats/export?userId=1')).status,400);
   assert.equal((await student('admin/page-visits')).status,403);
   const visit={visitId:'test-visit-00000001',target:'papers',durationMs:0};
   assert.equal((await student('page-visits',visit)).status,200);
@@ -74,5 +80,9 @@ test('admin learning detail and overview follow mastery, trash and restoration w
   assert.equal(detail.learning.counts.active,1);assert.equal(detail.learning.counts.trash,0);
   const restored=(await admin('admin/question-stats')).rows.find(q=>q.key===key);
   assert.deepEqual([restored.marked,restored.active,restored.mastered],[1,1,0]);
+  const exported=await admin('admin/question-stats/export');
+  assert.equal(exported.status,200);assert.equal(exported.count,1);
+  const workbook=new ExcelJS.Workbook();await workbook.xlsx.load(Buffer.from(exported.base64,'base64'));
+  assert.deepEqual(workbook.worksheets[0].getRow(2).values.slice(1),[key,questions.get(key).label,1,1,0]);
  }finally{await new Promise(r=>server.close(r));api.close();rmSync(directory,{recursive:true});}
 });

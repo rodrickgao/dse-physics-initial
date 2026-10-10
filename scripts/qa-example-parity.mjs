@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
 import {chromium} from 'file:///C:/Users/rodri/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs';
-const output='../output/example-parity-20261008/browser';fs.mkdirSync(output,{recursive:true});
+const output='../output/pdf/chinese-illustrations-20261010/browser';fs.mkdirSync(output,{recursive:true});
 const browser=await chromium.launch({channel:'chrome',headless:true});
 const context=await browser.newContext({viewport:{width:1440,height:1050}});
 const base='http://127.0.0.1:5178';
@@ -11,16 +11,18 @@ try{
  assert.ok(code.developmentCode);
  assert.ok((await context.request.post(base+'/api/auth/verify',{data:{email:'rodrick_gao@163.com',code:code.developmentCode}})).ok());
  const page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));
- const samples=['ex-401-3','ex-202-7','ex-206-5','ex-3A03-4','ex-3B05-8','ex-406-9','ex-502-5','ex-E202-11','ex-E402-9'];
+ const samples=['ex-407-1','ex-407-5','ex-103-4','ex-207-10','ex-E301-2','ex-401-3','ex-202-7','ex-206-5','ex-3A03-4','ex-3B05-8','ex-406-9','ex-502-5','ex-E202-11','ex-E402-9'];
  await page.addInitScript(()=>localStorage.setItem('dse-physics-language-v1','chn'));
  for(const id of samples){
   await page.goto(base+'/#examples?question='+id);
   await page.locator('[data-example][aria-busy=false]').waitFor();
+  const skip=page.getByRole('button',{name:'暂时跳过',exact:true});if(await skip.count())await skip.click();
   assert.match(await page.locator('.question-content').first().innerText(),/[\u3400-\u9fff]/);
   const show=page.getByRole('button',{name:'查看解答',exact:true});if(await show.count())await show.click();
   const think=page.getByRole('button',{name:'查看思考题解答',exact:true});if(await think.count())await think.click();
   await page.evaluate(async()=>Promise.all([...document.querySelectorAll('.exercise-reader img')].map(i=>i.decode())));
   assert.equal(await page.locator('.katex-error,[data-math]').count(),0);
+  if(id==='ex-407-5')assert.ok(!/複習7 Q4|溫習 7 第 4 題/.test(await page.locator('.exercise-reader').innerText()));
   const images=await page.locator('.exercise-reader img').evaluateAll(nodes=>nodes.map(i=>({src:i.getAttribute('src'),width:i.naturalWidth,height:i.naturalHeight})));
   assert.ok(images.every(i=>i.width>0&&i.height>0));
   if(id==='ex-401-3'){
@@ -36,7 +38,7 @@ try{
  await page.locator('.language-switch').click();
  await page.waitForFunction(()=>document.querySelector('.question-content')?.textContent.includes('When a Van'));
  const englishImage=await page.locator('.question-content img').first().getAttribute('src');
- assert.equal(chineseImage,englishImage,'Same complete composite artwork in both languages');
+ assert.notEqual(chineseImage,englishImage,'Chinese annotations use a separate complete figure asset');
  await page.screenshot({path:output+'/ex-401-3-eng.png',fullPage:true});
  await page.locator('.language-switch').click();
  await page.waitForFunction(()=>/[\u3400-\u9fff]/.test(document.querySelector('.question-content')?.textContent||''));

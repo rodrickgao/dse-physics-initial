@@ -1,24 +1,60 @@
-.learning-tour{position:fixed;inset:0;z-index:30000;pointer-events:none}.tour-shade{position:fixed;background:rgba(12,24,45,.58);pointer-events:auto}.tour-highlight{position:fixed;border:3px solid #67c6ff;border-radius:9px;box-shadow:0 0 0 2px white;pointer-events:none}.tour-panel{pointer-events:auto;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:min(380px,calc(100vw - 24px));max-height:calc(100dvh - 24px);overflow:auto;padding:20px;background:var(--card,#fff);color:var(--foreground,#182a40);border:1px solid var(--border,#ccd6e2);border-radius:16px;box-shadow:0 14px 55px #0004;font:18px/1.65 system-ui,sans-serif;overscroll-behavior:contain}.tour-panel.tour-positioned{transform:none;max-height:46dvh}.tour-panel header{display:flex;align-items:center;justify-content:space-between;font-size:14px;color:var(--muted-foreground,#53627a)}.tour-panel header button{min-width:40px;min-height:40px;font-size:25px;line-height:1}.tour-panel h2{font-size:23px;margin:2px 0 10px}.tour-panel p{margin:8px 0}.tour-panel strong{display:block}.tour-panel footer{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}.tour-panel footer button{min-height:40px;white-space:normal}.tour-panel button:focus-visible,.tour-invite button:focus-visible{outline:3px solid #1687db;outline-offset:3px}.tour-invite{position:fixed;z-index:2500;bottom:24px;right:20px;display:flex;align-items:center;flex-wrap:wrap;gap:12px;max-width:min(420px,calc(100vw - 24px));border:1px solid var(--border,#ccd6e2);border-radius:12px;background:var(--card,#fff);color:var(--foreground,#182a40);padding:14px;box-shadow:0 4px 22px #0002;font-size:14px}.tour-invite button{color:var(--primary,#245ccc);min-height:40px}.tour-invite span{flex:1 1 200px}@media(max-width:640px){.tour-panel{padding:14px;font-size:17px}.tour-panel h2{font-size:21px}.tour-panel footer{margin-top:10px}.tour-panel.tour-positioned{max-height:44dvh}.tour-invite{bottom:90px;right:12px}}@media(prefers-reduced-motion:reduce){.learning-tour *{animation:none!important;transition:none!important}}
+.learning-tour { position:fixed;inset:0;z-index:30000;pointer-events:none; }
+.tour-shade { position:fixed;background:rgba(12,24,45,.58);pointer-events:auto; }
 
-.tour-panel footer button{font-size:16px;min-height:44px}
+/* One antialiased SVG surface: the opening and its outline have identical corners. */
+.tour-mask { position:fixed;inset:0;width:100%;height:100%;pointer-events:none;overflow:hidden;shape-rendering:geometricPrecision; }
+.tour-mask-shade { fill:rgba(12,24,45,.58);pointer-events:fill; }
+.tour-highlight { pointer-events:none; }
+.tour-highlight rect { fill:none;pointer-events:none; }
+.tour-highlight-base { stroke:#fff;stroke-width:6; }
+.tour-highlight-edge { stroke:#67c6ff;stroke-width:3; }
 
-.tour-help{border:1px solid var(--border);border-radius:8px;background:var(--card);color:var(--primary);padding:6px 12px;font-size:15px;white-space:nowrap;cursor:pointer}
-.account-bar:has(.tour-help){flex-wrap:wrap}.account-bar:has(.tour-help)>.membership-status{flex-shrink:0;white-space:nowrap}
-html[data-tour-active] *,html[data-tour-active] *::before,html[data-tour-active] *::after{animation:none!important;transition:none!important}
-.tour-help:focus-visible{outline:3px solid var(--primary);outline-offset:3px}
-
-/* Keep the spotlight aligned to its real target while easing the guidance panel. */
-@keyframes tour-reveal{from{opacity:.45}to{opacity:1}}
-@media(prefers-reduced-motion:no-preference){
- html[data-tour-active] .learning-tour #tour-body,
- html[data-tour-active] .learning-tour .tour-highlight{animation:tour-reveal 180ms ease-out both!important}
+.tour-panel {
+  pointer-events:auto;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
+  display:flex;flex-direction:column;width:min(380px,calc(100vw - 24px));
+  max-height:calc(100dvh - 24px);overflow:hidden;padding:20px;
+  background:var(--card,#fff);color:var(--foreground,#182a40);
+  border:1px solid var(--border,#ccd6e2);border-radius:16px;box-shadow:0 14px 55px #0004;
+  font:18px/1.65 system-ui,sans-serif;overscroll-behavior:contain;
 }
+.tour-panel.tour-positioned { top:0;left:0;transform:translate3d(var(--tour-x),var(--tour-y),0);max-height:46dvh; }
+.tour-panel header { display:flex;align-items:center;justify-content:space-between;flex-shrink:0;font-size:14px;color:var(--muted-foreground,#53627a); }
+.tour-panel header button { min-width:44px;min-height:44px;border-radius:10px;font-size:25px;line-height:1; }
+.tour-panel header button:hover { background:var(--accent,#eef4ff); }
+.tour-panel h2 { flex-shrink:0;font-size:23px;margin:2px 0 10px; }
+.tour-panel #tour-body { min-height:0;overflow:auto;overscroll-behavior:contain; }
+.tour-panel p { margin:8px 0; }
+.tour-panel strong { display:block; }
+.tour-panel footer { display:flex;flex-shrink:0;flex-wrap:wrap;gap:8px;margin-top:16px; }
+.tour-panel footer button { font-size:16px;min-height:44px;white-space:normal; }
+.tour-panel:focus { outline:none; }
+.tour-panel button:focus-visible,.tour-invite button:focus-visible { outline:2px solid #1687db;outline-offset:3px; }
+.tour-invite { position:fixed;z-index:2500;bottom:24px;right:20px;display:flex;align-items:center;flex-wrap:wrap;gap:12px;max-width:min(420px,calc(100vw - 24px));border:1px solid var(--border,#ccd6e2);border-radius:12px;background:var(--card,#fff);color:var(--foreground,#182a40);padding:14px;box-shadow:0 4px 22px #0002;font-size:14px; }
+.tour-invite button { color:var(--primary,#245ccc);min-height:44px;border-radius:8px; }
+.tour-invite span { flex:1 1 200px; }
+.tour-help { border:1px solid var(--border);border-radius:8px;background:var(--card);color:var(--primary);padding:6px 12px;font-size:15px;white-space:nowrap;cursor:pointer; }
+.account-bar:has(.tour-help) { flex-wrap:wrap; }
+.account-bar:has(.tour-help)>.membership-status { flex-shrink:0;white-space:nowrap; }
 
-/* One painted surface avoids fractional-pixel seams between shade panels. */
-.tour-mask{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;overflow:hidden}.tour-mask path{fill:rgba(12,24,45,.58);pointer-events:fill}
+/* Suppress moving content, while retaining control feedback and loading spinners. */
+html[data-tour-active] :is(.page-enter,.study-stage,.focus-view,.tutoring-view,.subscription-view,.payment-view),
+html[data-tour-active] .app-shell details[open]>:not(summary) { animation:none!important; }
+html[data-tour-active] [data-tour-spotlight]:focus-visible { outline:none!important;box-shadow:none!important; }
 
-@media(prefers-reduced-motion:no-preference){html[data-tour-active] .learning-tour .tour-panel.tour-positioned{transition:left 320ms cubic-bezier(.22,1,.36,1),top 320ms cubic-bezier(.22,1,.36,1)!important}}
-
-/* Place the next step while invisible; reveal only after its target settles. */
-.learning-tour .tour-panel.tour-pending{opacity:0;visibility:hidden;pointer-events:none;transition:none!important}
-@media(prefers-reduced-motion:no-preference){html[data-tour-active] .learning-tour .tour-panel:not(.tour-pending){transition:opacity 180ms ease-out,left 320ms cubic-bezier(.22,1,.36,1),top 320ms cubic-bezier(.22,1,.36,1)!important}}
+@keyframes tour-reveal { from { opacity:.45; } to { opacity:1; } }
+@media(prefers-reduced-motion:no-preference) {
+  .learning-tour #tour-body,.learning-tour .tour-highlight { animation:tour-reveal 160ms ease-out both; }
+  .learning-tour .tour-panel { transition:opacity 160ms ease-out,transform 200ms cubic-bezier(.22,1,.36,1); }
+}
+/* Place each new target while hidden, then reveal it after scrolling settles. */
+.learning-tour .tour-panel.tour-pending { opacity:0;visibility:hidden;pointer-events:none;transition:none!important; }
+@media(max-width:640px) {
+  .tour-panel { padding:14px;font-size:17px; }
+  .tour-panel h2 { font-size:21px; }
+  .tour-panel footer { margin-top:10px; }
+  .tour-panel.tour-positioned { max-height:44dvh; }
+  .tour-invite { bottom:90px;right:12px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .learning-tour * { animation:none!important;transition:none!important; }
+}

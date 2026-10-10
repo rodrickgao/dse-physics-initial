@@ -3,6 +3,7 @@ import {createPortal} from 'react-dom';
 import {Button} from './ui/button';
 import { coreSteps, pageSteps } from "../lib/tour-steps";
 import {completeTourStep,readTour,saveTour} from '../lib/tour-state';
+import {spotlightGeometry,roundedSpotlightPath} from '../lib/tour-geometry';
 
 const storage=()=>{try{return window.localStorage;}catch{return null;}};
 const visible=node=>!!node&&node.getClientRects().length>0&&!node.closest('[hidden]');
@@ -14,7 +15,6 @@ export function LearningTour({userId,page,language,navigate}){
  const progressRef=useRef(progress);progressRef.current=progress;
  const [view,setView]=useState(()=>['not-started','in-progress'].includes(readTour(storage(),userId).status)?{kind:'welcome'}:null);
  const [offer,setOffer]=useState(null),[layout,setLayout]=useState(null),[missing,setMissing]=useState(false),[saved,setSaved]=useState(true);
- const lastLayout=useRef(null);
  const [settledStep,setSettledStep]=useState('');
  const panel=useRef(null),origin=useRef(null),target=useRef(null),run=useRef(null),advanced=useRef('');
  const steps=view?.tour==='core'?coreSteps:pageSteps(view?.tour||page);
@@ -55,8 +55,8 @@ export function LearningTour({userId,page,language,navigate}){
  // too: ignoring it never causes a popup every time the user revisits a page.
  useEffect(()=>{if(view)document.documentElement.dataset.tourActive='true';else delete document.documentElement.dataset.tourActive;return()=>{delete document.documentElement.dataset.tourActive;};},[!!view]);
  useLayoutEffect(()=>{
-  if(!current){lastLayout.current=null;setLayout(null);setMissing(false);target.current=null;return;}
-  let first=true,lastTarget=null,scrollAt=0,completionTimer=null,lastBox='',stableSince=Date.now();
+  if(!current){setLayout(null);setMissing(false);target.current=null;return;}
+  let first=true,lastTarget=null,scrollAt=0,completionTimer=null,settleTimer=null,lastBox='',stableSince=Date.now();
   const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const since=Date.now(),identity=`${view.tour}:${view.index}`;advanced.current='';setMissing(false);setSettledStep('');
   const update=()=>{
@@ -73,13 +73,16 @@ export function LearningTour({userId,page,language,navigate}){
    // Keep small action targets clear of sticky navigation without repeatedly centring large panels.
    const outside=bounds.top<100||bounds.bottom>innerHeight-120;
    if(changed||(Date.now()-scrollAt>750&&current.mode==='action'&&bounds.height<innerHeight-240&&outside)){
-    lastTarget=node;scrollAt=Date.now();
-    if(outside)node.scrollIntoView({block:'center',inline:'nearest',behavior:reducedMotion?'instant':'smooth'});
+    lastTarget=node;
+    if(outside){scrollAt=Date.now();node.scrollIntoView({block:'center',inline:'nearest',behavior:reducedMotion?'instant':'smooth'});}
    }
    const box=node.getBoundingClientRect(),width=document.documentElement.clientWidth,height=innerHeight;
-   const left=Math.max(4,Math.min(width-4,box.left-5)),top=Math.max(4,Math.min(height-4,box.top-5)),right=Math.max(4,Math.min(width-4,box.right+5)),bottom=Math.max(4,Math.min(height-4,box.bottom+5));
-   const position=[box.left,box.top,box.width,box.height].map(n=>Math.round(n*2)/2).join(',');
-   if(position!==lastBox){lastBox=position;stableSince=Date.now();}
+   const style=getComputedStyle(node);
+   const radius=Math.max(...['borderTopLeftRadius','borderTopRightRadius','borderBottomLeftRadius','borderBottomRightRadius'].map(key=>parseFloat(style[key])||0));
+   const spotlight=spotlightGeometry(box,{width,height},{radius,pixelRatio:window.devicePixelRatio});
+   const {left,top,right,bottom}=spotlight;
+   const position=JSON.stringify(spotlight);
+   if(position!==lastBox){lastBox=position;stableSince=Date.now();clearTimeout(settleTimer);settleTimer=setTimeout(schedule,reducedMotion?0:150);}
    const settled=Date.now()-stableSince>=(reducedMotion?0:140);
    if(settled)setSettledStep(identity);
    const ph=panel.current?.offsetHeight||240,pw=Math.min(400,width-24);
@@ -88,19 +91,23 @@ export function LearningTour({userId,page,language,navigate}){
    else if(width-right>pw+24){x=right+14;y=Math.min(Math.max(12,top),height-ph-12);}
    else if(top>ph+28)y=top-ph-14;
    else y=Math.min(bottom+14,height-ph-12);
-   const next={left,top,right,bottom,width,height,x,y:Math.max(12,y),pw};
-   lastLayout.current=next;
+   const next={...spotlight,width,height,x,y:Math.max(12,y),pw};
    setLayout(old=>JSON.stringify(old)===JSON.stringify(next)?old:next);
    if(first&&settled&&Date.now()-scrollAt>(reducedMotion?0:250)){first=false;(current.mode==='action'&&focusables(node)[0]||panel.current)?.focus({preventScroll:true});}
   };
   let frame=0,observed=null;
   const schedule=()=>{if(!frame)frame=requestAnimationFrame(()=>{frame=0;update();observeTarget();});};
   const observer=new ResizeObserver(schedule);
-  const observeTarget=()=>{if(target.current===observed)return;if(observed)observer.unobserve(observed);observed=target.current;if(observed)observer.observe(observed);};
+  const observeTarget=()=>{if(target.current===observed)return;if(observed){observer.unobserve(observed);delete observed.dataset.tourSpotlight;}observed=target.current;if(observed){observer.observe(observed);observed.dataset.tourSpotlight='true';}};
+  // Committed marks and async route content wake the guide immediately. The
+  // interval only covers layout changes that do not resize the target itself.
+  const mutations=new MutationObserver(records=>{if(records.some(record=>!record.target.closest?.('.learning-tour')))schedule();});
+  mutations.observe(document.querySelector('.app-shell')||document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['aria-pressed','disabled','open','data-ready','data-question','data-answer']});
   update();observeTarget();if(panel.current)observer.observe(panel.current);
-  const timer=setInterval(schedule,180); // Fallback for async route and committed action states.
+  const timer=setInterval(schedule,400);
   window.addEventListener('scroll',schedule,{passive:true,capture:true});window.addEventListener('resize',schedule);
-  return()=>{clearInterval(timer);clearTimeout(completionTimer);cancelAnimationFrame(frame);observer.disconnect();window.removeEventListener('scroll',schedule,true);window.removeEventListener('resize',schedule);};
+  window.visualViewport?.addEventListener('resize',schedule);window.visualViewport?.addEventListener('scroll',schedule,{passive:true});
+  return()=>{clearInterval(timer);clearTimeout(completionTimer);clearTimeout(settleTimer);cancelAnimationFrame(frame);observer.disconnect();mutations.disconnect();if(observed)delete observed.dataset.tourSpotlight;window.removeEventListener('scroll',schedule,true);window.removeEventListener('resize',schedule);window.visualViewport?.removeEventListener('resize',schedule);window.visualViewport?.removeEventListener('scroll',schedule);};
  },[current,view?.tour,view?.index,language]);
  // Keep keyboard interaction within the guide AND its real target. Native
  // controls remain native. No body scroll lock or permanent tabindex changes.
@@ -130,8 +137,14 @@ export function LearningTour({userId,page,language,navigate}){
  return <><button data-tour="tour-help" className="tour-help" onClick={menu}>{say('使用教程','User guide')}</button>
  {offer&&!view&&createPortal(<aside className="tour-invite" aria-label={say('页面教学','Page guide')}><span>{say('第一次来到这里？用两分钟了解操作。','New to this page? Take a short guide.')}</span><button onClick={()=>start(offer)}>{say('看看怎么用','Show me around')}</button><button aria-label={say('暂时跳过页面教学','Skip this page guide')} onClick={()=>{commit({...progressRef.current,pages:{...progressRef.current.pages,[offer]:'skipped'}});setOffer(null);}}>×</button></aside>,document.body)}
  {view&&createPortal(<div className="learning-tour" data-tour-overlay="true">
-  {layout&&stepReady? <><svg className="tour-mask" aria-hidden="true"><path fillRule="evenodd" d={['M0 0','H'+layout.width,'V'+layout.height,'H0 Z','M'+layout.left+' '+layout.top,'H'+layout.right,'V'+layout.bottom,'H'+layout.left+' Z'].join(' ')}/></svg><div key={current?.id} className="tour-highlight" style={{left:layout.left,top:layout.top,width:Math.max(0,layout.right-layout.left),height:Math.max(0,layout.bottom-layout.top)}}/></>:<div className="tour-shade" style={{inset:0}}/>}
-  <section ref={panel} tabIndex={-1} role="dialog" aria-modal={view.kind!=='run'||!layout?true:undefined} aria-labelledby="tour-title" aria-describedby="tour-body" aria-hidden={panelPending||undefined} className={`tour-panel ${panelLayout?'tour-positioned':''} ${panelPending?'tour-pending':''}`} style={panelLayout?{left:panelLayout.x,top:panelLayout.y,width:panelLayout.pw}:undefined} data-tour-step={current?.id||view.kind}>
+  {layout&&stepReady? <svg className="tour-mask" aria-hidden="true">
+   <path className="tour-mask-shade" fillRule="evenodd" d={`M0 0 H${layout.width} V${layout.height} H0 Z ${roundedSpotlightPath(layout)}`}/>
+   <g key={current?.id} className="tour-highlight">
+    <rect className="tour-highlight-base" x={layout.left} y={layout.top} width={layout.right-layout.left} height={layout.bottom-layout.top} rx={layout.radius}/>
+    <rect className="tour-highlight-edge" x={layout.left} y={layout.top} width={layout.right-layout.left} height={layout.bottom-layout.top} rx={layout.radius}/>
+   </g>
+  </svg>:<div className="tour-shade" style={{inset:0}}/>}
+  <section ref={panel} tabIndex={-1} role="dialog" aria-modal={view.kind!=='run'||!layout?true:undefined} aria-labelledby="tour-title" aria-describedby="tour-body" aria-hidden={panelPending||undefined} className={`tour-panel ${panelLayout?'tour-positioned':''} ${panelPending?'tour-pending':''}`} style={panelLayout?{'--tour-x':`${panelLayout.x}px`,'--tour-y':`${panelLayout.y}px`,width:panelLayout.pw}:undefined} data-tour-step={current?.id||view.kind}>
    <header><span>{view.kind==='run'?say(`第 ${view.index+1} 步，共 ${steps.length} 步`,`Step ${view.index+1} of ${steps.length}`):'DDPhysics'}</span><button onClick={close} aria-label={say('退出教程','Exit tutorial')}>×</button></header>
    <h2 id="tour-title">{title}</h2>
    <div key={current?.id||view.kind} id="tour-body" aria-live="polite">

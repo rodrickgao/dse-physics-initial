@@ -60,5 +60,5 @@ export function studentLearningView(result) {
  const point=p=>({knowledge_id:p.knowledge_id,name:p.name,number:p.number,chapter:p.chapter});
  const question=q=>({question_id:q.question_id,question_title:q.question_title,question_url:q.question_url,chapter:q.chapter,primary_knowledge:point(q.primary_knowledge),recommendation_reason:q.recommendation_reason});
  const recommendations=result.recommendations;
- return {...(result.knowledge?{knowledge:point(result.knowledge)}:{weak_points:[...new Map([...(result.highlights?.NEEDS_REVIEW||[]),...(result.recommendations.focus_points||[])].map(p=>[p.knowledge_id,point(p)])).values()].slice(0,3)}),recommendations:{personalized:recommendations.personalized,new_questions:recommendations.new_questions.map(question),wrong_review:recommendations.wrong_review.map(question)}};
+ return {...(result.knowledge?{knowledge:point(result.knowledge)}:{weak_points:[...new Map([...(result.highlights?.NEEDS_REVIEW||[]),...(result.recommendations.focus_points||[])].map(p=>[p.number || p.knowledge_id,point(p)])).values()].slice(0,3)}),recommendations:{personalized:recommendations.personalized,new_questions:recommendations.new_questions.map(question),wrong_review:recommendations.wrong_review.map(question)}};
 }

@@ -8,7 +8,7 @@ vm.runInNewContext(fs.readFileSync(new URL('textbook-data.js',site),'utf8'),ctx)
 const data=ctx.window.DSE_TEXTBOOK_DATA;
 test('every card has readable paragraphs; reviewed cards retain complete typeset equations and traceable diagram assets',()=>{
  for(const lang of ['chn','eng']){
-  assert.equal(data.languages[lang].length,411);
+  assert.equal(data.languages[lang].length,413);
   for(const p of data.languages[lang]){
    const label=`${lang} #${p.sequence}`;
    assert.ok(p.card_summary.length>=40,label);

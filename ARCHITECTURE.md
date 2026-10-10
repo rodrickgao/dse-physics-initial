@@ -19,6 +19,7 @@
 - `server/progress-store.mjs`：错题、掌握、导入、回收站与撤销。状态变更和历史记录在同一事务内完成。
 - `server/admin-reports.mjs`：学生统计、学习详情与 Excel 导出。
 - `server/admin-insights.mjs`：使用时长、页面停留与逐题统计。
+- `server/question-stats-export.mjs`：逐题统计 Excel，筛除三项人数全部为零的题目；读取与后台相同的学生统计快照。
 - `server/content.mjs`：内容读取、会员限制及文件保护。
 - `server/management.mjs`、`server/payment-orders.mjs`：会员及订单。
 - `server/payment-notifications.mjs`、`server/weekly-report-scheduler.mjs`：持久化邮件队列及周报时间安排。

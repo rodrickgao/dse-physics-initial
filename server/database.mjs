@@ -17,7 +17,7 @@ export function openDatabase(directory) {
     CREATE INDEX IF NOT EXISTS limits_bucket ON limits(bucket,at);
     CREATE INDEX IF NOT EXISTS events_at ON events(at);`);
   const columns = new Set(db.prepare('PRAGMA table_info(users)').all().map(c => c.name));
-  for (const [name, type] of Object.entries({ nickname: 'TEXT', grade: 'TEXT', target: 'TEXT', target_major: 'TEXT', avatar: 'TEXT', avatar_data: 'BLOB', avatar_version: 'TEXT', password_hash: 'TEXT' })) {
+  for (const [name, type] of Object.entries({ nickname: 'TEXT', grade: 'TEXT', region: 'TEXT', target: 'TEXT', target_major: 'TEXT', avatar: 'TEXT', avatar_data: 'BLOB', avatar_version: 'TEXT', password_hash: 'TEXT' })) {
     if (!columns.has(name)) db.exec(`ALTER TABLE users ADD COLUMN ${name} ${type}`);
   }
   return db;

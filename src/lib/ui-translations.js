@@ -448,6 +448,13 @@ JPG、PNG、WebP · 最大 2 MB=JPG, PNG, WebP · Maximum 2 MB
 DSE Physics，返回主页=DSE Physics, return home
 移除记录 =Remove saved account
 库=library
+欢迎来到 ddphysics=Welcome to ddphysics
+来自哪个地区=Your region
+默认头像=Default avatar
+由神科 BBA（IBGM）学霸打造。=Built by a top student from the prestigious BBA (IBGM) programme.
+纯干货，不卖焦虑，一个网站给你物理 5** 所需要的全部资料。=Practical resources, no anxiety. Everything you need to work towards a 5** in Physics, in one website.
+2400道题，281个知识点，不漏每一个细节。=2,400 questions and 281 knowledge points, covering every detail.
+错题自动整理到错题本，随时练习。=Mistakes are automatically organized in your mistake notebook, ready to practise anytime.
 `;
 export const translations=Object.fromEntries(pairs.trim().split('\n').map(line=>{const i=line.indexOf('=');return [line.slice(0,i).trim(),line.slice(i+1)];}));
 let language;

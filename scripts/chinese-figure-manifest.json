@@ -2018,5 +2018,220 @@
     "language": "chn",
     "caption": "滑環保持原來連接；轉過半圈後，外電路電流由 Q → P 反轉為 P → Q。",
     "previous_src": "assets/textbook/review-diagrams/ac-generator-principle.png"
+  },
+  {
+    "id": "binding-energy-curve",
+    "code": "E304",
+    "page": 7,
+    "printed_page": 137,
+    "source": "DSEPHY_TE_E304_TN_ce.pdf",
+    "src": "assets/textbook/figures-chn/binding-energy-curve.png",
+    "width": 482,
+    "height": 362,
+    "caption": "每核子結合能在鐵附近較高；輕核聚變和重核裂變可朝較穩定的產物轉變。",
+    "language": "chn",
+    "bbox_fraction": [
+      0.38,
+      0.145,
+      0.845,
+      0.411
+    ],
+    "crop_regions": [
+      [
+        0.38,
+        0.145,
+        0.845,
+        0.411
+      ]
+    ],
+    "render_scale": 1.7,
+    "source_sha256": "fe67be946f6c7a0b0febd024507af8bce41fed7f65ad19662b0c0b1784b0188e",
+    "previous_src": "assets/textbook/review-diagrams/binding-energy-curve.png"
+  },
+  {
+    "id": "rutherford-scattering",
+    "code": "E202",
+    "page": 2,
+    "printed_page": 42,
+    "source": "DSEPHY_TE_E202_TN_ce_.pdf",
+    "src": "assets/textbook/figures-chn/rutherford-scattering.png",
+    "width": 462,
+    "height": 265,
+    "caption": "薄金箔讓大多數 α 粒子直穿，少數粒子偏轉；探測器可移動以量度不同方向的散射。",
+    "language": "chn",
+    "bbox_fraction": [
+      0.39,
+      0.713,
+      0.835,
+      0.908
+    ],
+    "crop_regions": [
+      [
+        0.39,
+        0.713,
+        0.835,
+        0.908
+      ]
+    ],
+    "render_scale": 1.7,
+    "source_sha256": "a1ee6ca66accab6432c2be0e1406a6d2237c41d632ccf4ad58cdb70e7c20e062",
+    "previous_src": "assets/textbook/review-diagrams/rutherford-scattering.png"
+  },
+  {
+    "id": "eye-accommodation-muscles",
+    "code": "E401",
+    "page": 57,
+    "printed_page": 57,
+    "source": "DSEPHY_TE_E401_TN_ce_.pdf",
+    "src": "assets/textbook/figures-chn/eye-accommodation-muscles.png",
+    "width": 629,
+    "height": 398,
+    "caption": "左：看近物，睫狀肌收縮、晶體變厚。右：看遠物，睫狀肌放鬆、晶體變薄。",
+    "language": "chn",
+    "bbox_fraction": [
+      0.29,
+      0.177,
+      0.897,
+      0.47
+    ],
+    "crop_regions": [
+      [
+        0.29,
+        0.177,
+        0.897,
+        0.47
+      ]
+    ],
+    "render_scale": 1.7,
+    "source_sha256": "f628690c22119951d4be1e8b4e33bd74267a78c9e9beb1136b53165054554578",
+    "previous_src": "assets/textbook/review-diagrams/eye-accommodation-muscles.png"
+  },
+  {
+    "id": "x-ray-tube-path",
+    "code": "501",
+    "page": 3,
+    "printed_page": 3,
+    "source": "DSEPHY_TE_501_TN_ce.pdf",
+    "src": "assets/textbook/figures-chn/x-ray-tube-path.png",
+    "width": 349,
+    "height": 193,
+    "caption": "電子由負極燈絲飛向正極金屬靶；X 射線在靶處產生。",
+    "language": "chn",
+    "bbox_fraction": [
+      0.59,
+      0.61,
+      0.927,
+      0.752
+    ],
+    "crop_regions": [
+      [
+        0.59,
+        0.61,
+        0.927,
+        0.752
+      ]
+    ],
+    "render_scale": 1.7,
+    "source_sha256": "23e14cc129670f336e99d5d43e1a608c81d40d5d0fc1c48062a5924b542bf18c",
+    "previous_src": "assets/textbook/review-diagrams/x-ray-tube-path.png"
+  },
+  {
+    "id": "photoelectric-current-voltage",
+    "code": "E201",
+    "page": 6,
+    "printed_page": 6,
+    "source": "DSEPHY_TE_E201_TN_ce_.pdf",
+    "src": "assets/textbook/figures-chn/photoelectric-current-voltage.png",
+    "width": 203,
+    "height": 175,
+    "caption": "曲線左端的零電流位置給出遏止電勢，右端平台給出飽和電流。",
+    "language": "chn",
+    "bbox_fraction": [
+      0.695,
+      0.593,
+      0.891,
+      0.722
+    ],
+    "crop_regions": [
+      [
+        0.695,
+        0.593,
+        0.891,
+        0.722
+      ]
+    ],
+    "render_scale": 1.7,
+    "source_sha256": "751358028ef19332e8559ae2d10b8cb5498393e049ef1033810c90e054a48195",
+    "previous_src": "assets/textbook/review-diagrams/photoelectric-current-voltage.png"
+  },
+  {
+    "id": "elastic-spring-energy",
+    "code": "206",
+    "page": 11,
+    "printed_page": 239,
+    "source": "DSEPHY_TE_206_TN_ce.pdf",
+    "src": "assets/textbook/figures-chn/elastic-spring-energy.png",
+    "width": 343,
+    "height": 212,
+    "caption": "彈簧被壓縮或拉長時儲存彈性勢能；放鬆狀態作為零勢能參考。",
+    "language": "chn",
+    "bbox_fraction": [
+      0.455,
+      0.753,
+      0.783,
+      0.908
+    ],
+    "crop_regions": [
+      [
+        0.455,
+        0.753,
+        0.783,
+        0.908
+      ]
+    ],
+    "render_scale": 1.7,
+    "source_sha256": "d6a5a2e734e2dd8ce963db8d0cadf0931b5f934143ceaae18b7175c8c6a0522c",
+    "previous_src": "assets/textbook/review-diagrams/elastic-spring-energy.png"
+  },
+  {
+    "id": "induction-earthing-steps",
+    "code": "401",
+    "page": 11,
+    "printed_page": 11,
+    "source": "DSEPHY_TE_401_TN_ce.pdf",
+    "src": "assets/textbook/figures-chn/induction-earthing-steps.png",
+    "width": 857,
+    "height": 180,
+    "caption": "由左至右：正棒使電子重新分布；保持棒並接地，電子流入；先斷開接地再移走棒，球帶負電。",
+    "language": "chn",
+    "bbox_fraction": [
+      0.595,
+      0.28,
+      0.773,
+      0.395
+    ],
+    "crop_regions": [
+      [
+        0.595,
+        0.28,
+        0.773,
+        0.395
+      ],
+      [
+        0.46,
+        0.552,
+        0.9,
+        0.684
+      ],
+      [
+        0.605,
+        0.777,
+        0.767,
+        0.889
+      ]
+    ],
+    "render_scale": 1.7,
+    "source_sha256": "414aec6e071cd49c0628ee050f0b7c90899e4708a901a7689c3b4ed9660bbd28",
+    "previous_src": "assets/textbook/review-diagrams/induction-earthing-steps.png"
   }
 ]

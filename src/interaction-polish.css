@@ -1,0 +1,32 @@
+/* Restore the established press feedback on desktop and touch screens. */
+:is(.app-shell,.auth-page,.profile-page,.learning-tour,.tour-invite,.management-shell,.admin-login) :is(button,a,summary) {
+  touch-action:manipulation;-webkit-tap-highlight-color:transparent;
+}
+:is(.app-shell,.auth-page,.profile-page,.learning-tour,.tour-invite,.management-shell,.admin-login) button {
+  -webkit-appearance:none;appearance:none;
+  transition:background-color 160ms ease,color 160ms ease,border-color 160ms ease,box-shadow 160ms ease,opacity 120ms ease,transform 200ms cubic-bezier(.22,1,.36,1);
+}
+:is(.app-shell,.auth-page,.profile-page,.learning-tour,.tour-invite,.management-shell,.admin-login) button:not(:disabled):active { transform:scale(.98); }
+:is(.app-shell,.auth-page,.profile-page,.learning-tour,.tour-invite,.management-shell,.admin-login) button:focus-visible {
+  outline:2px solid transparent;outline-offset:3px;
+  box-shadow:0 0 0 1px var(--primary,#245ccc),0 0 0 4px color-mix(in srgb,var(--primary,#245ccc) 18%,transparent);
+}
+.app-shell :is(.book-card,.library-card):not(:disabled):active { transform:translateY(0) scale(.985); }
+.app-shell :is(.global-question-results,.study-feedback),.login-account-suggestions { animation:content-enter 160ms ease-out; }
+.app-shell :is(.study-image-dialog,.textbook-image-dialog)[open] { animation:content-enter 160ms ease-out; }
+.app-shell :is(.study-image-dialog,.textbook-image-dialog)::backdrop { animation:dialog-backdrop 160ms ease-out; }
+
+/* Larger hit areas without changing the compact question-number grids. */
+@media(pointer:coarse) {
+  :is(.app-shell,.auth-page,.profile-page,.management-shell,.admin-login) :is(.tour-help,.account-settings,.support-link,.language-switch button,.sidebar-toggle,.physicist-tabs button,.avatar-mode button) { min-height:44px; }
+  .app-shell :is(.book-card,.library-card):hover:not(:active) { transform:none; }
+  .profile-choices span { min-height:44px; }
+}
+@media(forced-colors:active) {
+  :is(.app-shell,.auth-page,.profile-page,.learning-tour,.tour-invite,.management-shell,.admin-login) button:focus-visible { outline-color:Highlight;box-shadow:none; }
+}
+@media(prefers-reduced-motion:reduce) {
+  :is(.app-shell,.auth-page,.profile-page,.learning-tour,.tour-invite,.management-shell,.admin-login) button:active,.app-shell .library-card:active { transform:none!important; }
+  :is(.app-shell,.auth-page,.profile-page,.learning-tour,.tour-invite,.management-shell,.admin-login) button,
+  .app-shell :is(.study-image-dialog,.textbook-image-dialog),.app-shell :is(.study-image-dialog,.textbook-image-dialog)::backdrop { animation:none!important;transition:none!important; }
+}

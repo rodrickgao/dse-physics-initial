@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 import { ArrowLeft, ArrowRight, BookOpen, ChevronRight, ChevronDown } from "lucide-react";
 import { Button } from '../components/ui/button';
 import { STUDY_CSS } from '../lib/study-content';
-import { pointsByLanguage, sortKnowledge } from '../lib/data';
+import { pointsByLanguage, sortKnowledge, knowledgeTitle } from '../lib/data';
 import { useMembership, MemberNotice } from '../components/Membership';
 
 const TONES = ['#a74050','#287248','#906e0e','#396fd0','#aa5722','#009ca0','#009ca0','#009ca0','#009ca0'];
@@ -79,7 +79,7 @@ export function ExamplesView({ language, targetKey, targetBook, navigate, openKn
           {record.tips && <section className="study-stage"><h3><span>3</span>{en ? 'Tips' : '提示'}</h3>{rich(record.tips,'reasoning')}</section>}
           {record.think && <section className="study-stage"><h3><span>{record.tips ? 4 : 3}</span>{en ? 'Think about' : '想一想'}</h3>{rich(record.think,'question')}<Button className="stage-toggle" aria-expanded={thinkAnswer} onClick={() => setThinkAnswer(!thinkAnswer)}>{thinkAnswer ? (en ? 'Hide Think about answer' : '收起思考题解答') : (en ? 'Show Think about answer' : '查看思考题解答')}</Button>{thinkAnswer && <div className="example-supplement"><h4>{en ? 'Supplementary answer' : '补充解答'}</h4>{rich(record.thinkAnswer,'official')}</div>}</section>}
         </>}
-      </div>{record && relatedPoints.length>0 && <section className="related-panel"><div><BookOpen/><strong>{en?'Related knowledge':'关联知识点'}</strong></div>{record.linksAvailable?<div>{relatedPoints.map(p=><button data-tour="question-knowledge" key={p.sequence} onClick={()=>openKnowledge(p.sequence)}>{p.number} · {p.card_title}</button>)}</div>:<MemberNotice/>}</section>}</div><div className="question-footer exercise-paging"><Button variant="outline" disabled={position <= 0} onClick={() => open(items[position-1].id)}><ArrowLeft/>{en ? 'Previous' : '上一题'}</Button><span>{position+1} / {items.length}</span><Button data-tour="example-next" variant="outline" disabled={position < 0 || position === items.length-1} onClick={() => open(items[position+1].id)}>{en ? 'Next' : '下一题'}<ArrowRight/></Button></div></article>
+      </div>{record && relatedPoints.length>0 && <section className="related-panel"><div><BookOpen/><strong>{en?'Related knowledge':'关联知识点'}</strong></div>{record.linksAvailable?<div>{relatedPoints.map(p=><button data-tour="question-knowledge" key={p.sequence} onClick={()=>openKnowledge(p.sequence)}>{p.number} · {knowledgeTitle(p.sequence, language)}</button>)}</div>:<MemberNotice/>}</section>}</div><div className="question-footer exercise-paging"><Button variant="outline" disabled={position <= 0} onClick={() => open(items[position-1].id)}><ArrowLeft/>{en ? 'Previous' : '上一题'}</Button><span>{position+1} / {items.length}</span><Button data-tour="example-next" variant="outline" disabled={position < 0 || position === items.length-1} onClick={() => open(items[position+1].id)}>{en ? 'Next' : '下一题'}<ArrowRight/></Button></div></article>
     </div>}
 
   </div>;

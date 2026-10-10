@@ -35,6 +35,40 @@ async function register(client, email) {
   return { ...login, data: profile.data, code: sent.data.developmentCode };
 }
 
+test('a new student registers without choosing an avatar, and region persists through login, settings and admin export', async () => {
+  const f = await fixture();
+  try {
+    const student = f.client(), admin = f.client();
+    const email = 'region-student@example.com';
+    const sent = await student('auth/code', {email});
+    assert.equal((await student('auth/verify', {email, code: sent.data.developmentCode})).status, 200);
+    const profile = {nickname: '地区同学', grade: '中六', target: '5**', region: 'shenzhen', password: 'Study-pass-123', confirmPassword: 'Study-pass-123'};
+    const saved = await student('profile', profile, 'PUT');
+    assert.equal(saved.status, 200); assert.equal(saved.data.user.profileComplete, true);
+    assert.equal(saved.data.user.avatar, ''); assert.equal(saved.data.user.region, 'shenzhen');
+    assert.equal((await student('auth/logout', {})).status, 200);
+    const loggedIn = await student('auth/password', {email, password: profile.password});
+    assert.equal(loggedIn.status, 200); assert.equal(loggedIn.data.user.region, 'shenzhen');
+    const settings = {nickname: profile.nickname, grade: profile.grade, target: profile.target, avatar: 'curie-read'};
+    const updated = await student('profile', settings, 'PUT');
+    assert.equal(updated.status, 200); assert.equal(updated.data.user.region, 'shenzhen');
+    assert.equal(updated.data.user.avatar, 'curie-read');
+    assert.equal((await student('profile', {...settings, region: 'not-a-region'}, 'PUT')).status, 400);
+    assert.equal((await admin('admin/login', {key: 'test-admin-key'})).status, 200);
+    const overview = await admin('admin/overview');
+    assert.equal(overview.data.students.find(s => s.id === saved.data.user.id).region, 'shenzhen');
+    assert.equal((await admin('admin/stats')).data.students.find(s => s.id === saved.data.user.id).region, 'shenzhen');
+    assert.equal((await admin(`admin/student?id=${saved.data.user.id}`)).data.student.region, 'shenzhen');
+    const exported = await admin('admin/export');
+    const book = new ExcelJS.Workbook(); await book.xlsx.load(Buffer.from(exported.data.base64, 'base64'));
+    for (const name of ['学生学习与会员', '學生摘要']) {
+      const sheet = book.getWorksheet(name), headers = sheet.getRow(1).values;
+      const column = headers.indexOf(name === '學生摘要' ? '地區' : '地区');
+      assert.ok(column > 0); assert.equal(sheet.getRow(2).getCell(column).value, '深圳');
+    }
+  } finally { await f.close(); }
+});
+
 test('mastery and mistakes are mutually exclusive, atomic and account-scoped', async () => {
  const f=await fixture();
  try{

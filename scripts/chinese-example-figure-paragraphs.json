@@ -1,0 +1,15 @@
+{
+  "assets/textbook-examples/media/853819435fe49ea734e24059.png": [
+    {"box": [116.5, 91.5, 196, 131], "lines": ["X 和 B 是同一點，", "所以它們的像在", "相同位置形成。"]}
+  ],
+  "assets/textbook-examples/media/34b88103dd21a44b2cfc15e1.png": [
+    {"box": [125, 10, 218.5, 42], "lines": ["物體遠離 F′ 時，", "此出射光線保持不變。"]}
+  ],
+  "assets/textbook-examples/media/85fa182a13452a04c90e8bad.png": [
+    {"box": [2, 0, 176, 16], "lines": ["u 減小時，這條光線不變。"]}
+  ],
+  "assets/textbook-examples/media/5372e0b78f32f1a62a358434.png": [
+    {"box": [113, 9, 199, 52], "lines": ["② 出射光線看似從", "焦平面上的一點發散。"]},
+    {"box": [123, 77, 201, 120], "lines": ["① 補畫光線 r，使其", "與 s 平行並通過光心。"]}
+  ]
+}

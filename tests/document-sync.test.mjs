@@ -5,17 +5,17 @@ import vm from 'node:vm';
 import { createHash } from 'node:crypto';
 import { numberKnowledgePoints } from '../src/lib/knowledge-numbering.js';
 
-test('all 365 bilingual numbers match the exported documents and preserve IDs', () => {
+test('all bilingual source IDs keep their card number in the exported data', () => {
   const context = { window: {} };
   vm.runInNewContext(fs.readFileSync('textbook-data.js', 'utf8'), context);
   const langs = context.window.DSE_TEXTBOOK_DATA.languages;
   for (const edition of Object.values(langs)) {
-    const points = edition.filter(p => p.sequence <= 365);
+    const points = edition;
     const numbered = numberKnowledgePoints(points);
-    assert.equal(numbered.length, 365);
-    assert.equal(new Set(numbered.map(p => p.number)).size, 365);
-    assert.equal(numbered.filter(p => p.number.startsWith('E')).length, 119);
-    numbered.forEach((p, i) => { assert.equal(p.number, points[i].number); assert.equal(p.sequence, points[i].sequence); });
+    assert.equal(numbered.length, 413);
+    assert.equal(new Set(numbered.map(p => p.number)).size, 281);
+    const original = new Map(points.map(p => [p.sequence, p]));
+    numbered.forEach(p => { assert.equal(p.number, original.get(p.sequence).number); });
     assert.equal(numbered[0].number, '1.1.1');
     assert.equal(numbered[2].number, '1.2.1');
     assert.equal(numbered.find(p => p.code === '3B04').number, '3.4.1');

@@ -7,3 +7,4 @@ import './views/tutoring.css';
 import './admin.css';
 import './admin-layout.css';
 import './search-fields.css';
+import './interaction-polish.css';

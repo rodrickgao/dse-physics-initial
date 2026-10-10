@@ -28,7 +28,7 @@ test('Chinese examples cover every bilingual identity with original questions an
       assert.ok(!/-question-\d+\.jpg|-answer-\d+\.jpg/.test(q.question+q.answer));
       assert.ok(q.source.segments.filter(s=>s.kind==='question').every(s=>!/題\s*解/.test(s.text)),q.id);
       for(const field of ['question','answer','tips']) for(const [,src] of q[field].matchAll(/src="([^"]+)"/g)) {
-        assert.ok(src.startsWith(`${base}/chn/figures/`) || src.startsWith(`${base}/media/`));assert.ok(fs.existsSync(src),src);
+        assert.ok(src.startsWith(`${base}/chn/figures/`) || src.startsWith(`${base}/media/`) || src.startsWith(`${base}/figures-chn/`));assert.ok(fs.existsSync(src),src);
       }
       const entry=exampleEntries().find(e=>e.key===q.id);
       const practice=printableQuestion(entry,q,{language:'chn',mode:'questions'});

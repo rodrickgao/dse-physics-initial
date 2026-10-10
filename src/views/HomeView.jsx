@@ -1,14 +1,14 @@
 import { ArrowRight, BookOpen, CircleAlert, FileQuestion } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { StudyDashboard } from '../components/StudyDashboard';
-import { statistics } from '../lib/data';
+import { cardsByLanguage } from '../lib/data';
 import { cn } from '../lib/utils';
 
 export function HomeView({ language, navigate, mistakeCount, userId, mistakes, mastered, openQuestion, openKnowledge }) {
   const isEnglish = language === "eng";
   const sections = [
     { id: "bank", index: "01", title: "题库", metric: "", metricLabel: isEnglish ? "Past papers · Exercises · Examples" : "真题 · 课本习题 · 课本例题", icon: FileQuestion, tone: "blue" },
-    { id: "textbook", index: "02", title: "课本知识库", metric: statistics.summary.knowledgePointCount, metricLabel: "个知识点", icon: BookOpen, tone: "amber" },
+    { id: "textbook", index: "02", title: "课本知识库", metric: cardsByLanguage[language].length, metricLabel: "个知识点", icon: BookOpen, tone: "amber" },
     { id: "mistakes", index: "03", title: "错题库", metric: mistakeCount, metricLabel: "道待复习", icon: CircleAlert, tone: "rose" },
   ];
   return <div className="home-view page-enter">

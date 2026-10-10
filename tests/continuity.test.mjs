@@ -48,7 +48,7 @@ test('temporary membership failures preserve verified access; authentication fai
 
 test('activity links identify actual knowledge and bilingual exercises without linking search text', () => {
   const knowledge=activityContent({action:'knowledge_view',target:'17'});
-  assert.match(knowledge.label,/1\.3\.7/); assert.match(knowledge.labelEn,/Energy balance/);
+  assert.match(knowledge.label,/1\.3\.5/); assert.match(knowledge.labelEn,/Energy balance/);
   assert.equal(knowledge.href,'/#textbook?knowledge=17');
   assert.equal(activityContent({action:'knowledge_view',target:'99999'}),null);
   assert.equal(activityContent({action:'search',target:'17'}),null);

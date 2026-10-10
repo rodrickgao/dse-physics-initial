@@ -48,7 +48,7 @@ test('a.c. and d.c. generators remain independent cards with matching textbook d
   const points=numberKnowledgePoints(c.window.DSE_TEXTBOOK_DATA.languages[lang]);
   const cards=sharedFigureCards(points),dc=cards.find(p=>p.sequence===215),ac=cards.find(p=>p.sequence===417);
   assert.ok(dc&&!dc.members);assert.ok(ac&&!ac.members);
-  assert.equal(dc.number,'4.7.4');assert.equal(ac.number,'4.7.5');
+  assert.equal(dc.number,'4.7.2');assert.equal(ac.number,'4.7.3');
   assert.equal(cardFigures(dc)[0].figure_label,'7.2c');assert.equal(cardFigures(dc)[0].page,16);
   assert.equal(cardFigures(ac)[0].figure_label,'7.2e');assert.equal(cardFigures(ac)[0].page,17);
   assert.notEqual(cardFigures(dc)[0].src,cardFigures(ac)[0].src);

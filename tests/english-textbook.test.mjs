@@ -7,8 +7,8 @@ import { sharedFigureCards, cardFigures } from '../src/lib/shared-figure-cards.j
 const ctx={window:{}};vm.runInNewContext(fs.readFileSync('textbook-data.js','utf8'),ctx);
 const points=ctx.window.DSE_TEXTBOOK_DATA.languages.eng;
 const han=/[\u3400-\u9fff]/;
-test('all 411 English knowledge points and shared cards have complete English display text',()=>{
- assert.equal(points.length,411);
+test('all 413 English knowledge points and shared cards have complete English display text',()=>{
+ assert.equal(points.length,413);
  for(const p of points){
   assert.equal(p.card_summary_language,'eng');
   assert.ok(p.card_summary.length>100,`Incomplete summary: ${p.sequence}`);

@@ -29,6 +29,8 @@
 @media (prefers-reduced-motion: reduce) { .payment-method { transition: none; } }
 
 .payment-method-label { display: flex; align-items: center; gap: 14px; }
+.subscription-plan { min-width: 0; }
+.subscription-plan > button { height: auto; padding-block: 12px; white-space: normal; overflow-wrap: anywhere; }
 .payment-method-logo { display: block; width: 36px; height: 36px; flex: 0 0 36px; object-fit: contain; }
 
 .member-loading{min-height:260px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px}

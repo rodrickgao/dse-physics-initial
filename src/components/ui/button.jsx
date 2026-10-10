@@ -3,7 +3,7 @@ import { cva } from "class-variance-authority";
 import { cn } from "../../lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl text-sm font-semibold transition-[color,background-color,border-color,box-shadow,transform] duration-200 outline-none focus-visible:ring-4 focus-visible:ring-primary/15 disabled:pointer-events-none disabled:opacity-45 active:scale-[.98] [&_svg]:pointer-events-none [&_svg]:size-4",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl text-sm font-semibold transition-[color,background-color,border-color,box-shadow,transform] duration-200 outline-none focus-visible:ring-4 focus-visible:ring-primary/15 disabled:pointer-events-none disabled:opacity-45 [&_svg]:pointer-events-none [&_svg]:size-4",
   {
     variants: {
       variant: {
@@ -26,5 +26,5 @@ const buttonVariants = cva(
 
 export function Button({ className, variant, size, asChild = false, ...props }) {
   const Comp = asChild ? Slot : "button";
-  return <Comp className={cn(buttonVariants({ variant, size }), className)} {...props} />;
+  return <Comp className={cn(buttonVariants({ variant, size }), asChild && 'active:scale-[.98] motion-reduce:active:scale-100', className)} {...props} />;
 }

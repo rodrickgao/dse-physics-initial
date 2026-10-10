@@ -3,6 +3,8 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import katex from 'katex';
 import {createHash} from 'node:crypto';
+import {localizeChineseExampleFigures} from './chinese-example-figures.mjs';
+import {omitTextbookReferences} from './omit-textbook-references.mjs';
 const site=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),root=path.dirname(site);
 const read=p=>JSON.parse(fs.readFileSync(p,'utf8'));
 const esc=s=>s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
@@ -49,15 +51,10 @@ for(const book of index.books)for(const chapter of book.chapters){
    if(digest!==override.sourceSha256)throw Error('Stale English-aligned translation: '+id+'/'+field);
    r[field]=override.html;
   }
-  for(const field of fields){
-   if(aligned[id]?.[field])continue;
-   // Cross-references belong to the English master edition too.
-   const refs=[...english[id][field].matchAll(/<p\b[^>]*>((?:Exercise|Revision)\s[^<]+)<\/p>/g)].map(m=>m[1]);
-   r[field]=r[field].replace(/<p\b[^>]*>(?:練習|溫習|练习|温习)\s*[^<]*<\/p>/g,'');
-   for(const ref of refs)r[field]+='<p>'+esc(ref.replace(/^Exercise\s+(\S+)\s+Q(.+)\s+\(p\.(\d+)\)$/,'練習 $1 第 $2 題（第 $3 頁）').replace(/^Revision\s+(\S+)\s+Q(.+)\s+\(p\.(\d+)\)$/,'溫習 $1 第 $2 題（第 $3 頁）'))+'</p>';
-  }
+  for(const field of fields)r[field]=omitTextbookReferences(r[field]);
   if(!!english[id].think!==!!t)throw Error('Think mismatch '+id);
-  r.source.textEdition='Chinese parallel text; complete English master illustrations and reviewed English-aligned corrections';
+  for(const field of fields)r[field]=localizeChineseExampleFigures(r[field]);
+  r.source.textEdition='Chinese parallel text; complete source artwork with reviewed Chinese labels and English-aligned text corrections';
   r.source.thinkAnswerEdition=t?'Complete Chinese translation of the English supplementary answer':null;
   r.source.englishAlignedFields=Object.keys(aligned[id]||{});
   r.language='chn';r.format='editable-text';flat.set(id,r);

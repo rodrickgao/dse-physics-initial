@@ -1,5 +1,6 @@
 import { createProgressStore } from './progress-store.mjs';
 import { createAdminReports } from './admin-reports.mjs';
+import { questionStatsWorkbook } from './question-stats-export.mjs';
 import { createWeeklyReportScheduler } from './weekly-report-scheduler.mjs';
 import { createPaymentNotifications } from './payment-notifications.mjs';
 import { createAdminInsights } from './admin-insights.mjs';
@@ -169,6 +170,12 @@ export function createApi({ directory, mailer, paymentNotifier, weeklyMailer, we
       if (path === '/api/page-visits' && req.method === 'POST') return send(insights.track(user,body));
       if (path === '/api/admin/page-visits' && req.method === 'GET') return send(insights.visits(url));
       if (path === '/api/admin/question-stats' && req.method === 'GET') return send(insights.questionStats());
+      if (path === '/api/admin/question-stats/export' && req.method === 'GET') {
+        for (const key of url.searchParams.keys()) if (key !== 'language' || url.searchParams.getAll(key).length !== 1) fail(400, '请求参数不正确。');
+        const language = url.searchParams.get('language') || 'chn';
+        if (!['chn', 'eng'].includes(language)) fail(400, '语言不正确。');
+        return send(await questionStatsWorkbook(insights.questionStats().rows, new Date(clock()).toISOString(), language));
+      }
       if (path === '/api/admin/weekly-status' && req.method === 'GET') return send(weeklyReports.status());
       if (path === '/api/admin/overview' && req.method === 'GET') return send({...management.overview(),...insights.dailyUsage()});
       if (path === '/api/admin/activity' && req.method === 'GET') return send(management.activity(url));
@@ -186,7 +193,7 @@ export function createApi({ directory, mailer, paymentNotifier, weeklyMailer, we
         if (!user.password_hash && (!publicUser(user).profileComplete || body.password || body.confirmPassword)) passwordHash = await encodePassword(body.password, body.confirmPassword);
         if (user.password_hash && (body.password || body.confirmPassword)) fail(400, '此帳號已設定密碼。');
         transaction(() => {
-          run('UPDATE users SET nickname=?,grade=?,target=?,target_major=?,avatar=?,avatar_data=?,avatar_version=? WHERE id=?', profile.nickname, profile.grade, profile.target, profile.targetMajor, profile.avatar, profile.bytes, token().slice(0,16), user.id);
+          run('UPDATE users SET nickname=?,grade=?,region=?,target=?,target_major=?,avatar=?,avatar_data=?,avatar_version=? WHERE id=?', profile.nickname, profile.grade, profile.region, profile.target, profile.targetMajor, profile.avatar, profile.bytes, token().slice(0,16), user.id);
           if (passwordHash) run('UPDATE users SET password_hash=? WHERE id=? AND password_hash IS NULL', passwordHash, user.id);
           management.record(user.id, 'profile_update');
         });

@@ -17,9 +17,11 @@ export function StudyContent({html='',type='question',language='chn'}) {
       .replace(/<img\s/i,`<img tabindex="0" role="button" decoding="async" aria-label="${en?'Enlarge diagram':'放大原图'}" `);
     return crop?`<span class="official-scan-window" style="--scan-top:${crop}%">${image}</span>`:image;
   }),[html,en,type]);
+  // Zoom state must not recreate the source images or detach the focus trigger.
+  const content=useMemo(()=>({__html:accessibleHtml}),[accessibleHtml]);
   useEffect(()=>{if(zoom)dialog.current?.showModal();},[zoom]);
   const open=event=>{if(event.target.tagName==='IMG'){trigger.current=event.target;setScale(1);setZoom({src:event.target.src,alt:event.target.alt,width:event.target.naturalWidth||1000,crop:cropFor(event.target.src)});}};
-  return <><div ref={root} className={`study-content ${type}-content`} onClick={open} onKeyDown={e=>{if(e.target.tagName==='IMG'&&['Enter',' '].includes(e.key)){e.preventDefault();open(e);}}} dangerouslySetInnerHTML={{__html:accessibleHtml}}/>
+  return <><div ref={root} className={`study-content ${type}-content`} onClick={open} onKeyDown={e=>{if(e.target.tagName==='IMG'&&['Enter',' '].includes(e.key)){e.preventDefault();open(e);}}} dangerouslySetInnerHTML={content}/>
     {zoom&&<dialog className="study-image-dialog" ref={dialog} aria-label={en?'Image zoom':'图片缩放'} onClose={()=>{setZoom(null);trigger.current?.focus({preventScroll:true});}} onClick={e=>{if(e.target===e.currentTarget)dialog.current.close();}}>
       <div className="study-zoom-toolbar">
         <Button variant="outline" aria-label={en?'Zoom out':'缩小'} disabled={scale<=.25} onClick={()=>setScale(v=>Math.max(.25,v-.25))}>−</Button>

@@ -9,6 +9,16 @@ for (const file of ['site-data.js', 'textbook-data.js', 'knowledge-network-data.
 }
 const data = await import('../src/lib/data.js');
 
+test('knowledge searches match simplified and traditional Chinese equally', () => {
+  const cards = data.pointsByLanguage.chn.map(point => ({ sequence: point.sequence, text: data.searchable([point.title, point.card_title, point.card_summary, point.content].join(' ')) }));
+  for (const [simplified, traditional] of [['电场', '電場'], ['温度', '溫度'], ['圆周运动', '圓周運動'], ['辐射', '輻射'], ['磁场', '磁場']]) {
+    const find = query => cards.filter(card => card.text.includes(data.searchable(query))).map(card => card.sequence);
+    assert.ok(find(simplified).length > 0, simplified);
+    assert.deepEqual(find(simplified), find(traditional), simplified);
+  }
+  assert.equal(data.searchable('ＶＯＬＴＡＧＥ １２３'), data.searchable('voltage 123'));
+});
+
 test('every bilingual year directory runs from 2012 through 2025', () => {
   const expected = Array.from({length: 14}, (_, i) => 2012 + i);
   for (const language of ['eng', 'chn']) {

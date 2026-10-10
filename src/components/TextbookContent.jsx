@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { Expand, X } from 'lucide-react';
 import katex from 'katex';
 import { cardFigures, cardSections } from '../lib/shared-figure-cards';
+import { questionLabelFromKey } from '../lib/data';
 
 function Equation({ latex, inline = false }) {
   const html = useMemo(() => katex.renderToString(latex, {
@@ -60,7 +61,8 @@ export function TextbookSources({ point, language }) {
    <summary>{en ? "Textbook sources" : "课本来源"}</summary>
    {figures.map((f,i)=><p key={f.src} className="textbook-image-source">{figures.length>1?(en?'Figure ':'图 ')+(i+1)+' · ':''}{f.language === 'chn' ? (en ? "Original Chinese textbook figure" : "中文课本原图") : (en ? "Original English textbook figure" : "英文课本原图")} · {f.source} · PDF {f.page}</p>)}
    {sources.map((source,i)=><div key={i}>{source.text&&<blockquote lang="en">{source.text}</blockquote>}<p className="textbook-citation">{source.source || source.code} · PDF {source.page}{source.printed_page ? (en?' · Printed page ':' · 书页 ')+source.printed_page:''}</p></div>)}
-   {members.filter(p=>p.card_table).map(p=><p key={p.sequence} className="textbook-citation">{en?'Table adapted from ':'表格整理自 '}{p.card_table.source} · PDF {p.card_table.page} · {en?'Table ':'表 '}{p.card_table.table_label}</p>)}
+   {members.filter(p=>p.card_table).map(p=><p key={p.sequence} className="textbook-citation">{p.card_table.source_note || <>{en?'Table adapted from ':'表格整理自 '}{p.card_table.source} · PDF {p.card_table.page} · {en?'Table ':'表 '}{p.card_table.table_label}</>}</p>)}
+   {[...new Map(members.flatMap(p=>p.card_references||[]).map(r=>[JSON.stringify(r),r])).values()].map((reference,i)=><p key={'review-'+i} className="textbook-citation">{reference.kind==='question' ? (en?'Question reference: ':'题目参考：')+questionLabelFromKey(reference.key) : reference.source+' · PDF '+reference.page}</p>)}
    {members.flatMap(p=>p.textbook_supplements||[]).map(supplement=><div key={supplement.id}>
     {supplement.source_excerpts.map((source,i)=><div key={i}><blockquote lang="en">{source.text}</blockquote><p className="textbook-citation">{source.code} · PDF {source.page}</p></div>)}
     {(en ? supplement.explanation_en : supplement.explanation_zh)&&<p>{en ? supplement.explanation_en : supplement.explanation_zh}</p>}
@@ -77,7 +79,7 @@ export function TextbookContent({ point, language }) {
  return <>
   {sections.map((section,i)=><section data-study-knowledge={section.point.sequence} className={grouped?'knowledge-subpoint':undefined} key={section.point.sequence}>
    {section.members.filter(m=>m.sequence!==point.sequence).map(m=><span id={'point-'+m.sequence} key={m.sequence} className="knowledge-subpoint-anchor"/>)}
-   {grouped&&<h4 className="knowledge-subpoint-title"><span>{section.members.map(m=>m.number).join(' · ')}</span>{section.point.card_title||section.point.title||section.point.chapter}</h4>}
+   {grouped&&<h4 className="knowledge-subpoint-title">{section.point.card_title||section.point.title||section.point.chapter}</h4>}
    <SectionContent section={section}/>
   </section>)}
   {cardFigures(point).map((figure,i)=><SourceImage key={figure.src} figure={{...figure,caption:(cardFigures(point).length>1?(language === 'eng'?'Figure ':'图 ')+(i+1)+' · ':'')+figure.caption}} language={language} onOpen={setExpanded}/>)}

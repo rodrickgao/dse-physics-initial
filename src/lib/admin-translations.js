@@ -162,6 +162,7 @@ Object.assign(translations,Object.fromEntries(`
 `.trim().split('\n').map(line=>{const i=line.indexOf('=');return[line.slice(0,i),line.slice(i+1)];})));
 
 Object.assign(translations, {
+ '地区':'Region','学生地区分布':'Student regions','昵称、邮箱、地区或用户编号':'Name, email, region or user ID',
  '学生学习 →':'Student learning →','答疑 →':'Teacher Q&A →','付款申请 →':'Payment requests →',
  '当前错题':'Current mistakes','已掌握':'Mastered','专注分钟':'Focus minutes','会员管理':'Membership management',
  '付款凭证':'Payment receipt','会员开通':'Membership activation','会员开通成功':'Membership activated','学习问题':'Study question'
