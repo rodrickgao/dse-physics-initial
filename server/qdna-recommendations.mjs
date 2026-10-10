@@ -1,12 +1,12 @@
 export const questionUrl=id=>`/#${id.startsWith('tb-')?'exercises':id.startsWith('ex-')?'examples':'papers'}?question=${encodeURIComponent(id)}`;
 const stable=(a,b)=>b.recommendation_score-a.recommendation_score||(a.question_id<b.question_id?-1:a.question_id>b.question_id?1:0);
-export function getRecommendedQuestions({states,dna,signals,catalog,knowledgeInfo,language='chn',limit=8,knowledgeId}) {
- const enough=new Map(signals.rows.filter(r=>r.sufficient_data).map(r=>[String(r.knowledge_id),r]));
+export function getRecommendedQuestions({states,dna,signals,catalog,knowledgeInfo,language='chn',limit=8,knowledgeId,questionFilter=()=>true,knowledgeFilter=()=>true}) {
+ const enough=new Map(signals.rows.filter(r=>r.sufficient_data&&knowledgeFilter(r.knowledge_id)).map(r=>[String(r.knowledge_id),r]));
  // Recommendations start with the first mistake. Statistical confidence remains separate.
  // Existing topic links are a recommendation fallback, never a fabricated QDNA annotation.
  const weightsFor=id=>dna.get(id)?.length?dna.get(id):(catalog.get(id)?.points||[]).map(id=>({knowledge_id:String(id),weight:1}));
  const wrongTopics=new Set();
- for(const [id,state] of states)if(state.status==='WRONG')for(const w of weightsFor(id)){
+ for(const [id,state] of states)if(state.status==='WRONG'&&questionFilter(id))for(const w of weightsFor(id).filter(w=>knowledgeFilter(w.knowledge_id))){
   const key=String(w.knowledge_id);wrongTopics.add(key);
   if(!enough.has(key)){const row=signals.rows.find(r=>String(r.knowledge_id)===key);enough.set(key,{knowledge_id:key,adjusted_weakness:((row?.wrong_weight||1)+.5)/((row?.total_marked_weight||1)+1),status:'NEEDS_REVIEW'});}
  }
@@ -15,7 +15,7 @@ export function getRecommendedQuestions({states,dna,signals,catalog,knowledgeInf
  const candidates=[];
  for(const id of catalog.keys()) {
   const weights=weightsFor(id);
-  const question=catalog.get(id);if(!question||states.get(id)?.status==='MASTERED')continue;
+  const question=catalog.get(id);if(!question||!questionFilter(id)||states.get(id)?.status==='MASTERED')continue;
   if(knowledgeId&&!weights.some(w=>String(w.knowledge_id)===String(knowledgeId)))continue;
   const contributions=weights.filter(w=>enough.has(String(w.knowledge_id))).map(w=>({id:String(w.knowledge_id),value:w.weight*enough.get(String(w.knowledge_id)).adjusted_weakness})).sort((a,b)=>b.value-a.value||a.id.localeCompare(b.id,'en',{numeric:true}));
   const score=contributions.reduce((sum,row)=>sum+row.value,0);if(score<=0)continue;

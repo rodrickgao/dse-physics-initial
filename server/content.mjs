@@ -178,8 +178,8 @@ export function createContent({ db, clock, membership, limiterConfig, qdnaDirect
         return send(summary);
       }
       if(route==='recommendations') {
-        validate(url,['language','batch']);requirePremium(user);limit(req,res,user,'similar');const batch=integer(url,'batch',0,10000);
-        return send(learning.snapshot(user.id,lang,8).recommendations);
+        validate(url,['language','batch']);if(!user)fail(401,'请先登录。');limit(req,res,user,'similar');const batch=integer(url,'batch',0,10000);
+        return send(learning.snapshot(user.id,lang,8,{trialOnly:!premium(user)}).recommendations);
       }
       fail(404,'找不到此操作。');
     },

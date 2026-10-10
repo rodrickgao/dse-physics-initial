@@ -43,7 +43,7 @@ export function createApi({ directory, mailer, paymentNotifier, weeklyMailer, we
   const statusStore = createQuestionStatus({db,clock});
   const learning = createQdnaLearning({db,clock,statusStore});
   content.setLearning(learning);
-  const weeklyForStudent=(id,options)=>memberWeeklyReport(learning.weekly(id,options),management.membership(id).active);
+  const weeklyForStudent=(id,options)=>{const active=management.membership(id).active;return memberWeeklyReport(learning.weekly(id,{...options,trialOnly:!active}),active);};
   const weeklyReports=createWeeklyReportScheduler({db,clock,buildReport:weeklyForStudent,prepareReport:(id,report)=>memberWeeklyReport(report,management.membership(id).active),sendMail:weeklyMailer,from:weeklyFrom});
   const learningLimit=createContentLimiter({db,clock,config:contentLimits});
   const archive = createMistakeArchive({ db, clock, fail, transaction, record: management.record, questions, statusStore });
@@ -154,8 +154,8 @@ export function createApi({ directory, mailer, paymentNotifier, weeklyMailer, we
         if(admin&&kind!=='overview'&&!get("SELECT id FROM users WHERE id=? AND role='student'",studentId))fail(404,'找不到学生。');
         learningLimit(req,res,user,'similar');res.setHeader('Cache-Control','private, no-store');res.setHeader('Vary','Cookie');
         const recommendationAccess=admin||management.membership(user.id).active;
-        if(kind==='dashboard'){const result=learning.dashboard(studentId,{language,offset,limit:size});return send(admin?result:studentLearningView(result,{recommendationAccess}));}
-        if(kind==='knowledge'){const status=url.searchParams.get('status')||'ALL';if(!['ALL','MASTERED','WRONG','UNMARKED'].includes(status))fail(400,'状态不正确。');const result=learning.knowledge(studentId,url.searchParams.get('id'),{language,status,offset,limit:size});if(!result)fail(404,'找不到知识点。');return send(admin?result:studentLearningView(result,{recommendationAccess}));}
+        if(kind==='dashboard'){const result=learning.dashboard(studentId,{language,offset,limit:size,trialOnly:!recommendationAccess});return send(admin?result:studentLearningView(result,{recommendationAccess}));}
+        if(kind==='knowledge'){const status=url.searchParams.get('status')||'ALL';if(!['ALL','MASTERED','WRONG','UNMARKED'].includes(status))fail(400,'状态不正确。');const result=learning.knowledge(studentId,url.searchParams.get('id'),{language,status,offset,limit:size,trialOnly:!recommendationAccess});if(!result)fail(404,'找不到知识点。');return send(admin?result:studentLearningView(result,{recommendationAccess}));}
         if(admin&&kind==='overview'){const type=url.searchParams.get('type')||'questions';if(!['questions','knowledge'].includes(type))fail(400,'统计类型不正确。');return send(learning.adminOverview({language,type,offset,limit:size}));}
         if(admin&&kind==='weekly'){const end=number('end',clock(),clock()),start=number('start',end-7*86400000,end);if(start>=end||end-start>31*86400000)fail(400,'周报时间范围不正确。');const report=weeklyForStudent(studentId,{language,start,end});const email=await weeklyReportEmail({from:'preview@local.invalid',to:'preview@local.invalid',report});return send({report,email:{subject:email.subject,html:email.html,text:email.text}});}
         fail(404,'找不到此操作。');

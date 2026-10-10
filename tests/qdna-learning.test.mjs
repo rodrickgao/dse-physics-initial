@@ -9,7 +9,8 @@ import {calculateKnowledgeWeakness,weaknessConfiguration} from '../server/knowle
 import {getRecommendedQuestions} from '../server/qdna-recommendations.mjs';
 import {createApi} from '../server/api.mjs';
 import {weeklyReportEmail} from '../server/weekly-report-email.mjs';
-import {createQdnaLearning} from '../server/qdna-learning.mjs';
+import {createQdnaLearning,studentLearningView,memberWeeklyReport} from '../server/qdna-learning.mjs';
+import {isTrialPractice,isTrialRecommendation} from '../server/recommendation-access.mjs';
 
 const knowledge=new Map([['16',{}],['17',{}]]);
 const weights=(weight=1,id='16')=>[{knowledge_id:id,weight}];
@@ -76,8 +77,14 @@ test('API status transitions, history, own-user isolation, admin counts, bounded
   assert.equal((await guest('learning/dashboard')).status,401);assert.equal((await a('admin/learning/overview')).status,403);
   let r=await dash();const version=r.qdna_version;assert.equal(r.counts.marked,0);assert.equal(r.recommendations.personalized,false);assert.ok(r.signals.rows.every(k=>k.weakness_signal===null));
   await mark(1,'mistake');r=await dash();assert.equal(signal(r).wrong_question_count,1);assert.equal(signal(r).weakness_signal,null);assert.equal(r.recommendations.personalized,true);assert.ok(r.recommendations.new_questions.length);assert.equal((await a('learning/dashboard')).weak_points[0].knowledge_id,'16');
-  const checkLocked=async()=>{for(const language of ['chn','eng']){const guidance=await a(`learning/dashboard?language=${language}`);assert.equal(guidance.status,200);assert.ok(guidance.weak_points.length,'Free users retain review topics');assert.deepEqual(guidance.recommendations,{locked:true});const detail=await a(`learning/knowledge?id=16&language=${language}`);assert.equal(detail.status,200);assert.ok(detail.knowledge);assert.deepEqual(detail.recommendations,{locked:true});assert.equal((await a(`content/recommendations?language=${language}`)).status,403);const weekly=api.buildWeeklyReport(id,{language});assert.deepEqual(weekly.recommended_questions,[]);assert.equal(weekly.recommendations_locked,true);assert.equal(weekly.personalized,false);}};
-  await checkLocked();
+  const checkTrial=async()=>{for(const language of ['chn','eng']){
+   const guidance=await a(`learning/dashboard?language=${language}`);assert.equal(guidance.status,200);assert.ok(guidance.weak_points.length);assert.equal(guidance.recommendations.trialOnly,true);assert.ok(guidance.recommendations.new_questions.length);assert.ok([...guidance.recommendations.new_questions,...guidance.recommendations.wrong_review].every(q=>q.trialAvailable&&isTrialRecommendation(q)));
+   const detail=await a(`learning/knowledge?id=16&language=${language}`);assert.equal(detail.status,200);assert.equal(detail.recommendations.trialOnly,true);assert.ok(detail.recommendations.new_questions.every(isTrialRecommendation));
+   const paidDetail=await a(`learning/knowledge?id=48&language=${language}`);assert.deepEqual(paidDetail.recommendations,{locked:true});
+   const compat=await a(`content/recommendations?language=${language}`);assert.equal(compat.status,200);assert.ok([...compat.new_questions,...compat.wrong_review].every(isTrialRecommendation));
+   const weekly=api.buildWeeklyReport(id,{language});assert.equal(weekly.recommendations_trial_only,true);assert.equal(weekly.recommendations_locked,false);assert.ok(weekly.recommended_questions.length);assert.ok(weekly.recommended_questions.every(isTrialRecommendation));
+  }};
+  await checkTrial();
   assert.equal((await admin('admin/membership',{userId:id,action:'extend',days:1,reason:'Recommendation membership fixture',revision:0,requestId:crypto.randomUUID()})).status,200);
   for(const language of ['chn','eng']){const paid=await a(`learning/dashboard?language=${language}`);assert.ok(paid.recommendations.new_questions.length);assert.equal(paid.recommendations.locked,undefined);assert.equal((await a(`content/recommendations?language=${language}`)).status,200);}
   await mark(1,'mistake');r=await dash();assert.equal(signal(r).wrong_question_count,1);
@@ -90,7 +97,7 @@ test('API status transitions, history, own-user isolation, admin counts, bounded
   const changed=await mark(1,'mastered');await a('progress/undo',{id:changed.undoId});r=await dash();assert.equal(r.counts.wrong,1);assert.equal(r.counts.mastered,0);
   await mark(2,'mistake');await mark(3,'mistake');r=await dash();assert.equal(signal(r).weakness_signal,.875);assert.equal(r.recommendations.new_questions.length,3);assert.equal(r.recommendations.wrong_review.length,3);
   assert.deepEqual((await b('learning/dashboard')).weak_points,[]);
-  assert.deepEqual((await b('learning/dashboard')).recommendations,{locked:true},'Another free user cannot inherit member recommendations');
+  assert.equal((await b('learning/dashboard')).recommendations.personalized,false,'Another free user cannot inherit recommendations');assert.deepEqual((await b('learning/dashboard')).recommendations.new_questions,[]);
   const guidance=await a('learning/dashboard');assert.equal(guidance.weak_points[0].knowledge_id,'16');assert.equal(guidance.recommendations.new_questions.length,3);
   assert.doesNotMatch(JSON.stringify(guidance),/recommendation_score|weakness_signal|qdna_version|missing_dna|marked_question_count|wrong_weight|counts|signals/);
   const studentDetail=await a('learning/knowledge?id=16');assert.ok(studentDetail.knowledge);assert.equal(studentDetail.rows,undefined);assert.equal(studentDetail.signal,undefined);assert.doesNotMatch(JSON.stringify(studentDetail),/recommendation_score|weight/);
@@ -114,9 +121,9 @@ test('API status transitions, history, own-user isolation, admin counts, bounded
   const inspector=new DatabaseSync(join(directory,'students.sqlite'),{readOnly:true});
   const events=inspector.prepare('SELECT * FROM question_status_events WHERE user_id=? ORDER BY id').all(id);assert.ok(events.every(e=>e.from_status!==e.to_status));assert.equal(events.filter(e=>e.question_id===q(1)&&e.to_status==='WRONG').length,6);inspector.close();
   for(const [file,body] of files)assert.equal(readFileSync(file,'utf8'),body,'source QDNA must not be rewritten');
-  assert.equal((await admin('admin/membership',{userId:id,action:'revoke',reason:'Fixture revoke',revision:1,requestId:crypto.randomUUID()})).status,200);await checkLocked();
+  assert.equal((await admin('admin/membership',{userId:id,action:'revoke',reason:'Fixture revoke',revision:1,requestId:crypto.randomUUID()})).status,200);await checkTrial();
   assert.equal((await admin('admin/membership',{userId:id,action:'extend',days:1,reason:'Fixture renewal',revision:2,requestId:crypto.randomUUID()})).status,200);assert.ok((await a('learning/dashboard')).recommendations.new_questions.length);
-  now+=86400001;await checkLocked();await admin('admin/login',{key:'qdna-local-test'});assert.ok((await dash()).recommendations.new_questions.length,'Admin retains analysis after student expiry');
+  now+=86400001;await checkTrial();await admin('admin/login',{key:'qdna-local-test'});assert.ok((await dash()).recommendations.new_questions.length,'Admin retains analysis after student expiry');
   api.close();api=createApi({directory,adminKey:'qdna-local-test',clock:()=>now,qdnaDirectory:dnaDirectory,contentLimits:{similar:1000}});assert.equal((await dash()).qdna_version,version);assert.deepEqual((await dash()).counts,before.counts);
  }finally{await new Promise(r=>server.close(r));api.close();rmSync(directory,{recursive:true});}
 });
@@ -154,4 +161,24 @@ test('one mistake without DNA uses existing knowledge links immediately and excl
  const opts={states,dna:new Map(),signals:{rows:[]},catalog,knowledgeInfo:id=>({knowledge_id:id,name:'Topic '+id})};
  const result=getRecommendedQuestions(opts);assert.equal(result.personalized,true);assert.deepEqual(result.new_questions.map(q=>q.question_id),['practice']);assert.deepEqual(result.wrong_review.map(q=>q.question_id),['wrong']);
  states.delete('wrong');assert.equal(getRecommendedQuestions(opts).personalized,false);
+});
+
+
+test('free scope filters candidates and topics before ranking and limits, even with higher-scoring paid topics',()=>{
+ const catalog=new Map(Array.from({length:12},(_,i)=>['paid'+i,{label:'Paid'}]));catalog.set('free',{label:'Free'});catalog.set('wrong-free',{label:'Free wrong'});
+ const dna=new Map([...catalog.keys()].map(id=>[id,weights(id.includes('free')?.1:1,id.includes('free')?'16':String(47+Number(id.slice(4))%4))]));
+ const opts={catalog,dna,states:new Map([['wrong-free',{status:'WRONG'}]]),signals:{rows:['16','47','48','49','50'].map(knowledge_id=>({knowledge_id,sufficient_data:true,adjusted_weakness:.8,status:'NEEDS_REVIEW'}))},knowledgeInfo:id=>({knowledge_id:id,name:id}),limit:8};
+ assert.equal(getRecommendedQuestions(opts).new_questions.some(q=>q.question_id==='free'),false);
+ const free=getRecommendedQuestions({...opts,questionFilter:id=>id.includes('free'),knowledgeFilter:id=>id==='16'});
+ assert.deepEqual(free.new_questions.map(q=>q.question_id),['free']);assert.deepEqual(free.wrong_review.map(q=>q.question_id),['wrong-free']);assert.ok(free.focus_points.every(p=>p.knowledge_id==='16'));
+});
+
+test('trial boundary uses actual question access as well as the recommendation topic; stale weekly reports are filtered',()=>{
+ const q=(id,topic)=>({question_id:id,question_title:id,primary_knowledge:{knowledge_id:topic},question_url:'/#examples?question='+id});
+ const free=q('ex-101-1','2'),paid=q('ex-201-1','39'),mislabeled=q('ex-201-1','2'),otherTopic=q('ex-101-1','39');
+ assert.equal(isTrialPractice('ex-101-1'),true);assert.equal(isTrialPractice('ex-201-1'),false);assert.equal(isTrialPractice('unknown'),false);
+ const recommendations={personalized:true,new_questions:[free,paid,mislabeled,otherTopic],wrong_review:[],focus_points:[]};
+ const result=studentLearningView({recommendations},{recommendationAccess:false});assert.deepEqual(result.recommendations.new_questions.map(q=>q.question_id),['ex-101-1']);assert.equal(result.recommendations.new_questions[0].trialAvailable,true);
+ const member=studentLearningView({recommendations},{recommendationAccess:true});assert.deepEqual(member.recommendations.new_questions.map(q=>q.trialAvailable),[true,false,false,false]);
+ const saved={recommended_questions:[free,paid,mislabeled,otherTopic],activity:{newly_wrong:4},personalized:true};assert.deepEqual(memberWeeklyReport(saved,false).recommended_questions,[free]);assert.equal(memberWeeklyReport(saved,true),saved);assert.equal(saved.recommended_questions.length,4);
 });

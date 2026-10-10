@@ -2,6 +2,7 @@ import {createHash} from 'node:crypto';
 import {points,questions,pointInfo} from './catalog.mjs';
 import {calculateKnowledgeWeakness,weaknessConfiguration} from './knowledge-weakness.mjs';
 import {getRecommendedQuestions,questionUrl} from './qdna-recommendations.mjs';
+import {isTrialKnowledge,isTrialPractice,isTrialRecommendation,trialRecommendations} from './recommendation-access.mjs';
 
 export function createQdnaLearning({db,clock,statusStore,config=weaknessConfiguration(),canonicalLanguage=process.env.DSE_QDNA_CANONICAL_LANGUAGE||'chn'}) {
  if(!['chn','eng'].includes(canonicalLanguage))throw new Error('Invalid canonical QDNA language');
@@ -18,21 +19,22 @@ export function createQdnaLearning({db,clock,statusStore,config=weaknessConfigur
  const version='qdna-'+createHash('sha256').update(JSON.stringify({canonicalLanguage,source})).digest('hex').slice(0,16);
  const info=(id,language)=>{const p=pointInfo(Number(id));return {knowledge_id:String(id),name:language==='eng'?p.titleEn||p.title:p.title,number:p.number,chapter:language==='eng'?p.chapterEn:p.chapter};};
  const compare=(a,b)=>Number(b.sufficient_data)-Number(a.sufficient_data)||(b.weakness_signal??-1)-(a.weakness_signal??-1)||Number(a.knowledge_id)-Number(b.knowledge_id);
- function snapshot(studentId,language='chn',limit=8) {
+ const recommendationScope=trialOnly=>trialOnly?{questionFilter:isTrialPractice,knowledgeFilter:isTrialKnowledge}:{};
+ function snapshot(studentId,language='chn',limit=8,{trialOnly=false}={}) {
   const states=statusStore.snapshot(studentId),signals=calculateKnowledgeWeakness(states,dna,points,config);
-  const recommendations=getRecommendedQuestions({states,dna,signals,catalog:questions,knowledgeInfo:info,language,limit});
+  const recommendations=getRecommendedQuestions({states,dna,signals,catalog:questions,knowledgeInfo:info,language,limit,...recommendationScope(trialOnly)});
   return {generated_at:clock(),qdna_version:version,counts:{marked:states.size,wrong:[...states.values()].filter(r=>r.status==='WRONG').length,mastered:[...states.values()].filter(r=>r.status==='MASTERED').length},
    highlights:Object.fromEntries(['NEEDS_REVIEW','STRONG'].map(status=>[status,signals.rows.filter(r=>r.status===status).sort((a,b)=>status==='STRONG'?a.weakness_signal-b.weakness_signal:compare(a,b)).slice(0,3).map(r=>({...r,...info(r.knowledge_id,language)}))])),
    signals:{...signals,rows:signals.rows.map(r=>({...r,...info(r.knowledge_id,language)})).sort(compare)},recommendations};
  }
- function dashboard(studentId,{language='chn',offset=0,limit=20,recommendationLimit=8}={}) {
-  const result=snapshot(studentId,language,recommendationLimit);return {...result,signals:{...result.signals,total:result.signals.rows.length,rows:result.signals.rows.slice(offset,offset+limit)}};
+ function dashboard(studentId,{language='chn',offset=0,limit=20,recommendationLimit=8,trialOnly=false}={}) {
+  const result=snapshot(studentId,language,recommendationLimit,{trialOnly});return {...result,signals:{...result.signals,total:result.signals.rows.length,rows:result.signals.rows.slice(offset,offset+limit)}};
  }
- function knowledge(studentId,id,{language='chn',status='ALL',offset=0,limit=20}={}) {
+ function knowledge(studentId,id,{language='chn',status='ALL',offset=0,limit=20,trialOnly=false}={}) {
   if(!points.has(Number(id)))return null;id=String(Number(id));const states=statusStore.snapshot(studentId),signals=calculateKnowledgeWeakness(states,dna,points,config);
   const all=(byKnowledge.get(String(id))||[]).filter(r=>questions.has(r.question_id)).map(r=>{const q=questions.get(r.question_id);return {...r,status:states.get(r.question_id)?.status||'UNMARKED',question_title:language==='eng'?q.labelEn||q.label:q.label,question_url:questionUrl(r.question_id)};}).sort((a,b)=>a.question_id.localeCompare(b.question_id,'en',{numeric:true}));
   const rows=all.filter(r=>status==='ALL'||r.status===status);
-  return {knowledge:info(id,language),signal:signals.rows.find(r=>r.knowledge_id===String(id)),counts:Object.fromEntries(['MASTERED','WRONG','UNMARKED'].map(s=>[s,all.filter(r=>r.status===s).length])),rows:rows.slice(offset,offset+limit),total:rows.length,qdna_version:version,recommendations:getRecommendedQuestions({states,dna,signals,catalog:questions,knowledgeInfo:info,language,limit:3,knowledgeId:id})};
+  return {knowledge:info(id,language),signal:signals.rows.find(r=>r.knowledge_id===String(id)),counts:Object.fromEntries(['MASTERED','WRONG','UNMARKED'].map(s=>[s,all.filter(r=>r.status===s).length])),rows:rows.slice(offset,offset+limit),total:rows.length,qdna_version:version,recommendations:getRecommendedQuestions({states,dna,signals,catalog:questions,knowledgeInfo:info,language,limit:3,knowledgeId:id,...recommendationScope(trialOnly)})};
  }
  function adminOverview({language='chn',type='questions',offset=0,limit=20}={}) {
   const statuses=db.prepare("SELECT m.user_id,m.question_key,m.marked_at,'WRONG' status FROM mistakes m JOIN users u ON u.id=m.user_id WHERE u.role='student' UNION ALL SELECT m.user_id,m.question_key,m.marked_at,'MASTERED' FROM mastered m JOIN users u ON u.id=m.user_id WHERE u.role='student'").all();
@@ -46,8 +48,8 @@ export function createQdnaLearning({db,clock,statusStore,config=weaknessConfigur
     [...points.keys()].map(id=>({...info(id,language),question_count:byKnowledge.get(String(id))?.length||0,wrong_students:0,mastered_students:0,needs_review_students:0,...kCounts.get(String(id))})).sort((a,b)=>(b.needs_review_students||0)-(a.needs_review_students||0)||Number(a.knowledge_id)-Number(b.knowledge_id));
   return {rows:rows.slice(offset,offset+limit),total:rows.length,qdna_version:version,canonical_language:canonicalLanguage,language_weight_mismatches:languageDifferences,ignored_weights:ignoredWeights};
  }
- function weekly(studentId,{start,end=clock(),language='chn'}={}) {
-  start??=end-7*86400000;const current=snapshot(studentId,language,8),user=db.prepare('SELECT nickname FROM users WHERE id=?').get(studentId);
+ function weekly(studentId,{start,end=clock(),language='chn',trialOnly=false}={}) {
+  start??=end-7*86400000;const current=snapshot(studentId,language,8,{trialOnly}),user=db.prepare('SELECT nickname FROM users WHERE id=?').get(studentId);
   const counts=db.prepare("SELECT to_status,COUNT(DISTINCT question_id) n FROM question_status_events WHERE user_id=? AND at>=? AND at<? AND to_status IN ('MASTERED','WRONG') GROUP BY to_status").all(studentId,start,end);
   return {kind:'qdna-weekly',name:user?.nickname|| (language==='eng'?'Student':'同学'),language,start,end,generated_at:current.generated_at,qdna_version:version,history_since:statusStore.historySince,partial_history:start<statusStore.historySince,
    activity:{newly_mastered:counts.find(r=>r.to_status==='MASTERED')?.n||0,newly_wrong:counts.find(r=>r.to_status==='WRONG')?.n||0},focus_areas:current.signals.rows.filter(r=>r.status==='NEEDS_REVIEW').slice(0,3),recommended_questions:current.recommendations.new_questions.slice(0,3),continue_url:'/#mistakes',personalized:current.recommendations.personalized};
@@ -58,12 +60,12 @@ export function createQdnaLearning({db,clock,statusStore,config=weaknessConfigur
 // Student responses expose only actionable learning guidance, never analysis internals.
 export function studentLearningView(result, {recommendationAccess=false}={}) {
  const point=p=>({knowledge_id:p.knowledge_id,name:p.name,number:p.number,chapter:p.chapter});
- const question=q=>({question_id:q.question_id,question_title:q.question_title,question_url:q.question_url,chapter:q.chapter,primary_knowledge:point(q.primary_knowledge),recommendation_reason:q.recommendation_reason});
- const recommendations=result.recommendations;
- return {...(result.knowledge?{knowledge:point(result.knowledge)}:{weak_points:[...new Map([...(result.highlights?.NEEDS_REVIEW||[]),...(result.recommendations.focus_points||[])].map(p=>[p.number || p.knowledge_id,point(p)])).values()].slice(0,3)}),recommendations:recommendationAccess?{personalized:recommendations.personalized,new_questions:recommendations.new_questions.map(question),wrong_review:recommendations.wrong_review.map(question)}:{locked:true}};
+ const question=q=>({question_id:q.question_id,question_title:q.question_title,question_url:q.question_url,chapter:q.chapter,primary_knowledge:point(q.primary_knowledge),recommendation_reason:q.recommendation_reason,trialAvailable:isTrialRecommendation(q)});
+ const recommendations=recommendationAccess?result.recommendations:trialRecommendations(result.recommendations);
+ return {...(result.knowledge?{knowledge:point(result.knowledge)}:{weak_points:[...new Map([...(result.highlights?.NEEDS_REVIEW||[]),...(result.recommendations.focus_points||[])].map(p=>[p.number || p.knowledge_id,point(p)])).values()].slice(0,3)}),recommendations:!recommendationAccess&&result.knowledge&&!isTrialKnowledge(result.knowledge.knowledge_id)?{locked:true}:{...(!recommendationAccess?{trialOnly:true}:{}),personalized:recommendations.personalized,new_questions:recommendations.new_questions.map(question),wrong_review:recommendations.wrong_review.map(question)}};
 }
 
 // Recheck entitlement when sending a queued report, including retries after expiry.
 export function memberWeeklyReport(report, active) {
- return active?report:{...report,recommendations_locked:true,recommended_questions:[],personalized:false};
+ return active?report:{...report,recommendations_locked:false,recommendations_trial_only:true,recommended_questions:report.recommended_questions.filter(isTrialRecommendation)};
 }
