@@ -12,7 +12,7 @@ test('Chinese cards use complete Chinese-edition figure assets and preserve bili
   assert.notEqual(createHash('sha256').update(image).digest('hex'),createHash('sha256').update(fs.readFileSync(expected.get(f.src).previous_src)).digest('hex'));
   seen.add(f.src);
  }
- assert.equal(seen.size,104);
+ assert.equal(seen.size,expected.size);
  assert.deepEqual(sharedFigureCards(data.chn).map(p=>(p.members||[p]).map(m=>m.sequence)),sharedFigureCards(data.eng).map(p=>(p.members||[p]).map(m=>m.sequence)));
  for(const point of data.eng)for(const f of cardFigures(point))assert.ok(!f.src.includes('figures-chn/'));
 });

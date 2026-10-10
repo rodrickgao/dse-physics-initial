@@ -1,0 +1,1577 @@
+{
+  "date": "2026-10-10",
+  "revisions": {
+    "1": {
+      "chn": "温度表示物體的冷熱程度，並決定熱傳遞的方向。兩物體接觸時，能量由高温一方傳向低温一方，直到兩者達到熱平衡。內能還取決於物質種類、質量和狀態，因此温度相同的物體，內能可以不同。",
+      "eng": "Temperature describes how hot or cold an object is and determines the direction of heat transfer. When objects at different temperatures are in thermal contact, energy flows from the hotter one to the colder one until thermal equilibrium is reached. Equal temperatures do not imply equal internal energies: material, mass and physical state also matter."
+    },
+    "2": {
+      "chn": "攝氏温標有兩個定點。在標準大氣壓強下，純冰熔化的温度定為 0 °C，稱為冰點。純水沸騰時，上升蒸汽的温度定為 100 °C，稱為汽點。校準時須使用純物質，保持指定壓強，並等候讀數穩定。量度汽點時，温度計放在蒸汽中。",
+      "eng": "The ice point is the temperature of melting pure ice at standard atmospheric pressure, defined as 0 °C. The steam point is the temperature of steam above boiling pure water under the same pressure, defined as 100 °C. Calibration requires the specified pressure, pure substances and steady readings. The steam point is measured in the steam."
+    },
+    "3": {
+      "chn": "温度反映粒子隨機運動的平均動能。温度越高，粒子平均運動越劇烈，但各粒子的速率可以不同。對理想氣體，平均平移動能與開爾文温度成正比。計算這個比例時，温度須用 K。",
+      "eng": "Temperature is related to the average kinetic energy of random particle motion. A higher temperature means more vigorous motion on average, not that every particle has the same speed. For an ideal gas, mean translational kinetic energy is proportional to temperature in kelvin; Celsius values cannot be used directly in this proportionality."
+    },
+    "4": {
+      "chn": "熱是因温差而傳遞的能量，會自然地由高温處傳向低温處。內能則是物體內粒子的動能和相互作用勢能的總和。物體吸熱或放熱時，內能通常會改變。熱表示能量的傳遞過程，內能表示物體本身的能量。",
+      "eng": "Heat is energy transferred because of a temperature difference, naturally flowing from hot to cold. Internal energy is the total microscopic energy of the particles within an object. Absorbing or releasing heat generally changes internal energy, but heat describes a transfer rather than an amount stored as a property of the object."
+    },
+    "5": {
+      "chn": "傳導是能量從高温處傳向低温處，而物質本身沒有整體流動的過程。粒子間的碰撞或相互作用傳遞能量，金屬中的自由電子亦有重要作用。兩物體直接接觸可傳導熱。",
+      "eng": "Conduction transfers energy from hotter to colder regions without bulk movement of the material. Particle collisions and interactions transfer energy, while free electrons also play an important role in metals. Heat can therefore pass between objects in direct contact."
+    },
+    "6": {
+      "chn": "對流靠液體或氣體的整體流動傳遞能量。自然對流中，流體受熱膨脹，密度減小而上升。較冷、密度較大的流體下沉補位，形成循環。風扇或泵可推動流體，產生強迫對流。固體沒有這種整體流動，因此不能以對流傳熱。",
+      "eng": "Convection transfers energy through bulk movement of a liquid or gas. In natural convection, heated fluid expands, becomes less dense and rises, while cooler, denser fluid sinks to replace it. Fans and pumps produce forced convection. Solids cannot transfer heat by this kind of bulk flow."
+    },
+    "7": {
+      "chn": "熱輻射是物體以電磁波發射和吸收能量的傳熱方式。它不需要介質，可以穿過真空。一般温度下主要涉及紅外線。即使物體比環境冷，仍會發射輻射。如果吸收的功率大於發射的功率，物體便淨吸熱。",
+      "eng": "Objects emit and absorb energy as electromagnetic radiation. This transfer needs no medium and can cross a vacuum. At ordinary temperatures, infrared radiation is especially important. An object colder than its surroundings still emits radiation, but it may absorb more power than it emits and therefore gain energy overall."
+    },
+    "8": {
+      "chn": "在相同温度及可比較條件下，黑色暗啞表面通常是良好的熱輻射吸收體和發射體。淺色光亮表面通常吸收及發射較少、反射較多。比較時須控制表面面積與温度。",
+      "eng": "Under comparable conditions, dull black surfaces are generally good absorbers and emitters of thermal radiation. Light-coloured, shiny surfaces usually absorb and emit less and reflect more. Keep surface area and temperature controlled when comparing surfaces."
+    },
+    "9": {
+      "chn": "物體與環境會互相交換輻射能量。淨輻射傳熱取決於發射功率與吸收功率的差。在表面性質和面積固定、環境條件相同時，温差越大，淨輻射傳熱率的大小通常越大。",
+      "eng": "Objects exchange radiative energy with their surroundings. Net radiative transfer is the difference between emitted and absorbed power. With fixed surface properties and area under the same environmental conditions, a larger temperature difference generally gives a greater magnitude of net radiative heat transfer."
+    },
+    "10": {
+      "chn": "在表面性質、温度和受照條件相同時，面積越大，總發射或吸收功率越大，因為交換能量的表面更多。面積增加改變的是總功率。每單位面積的輻射功率仍由表面性質、温度和受照條件決定。",
+      "eng": "With the same surface properties, temperature and illumination, a larger surface area emits or absorbs more total radiative power. More surface is exchanging energy. Area changes the total power. Power per unit area is determined by surface properties, temperature and illumination."
+    },
+    "11": {
+      "chn": "功率表示每單位時間轉移或轉換多少能量。平均功率用整段時間內的能量除以所需時間。1 W 表示每秒轉移 1 J。相同能量在較短時間內完成，功率較大。若功率隨時間改變，不能把平均值直接當作每一時刻的功率。",
+      "eng": "Power measures energy transferred or converted per unit time. Average power is the total energy transferred divided by the elapsed time; 1 W means 1 J per second. Transferring the same energy in less time requires greater average power. If power varies, this average need not equal the instantaneous power at any chosen moment."
+    },
+    "12": {
+      "chn": "熱容量是整個物體升温 1 K（或 1 °C）所需的能量，取決於物料和質量。吸收相同能量時，熱容量越大，温度升幅越小。如果沒有物態改變，且熱容量近似不變，吸收熱量便等於熱容量乘温度升幅。",
+      "eng": "Heat capacity is the energy needed to raise the temperature of a whole object by 1 K, equivalent to a rise of 1 °C. With no change of state and approximately constant heat capacity, absorbed energy equals heat capacity times temperature rise. A larger heat capacity gives a smaller rise for the same energy input. It depends on both material and mass."
+    },
+    "13": {
+      "chn": "熱容量是整個物體升温 1 K（或 1 °C）所需的能量，取決於物料和質量。吸收相同能量時，熱容量越大，温度升幅越小。如果沒有物態改變，且熱容量近似不變，吸收熱量便等於熱容量乘温度升幅。",
+      "eng": "Heat capacity is the energy needed to raise the temperature of a whole object by 1 K, equivalent to a rise of 1 °C. With no change of state and approximately constant heat capacity, absorbed energy equals heat capacity times temperature rise. A larger heat capacity gives a smaller rise for the same energy input. It depends on both material and mass."
+    },
+    "14": {
+      "chn": "比熱容量是使 1 kg 物質升温 1 K 所需的能量，用來比較不同物料的吸熱能力。整個物體的熱容量等於質量乘比熱容量。同種物料的質量加倍，熱容量也加倍，而比熱容量保持不變。兩者的單位不同。",
+      "eng": "Specific heat capacity is the energy needed to raise 1 kg of a substance by 1 K. The heat capacity of a whole object is its mass multiplied by its specific heat capacity. Doubling the mass of the same material doubles heat capacity but does not change specific heat capacity. The two quantities also have different units."
+    },
+    "15": {
+      "chn": "比熱容量是使 1 kg 物質升温 1 K 所需的能量，用來比較不同物料的吸熱能力。整個物體的熱容量等於質量乘比熱容量。同種物料的質量加倍，熱容量也加倍，而比熱容量保持不變。兩者的單位不同。",
+      "eng": "Specific heat capacity is the energy needed to raise 1 kg of a substance by 1 K. The heat capacity of a whole object is its mass multiplied by its specific heat capacity. Doubling the mass of the same material doubles heat capacity but does not change specific heat capacity. The two quantities also have different units."
+    },
+    "16": {
+      "chn": "沒有物態改變，且比熱容量近似不變時，吸收熱量等於質量、比熱容量和温度升幅的乘積。降温時，可用温度下降的大小求放熱量，也可一致採用帶正負號的温度變化。如果加熱時有能量散失，物體吸收的能量會少於加熱器的輸入。",
+      "eng": "With no change of state and approximately constant specific heat capacity, the absorbed energy is mass times specific heat capacity times temperature rise. For cooling, either calculate released energy using the magnitude of the temperature drop or consistently use signed changes. If energy escapes to the surroundings, not all the heater's input is absorbed by the sample."
+    },
+    "17": {
+      "chn": "把熱物體、冷物體和容器視為同一系統。若沒有外來能量輸入，也沒有向外散熱，熱的一方失去的能量便等於其餘部分吸收的能量。先計算各物體的温度變化及相變能量，再列出能量平衡。容器吸熱和熔化所需的潛熱也須計入。",
+      "eng": "Treat the hot body, cold body and container as one system. With no energy supplied from outside or lost to the surroundings, energy released by the hotter parts equals energy absorbed by the other parts. Calculate each temperature change and any change of state separately. Include the container's heating and any latent heat required."
+    },
+    "18": {
+      "chn": "能量能在物體之間轉移，也能在動能、勢能、內能等形式之間轉化，但不能憑空產生或消失。孤立系統的總能量不變。若選定系統與外界交換能量，就須把輸入和輸出一併計算。摩擦造成機械能減少，仍符合總能量守恆。",
+      "eng": "Energy can be transferred between objects and converted between kinetic, potential, internal and other forms, but cannot be created or destroyed. Total energy remains constant in an isolated system. For a system exchanging energy with its surroundings, include all inputs and outputs. Friction reduces mechanical energy without violating conservation of total energy."
+    },
+    "19": {
+      "chn": "熔化和汽化需要吸收能量，改變粒子的排列或間距。純物質在固定壓強下，於熔點或沸點改變物態時，温度保持不變。這段過程吸收的能量稱為潛熱。相變完成後，繼續加熱才會再升温。",
+      "eng": "Melting and vaporisation require energy to change particle arrangements or separation. At fixed pressure, a pure substance stays at constant temperature while changing state at its melting or boiling point. The energy absorbed during this process is latent heat. Further heating raises the temperature once the change of state is complete."
+    },
+    "20": {
+      "chn": "凝固和凝結時，物質向環境釋放潛熱。粒子的排列或間距改變，內能降低。純物質在固定壓強下，這段相變過程可保持恆温。同種物質在相同條件下，正、反方向的相變，每公斤吸收和釋放的潛熱大小相同。",
+      "eng": "Freezing and condensation release latent heat to the surroundings as particle arrangements or separations change and internal energy falls. A pure substance can change state at constant temperature under fixed pressure. For the same substance under the same conditions, reverse changes of state absorb and release equal amounts of latent heat per kilogram."
+    },
+    "21": {
+      "chn": "比潛熱是 1 kg 物質在指定條件下改變物態時，吸收或釋放的能量。相變熱量等於實際改變物態的質量乘相應的比潛熱。熔化用熔解比潛熱，汽化用汽化比潛熱。如果物質先升温再相變，兩部分能量須分開計算。",
+      "eng": "Specific latent heat is the energy absorbed or released per kilogram undergoing a specified change of state. Multiply it by the mass actually changing state to obtain the energy transferred. Distinguish fusion from vaporisation. If a sample first warms and then changes state, calculate the temperature-change energy and latent heat separately."
+    },
+    "22": {
+      "chn": "內能包括兩部分：粒子隨機運動的動能，以及粒子相互作用的勢能。把物體內所有粒子的這兩部分能量相加，便得到內能。物體整體運動的動能和整體位置的重力勢能不計在內。升温通常增加粒子的平均動能。相變則可在温度不變時，改變粒子勢能和內能。",
+      "eng": "Internal energy is the sum of the kinetic energies of random microscopic particle motion and the potential energies of particle interactions. It excludes the kinetic energy of the object's bulk motion and its overall gravitational potential energy. Heating usually increases mean particle kinetic energy, whereas a change of state can change internal energy without changing temperature."
+    },
+    "23": {
+      "chn": "壓強表示單位面積受到的垂直作用力。相同力集中在較小面積上，壓強較大。公式使用的是垂直於表面的力分量及實際受力面積。1 Pa 等於每平方米受到 1 N 的垂直力。",
+      "eng": "Pressure is normal force per unit area. The same force concentrated on a smaller area produces greater pressure. Use the component perpendicular to the surface and the actual area over which it acts. One pascal is one newton of normal force per square metre."
+    },
+    "24": {
+      "chn": "固定質量的氣體在温度不變時，絕對壓強與體積成反比，所以壓強與體積的乘積保持不變。體積減至一半，絕對壓強便變成兩倍。比較兩個狀態時，須使用絕對壓強，並確認氣體質量和温度均不變。",
+      "eng": "For a fixed mass of gas at constant temperature, absolute pressure is inversely proportional to volume, so the pressure-volume product is unchanged between two states. Halving the volume doubles the absolute pressure. Use absolute rather than gauge pressure. The two-state relation cannot be applied unchanged if gas leaks or temperature varies."
+    },
+    "25": {
+      "chn": "固定質量的氣體在温度不變時，絕對壓強與體積成反比，所以壓強與體積的乘積保持不變。體積減至一半，絕對壓強便變成兩倍。比較兩個狀態時，須使用絕對壓強，並確認氣體質量和温度均不變。",
+      "eng": "For a fixed mass of gas at constant temperature, absolute pressure is inversely proportional to volume, so the pressure-volume product is unchanged between two states. Halving the volume doubles the absolute pressure. Use absolute rather than gauge pressure. The two-state relation cannot be applied unchanged if gas leaks or temperature varies."
+    },
+    "26": {
+      "chn": "開爾文温標以絕對零度為起點。攝氏温度加上 273.15 就得到開爾文數值，課本常取 273。升温 1 K 與升温 1 °C 的温差相同，但兩種温度的比值不同。氣體定律及絕對温度比例關係必須使用 K。",
+      "eng": "The kelvin scale starts at absolute zero. Add 273.15 to the Celsius reading to obtain the kelvin value. The textbook commonly rounds this to 273. A rise of 1 K equals a rise of 1 °C, but ratios of the readings differ. Gas laws and absolute-temperature proportionalities require kelvin."
+    },
+    "29": {
+      "chn": "固定質量的氣體在壓強不變時，體積與開爾文温度成正比。加熱時氣體膨脹，以維持相同壓強。用前後狀態的體積除以絕對温度作比較，不能直接用攝氏數值，也不能套用於氣體洩漏或壓強明顯改變的過程。",
+      "eng": "For a fixed mass of gas at constant pressure, volume is proportional to kelvin temperature. Heating allows the gas to expand while maintaining its pressure. Compare volume divided by absolute temperature in the two states. Do not use Celsius readings directly or apply the relation when gas leaks or pressure changes appreciably."
+    },
+    "30": {
+      "chn": "固定質量的氣體在壓強不變時，體積與開爾文温度成正比。加熱時氣體膨脹，以維持相同壓強。用前後狀態的體積除以絕對温度作比較，不能直接用攝氏數值，也不能套用於氣體洩漏或壓強明顯改變的過程。",
+      "eng": "For a fixed mass of gas at constant pressure, volume is proportional to kelvin temperature. Heating allows the gas to expand while maintaining its pressure. Compare volume divided by absolute temperature in the two states. Do not use Celsius readings directly or apply the relation when gas leaks or pressure changes appreciably."
+    },
+    "31": {
+      "chn": "固定物質的量的理想氣體，其壓強乘體積再除以開爾文温度，所得的值保持不變。這個關係可同時處理壓強、體積和温度的變化。比較兩個狀態時，須保持氣體量不變，使用絕對壓強和 K，並統一壓強及體積的單位。",
+      "eng": "For a fixed amount of ideal gas, pressure multiplied by volume and divided by kelvin temperature remains constant. This relates changes in all three quantities. Before comparing states, check that no gas enters or escapes, pressure is absolute, and pressure and volume units are consistent between states. Temperature must be in kelvin."
+    },
+    "32": {
+      "chn": "固定物質的量的理想氣體，其壓強乘體積再除以開爾文温度，所得的值保持不變。這個關係可同時處理壓強、體積和温度的變化。比較兩個狀態時，須保持氣體量不變，使用絕對壓強和 K，並統一壓強及體積的單位。",
+      "eng": "For a fixed amount of ideal gas, pressure multiplied by volume and divided by kelvin temperature remains constant. This relates changes in all three quantities. Before comparing states, check that no gas enters or escapes, pressure is absolute, and pressure and volume units are consistent between states. Temperature must be in kelvin."
+    },
+    "33": {
+      "chn": "理想氣體方程描述絕對壓強、體積、物質的量和開爾文温度之間的關係。即使氣體量改變，也可分別套用於前後的平衡狀態。使用氣體常數的 SI 值時，壓強用 Pa、體積用 m³、物質的量用 mol。物質的量與分子數須透過阿伏加德羅常數換算。",
+      "eng": "The ideal gas equation relates absolute pressure, volume, amount of substance and kelvin temperature. It can also describe separate equilibrium states when the amount of gas changes. With the SI gas constant, use Pa, m³ and mol. The number of molecules is not the number of moles."
+    },
+    "34": {
+      "chn": "氣體分子不斷隨機運動，撞擊容器壁時動量改變，因而對器壁施力。大量碰撞產生的平均力除以器壁面積，就是氣體壓強。分子數密度增加或平均速率增大，都可使壓強上升。",
+      "eng": "Gas molecules move randomly and change momentum when they collide with container walls, exerting forces on those walls. The mean force from many collisions divided by wall area gives the pressure. Greater molecular number density or greater mean speed can raise pressure. Gas pressure is not caused solely by the gas's weight."
+    },
+    "35": {
+      "chn": "理想氣體模型把同種氣體視為大量質量相同、不斷隨機運動的分子。相比分子間的空間和兩次碰撞間的時間，分子本身的體積及碰撞時間可忽略。除碰撞時外，忽略分子間作用力。分子彼此及與器壁的碰撞均為完全彈性。",
+      "eng": "The ideal-gas model treats a gas as many identical molecules in continuous random motion. Molecular volume is negligible compared with the space between molecules. Collision duration is negligible compared with the time between collisions. Forces between molecules are ignored except during collisions. Collisions between molecules and with walls are perfectly elastic."
+    },
+    "36": {
+      "chn": "氣體動力學把壓強與分子數、單一分子質量和均方速率聯繫起來，描述大量分子碰撞器壁的平均效果。均方速率的求法是先把各分子的速率平方，再取平均。這個模型假設分子的隨機運動在各方向上相同。分子形式的公式使用分子數。",
+      "eng": "Kinetic theory relates gas pressure to the number of molecules, the mass of one molecule and mean square speed. It describes the average effect of many collisions with the walls. To find mean square speed, square each molecular speed and then take the average. The model assumes isotropic random motion, meaning the motion has no preferred direction. The molecular form of the equation uses the number of molecules."
+    },
+    "39": {
+      "chn": "位移是末位置相對初位置的改變，具有大小和方向。路程則把實際走過的路徑長度全部相加。往返原地時位移為零，但路程通常不為零。計算一維位移前先選正方向，末位置減初位置的正負號便表示方向。",
+      "eng": "Displacement is the change from initial to final position and has both magnitude and direction. Distance adds all the lengths along the actual path. Returning to the starting point gives zero displacement but usually non-zero distance. In one dimension, choose a positive direction and subtract initial position from final position. The sign indicates direction."
+    },
+    "40": {
+      "chn": "標量只需要大小，例子有質量、時間、路程和能量。矢量還需要方向，例子有位移、速度、力及動量。合成矢量時必須考慮方向，不能直接把大小相加。一維問題可用正負號表示方向，多維問題則要分解分量。",
+      "eng": "Scalars need magnitude only, such as mass, time, distance and energy. Vectors also need direction, such as displacement, velocity, force and momentum. Vector addition must account for directions rather than simply adding magnitudes. Signs can represent direction in one dimension. In more dimensions, resolve vectors into components."
+    },
+    "43": {
+      "chn": "速度描述位置改變的快慢和方向。平均速度用合位移除以整段經過時間。往返原地時平均速度為零，即使一路都在移動，平均速率仍可非零。計算時須選定正方向或寫明方向。平均速度不一定等於任何一段的瞬時速度。",
+      "eng": "Velocity describes the rate and direction of position change. Average velocity is net displacement divided by total elapsed time. A round trip can have zero average velocity but non-zero average speed. Choose a positive direction or state the direction explicitly. Average velocity need not equal the instantaneous velocity during a particular stage."
+    },
+    "44": {
+      "chn": "速度描述位置改變的快慢和方向。平均速度用合位移除以整段經過時間。往返原地時平均速度為零，即使一路都在移動，平均速率仍可非零。計算時須選定正方向或寫明方向。平均速度不一定等於任何一段的瞬時速度。",
+      "eng": "Velocity describes the rate and direction of position change. Average velocity is net displacement divided by total elapsed time. A round trip can have zero average velocity but non-zero average speed. Choose a positive direction or state the direction explicitly. Average velocity need not equal the instantaneous velocity during a particular stage."
+    },
+    "45": {
+      "chn": "加速度描述速度改變的快慢和方向，平均值用末速度減初速度，再除以經過時間。速度的大小或方向改變都可產生加速度。負加速度只表示朝負方向，並不必然是減速。所有速度應沿同一選定方向帶正負號計算。",
+      "eng": "Average acceleration is final velocity minus initial velocity, divided by elapsed time. A change in speed or direction can cause acceleration. Negative acceleration means acceleration in the chosen negative direction, not necessarily slowing down. Use a consistent sign convention for all velocities before calculating their difference."
+    },
+    "47": {
+      "chn": "百分不確定度等於絕對不確定度除以量度值，再乘 100%，用來比較量度的相對精密程度。在絕對不確定度相同時，量度值越大，百分不確定度越小。分子和分母須用相同單位。若求相對標準值的百分偏差，則以標準值作分母。",
+      "eng": "Percentage uncertainty is absolute uncertainty divided by the measured value, multiplied by 100%. It compares the relative precision of measurements. For the same absolute uncertainty, a larger measured value gives a smaller percentage uncertainty. Use matching units in the numerator and denominator. Percentage deviation from a reference value instead uses the reference value as the denominator."
+    },
+    "48": {
+      "chn": "加速度描述速度改變的快慢和方向，平均值用末速度減初速度，再除以經過時間。速度的大小或方向改變都可產生加速度。負加速度只表示朝負方向，並不必然是減速。所有速度應沿同一選定方向帶正負號計算。",
+      "eng": "Average acceleration is final velocity minus initial velocity, divided by elapsed time. A change in speed or direction can cause acceleration. Negative acceleration means acceleration in the chosen negative direction, not necessarily slowing down. Use a consistent sign convention for all velocities before calculating their difference."
+    },
+    "49": {
+      "chn": "在一維運動中，速度與加速度同方向時速率增加，反方向時速率減少。因此要同時看兩者正負號。負速度配負加速度代表向負方向越走越快。物體瞬間速度為零時仍可有加速度，例如鉛直上拋到最高點。",
+      "eng": "In one dimension, an object speeds up when velocity and acceleration have the same direction and slows down when they oppose each other. Check both signs: negative velocity with negative acceleration means increasing speed in the negative direction. Zero instantaneous velocity does not imply zero acceleration, as at the top of a vertical throw."
+    },
+    "50": {
+      "chn": "位置—時間圖的斜率表示速度：兩點連線的斜率是該段平均速度，曲線某點切線的斜率是瞬時速度。斜率正負表示方向，水平線代表位置不變。曲線的縱座標是位置，不能把它的高低直接當成速度大小。",
+      "eng": "The slope of a position-time graph gives velocity. A secant between two points gives average velocity over the interval. A tangent gives instantaneous velocity. The sign indicates direction, and a horizontal line means unchanged position. The vertical coordinate is position, so a higher point does not itself mean a greater speed."
+    },
+    "51": {
+      "chn": "速度—時間圖的斜率表示加速度。直線斜率固定，代表加速度不變。向上或向下傾斜只表示加速度正負，物體是否加快還要看速度方向。水平線代表速度固定，並不代表物體停下。只有位於時間軸上的水平線才是靜止。",
+      "eng": "The slope of a velocity-time graph gives acceleration. A straight line has constant acceleration. Upward or downward slope indicates the sign of acceleration, but whether the object speeds up also depends on velocity. A horizontal line means constant velocity. The object is at rest only if that line lies on the time axis."
+    },
+    "52": {
+      "chn": "速度—時間圖與時間軸之間的有向面積等於位移：時間軸上方面積取正、下方面積取負。求路程時則將每段面積的大小相加，不能讓正負抵消。規則圖形可直接用三角形或梯形面積。",
+      "eng": "Signed area between a velocity-time graph and the time axis gives displacement: areas above the axis are positive and those below are negative. To find distance travelled, add the magnitudes of the separate areas instead. Triangles and trapezia can be calculated geometrically."
+    },
+    "53": {
+      "chn": "位置—時間圖的斜率給出速度，速度—時間圖的斜率給出加速度。反過來，加速度—時間圖的有向面積給出速度變化，速度—時間圖的有向面積給出位移。面積表示改變量。求實際速度或位置時，須加上初值。時間軸上下的面積分別取正、負值。",
+      "eng": "The slope of position-time gives velocity, and the slope of velocity-time gives acceleration. Conversely, signed area under acceleration-time gives the change in velocity, and signed area under velocity-time gives displacement. Areas give changes only. Add the initial velocity or position when reconstructing actual values and retain the appropriate signs."
+    },
+    "54": {
+      "chn": "勻加速運動方程適用於沿直線、加速度不變的運動。先選正方向，再辨認初速度、末速度、位移和時間，選用所需未知量最少的方程。位移須按方向帶正負號。如果各階段的加速度不同，便分段列式。",
+      "eng": "These equations apply to straight-line motion with constant acceleration. Choose a positive direction, identify initial and final velocities, displacement and time, then select an equation without unnecessary unknowns. Displacement is not distance travelled. If acceleration differs between stages, solve each stage separately rather than treating the whole motion as uniformly accelerated."
+    },
+    "55": {
+      "chn": "地表附近忽略空氣阻力時，不同質量物體都有大小約為 9.81 m s⁻²、鉛直向下的重力加速度。上拋時物體向上而加速度向下，到最高點速度瞬間為零但加速度不為零。選向上為正時，整段飛行的加速度均取負值。",
+      "eng": "Near Earth's surface, neglecting air resistance, objects of different masses have the same downward gravitational acceleration, approximately 9.81 m s⁻². A rising object still accelerates downwards. At its highest point velocity is momentarily zero but acceleration is not. With upwards positive, acceleration is negative throughout the flight."
+    },
+    "56": {
+      "chn": "地表附近忽略空氣阻力時，不同質量物體都有大小約為 9.81 m s⁻²、鉛直向下的重力加速度。上拋時物體向上而加速度向下，到最高點速度瞬間為零但加速度不為零。選向上為正時，整段飛行的加速度均取負值。",
+      "eng": "Near Earth's surface, neglecting air resistance, objects of different masses have the same downward gravitational acceleration, approximately 9.81 m s⁻². A rising object still accelerates downwards. At its highest point velocity is momentarily zero but acceleration is not. With upwards positive, acceleration is negative throughout the flight."
+    },
+    "57": {
+      "chn": "慣性是物體維持靜止或恆速度運動的傾向。質量越大，慣性越大，同樣合力產生的加速度越小。慣性是物體的性質。沒有阻力且合力為零時，物體可以一直保持恆速度運動。",
+      "eng": "Inertia is the tendency to maintain rest or constant velocity. Greater mass means greater inertia, so the same resultant force produces a smaller change in velocity per second. Inertia is a property, not an additional force. Without resistance, no continuing forward resultant force is needed to maintain constant velocity."
+    },
+    "58": {
+      "chn": "慣性是物體維持靜止或恆速度運動的傾向。質量越大，慣性越大，同樣合力產生的加速度越小。慣性是物體的性質。沒有阻力且合力為零時，物體可以一直保持恆速度運動。",
+      "eng": "Inertia is the tendency to maintain rest or constant velocity. Greater mass means greater inertia, so the same resultant force produces a smaller change in velocity per second. Inertia is a property, not an additional force. Without resistance, no continuing forward resultant force is needed to maintain constant velocity."
+    },
+    "59": {
+      "chn": "在慣性參考系中，物體若不受合力作用，就保持靜止或沿直線作恆速度運動。這表示力的作用是改變速度，而不是維持速度。合力為零不等於每一道力都為零。",
+      "eng": "In an inertial frame, an object with zero resultant force remains at rest or moves with constant velocity in a straight line. Force changes velocity rather than maintaining it. Zero resultant force does not mean that every individual force is zero."
+    },
+    "60": {
+      "chn": "質量不變時，物體的加速度由合力決定，方向與合力相同。同一質量受到的合力越大，加速度越大。同一合力作用下，質量越大，加速度越小。計算時先畫受力圖，再按方向合成各個力。",
+      "eng": "For constant mass, acceleration is determined by the resultant force and points in its direction. A greater resultant force gives greater acceleration for the same mass. A larger mass accelerates less under the same force. Draw a free-body diagram and combine all forces with signs before applying the law."
+    },
+    "61": {
+      "chn": "質量不變時，物體的加速度由合力決定，方向與合力相同。同一質量受到的合力越大，加速度越大。同一合力作用下，質量越大，加速度越小。計算時先畫受力圖，再按方向合成各個力。",
+      "eng": "For constant mass, acceleration is determined by the resultant force and points in its direction. A greater resultant force gives greater acceleration for the same mass. A larger mass accelerates less under the same force. Draw a free-body diagram and combine all forces with signs before applying the law."
+    },
+    "62": {
+      "chn": "質量反映慣性，單位是 kg，通常不隨所在地改變。重量是重力場對物體施加的引力，單位是 N，大小等於質量乘當地重力場強度。物體到月球後，質量不變，重量減小。重量有方向。磅量度的是支持力，讀數可能與重量不同。",
+      "eng": "Mass measures inertia, is expressed in kg and normally remains unchanged when location changes. Weight is gravitational force, measured in N, equal to mass times local gravitational field strength. On the Moon, mass is unchanged but weight is smaller. Weight has direction, and a scale's support-force reading need not equal weight."
+    },
+    "63": {
+      "chn": "質量反映慣性，單位是 kg，通常不隨所在地改變。重量是重力場對物體施加的引力，單位是 N，大小等於質量乘當地重力場強度。物體到月球後，質量不變，重量減小。重量有方向。磅量度的是支持力，讀數可能與重量不同。",
+      "eng": "Mass measures inertia, is expressed in kg and normally remains unchanged when location changes. Weight is gravitational force, measured in N, equal to mass times local gravitational field strength. On the Moon, mass is unchanged but weight is smaller. Weight has direction, and a scale's support-force reading need not equal weight."
+    },
+    "64": {
+      "chn": "物體在流體中下落時，速率越大，向上的阻力越大。當阻力與浮力的總和等於重量，合力和加速度便為零，物體以固定的終端速率繼續下落。若浮力可忽略，這個平衡便簡化為阻力等於重量。",
+      "eng": "As an object falls through a fluid, increasing speed raises the upward drag. Terminal speed is reached when drag plus upthrust balances weight, making resultant force and acceleration zero while the object continues falling. Only when upthrust is negligible can the balance be simplified to drag equals weight."
+    },
+    "65": {
+      "chn": "兩物體相互作用時，彼此施加的力大小相等、方向相反、同時出現，並且分別作用於不同物體。這對力不能在單一物體的受力圖中互相抵消。只有把兩物體一併選作系統時，這些內力才在合力相加中抵消。",
+      "eng": "Two interacting objects exert simultaneous forces of equal magnitude and opposite direction on each other. The forces act on different objects, so they do not cancel in one object's free-body diagram. They cancel as internal forces only when both objects are included in a single system."
+    },
+    "66": {
+      "chn": "由不可伸長的繩等約束、具有相同加速度的物體，可先視為一個系統。把各物體的受力方程相加，內部拉力會抵消，便可用外力和總質量求加速度。再選其中一個物體列式，便可求繩張力或接觸力。",
+      "eng": "Objects with the same acceleration, for example those joined by an inextensible string, can first be treated as one system. Adding their force equations cancels internal tensions, allowing acceleration to be found from external forces and total mass. Then analyse an individual object to find tension or contact force."
+    },
+    "67": {
+      "chn": "一個斜向力可分解為互相垂直的水平和鉛直分量，兩分量合起來的效果等同原力。若角度從正 x 軸量起，鄰邊分量用餘弦、對邊用正弦。若角度改從鉛直量起，兩者便交換。分量要按所選軸保留方向及正負。",
+      "eng": "A force can be replaced by perpendicular components with the same combined effect. If its angle is measured from the positive x-axis, the adjacent component uses cosine and the opposite component uses sine. Measuring from the vertical interchanges these roles. Assign signs according to the chosen axes and each component's direction."
+    },
+    "68": {
+      "chn": "力矩表示力使物體繞支點轉動的作用。大小等於力乘垂直力臂。垂直力臂是支點到力的作用線的垂直距離。力越大或力臂越長，力矩越大。也可用垂直於支點至作用點連線的力分量計算。方向須註明順時針或逆時針。",
+      "eng": "A moment measures a force's turning effect about a pivot. Its magnitude is force times the perpendicular distance from the pivot to the force's line of action. Equivalently, use the perpendicular force component times the distance to the application point. An arbitrary sloping distance is not the lever arm. State whether the moment is clockwise or anticlockwise."
+    },
+    "69": {
+      "chn": "力矩表示力使物體繞支點轉動的作用。大小等於力乘垂直力臂。垂直力臂是支點到力的作用線的垂直距離。力越大或力臂越長，力矩越大。也可用垂直於支點至作用點連線的力分量計算。方向須註明順時針或逆時針。",
+      "eng": "A moment measures a force's turning effect about a pivot. Its magnitude is force times the perpendicular distance from the pivot to the force's line of action. Equivalently, use the perpendicular force component times the distance to the application point. An arbitrary sloping distance is not the lever arm. State whether the moment is clockwise or anticlockwise."
+    },
+    "70": {
+      "chn": "力矩表示力使物體繞支點轉動的作用。大小等於力乘垂直力臂。垂直力臂是支點到力的作用線的垂直距離。力越大或力臂越長，力矩越大。也可用垂直於支點至作用點連線的力分量計算。方向須註明順時針或逆時針。",
+      "eng": "A moment measures a force's turning effect about a pivot. Its magnitude is force times the perpendicular distance from the pivot to the force's line of action. Equivalently, use the perpendicular force component times the distance to the application point. An arbitrary sloping distance is not the lever arm. State whether the moment is clockwise or anticlockwise."
+    },
+    "71": {
+      "chn": "剛體平衡須同時滿足合力為零及合力矩為零，分別排除平移加速度和轉動加速度。列式時把各方向力分開，再選方便的支點計算力矩。通過支點的力力矩為零，但它仍須列入合力方程。",
+      "eng": "Equilibrium requires both zero resultant force and zero resultant moment, excluding translational and angular acceleration respectively. Resolve forces along suitable axes and choose a convenient pivot for moments. A force through the pivot contributes no moment about it, but must still appear in the force-balance equations."
+    },
+    "72": {
+      "chn": "重心是物體重量的合力作用點。在均勻重力場中，可從重心畫出鉛直向下的重量，並據此計算重力力矩。重心的鉛直投影在支承範圍內，物體可保持穩定。超出範圍便會傾倒。降低重心或擴大底座，通常可提高穩定性。",
+      "eng": "The centre of gravity is the point through which the resultant weight can be treated as acting. In a uniform gravitational field, draw the weight vertically downwards from this point when calculating moments. Toppling depends on whether its vertical projection lies within the support base. A lower centre of gravity and wider base generally improve stability."
+    },
+    "73": {
+      "chn": "力在物體發生位移時可轉移能量，但只有沿位移方向的力分量做功。同向分量做正功、反向分量做負功，垂直於位移的力不做功。有力但沒有位移，也不會做這種機械功。恆力公式使用的是力與位移的夾角。",
+      "eng": "A force transfers mechanical energy through displacement, but only its component along the displacement does work. A component in the same direction does positive work. An opposing one does negative work. A perpendicular force does none. Force without displacement also does no such mechanical work. The constant-force formula uses the angle between force and displacement."
+    },
+    "74": {
+      "chn": "力在物體發生位移時可轉移能量，但只有沿位移方向的力分量做功。同向分量做正功、反向分量做負功，垂直於位移的力不做功。有力但沒有位移，也不會做這種機械功。恆力公式使用的是力與位移的夾角。",
+      "eng": "A force transfers mechanical energy through displacement, but only its component along the displacement does work. A component in the same direction does positive work. An opposing one does negative work. A perpendicular force does none. Force without displacement also does no such mechanical work. The constant-force formula uses the angle between force and displacement."
+    },
+    "75": {
+      "chn": "力在物體發生位移時可轉移能量，但只有沿位移方向的力分量做功。同向分量做正功、反向分量做負功，垂直於位移的力不做功。有力但沒有位移，也不會做這種機械功。恆力公式使用的是力與位移的夾角。",
+      "eng": "A force transfers mechanical energy through displacement, but only its component along the displacement does work. A component in the same direction does positive work. An opposing one does negative work. A perpendicular force does none. Force without displacement also does no such mechanical work. The constant-force formula uses the angle between force and displacement."
+    },
+    "76": {
+      "chn": "當 1 N 的力使物體沿該力方向移動 1 m，力做的功為 1 J。功是能量轉移，所以與能量使用同一單位。雖然力矩的單位也可寫成 N m，它表示轉動作用而不是能量，通常不把力矩寫成 J。",
+      "eng": "A force of 1 N moving its application point 1 m in the force's direction does 1 J of work. Work is energy transfer, so both use joules. Although moment can also be expressed in N m, it describes turning effect rather than energy and is not normally expressed in joules."
+    },
+    "77": {
+      "chn": "動能是物體因運動而具有的能量，平移動能與質量成正比、與速率平方成正比。速率加倍時動能變成四倍，而改變運動方向但保持速率不會改變動能。動能是非負標量。此公式適用於速率遠低於光速的情況。",
+      "eng": "Translational kinetic energy is energy due to motion, proportional to mass and the square of speed. Doubling speed quadruples kinetic energy. Changing direction alone while keeping speed fixed does not change it. Kinetic energy is a non-negative scalar. The classical expression applies at speeds much lower than the speed of light."
+    },
+    "78": {
+      "chn": "近地面的重力場近似均勻。物體升高時，重力勢能的增加量等於重量乘鉛直高度增加量。勢能零點可自行選擇，但同一題須一致。高度差要量鉛直距離。下降時，重力勢能減少，可轉化為動能或其他形式的能量。",
+      "eng": "Near Earth's surface in an approximately uniform field, raising an object increases gravitational potential energy by its weight times its vertical height increase. The zero level is arbitrary but must remain consistent within a problem. Use vertical height, not slope length or path length. During descent, lost potential energy can become kinetic or other forms of energy."
+    },
+    "79": {
+      "chn": "近地面的重力場近似均勻。物體升高時，重力勢能的增加量等於重量乘鉛直高度增加量。勢能零點可自行選擇，但同一題須一致。高度差要量鉛直距離。下降時，重力勢能減少，可轉化為動能或其他形式的能量。",
+      "eng": "Near Earth's surface in an approximately uniform field, raising an object increases gravitational potential energy by its weight times its vertical height increase. The zero level is arbitrary but must remain consistent within a problem. Use vertical height, not slope length or path length. During descent, lost potential energy can become kinetic or other forms of energy."
+    },
+    "80": {
+      "chn": "能量能在物體之間轉移，也能在動能、勢能、內能等形式之間轉化，但不能憑空產生或消失。孤立系統的總能量不變。若選定系統與外界交換能量，就須把輸入和輸出一併計算。摩擦造成機械能減少，仍符合總能量守恆。",
+      "eng": "Energy can be transferred between objects and converted between kinetic, potential, internal and other forms, but cannot be created or destroyed. Total energy remains constant in an isolated system. For a system exchanging energy with its surroundings, include all inputs and outputs. Friction reduces mechanical energy without violating conservation of total energy."
+    },
+    "81": {
+      "chn": "只有保守力做功，且沒有其他能量輸入或散失時，動能與勢能的總和保持不變。物體下降時，勢能可轉為動能。上升時則相反。如果摩擦、空氣阻力或引擎做功不可忽略，須把這些能量轉移一併列入方程。",
+      "eng": "Kinetic plus potential energy remains constant when only conservative forces do work and there is no other energy input or loss. Falling converts potential into kinetic energy. Rising reverses this. If friction, air resistance or an engine does appreciable work, include that transfer rather than equating the initial and final mechanical energies directly."
+    },
+    "82": {
+      "chn": "物體克服阻力運動時，一部分機械能轉為內能等形式。若沒有其他輸入，初機械能等於末機械能加上這部分損失。公式中的損失量取正值，與阻力對物體所做的負功大小相同。總能量並未消失。",
+      "eng": "Motion against resistance converts some mechanical energy into internal or other forms. With no other input, initial mechanical energy equals final mechanical energy plus this loss. The loss is written as a positive amount, equal in magnitude to the negative work done by resistance. Total energy is not destroyed."
+    },
+    "83": {
+      "chn": "外部非保守力做的功等於系統機械能的改變。正功增加機械能，負功減少機械能。若已用重力勢能表示重力效應，就不再把重力功加一次。先界定系統、能量零點及哪些力已由勢能處理，才列能量方程。",
+      "eng": "Net non-conservative work changes the system's mechanical energy: positive work increases it and negative work decreases it. If gravity is already represented by gravitational potential energy, do not add gravitational work again. Define the system, energy reference level and forces represented by potential energy before writing the balance."
+    },
+    "84": {
+      "chn": "功率表示每單位時間轉移或轉換多少能量。平均功率用整段時間內的能量除以所需時間。1 W 表示每秒轉移 1 J。相同能量在較短時間內完成，功率較大。若功率隨時間改變，不能把平均值直接當作每一時刻的功率。",
+      "eng": "Power measures energy transferred or converted per unit time. Average power is the total energy transferred divided by the elapsed time; 1 W means 1 J per second. Transferring the same energy in less time requires greater average power. If power varies, this average need not equal the instantaneous power at any chosen moment."
+    },
+    "85": {
+      "chn": "某力的瞬時功率，等於它沿速度方向的分量乘當時的速率。力與速度同方向時，直接相乘。互相垂直時，功率為零。反方向時，功率為負。求某一時刻的功率，須用該時刻的速率。",
+      "eng": "The instantaneous power of a force is its component along the velocity multiplied by the instantaneous speed. Parallel force and velocity give their simple product. Perpendicular force gives zero power and opposing force gives negative power. An average speed over an interval cannot generally replace the instantaneous speed when finding power at a particular moment."
+    },
+    "86": {
+      "chn": "動能是物體因運動而具有的能量，平移動能與質量成正比、與速率平方成正比。速率加倍時動能變成四倍，而改變運動方向但保持速率不會改變動能。動能是非負標量。此公式適用於速率遠低於光速的情況。",
+      "eng": "Translational kinetic energy is energy due to motion, proportional to mass and the square of speed. Doubling speed quadruples kinetic energy. Changing direction alone while keeping speed fixed does not change it. Kinetic energy is a non-negative scalar. The classical expression applies at speeds much lower than the speed of light."
+    },
+    "87": {
+      "chn": "近地面的重力場近似均勻。物體升高時，重力勢能的增加量等於重量乘鉛直高度增加量。勢能零點可自行選擇，但同一題須一致。高度差要量鉛直距離。下降時，重力勢能減少，可轉化為動能或其他形式的能量。",
+      "eng": "Near Earth's surface in an approximately uniform field, raising an object increases gravitational potential energy by its weight times its vertical height increase. The zero level is arbitrary but must remain consistent within a problem. Use vertical height, not slope length or path length. During descent, lost potential energy can become kinetic or other forms of energy."
+    },
+    "88": {
+      "chn": "某力的瞬時功率，等於它沿速度方向的分量乘當時的速率。力與速度同方向時，直接相乘。互相垂直時，功率為零。反方向時，功率為負。求某一時刻的功率，須用該時刻的速率。",
+      "eng": "The instantaneous power of a force is its component along the velocity multiplied by the instantaneous speed. Parallel force and velocity give their simple product. Perpendicular force gives zero power and opposing force gives negative power. An average speed over an interval cannot generally replace the instantaneous speed when finding power at a particular moment."
+    },
+    "89": {
+      "chn": "動量是質量乘速度的矢量，方向與速度一致。同速率下質量越大，動量大小越大。比較碰撞前後時，先選正方向，反向運動的速度及動量取負值。動量不是動能：動量與速度一次方有關，動能則與速率平方有關。",
+      "eng": "Momentum is mass times velocity and is a vector in the velocity's direction. At the same speed, greater mass gives greater momentum magnitude. Choose a positive direction before comparing collisions and assign negative signs to motion in the opposite direction. Unlike kinetic energy, momentum depends on velocity to the first power rather than speed squared."
+    },
+    "90": {
+      "chn": "系統在相互作用期間若外界合衝量為零，碰撞或分離前後的總動量相同。選定系統後，按同一正方向把各物體動量作代數相加。黏在一起時末速度相同。動量守恆可用於彈性及非彈性碰撞，並不保證動能也守恆。",
+      "eng": "A system's total momentum is unchanged during an interaction if the net external impulse is zero. Add the signed momenta of all included objects using one direction convention. Objects sticking together share a final velocity. Momentum conservation applies to both elastic and inelastic collisions and does not imply conservation of kinetic energy."
+    },
+    "91": {
+      "chn": "系統在相互作用期間若外界合衝量為零，碰撞或分離前後的總動量相同。選定系統後，按同一正方向把各物體動量作代數相加。黏在一起時末速度相同。動量守恆可用於彈性及非彈性碰撞，並不保證動能也守恆。",
+      "eng": "A system's total momentum is unchanged during an interaction if the net external impulse is zero. Add the signed momenta of all included objects using one direction convention. Objects sticking together share a final velocity. Momentum conservation applies to both elastic and inelastic collisions and does not imply conservation of kinetic energy."
+    },
+    "92": {
+      "chn": "彈性碰撞前後，總動能相同。非彈性碰撞中，部分動能轉為形變、內能或聲能。完全非彈性碰撞後，物體會黏在一起。如果外界合衝量可忽略，這兩類碰撞的總動量均保持不變。",
+      "eng": "An elastic collision preserves total kinetic energy. In an inelastic collision, some kinetic energy becomes deformation, internal energy or sound. In a completely inelastic collision the objects stick together. Both conserve momentum when external impulse is negligible."
+    },
+    "93": {
+      "chn": "合力等於動量的變化率。對一段作用時間，平均合力可由末動量減初動量，再除以時間得到。反彈時初末速度方向相反，必須帶符號相減。相同動量改變若在較長時間完成，平均合力較小，這是緩衝裝置減小衝擊的原因。",
+      "eng": "Resultant force is the rate of change of momentum. Over an interval, average resultant force equals final minus initial momentum divided by elapsed time. Use signed velocities when an object rebounds. For the same momentum change, increasing the interaction time reduces the average force, explaining how cushioning reduces impact force."
+    },
+    "94": {
+      "chn": "合力等於動量的變化率。對一段作用時間，平均合力可由末動量減初動量，再除以時間得到。反彈時初末速度方向相反，必須帶符號相減。相同動量改變若在較長時間完成，平均合力較小，這是緩衝裝置減小衝擊的原因。",
+      "eng": "Resultant force is the rate of change of momentum. Over an interval, average resultant force equals final minus initial momentum divided by elapsed time. Use signed velocities when an object rebounds. For the same momentum change, increasing the interaction time reduces the average force, explaining how cushioning reduces impact force."
+    },
+    "95": {
+      "chn": "合力在一段時間內的衝量等於物體動量的改變，也等於合力—時間圖與時間軸之間的有向面積。力不恆定時可由圖形面積求衝量，再除以時間求平均力。正負面積表示不同方向，單位 N s 與 kg m s⁻¹ 相同。",
+      "eng": "The impulse of the resultant force equals the change in momentum and the signed area under the resultant-force-time graph. For a varying force, find impulse from the graph and divide by duration to obtain average force. Positive and negative areas represent opposite directions; N s is equivalent to kg m s⁻¹."
+    },
+    "96": {
+      "chn": "忽略空氣阻力時，拋體只有向下的重力加速度：水平方向保持恆速度，鉛直方向作勻加速運動。兩方向共用同一飛行時間，卻可分別列式。最高點只有鉛直速度為零，水平速度及向下加速度通常仍非零。",
+      "eng": "Neglecting air resistance, a projectile has only downward gravitational acceleration. Its horizontal velocity is constant while its vertical motion has uniform acceleration. Both components share the same flight time but can be calculated separately. At the highest point only vertical velocity is zero. Horizontal velocity and downward acceleration generally remain non-zero."
+    },
+    "97": {
+      "chn": "角位移描述繞圓心轉過的角度，弧度數等於所掃弧長除以半徑。一整圈為 2π rad。用弧長關係或圓周運動公式時須把角度換成弧度。不同半徑上轉過相同角度，弧長不同，不能把角位移當成直線位移。",
+      "eng": "Angular displacement describes rotation about a centre. In radians it equals arc length divided by radius, with one complete turn equal to 2π rad. Convert angles to radians when using arc-length or circular-motion equations. The same angle at different radii gives different arc lengths, so angular and linear displacement are not interchangeable."
+    },
+    "98": {
+      "chn": "角速率描述每秒轉過多少弧度，線速率描述沿圓周每秒走多遠。同一角速率下，半徑越大，線速率越大。勻速圓周運動一圈走 2πr、轉 2π rad，因此可由一圈所需的週期換算兩種速率，並留意各自單位不同。",
+      "eng": "Angular speed is the angle in radians swept out per second. Linear speed is distance travelled along the circle per second. At fixed angular speed, a larger radius gives greater linear speed. A complete uniform revolution covers 2πr and 2π rad, allowing both speeds to be found from the period. Their units differ."
+    },
+    "99": {
+      "chn": "角速率描述每秒轉過多少弧度，線速率描述沿圓周每秒走多遠。同一角速率下，半徑越大，線速率越大。勻速圓周運動一圈走 2πr、轉 2π rad，因此可由一圈所需的週期換算兩種速率，並留意各自單位不同。",
+      "eng": "Angular speed is the angle in radians swept out per second. Linear speed is distance travelled along the circle per second. At fixed angular speed, a larger radius gives greater linear speed. A complete uniform revolution covers 2πr and 2π rad, allowing both speeds to be found from the period. Their units differ."
+    },
+    "100": {
+      "chn": "角速率描述每秒轉過多少弧度，線速率描述沿圓周每秒走多遠。同一角速率下，半徑越大，線速率越大。勻速圓周運動一圈走 2πr、轉 2π rad，因此可由一圈所需的週期換算兩種速率，並留意各自單位不同。",
+      "eng": "Angular speed is the angle in radians swept out per second. Linear speed is distance travelled along the circle per second. At fixed angular speed, a larger radius gives greater linear speed. A complete uniform revolution covers 2πr and 2π rad, allowing both speeds to be found from the period. Their units differ."
+    },
+    "101": {
+      "chn": "勻速圓周運動的速率不變，速度方向卻持續改變，因此有指向圓心的加速度。提供這個加速度的徑向合力稱為向心力，由張力、重力或摩擦力等實際作用力合成。畫受力圖時，只畫實際作用力，再求它們的徑向合力。",
+      "eng": "In uniform circular motion, speed is constant but velocity continually changes direction. The acceleration therefore points towards the centre. The required radial resultant is called centripetal force. It is supplied by real forces such as tension, gravity or friction. Draw the real forces in the free-body diagram, then find their radial resultant."
+    },
+    "102": {
+      "chn": "勻速圓周運動的速率不變，速度方向卻持續改變，因此有指向圓心的加速度。提供這個加速度的徑向合力稱為向心力，由張力、重力或摩擦力等實際作用力合成。畫受力圖時，只畫實際作用力，再求它們的徑向合力。",
+      "eng": "In uniform circular motion, speed is constant but velocity continually changes direction. The acceleration therefore points towards the centre. The required radial resultant is called centripetal force. It is supplied by real forces such as tension, gravity or friction. Draw the real forces in the free-body diagram, then find their radial resultant."
+    },
+    "103": {
+      "chn": "兩個質量互相吸引，引力大小與兩質量的乘積成正比，與中心距離的平方成反比。雙方受力大小相同、方向相反。此簡式適用於質點或不重疊的球對稱物體。距離要從中心量，不是表面距離，也不是單純離地高度。",
+      "eng": "Two masses attract with a force proportional to their mass product and inversely proportional to the square of their centre-to-centre separation. Their forces are equal and opposite. The simple expression applies to point masses or non-overlapping spherically symmetric bodies. Use centre separation, not surface separation or altitude alone."
+    },
+    "104": {
+      "chn": "重力場強度是單位測試質量所受的引力，方向與重力相同，數值等於當地自由落體加速度。在球對稱天體外，離中心越遠，場強越小，並與中心距離的平方成反比。場強與測試物體的質量無關。高空的中心距離等於天體半徑加高度。",
+      "eng": "Gravitational field strength is force per unit test mass. It points in the direction of gravitational force and is numerically equal to local free-fall acceleration. Outside a spherical body, it decreases with the square of distance from the centre. It is independent of the test mass. At altitude, the distance from the centre is the body's radius plus the height above its surface."
+    },
+    "105": {
+      "chn": "重力場強度是單位測試質量所受的引力，方向與重力相同，數值等於當地自由落體加速度。在球對稱天體外，離中心越遠，場強越小，並與中心距離的平方成反比。場強與測試物體的質量無關。高空的中心距離等於天體半徑加高度。",
+      "eng": "Gravitational field strength is force per unit test mass. It points in the direction of gravitational force and is numerically equal to local free-fall acceleration. Outside a spherical body, it decreases with the square of distance from the centre. It is independent of the test mass. At altitude, the distance from the centre is the body's radius plus the height above its surface."
+    },
+    "106": {
+      "chn": "重力場強度是單位測試質量所受的引力，方向與重力相同，數值等於當地自由落體加速度。在球對稱天體外，離中心越遠，場強越小，並與中心距離的平方成反比。場強與測試物體的質量無關。高空的中心距離等於天體半徑加高度。",
+      "eng": "Gravitational field strength is force per unit test mass. It points in the direction of gravitational force and is numerically equal to local free-fall acceleration. Outside a spherical body, it decreases with the square of distance from the centre. It is independent of the test mass. At altitude, the distance from the centre is the body's radius plus the height above its surface."
+    },
+    "107": {
+      "chn": "在沒有持續推力的圓軌道中，引力提供衞星所需的向心合力。把引力和向心合力的公式聯立，可求軌道速率和角速率。繞同一天體運行時，軌道半徑越大，速率和角速率越小，週期越長。半徑由天體中心量起。這個結果適用於圓軌道。",
+      "eng": "For an unpowered circular orbit, gravity supplies the satellite's centripetal resultant force. Equating the two expressions gives orbital speed and angular speed. Around the same central body, a larger orbital radius means lower speed and angular speed but a longer period. Measure radius from the body's centre. This result applies to circular orbits."
+    },
+    "108": {
+      "chn": "在沒有持續推力的圓軌道中，引力提供衞星所需的向心合力。把引力和向心合力的公式聯立，可求軌道速率和角速率。繞同一天體運行時，軌道半徑越大，速率和角速率越小，週期越長。半徑由天體中心量起。這個結果適用於圓軌道。",
+      "eng": "For an unpowered circular orbit, gravity supplies the satellite's centripetal resultant force. Equating the two expressions gives orbital speed and angular speed. Around the same central body, a larger orbital radius means lower speed and angular speed but a longer period. Measure radius from the body's centre. This result applies to circular orbits."
+    },
+    "109": {
+      "chn": "入射線、反射線和法線在同一平面上，而且反射角等於入射角。兩個角都從垂直於反射面的法線量起，不能從鏡面量起。曲面鏡則在入射點畫當地法線。作圖時先畫法線，再在另一側畫相同角度的反射線。",
+      "eng": "The incident ray, reflected ray and normal lie in the same plane, and the angle of reflection equals the angle of incidence. Both angles are measured from the normal, not the mirror surface. For a curved surface, use the local normal at the incidence point. Draw this first, then draw the reflected ray at the matching angle."
+    },
+    "110": {
+      "chn": "平面鏡形成正立、等大、左右橫向倒置的虛像，像位於鏡後，與鏡面的垂直距離等於物體到鏡面的垂直距離。反射光線並沒有真正穿過鏡後的像點，而是其反向延長線相交，所以此像不能投射到屏幕上。",
+      "eng": "A plane mirror forms an upright, same-sized, laterally inverted virtual image. Its perpendicular distance behind the mirror equals the object's perpendicular distance in front. Reflected rays do not actually pass through the image point. Only their backward extensions meet there, so the image cannot be projected onto a screen."
+    },
+    "111": {
+      "chn": "光進入另一介質時，速率會改變。斜入射進入光速較慢、折射率較高的介質，光線偏向法線。反之則偏離法線。入射角和折射角均由法線量度，並滿足斯涅爾定律。正入射時，速率可改變而方向不變。跨越界面時，頻率保持不變。",
+      "eng": "Light changes speed between media. At oblique incidence it bends towards the normal on entering a slower, higher-index medium, and away on entering a faster one. Snell's law relates the angles, both measured from the normal. At normal incidence the speed can change without a change in direction. Frequency remains unchanged across the boundary."
+    },
+    "112": {
+      "chn": "光進入另一介質時，速率會改變。斜入射進入光速較慢、折射率較高的介質，光線偏向法線。反之則偏離法線。入射角和折射角均由法線量度，並滿足斯涅爾定律。正入射時，速率可改變而方向不變。跨越界面時，頻率保持不變。",
+      "eng": "Light changes speed between media. At oblique incidence it bends towards the normal on entering a slower, higher-index medium, and away on entering a faster one. Snell's law relates the angles, both measured from the normal. At normal incidence the speed can change without a change in direction. Frequency remains unchanged across the boundary."
+    },
+    "113": {
+      "chn": "光進入另一介質時，速率會改變。斜入射進入光速較慢、折射率較高的介質，光線偏向法線。反之則偏離法線。入射角和折射角均由法線量度，並滿足斯涅爾定律。正入射時，速率可改變而方向不變。跨越界面時，頻率保持不變。",
+      "eng": "Light changes speed between media. At oblique incidence it bends towards the normal on entering a slower, higher-index medium, and away on entering a faster one. Snell's law relates the angles, both measured from the normal. At normal incidence the speed can change without a change in direction. Frequency remains unchanged across the boundary."
+    },
+    "114": {
+      "chn": "光進入另一介質時，速率會改變。斜入射進入光速較慢、折射率較高的介質，光線偏向法線。反之則偏離法線。入射角和折射角均由法線量度，並滿足斯涅爾定律。正入射時，速率可改變而方向不變。跨越界面時，頻率保持不變。",
+      "eng": "Light changes speed between media. At oblique incidence it bends towards the normal on entering a slower, higher-index medium, and away on entering a faster one. Snell's law relates the angles, both measured from the normal. At normal incidence the speed can change without a change in direction. Frequency remains unchanged across the boundary."
+    },
+    "115": {
+      "chn": "折射率是真空光速除以該頻率的光在介質中的速率，因此折射率越高，光速越低。折射率沒有單位，且可隨波長改變。光由一介質進入另一介質時頻率不變，波長則隨速率改變。空氣折射率在一般題目中近似為 1。",
+      "eng": "Refractive index is vacuum light speed divided by light speed in the medium at the specified frequency. A higher index therefore means slower light. Index is dimensionless and can depend on wavelength. Across a boundary, frequency remains constant while wavelength changes with speed. Air is normally approximated as having index 1."
+    },
+    "117": {
+      "chn": "光由較高折射率介質射向較低折射率介質時，入射角越大，折射光越接近界面。折射角達 90° 時，對應的入射角稱為臨界角，此時折射光沿界面傳播。入射角再增大，便發生全內反射。所有角度均由法線量起。",
+      "eng": "For light travelling from higher to lower refractive index, increasing incidence angle brings the refracted ray closer to the boundary. The critical angle gives a refracted angle of 90°. Total internal reflection occurs only above this critical angle. At equality, the refracted ray runs along the boundary. All angles are measured from the normal."
+    },
+    "118": {
+      "chn": "光由較高折射率介質射向較低折射率介質時，入射角越大，折射光越接近界面。折射角達 90° 時，對應的入射角稱為臨界角，此時折射光沿界面傳播。入射角再增大，便發生全內反射。所有角度均由法線量起。",
+      "eng": "For light travelling from higher to lower refractive index, increasing incidence angle brings the refracted ray closer to the boundary. The critical angle gives a refracted angle of 90°. Total internal reflection occurs only above this critical angle. At equality, the refracted ray runs along the boundary. All angles are measured from the normal."
+    },
+    "119": {
+      "chn": "實像由光線真正會聚形成，可用屏幕承接。虛像由光線的反向延長線相交形成，光線並未通過像點，不能直接投到屏幕上。眼睛仍可看見虛像，因為入眼光線看起來像由該位置發出。",
+      "eng": "A real image is formed by actual convergence of rays and can be captured on a screen. A virtual image is formed where backward ray extensions meet. The rays do not pass through it, so it cannot be directly projected. Virtual images are still visible because light entering the eye appears to originate from their positions."
+    },
+    "120": {
+      "chn": "凸透鏡前放置實物時，成像情況取決於物距。物距大於焦距，形成倒立實像。小於焦距，形成正立、放大的虛像。等於焦距，出射光平行，沒有有限距離的像。實像的大小也隨物距改變：物體在兩倍焦距外，像縮小。在兩倍焦距處，像等大。在一倍與兩倍焦距之間，像放大。",
+      "eng": "For a real object in front of a convex lens, the image depends on object distance. Beyond the focal distance, the image is real and inverted. Inside the focal distance, it is virtual, upright and enlarged. At the focal point, emerging rays are parallel and no finite-distance image forms. Real-image size also varies: diminished beyond twice the focal length, equal-sized at twice it, and enlarged between one and two focal lengths."
+    },
+    "121": {
+      "chn": "線放大率比較像高與物高，也可用像距大小與實物距的比值求得。大於 1 為放大，小於 1 為縮小。此卡採用大小比值，所以放大率非負，像的正倒立須另行説明。",
+      "eng": "Linear magnification compares image height with object height and can also be obtained from the magnitudes of image distance and real-object distance. Values above 1 mean enlargement and below 1 mean reduction. This card uses a non-negative size ratio, so orientation is stated separately."
+    },
+    "122": {
+      "chn": "凹透鏡使入射光束更發散。對放在鏡前的實物，出射線的反向延長線在物體同側相交，形成正立、縮小的虛像。作圖可用平行主軸的光線及穿過光心的光線求像。虛像位置通常在透鏡與近側焦點之間。",
+      "eng": "A concave lens diverges incident light. For a real object in front, backward extensions of emerging rays meet on the object's side, forming an upright, diminished virtual image between the lens and its near focal point. Use a ray parallel to the principal axis and a ray through the optical centre to locate it."
+    },
+    "123": {
+      "chn": "凹透鏡使入射光束更發散。對放在鏡前的實物，出射線的反向延長線在物體同側相交，形成正立、縮小的虛像。作圖可用平行主軸的光線及穿過光心的光線求像。虛像位置通常在透鏡與近側焦點之間。",
+      "eng": "A concave lens diverges incident light. For a real object in front, backward extensions of emerging rays meet on the object's side, forming an upright, diminished virtual image between the lens and its near focal point. Use a ray parallel to the principal axis and a ray through the optical centre to locate it."
+    },
+    "124": {
+      "chn": "薄透鏡方程描述物距、像距和焦距的關係，適用於近軸光線。本頁採用以下符號：實物距和實像距為正，虛像距為負。凸透鏡焦距為正，凹透鏡焦距為負。先判斷成像性質，再確定符號，統一距離單位後代入。物體在無限遠時，物距的倒數取零。",
+      "eng": "The thin-lens equation relates object distance, image distance and focal length for paraxial rays. This page takes real-object and real-image distances as positive, and virtual-image distance as negative. Focal length is positive for a convex lens and negative for a concave lens. Decide the image type and signs, then use consistent length units before substitution. For an object at infinity, reciprocal object distance is zero."
+    },
+    "125": {
+      "chn": "機械波傳播時，介質粒子在平衡位置附近振動，把能量傳向鄰近位置。粒子本身留在原位置附近。橫波的振動方向與傳播方向垂直，縱波則平行。縱波的位移也可畫成上下起伏的曲線。曲線表示位移大小，粒子仍沿傳播方向來回振動。",
+      "eng": "In a mechanical wave, particles oscillate near their equilibrium positions and transfer energy to neighbouring regions rather than travelling along with the waveform. Transverse vibrations are perpendicular to propagation. Longitudinal vibrations are parallel. An up-and-down plot of longitudinal displacement does not mean the particles themselves move vertically."
+    },
+    "126": {
+      "chn": "機械波傳播時，介質粒子在平衡位置附近振動，把能量傳向鄰近位置。粒子本身留在原位置附近。橫波的振動方向與傳播方向垂直，縱波則平行。縱波的位移也可畫成上下起伏的曲線。曲線表示位移大小，粒子仍沿傳播方向來回振動。",
+      "eng": "In a mechanical wave, particles oscillate near their equilibrium positions and transfer energy to neighbouring regions rather than travelling along with the waveform. Transverse vibrations are perpendicular to propagation. Longitudinal vibrations are parallel. An up-and-down plot of longitudinal displacement does not mean the particles themselves move vertically."
+    },
+    "127": {
+      "chn": "振幅是粒子離開平衡位置的最大位移，單位為長度。在橫波圖上，可由平衡線到波峯或波谷量得。波峯到波谷的高度是兩倍振幅，不能直接當成振幅。振幅描述振動大小，不決定波長或粒子沿傳播方向走了多遠。",
+      "eng": "Amplitude is the maximum displacement from equilibrium and has units of length. On a transverse-wave plot, measure from the equilibrium line to a crest or trough. Crest-to-trough height is twice the amplitude. Amplitude measures oscillation size, not wavelength or how far a particle travels along the propagation direction."
+    },
+    "128": {
+      "chn": "波長是在同一時刻，沿傳播方向量得的相鄰同相位點間距。同相位表示振動狀態相同，例如相鄰波峯、波谷或密部中心。波峯到相鄰波谷的距離則是半個波長。",
+      "eng": "Wavelength is the shortest separation, at the same instant, between adjacent points in the same state of oscillation, such as neighbouring crests, troughs or compression centres. Measure along the propagation direction. A crest to the next trough is half a wavelength."
+    },
+    "129": {
+      "chn": "週期是一個粒子完成一次完整振動所需的時間，頻率是一秒內完成的振動次數，兩者互為倒數。週期用 s，頻率用 Hz。讀位移—時間圖時可量相鄰波峯的時間差。不要把距離圖上的相鄰波峯間距誤作週期。",
+      "eng": "Period is the time for one complete oscillation. Frequency is the number of oscillations per second. They are reciprocals, measured in s and Hz respectively. On a displacement-time graph, the time between adjacent crests gives period. The separation between crests on a distance graph instead gives wavelength."
+    },
+    "130": {
+      "chn": "週期是一個粒子完成一次完整振動所需的時間，頻率是一秒內完成的振動次數，兩者互為倒數。週期用 s，頻率用 Hz。讀位移—時間圖時可量相鄰波峯的時間差。不要把距離圖上的相鄰波峯間距誤作週期。",
+      "eng": "Period is the time for one complete oscillation. Frequency is the number of oscillations per second. They are reciprocals, measured in s and Hz respectively. On a displacement-time graph, the time between adjacent crests gives period. The separation between crests on a distance graph instead gives wavelength."
+    },
+    "131": {
+      "chn": "週期是一個粒子完成一次完整振動所需的時間，頻率是一秒內完成的振動次數，兩者互為倒數。週期用 s，頻率用 Hz。讀位移—時間圖時可量相鄰波峯的時間差。不要把距離圖上的相鄰波峯間距誤作週期。",
+      "eng": "Period is the time for one complete oscillation. Frequency is the number of oscillations per second. They are reciprocals, measured in s and Hz respectively. On a displacement-time graph, the time between adjacent crests gives period. The separation between crests on a distance graph instead gives wavelength."
+    },
+    "132": {
+      "chn": "波速描述波形或相位沿介質傳播的快慢。一個週期內波形前進一個波長，因此波速等於頻率乘波長。這與粒子在原位振動的瞬時速率不同。計算前把波長及週期轉成相配單位，並確認所有量描述的是同一種波及同一介質。",
+      "eng": "Wave speed describes how fast the waveform or phase propagates. In one period it advances one wavelength, so speed equals frequency times wavelength. This differs from the instantaneous speed of a particle oscillating locally. Use consistent units and ensure all quantities refer to the same wave in the same medium."
+    },
+    "133": {
+      "chn": "波速描述波形或相位沿介質傳播的快慢。一個週期內波形前進一個波長，因此波速等於頻率乘波長。這與粒子在原位振動的瞬時速率不同。計算前把波長及週期轉成相配單位，並確認所有量描述的是同一種波及同一介質。",
+      "eng": "Wave speed describes how fast the waveform or phase propagates. In one period it advances one wavelength, so speed equals frequency times wavelength. This differs from the instantaneous speed of a particle oscillating locally. Use consistent units and ensure all quantities refer to the same wave in the same medium."
+    },
+    "134": {
+      "chn": "沿張緊繩或彈簧傳播的波，張力增加時傳得較快，每單位長度的質量增加時傳得較慢。波速取決於介質及其狀態，並非單靠搖動得更快就增大。介質條件固定時，提高波源頻率會縮短波長。",
+      "eng": "Waves on a taut string or spring travel faster with greater tension and slower with greater mass per unit length. Speed depends on the medium and its state, not simply on how rapidly the source is shaken. With unchanged medium conditions, increasing source frequency shortens wavelength."
+    },
+    "135": {
+      "chn": "理想正弦行波在均勻、無衰減的介質中傳播時，各粒子的振幅、頻率和週期相同，但不同位置的相位通常不同。位置圖顯示同一時刻、不同粒子的位移。時間圖則顯示同一粒子的位移如何改變。比較波形在前後時刻的位置，可判斷粒子的振動方向。",
+      "eng": "In an ideal sinusoidal travelling wave in a uniform, non-attenuating medium, particles have the same amplitude, frequency and period. Their phases generally differ with position. A position graph shows different particles at one instant. A time graph follows one particle. Comparing the waveform at successive instants shows a particle's direction of motion."
+    },
+    "136": {
+      "chn": "同一介質及相同狀態下，波速保持不變，波長便與頻率成反比。頻率加倍，波長減半。波跨入另一介質時，頻率由波源決定而保持不變，此時改變的是波速及波長。",
+      "eng": "In the same medium under unchanged conditions, wave speed stays fixed, so wavelength is inversely proportional to frequency: doubling frequency halves wavelength. On crossing into a different medium, source frequency remains unchanged while speed and wavelength change together."
+    },
+    "137": {
+      "chn": "波到達邊界後返回原介質，稱為反射。入射角等於反射角，兩者均由法線量度。在同一介質中反射，波速、頻率和波長均不變。反射後是否反相，則由邊界條件決定，例如固定端反射會反相。",
+      "eng": "Reflection returns a wave from a boundary into its original medium. Incidence and reflection angles, measured from the normal, are equal. Since the medium is unchanged, speed, frequency and wavelength remain unchanged. This angular rule is separate from phase reversal, which depends on the boundary conditions, such as reflection at a fixed end."
+    },
+    "138": {
+      "chn": "水波由深水進入淺水時，波速下降，頻率不變，所以波長縮短。斜入射會偏向法線。由淺水進入深水則相反。折射角與波速或波長比相連，角度須由法線量度。正入射雖不轉向，波速及波長仍會改變。",
+      "eng": "Water waves entering shallower water slow down while frequency stays constant, so wavelength decreases. Oblique rays bend towards the normal. The reverse occurs on entering deeper water. Refraction angles are related to speed or wavelength ratios and are measured from the normal. At normal incidence, speed and wavelength change even though direction does not."
+    },
+    "139": {
+      "chn": "水波由深水進入淺水時，波速下降，頻率不變，所以波長縮短。斜入射會偏向法線。由淺水進入深水則相反。折射角與波速或波長比相連，角度須由法線量度。正入射雖不轉向，波速及波長仍會改變。",
+      "eng": "Water waves entering shallower water slow down while frequency stays constant, so wavelength decreases. Oblique rays bend towards the normal. The reverse occurs on entering deeper water. Refraction angles are related to speed or wavelength ratios and are measured from the normal. At normal incidence, speed and wavelength change even though direction does not."
+    },
+    "140": {
+      "chn": "水波由深水進入淺水時，波速下降，頻率不變，所以波長縮短。斜入射會偏向法線。由淺水進入深水則相反。折射角與波速或波長比相連，角度須由法線量度。正入射雖不轉向，波速及波長仍會改變。",
+      "eng": "Water waves entering shallower water slow down while frequency stays constant, so wavelength decreases. Oblique rays bend towards the normal. The reverse occurs on entering deeper water. Refraction angles are related to speed or wavelength ratios and are measured from the normal. At normal incidence, speed and wavelength change even though direction does not."
+    },
+    "141": {
+      "chn": "波經過狹縫或障礙物邊緣時會擴散進入幾何陰影區，稱為衍射。相同縫寬下波長越長，或相同波長下縫越窄，擴散越明顯。波長與縫寬相近時最容易看出。衍射在同一介質內發生，不要求波速改變。",
+      "eng": "Diffraction is the spreading of waves through a gap or around an obstacle into the geometrical shadow. Spreading becomes more pronounced with a longer wavelength at fixed gap width, or a narrower gap at fixed wavelength. It is readily visible when wavelength and gap width are comparable. Diffraction within one medium does not require a speed change."
+    },
+    "142": {
+      "chn": "波經過狹縫或障礙物邊緣時會擴散進入幾何陰影區，稱為衍射。相同縫寬下波長越長，或相同波長下縫越窄，擴散越明顯。波長與縫寬相近時最容易看出。衍射在同一介質內發生，不要求波速改變。",
+      "eng": "Diffraction is the spreading of waves through a gap or around an obstacle into the geometrical shadow. Spreading becomes more pronounced with a longer wavelength at fixed gap width, or a narrower gap at fixed wavelength. It is readily visible when wavelength and gap width are comparable. Diffraction within one medium does not require a speed change."
+    },
+    "143": {
+      "chn": "兩列或更多波在同一位置重疊時，合位移是各波在該點的位移之和，必須按方向帶正負號相加。疊加的是位移而不是直接相加能量。兩脈衝相遇後，在理想線性介質中會繼續沿原方向傳播，暫時抵消不表示波被永久消滅。",
+      "eng": "When waves overlap, their resultant displacement at each point is the signed sum of individual displacements. Add displacements, not energies directly. After meeting, pulses in an ideal linear medium continue in their original directions. Temporary cancellation does not mean the waves have been permanently destroyed."
+    },
+    "144": {
+      "chn": "頻率相同、相位差固定的波，可形成穩定的干涉圖形。若兩波源同相，程差為整數個波長時相長，為半整數個波長時相消。完全抵消還須兩波振幅相等。若兩波源反相，相長和相消的程差條件便互換。",
+      "eng": "Waves of equal frequency and stable phase difference produce a stable interference pattern. For in-phase sources, integer-wavelength path differences give constructive interference and half-integer differences give destructive interference. Complete cancellation also requires equal amplitudes. Initially antiphase sources interchange these conditions, so source phase must be considered as well as path difference."
+    },
+    "145": {
+      "chn": "頻率相同、相位差固定的波，可形成穩定的干涉圖形。若兩波源同相，程差為整數個波長時相長，為半整數個波長時相消。完全抵消還須兩波振幅相等。若兩波源反相，相長和相消的程差條件便互換。",
+      "eng": "Waves of equal frequency and stable phase difference produce a stable interference pattern. For in-phase sources, integer-wavelength path differences give constructive interference and half-integer differences give destructive interference. Complete cancellation also requires equal amplitudes. Initially antiphase sources interchange these conditions, so source phase must be considered as well as path difference."
+    },
+    "146": {
+      "chn": "對同相相干水波源，在同一觀察區域，波長增大或波源間距減小，都會使相鄰節線和腹線分得更開。這時，觀察方向須改變更大的角度，程差才會達到下一個干涉條件。比較條紋時，其他條件須保持不變。",
+      "eng": "For coherent, in-phase water-wave sources in the same observation region, a longer wavelength or smaller source separation spreads neighbouring nodal and antinodal lines farther apart. The observation direction must then change through a larger angle to reach the next interference condition. Keep other conditions fixed when comparing patterns."
+    },
+    "147": {
+      "chn": "反射、折射、衍射和干涉都是波可展示的現象。其中衍射與干涉尤其能顯示波的疊加及擴散特性。單看反射或路徑偏折不足以確立波模型。",
+      "eng": "Reflection, refraction, diffraction and interference can all occur with waves. Diffraction and interference are particularly characteristic of wave spreading and superposition. Reflection or a deflected path alone does not establish a wave model."
+    },
+    "148": {
+      "chn": "兩列方向相反、頻率、振幅和速率相同的波疊加，可形成駐波。駐波的節點和腹點位置固定：節點振幅為零，腹點振幅最大。相鄰節點相距半個波長，節點與最近的腹點相距四分之一波長。駐波中各位置的振幅不同。",
+      "eng": "Oppositely travelling waves with equal frequency, amplitude and speed can superpose to form fixed nodes and antinodes. Nodes have zero amplitude and antinodes maximum amplitude. Adjacent nodes are half a wavelength apart. A node and its nearest antinode are a quarter wavelength apart. Unlike an ideal travelling wave, amplitudes vary with position."
+    },
+    "149": {
+      "chn": "兩條狹縫作為相干光源，在遠處屏幕上形成明暗相間的條紋。小角度下，相鄰亮紋或相鄰暗紋的間距，與波長和屏幕距離成正比，與兩縫間距成反比。兩縫間距是縫中心之間的距離。亮紋到最近暗紋的距離，是條紋間距的一半。",
+      "eng": "Two coherent slits produce alternating bright and dark fringes on a distant screen. At small angles, spacing between adjacent fringes of the same type is proportional to wavelength and screen distance and inversely proportional to slit separation. Slit separation is not slit width, and bright-to-nearest-dark spacing is only half the fringe spacing."
+    },
+    "150": {
+      "chn": "兩條狹縫作為相干光源，在遠處屏幕上形成明暗相間的條紋。小角度下，相鄰亮紋或相鄰暗紋的間距，與波長和屏幕距離成正比，與兩縫間距成反比。兩縫間距是縫中心之間的距離。亮紋到最近暗紋的距離，是條紋間距的一半。",
+      "eng": "Two coherent slits produce alternating bright and dark fringes on a distant screen. At small angles, spacing between adjacent fringes of the same type is proportional to wavelength and screen distance and inversely proportional to slit separation. Slit separation is not slit width, and bright-to-nearest-dark spacing is only half the fringe spacing."
+    },
+    "151": {
+      "chn": "光垂直入射等間距光柵時，相鄰縫射向同一方向的光若程差為整數個波長，便形成該級亮紋。對固定級次，波長越長或柵線間距越小，衍射角越大。屏幕移遠只改變亮紋位置，不改變角度。柵線密度要先取倒數求縫距。",
+      "eng": "For normal incidence on equally spaced slits, a bright order forms when rays from adjacent slits have an integer-wavelength path difference. At a fixed order, longer wavelength or smaller slit separation increases the diffraction angle. Moving the screen changes positions but not angles. Convert line density to slit separation by taking its reciprocal with consistent units."
+    },
+    "152": {
+      "chn": "光垂直入射等間距光柵時，相鄰縫射向同一方向的光若程差為整數個波長，便形成該級亮紋。對固定級次，波長越長或柵線間距越小，衍射角越大。屏幕移遠只改變亮紋位置，不改變角度。柵線密度要先取倒數求縫距。",
+      "eng": "For normal incidence on equally spaced slits, a bright order forms when rays from adjacent slits have an integer-wavelength path difference. At a fixed order, longer wavelength or smaller slit separation increases the diffraction angle. Moving the screen changes positions but not angles. Convert line density to slit separation by taking its reciprocal with consistent units."
+    },
+    "153": {
+      "chn": "光柵方程中的正弦值最多為 1，據此可求出允許的最大整數級次。如果某級次恰好對應 90°，光會沿光柵平面前進，不能到達前方屏幕。計算屏幕上可見的級次時須排除。求總亮紋數時，通常包括中央零級及兩側的對稱級次。",
+      "eng": "The grating equation and the condition that sine cannot exceed 1 determine the greatest allowed integer order. An order exactly at 90° travels along the grating plane and does not reach a screen in front, so exclude it when counting observable orders there. Total bright orders usually include the central zero order and symmetric orders on both sides."
+    },
+    "154": {
+      "chn": "聲音需要介質傳播。聲速取決於介質的彈性、密度和温度等條件。常見材料中，聲速通常在固體較大，液體次之，氣體較小，但仍有例外。在同一介質、相同狀態下，增大響度或改變波源頻率，一般不會直接改變聲速。",
+      "eng": "Sound requires a medium. Its speed depends on properties including elasticity, density and temperature. Common materials often transmit sound faster in solids than liquids and faster in liquids than gases, but this is not universal. With medium conditions fixed, increasing loudness or changing source frequency does not normally change sound speed directly."
+    },
+    "155": {
+      "chn": "聲波與其他波一樣會反射、折射、衍射和干涉：回聲來自反射，聲速不同的區域可使聲音轉向，聲音能繞過障礙物則涉及衍射。多個相干聲源可造成強弱相間位置。",
+      "eng": "Sound reflects, refracts, diffracts and interferes like other waves. Echoes result from reflection. Regions of different sound speed can bend propagation. Spreading around obstacles involves diffraction. Coherent sources can produce alternating loud and quiet positions."
+    },
+    "156": {
+      "chn": "年輕且聽力正常者的可聽頻率大約為 20 Hz 至 20 kHz，較低稱為次聲，較高稱為超聲。實際聽覺範圍因人及年齡而異。這是按頻率分類，並非按響度分類。超聲也不是電磁波，在真空中不能傳播。",
+      "eng": "A young person with normal hearing typically hears about 20 Hz to 20 kHz. Lower frequencies are infrasound and higher frequencies are ultrasound. Actual limits vary with age and individual hearing. This classification concerns frequency, not loudness. Ultrasound is a mechanical wave, not electromagnetic radiation, and cannot travel through a vacuum."
+    },
+    "157": {
+      "chn": "年輕且聽力正常者的可聽頻率大約為 20 Hz 至 20 kHz，較低稱為次聲，較高稱為超聲。實際聽覺範圍因人及年齡而異。這是按頻率分類，並非按響度分類。超聲也不是電磁波，在真空中不能傳播。",
+      "eng": "A young person with normal hearing typically hears about 20 Hz to 20 kHz. Lower frequencies are infrasound and higher frequencies are ultrasound. Actual limits vary with age and individual hearing. This classification concerns frequency, not loudness. Ultrasound is a mechanical wave, not electromagnetic radiation, and cannot travel through a vacuum."
+    },
+    "158": {
+      "chn": "音調主要隨頻率提高而升高。在可比較頻率和條件下，振幅越大通常聽起來越響。音品取決於波形及諧波成分，所以相同音調和響度的樂器仍可分辨。",
+      "eng": "Pitch generally rises with frequency. At comparable frequency and conditions, greater amplitude usually sounds louder. Quality or timbre depends on waveform and harmonic content, allowing instruments with the same pitch and loudness to sound different."
+    },
+    "159": {
+      "chn": "同性電荷互斥，異性電荷互吸，兩物體彼此受力大小相同。帶電體也可透過電荷重新分佈，吸引中性物體，所以吸引現象有不止一種可能。若兩物體互相排斥，便可直接判斷兩者帶同號電荷。",
+      "eng": "Like charges repel and unlike charges attract, with equal force magnitudes on the two objects. Attraction alone does not prove opposite net charges, since charge redistribution can make a charged object attract a neutral one. Repulsion provides direct evidence that both objects carry charges of the same sign."
+    },
+    "160": {
+      "chn": "孤立系統的淨電荷保持不變。充電是電荷轉移或分離的過程。摩擦可使兩物體帶上等量異號電荷。兩導體接觸後，總電荷仍守恆。電荷如何分配則取決於導體的形狀和大小，各自的電荷量可以改變。",
+      "eng": "Net charge remains constant in an isolated system. Charging transfers or separates charge rather than creating it. Rubbing can leave two objects with equal and opposite charges. When conductors touch, total charge is conserved, not each conductor's original charge. The final division need not be equal and depends on their geometry and size."
+    },
+    "161": {
+      "chn": "帶電體靠近中性物體時，可使正負電荷稍微分離，或令導體內的自由電子重新分佈。靠近帶電體的一側出現異號感應電荷，遠側則出現同號電荷。近側的吸引較強，因而產生淨吸引。物體的總淨電荷仍可為零。",
+      "eng": "A nearby charge slightly separates positive and negative charge within an insulator or redistributes free electrons in a conductor. Opposite induced charge lies nearer, so its stronger attraction can outweigh the farther like-charge repulsion. The neutral object's total net charge can remain zero while it experiences a net attraction."
+    },
+    "162": {
+      "chn": "真空或近似空氣中的兩點電荷，作用力大小與電荷量乘積成正比、與距離平方成反比，方向沿兩電荷連線。先用電荷量大小求力，再按同號相斥、異號相吸決定方向。有多個電荷時，要把各個力以矢量相加。",
+      "eng": "For point charges in vacuum, or approximately in air, force magnitude is proportional to the product of charge magnitudes and inversely proportional to separation squared. It acts along their joining line. Calculate the magnitude first, then determine attraction or repulsion from the signs. With multiple charges, add the individual forces as vectors."
+    },
+    "163": {
+      "chn": "電場表示每單位正測試電荷所受的電力，方向約定為正電荷受力方向。放入負電荷時，受力方向與電場相反。測試電荷須足夠小，避免明顯改變原有電荷分佈。電場由場源決定，不因用較大測試電荷量度就變強。",
+      "eng": "Electric field is electric force per unit positive test charge. Its direction is the force direction on a positive charge. A negative charge feels the opposite force. A test charge must be small enough not to appreciably disturb the source distribution. Using a larger test charge does not itself make the original field stronger."
+    },
+    "164": {
+      "chn": "點電荷的電場大小與場源電荷量成正比、與距離平方成反比。正電荷的場向外，負電荷的場向內。多個場源同時存在時，須逐一求該點的電場矢量再合成。某點電場為零，不表示附近沒有電荷或每個場都為零。",
+      "eng": "A point charge's electric field magnitude is proportional to source charge magnitude and inversely proportional to distance squared. It points outwards from positive charge and inwards towards negative charge. Add fields from multiple sources as vectors at the specified point. A zero resultant field does not imply absent charges or zero individual fields."
+    },
+    "165": {
+      "chn": "大平行板之間遠離邊緣處的電場近似均勻，大小等於板間電勢差除以板距，方向由高電勢指向低電勢。固定電壓下縮小板距會增強電場。粒子受力還須乘其電荷，負電荷受力與場方向相反。",
+      "eng": "Between large parallel plates, away from edges, the field is approximately uniform. Its magnitude is potential difference divided by plate separation and its direction is from higher to lower potential. At fixed voltage, reducing separation strengthens the field. Multiply field by particle charge to find force. Negative charges are forced opposite the field direction."
+    },
+    "166": {
+      "chn": "真空或近似空氣中的兩點電荷，作用力大小與電荷量乘積成正比、與距離平方成反比，方向沿兩電荷連線。先用電荷量大小求力，再按同號相斥、異號相吸決定方向。有多個電荷時，要把各個力以矢量相加。",
+      "eng": "For point charges in vacuum, or approximately in air, force magnitude is proportional to the product of charge magnitudes and inversely proportional to separation squared. It acts along their joining line. Calculate the magnitude first, then determine attraction or repulsion from the signs. With multiple charges, add the individual forces as vectors."
+    },
+    "167": {
+      "chn": "點電荷的電場大小與場源電荷量成正比、與距離平方成反比。正電荷的場向外，負電荷的場向內。多個場源同時存在時，須逐一求該點的電場矢量再合成。某點電場為零，不表示附近沒有電荷或每個場都為零。",
+      "eng": "A point charge's electric field magnitude is proportional to source charge magnitude and inversely proportional to distance squared. It points outwards from positive charge and inwards towards negative charge. Add fields from multiple sources as vectors at the specified point. A zero resultant field does not imply absent charges or zero individual fields."
+    },
+    "168": {
+      "chn": "電流是每單位時間通過截面的電荷量，1 A 表示每秒通過 1 C。傳統電流按正電荷移動方向定義，在外電路由電源正極流向負極。金屬中實際移動的電子方向相反。流過元件時能量可被轉換，但電荷不會被「用光」。",
+      "eng": "Current is charge passing a cross-section per unit time; 1 A is 1 C per second. Conventional current follows positive-charge motion, from the positive to negative terminal through the external circuit. Electrons in metals move oppositely. Components convert electrical energy, but do not use up the charge flowing through them."
+    },
+    "169": {
+      "chn": "電流是每單位時間通過截面的電荷量，1 A 表示每秒通過 1 C。傳統電流按正電荷移動方向定義，在外電路由電源正極流向負極。金屬中實際移動的電子方向相反。流過元件時能量可被轉換，但電荷不會被「用光」。",
+      "eng": "Current is charge passing a cross-section per unit time; 1 A is 1 C per second. Conventional current follows positive-charge motion, from the positive to negative terminal through the external circuit. Electrons in metals move oppositely. Components convert electrical energy, but do not use up the charge flowing through them."
+    },
+    "170": {
+      "chn": "電流是每單位時間通過截面的電荷量，1 A 表示每秒通過 1 C。傳統電流按正電荷移動方向定義，在外電路由電源正極流向負極。金屬中實際移動的電子方向相反。流過元件時能量可被轉換，但電荷不會被「用光」。",
+      "eng": "Current is charge passing a cross-section per unit time; 1 A is 1 C per second. Conventional current follows positive-charge motion, from the positive to negative terminal through the external circuit. Electrons in metals move oppositely. Components convert electrical energy, but do not use up the charge flowing through them."
+    },
+    "171": {
+      "chn": "穩定電路中沒有電荷持續積聚，所以同一串聯支路各處電流相同，而流入節點的總電流等於流出總電流。分支電流不一定平均分配，須由各支路電阻和電壓決定。不能把流經電阻後的電流説成因耗能而減少。",
+      "eng": "In a steady circuit, charge does not continually accumulate. Current is therefore the same everywhere along one series branch, and total current entering a junction equals total current leaving it. Branch currents need not be equal. They depend on branch resistances and voltages. Energy dissipation in a resistor does not consume current."
+    },
+    "172": {
+      "chn": "電源的電動勢表示它每輸送一單位電荷所提供的能量，以伏特表示，並不是一種力。實際電源有內阻時，部分能量在內部轉為熱，因此向外供電的端電壓可小於電動勢。無電流時端電壓才近似等於電動勢。",
+      "eng": "A source's electromotive force, or e.m.f., is energy supplied per unit charge and is measured in volts. It is not a force. Internal resistance dissipates some energy when a real source supplies current, so terminal voltage can be lower than e.m.f. With no current, terminal voltage is approximately equal to e.m.f."
+    },
+    "173": {
+      "chn": "兩點間的電勢差表示每單位電荷在兩點之間轉移時所對應的能量改變。在負載中可用轉換的電能除以通過電荷量求大小。1 V 相當於每庫侖 1 J。電壓是兩點之間的比較，並非流過元件的物理量。",
+      "eng": "Potential difference relates energy change to the charge transferred between two points. For a load, its magnitude can be found by dividing electrical energy converted by charge passing through. One volt is one joule per coulomb. Voltage is a comparison between points, not something that flows through a component."
+    },
+    "174": {
+      "chn": "兩點間的電勢差表示每單位電荷在兩點之間轉移時所對應的能量改變。在負載中可用轉換的電能除以通過電荷量求大小。1 V 相當於每庫侖 1 J。電壓是兩點之間的比較，並非流過元件的物理量。",
+      "eng": "Potential difference relates energy change to the charge transferred between two points. For a load, its magnitude can be found by dividing electrical energy converted by charge passing through. One volt is one joule per coulomb. Voltage is a comparison between points, not something that flows through a component."
+    },
+    "175": {
+      "chn": "串聯負載分配電源的端電壓，各段電勢差相加等於總端電壓。每段分得多少電壓，取決於電阻。連接同一對節點的並聯支路，電勢差則相同。如果電源有內阻，外電路的端電壓須與電動勢分別處理。",
+      "eng": "Series loads share the applied terminal voltage, with individual voltage drops adding to the total. Parallel branches connected to the same two nodes have equal potential differences. Series voltage division is not necessarily equal and depends on resistance. With source internal resistance, the external terminal voltage must not automatically be equated to e.m.f."
+    },
+    "176": {
+      "chn": "電池串聯時，電動勢按極性相加：同向相加，反向相減。相同電池以相同極性並聯，總電動勢與單一電池相同，而等效內阻較小。若電池的電動勢不同，可能產生電池間的環流，須另作分析。",
+      "eng": "Series-cell e.m.f.s add according to polarity: aligned cells add and opposing cells subtract. Identical cells connected in parallel with matching polarity have the same total e.m.f. as one cell, but a smaller equivalent internal resistance. Cells with unequal e.m.f.s can produce circulating currents and must be analysed separately."
+    },
+    "177": {
+      "chn": "電阻是某一工作狀態下，電壓與電流的比值。歐姆定律指出：温度及其他物理條件不變時，電壓與電流成正比，電阻保持恆定。燈絲升温時，電阻可改變，圖像便可能彎曲。讀圖時須先看坐標軸。電壓對電流的斜率是電阻，兩軸交換後則是電阻的倒數。",
+      "eng": "Resistance is the voltage-to-current ratio at an operating point. Ohm's law states that voltage is proportional to current when temperature and other physical conditions are fixed, giving constant resistance. Heating can change a filament's resistance and produce a curved graph. Check the axes: voltage plotted against current has slope equal to resistance. Exchanging the axes gives its reciprocal."
+    },
+    "178": {
+      "chn": "電阻是某一工作狀態下，電壓與電流的比值。歐姆定律指出：温度及其他物理條件不變時，電壓與電流成正比，電阻保持恆定。燈絲升温時，電阻可改變，圖像便可能彎曲。讀圖時須先看坐標軸。電壓對電流的斜率是電阻，兩軸交換後則是電阻的倒數。",
+      "eng": "Resistance is the voltage-to-current ratio at an operating point. Ohm's law states that voltage is proportional to current when temperature and other physical conditions are fixed, giving constant resistance. Heating can change a filament's resistance and produce a curved graph. Check the axes: voltage plotted against current has slope equal to resistance. Exchanging the axes gives its reciprocal."
+    },
+    "179": {
+      "chn": "均勻導線的電阻與長度及電阻率成正比，與橫截面積成反比。導線越長越難通電，越粗通常越容易通電。電阻率取決於材料及温度，計算面積時半徑或直徑要先換成正確單位。拉長導線若體積不變，截面積也會一起改變。",
+      "eng": "For a uniform wire, resistance is proportional to length and resistivity and inversely proportional to cross-sectional area. Longer wires resist more. Thicker ones resist less under comparable conditions. Resistivity depends on material and temperature. Convert radius or diameter correctly before calculating area. Stretching at constant volume changes both length and area."
+    },
+    "180": {
+      "chn": "均勻導線的電阻與長度及電阻率成正比，與橫截面積成反比。導線越長越難通電，越粗通常越容易通電。電阻率取決於材料及温度，計算面積時半徑或直徑要先換成正確單位。拉長導線若體積不變，截面積也會一起改變。",
+      "eng": "For a uniform wire, resistance is proportional to length and resistivity and inversely proportional to cross-sectional area. Longer wires resist more. Thicker ones resist less under comparable conditions. Resistivity depends on material and temperature. Convert radius or diameter correctly before calculating area. Stretching at constant volume changes both length and area."
+    },
+    "181": {
+      "chn": "串聯電阻流過同一電流，各電阻的電壓降相加，因此等效電阻等於各電阻之和。加入串聯電阻會增大總電阻，固定電源端電壓下總電流減少。同一電流下，較大的電阻分得較大的電壓，並非每個必定平均分壓。",
+      "eng": "Series resistors carry the same current and their voltage drops add, so equivalent resistance is the sum of individual resistances. Adding a series resistor increases total resistance and reduces current at fixed terminal voltage. With the same current, the larger resistor has the larger voltage drop. Voltage is not necessarily shared equally."
+    },
+    "182": {
+      "chn": "並聯電阻的電勢差相同，總電流等於各支路電流之和。因此，等效電阻的倒數等於各支路電阻倒數之和。對有限的正電阻，等效電阻小於每個支路電阻。只有兩個並聯電阻時，可用「乘積除以和」的快捷式。",
+      "eng": "Parallel resistors have equal potential differences and their branch currents add, giving the reciprocal-sum rule for equivalent resistance. The equivalent is smaller than every individual finite positive branch resistance. For exactly two branches, the product-over-sum shortcut applies. It cannot be used unchanged for three or more resistors."
+    },
+    "183": {
+      "chn": "並聯電阻的電勢差相同，總電流等於各支路電流之和。因此，等效電阻的倒數等於各支路電阻倒數之和。對有限的正電阻，等效電阻小於每個支路電阻。只有兩個並聯電阻時，可用「乘積除以和」的快捷式。",
+      "eng": "Parallel resistors have equal potential differences and their branch currents add, giving the reciprocal-sum rule for equivalent resistance. The equivalent is smaller than every individual finite positive branch resistance. For exactly two branches, the product-over-sum shortcut applies. It cannot be used unchanged for three or more resistors."
+    },
+    "184": {
+      "chn": "功率表示每單位時間轉移或轉換多少能量。平均功率用整段時間內的能量除以所需時間。1 W 表示每秒轉移 1 J。相同能量在較短時間內完成，功率較大。若功率隨時間改變，不能把平均值直接當作每一時刻的功率。",
+      "eng": "Power measures energy transferred or converted per unit time. Average power is the total energy transferred divided by the elapsed time; 1 W means 1 J per second. Transferring the same energy in less time requires greater average power. If power varies, this average need not equal the instantaneous power at any chosen moment."
+    },
+    "185": {
+      "chn": "電功率等於電壓乘電流。對電阻負載，也可寫成電流平方乘電阻，或電壓平方除以電阻。比較前先確定保持不變的量：電流固定時，電阻越大，功率越大。電壓固定時，電阻越大，功率越小。交流平均功率須使用適用的均方根關係。",
+      "eng": "Electrical power is voltage times current. For a resistive load, substituting the resistance relation gives current squared times resistance or voltage squared divided by resistance. Decide whether voltage or current is fixed before comparing powers: increasing resistance has opposite effects in these cases. Alternating-current mean power requires the applicable r.m.s. relations."
+    },
+    "186": {
+      "chn": "電功率等於電壓乘電流。對電阻負載，也可寫成電流平方乘電阻，或電壓平方除以電阻。比較前先確定保持不變的量：電流固定時，電阻越大，功率越大。電壓固定時，電阻越大，功率越小。交流平均功率須使用適用的均方根關係。",
+      "eng": "Electrical power is voltage times current. For a resistive load, substituting the resistance relation gives current squared times resistance or voltage squared divided by resistance. Decide whether voltage or current is fixed before comparing powers: increasing resistance has opposite effects in these cases. Alternating-current mean power requires the applicable r.m.s. relations."
+    },
+    "187": {
+      "chn": "無負載分壓器中的串聯電阻流過相同電流。輸出電壓佔總電壓的比例，等於輸出電阻佔總電阻的比例。本圖輸出跨在第一個電阻上。接上負載後，負載與輸出電阻並聯，分壓比例便改變。先求這部分的等效電阻，再重新計算輸出電壓。",
+      "eng": "In an unloaded potential divider, the series resistors carry the same current. The output's fraction of supply voltage equals the output resistor's fraction of total resistance. Here the output is across the first resistor. A connected load is in parallel with this resistor and changes the division ratio. Find their equivalent resistance, then recalculate the output voltage."
+    },
+    "188": {
+      "chn": "安培計要串聯在待測支路中，使該支路電流流經儀表。理想安培計內阻為零，實際儀表內阻越低，對原電流的影響越小。若誤接在電源兩端，可能造成近似短路。",
+      "eng": "An ammeter is connected in series so that the measured branch current passes through it. An ideal ammeter has zero resistance. A real meter disturbs the current less when its resistance is low. Connecting it across a power supply can create a near short circuit."
+    },
+    "189": {
+      "chn": "伏特計並聯在待測兩點之間。理想伏特計內阻無限大、不分流。實際內阻有限，會額外取走電流，可能改變原電路的電壓分配。儀表內阻越高，通常對被測電路影響越小，尤其量度高電阻電路時須注意負載效應。",
+      "eng": "A voltmeter is connected in parallel across the two points being measured. Ideally its resistance is infinite and it draws no current. A real voltmeter draws some current and can change the original voltage distribution. Higher meter resistance generally causes less disturbance, especially when measuring high-resistance circuits."
+    },
+    "190": {
+      "chn": "電池放電時，電動勢等於端電壓加內阻上的電壓降。電流越大，內阻上的電壓降越大，端電壓便越小。沒有電流時，端電壓等於電動勢。充電時電流方向反轉，列式時須相應調整符號。",
+      "eng": "For a discharging cell, e.m.f. equals external terminal voltage plus the drop across internal resistance. Greater current increases this internal drop and lowers terminal voltage. At zero current, terminal voltage equals e.m.f. During charging, current reverses, so the discharge subtraction relation cannot be applied without changing the sign convention."
+    },
+    "191": {
+      "chn": "在課本的理想市電模型中，中線相對地的電勢約為零。活線電勢隨交流週期在正、負之間改變，與中線形成供電電壓。中線是正常電流回路的一部分。地線主要在故障時提供保護路徑。",
+      "eng": "In the ideal mains model used here, neutral is approximately at earth potential while live alternates between positive and negative potentials, providing a voltage between live and neutral. Neutral belongs to the normal operating circuit. The earth wire primarily supplies a protective fault path. Their functions are different."
+    },
+    "192": {
+      "chn": "保險絲或斷路器在電流過大時切斷活線，減少過熱。額定電流應略高於正常工作電流。金屬外殼接地後，若活線碰殼，地線可提供低阻故障路徑，使保護裝置切斷供電。雙重絕緣則以兩層絕緣隔開帶電部分。各項措施的保護作用不同。",
+      "eng": "A fuse or circuit breaker interrupts the live supply when current is excessive, reducing overheating. Its rating should be just above normal operating current. Earthing a metal case provides a low-resistance fault path if live touches it, helping protection disconnect the supply. Double insulation separates live parts using two insulating barriers. These measures serve different purposes."
+    },
+    "193": {
+      "chn": "直流電流方向不改變，但大小可以隨時間變化。交流則週期性改變方向，電壓也相應改變極性。判斷圖像時看電流是否跨越零值及反向，不能只看大小是否起伏。脈動而不反向的電流仍屬直流。",
+      "eng": "Direct current keeps the same direction although its magnitude may vary. Alternating current reverses periodically, with corresponding voltage polarity changes. Inspect whether current crosses zero and reverses, rather than merely whether it fluctuates. A pulsating current that never reverses is still direct current."
+    },
+    "194": {
+      "chn": "均方根電流或電壓，表示具有相同發熱效果的等效直流值。在同一固定電阻上，該直流與原交流產生相同平均功率。純電阻負載的電壓和電流同相，可用兩者的均方根值相乘求平均功率。即使一個週期的平均電流為零，電阻仍會發熱。",
+      "eng": "R.m.s. current or voltage is the equivalent d.c. value producing the same average heating power in the same fixed resistance. For a purely resistive load, voltage and current are in phase, so their r.m.s. product gives average power. Zero mean current over a cycle does not mean zero energy dissipation."
+    },
+    "195": {
+      "chn": "沒有直流偏移的正弦交流，其均方根值等於峯值除以根號二。峯值是零線到最高點的大小，峯對峯值則是兩倍峯值。這個換算只適用於相應正弦波，方波或其他波形須按其形狀求均方根，不能一律除以根號二。",
+      "eng": "For a sinusoid with no d.c. offset, the r.m.s. value equals peak value divided by the square root of two. Peak is measured from zero to the maximum magnitude. Peak-to-peak is twice the peak value. This conversion is waveform-specific: square waves and other shapes require their own r.m.s. calculation."
+    },
+    "196": {
+      "chn": "同名磁極互相排斥，異名磁極互相吸引。磁場方向在磁體外約定由北極指向南極。磁棒切開後每一段仍有南北兩極，不會只得到單一磁極。磁體吸引一塊未磁化的鐵，不能單憑吸引就認定鐵原先有哪個磁極。",
+      "eng": "Like magnetic poles repel and unlike poles attract. Outside a magnet, field direction runs from north to south. Cutting a bar magnet produces smaller magnets, each with both poles, not isolated poles. Attraction of unmagnetised iron alone does not identify a pre-existing pole on the iron."
+    },
+    "197": {
+      "chn": "長直載流導線四周的磁力線是以導線為中心的圓，越近導線磁場越強。增大電流使磁場增強。右手拇指指向傳統電流，彎曲四指便表示場方向。電子流方向相反。反轉電流會反轉磁場，求大小時使用至導線的垂直距離。",
+      "eng": "Field lines around a long straight current-carrying wire form concentric circles. Field strength increases with current and decreases with distance from the wire. Point the right thumb along conventional current. Curled fingers show field direction. Electron flow is opposite. Reversing current reverses the field. Use perpendicular distance from the wire in calculations."
+    },
+    "198": {
+      "chn": "長直載流導線四周的磁力線是以導線為中心的圓，越近導線磁場越強。增大電流使磁場增強。右手拇指指向傳統電流，彎曲四指便表示場方向。電子流方向相反。反轉電流會反轉磁場，求大小時使用至導線的垂直距離。",
+      "eng": "Field lines around a long straight current-carrying wire form concentric circles. Field strength increases with current and decreases with distance from the wire. Point the right thumb along conventional current. Curled fingers show field direction. Electron flow is opposite. Reversing current reverses the field. Use perpendicular distance from the wire in calculations."
+    },
+    "199": {
+      "chn": "圓形載流線圈的各段導線在中心產生的磁場相互加強，中心磁場垂直於線圈平面。整體場線構成閉合曲線。用右手四指沿傳統電流彎曲，拇指指出中心磁場方向。反轉電流也會反轉該方向。",
+      "eng": "Different sections of a current-carrying circular coil reinforce the magnetic field at its centre, where the field is perpendicular to the coil's plane. Field lines form closed curves overall. Curl the right fingers along conventional current. The thumb gives the central field direction. Reversing current reverses this direction."
+    },
+    "200": {
+      "chn": "長螺線管內部遠離兩端的磁場近似均勻，場線平行而等距。外部場形與磁棒相似。右手四指沿傳統電流彎曲，拇指便指向管內磁場及北極。場強與電流、每單位長度的匝數成正比。空心螺線管和有鐵心的螺線管須分別處理。",
+      "eng": "Inside a long solenoid away from its ends, approximately parallel, equally spaced field lines indicate a nearly uniform field. Its external pattern resembles a bar magnet. Curl right fingers along conventional current. The thumb points along the internal field towards the north pole. Strength depends on current and turns per unit length. The air-core formula does not directly apply to an iron core."
+    },
+    "201": {
+      "chn": "長螺線管內部遠離兩端的磁場近似均勻，場線平行而等距。外部場形與磁棒相似。右手四指沿傳統電流彎曲，拇指便指向管內磁場及北極。場強與電流、每單位長度的匝數成正比。空心螺線管和有鐵心的螺線管須分別處理。",
+      "eng": "Inside a long solenoid away from its ends, approximately parallel, equally spaced field lines indicate a nearly uniform field. Its external pattern resembles a bar magnet. Curl right fingers along conventional current. The thumb points along the internal field towards the north pole. Strength depends on current and turns per unit length. The air-core formula does not directly apply to an iron core."
+    },
+    "202": {
+      "chn": "要增強相同形狀螺線管的磁場，可增大電流、增加每單位長度的匝數，或插入軟鐵心。重點是匝數密度而非只有總匝數。把線圈加長而匝數不變可能減弱場強。軟鐵容易磁化及退磁，適合製作可開關的電磁鐵。",
+      "eng": "For a solenoid of comparable geometry, increase field strength by increasing current, increasing turns per unit length or inserting a soft-iron core. Turn density matters, not total turns alone: lengthening the coil without adding turns may weaken the field. Soft iron magnetises and demagnetises readily, making it suitable for switchable electromagnets."
+    },
+    "203": {
+      "chn": "長直載流導線四周的磁力線是以導線為中心的圓，越近導線磁場越強。增大電流使磁場增強。右手拇指指向傳統電流，彎曲四指便表示場方向。電子流方向相反。反轉電流會反轉磁場，求大小時使用至導線的垂直距離。",
+      "eng": "Field lines around a long straight current-carrying wire form concentric circles. Field strength increases with current and decreases with distance from the wire. Point the right thumb along conventional current. Curled fingers show field direction. Electron flow is opposite. Reversing current reverses the field. Use perpendicular distance from the wire in calculations."
+    },
+    "204": {
+      "chn": "長螺線管內部遠離兩端的磁場近似均勻，場線平行而等距。外部場形與磁棒相似。右手四指沿傳統電流彎曲，拇指便指向管內磁場及北極。場強與電流、每單位長度的匝數成正比。空心螺線管和有鐵心的螺線管須分別處理。",
+      "eng": "Inside a long solenoid away from its ends, approximately parallel, equally spaced field lines indicate a nearly uniform field. Its external pattern resembles a bar magnet. Curl right fingers along conventional current. The thumb points along the internal field towards the north pole. Strength depends on current and turns per unit length. The air-core formula does not directly apply to an iron core."
+    },
+    "205": {
+      "chn": "左手拇指、食指和中指互相垂直。食指指向外加磁場，中指指向傳統電流，拇指便指出磁力方向。用於粒子時，先把正電荷的運動方向當作電流方向。負電荷的受力方向相反。左手定則判斷受力，右手定則則判斷電流產生的磁場。",
+      "eng": "Hold the left thumb, first finger and second finger mutually perpendicular. The first finger indicates the external magnetic field, the second conventional current, and the thumb magnetic force. For particles, use positive-charge motion as current direction and reverse the result for negative charge. This force rule differs from the right-hand rule for the field produced by a current."
+    },
+    "206": {
+      "chn": "均勻磁場中的直載流導線受磁力，其大小取決於磁通密度、電流、磁場內長度及電流與場的夾角。垂直時力最大，平行時為零。方向由左手定則決定。特斯拉是磁通密度單位，切勿把磁場外的導線長度也算進去。",
+      "eng": "A straight wire in a uniform magnetic field experiences force depending on flux density, current, length inside the field and the angle between current and field. Force is greatest when perpendicular and zero when parallel. The left-hand rule gives direction. Flux density is measured in tesla. Exclude wire length outside the field."
+    },
+    "207": {
+      "chn": "均勻磁場中的直載流導線受磁力，其大小取決於磁通密度、電流、磁場內長度及電流與場的夾角。垂直時力最大，平行時為零。方向由左手定則決定。特斯拉是磁通密度單位，切勿把磁場外的導線長度也算進去。",
+      "eng": "A straight wire in a uniform magnetic field experiences force depending on flux density, current, length inside the field and the angle between current and field. Force is greatest when perpendicular and zero when parallel. The left-hand rule gives direction. Flux density is measured in tesla. Exclude wire length outside the field."
+    },
+    "208": {
+      "chn": "載流線圈在磁場中，兩側受到方向相反的磁力，形成力矩，使線圈轉動。分裂環換向器每半圈反轉線圈電流，讓轉動越過相應位置後，力矩仍推動同一轉向。電能因此轉為機械能。線圈方向改變時，力矩大小也會改變。",
+      "eng": "Opposite sides of a current-carrying coil experience opposite magnetic forces, producing a turning moment. A split-ring commutator reverses coil current every half-turn. After the coil passes the relevant position, the moment therefore continues to drive rotation in the same sense. Electrical energy becomes mechanical energy. The moment changes as the coil's orientation changes."
+    },
+    "209": {
+      "chn": "每條載流導線都在另一條的位置產生磁場，使另一條受到磁力。同向電流相吸，反向電流相斥。兩導線受力大小相等，長直導線的每單位長度力與兩電流乘積成正比、與間距成反比。",
+      "eng": "Each wire produces a magnetic field acting on the other. Parallel currents in the same direction attract. Opposite currents repel. Forces are equal in magnitude, and force per unit length for long wires is proportional to the current product and inversely proportional to separation."
+    },
+    "210": {
+      "chn": "每條載流導線都在另一條的位置產生磁場，使另一條受到磁力。同向電流相吸，反向電流相斥。兩導線受力大小相等，長直導線的每單位長度力與兩電流乘積成正比、與間距成反比。",
+      "eng": "Each wire produces a magnetic field acting on the other. Parallel currents in the same direction attract. Opposite currents repel. Forces are equal in magnitude, and force per unit length for long wires is proportional to the current product and inversely proportional to separation."
+    },
+    "211": {
+      "chn": "運動電荷的磁力垂直於速度和磁場，大小由速度中垂直磁場的分量決定。平行磁場運動時不受磁力。正負電荷的受力方向相反。單獨磁力不做功，只改變運動方向。垂直進入均勻磁場時可作等速圓周運動。",
+      "eng": "Magnetic force is perpendicular to velocity and field and depends on the velocity component perpendicular to the field. Motion parallel to the field gives zero magnetic force. Opposite charge signs give opposite force directions. Magnetic force alone does no work, changing direction rather than speed. Perpendicular entry into a uniform field can produce uniform circular motion."
+    },
+    "212": {
+      "chn": "穿過線圈的磁通鏈隨時間改變，就會產生感生電動勢。磁通鏈變得越快，電動勢越大。改變磁場、線圈面積或方向都可造成變化，並不一定要有機械運動。只有存在閉合導電路徑，感生電動勢才會驅動持續感生電流。",
+      "eng": "Changing magnetic flux linkage induces an e.m.f.. Faster change gives a greater magnitude. Changes in field, coil area or orientation can cause induction, so mechanical motion is not essential. An induced e.m.f. drives a sustained current only when a closed conducting path is present."
+    },
+    "213": {
+      "chn": "穿過線圈的磁通鏈隨時間改變，就會產生感生電動勢。磁通鏈變得越快，電動勢越大。改變磁場、線圈面積或方向都可造成變化，並不一定要有機械運動。只有存在閉合導電路徑，感生電動勢才會驅動持續感生電流。",
+      "eng": "Changing magnetic flux linkage induces an e.m.f.. Faster change gives a greater magnitude. Changes in field, coil area or orientation can cause induction, so mechanical motion is not essential. An induced e.m.f. drives a sustained current only when a closed conducting path is present."
+    },
+    "214": {
+      "chn": "感生電流的磁效應會抗衡引起它的磁通變化。原磁通增加時，感生場阻止增加。原磁通減少時，感生場沿原方向，阻止減少。先判斷磁通在增加還是減少，再決定感生場方向，最後用右手定則求電流方向。",
+      "eng": "The magnetic effect of induced current opposes the flux change causing it. When original flux increases, the induced field opposes the increase. When original flux decreases, the induced field points in the original direction to oppose the decrease. First identify the flux change, then find the induced field direction and use the right-hand rule to determine current direction."
+    },
+    "215": {
+      "chn": "直流發電機把機械能轉為電能。線圈兩端各接換向器（分裂環）的一個半環。兩個半環互相絕緣，並經碳電刷連接外電路。\n\n線圈在磁場中轉動，感生電動勢每半圈反向。同時，換向器每半圈交換兩個半環所接觸的電刷，使線圈與外電路的連接對調。因此，線圈中的電流雖然反向，外電路的電流仍保持同一方向。其大小會起伏，輸出的是脈動直流電。",
+      "eng": "A d.c. generator converts mechanical energy into electrical energy. Each coil end connects to one half of a split-ring commutator. The two halves are mutually insulated and connect to the external circuit through carbon brushes.\n\nAs the coil rotates in a magnetic field, its induced e.m.f. reverses every half-turn. At the same time, the commutator halves exchange brushes, swapping the coil ends' external connections. The current in the coil reverses, but the external current keeps the same direction. Its magnitude varies, so the output is pulsating d.c."
+    },
+    "216": {
+      "chn": "整塊導體中的閉合路徑若穿過變化的磁通量，便會產生環流狀的渦電流。其磁效應抗衡磁通變化，可用於磁製動。電流引起的發熱可用於感應加熱。把變壓器鐵心製成相互絕緣的薄片，可限制渦電流的路徑，減少損耗。",
+      "eng": "Changing flux through conducting loops within a bulk conductor induces circulating eddy currents. Their magnetic effects oppose the change and can provide magnetic braking. Their resistive heating is used in induction heating. Laminating transformer cores with insulated thin sheets restricts large circulating paths and reduces these losses."
+    },
+    "217": {
+      "chn": "磁通量描述穿過一個面的磁場。在均勻磁場中，平面的磁通量等於磁通密度乘垂直於磁場的投影面積。公式中的角度由平面法線量起：場垂直平面時磁通最大，平行平面時為零。磁通量的單位是 Wb，磁通密度的單位是 T。",
+      "eng": "Magnetic flux through a flat surface in a uniform field equals flux density times the area projected perpendicular to the field. Measure the angle from the surface normal: flux is largest when the field is perpendicular to the plane and zero when parallel. Flux, measured in Wb, differs from flux density, measured in T."
+    },
+    "218": {
+      "chn": "磁通鏈把線圈每一匝所鏈結的磁通量相加。只有各匝磁通相同時，才等於匝數乘單匝磁通量。增加匝數可增大同一磁通變化造成的感生電動勢。",
+      "eng": "Flux linkage is the sum of the flux linked by each turn. It equals number of turns times flux per turn only when every turn links the same flux. Increasing turns increases the induced e.m.f. for the same per-turn flux change."
+    },
+    "219": {
+      "chn": "磁通量描述穿過一個面的磁場。在均勻磁場中，平面的磁通量等於磁通密度乘垂直於磁場的投影面積。公式中的角度由平面法線量起：場垂直平面時磁通最大，平行平面時為零。磁通量的單位是 Wb，磁通密度的單位是 T。",
+      "eng": "Magnetic flux through a flat surface in a uniform field equals flux density times the area projected perpendicular to the field. Measure the angle from the surface normal: flux is largest when the field is perpendicular to the plane and zero when parallel. Flux, measured in Wb, differs from flux density, measured in T."
+    },
+    "220": {
+      "chn": "感生電動勢的大小等於磁通鏈的變化率。平均值用磁通鏈的改變量除以經過時間。瞬時值則取磁通鏈—時間圖的切線斜率。只求大小時，取絕對值。若保留符號，須先選定法線和繞線方向。公式的負號表示楞次定律。",
+      "eng": "Induced e.m.f. magnitude is the rate of change of flux linkage. Average e.m.f. uses linkage change divided by elapsed time. Instantaneous e.m.f. follows the tangent slope of a flux-linkage-time graph. Take the absolute value when only magnitude is needed. For signed values, choose consistent normal and winding directions. The minus sign expresses Lenz's law."
+    },
+    "221": {
+      "chn": "感生電動勢的大小等於磁通鏈的變化率。平均值用磁通鏈的改變量除以經過時間。瞬時值則取磁通鏈—時間圖的切線斜率。只求大小時，取絕對值。若保留符號，須先選定法線和繞線方向。公式的負號表示楞次定律。",
+      "eng": "Induced e.m.f. magnitude is the rate of change of flux linkage. Average e.m.f. uses linkage change divided by elapsed time. Instantaneous e.m.f. follows the tangent slope of a flux-linkage-time graph. Take the absolute value when only magnitude is needed. For signed values, choose consistent normal and winding directions. The minus sign expresses Lenz's law."
+    },
+    "222": {
+      "chn": "理想變壓器的原副線圈鏈結同一變化磁通，因此兩側電壓比等於匝數比。副線圈匝數較多是升壓，較少是降壓。穩定直流不能持續產生交變磁通，不能像交流一樣正常變壓。比較電壓時須同用有效值或對應瞬時值。",
+      "eng": "In an ideal transformer, primary and secondary windings link the same changing flux, so their voltage ratio equals their turns ratio. More secondary turns give step-up action and fewer give step-down action. Steady d.c. cannot maintain changing flux and does not transform normally. Compare either both r.m.s. voltages or corresponding instantaneous values."
+    },
+    "223": {
+      "chn": "理想變壓器沒有能量損耗，輸入功率等於輸出功率，所以升壓時可供應的電流會相應減少。實際變壓器有銅損、鐵損等，輸出功率等於輸入功率乘效率。效率以百分數給出時先換成小數，純電阻負載的交流功率使用均方根值。",
+      "eng": "An ideal transformer has equal input and output powers, so stepping up voltage reduces the corresponding available current. Real transformers have winding and core losses. Output power equals input power times efficiency. Convert percentage efficiency to a fraction before calculation. For resistive a.c. loads, use r.m.s. voltage and current."
+    },
+    "224": {
+      "chn": "理想變壓器沒有能量損耗，輸入功率等於輸出功率，所以升壓時可供應的電流會相應減少。實際變壓器有銅損、鐵損等，輸出功率等於輸入功率乘效率。效率以百分數給出時先換成小數，純電阻負載的交流功率使用均方根值。",
+      "eng": "An ideal transformer has equal input and output powers, so stepping up voltage reduces the corresponding available current. Real transformers have winding and core losses. Output power equals input power times efficiency. Convert percentage efficiency to a fraction before calculation. For resistive a.c. loads, use r.m.s. voltage and current."
+    },
+    "225": {
+      "chn": "傳送相同功率時，提高輸電電壓可降低電流。電纜的發熱損耗與電流平方成正比，因此電流降低，損耗便減少。求電纜損耗時，可用電流平方乘電纜電阻。若用電壓平方除以電阻，這個電壓須是電纜本身的壓降。",
+      "eng": "For the same transmitted power, a higher voltage allows a lower current. Cable heating loss is proportional to current squared, so lower current reduces loss. Calculate this loss from current squared times cable resistance. If using voltage squared divided by resistance, use the voltage drop along the cable itself."
+    },
+    "226": {
+      "chn": "X 射線是短波長、高能量的電磁波，可由高速電子撞擊金屬靶後急減速等過程產生。它不必來自原子核衰變。X 射線具有穿透及致電離能力，不同物質的衰減不同，可用來顯示內部結構。",
+      "eng": "X-rays are short-wavelength, high-energy electromagnetic waves, produced for example when fast electrons decelerate at a metal target. They need not originate in nuclear decay. Their penetrating and ionising properties, and different attenuation in different materials, allow internal structures to be imaged."
+    },
+    "227": {
+      "chn": "不穩定原子核會自發衰變，放出核輻射。常見的 α 粒子是氦核，β⁻ 粒子是高速電子，γ 射線則是電磁波。核輻射來自原子核的變化。單個原子核何時衰變是隨機的，但大量原子核的平均衰變有規律。",
+      "eng": "Unstable nuclei decay spontaneously and emit nuclear radiation. Alpha particles are helium nuclei, beta-minus particles are fast electrons, and gamma rays are electromagnetic waves. These emissions arise from changes in the nucleus. The decay time of an individual nucleus is random, but large populations follow predictable average decay laws."
+    },
+    "228": {
+      "chn": "致電離是輻射使原子或分子失去電子而成為離子的過程。在課本比較的典型情況下，α 的電離能力最強，β 次之，γ 較弱。α 因沿短路程密集地損失能量，穿透力反而小。",
+      "eng": "Ionisation occurs when radiation removes electrons from atoms or molecules, leaving ions. In typical textbook comparisons, alpha radiation ionises most strongly, followed by beta and then gamma. Alpha particles lose energy densely over short paths and therefore penetrate poorly."
+    },
+    "229": {
+      "chn": "α 粒子在空氣中的典型射程只有數釐米，β 粒子可達數米，實際數值隨初能量及介質而變。γ 射線以逐漸衰減方式傳播，沒有像帶電粒子那樣清楚的有限截止射程。題目若提供能量、介質或實測圖，應以其條件判斷。",
+      "eng": "Typical alpha ranges in air are a few centimetres, whereas beta particles may travel a few metres. Actual ranges depend on initial energy and medium. Gamma rays are progressively attenuated rather than having a sharp finite stopping range like charged particles. Use the specified energy, medium and measured graph when provided."
+    },
+    "230": {
+      "chn": "探測器讀數包括放射源和背景輻射。用量得的計數率減去背景計數率，便得到放射源的淨計數率。兩者須使用相同時間單位。重複量度或延長量度時間，可減小隨機波動的影響。探測器通常只收到部分輻射，因此淨計數率仍須與樣本總活度分別處理。",
+      "eng": "A detector records contributions from the source and background. The source's net count rate is measured rate minus background rate, using matching time units. Repeated or longer measurements reduce random fluctuations. Even after background subtraction, the detector usually captures only part of the radiation, so count rate is not automatically total source activity."
+    },
+    "231": {
+      "chn": "典型穿透能力由強至弱為 γ、β、α：紙或表皮可阻擋 α，數毫米鋁可阻擋典型 β，γ 則需較厚的鉛或混凝土才能大幅衰減。γ 的屏蔽通常描述減弱比例而非絕對完全擋住。穿透能力與致電離能力的排列不同。",
+      "eng": "Typical penetrating ability decreases in the order gamma, beta, alpha. Paper or skin stops alpha particles, a few millimetres of aluminium stops typical beta particles, and thicker lead or concrete substantially attenuates gamma rays. Gamma shielding is normally described by a reduction factor, not complete removal. This ordering differs from ionising ability."
+    },
+    "232": {
+      "chn": "原子由很小而帶正電的原子核和核外電子組成，大部分質量集中於原子核，大部分體積則是空間。原子核通常含質子及中子，普通氫核只含一個質子。中性原子的電子數等於質子數，失去或得到電子後才成為離子。",
+      "eng": "An atom has a very small positively charged nucleus surrounded by electrons. Most mass is concentrated in the nucleus and most atomic volume is empty space. Nuclei generally contain protons and neutrons. An ordinary hydrogen nucleus contains just one proton. A neutral atom has equal proton and electron counts and becomes an ion by losing or gaining electrons."
+    },
+    "233": {
+      "chn": "原子序數是核內質子數，決定元素種類。質量數是質子與中子的總數，因此中子數等於質量數減原子序數。中性原子的電子數等於原子序數，離子則不同。質量數是整數計數，不等於以 kg 或 u 表示的精確原子質量。",
+      "eng": "Atomic number is the number of protons and determines the element. Mass number counts protons plus neutrons, so neutron number is mass number minus atomic number. A neutral atom has as many electrons as its atomic number, but an ion does not. Mass number is an integer count, not the exact atomic mass in kg or u."
+    },
+    "234": {
+      "chn": "同位素是同一元素中，質子數相同、中子數不同的原子。它們的原子序數相同，質量數不同。核穩定性可以不同：有些穩定，有些具放射性。中性原子的電子排列相近，所以化學性質通常相近。核性質則可有差異。",
+      "eng": "Isotopes are atoms of the same element with equal proton numbers but different neutron numbers. They therefore have equal atomic numbers and different mass numbers. Nuclear stability can differ: some are stable and others radioactive. Similar neutral-atom electron arrangements generally give similar chemical properties, but nuclear properties need not be identical."
+    },
+    "235": {
+      "chn": "活度是樣本每秒的平均衰變次數，等於衰變常數乘尚未衰變的原子核數。同一核素中，剩餘原子核越多，活度越大。活度取正值。核數隨時間減少，因此核數—時間圖的斜率為負。探測器計數率還受距離、方向和效率影響，須與活度分別處理。",
+      "eng": "Activity is the mean number of decays per second, equal to decay constant times the number of undecayed nuclei. For the same nuclide, more remaining nuclei mean greater activity. Activity is positive although the nucleus-count-time slope is negative. Detector count rate also depends on geometry and efficiency and must not be identified directly with activity."
+    },
+    "236": {
+      "chn": "半衰期是大量同種不穩定原子核的數目，或其活度，降至一半所需的時間。每過一個半衰期，當時的剩餘量再減半。例如，兩個半衰期後剩四分之一。先用經過時間除以半衰期，再計算剩餘比例。經過的半衰期數可以不是整數。",
+      "eng": "Half-life is the time for a large population of identical unstable nuclei, or its activity, to halve. Each half-life halves what remains. After two, one quarter remains rather than zero. Divide elapsed time by half-life to find the number of half-lives, which need not be an integer, then calculate the remaining fraction."
+    },
+    "237": {
+      "chn": "半衰期是大量同種不穩定原子核的數目，或其活度，降至一半所需的時間。每過一個半衰期，當時的剩餘量再減半。例如，兩個半衰期後剩四分之一。先用經過時間除以半衰期，再計算剩餘比例。經過的半衰期數可以不是整數。",
+      "eng": "Half-life is the time for a large population of identical unstable nuclei, or its activity, to halve. Each half-life halves what remains. After two, one quarter remains rather than zero. Divide elapsed time by half-life to find the number of half-lives, which need not be an integer, then calculate the remaining fraction."
+    },
+    "238": {
+      "chn": "單一核素且沒有額外補充時，未衰變核數和活度都按指數規律下降，因為每單位時間衰變的是當時核數的一定比例。衰變常數越大，半衰期越短。時間與常數的倒數單位須相配。求半衰期關係時使用自然對數，不是以十為底的對數。",
+      "eng": "For a single nuclide with no replenishment, undecayed nuclei and activity decrease exponentially because a fixed proportion of the current population decays per unit time. A larger decay constant means a shorter half-life. Match time units with reciprocal units of the constant. The half-life relation uses the natural logarithm, not base ten."
+    },
+    "239": {
+      "chn": "單一核素且沒有額外補充時，未衰變核數和活度都按指數規律下降，因為每單位時間衰變的是當時核數的一定比例。衰變常數越大，半衰期越短。時間與常數的倒數單位須相配。求半衰期關係時使用自然對數，不是以十為底的對數。",
+      "eng": "For a single nuclide with no replenishment, undecayed nuclei and activity decrease exponentially because a fixed proportion of the current population decays per unit time. A larger decay constant means a shorter half-life. Match time units with reciprocal units of the constant. The half-life relation uses the natural logarithm, not base ten."
+    },
+    "240": {
+      "chn": "核裂變是較重原子核分裂成較輕原子核的反應，常伴隨中子及能量釋放。產物的動能可轉為熱。核反應式須守恆電荷數與核子數，但反應前後的靜止質量可以不同，差額對應所釋放或吸收的能量。",
+      "eng": "Fission splits a heavy nucleus into lighter nuclei, often releasing neutrons and energy. Product kinetic energy can become heat. Nuclear equations conserve charge number and nucleon number, but total rest mass can change. The mass difference corresponds to energy released or absorbed."
+    },
+    "241": {
+      "chn": "裂變產生的中子若平均引起一次後續裂變，連鎖反應便可穩定持續。平均多於一次，反應增強。少於一次，反應減弱。臨界質量是維持連鎖反應所需的最小材料量，取決於材料的形狀、成分和周圍環境。",
+      "eng": "A chain reaction stays steady when neutrons from each fission cause, on average, one further fission. More than one makes the reaction grow. Fewer makes it decline. Critical mass is the minimum amount needed to sustain the reaction. It depends on the material's geometry, composition and surroundings."
+    },
+    "242": {
+      "chn": "核聚變是輕原子核結合成較重原子核。適當輕核反應可因產物總質量較小而釋放能量。帶正電的核互相排斥，因此需很高温等條件，使其有機會足夠接近。聚變與裂變的核變化方向相反，但都須檢查質量差及能量守恆。",
+      "eng": "Fusion combines light nuclei into a heavier nucleus. Suitable light-nucleus reactions release energy because the products have lower total rest mass. Positive nuclei repel, so very high temperatures and suitable conditions are needed for close encounters. Fusion and fission change nuclei in opposite ways, but both require consistent mass differences and energy conservation."
+    },
+    "243": {
+      "chn": "反應前後的總靜止質量差乘光速平方，給出相應的能量變化。反應前質量較大時，差額可作為釋放能量。用 SI 公式時質量須用 kg，所得能量為 J。核反應須包括所有產物及相關粒子，不能只比較其中一個原子核。",
+      "eng": "Total rest-mass difference multiplied by light speed squared gives the corresponding energy change. If reactants have greater total rest mass, the difference can be released as energy. With SI units, use kg to obtain J. Include all products and relevant particles rather than comparing just one nucleus before and after."
+    },
+    "244": {
+      "chn": "一電子伏特是電荷量大小為一個基本電荷的粒子，跨過 1 V 加速電勢差所獲得的能量。它是能量單位而不是電壓。轉換為焦耳時乘基本電荷的數值。把 MeV 代入使用焦耳的公式前，還須先乘一百萬換成 eV。",
+      "eng": "One electronvolt is the energy gained by a particle with one elementary-charge magnitude when accelerated through 1 V. It is an energy unit, not a voltage. Multiply an energy in eV by the elementary charge's numerical SI value to obtain joules. Convert MeV to eV by multiplying by one million before this step."
+    },
+    "245": {
+      "chn": "統一原子質量單位 u，是一個自由、靜止、基態中性碳-12 原子質量的十二分之一，方便表示原子及核質量。1 u 對應的靜能約為 931 MeV。因此，質量差以 u 表示時，乘 931 可求出以 MeV 表示的能量。這個換算依據質能關係。",
+      "eng": "The unified atomic mass unit is one twelfth of the mass of a free, stationary, neutral carbon-12 atom in its ground state. The rest energy associated with 1 u is approximately 931 MeV, so a mass difference in u can be multiplied by 931 to obtain MeV. Mass and energy units are not directly interchangeable without the mass-energy relation."
+    },
+    "246": {
+      "chn": "統一原子質量單位 u，是一個自由、靜止、基態中性碳-12 原子質量的十二分之一，方便表示原子及核質量。1 u 對應的靜能約為 931 MeV。因此，質量差以 u 表示時，乘 931 可求出以 MeV 表示的能量。這個換算依據質能關係。",
+      "eng": "The unified atomic mass unit is one twelfth of the mass of a free, stationary, neutral carbon-12 atom in its ground state. The rest energy associated with 1 u is approximately 931 MeV, so a mass difference in u can be multiplied by 931 to obtain MeV. Mass and energy units are not directly interchangeable without the mass-energy relation."
+    },
+    "247": {
+      "chn": "天文單位是用來表示太陽系尺度的長度單位，其大小約為日地平均距離，即一千五百億米。做距離比較前須把 AU、m 或其他單位統一。",
+      "eng": "The astronomical unit, AU, is a length unit suited to Solar System distances, approximately the mean Earth-Sun distance or 1.50 × 10¹¹ m. Convert AU, metres and other units consistently before comparing distances."
+    },
+    "248": {
+      "chn": "光年是光在真空中行進一年所走的距離，約為 9.46×10¹⁵ m，因此是長度單位而非時間。計算可用光速乘以一年的秒數。一顆星距離若干光年，表示其光走到我們這裡需要約相同數值的年數。",
+      "eng": "A light-year is the distance light travels in vacuum in one year, approximately 9.46 × 10¹⁵ m. It is a length, not a time. Calculate it from light speed times the number of seconds in a year. A star's distance in light-years indicates approximate light-travel time in years."
+    },
+    "249": {
+      "chn": "光年是光在真空中行進一年所走的距離，約為 9.46×10¹⁵ m，因此是長度單位而非時間。計算可用光速乘以一年的秒數。一顆星距離若干光年，表示其光走到我們這裡需要約相同數值的年數。",
+      "eng": "A light-year is the distance light travels in vacuum in one year, approximately 9.46 × 10¹⁵ m. It is a length, not a time. Calculate it from light speed times the number of seconds in a year. A star's distance in light-years indicates approximate light-travel time in years."
+    },
+    "250": {
+      "chn": "秒差距是恆星週年視差為一角秒時，對應的距離。以日地距離 1 AU 為幾何基線，利用小角近似，可得 1 pc 約為 206265 AU，或 3.26 光年。角秒是角度單位，秒差距則是長度單位。",
+      "eng": "A parsec is the distance corresponding to an annual parallax of one arcsecond. The geometrical baseline is 1 AU, giving approximately 206265 AU or 3.26 light-years by the small-angle relation. An arcsecond measures angle, not time. A parsec measures distance despite the historical reference to seconds in its name."
+    },
+    "251": {
+      "chn": "從地球看，行星有時會相對遙遠背景恆星，暫時向西移動，稱為逆行。這是視運動：地球與行星的公轉改變了觀察方向，例如地球超越外行星。行星仍沿原方向公轉。逆行的參照是背景恆星。每天東升西落的周日運動，則由地球自轉造成。",
+      "eng": "Retrograde motion is a planet's temporary apparent westward motion relative to distant background stars as seen from Earth. Changing viewing geometry and orbital speeds, such as Earth overtaking an outer planet, explain it in the heliocentric model. The planet need not reverse its actual orbit. This differs from daily east-to-west apparent motion."
+    },
+    "252": {
+      "chn": "行星沿橢圓軌道運行，太陽位於其中一個焦點。因此，行星與太陽的距離會沿軌道改變。圓是兩焦點重合的特殊情況。讀圖時須分清三個量：整條長軸、它的一半即半長軸，以及行星當時到太陽的距離。",
+      "eng": "A planet follows an ellipse with the Sun at one focus, not at its centre. Its Sun-planet distance therefore changes along the orbit. A circle is the special case with coincident foci. Distinguish major axis, semi-major axis and instantaneous distance. They are not one interchangeable radius."
+    },
+    "253": {
+      "chn": "太陽與行星的連線在相等時間內掃過相等面積，因此行星接近太陽時運動較快，遠離時較慢。相等的是掃過面積而不是弧長或轉過角度。分析近日點與遠日點速度時，須把相應日距及運動方向一起考慮。",
+      "eng": "The line joining a planet to the Sun sweeps equal areas in equal times, so the planet moves faster nearer the Sun and slower farther away. The equal quantity is area, not arc length or angular displacement. Consider both distance and velocity direction when comparing perihelion and aphelion speeds."
+    },
+    "254": {
+      "chn": "繞同一主要中心質量運行的天體，週期平方與橢圓半長軸的三次方成正比。圓軌道的半長軸才等於半徑。中心質量較大，同一軌道尺度的週期較短。比較不同中心天體的衞星時，不能假定比例常數相同。",
+      "eng": "For bodies orbiting the same dominant central mass, period squared is proportional to semi-major axis cubed. Semi-major axis equals radius only for a circular orbit. A larger central mass gives a shorter period at the same orbital scale. Do not assume the proportionality constant is identical for different central bodies."
+    },
+    "255": {
+      "chn": "繞同一主要中心質量運行的天體，週期平方與橢圓半長軸的三次方成正比。圓軌道的半長軸才等於半徑。中心質量較大，同一軌道尺度的週期較短。比較不同中心天體的衞星時，不能假定比例常數相同。",
+      "eng": "For bodies orbiting the same dominant central mass, period squared is proportional to semi-major axis cubed. Semi-major axis equals radius only for a circular orbit. A larger central mass gives a shorter period at the same orbital scale. Do not assume the proportionality constant is identical for different central bodies."
+    },
+    "256": {
+      "chn": "物體及支承它的艙體一起在引力下自由下落時，物體不需要由地板支持，因而出現表觀無重。這不代表引力消失，繞地衞星內仍有重力提供向心加速度。消失的是支持力或相應磅讀數，而不是物體質量。",
+      "eng": "An object and its spacecraft falling freely together need no floor support force, producing apparent weightlessness. Gravity has not disappeared: in Earth orbit it supplies centripetal acceleration. The vanishing quantity is support force or the corresponding scale reading, not mass or necessarily gravitational force."
+    },
+    "257": {
+      "chn": "把無限遠的重力勢能定為零，有限距離的兩個互相吸引的質量，重力勢能便為負。把它們分離至無限遠，需要外界供能。兩者相距越遠，勢能越接近零。判斷軌道是否束縛，須看動能與勢能的總和。",
+      "eng": "Choosing gravitational potential energy to be zero at infinity makes it negative for attracting masses at finite separation. Energy must be supplied to separate them to infinity. Moving farther away raises potential energy towards zero. Whether an orbit is bound depends on total kinetic plus potential energy, not negative potential energy alone."
+    },
+    "258": {
+      "chn": "只有重力做功時，天體或探測器的動能與重力勢能總和保持不變。接近中心天體時勢能降低、速率通常增加，遠離時相反。兩狀態須使用相同勢能零點。若火箭噴氣做功或受到阻力，須額外計入能量改變。",
+      "eng": "When gravity alone does work, kinetic plus gravitational potential energy remains constant. Approaching the central body lowers potential energy and usually increases speed. Receding does the reverse. Use the same energy zero for both states. Rocket thrust or resistance requires additional energy transfers to be included."
+    },
+    "259": {
+      "chn": "逃逸速率是物體從指定位置出發，在之後沒有推力、且忽略阻力時，恰好能到達無限遠的最低初速。臨界情況下，到無限遠時的速率趨近零。公式的距離由天體中心量起。結果與逃逸物體的質量無關，並大於同一位置的圓軌道速率。",
+      "eng": "Escape speed is the minimum initial speed at a specified position needed to reach infinity without further thrust, neglecting resistance. In the limiting case, final speed tends to zero at infinity. Measure radius from the body's centre. Escape speed is independent of the escaping mass and exceeds circular-orbit speed at the same radius."
+    },
+    "260": {
+      "chn": "一度分為六十角分，一角分再分為六十角秒，所以一度共有三千六百角秒。這些是角度單位，與時間的分和秒不同。天文視差公式常要求角秒，而幾何小角近似常要求弧度，代入前要先檢查指定單位。",
+      "eng": "One degree contains 60 arcminutes and one arcminute contains 60 arcseconds, so one degree equals 3600 arcseconds. These are angular units, distinct from minutes and seconds of time. Parallax formulae often require arcseconds, whereas small-angle geometrical relations often require radians. Check and convert before substitution."
+    },
+    "261": {
+      "chn": "秒差距是恆星週年視差為一角秒時，對應的距離。以日地距離 1 AU 為幾何基線，利用小角近似，可得 1 pc 約為 206265 AU，或 3.26 光年。角秒是角度單位，秒差距則是長度單位。",
+      "eng": "A parsec is the distance corresponding to an annual parallax of one arcsecond. The geometrical baseline is 1 AU, giving approximately 206265 AU or 3.26 light-years by the small-angle relation. An arcsecond measures angle, not time. A parsec measures distance despite the historical reference to seconds in its name."
+    },
+    "262": {
+      "chn": "地球繞太陽運動時，近星相對遙遠背景恆星的位置會略有改變。相隔半年量得的最大總角位移，其一半就是週年視差角。距離用 pc、視差用角秒時，兩者數值互為倒數。恆星越遠，視差越小。",
+      "eng": "As Earth orbits the Sun, a nearby star appears to shift relative to distant stars. Annual parallax is half the maximum total angular shift measured six months apart. Distance in parsecs is the reciprocal of parallax in arcseconds. More distant stars have smaller parallaxes. Do not substitute the full angular shift."
+    },
+    "263": {
+      "chn": "秒差距是恆星週年視差為一角秒時，對應的距離。以日地距離 1 AU 為幾何基線，利用小角近似，可得 1 pc 約為 206265 AU，或 3.26 光年。角秒是角度單位，秒差距則是長度單位。",
+      "eng": "A parsec is the distance corresponding to an annual parallax of one arcsecond. The geometrical baseline is 1 AU, giving approximately 206265 AU or 3.26 light-years by the small-angle relation. An arcsecond measures angle, not time. A parsec measures distance despite the historical reference to seconds in its name."
+    },
+    "264": {
+      "chn": "光度是恆星每秒向各方向發出的總能量，即恆星本身的輻射功率。視亮度則是觀察者每單位面積接收的功率。假設恆星向各方向均勻發光，且沿途吸收可忽略，能量會分散在球面上。距離加倍，視亮度變為四分之一，而恆星光度不變。",
+      "eng": "Luminosity is a star's total energy emitted per second in all directions: its own radiative power. Apparent brightness is power received per unit area at the observer. For uniform emission in all directions and negligible absorption, the power spreads over a sphere. Doubling distance reduces apparent brightness to one quarter while luminosity stays unchanged."
+    },
+    "265": {
+      "chn": "光度是恆星每秒向各方向發出的總能量，即恆星本身的輻射功率。視亮度則是觀察者每單位面積接收的功率。假設恆星向各方向均勻發光，且沿途吸收可忽略，能量會分散在球面上。距離加倍，視亮度變為四分之一，而恆星光度不變。",
+      "eng": "Luminosity is a star's total energy emitted per second in all directions: its own radiative power. Apparent brightness is power received per unit area at the observer. For uniform emission in all directions and negligible absorption, the power spreads over a sphere. Doubling distance reduces apparent brightness to one quarter while luminosity stays unchanged."
+    },
+    "266": {
+      "chn": "視星等描述觀察者看到天體多亮，數值越小表示越亮。它取決於天體本身光度及距離，也可受沿途吸收影響。看起來更亮的星不一定發光功率更大，可能只是更近。比較時不能把視星等直接當作絕對星等。",
+      "eng": "Apparent magnitude describes observed brightness, with smaller numbers indicating brighter objects. It depends on intrinsic luminosity, distance and possibly absorption along the path. A brighter-looking star may simply be closer rather than more luminous. Apparent magnitude is not absolute magnitude."
+    },
+    "267": {
+      "chn": "視星等描述觀察者看到天體多亮，數值越小表示越亮。它取決於天體本身光度及距離，也可受沿途吸收影響。看起來更亮的星不一定發光功率更大，可能只是更近。比較時不能把視星等直接當作絕對星等。",
+      "eng": "Apparent magnitude describes observed brightness, with smaller numbers indicating brighter objects. It depends on intrinsic luminosity, distance and possibly absorption along the path. A brighter-looking star may simply be closer rather than more luminous. Apparent magnitude is not absolute magnitude."
+    },
+    "270": {
+      "chn": "近似黑體的物體温度越高，輻射光譜的峯值移向較短波長，總輻射也增加。因此較熱恆星偏藍、較冷恆星偏紅。顏色是整個光譜在人眼中的效果，不表示恆星只發出一種波長。温度須使用絕對温度。",
+      "eng": "For an approximate black body, increasing temperature shifts the spectral peak to shorter wavelengths and increases total emission. Hotter stars therefore appear bluer and cooler stars redder. Colour reflects the overall spectrum seen by the eye, not emission at one wavelength only. Use absolute temperature in the relevant relations."
+    },
+    "271": {
+      "chn": "近似黑體的物體温度越高，輻射光譜的峯值移向較短波長，總輻射也增加。因此較熱恆星偏藍、較冷恆星偏紅。顏色是整個光譜在人眼中的效果，不表示恆星只發出一種波長。温度須使用絕對温度。",
+      "eng": "For an approximate black body, increasing temperature shifts the spectral peak to shorter wavelengths and increases total emission. Hotter stars therefore appear bluer and cooler stars redder. Colour reflects the overall spectrum seen by the eye, not emission at one wavelength only. Use absolute temperature in the relevant relations."
+    },
+    "272": {
+      "chn": "黑體每單位表面積發出的總功率與開爾文温度四次方成正比。球形恆星再乘整個表面積，便得到光度。半徑加倍令面積增為四倍，温度加倍令單位面積功率增為十六倍。這是發射功率，求與環境的淨交換還須扣除吸收。",
+      "eng": "Total emitted power per unit surface area of a black body is proportional to kelvin temperature to the fourth power. Multiply by a spherical star's entire surface area to obtain luminosity. Doubling radius quadruples area. Doubling temperature increases power per area sixteenfold. Net exchange also subtracts absorbed power."
+    },
+    "273": {
+      "chn": "黑體每單位表面積發出的總功率與開爾文温度四次方成正比。球形恆星再乘整個表面積，便得到光度。半徑加倍令面積增為四倍，温度加倍令單位面積功率增為十六倍。這是發射功率，求與環境的淨交換還須扣除吸收。",
+      "eng": "Total emitted power per unit surface area of a black body is proportional to kelvin temperature to the fourth power. Multiply by a spherical star's entire surface area to obtain luminosity. Doubling radius quadruples area. Doubling temperature increases power per area sixteenfold. Net exchange also subtracts absorbed power."
+    },
+    "274": {
+      "chn": "把球形黑體恆星與太陽比較時，共同常數可抵消。光度比等於半徑比的平方，乘絕對温度比的四次方。大而冷的星仍可能比小而熱的星光度高。因此，判斷光度或半徑時，須把温度與另一個相關物理量合併考慮。",
+      "eng": "For spherical black-body stars, luminosity ratio equals radius ratio squared times absolute-temperature ratio to the fourth power. Comparing with the Sun cancels shared constants. A large cool star can outshine a small hot one. Colour alone cannot determine luminosity or radius. Combine temperature with another relevant quantity."
+    },
+    "275": {
+      "chn": "天體沿視線遠離時，譜線波長比靜止時長，稱為紅移。接近時，波長較短，稱為藍移。徑向速率遠小於光速時，可由波長的相對改變估計徑向速度。這只給出視線方向的速度分量。計算時，須把同一條譜線與其靜止波長比較。",
+      "eng": "Recession along the line of sight shifts spectral lines to longer wavelengths, called redshift. Approach shifts them shorter, called blueshift. At radial speeds much smaller than light speed, fractional wavelength change estimates radial velocity. It gives only the line-of-sight component, not total space speed. Compare the same line with its rest wavelength."
+    },
+    "276": {
+      "chn": "在宇宙尺度的平均趨勢中，越遠的星系退行速度越大，支持宇宙膨脹的描述。這不是星系繞中心旋轉的速度，也不表示所有鄰近星系都一定遠離。近距離星系的局部引力運動可使個別觀測偏離整體關係。",
+      "eng": "On cosmological scales, more distant galaxies have greater recession speeds on average, supporting an expanding Universe. This is not orbital speed around a galactic centre. Nearby galaxies need not all recede, because local gravitational motions can produce departures from the large-scale relation."
+    },
+    "277": {
+      "chn": "效率比較有用輸出能量與總輸入能量。若比較同一段時間，也可用有用輸出功率除以輸入功率。一般能量轉換效率不超過百分之百，其餘能量轉到非目標用途的形式。先説清甚麼算「有用」，並分清百分數與代入公式的小數。",
+      "eng": "Efficiency is useful output energy divided by total input energy, or corresponding powers over the same interval. Ordinary conversion efficiency does not exceed 100%. The remaining energy goes into forms outside the intended useful output. Define what counts as useful and convert percentage efficiency to a fraction before substitution."
+    },
+    "278": {
+      "chn": "電熱板讓電流在發熱電阻中產生熱，再把熱傳給鍋。電磁爐以交變磁場在合適金屬鍋內感生電流，直接令鍋發熱。微波爐以振盪電場驅動食物中極性分子，經相互作用轉為內能。三者加熱位置與能量轉換機制不同。",
+      "eng": "A hotplate heats a resistive element and transfers energy to a pan. An induction cooker uses a changing magnetic field to induce currents and heating within a suitable metal pan. A microwave oven's oscillating electric field drives polar molecules in food, with interactions converting energy into internal energy. Their heating locations and mechanisms differ."
+    },
+    "279": {
+      "chn": "熱泵消耗外界輸入功，把能量由低温處搬到高温處，方向與自然傳熱相反。高温端收到的熱量等於低温端移走的熱量加輸入功。雪櫃背面因此排出的熱量比從箱內吸走的更多。熱泵沒有創造能量，而是同時搬運熱及輸入功。",
+      "eng": "A heat pump uses external work to move energy from a colder region to a hotter one, opposite natural heat flow. Heat delivered to the hot side equals heat removed from the cold side plus work input. A refrigerator releases more heat at its back than it removes inside. It does not create energy."
+    },
+    "280": {
+      "chn": "熱泵消耗外界輸入功，把能量由低温處搬到高温處，方向與自然傳熱相反。高温端收到的熱量等於低温端移走的熱量加輸入功。雪櫃背面因此排出的熱量比從箱內吸走的更多。熱泵沒有創造能量，而是同時搬運熱及輸入功。",
+      "eng": "A heat pump uses external work to move energy from a colder region to a hotter one, opposite natural heat flow. Heat delivered to the hot side equals heat removed from the cold side plus work input. A refrigerator releases more heat at its back than it removes inside. It does not create energy."
+    },
+    "281": {
+      "chn": "製冷能力是每秒從低温處移走的熱量。製冷性能係數等於移走的熱量除以輸入功，也可用相應的功率比求得。它可以大於 1，因為輸入功主要用來搬運原有的熱量。比較熱量和功時，須使用同一段時間。",
+      "eng": "Cooling capacity is heat removed from the cold side per second. Refrigerating coefficient of performance is heat removed divided by work input, or the corresponding power ratio. It can exceed 1 because the input work moves existing heat. Compare heat and work over the same time interval."
+    },
+    "282": {
+      "chn": "製冷能力是每秒從低温處移走的熱量。製冷性能係數等於移走的熱量除以輸入功，也可用相應的功率比求得。它可以大於 1，因為輸入功主要用來搬運原有的熱量。比較熱量和功時，須使用同一段時間。",
+      "eng": "Cooling capacity is heat removed from the cold side per second. Refrigerating coefficient of performance is heat removed divided by work input, or the corresponding power ratio. It can exceed 1 because the input work moves existing heat. Compare heat and work over the same time interval."
+    },
+    "283": {
+      "chn": "光通量描述可見光的視覺有效輸出，單位是流明。計算時按人眼對不同波長的敏感度加權，所以輻射功率相同而光譜不同，光通量也可以不同。某表面收到的光通量再除以面積，便得到照明度。",
+      "eng": "Luminous flux weights visible radiant output by the eye's wavelength sensitivity and is measured in lumens. Equal radiant powers with different spectra can have different luminous fluxes. Flux describes total visually effective light output or passage through a surface. Illuminance additionally divides received flux by area and has different units."
+    },
+    "284": {
+      "chn": "照明度描述表面每平方米接收到多少光通量，單位 lux 等於 lm m⁻²。相同光通量鋪在較大面積上，平均照明度較低。公式求的是指定面積上的平均值，若照明不均勻，不代表每個位置都有同一照明度。",
+      "eng": "Illuminance is luminous flux received per unit surface area, measured in lux, equivalent to lm m⁻². Spreading the same flux over a larger area reduces average illuminance. The area-based calculation gives an average. With non-uniform lighting it does not imply the same illuminance at every point."
+    },
+    "285": {
+      "chn": "光通量描述可見光的視覺有效輸出，單位是流明。計算時按人眼對不同波長的敏感度加權，所以輻射功率相同而光譜不同，光通量也可以不同。某表面收到的光通量再除以面積，便得到照明度。",
+      "eng": "Luminous flux weights visible radiant output by the eye's wavelength sensitivity and is measured in lumens. Equal radiant powers with different spectra can have different luminous fluxes. Flux describes total visually effective light output or passage through a surface. Illuminance additionally divides received flux by area and has different units."
+    },
+    "286": {
+      "chn": "向各方向均勻發光的點光源，其光通量向外分散。表面正對光線時，照明度與距離平方成反比。斜照時，同一束光分佈在較大面積上，須再乘光線與表面法線夾角的餘弦。角度若從板面量起，須先換算。計算使用的是表面接收的光通量。",
+      "eng": "Light from an isotropic point source spreads out, so normal-incidence illuminance follows an inverse-square distance law. Oblique incidence spreads light over a larger surface, introducing the cosine of the angle from the normal. An angle measured from the surface needs conversion. Total source flux is not all received by a small target."
+    },
+    "287": {
+      "chn": "光視效能是每輸入一瓦電功率可得到的有用光通量，單位為 lm W⁻¹。數值越高，同樣照明需求通常所需電功率越少。它不是以百分比表示的能量效率，數值可超過 1。比較燈具時還須留意光通量及照明條件。",
+      "eng": "Luminous efficacy is useful luminous flux per watt of electrical input, measured in lm W⁻¹. Higher values generally mean less electrical power for the same lighting requirement. It is not a percentage energy efficiency and its numerical value can exceed 1. Compare lamps using their flux and lighting conditions as well as efficacy."
+    },
+    "288": {
+      "chn": "照明度描述表面每平方米接收到多少光通量，單位 lux 等於 lm m⁻²。相同光通量鋪在較大面積上，平均照明度較低。公式求的是指定面積上的平均值，若照明不均勻，不代表每個位置都有同一照明度。",
+      "eng": "Illuminance is luminous flux received per unit surface area, measured in lux, equivalent to lm m⁻². Spreading the same flux over a larger area reduces average illuminance. The area-based calculation gives an average. With non-uniform lighting it does not imply the same illuminance at every point."
+    },
+    "289": {
+      "chn": "光視效能是每輸入一瓦電功率可得到的有用光通量，單位為 lm W⁻¹。數值越高，同樣照明需求通常所需電功率越少。它不是以百分比表示的能量效率，數值可超過 1。比較燈具時還須留意光通量及照明條件。",
+      "eng": "Luminous efficacy is useful luminous flux per watt of electrical input, measured in lm W⁻¹. Higher values generally mean less electrical power for the same lighting requirement. It is not a percentage energy efficiency and its numerical value can exceed 1. Compare lamps using their flux and lighting conditions as well as efficacy."
+    },
+    "290": {
+      "chn": "在均勻平板的穩定導熱模型中，面積、兩側温差或熱導率越大，傳熱功率越大。厚度越大，功率越小。熱傳送值把材料和厚度的影響合併，數值越小，通常保温越好。單層簡式忽略表面熱阻。多層牆壁須按各層熱阻組合計算。",
+      "eng": "For steady conduction through a uniform slab, heat-transfer power increases with area, temperature difference and conductivity, and decreases with thickness. Thermal transmittance combines material and thickness effects. A smaller value generally indicates better insulation. The simple single-layer model neglects surface resistances. Transmittances of successive layers cannot simply be added."
+    },
+    "291": {
+      "chn": "在均勻平板的穩定導熱模型中，面積、兩側温差或熱導率越大，傳熱功率越大。厚度越大，功率越小。熱傳送值把材料和厚度的影響合併，數值越小，通常保温越好。單層簡式忽略表面熱阻。多層牆壁須按各層熱阻組合計算。",
+      "eng": "For steady conduction through a uniform slab, heat-transfer power increases with area, temperature difference and conductivity, and decreases with thickness. Thermal transmittance combines material and thickness effects. A smaller value generally indicates better insulation. The simple single-layer model neglects surface resistances. Transmittances of successive layers cannot simply be added."
+    },
+    "292": {
+      "chn": "建築物總熱傳送值，是外殼因導熱和太陽輻射得到的熱功率，除以所考慮的外殼總面積。它比較平均得熱程度，單位是 W m⁻²。一般熱傳送值還會除以温差，兩者定義不同。合併牆面、遮陽和玻璃的得熱時，按題目所給定義計算。",
+      "eng": "Overall thermal transfer value is heat gained through the considered building envelope, from conduction and solar radiation, divided by its total area. It compares average heat gain and is measured in W m⁻². Thermal transmittance also divides by temperature difference, so the definitions differ. Use the stated definitions when combining wall, shading and glazing gains."
+    },
+    "293": {
+      "chn": "再生制動時，驅動系統改以發電方式工作，把車輛部分動能轉為電能，再由電池以化學能儲存。它可減少傳統摩擦制動直接散成熱的能量，但有轉換及儲存損耗，不能回收全部動能。這與加速時由電池驅動車輛的能量流向相反。",
+      "eng": "During regenerative braking, the drive system acts as a generator, converting part of the vehicle's kinetic energy into electrical energy stored chemically in the battery. This reduces energy directly dissipated as heat by friction brakes, but conversion and storage losses prevent complete recovery. Energy flow is opposite to battery-powered acceleration."
+    },
+    "294": {
+      "chn": "結合能是把原子核完全拆成互不作用的自由核子，所需的能量。這些核子結合成原子核時，會釋放相應能量。自由核子的總質量大於結合後的核質量，差額稱為質量虧損。使用原子質量資料時，須一致計入電子的影響。",
+      "eng": "Binding energy is the energy required to separate a nucleus into non-interacting free nucleons. The corresponding energy is released when those nucleons form the nucleus. Their combined free mass exceeds the nuclear mass by the mass defect. Treat electrons consistently when using atomic masses. Do not mix neutral-atom and bare-nucleus masses without correction."
+    },
+    "295": {
+      "chn": "結合能是把原子核完全拆成互不作用的自由核子，所需的能量。這些核子結合成原子核時，會釋放相應能量。自由核子的總質量大於結合後的核質量，差額稱為質量虧損。使用原子質量資料時，須一致計入電子的影響。",
+      "eng": "Binding energy is the energy required to separate a nucleus into non-interacting free nucleons. The corresponding energy is released when those nucleons form the nucleus. Their combined free mass exceeds the nuclear mass by the mass defect. Treat electrons consistently when using atomic masses. Do not mix neutral-atom and bare-nucleus masses without correction."
+    },
+    "296": {
+      "chn": "風穿過轉子掃掠面積時帶來動能，能利用的動能通量與空氣密度、掃掠面積及風速三次方成正比。實際輸出還要乘效率。掃掠面積是葉片旋轉覆蓋的圓面積，不是葉片材料面積。固定其他條件下，風速加倍的模型功率增至八倍。",
+      "eng": "Wind carries kinetic energy through the rotor's swept area. Available kinetic-energy flux is proportional to air density, swept area and wind speed cubed. Actual output also includes efficiency. Swept area is the circle covered by rotating blades, not their material area. With other conditions fixed, doubling speed increases this model's power eightfold."
+    },
+    "297": {
+      "chn": "水從高處落下損失重力勢能，渦輪與發電機將其中一部分轉成電能。輸出功率取決於每秒流過的水質量、垂直水頭及效率。題目若給體積流率，先乘水密度換成質量流率。水頭是高度差，不是管道總長度。",
+      "eng": "Falling water loses gravitational potential energy, part of which turbines and generators convert to electricity. Output power depends on mass flow per second, vertical head and efficiency. Convert volume flow rate to mass flow rate using water density. Head is the vertical height difference, not total pipe length."
+    },
+    "298": {
+      "chn": "太陽常數描述在日地平均距離、地球大氣層外，垂直於太陽光線的單位面積每秒接收的總輻射能量。它是功率密度，不是太陽的總功率，也不是地面任何地方都收到的值。大氣吸收、雲層及斜入射都會改變實際接收量。",
+      "eng": "The solar constant is radiant power received per unit area perpendicular to sunlight, outside Earth's atmosphere at the mean Earth-Sun distance. It is a power density, not the Sun's total power or a value received everywhere at ground level. Atmospheric absorption, clouds and oblique incidence alter the actual received power."
+    },
+    "299": {
+      "chn": "太陽的短波輻射穿過大氣，被地表吸收，使地表升温。温暖地表再發出較長波長的紅外線。温室氣體吸收部分紅外線，並向各方向再發射，減少地表直接向太空散失的能量，使平衡温度提高。這個過程主要是輻射交換。",
+      "eng": "Shorter-wavelength solar radiation passes through the atmosphere and warms the surface. The surface emits longer-wavelength infrared radiation. Greenhouse gases absorb and re-emit some in all directions, reducing direct surface energy loss to space and raising equilibrium temperature. The main mechanism is radiative exchange, not simply sealing air inside a glass-like enclosure."
+    },
+    "300": {
+      "chn": "電磁輻射照射物料表面時，若單個光子的能量足以克服電子逸出所需能量，就能放出光電子。每種表面有相應閾頻，低於它時，即使增加普通光強也不能引發單光子光電發射。高於閾頻後，增加光強主要增加放出電子的數目。",
+      "eng": "Photoelectrons can be emitted when an incident photon's energy overcomes the energy required for escape from a surface. Each surface has a threshold frequency. Below it, increasing ordinary light intensity cannot cause single-photon emission. Above threshold, increasing intensity chiefly increases the number of emitted electrons."
+    },
+    "301": {
+      "chn": "遏止電勢是使光電流剛好降至零的最小反向電壓大小。此時，連動能最大的光電子也不能到達收集極。因此，它量度的是最大光電子動能。計算時，用電勢的正值大小乘基本電荷的大小。",
+      "eng": "Stopping potential is the minimum reverse-voltage magnitude that just prevents even the most energetic photoelectrons from reaching the collector, reducing photocurrent to zero. It measures maximum, not average, kinetic energy. Use positive potential and elementary-charge magnitudes in the energy relation. Reverse voltage does not mean negative kinetic energy."
+    },
+    "302": {
+      "chn": "遏止電勢是使光電流剛好降至零的最小反向電壓大小。此時，連動能最大的光電子也不能到達收集極。因此，它量度的是最大光電子動能。計算時，用電勢的正值大小乘基本電荷的大小。",
+      "eng": "Stopping potential is the minimum reverse-voltage magnitude that just prevents even the most energetic photoelectrons from reaching the collector, reducing photocurrent to zero. It measures maximum, not average, kinetic energy. Use positive potential and elementary-charge magnitudes in the energy relation. Reverse voltage does not mean negative kinetic energy."
+    },
+    "303": {
+      "chn": "電磁輻射照射物料表面時，若單個光子的能量足以克服電子逸出所需能量，就能放出光電子。每種表面有相應閾頻，低於它時，即使增加普通光強也不能引發單光子光電發射。高於閾頻後，增加光強主要增加放出電子的數目。",
+      "eng": "Photoelectrons can be emitted when an incident photon's energy overcomes the energy required for escape from a surface. Each surface has a threshold frequency. Below it, increasing ordinary light intensity cannot cause single-photon emission. Above threshold, increasing intensity chiefly increases the number of emitted electrons."
+    },
+    "304": {
+      "chn": "光以光子交換能量，單個光子的能量與頻率成正比、與真空波長成反比。提高頻率使每個光子能量增加，提高固定頻率的光強則主要增加每秒光子數。使用普朗克常數的 SI 值時波長用 m，所得能量為 J，需要時再換成 eV。",
+      "eng": "Light exchanges energy in photons. One photon's energy is proportional to frequency and inversely proportional to vacuum wavelength. Increasing frequency increases energy per photon. Increasing intensity at fixed frequency mainly increases photon rate. With SI Planck constant, use wavelength in metres to obtain joules, then convert to eV if needed."
+    },
+    "307": {
+      "chn": "單個光子的能量先用來克服功函數，其餘成為逸出電子的最大動能。頻率越高，最大動能越大。固定頻率而提高光強，不會提高最大動能。若代入得到負值，表示光子能量不足、沒有光電發射，而不是存在負動能光電子。",
+      "eng": "A photon's energy first overcomes the work function. The remainder is the maximum photoelectron kinetic energy. Higher frequency increases this maximum, whereas higher intensity at fixed frequency does not. A negative calculated result means insufficient photon energy and no emission, not electrons with negative kinetic energy."
+    },
+    "308": {
+      "chn": "對同一材料且頻率高於閾頻，遏止電勢與頻率呈直線關係。斜率可用來求普朗克常數，橫軸截距給閾頻。向後延長的負電勢部分只是數學外推，不表示低頻時仍有光電發射。改變材料會改變截距，理想模型的斜率不變。",
+      "eng": "Above threshold, stopping potential varies linearly with frequency for a fixed material. The slope determines Planck's constant and the frequency-axis intercept gives threshold frequency. The extrapolated negative-potential region is mathematical only, not emission below threshold. Changing material changes intercepts, while the ideal-model slope stays unchanged."
+    },
+    "309": {
+      "chn": "光的干涉及衍射用波動性描述，光電效應中的離散能量交換則需要光子模型。兩種描述針對不同實驗特徵。解題時應依實際觀察的現象選用相應模型。",
+      "eng": "Interference and diffraction are described by light's wave behaviour, while discrete energy transfers in the photoelectric effect require photons. These descriptions address different experimental features. Choose the model appropriate to the observed phenomenon."
+    },
+    "310": {
+      "chn": "散射實驗顯示，原子大部分是空間，正電荷和幾乎全部質量集中在很小的原子核內。經典模型中的電子繞核運動，持續有加速度，應輻射並失去能量，因而難以解釋原子的穩定性。波爾模型引入離散定態，處理這個問題。",
+      "eng": "Scattering supports an atom that is mostly empty space, with positive charge and almost all mass concentrated in a tiny nucleus. A classically orbiting electron accelerates and should radiate energy, making stable atoms difficult to explain. Bohr's discrete stationary states address this problem. Classical orbits alone do not provide a complete atomic model."
+    },
+    "311": {
+      "chn": "波爾氫原子模型只容許某些定態軌道，角動量按量子條件取值。電子在定態中不輻射。在能級之間躍遷時，才吸收或發射光子。光子能量等於兩能級的差。量子數只取正整數。這個模型適用於氫原子，其他多電子原子須另作處理。",
+      "eng": "Bohr's hydrogen model allows only stationary orbits with quantised angular momentum. Electrons do not radiate in stationary states. Transitions absorb or emit photons with energies equal to level differences. The quantum number is a positive integer, not a continuous variable. This hydrogen model cannot be extended unchanged to all many-electron atoms."
+    },
+    "312": {
+      "chn": "波爾氫原子模型只容許某些定態軌道，角動量按量子條件取值。電子在定態中不輻射。在能級之間躍遷時，才吸收或發射光子。光子能量等於兩能級的差。量子數只取正整數。這個模型適用於氫原子，其他多電子原子須另作處理。",
+      "eng": "Bohr's hydrogen model allows only stationary orbits with quantised angular momentum. Electrons do not radiate in stationary states. Transitions absorb or emit photons with energies equal to level differences. The quantum number is a positive integer, not a continuous variable. This hydrogen model cannot be extended unchanged to all many-electron atoms."
+    },
+    "313": {
+      "chn": "在波爾氫原子模型中，第 n 定態的軌道半徑與 n 的平方成正比。量子數變為兩倍，半徑變為四倍。n 只能取正整數，基態是 n＝1。",
+      "eng": "In Bohr's hydrogen model, the radius of state n is proportional to n squared, so doubling the quantum number quadruples radius. Only positive integer n values are allowed and n = 1 is the ground state."
+    },
+    "314": {
+      "chn": "把電子在無限遠且靜止的能量定為零，氫原子的束縛能級皆為負。基態 n＝1 能量最低，第一受激態為 n＝2。n 越大，能量越接近零，相鄰能級越密。負能量表示束縛，躍遷或遊離所需能量則應由末能級減初能級求得。",
+      "eng": "With zero energy assigned to a stationary electron at infinity, bound hydrogen levels are negative. The ground state n = 1 has the lowest energy and n = 2 is the first excited state. Larger n gives levels closer to zero and more closely spaced. Negative energy means binding. Required transition energy is final minus initial energy."
+    },
+    "315": {
+      "chn": "激發是電子從較低束縛能級升到較高束縛能級，所需能量等於末能級減初能級。此卡的公式以基態為起點，若題目從受激態開始，必須改用該初能級。吸收一個光子進行束縛態躍遷時，光子能量須配合允許的能級差。",
+      "eng": "Excitation raises an electron from a lower to a higher bound level, requiring final minus initial energy. This card's expression starts from the ground state. Use the actual initial level if the atom is already excited. For a one-photon bound-state transition, photon energy must match an allowed level difference."
+    },
+    "316": {
+      "chn": "遊離是把電子從束縛態移至無限遠。恰好遊離時，末能量取零，所以最低所需能量等於初始束縛能量的相反數。氫原子基態需要 13.6 eV，受激態所需較少。若輸入能量超過門檻，餘下能量可成為自由電子的動能。",
+      "eng": "Ionisation removes a bound electron to infinity. At threshold, final energy is zero, so the minimum required energy is the negative of the initial bound energy. Ground-state hydrogen requires 13.6 eV. Excited states require less. Energy above threshold can become free-electron kinetic energy rather than remaining in a bound level."
+    },
+    "317": {
+      "chn": "電子由高能級降到低能級時發射光子，光子能量等於兩能級之差。差越大，頻率越高、波長越短。氫原子能級公式可代入求各條譜線，但須確保高低能級次序及正能量。用 SI 的普朗克常數時，能級差要先由 eV 換成 J。",
+      "eng": "An electron dropping to a lower level emits a photon equal in energy to the level difference. A larger difference means higher frequency and shorter wavelength. Use hydrogen energy levels in the correct order to obtain positive photon energy. With SI Planck constant, convert level differences from eV to J first."
+    },
+    "318": {
+      "chn": "電子由高能級降到低能級時發射光子，光子能量等於兩能級之差。差越大，頻率越高、波長越短。氫原子能級公式可代入求各條譜線，但須確保高低能級次序及正能量。用 SI 的普朗克常數時，能級差要先由 eV 換成 J。",
+      "eng": "An electron dropping to a lower level emits a photon equal in energy to the level difference. A larger difference means higher frequency and shorter wavelength. Use hydrogen energy levels in the correct order to obtain positive photon energy. With SI Planck constant, convert level differences from eV to J first."
+    },
+    "319": {
+      "chn": "光子雖沒有靜止質量，仍具有能量和動量，動量大小與真空波長成反比，方向沿光的傳播方向。短波光子的動量較大，可在吸收或反射時向物體轉移動量。不能把零靜止質量代入普通粒子的質量乘速度而誤得零動量。",
+      "eng": "A photon has no rest mass but carries energy and momentum. Its momentum magnitude is inversely proportional to vacuum wavelength and directed along propagation. Shorter-wavelength photons have greater momentum and can transfer it through absorption or reflection. Substituting zero rest mass into the ordinary non-relativistic mass-times-velocity formula does not give photon momentum."
+    },
+    "320": {
+      "chn": "物質粒子也具有與動量相對應的波長，動量越大，波長越短。非相對論情況才可用質量乘速度代替動量。電子質量小，波動效果可在合適尺度顯現，宏觀物體的波長則極小。加速電子提高動量，可縮短波長並改善衍射限制。",
+      "eng": "Matter particles have wavelengths associated with momentum: larger momentum gives shorter wavelength. Replace momentum by mass times speed only in the non-relativistic regime. Electron wavelengths can show observable wave effects at suitable scales, while macroscopic wavelengths are tiny. Accelerating electrons raises momentum, shortens wavelength and improves the wavelength-related diffraction limit."
+    },
+    "321": {
+      "chn": "一納米是十億分之一米。納米材料通常至少一個尺度約在 1 至 100 nm。縮小至此尺度可提高表面原子比例，並帶來結構或量子效應，使導電、力學、光學等性質有別於塊材。不能把所有變化都只歸因於表面積，須按具體材料説明。",
+      "eng": "A nanometre is one billionth of a metre. Nanomaterials usually have at least one dimension around 1–100 nm. Increased surface-atom fractions and structural or quantum effects can change their electrical, mechanical and optical properties relative to bulk material. Do not attribute every change to surface area alone. Explain the material-specific mechanism."
+    },
+    "322": {
+      "chn": "一納米是十億分之一米。納米材料通常至少一個尺度約在 1 至 100 nm。縮小至此尺度可提高表面原子比例，並帶來結構或量子效應，使導電、力學、光學等性質有別於塊材。不能把所有變化都只歸因於表面積，須按具體材料説明。",
+      "eng": "A nanometre is one billionth of a metre. Nanomaterials usually have at least one dimension around 1–100 nm. Increased surface-atom fractions and structural or quantum effects can change their electrical, mechanical and optical properties relative to bulk material. Do not attribute every change to surface area alone. Explain the material-specific mechanism."
+    },
+    "323": {
+      "chn": "有限孔徑會把一個點形成衍射斑。當一個衍射斑的中央極大，剛好落在另一個的第一極小時，兩點達到瑞利分辨界限。對圓形孔徑，波長越短或孔徑越大，最小可分辨角距越小，分辨能力越高。分辨能力描述能否看開兩個鄰近點。",
+      "eng": "A finite aperture forms a diffraction pattern for each point. Rayleigh's limit occurs when one central maximum coincides with the other's first minimum. For a circular aperture, shorter wavelength or greater diameter reduces the minimum resolvable angle, improving resolution. Resolving two nearby points differs from merely magnifying their image."
+    },
+    "324": {
+      "chn": "有限孔徑會把一個點形成衍射斑。當一個衍射斑的中央極大，剛好落在另一個的第一極小時，兩點達到瑞利分辨界限。對圓形孔徑，波長越短或孔徑越大，最小可分辨角距越小，分辨能力越高。分辨能力描述能否看開兩個鄰近點。",
+      "eng": "A finite aperture forms a diffraction pattern for each point. Rayleigh's limit occurs when one central maximum coincides with the other's first minimum. For a circular aperture, shorter wavelength or greater diameter reduces the minimum resolvable angle, improving resolution. Resolving two nearby points differs from merely magnifying their image."
+    },
+    "325": {
+      "chn": "透射電子顯微鏡以高速電子穿過薄樣本，利用不同部位的透射差異形成明暗影像，並用磁透鏡會聚及放大電子束。提高加速電壓會增加電子動量、縮短德布羅意波長，改善波長造成的分辨限制。實際分辨能力仍受透鏡及樣本等因素限制。",
+      "eng": "A transmission electron microscope passes fast electrons through a thin sample. Transmission differences create contrast, and magnetic lenses focus and magnify the beam. Higher accelerating voltage increases momentum and reduces de Broglie wavelength, improving the wavelength-related resolution limit. Actual resolution is also limited by lens and specimen effects."
+    },
+    "326": {
+      "chn": "導電探針靠近可導電樣本表面時，可測到對間距極敏感的隧穿電流。以固定高度量電流變化，或調整高度保持電流不變，都可重建表面細節。影像來自探針掃描及隧穿訊號。",
+      "eng": "A conducting tip near a conducting sample detects a tunnelling current highly sensitive to separation. Scanning at fixed height while recording current, or adjusting height to keep current constant, reveals surface detail. The image is reconstructed from scanning and tunnelling signals."
+    },
+    "327": {
+      "chn": "眼睛改變晶狀體的形狀和焦距，使不同距離的物體都能在視網膜上形成清晰像。視網膜的位置近似固定。看近物時，需要較大的屈光力和較短的焦距。看遠物時則相反。角膜提供主要的固定折射，晶狀體負責調節。",
+      "eng": "The eye changes lens shape and focal length to form clear images of objects at different distances on the retina. The retina's position is approximately fixed. Near objects need greater optical power and shorter focal length. Distant objects need less. The cornea provides most of the fixed refraction, while the lens provides accommodation."
+    },
+    "328": {
+      "chn": "視桿對弱光較敏感，主要支援昏暗環境及無彩色視覺。視錐在較明亮環境下負責顏色及精細視覺。因而暗處辨色較差。",
+      "eng": "Rods are more sensitive in dim light and mainly support low-light, non-colour vision. Cones provide colour and fine detail under brighter conditions. Colour discrimination is therefore poorer in dim light."
+    },
+    "329": {
+      "chn": "視角是物體兩端在眼睛處張開的角度，取決於物體大小和距離。小角度下可用大小除以距離，角度以弧度表示。相同物體移遠，視角減小。要判斷兩點是否可分辨，須把它們的角距與眼睛或儀器的分辨極限比較。",
+      "eng": "Visual angle is the angle subtended by an object's ends at the eye, depending on size and distance. For small angles, size divided by distance gives radians. Moving the same object farther away reduces visual angle. Compare angular separation with the eye's or instrument's resolution limit to decide whether two points are distinguishable."
+    },
+    "330": {
+      "chn": "有限孔徑會把一個點形成衍射斑。當一個衍射斑的中央極大，剛好落在另一個的第一極小時，兩點達到瑞利分辨界限。對圓形孔徑，波長越短或孔徑越大，最小可分辨角距越小，分辨能力越高。分辨能力描述能否看開兩個鄰近點。",
+      "eng": "A finite aperture forms a diffraction pattern for each point. Rayleigh's limit occurs when one central maximum coincides with the other's first minimum. For a circular aperture, shorter wavelength or greater diameter reduces the minimum resolvable angle, improving resolution. Resolving two nearby points differs from merely magnifying their image."
+    },
+    "331": {
+      "chn": "屈光力是焦距以米表示後的倒數，單位為屈光度。會聚透鏡為正，發散透鏡為負，焦距越短其大小越大。相貼的薄透鏡可把屈光力相加，不能把焦距直接相加。若鏡片間距不可忽略，便須使用更完整的組合成像關係。",
+      "eng": "Optical power is the reciprocal of focal length in metres, measured in dioptres. It is positive for converging and negative for diverging lenses. Shorter focal length means greater magnitude. Powers of thin lenses in contact add, but focal lengths do not. Appreciable separation requires a more complete combination calculation."
+    },
+    "332": {
+      "chn": "屈光力是焦距以米表示後的倒數，單位為屈光度。會聚透鏡為正，發散透鏡為負，焦距越短其大小越大。相貼的薄透鏡可把屈光力相加，不能把焦距直接相加。若鏡片間距不可忽略，便須使用更完整的組合成像關係。",
+      "eng": "Optical power is the reciprocal of focal length in metres, measured in dioptres. It is positive for converging and negative for diverging lenses. Shorter focal length means greater magnitude. Powers of thin lenses in contact add, but focal lengths do not. Appreciable separation requires a more complete combination calculation."
+    },
+    "333": {
+      "chn": "近點是眼睛充分調節後仍能清楚看見的最近位置，遠點是眼睛放鬆時能清楚看見的最遠位置。正常眼的遠點在無限遠，近點常以約 25 cm 作課本參考。近點會隨年齡和個人改變，並不是所有人的固定常數。",
+      "eng": "The near point is the closest position seen clearly with full accommodation. The far point is the farthest seen clearly with the eye relaxed. A normal far point is infinity, and about 25 cm is a common textbook near-point reference. Near point varies with age and individual, so is not a universal constant."
+    },
+    "334": {
+      "chn": "近視眼把遠物的光過早會聚，可用凹透鏡先使光發散。遠視眼的屈光力不足或眼球較短，可用凸透鏡協助看近物。老花是隨年齡增長，調節能力下降，也常用凸透鏡看近物。選眼鏡時，按裸眼近點或遠點，決定眼鏡須形成的虛像位置。",
+      "eng": "A myopic eye focuses distant light too early and needs a concave lens to diverge it first. Hyperopia involves insufficient power or a shorter eyeball and can need a convex lens for near vision. Presbyopia is age-related loss of accommodation, often also corrected for near tasks with a convex lens, but has a different cause. Use the unaided near or far point to locate the needed virtual image."
+    },
+    "335": {
+      "chn": "眼鏡先把物體形成虛像，放在裸眼能看清的近點或遠點。眼睛再把這個虛像成像於視網膜。求眼鏡屈光力時，實物距取正，物體同側的虛像距取負，距離均用米。忽略眼鏡與眼睛的間距時，才可直接用相應視點距離的倒數差。",
+      "eng": "Spectacles form a virtual image at a position the unaided eye can see clearly, such as its near or far point. The eye then focuses it onto the retina. Use positive real-object and negative same-side virtual-image distances in metres. Simple reciprocal-distance differences assume negligible lens-eye separation."
+    },
+    "336": {
+      "chn": "把眼睛近似為薄透鏡時，物距是觀看目標到眼睛的距離，實像距是光心到視網膜的距離。清晰成像時，兩者與屈光力須滿足薄透鏡關係。若眼鏡很靠近眼睛，可近似把兩者的屈光力相加。視網膜位置保持不變。",
+      "eng": "In the thin-lens model of the eye, object distance is the target-to-eye distance and real-image distance is the optical-centre-to-retina distance. Clear focus requires these distances and optical power to satisfy the thin-lens relation. When spectacles are close to the eye, their powers approximately add. The retina's position remains fixed."
+    },
+    "337": {
+      "chn": "把眼睛近似為薄透鏡時，物距是觀看目標到眼睛的距離，實像距是光心到視網膜的距離。清晰成像時，兩者與屈光力須滿足薄透鏡關係。若眼鏡很靠近眼睛，可近似把兩者的屈光力相加。視網膜位置保持不變。",
+      "eng": "In the thin-lens model of the eye, object distance is the target-to-eye distance and real-image distance is the optical-centre-to-retina distance. Clear focus requires these distances and optical power to satisfy the thin-lens relation. When spectacles are close to the eye, their powers approximately add. The retina's position remains fixed."
+    },
+    "338": {
+      "chn": "光纖的纖芯折射率高於包層。光在纖芯內射到界面時，若由法線量起的入射角大於臨界角，便發生全內反射，沿纖芯前進。臨界角由包層與纖芯的折射率之比決定。光須符合這個入射條件，才能被引導在纖芯內傳播。",
+      "eng": "A fibre's core has a higher index than its cladding. Light striking the internal boundary above the critical angle, measured from the normal, is totally internally reflected and guided along the core. Critical angle depends on the cladding-to-core index ratio. Not every incoming direction is trapped."
+    },
+    "339": {
+      "chn": "傳送影像的光纖束，須在輸入端和輸出端保持各條纖維的相對位置，讓影像的各個點按原排列傳送，稱為相干光纖束。只用來照明的光纖束不需保持排列。這裡的「相干」指空間排列。干涉中的「相干」則指固定的相位關係。",
+      "eng": "A coherent image-transmitting bundle preserves the relative positions of fibres at its input and output. Each image point is therefore passed on in the original arrangement. A bundle used only for illumination need not preserve this arrangement. Here coherence refers to spatial ordering. In interference, it refers to a fixed phase relationship."
+    },
+    "340": {
+      "chn": "鼓膜的振動經聽小骨傳至卵圓窗。聽小骨的槓桿作用可放大力，卵圓窗又比鼓膜小，所以施加在內耳液體上的壓強增大。壓強增益取決於力的放大比例和兩者的面積比。力、位移和作用面積須一起考慮，整個過程仍遵守能量守恆。",
+      "eng": "The ossicles transmit eardrum vibration to the oval window. Their lever action increases force, and the oval window has a smaller area than the eardrum, raising pressure on inner-ear fluid. Pressure gain depends on both force gain and area ratio. Force, displacement and area must be considered together, and energy is still conserved."
+    },
+    "341": {
+      "chn": "耳蝸內不同位置對不同頻率最敏感：高頻聲通常使接近底部、靠近卵圓窗的位置振動最強，低頻聲則在更接近頂部的位置較強。這種位置差異協助大腦辨認音調。響度則還與振動幅度及神經訊號有關。",
+      "eng": "Different cochlear regions respond most strongly to different frequencies. High frequencies produce greatest vibration near the base and oval window. Low frequencies peak nearer the apex. This place dependence helps the brain identify pitch. Loudness also depends on vibration amplitude and neural signals."
+    },
+    "342": {
+      "chn": "聲強是每秒通過垂直於傳播方向的單位面積的聲能，單位為 W m⁻²。各向同性點聲源在無明顯吸收的自由場中，能量分散到面積隨距離平方增加的球面，所以距離加倍，聲強減為四分之一。反射及吸收可使實際環境偏離此模型。",
+      "eng": "Sound intensity is energy crossing unit area perpendicular to propagation per second, measured in W m⁻². For an isotropic point source in a free field with negligible absorption, energy spreads over spheres whose area grows with distance squared. Doubling distance quarters intensity. Reflection and absorption can alter this relationship in real environments."
+    },
+    "343": {
+      "chn": "聲強是每秒通過垂直於傳播方向的單位面積的聲能，單位為 W m⁻²。各向同性點聲源在無明顯吸收的自由場中，能量分散到面積隨距離平方增加的球面，所以距離加倍，聲強減為四分之一。反射及吸收可使實際環境偏離此模型。",
+      "eng": "Sound intensity is energy crossing unit area perpendicular to propagation per second, measured in W m⁻². For an isotropic point source in a free field with negligible absorption, energy spreads over spheres whose area grows with distance squared. Doubling distance quarters intensity. Reflection and absorption can alter this relationship in real environments."
+    },
+    "344": {
+      "chn": "聲強級用以十為底的對數，比較實際聲強與參考聲強。聲強增加十倍時聲強級增加 10 dB，並不是增加十倍 dB。0 dB 表示等於參考聲強而不是完全無聲。合併多個不相干聲源時應先加聲強，不能直接加分貝數。",
+      "eng": "Sound intensity level compares intensity with a reference using a base-ten logarithm. Multiplying intensity by ten adds 10 dB, not ten times the decibel value. Zero dB means equal to the reference intensity, not silence. For independent incoherent sources, add intensities before converting to decibels."
+    },
+    "345": {
+      "chn": "聽覺閾曲線表示不同頻率剛能被聽見所需的最小聲級。曲線向上移，表示同頻聲音必須更大才能聽見，反映聽覺較不敏感。要逐個頻率比較，不能只用單一 dB 值概括所有音調，也不能把閾值增加當成聲源本身變響。",
+      "eng": "A threshold curve gives the minimum sound level just audible at each frequency. An upward shift means a louder sound is needed at that frequency, indicating reduced sensitivity. Compare frequency by frequency rather than assigning one dB value to all pitches. An increased threshold is not a change in source loudness."
+    },
+    "346": {
+      "chn": "對壓電晶體施加交變電壓會使它反覆伸縮，向介質發出超聲脈衝。回波使晶體受壓變形時，則在其兩端產生電壓訊號。同一元件因此可輪流發射和接收。超聲掃描須留出接收時間，不能把發射脈衝和回波混成同一訊號。",
+      "eng": "An alternating voltage makes a piezoelectric crystal expand and contract, emitting an ultrasound pulse. Returning echoes deform it and produce voltage signals. One element can therefore alternate between transmission and reception. Allow a listening interval. The outgoing pulse and returning echo are distinct signals."
+    },
+    "347": {
+      "chn": "聲阻抗由介質密度與聲速相乘，反映聲波在介質中的傳播特性。兩側聲阻抗差異越大，垂直入射時反射的聲強比例通常越大。反射係數是強度比而非振幅比，介於零和一。耦合凝膠能減少探頭與皮膚之間空氣造成的強反射。",
+      "eng": "Acoustic impedance is density times sound speed. At normal incidence, a greater impedance mismatch generally gives a greater reflected intensity fraction. The reflection coefficient is an intensity ratio, not an amplitude ratio, and lies between zero and one. Coupling gel reduces strong reflection from an air gap between probe and skin."
+    },
+    "348": {
+      "chn": "聲阻抗由介質密度與聲速相乘，反映聲波在介質中的傳播特性。兩側聲阻抗差異越大，垂直入射時反射的聲強比例通常越大。反射係數是強度比而非振幅比，介於零和一。耦合凝膠能減少探頭與皮膚之間空氣造成的強反射。",
+      "eng": "Acoustic impedance is density times sound speed. At normal incidence, a greater impedance mismatch generally gives a greater reflected intensity fraction. The reflection coefficient is an intensity ratio, not an amplitude ratio, and lies between zero and one. Coupling gel reduces strong reflection from an air gap between probe and skin."
+    },
+    "349": {
+      "chn": "聲阻抗由介質密度與聲速相乘，反映聲波在介質中的傳播特性。兩側聲阻抗差異越大，垂直入射時反射的聲強比例通常越大。反射係數是強度比而非振幅比，介於零和一。耦合凝膠能減少探頭與皮膚之間空氣造成的強反射。",
+      "eng": "Acoustic impedance is density times sound speed. At normal incidence, a greater impedance mismatch generally gives a greater reflected intensity fraction. The reflection coefficient is an intensity ratio, not an amplitude ratio, and lies between zero and one. Coupling gel reduces strong reflection from an air gap between probe and skin."
+    },
+    "350": {
+      "chn": "超聲脈衝發出後要走到反射面再返回探頭，所以用回波時間求深度時須把聲速乘時間再除以二。兩回波的時間差可求同一路徑上兩界面的間距。若經過多種介質，應分段使用聲速，不能把整段都當成同一材料。",
+      "eng": "An ultrasound pulse travels to an interface and back, so depth equals speed times round-trip time divided by two. The time difference between echoes can give separation of interfaces on the same path. For different materials along the path, calculate each travel time using the appropriate sound speed."
+    },
+    "351": {
+      "chn": "在相同組織中，較高頻率的超聲通常衰減較快，能有效探測的深度較小。降低頻率可探得較深，但通常犧牲細節分辨能力。選頻率時要兼顧目標深度和解析需求。",
+      "eng": "Within the same tissue, higher-frequency ultrasound generally attenuates faster and has less penetration depth. Lower frequency reaches deeper but usually sacrifices detail resolution. Balance target depth against resolving requirements when choosing frequency."
+    },
+    "352": {
+      "chn": "兩個沿聲束方向相近的界面，只有回波在時間上分得足夠開，才可辨認。脈衝越短，軸向分辨能力越好。最小可分辨間距約為空間脈衝長度的一半。如果每脈衝包含的週期數固定，提高頻率才可直接縮短脈衝。",
+      "eng": "Nearby interfaces along the beam are distinguishable only if their echoes are sufficiently separated in time. Shorter pulses improve axial resolution. The limiting separation is about half the spatial pulse length. Higher frequency directly shortens a pulse only when its number of cycles is held fixed."
+    },
+    "353": {
+      "chn": "單能窄射束通過均勻材料時，強度隨厚度指數下降，半值厚度是使強度減半的厚度。每增加一個半值厚度，就在剩餘強度上再減半。衰減係數越大，半值厚度越小。公式中係數與厚度單位須互相抵消，且不表示到某厚度後射線突然全無。",
+      "eng": "A monoenergetic narrow beam in uniform material decreases exponentially in intensity. Half-value thickness halves intensity. Each additional such thickness halves what remains. A larger attenuation coefficient means smaller half-value thickness. Coefficient and thickness units must cancel. The model does not predict a sudden complete stop at finite thickness."
+    },
+    "354": {
+      "chn": "單能窄射束通過均勻材料時，強度隨厚度指數下降，半值厚度是使強度減半的厚度。每增加一個半值厚度，就在剩餘強度上再減半。衰減係數越大，半值厚度越小。公式中係數與厚度單位須互相抵消，且不表示到某厚度後射線突然全無。",
+      "eng": "A monoenergetic narrow beam in uniform material decreases exponentially in intensity. Half-value thickness halves intensity. Each additional such thickness halves what remains. A larger attenuation coefficient means smaller half-value thickness. Coefficient and thickness units must cancel. The model does not predict a sudden complete stop at finite thickness."
+    },
+    "355": {
+      "chn": "X 射線衰減取決於物質組成、密度及光子能量。組成與能量相近時，密度較大通常衰減較強。在常見診斷能區且遠離吸收邊緣時，光子能量較高通常較易穿透。這些是有條件的趨勢，不能當作跨所有材料與能量都必然成立。",
+      "eng": "Attenuation depends on composition, density and photon energy. With similar composition and energy, greater density generally means stronger attenuation. In common diagnostic-energy ranges away from absorption edges, higher-energy photons usually penetrate more readily. These are conditional trends, not universal rules across all materials and energies."
+    },
+    "356": {
+      "chn": "X 射線衰減取決於物質組成、密度及光子能量。組成與能量相近時，密度較大通常衰減較強。在常見診斷能區且遠離吸收邊緣時，光子能量較高通常較易穿透。這些是有條件的趨勢，不能當作跨所有材料與能量都必然成立。",
+      "eng": "Attenuation depends on composition, density and photon energy. With similar composition and energy, greater density generally means stronger attenuation. In common diagnostic-energy ranges away from absorption edges, higher-energy photons usually penetrate more readily. These are conditional trends, not universal rules across all materials and energies."
+    },
+    "357": {
+      "chn": "射線逐層通過材料時，上一層透出的強度，就是下一層的入射強度。總透射比例是各層透射比例的乘積。寫成指數形式時，則把各層「衰減係數乘厚度」的結果相加。每層厚度均沿射線實際路徑量度。",
+      "eng": "Each layer's transmitted intensity becomes the next layer's incident intensity. Multiply transmission fractions, or add each coefficient-times-thickness term in the exponent. Do not add attenuation percentages directly. Measure each thickness along the actual beam path."
+    },
+    "358": {
+      "chn": "不同組織使 X 射線衰減程度不同，探測到的透射強度差形成對比。課本慣用顯示中，高衰減的骨等部位較淺，較低衰減處較深。數碼顯示可反相，所以應先確認色階。影像明暗取決於沿路徑的總衰減，不能只看單一組織密度。",
+      "eng": "Tissues attenuate X-rays differently, creating contrast in detected transmission. In the conventional textbook display, strongly attenuating structures such as bone appear light and less attenuating regions dark. Digital displays can be inverted, so check the scale. Appearance depends on total path attenuation, not one tissue's density alone."
+    },
+    "359": {
+      "chn": "當某器官與周圍組織對 X 射線的衰減太相近，影像不易區分。適當顯影劑能改變指定部位的衰減，使透射強度差增加而提高對比。這是改善組織間的可辨程度，不等同增加像素數或改變儀器的空間分辨極限。",
+      "eng": "An organ is difficult to distinguish when its attenuation resembles surrounding tissue. An appropriate contrast agent changes attenuation in the chosen region, increasing transmitted-intensity differences and contrast. This improves tissue differentiation, not pixel count or the instrument's intrinsic spatial resolution."
+    },
+    "360": {
+      "chn": "CT 從多個角度量度穿過身體切面的 X 射線衰減投影，再由電腦重建切面各位置的衰減係數分佈。多個角度的資訊有助分開在普通投影影像中重疊的組織。",
+      "eng": "Computed tomography measures attenuation projections through a section from many directions and reconstructs the distribution of attenuation coefficients computationally. Multiple views separate tissues that overlap in an ordinary projection."
+    },
+    "362": {
+      "chn": "物理半衰期描述單靠核衰變，使某核素的未衰變核數減半所需的時間，是核素的特徵。它不計物質被身體排出的效果。示蹤物在體內的活度可能下降得更快，因為衰變與生物排除同時發生。",
+      "eng": "Physical half-life is the time for a nuclide's undecayed population to halve through nuclear decay alone. It is a property of the nuclide and excludes biological removal. Tracer activity in the body can decrease faster because decay and biological clearance operate together."
+    },
+    "363": {
+      "chn": "生物半衰期描述指定物質因代謝、排泄等生物過程，從身體或目標部位減至一半所需時間，不涉及核本身是否衰變。它取決於物質及生理過程。把它與物理半衰期合併時，須確認兩種下降可近似為獨立的指數過程。",
+      "eng": "Biological half-life is the time for metabolism, excretion or other biological processes to remove half a substance from the body or target region, independently of nuclear decay. It depends on the substance and physiology. Combining it with physical half-life requires approximately independent exponential decreases."
+    },
+    "364": {
+      "chn": "體內示蹤物同時因核衰變和生物排出而減少。如果兩者是獨立的指數過程，其減少率可相加，便得到有效半衰期的倒數和關係。兩種作用一起發生，因此有效半衰期短於任一有限的分半衰期。計算前先統一時間單位。",
+      "eng": "Tracer quantity decreases through both nuclear decay and biological clearance. For independent exponential processes, the removal rates add, giving the reciprocal-sum relation for effective half-life. Because both processes act together, effective half-life is shorter than either finite component half-life. Use the same time units for both."
+    },
+    "365": {
+      "chn": "熱點表示某部位示蹤物攝入或積聚較多，冷點表示較少，須依所用示蹤物及正常分佈解讀。課本灰階以熱點較深、冷點較淺呈現，但其他色階可不同。名稱不表示實際温度高低，也不能單憑熱點便下同一種診斷。",
+      "eng": "Hot spots show relatively high tracer uptake and cold spots relatively low uptake. Interpretation depends on the tracer and normal distribution. Textbook greyscale makes hot spots darker and cold spots lighter, but other scales differ. The names do not indicate temperature, nor does every hot spot imply the same diagnosis."
+    },
+    "366": {
+      "chn": "先確認「向右位移為正」。在位移—距離圖上，曲線由正變負穿過橫軸的位置是密部中心。由負變正則是疏部中心。圖的高低表示位移，不是粒子實際上下移動。用課本相鄰粒子圖可看出：兩旁粒子朝中心擠近形成密部，向外分開形成疏部。",
+      "eng": "First establish that displacement to the right is positive. On a displacement-distance graph, a downward crossing of zero marks a compression centre. An upward crossing marks a rarefaction centre. Graph height represents displacement, not vertical particle motion. The neighbouring-particle diagram shows particles crowding towards a compression or separating away from a rarefaction."
+    },
+    "367": {
+      "chn": "簡諧振動的粒子經過平衡位置時，速率最大。到最大位移處時，則瞬間靜止，然後反向運動。由 \\(K=\\frac12mu^2\\) 可知，平衡位置的動能最大，最大位移處的動能為零。粒子的振動速率隨時間改變，波速則描述波形在介質中傳播的快慢。",
+      "eng": "For simple harmonic particle motion in a wave, speed is greatest at equilibrium and momentarily zero at maximum displacement before reversal. Since \\(K=\\frac12mu^2\\), kinetic energy is greatest in the first case and zero in the second. Zero displacement therefore does not mean rest. Particle speed varies during oscillation and differs from the waveform's propagation speed."
+    },
+    "368": {
+      "chn": "脈衝在固定端反射時會反相：波峰變波谷，波谷變波峰，傳播方向也反轉。同一介質中的波速不變。對週期波，頻率和波長也不變。畫反射脈衝時，須同時反轉上下的正負位移和左右的輪廓，因為先到端點的部分也先離開。",
+      "eng": "A pulse reflected at a fixed end is inverted: crests become troughs and propagation reverses. In the same medium, wave speed stays unchanged, as do frequency and wavelength for periodic waves. When drawing the reflected pulse, reverse both its sign and its left-right profile: the part reaching the end first also leaves first, so a vertical flip alone is insufficient."
+    },
+    "369": {
+      "chn": "凹透鏡作圖可用三條光線。平行主軸入射的光線，出射後的反向延長線通過近側焦點。朝遠側焦點入射的光線，平行主軸射出。通過光心的光線，沿直線前進。凸透鏡接收斜向平行光時，光線會聚在焦平面上，會聚點可偏離主焦點。",
+      "eng": "Use three rays to construct a concave-lens image. A ray parallel to the axis emerges as if from the near focus. A ray aimed at the far focus emerges parallel to the axis. A ray through the optical centre continues straight. Oblique parallel rays entering a convex lens converge in the focal plane, possibly away from the principal focus."
+    },
+    "371": {
+      "chn": "電磁波按波長由長到短排列為：無線電波、微波、紅外線、可見光、紫外線、X 射線、γ 射線。頻率沿這個次序增加，因為真空中的波速均為 \\(c=3.0\\times10^8\\,\\mathrm{m\\,s^{-1}}\\)，並滿足 \\(c=f\\lambda\\)。常見用途有：無線電波用於廣播。微波用於加熱、雷達和衛星通訊。紅外線用於熱成像。紫外線用於殺菌。X 射線用於透視。比較波長時須讀圖上刻度，各波段的界線並非完全分明。",
+      "eng": "From longest to shortest wavelength, the spectrum runs through radio waves, microwaves, infrared, visible light, ultraviolet, X-rays and gamma rays. Frequency increases along this sequence because all travel in vacuum at \\(c=3.0\\times10^8\\,\\mathrm{m\\,s^{-1}}\\), with \\(c=f\\lambda\\). Typical uses include broadcasting, microwave heating and satellite communication, infrared imaging, ultraviolet sterilisation and X-ray imaging. Read the wavelength scale carefully. Neighbouring bands have no perfectly sharp boundaries."
+    },
+    "372": {
+      "chn": "微波能穿過大氣，可用於衛星通訊。大氣則阻擋大部分太陽紫外線。這說明不同波段的吸收不同。若題目給出大氣吸收圖，應再按指定波長讀值，不把整個波段一律當作可穿透。",
+      "eng": "Suitable microwave bands pass through the atmosphere and support satellite communication, whereas the atmosphere blocks much solar ultraviolet. Absorption therefore depends on wavelength. If an atmospheric-transmission graph is supplied, read it at the specified wavelength rather than assuming every wavelength within a named band transmits equally well."
+    },
+    "373": {
+      "chn": "電場線由正電荷出發，終止於負電荷。箭頭表示電場方向。場線越密，電場越強。場線不會互相交叉。",
+      "eng": "Electric field lines start from positive charges and end at negative charges. Their arrows show the field direction. Closer spacing indicates a stronger field, and field lines never intersect."
+    },
+    "376": {
+      "chn": "超聲波可發出後接收回波，用來探測魚群、掃描和找材料裂縫。課本另列清洗精細物件及集中能量破碎腎石。",
+      "eng": "Transmitted ultrasound and returning echoes locate fish, scan structures and reveal cracks in materials. Other textbook applications include cleaning delicate objects and concentrating energy to break kidney stones."
+    },
+    "377": {
+      "chn": "α 粒子是帶＋2e 電荷的氦核，β⁻ 粒子是帶−e 電荷的高速電子，γ 射線則是不帶電的電磁波。α 和 β⁻ 在電場中向相反方向偏轉。若運動方向不平行於磁場，也會受磁力。γ 在兩種場中均不偏轉。α 電離能力最強、穿透力最弱，可被紙阻擋。β⁻ 居中，可被數毫米鋁阻擋。γ 穿透力最強，須用厚鉛或混凝土衰減。蓋革計數器可探測這些輻射，但 α 須能穿過薄窗，到達探測區。雲室可顯示 α 和 β 的徑跡。γ 本身不留下帶電粒子徑跡。",
+      "eng": "Alpha particles are helium nuclei of charge +2e. Beta-minus particles are fast electrons of charge −e. Gamma rays are uncharged electromagnetic radiation. Alpha and beta bend oppositely in electric fields and experience magnetic force unless moving parallel to the field. Gamma is undeflected in both fields. Alpha ionises most strongly but is stopped by paper. Beta is intermediate and is typically stopped by millimetres of aluminium. Gamma penetrates most strongly and needs thick lead or concrete for substantial attenuation. Geiger counters can detect these radiations, but alpha must pass through a thin window into the sensitive region. Cloud chambers show alpha and beta tracks. Gamma itself leaves no charged-particle track."
+    },
+    "378": {
+      "chn": "放射性衰變具有隨機性，因此計數率會上下波動，同樣條件下的兩次讀數不必完全相同。扣除背景計數可去除背景的貢獻，但不會消除計數的隨機波動。",
+      "eng": "Radioactive counts fluctuate because decay is random. Measurements made under identical conditions need not be exactly equal. Subtracting background corrects its contribution but does not remove the intrinsic random fluctuations of the counts."
+    },
+    "379": {
+      "chn": "半衰期是大量同種不穩定原子核的數目減至一半所需的時間，也是活度降至一半所需的時間。同一核素的半衰期是固定特徵，在本課程採用的模型中不受溫度、壓力或化學狀態等外在條件影響。經過 n 個半衰期，剩餘原子核數及活度都是最初的 \\((\\tfrac12)^n\\)。",
+      "eng": "Half-life is the time for a large population of identical unstable nuclei, or its activity, to halve. It is characteristic of the nuclide and, in the course model, unaffected by temperature, pressure or chemical state. After n half-lives, the remaining fraction of nuclei and activity is \\((\\tfrac12)^n\\)."
+    },
+    "381": {
+      "chn": "活度 A 是放射性樣本每秒的平均衰變次數，單位是貝克（Bq），1 Bq 表示每秒一次衰變。若 N 是尚未衰變的核數，λ 是衰變常數，則 \\(A=\\lambda N\\)。每分鐘的衰變次數除以 60，可換成 Bq。探測器通常只收到部分輻射，讀數又包含背景計數，因此計數率須與樣本總活度分別處理。",
+      "eng": "Activity A is the mean number of nuclear decays per second, measured in becquerels: 1 Bq is one decay per second. For N undecayed nuclei with decay constant λ, \\(A=\\lambda N\\). Divide decays per minute by 60 to convert to Bq. A detector usually records only part of the emitted radiation and includes background, so its count rate is not directly the total activity."
+    },
+    "384": {
+      "chn": "恒星和行星系统属于星系的一部分。星系可组成星系群、星系团和超星系团。星团是恒星的集合，星云主要由气体和尘埃组成，两者通常位于星系内。比较尺度时须统一单位。不同类型天体的大小范围可能重叠。",
+      "eng": "Stars and planetary systems lie within galaxies. Galaxies form groups, clusters and superclusters. Star clusters are groups of stars. Nebulae consist mainly of gas and dust. Both are usually found within galaxies. Compare sizes using the same units. Size ranges of different objects may overlap."
+    },
+    "385": {
+      "chn": "金星會由眉月變至近滿相。眉月時較近，視直徑較大。近滿相時較遠，視直徑較小。這符合金星繞太陽公轉的安排，與托勒密模型中金星一直位於地球和太陽之間的安排不符。木星的衛星繞木星運動，則顯示有些天體繞地球以外的天體運行。",
+      "eng": "Venus shows phases from crescent to nearly full. It is nearer and has a larger apparent diameter when crescent-shaped, and farther with a smaller diameter when nearly full. This fits an orbit around the Sun, but not the Ptolemaic arrangement placing Venus always between Earth and the Sun. Jupiter's moons show that some celestial bodies orbit objects other than Earth."
+    },
+    "386": {
+      "chn": "恆星外層氣體吸收特定波長，再向各方向發射，使觀察方向上的這些波長強度下降，形成暗線。不同元素有各自的譜線組合，因此可辨認恆星外層氣體的元素。",
+      "eng": "Gas in a star's outer layers absorbs particular wavelengths and re-emits in all directions, reducing their intensity along the observer's line of sight and producing dark lines. Each element has characteristic line patterns, allowing outer-atmosphere elements to be identified."
+    },
+    "387": {
+      "chn": "每種元素都有特定的一組譜線波長，因此可把未知樣本的發射線或吸收線位置與已知元素比較，以辨認所含元素。發射光譜中的亮線和同種元素吸收光譜中的暗線會出現在相應波長。判斷時應比對整組線的位置，不能只比較線的數目或亮暗。下圖例子中樣本 A 的發射線包含氫和氦，樣本 B 的吸收線對應碳。",
+      "eng": "Compare an unknown sample's line wavelengths with known elemental patterns. Bright emission and dark absorption lines of the same element occur at corresponding wavelengths. Match the positions of the whole set rather than only line count or brightness. In the illustrated example, sample A's emission includes hydrogen and helium, while sample B's absorption matches carbon."
+    },
+    "389": {
+      "chn": "恆星光譜型由高温至低温排列為 O、B、A、F、G、K、M。赫羅圖中，温度通常由左至右降低，光度由下至上增加。若縱軸用絕對星等，數值越小，星體越亮。主序星由左上至右下分布。巨星和超巨星在較上方。白矮星在左下方，表示温度高、光度低、半徑小。",
+      "eng": "Spectral types run O, B, A, F, G, K, M from hottest to coolest. In a typical H-R diagram, temperature decreases to the right and luminosity increases upwards. If the vertical axis uses absolute magnitude, smaller values mean brighter stars. The main sequence runs from upper left to lower right. Giants and supergiants lie higher. White dwarfs lie at lower left, showing high temperature, low luminosity and small radius."
+    },
+    "393": {
+      "chn": "尺寸縮小令表面積／體積比和表面原子比例增加，較多原子能與環境反應。蓮葉的納米毛狀結構排水，水滴滾走時帶走污物。",
+      "eng": "Reducing size increases surface-area-to-volume ratio and the fraction of surface atoms available to interact with the surroundings. A lotus leaf's nanoscale surface structures repel water, allowing rolling droplets to carry dirt away."
+    },
+    "394": {
+      "chn": "二氧化鈦薄膜有兩種自潔作用：紫外光協助分解有機污物。親水表面讓雨水鋪展，帶走污物。蓮葉則靠疏水表面，讓水珠滾走。碳材料顯示原子排列如何影響性質：金剛石是三維共價網絡，石墨是可相對滑動的層狀結構，石墨烯是單層蜂窩狀碳網，碳納米管則像捲成管的碳網。它們都由碳組成，但排列不同，力學和導電性質便不同。",
+      "eng": "Titanium-dioxide coatings have two cleaning mechanisms. Ultraviolet light assists the breakdown of organic dirt, while a hydrophilic surface lets rain spread and wash it away. The lotus effect instead uses water-repelling droplets. Carbon materials show how structure affects properties: diamond has a three-dimensional covalent network, graphite has sliding layers, graphene is one honeycomb sheet, and nanotubes resemble rolled sheets. They contain the same element but have different atomic arrangements, giving different mechanical and electrical properties."
+    },
+    "395": {
+      "chn": "透射電子顯微鏡先由電子槍產生電子束，再用聚光磁透鏡，把電子束聚焦到很薄的樣本。電子穿過樣本後，經物鏡和投影透鏡形成放大影像，最後由螢光屏或相機記錄。樣本不同部位的電子透射程度不同，因此形成明暗對比。磁透鏡用磁場改變電子的運動方向。",
+      "eng": "A transmission electron microscope first uses an electron gun to produce a beam. Condenser magnetic lenses focus it onto a thin sample. Transmitted electrons pass through objective and projector lenses to form an enlarged image, recorded on a screen or camera. Different parts of the sample transmit electrons differently, creating contrast. Magnetic lenses change electron directions using magnetic fields."
+    },
+    "396": {
+      "chn": "壓水式反應堆的燃料經核裂變釋放能量。控制棒吸收中子，調節連鎖反應。一次迴路的高壓水吸熱，作為冷卻劑，也作為減慢中子的減速劑。高壓使水在高温下保持液態。一次迴路經蒸汽發生器，把熱傳給獨立的二次迴路。二次迴路的蒸汽驅動渦輪和發電機，之後在冷凝器向外部冷卻迴路放熱，凝結成水，再循環使用。各迴路交換熱量，水則互不混合。",
+      "eng": "Fission in the fuel releases energy. Control rods absorb neutrons to regulate the chain reaction. High-pressure water in the primary circuit removes heat and also acts as a moderator, slowing neutrons. Pressure keeps this water liquid at high temperature. The steam generator transfers heat to a separate secondary circuit. Its steam drives the turbine and generator, then gives up heat to an external cooling circuit in the condenser. The steam condenses to water for reuse. The circuits exchange heat while keeping their water separate."
+    },
+    "397": {
+      "chn": "施加正向直流電壓時，電子和空穴移向 p-n 接面。電子與空穴結合，從較高能級轉到較低能級，多餘能量以電磁波發出。發光顏色取決於這個能量差和接面材料。",
+      "eng": "Under forward d.c. bias, electrons and holes move towards the p-n junction and recombine. The energy decrease is released as electromagnetic radiation. The junction material and energy difference determine the emitted colour."
+    },
+    "398": {
+      "chn": "光照令接面處產生自由電子和空穴，接面電場使電子向 n 側、空穴向 p 側移動。接上負載後電子經外電路流動。傳統電流方向相反。",
+      "eng": "Incident light generates free electrons and holes near the junction. Its electric field separates them, moving electrons towards the n-side and holes towards the p-side. With a load connected, electrons flow through the external circuit. Conventional current is opposite."
+    },
+    "399": {
+      "chn": "設陽光在垂直於光線方向的功率密度為 I，太陽能板面積為 A。θ 是光線與板面法線的夾角，投影面積便是 \\(A\\cos\\theta\\)，入射功率為 \\(P=IA\\cos\\theta\\)。垂直入射時，\\(\\theta=0\\)，功率最大。若角度從板面量起，改用 \\(\\sin\\theta\\)。若題目已給出板面實際接收的功率密度，直接乘 A 即可。求電輸出功率時，再乘轉換效率。",
+      "eng": "For sunlight intensity I measured perpendicular to its rays, a panel of area A intercepts projected area \\(A\\cos\\theta\\), where θ is the angle from the panel normal. Incident power is \\(P=IA\\cos\\theta\\), greatest at normal incidence when \\(\\theta=0\\). If the angle is measured from the panel surface, use sine instead. If actual power per panel area is already given, multiply by A without another angle factor. Electrical output also includes conversion efficiency."
+    },
+    "400": {
+      "chn": "太陽能電池表面的透明減反射膜可減少光在表面反射，讓更多入射光進入電池並被吸收，從而提高可供轉換的光能。表面反射減少也使太陽能板看起來較暗。",
+      "eng": "A transparent anti-reflection coating reduces reflected light, allowing more incident light into the cell for absorption and energy conversion. Reduced reflection also makes panels appear darker."
+    },
+    "401": {
+      "chn": "質量 m 的水在時間 t 內升温 ΔT，且沒有物態改變時，吸收的有用熱量為 \\(Q=mc\\Delta T\\)。有用加熱功率為 \\(P_{\\mathrm{useful}}=\\frac{mc\\Delta T}{t}\\)。若效率為 η，由「效率＝有用輸出／總輸入」，可得輸入功率 \\(P_{\\mathrm{input}}=\\frac{mc\\Delta T}{\\eta t}\\)。計算前把分鐘換成秒，並統一質量及比熱容量單位。有熱散失時，水得到的功率小於電器輸入功率。",
+      "eng": "For water of mass m warmed by ΔT in time t with no state change, useful heat is \\(Q=mc\\Delta T\\) and useful power is \\(P_{\\mathrm{useful}}=\\frac{mc\\Delta T}{t}\\). With efficiency η, input power is \\(P_{\\mathrm{input}}=\\frac{mc\\Delta T}{\\eta t}\\), since efficiency is useful output divided by input. Convert minutes to seconds and use consistent mass and specific-heat units. With losses, water heating power is lower than appliance input power."
+    },
+    "402": {
+      "chn": "課本比較表指出低發射率玻璃和隔熱膜主要反射紅外及紫外，同時讓大部分可見光進入。可見光提供自然照明，減少不需要的熱輻射則降低熱增益。",
+      "eng": "The textbook comparison describes glazing and films that preferentially reflect infrared and ultraviolet while transmitting much visible light. Visible transmission provides natural lighting, while reducing unwanted thermal radiation lowers heat gain."
+    },
+    "403": {
+      "chn": "混合動力車可由引擎、電動機或兩者一起驅動。課本例子中，加速或上斜時兩者同用，電動機分擔負載，可容許使用較小的引擎。這描述驅動時的動力分工。減速時的再生制動，則把部分動能轉回電能。",
+      "eng": "A hybrid can be driven by its engine, motor or both. The textbook example uses both during acceleration or uphill travel, and motor assistance can permit a smaller engine. This division of propulsion differs from regenerative braking, which recovers energy during deceleration. Match the mechanism to the operating stage."
+    },
+    "405": {
+      "chn": "可再生能源可在人類使用的時間尺度內持續補充，例如太陽能、風能和水力。不可再生能源來自有限、難以在短時間補回的資源，例如煤、石油、天然氣和常用核燃料。分類依據是資源能否補充。核電運作時的碳排放較少，但仍使用有限的核燃料。",
+      "eng": "Renewable sources replenish on timescales comparable to human use, including solar, wind and hydropower. Non-renewable resources are finite and not quickly replaced, including coal, oil, natural gas and conventional nuclear fuels. Replenishment, not carbon emissions during generation, determines the classification. Nuclear power still uses finite fuel despite comparatively low operating carbon emissions."
+    },
+    "406": {
+      "chn": "課本標籤例子把能源表現分為 1–5 級，1 級最高效，5 級最低。它也用耗電量和運行時間推算輸入功率。級別與總耗電量是不同資料。比較時按題目提供的產品分類及標籤條件判斷。",
+      "eng": "The textbook's energy-label example uses grades 1–5, with grade 1 most efficient and grade 5 least efficient. Energy use and operating time can also be used to calculate input power. Efficiency grade and total electricity consumption are different pieces of information. Compare within the product category and conditions provided in the question."
+    },
+    "407": {
+      "chn": "同一條等響曲線表示主觀響度相同，但各頻率需要的 dB 值不同。讀圖時固定頻率向上找聲級，再看落在哪條曲線。若各頻率都增加相同 dB，應逐點重新讀圖，不能直接說主觀響度增加量相同。",
+      "eng": "Points on one equal-loudness curve sound equally loud even though different frequencies require different decibel levels. At the specified frequency and level, identify the curve passing through the point. If all frequencies increase by the same dB amount, reread each point. This does not automatically give the same perceived loudness increase."
+    },
+    "408": {
+      "chn": "A 掃描用尖峰顯示超聲回波。尖峰的橫向位置表示到達時間，高度表示信號強度。聲速為 c、來回時間為 t 時，界面深度是 \\(\\frac{ct}{2}\\)。B 掃描把到達時間轉為位置，把信號強度轉為亮度，再組合多條掃描線，形成二維截面。影像可連續更新，顯示實時變化。較暗的區域表示收到的回波較弱，仍須配合其他資料解讀。",
+      "eng": "An A-scan displays echo peaks: horizontal position gives arrival time and height gives signal strength. At sound speed c, interface depth is \\(\\frac{ct}{2}\\) because the pulse travels out and back. A B-scan converts arrival time to position and strength to brightness, combining scan lines into a two-dimensional section that can update in real time. A dark region means weaker received echoes, not necessarily absent tissue or disease."
+    },
+    "409": {
+      "chn": "選成像方法時，先確定觀察目標：器官內表面、組織截面，或實時動作。再比較穿透能力、視野、侵入性和是否使用致電離輻射。超聲可顯示實時影像，也不使用致電離輻射，但不易穿過骨和含氣部位。光纖內窺鏡可直接看可到達的空腔內表面，並可取樣，但須插入器械，視野和可到達範圍有限。按目標器官和檢查目的，選擇合適的方法。",
+      "eng": "First decide whether the target is an accessible internal surface, a tissue section or real-time movement. Then compare penetration, field of view, invasiveness and ionising radiation. Ultrasound is non-ionising and can show live movement, but passes poorly through bone and gas. Fibre-optic endoscopy directly views accessible cavities and can take samples, but requires insertion and has limited reach and view. Relate each limitation to the specified target and purpose."
+    },
+    "410": {
+      "chn": "內窺鏡可直接觀察可到達的器官內表面，也可經通道放入小工具取樣。視野和可到達範圍有限。某些檢查須先禁食或使用麻醉。檢查亦有穿孔、污染等風險。",
+      "eng": "Endoscopy directly views accessible internal organ surfaces and can pass small sampling tools through a channel. Its view and reach are limited. Some procedures require preparation such as fasting or anaesthesia, and risks include perforation or contamination."
+    },
+    "411": {
+      "chn": "影像矩陣表示橫向和縱向的像素數。正方形像素的面積為 a 時，邊長是 \\(\\sqrt a\\)。把影像寬度 W、高度 H 和像素邊長換成同一單位，再分別相除，矩陣便是 \\(\\frac{W}{\\sqrt a}\\times\\frac{H}{\\sqrt a}\\)。兩個方向的像素數相乘，得到總像素數。例如 1024×1024 表示每邊有 1024 個像素，共 1,048,576 個。",
+      "eng": "An image matrix states horizontal and vertical pixel counts. For square pixels of area a, side length is \\(\\sqrt a\\). Express image width W, height H and pixel size in matching units. The matrix is \\(\\frac{W}{\\sqrt a}\\times\\frac{H}{\\sqrt a}\\). Multiply the counts for total pixels. A 1024 × 1024 matrix contains 1,048,576 pixels; 1024 is not a physical side length."
+    },
+    "413": {
+      "chn": "空氣到角膜的界面提供眼睛最多的折射，這部分不能調節。晶狀體則可以改變形狀及焦距，讓不同距離物體清晰成像於視網膜。",
+      "eng": "The air-cornea boundary provides most of the eye's refraction and is not adjustable. The crystalline lens changes shape and focal length to focus objects at different distances on the retina."
+    },
+    "414": {
+      "chn": "吸收劑量 D 是每千克物質吸收的輻射能量，單位為 Gy。同樣的吸收劑量，不同輻射可產生不同生物效應。等效劑量 H 把各種輻射的吸收劑量乘相應加權因子 w，再相加：\\(H=\\sum wD\\)，單位為 Sv。課本採用 α 的 w＝20，β、γ 的 w＝1。有效劑量則再考慮不同組織的權重。",
+      "eng": "Absorbed dose D is energy absorbed per kilogram, measured in Gy. Equal absorbed doses of different radiation types can have different biological effects. Equivalent dose sums doses multiplied by radiation weighting factors: \\(H=\\sum wD\\), in Sv. The textbook uses w = 20 for alpha and w = 1 for beta and gamma. Effective dose additionally accounts for tissue weighting."
+    },
+    "415": {
+      "chn": "固定體積和氣體量時，壓強 p 與攝氏温度 θ 近似呈直線關係：\\(p=m\\theta+b\\)。由兩個數據點可求斜率 \\(m=\\frac{p_2-p_1}{\\theta_2-\\theta_1}\\)。把直線延長至 p＝0，橫軸截距 \\(\\theta_0=-\\frac{b}{m}\\) 就是實驗推算的絕對零度。這是量測範圍外的外推。課本數據得 −265 °C，與公認值約 −273 °C 有差異。作答時按實驗數據計算，並考慮誤差。",
+      "eng": "At fixed gas amount and volume, pressure p varies approximately linearly with Celsius temperature θ: \\(p=m\\theta+b\\). Two points give the slope \\(m=\\frac{p_2-p_1}{\\theta_2-\\theta_1}\\). Extend the line to zero pressure. The intercept \\(\\theta_0=-\\frac{b}{m}\\) is the experimental estimate of absolute zero. This is extrapolation beyond the measured range. The textbook data give −265 °C rather than the accepted approximately −273 °C. Calculate from the supplied data and consider experimental error."
+    },
+    "416": {
+      "chn": "讀數前先停止加熱，充分攪拌水浴，使各處温度較均勻，再等温度穩定。攪拌減小水浴各處的温差。等候則讓樣本與水浴接近熱平衡。温度計須避免碰到燒杯底。",
+      "eng": "Stop heating and stir the water bath thoroughly, making its temperature more uniform. Then wait for a steady reading. Stirring reduces temperature differences across the bath. Waiting lets the sample and bath approach thermal equilibrium. Keep the thermometer away from the beaker bottom."
+    },
+    "417": {
+      "chn": "交流發電機把機械能轉為電能。線圈兩端各接一個滑環（匯電環）。滑環是兩個互相絕緣的完整金屬圓環，並各自經碳電刷連接外電路。\n\n線圈在磁場中轉動，感生電動勢每半圈反向。滑環始終保持線圈兩端與相應電刷的連接，不會像換向器那樣交換連接，因此線圈和外電路的電流都每半圈反向，輸出交流電。",
+      "eng": "An a.c. generator converts mechanical energy into electrical energy. Each coil end connects to one slip ring. These are two complete metal rings, insulated from each other, each connected to the external circuit through its own carbon brush. As the coil rotates in a magnetic field, its induced e.m.f. reverses every half-turn. Slip rings maintain each coil end's connection to its respective brush, without swapping connections as a commutator does. The current in both the coil and external circuit therefore reverses every half-turn, producing a.c."
+    }
+  },
+  "readabilityReview": {
+    "reviewed": 411,
+    "languages": 2
+  }
+}

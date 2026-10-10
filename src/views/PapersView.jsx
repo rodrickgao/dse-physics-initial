@@ -4,16 +4,13 @@ import { SearchReturn } from '../components/SearchReturn';
 import { useMembership, MemberNotice } from '../components/Membership';
 import { track } from '../lib/activity';
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ArrowLeft, ArrowRight, BookOpen, Check, ChevronDown, Search, Star, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, BookOpen, Check, ChevronDown } from "lucide-react";
 import { Button } from "../components/ui/button";
-import { Card } from "../components/ui/card";
-import { Input } from "../components/ui/input";
 import { StudyQuestion } from "../components/StudyQuestion";
 import { SourceDownload } from "../components/SourceDownload";
-import './papers-directory.css';
 import { useContentMotion } from '../lib/use-content-motion';
 import { cn } from "../lib/utils";
-import { chapterLabel, sortKnowledge, knowledgeNumber, knowledgeTitle, imageUrl, networkFor, networkKey, questionIdentity, yearsFor } from "../lib/data";
+import { chapterLabel, sortKnowledge, knowledgeNumber, knowledgeTitle, imageUrl, networkKey, questionIdentity, yearsFor } from "../lib/data";
 
 function titleForPaper(paper, index, language) {
   if (language === "eng") return paper.title;

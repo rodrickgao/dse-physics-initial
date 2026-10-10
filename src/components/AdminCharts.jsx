@@ -1,4 +1,3 @@
-import './admin-charts.css';
 const day = n => new Date(n).toLocaleDateString('en-CA',{timeZone:'Asia/Hong_Kong'});
 export function AdminCharts({data,language}) {
  const en=language==='eng',students=data.students||[],daily=new Map((data.dailyUsage||[]).map(r=>[r.day,r]));

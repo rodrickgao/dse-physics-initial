@@ -80,7 +80,7 @@
       ],
       [
         2,
-        0.0
+        0
       ]
     ],
     "question": "Which of the following properties is the least likely to be used to make a thermometer? A Size B Colour C Mass D Ability to conduct electricity"
@@ -3177,7 +3177,7 @@
       ],
       [
         52,
-        8.0
+        8
       ]
     ],
     "question": "A speed boat with an initial velocity u speeds up uniformly at 4 m s −2 along a straight line. Its velocity is 25 m s −1 after travelling 30 m. (a) Find u . (2 marks) (b) Find the time taken for the above motion. (2 marks) (c) Sketch the v − t graph for the above motion of the speed boat. (2 marks)"
@@ -3499,7 +3499,7 @@
       ],
       [
         51,
-        3.0
+        3
       ]
     ],
     "question": "Figure v shows an experiment set-up. When the switch is pressed, the ball is released from rest and a timer starts timing. When the ball hits the pad, the timer stops. A metre rule (not shown in Figure v) is available. Describe how you would use the apparatus to estimate the acceleration due to gravity. State clearly the physical quantities to be measured. ("
@@ -3675,7 +3675,7 @@
       ],
       [
         62,
-        6.0
+        6
       ],
       [
         65,
@@ -3807,14 +3807,14 @@
       57
     ],
     "method": "reviewed",
-    "score": 7.0,
+    "score": 7,
     "evidenceTerms": [
       "inertia"
     ],
     "candidates": [
       [
         58,
-        7.0
+        7
       ],
       [
         57,
@@ -4217,7 +4217,7 @@
       ],
       [
         61,
-        4.0
+        4
       ],
       [
         59,
@@ -4615,7 +4615,7 @@
       ],
       [
         67,
-        0.0
+        0
       ]
     ],
     "question": "A box is placed on the floor of a container truck such that it is up against the wall of the container (Fig b). The truck is moving towards the right at a constant velocity. Which of the following is the correct free-body diagram for the box?"
@@ -4686,7 +4686,7 @@
       ],
       [
         67,
-        0.0
+        0
       ]
     ],
     "question": "Three blocks are hung over two smooth pulleys as shown (Fig e). If block W is at rest, find the tension T in the string holding it. A 25.2 N B 30.1 N C 32.9 N D 39.2 N"
@@ -5225,7 +5225,7 @@
       ],
       [
         67,
-        3.0
+        3
       ]
     ],
     "question": "A 800-g box is connected to a 500-g block by an inextensible string running over a smooth pulley (Fig ag). When the block is released, the box is pulled towards the left. The friction between the box and the table is 3.5 N. After speeding up for a certain time, the box starts to slow down. (a) Why does the box slow down? (1 mark) (b) Find θ at the instant th"
@@ -5769,7 +5769,7 @@
       68
     ],
     "method": "reviewed",
-    "score": 15.0,
+    "score": 15,
     "evidenceTerms": [
       "sin",
       "clockwise",
@@ -5784,11 +5784,11 @@
     "candidates": [
       [
         70,
-        15.0
+        15
       ],
       [
         69,
-        15.0
+        15
       ],
       [
         68,
@@ -12841,7 +12841,7 @@
       ],
       [
         140,
-        8.0
+        8
       ]
     ],
     "question": "A water wave with a wavelength of 3 cm and a frequency of 5 Hz travels through a gap (Fig c). How long does the wave take to travel from point X to point Y ? A 0.2 s B 0.4 s C 0.6 s D Cannot be determined"
@@ -12895,7 +12895,7 @@
       ],
       [
         139,
-        11.0
+        11
       ],
       [
         140,
@@ -13834,7 +13834,7 @@
       ],
       [
         152,
-        16.0
+        16
       ],
       [
         153,
@@ -13937,7 +13937,7 @@
       ],
       [
         372,
-        8.0
+        8
       ],
       [
         149,
@@ -14579,7 +14579,7 @@
       ],
       [
         375,
-        5.0
+        5
       ]
     ],
     "question": "In an experiment studying the interference of sound, two loudspeakers S 1 and S 2 emit sound waves in phase. Constructive interference occurs at P where S 1 P = 2.4 m and S 2 P = 4.4 m. Given that the speed of sound in air is 340 m s −1 , which of the following is not a possible frequency of the sound waves produced by the loudspeakers? A 85 Hz B 170 Hz C 34"
@@ -15664,7 +15664,7 @@
       162
     ],
     "method": "reviewed",
-    "score": 14.0,
+    "score": 14,
     "evidenceTerms": [
       "toward",
       "away",
@@ -15678,11 +15678,11 @@
     "candidates": [
       [
         167,
-        14.0
+        14
       ],
       [
         164,
-        14.0
+        14
       ],
       [
         159,
@@ -15799,7 +15799,7 @@
       165
     ],
     "method": "reviewed",
-    "score": 35.0,
+    "score": 35,
     "evidenceTerms": [
       "plate",
       "parallel",
@@ -15814,7 +15814,7 @@
     "candidates": [
       [
         165,
-        35.0
+        35
       ],
       [
         167,
@@ -16354,7 +16354,7 @@
       185
     ],
     "method": "reviewed",
-    "score": 9.0,
+    "score": 9,
     "evidenceTerms": [
       "applied",
       "loss",
@@ -16368,7 +16368,7 @@
     "candidates": [
       [
         175,
-        9.0
+        9
       ],
       [
         182,
@@ -16686,7 +16686,7 @@
       ],
       [
         177,
-        15.0
+        15
       ],
       [
         170,
@@ -17413,7 +17413,7 @@
       192
     ],
     "method": "reviewed",
-    "score": 26.0,
+    "score": 26,
     "evidenceTerms": [
       "live",
       "operating",
@@ -17424,7 +17424,7 @@
     "candidates": [
       [
         191,
-        26.0
+        26
       ],
       [
         192,
@@ -17764,7 +17764,7 @@
       ],
       [
         374,
-        0.0
+        0
       ]
     ],
     "question": "An electric stewing pot has three heating elements, each of resistance 100 Ω (Fig d). Which of the following connections can boil water the fastest?"
@@ -19025,7 +19025,7 @@
       ],
       [
         206,
-        20.0
+        20
       ],
       [
         210,
@@ -19701,7 +19701,7 @@
       ],
       [
         220,
-        6.0
+        6
       ]
     ],
     "question": "(For Q11−12.) Figure h shows two parallel long straight wires carrying currents of the same size. A conducting loop moves to the right at a constant velocity v . The loop is at positions X and Y at time t 1 and t 2 respectively. What is the direction of the induced current flowing in the loop? Option at time t 1 at time t 2 A clockwise clockwise B clockwise "
@@ -19874,9 +19874,9 @@
   {
     "id": "tb-407-21",
     "links": [
-      215
+      417
     ],
-    "method": "reviewed",
+    "method": "source-reviewed-generator-split",
     "score": 13.41,
     "evidenceTerms": [
       "rotating",
@@ -19904,7 +19904,9 @@
         5.7
       ]
     ],
-    "question": "A simple generator is shown below (Fig r). (a) Is this an a.c. or a d.c. generator? (1 mark) (b) The arrows in Figure r show the direction of current at the instant shown. In which direction is the coil rotating as viewed by the observer? (1 mark) (c) Sketch a graph to show how the induced current varies with time over one revolution of the coil. Take t = 0 "
+    "question": "A simple generator is shown below (Fig r). (a) Is this an a.c. or a d.c. generator? (1 mark) (b) The arrows in Figure r show the direction of current at the instant shown. In which direction is the coil rotating as viewed by the observer? (1 mark) (c) Sketch a graph to show how the induced current varies with time over one revolution of the coil. Take t = 0 ",
+    "review": "2026-10-10",
+    "evidence": "Official exercise answer (a): A.c. generator; answer (c): sine curve, one period."
   },
   {
     "id": "tb-407-22",
@@ -19980,9 +19982,10 @@
   {
     "id": "tb-407-24",
     "links": [
-      215
+      212,
+      214
     ],
-    "method": "reviewed",
+    "method": "source-reviewed-generator-split",
     "score": 5.06,
     "evidenceTerms": [
       "ring",
@@ -20005,7 +20008,9 @@
         1.49
       ]
     ],
-    "question": "Figure w shows the structure of a bicycle dynamo. (a) When the dynamo works, the magnet rotates while the coil is fixed. Give one of its advantages over a moving-coil dynamo. (1 mark) (b) The dynamo is used to power a bicycle lamp. (i) Describe the energy conversion that takes place when a person pedals a bicycle to light the lamp. (2 marks) (ii) It is a bit"
+    "question": "Figure w shows the structure of a bicycle dynamo. (a) When the dynamo works, the magnet rotates while the coil is fixed. Give one of its advantages over a moving-coil dynamo. (1 mark) (b) The dynamo is used to power a bicycle lamp. (i) Describe the energy conversion that takes place when a person pedals a bicycle to light the lamp. (2 marks) (ii) It is a bit",
+    "review": "2026-10-10",
+    "evidence": "Fixed coil and rotating magnet: changing magnetic flux induces current; opposing load effect is explained by Lenz’s law."
   },
   {
     "id": "tb-407-25",
@@ -20479,7 +20484,7 @@
       212
     ],
     "method": "reviewed",
-    "score": 24.0,
+    "score": 24,
     "evidenceTerms": [
       "step",
       "secondary",
@@ -20493,7 +20498,7 @@
     "candidates": [
       [
         222,
-        24.0
+        24
       ],
       [
         223,
@@ -21546,7 +21551,7 @@
       ],
       [
         381,
-        0.0
+        0
       ]
     ],
     "question": "Which of the following objects is suitable for using carbon-14 dating to estimate its age? A Coal B Rock C Ancient copper cooking utensil D Ancient ceramic vase"
@@ -23207,7 +23212,7 @@
       ],
       [
         252,
-        8.0
+        8
       ]
     ],
     "question": "The ratio of the semi-major axis of the orbit of Mars to that of Jupiter is 0.3 : 1. What is the ratio of their orbital periods? A 0.11 : 1 B 0.16 : 1 C 0.32 : 1 D 0.44 : 1"
@@ -26419,7 +26424,7 @@
       322
     ],
     "method": "chapter-scoped text match",
-    "score": 7.0,
+    "score": 7,
     "evidenceTerms": [
       "transparency",
       "nano",
@@ -26434,7 +26439,7 @@
     "candidates": [
       [
         322,
-        7.0
+        7
       ],
       [
         321,
@@ -28285,7 +28290,7 @@
       ],
       [
         293,
-        5.0
+        5
       ],
       [
         292,
@@ -28848,7 +28853,7 @@
       299
     ],
     "method": "chapter-scoped text match",
-    "score": 8.0,
+    "score": 8,
     "evidenceTerms": [
       "greenhouse",
       "atmosphere",
@@ -28857,7 +28862,7 @@
     "candidates": [
       [
         299,
-        8.0
+        8
       ],
       [
         405,
@@ -30490,7 +30495,7 @@
       353
     ],
     "method": "chapter-scoped text match",
-    "score": 3.0,
+    "score": 3,
     "evidenceTerms": [
       "beam",
       "intensity",
@@ -30500,7 +30505,7 @@
     "candidates": [
       [
         353,
-        3.0
+        3
       ],
       [
         358,
@@ -30779,7 +30784,7 @@
       ],
       [
         354,
-        8.0
+        8
       ]
     ],
     "question": "The following figure shows a parallel beam of X-ray passing through an arm. Which of the following graph shows the most possible intensity of X-ray detected at different positions across the detector?"

@@ -8,7 +8,6 @@ import { api } from '../lib/api';
 import { entriesByLanguage, pointsByLanguage, knowledgeTitle, knowledgeNumber, questionLabelFromKey } from '../lib/data';
 import { Button } from '../components/ui/button';
 import { useMembership } from '../components/Membership';
-import './tutoring.css';
 
 export function AskTeacherView(props) {
   const membership = useMembership();

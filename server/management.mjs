@@ -1,3 +1,4 @@
+import { databaseQueries } from './database.mjs';
 import { questions, points, pointInfo } from './catalog.mjs';
 
 export function activityContent(row) {
@@ -12,9 +13,7 @@ export function activityContent(row) {
 
 const DAY = 86400000;
 export function createManagement({ db, clock, fail, transaction }) {
-  const get = (sql, ...args) => db.prepare(sql).get(...args);
-  const all = (sql, ...args) => db.prepare(sql).all(...args);
-  const run = (sql, ...args) => db.prepare(sql).run(...args);
+  const { get, all, run } = databaseQueries(db);
   db.exec(`CREATE TABLE IF NOT EXISTS memberships(user_id INTEGER PRIMARY KEY REFERENCES users(id), ends_at INTEGER NOT NULL, revoked INTEGER NOT NULL DEFAULT 0, revision INTEGER NOT NULL DEFAULT 0);
     CREATE TABLE IF NOT EXISTS membership_audit(id INTEGER PRIMARY KEY, request_id TEXT UNIQUE NOT NULL, user_id INTEGER NOT NULL REFERENCES users(id), actor_id INTEGER NOT NULL REFERENCES users(id), action TEXT NOT NULL, days INTEGER NOT NULL, reason TEXT NOT NULL, before_end INTEGER, after_end INTEGER, at INTEGER NOT NULL);
     CREATE TABLE IF NOT EXISTS learning_activity(id INTEGER PRIMARY KEY, user_id INTEGER NOT NULL REFERENCES users(id), event_id TEXT NOT NULL, action TEXT NOT NULL, target TEXT NOT NULL, at INTEGER NOT NULL, UNIQUE(user_id,event_id));

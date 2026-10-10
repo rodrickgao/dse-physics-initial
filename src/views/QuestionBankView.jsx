@@ -1,12 +1,10 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from "react";
 import { useMembership } from '../components/Membership';
 import { searchQuestions } from '../lib/question-search-loader';
-
 import { questionLabelFromKey } from '../lib/data';
 import { readSaved } from '../lib/study-state';
 import { readSearchSession, saveSearchSession } from '../lib/search-session';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
-import './question-bank.css';
 
 export function QuestionBankView({ language, navigate, initialQuery = '', openQuestion, openKnowledge }) {
   const en=language==='eng', membership=useMembership();

@@ -1,6 +1,5 @@
 import { Clock3 } from 'lucide-react';
 import { useState } from 'react';
-import './focus-countdown.css';
 
 export function FocusCountdown({ timer, language, onOpen, mobile = false }) {
   const [collapsed,setCollapsed]=useState(true);

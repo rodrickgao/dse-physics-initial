@@ -1,7 +1,6 @@
 import {useEffect,useState} from 'react';
 import {api} from '../lib/api';
 import {questionLabelFromKey} from '../lib/data';
-import './qdna-profile.css';
 
 const labels=en=>({NEEDS_REVIEW:en?'Needs Review':'需要复习',DEVELOPING:en?'Developing':'巩固中',STRONG:en?'Strong':'表现较好',INSUFFICIENT_DATA:en?'Insufficient Data':'数据不足',MASTERED:en?'Mastered':'已掌握',WRONG:en?'Wrong Book':'错题',UNMARKED:en?'Unmarked':'未标记',ALL:en?'All':'全部'});
 const percent=value=>value===null||value===undefined?'—':`${Math.round(value*100)}%`;

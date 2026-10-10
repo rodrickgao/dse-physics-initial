@@ -1,105 +1,33 @@
+import { Sidebar } from './components/layout/Sidebar';
+import { Topbar } from './components/layout/Topbar';
+import { StudyPages } from './views/StudyPages';
 import { startPageVisits } from './lib/page-visits';
-import { SupportView } from './views/SupportView';
 import { LifeBuoy } from 'lucide-react';
-import { BrandLogo } from './components/BrandLogo';
 import { LearningTour } from './components/LearningTour';
-import { SearchReturn } from './components/SearchReturn';
-import { ExamplesView } from './views/ExamplesView';
 import { FocusCountdown } from './components/FocusCountdown';
 import { MobileNavigation } from './components/MobileNavigation';
-import { StudyDashboard } from './components/StudyDashboard';
-import { QuestionBankView } from './views/QuestionBankView';
-import { ExercisesView } from './views/ExercisesView';
 import { LanguageSwitch } from './components/LanguageSwitch';
 import { setUiLanguage, translate } from './lib/ui-translations';
-import { AskTeacherView } from './views/AskTeacherView';
-import { rememberReader, useReaderReturn, ReaderReturn } from './lib/reader-return';
+import { rememberReader, useReaderReturn } from "./lib/reader-return";
 import { currentTeacherContext } from './lib/teacher-context';
-import { SubscriptionView, PaymentView, MemberWelcome } from './views/SubscriptionView';
-import { MembershipProvider, MembershipStatus, useMembership } from './components/Membership';
+import { MembershipProvider, MembershipStatus } from "./components/Membership";
 import { enableActivity, track } from './lib/activity';
-import { QuestionSuggestions } from './components/QuestionSuggestions';
 import { useFocusTimer } from './lib/use-focus-timer';
 import { PomodoroView } from './views/PomodoroView';
-import { DseCountdown } from './components/DseCountdown';
 import { rememberAccount } from './lib/remembered-accounts';
 import { useCallback, useEffect, useRef, useState } from "react";
-import { ArrowRight, Atom, BookOpen, Clock3, PanelLeftClose, PanelLeftOpen, ChevronRight, CircleAlert, FileQuestion, Home, Crown, Languages, Moon, Search, Settings, Sun } from "lucide-react";
+import { Settings } from "lucide-react";
 import { Button } from "./components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "./components/ui/card";
 import { cn } from "./lib/utils";
-import { entriesByLanguage, statistics } from "./lib/data";
-import { PapersView } from "./views/PapersView";
-import { TextbookView } from "./views/TextbookView";
-import { MistakesView } from "./views/MistakesView";
+import { entriesByLanguage } from "./lib/data";
 import { pageHash, readRoute, exerciseBookFromHash, readSaved, writeSaved } from "./lib/study-state";
-
 import { api } from "./lib/api";
 import { LoginView } from "./views/LoginView";
 import { ProfileView } from "./views/ProfileView";
-import { AdminView } from "./views/AdminView";
+
 
 const MISTAKE_STORAGE_KEY = "dse-physics-mistakes-v1";
 const THEME_STORAGE_KEY = "dse-physics-theme-v1";
-const NAVIGATION = [
-  { id: "home", zh: "主页", en: "Home", icon: Home },
-  { id: "bank", zh: "题库", en: "Question bank", icon: FileQuestion },
-  { id: "textbook", zh: "课本知识库", en: "Knowledge", icon: BookOpen },
-  { id: "mistakes", zh: "错题库", en: "Mistakes", icon: CircleAlert },
-  { id: "membership", zh: "开通会员", en: "Membership", icon: Crown },
-  { id: "ask", zh: "问老师", en: "Ask a teacher", icon: BookOpen },
-];
-
-function Sidebar({ page, navigate, dark, toggleDark, language, mistakeCount, focusTimer, collapsed, toggleCollapsed }) {
-  const membership=useMembership(),english=language==='eng';
-  const toggleLabel=collapsed?(english?'Expand navigation':'展开目录'):(english?'Collapse navigation':'收起目录');
-  const themeLabel=dark?(english?'Light mode':'浅色模式'):(english?'Dark mode':'深色模式');
-  return <aside className="sidebar" aria-label={english?'Main navigation':'主目录'}>
-    <div className="sidebar-heading"><button className="brand" aria-label="DSE Physics" title="DSE Physics" onClick={() => navigate("home")}><BrandLogo language={language}/></button>
-    <button className="sidebar-toggle" onClick={toggleCollapsed} aria-expanded={!collapsed} aria-controls="main-navigation" aria-label={toggleLabel} title={toggleLabel}>{collapsed?<PanelLeftOpen/>:<PanelLeftClose/>}</button></div>
-    <nav id="main-navigation" className="nav-list" aria-label="Main navigation">{NAVIGATION.map(({ id, zh, en, icon: Icon }) => {
-      const label=id==='membership'&&membership.active?(english?'My membership':'我的会员'):(english?en:zh);
-      return <button key={id} aria-label={label} title={collapsed?label:undefined} aria-current={page === id ? "page" : undefined} className={cn("nav-item", page === id && "active")} onClick={() => navigate(id)}><Icon /><span className="nav-label"><strong>{label}</strong></span>{id === "mistakes" && mistakeCount > 0 ? <em className="nav-count">{mistakeCount}</em> : page === id && <span className="nav-dot" />}</button>;
-    })}</nav>
-    <div className="sidebar-footer">{collapsed?<button className="sidebar-focus-shortcut" onClick={()=>navigate('focus')} aria-label={english?'Open focus timer':'打开专注计时'} title={english?'Open focus timer':'打开专注计时'}><Clock3/></button>:<FocusCountdown timer={focusTimer} language={language} onOpen={() => navigate("focus")} />}<Button variant="ghost" className="theme-button" aria-label={themeLabel} title={collapsed?themeLabel:undefined} onClick={toggleDark}>{dark ? <Sun /> : <Moon />}<span className="theme-label">{themeLabel}</span></Button></div>
-  </aside>;
-}
-
-function Topbar({ user, language, setLanguage, submitSearch, page, onSelectQuestion }) {
-  const [query, setQuery] = useState("");
-  const search = useRef(null);
-  useEffect(() => {
-    const focus = (event) => {
-      if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
-        event.preventDefault();
-        (document.getElementById('bank-search') || search.current)?.focus();
-      }
-    };
-    window.addEventListener('keydown', focus);
-    return () => window.removeEventListener('keydown', focus);
-  }, []);
-  const submit = (event) => { event.preventDefault(); submitSearch(query); };
-  return <header className="topbar">{page === 'bank' ? <div className="workspace-breadcrumb"><Atom/><span>DSE Physics</span><ChevronRight/><strong>{'题库'}</strong></div> : <form className="global-search" onSubmit={submit} onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) setQuery(""); }} onKeyDown={event => { if (event.nativeEvent.isComposing) return; if (event.key === "Escape") { setQuery(""); search.current?.focus(); } if (!["ArrowDown", "ArrowUp"].includes(event.key)) return; const items = [...event.currentTarget.querySelectorAll(".global-question-results button")]; if (!items.length) return; event.preventDefault(); const index = items.indexOf(document.activeElement); const next = event.key === "ArrowDown" ? index + 1 : index - 1; (next < 0 || next >= items.length ? search.current : items[next])?.focus(); }}><Search /><input type="search" ref={search} value={query} onChange={(event) => setQuery(event.target.value)} placeholder={language === "eng" ? "Search questions, situations or topics" : "描述想练的题目、情境或知识点"} aria-label={language === "eng" ? "Search questions" : "搜索题目"} onKeyDown={event => { if (event.key === "Escape") setQuery(""); if (event.key === "Enter" && event.nativeEvent.isComposing) event.preventDefault(); }} /><QuestionSuggestions query={query} language={language} onSelect={key => { setQuery(""); onSelectQuestion(key); }} /></form>}<DseCountdown target={user?.target} targetMajor={user?.targetMajor} /></header>;
-}
-
-function HomeView({ language, navigate, mistakeCount, userId, mistakes, mastered, openQuestion, openKnowledge }) {
-  const isEnglish = language === "eng";
-  const sections = [
-    { id: "bank", index: "01", title: "题库", metric: "", metricLabel: isEnglish ? "Past papers · Exercises · Examples" : "真题 · 课本习题 · 课本例题", icon: FileQuestion, tone: "blue" },
-    { id: "textbook", index: "02", title: "课本知识库", metric: statistics.summary.knowledgePointCount, metricLabel: "个知识点", icon: BookOpen, tone: "amber" },
-    { id: "mistakes", index: "03", title: "错题库", metric: mistakeCount, metricLabel: "道待复习", icon: CircleAlert, tone: "rose" },
-  ];
-  return <div className="home-view page-enter">
-    <section className="welcome-row"><h1>{isEnglish ? "My study desk" : "我的学习"}</h1></section><StudyDashboard mastered={mastered} userId={userId} language={language} mistakes={mistakes} openQuestion={openQuestion} openKnowledge={openKnowledge} navigate={navigate}/>
-    <section className="section-grid">{sections.map(({ id, index, title, metric, metricLabel, icon: Icon, tone }) =>
-      <Card key={id} className={cn("library-card", `tone-${tone}`)} role="button" tabIndex={0} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigate(id); } }} onClick={() => navigate(id)}>
-        <CardHeader><div className="library-card-top"><span className="library-icon"><Icon /></span><span className="card-index">{index}</span></div><CardTitle>{title}</CardTitle></CardHeader>
-        <CardContent><div className="metric"><strong>{metric}</strong><span>{metricLabel}</span></div><span className="open-link" aria-hidden="true"><ArrowRight /></span></CardContent>
-      </Card>
-    )}</section>
-  </div>;
-}
-
 export function App() {
   const [sidebarCollapsed,setSidebarCollapsed]=useState(()=>readSaved('dse-sidebar-collapsed-v1',false)===true);
   const toggleSidebar=()=>setSidebarCollapsed(previous=>{const next=!previous;writeSaved('dse-sidebar-collapsed-v1',next);return next;});
@@ -203,8 +131,7 @@ export function App() {
   if (page === 'admin') { location.replace('/admin.html'); return null; }
   if (!authReady) return withLanguage(<div className="account-loading"><p role={authError ? 'alert' : 'status'}>{authError || '正在加载账号…'}</p>{authError && <Button onClick={initialize}>重试连线</Button>}</div>);
   if (!user) return withLanguage(<LoginView language={language} setLanguage={setLanguage} onLogin={loggedIn} mailMode={mailMode} />);
-  if (user.role === 'student' && !user.profileComplete) return withLanguage(<MembershipProvider userId={user.id}><ProfileView dark={dark} toggleDark={toggleDark} logoutError={syncError} key={user.id} user={user} mistakes={mistakes} language={language} openPaper={key => { setEditingProfile(false); openPaper(key); }} openKnowledge={sequence => { setEditingProfile(false); openKnowledge(sequence); }} onSaved={next => { setUser(next); setEditingProfile(false); }} onLogout={logout} onCancel={user.profileComplete ? () => { setEditingProfile(false); navigate("home"); } : undefined} /></MembershipProvider>);
+  if (user.role === 'student' && !user.profileComplete) return withLanguage(<MembershipProvider userId={user.id}><ProfileView logoutError={syncError} key={user.id} user={user} mistakes={mistakes} language={language} openPaper={key => { setEditingProfile(false); openPaper(key); }} openKnowledge={sequence => { setEditingProfile(false); openKnowledge(sequence); }} onSaved={next => { setUser(next); setEditingProfile(false); }} onLogout={logout} onCancel={user.profileComplete ? () => { setEditingProfile(false); navigate("home"); } : undefined} /></MembershipProvider>);
   if (!dataReady) return withLanguage(<div className="fatal-state">Study data could not be loaded.</div>);
-  return withLanguage(<MembershipProvider userId={user.id}><div className={cn("app-shell",sidebarCollapsed&&"sidebar-collapsed")}><a className="skip-link" href="#main-content" onClick={(e) => { e.preventDefault(); document.getElementById("main-content")?.focus(); }}>{"跳至主要内容"}</a><Sidebar collapsed={sidebarCollapsed} toggleCollapsed={toggleSidebar} focusTimer={focusTimer} page={navigationPage} navigate={navigate} dark={dark} toggleDark={toggleDark} language={language} mistakeCount={Object.keys(mistakes).length} /><div className="app-main"><Topbar user={user} onSelectQuestion={openPaper} language={language} setLanguage={setLanguage} submitSearch={submitSearch} page={page} /><div className="account-bar"><MembershipStatus/><LearningTour key={user.id} userId={user.id} page={editingProfile?'profile':page} language={language} navigate={navigate}/>{user.avatarUrl && <img className="account-avatar" src={user.avatarUrl} alt="我的头像" />}<span>{user.role === "admin" ? "开发者" : user.nickname || user.email}</span>{user.role === "student" && <button data-tour="profile-settings" className="account-settings" disabled={saving} onClick={() => setEditingProfile(true)}><Settings aria-hidden="true" />个人设置</button>}{saving && <span role="status">正在保存…</span>}{user.role === "admin" && <button onClick={() => navigate("admin")}>统计后台</button>}{user.role === "admin" && <button disabled={saving} onClick={logout}>退出登录</button>}</div><main data-tour="page-root" data-tour-page={editingProfile?'profile':page} id="main-content" tabIndex={-1} className="content">{editingProfile ? <ProfileView dark={dark} toggleDark={toggleDark} embedded logoutError={syncError} user={user} language={language} onSaved={next=>{setUser(next);setEditingProfile(false);}} onLogout={logout} onCancel={()=>setEditingProfile(false)}/> : <><PomodoroView timer={focusTimer} language={language} visible={page === "focus"} />{feedback && <div className="study-feedback" role="status"><span>{feedback.text}</span>{feedback.id && <Button variant="ghost" disabled={saving} onClick={undoProgress}>{language==='eng'?'Undo':'撤销'}</Button>}<button aria-label={language==='eng'?'Dismiss':'关闭提示'} onClick={()=>setFeedback(null)}>×</button></div>}{syncError && <p className="account-error" role="alert">{syncError}</p>}{legacy.length > 0 && user.role === 'student' && <div className="import-banner"><span>此浏览器有 {legacy.length} 道旧错题。确认属于自己后，可导入目前账号。</span><Button disabled={saving} onClick={importLegacy}>导入我的错题</Button><Button variant="ghost" onClick={() => setLegacy([])}>稍后处理</Button></div>}{page === 'admin' && (user.role === 'admin' ? <AdminView language={language} openPaper={openPaper} openKnowledge={openKnowledge} /> : <p>此页面只限开发者存取。</p>)}{(page === "activating" || page === "member-success") && <MemberWelcome navigate={navigate} activating={page === "activating"}/>} {page === "membership" && <SubscriptionView navigate={navigate}/>} {(page === "payment" || page === "receipt") && <PaymentView navigate={navigate} user={user} uploadPage={page === "receipt"}/>} {page === "ask" && <AskTeacherView userId={user.id} language={language} target={askTarget} openPaper={openPaper} openKnowledge={openKnowledge}/>} {page === "support" && <SupportView language={language}/>} {page === "home" && <HomeView mastered={mastered} userId={user.id} mistakes={mistakes} openQuestion={openPaper} openKnowledge={openKnowledge} language={language} navigate={navigate} mistakeCount={Object.keys(mistakes).length} />}{page === "bank" && <QuestionBankView language={language} navigate={navigate} initialQuery={bankQuery} openQuestion={openPaper} openKnowledge={openKnowledge} />}{page === "papers" && <PapersView onBank={()=>navigate('bank')} onAsk={() => navigate('ask')} mastered={mastered} setProgress={setProgress} saving={saving} directoryVersion={paperDirectoryVersion} onDirectory={() => navigate("papers")} onYearOpen={openPaper} language={language} mistakes={mistakes} setMistake={setMistake} targetKey={paperTarget} clearTarget={clearPaperTarget} initialQuery={paperQuery} onQuestionChange={rememberQuestion} openKnowledge={openKnowledge} />}{page === "examples" && <ExamplesView mastered={mastered} mistakes={mistakes} saving={saving} setProgress={setProgress} setMistake={setMistake} onAsk={()=>navigate("ask")} targetBook={exerciseBook} language={language} targetKey={exerciseTarget} navigate={navigate} openKnowledge={openKnowledge}/>} {page === "exercises" && <ExercisesView onBank={()=>navigate('bank')} targetBook={exerciseBook} onAsk={() => navigate('ask')} mastered={mastered} mistakes={mistakes} setProgress={setProgress} setMistake={setMistake} saving={saving} language={language} targetKey={exerciseTarget} openExercise={openExercise} openKnowledge={openKnowledge} />}{page === "textbook" && <ReaderReturn userId={user.id} language={language}/>} {page === "textbook" && <SearchReturn language={language} questionKey={`knowledge-${new URLSearchParams(location.hash.split("?")[1]).get("knowledge")}`}/>}{page === "textbook" && <TextbookView mastered={mastered} mistakes={mistakes} language={language} targetSequence={knowledgeTarget} clearTarget={clearKnowledgeTarget} openPaper={openPaper} openExercise={openExercise} openKnowledge={openKnowledge} />}{page === "mistakes" && <MistakesView mastered={mastered} openKnowledge={openKnowledge} setProgress={setProgress} saving={saving} manageTrash={(action, keys) => saveMistakes('mistakes/trash', { action, keys }, 'POST')} language={language} mistakes={mistakes} setMistake={setMistake} openPaper={openPaper} browsePapers={() => navigate("bank")} />}</>}</main></div><FocusCountdown mobile timer={focusTimer} language={language} onOpen={() => navigate("focus")} /><MobileNavigation page={navigationPage} language={language} navigate={navigate}/></div></MembershipProvider>);
+  return withLanguage(<MembershipProvider userId={user.id}><div className={cn("app-shell",sidebarCollapsed&&"sidebar-collapsed")}><a className="skip-link" href="#main-content" onClick={(e) => { e.preventDefault(); document.getElementById("main-content")?.focus(); }}>{"跳至主要内容"}</a><Sidebar collapsed={sidebarCollapsed} toggleCollapsed={toggleSidebar} focusTimer={focusTimer} page={navigationPage} navigate={navigate} dark={dark} toggleDark={toggleDark} language={language} mistakeCount={Object.keys(mistakes).length} /><div className="app-main"><Topbar user={user} onSelectQuestion={openPaper} language={language} setLanguage={setLanguage} submitSearch={submitSearch} page={page} /><div className="account-bar"><MembershipStatus/><LearningTour key={user.id} userId={user.id} page={editingProfile?'profile':page} language={language} navigate={navigate}/>{user.avatarUrl && <img className="account-avatar" src={user.avatarUrl} alt="我的头像" />}<span>{user.role === "admin" ? "开发者" : user.nickname || user.email}</span>{user.role === "student" && <button data-tour="profile-settings" className="account-settings" disabled={saving} onClick={() => setEditingProfile(true)}><Settings aria-hidden="true" />个人设置</button>}{saving && <span role="status">正在保存…</span>}{user.role === "admin" && <button onClick={() => navigate("admin")}>统计后台</button>}{user.role === "admin" && <button disabled={saving} onClick={logout}>退出登录</button>}</div><main data-tour="page-root" data-tour-page={editingProfile?'profile':page} id="main-content" tabIndex={-1} className="content">{editingProfile ? <ProfileView embedded logoutError={syncError} user={user} language={language} onSaved={next=>{setUser(next);setEditingProfile(false);}} onLogout={logout} onCancel={()=>setEditingProfile(false)}/> : <><PomodoroView timer={focusTimer} language={language} visible={page === "focus"} />{feedback && <div className="study-feedback" role="status"><span>{feedback.text}</span>{feedback.id && <Button variant="ghost" disabled={saving} onClick={undoProgress}>{language==='eng'?'Undo':'撤销'}</Button>}<button aria-label={language==='eng'?'Dismiss':'关闭提示'} onClick={()=>setFeedback(null)}>×</button></div>}{syncError && <p className="account-error" role="alert">{syncError}</p>}{legacy.length > 0 && user.role === 'student' && <div className="import-banner"><span>此浏览器有 {legacy.length} 道旧错题。确认属于自己后，可导入目前账号。</span><Button disabled={saving} onClick={importLegacy}>导入我的错题</Button><Button variant="ghost" onClick={() => setLegacy([])}>稍后处理</Button></div>}<StudyPages page={page} navigate={navigate} user={user} askTarget={askTarget} language={language} openPaper={openPaper} openKnowledge={openKnowledge} mastered={mastered} mistakes={mistakes} openExercise={openExercise} exerciseBook={exerciseBook} exerciseTarget={exerciseTarget} saving={saving} setProgress={setProgress} setMistake={setMistake} paperDirectoryVersion={paperDirectoryVersion} paperTarget={paperTarget} clearPaperTarget={clearPaperTarget} paperQuery={paperQuery} rememberQuestion={rememberQuestion} knowledgeTarget={knowledgeTarget} clearKnowledgeTarget={clearKnowledgeTarget} bankQuery={bankQuery} saveMistakes={saveMistakes}/></>}</main></div><FocusCountdown mobile timer={focusTimer} language={language} onOpen={() => navigate("focus")} /><MobileNavigation page={navigationPage} language={language} navigate={navigate}/></div></MembershipProvider>);
 }
-

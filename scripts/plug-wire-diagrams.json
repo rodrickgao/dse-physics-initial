@@ -1,0 +1,48 @@
+{
+  "date": "2026-10-10",
+  "knowledge_sequence": 191,
+  "figures": {
+    "chn": {
+      "id": "three-pin-plug-socket",
+      "code": "404",
+      "page": 8,
+      "printed_page": 152,
+      "figure_label": "4.2b",
+      "source": "DSEPHY_TE_404_TN_ce.pdf",
+      "src": "assets/textbook/figures-chn/three-pin-plug-socket.png",
+      "width": 726,
+      "height": 690,
+      "bbox_fraction": [
+        0.635,
+        0.725,
+        0.93,
+        0.939
+      ],
+      "render_scale": 4,
+      "language": "chn",
+      "caption": "L＝活線（火線），N＝中線（零線），E＝地線。面向插座：上 E、左 N、右 L；插頭與插座按相同字母對應。"
+    },
+    "eng": {
+      "id": "three-pin-plug-socket",
+      "code": "404",
+      "page": 8,
+      "printed_page": 152,
+      "figure_label": "4.2b",
+      "source": "DSEPHY_TE_404_TN_.pdf",
+      "src": "assets/textbook/review-diagrams/three-pin-plug-socket.png",
+      "width": 726,
+      "height": 690,
+      "bbox_fraction": [
+        0.635,
+        0.725,
+        0.93,
+        0.939
+      ],
+      "render_scale": 4,
+      "language": "eng",
+      "caption": "L = live, N = neutral, E = earth. Facing the socket: E at the top, N on the left and L on the right. Match each plug pin to the socket hole with the same letter."
+    }
+  },
+  "preservedOriginalContent": true,
+  "localOnly": true
+}

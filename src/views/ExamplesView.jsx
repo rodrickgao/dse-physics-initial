@@ -5,12 +5,9 @@ import { NavigatorToggle } from '../components/NavigatorToggle';
 import { SearchReturn } from '../components/SearchReturn';
 import { StudyContent } from '../components/StudyContent';
 import { useEffect, useState } from 'react';
-import { ArrowLeft, ArrowRight, BookOpen, ChevronRight, ChevronDown, Check, Star } from 'lucide-react';
+import { ArrowLeft, ArrowRight, BookOpen, ChevronRight, ChevronDown } from "lucide-react";
 import { Button } from '../components/ui/button';
 import { STUDY_CSS } from '../lib/study-content';
-import './exercises.css';
-import './examples.css';
-
 import { pointsByLanguage, sortKnowledge } from '../lib/data';
 import { useMembership, MemberNotice } from '../components/Membership';
 

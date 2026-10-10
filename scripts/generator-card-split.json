@@ -1,0 +1,91 @@
+{
+  "date": "2026-10-10",
+  "cards": {
+    "dc": 215,
+    "ac": 417
+  },
+  "figures": {
+    "eng": {
+      "dc-generator-principle": {
+        "id": "dc-generator-principle",
+        "code": "407",
+        "page": 16,
+        "printed_page": 282,
+        "figure_label": "7.2c",
+        "source": "DSEPHY_TE_407_TN_.pdf",
+        "src": "assets/textbook/review-diagrams/dc-generator-principle.png",
+        "width": 1330,
+        "height": 781,
+        "bbox_fraction": [
+          0.065,
+          0.122,
+          0.93,
+          0.51
+        ],
+        "render_scale": 2.5,
+        "language": "eng"
+      },
+      "ac-generator-principle": {
+        "id": "ac-generator-principle",
+        "code": "407",
+        "page": 17,
+        "printed_page": 283,
+        "figure_label": "7.2e",
+        "source": "DSEPHY_TE_407_TN_.pdf",
+        "src": "assets/textbook/review-diagrams/ac-generator-principle.png",
+        "width": 1276,
+        "height": 495,
+        "bbox_fraction": [
+          0.1,
+          0.204,
+          0.93,
+          0.45
+        ],
+        "render_scale": 2.5,
+        "language": "eng"
+      }
+    },
+    "chn": {
+      "dc-generator-principle": {
+        "id": "dc-generator-principle",
+        "code": "407",
+        "page": 16,
+        "printed_page": 282,
+        "figure_label": "7.2c",
+        "source": "DSEPHY_TE_407_TN_ce.pdf",
+        "src": "assets/textbook/figures-chn/dc-generator-principle.png",
+        "width": 1330,
+        "height": 816,
+        "bbox_fraction": [
+          0.065,
+          0.105,
+          0.93,
+          0.51
+        ],
+        "render_scale": 2.5,
+        "language": "chn"
+      },
+      "ac-generator-principle": {
+        "id": "ac-generator-principle",
+        "code": "407",
+        "page": 17,
+        "printed_page": 283,
+        "figure_label": "7.2e",
+        "source": "DSEPHY_TE_407_TN_ce.pdf",
+        "src": "assets/textbook/figures-chn/ac-generator-principle.png",
+        "width": 1276,
+        "height": 517,
+        "bbox_fraction": [
+          0.1,
+          0.193,
+          0.93,
+          0.45
+        ],
+        "render_scale": 2.5,
+        "language": "chn"
+      }
+    }
+  },
+  "preservedOriginalContent": true,
+  "localOnly": true
+}

@@ -1,9 +1,8 @@
 import {useEffect,useLayoutEffect,useRef,useState} from 'react';
 import {createPortal} from 'react-dom';
 import {Button} from './ui/button';
-import {coreSteps,pageSteps,pageTours} from '../lib/tour-steps';
+import { coreSteps, pageSteps } from "../lib/tour-steps";
 import {completeTourStep,readTour,saveTour} from '../lib/tour-state';
-import './learning-tour.css';
 
 const storage=()=>{try{return window.localStorage;}catch{return null;}};
 const visible=node=>!!node&&node.getClientRects().length>0&&!node.closest('[hidden]');

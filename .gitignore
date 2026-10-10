@@ -14,3 +14,6 @@ private/
 bootstrap-admin-key.txt
 
 .local-membership-preview/
+
+__pycache__/
+*.py[cod]

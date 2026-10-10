@@ -6,14 +6,13 @@ import { useSourceSearch } from '../lib/use-source-search';
 import { SearchReturn } from '../components/SearchReturn';
 import { StudyContent } from '../components/StudyContent';
 import { useEffect, useState } from 'react';
-import { ArrowLeft, ArrowRight, BookOpen, ChevronRight, ChevronDown, Search, Check, Star } from 'lucide-react';
+import { ArrowLeft, ArrowRight, BookOpen, ChevronRight, ChevronDown, Check } from "lucide-react";
 import { Button } from '../components/ui/button';
 import { Card } from '../components/ui/card';
 import { useMembership, MemberNotice } from '../components/Membership';
 import { loadExercise, loadExerciseIndex, exerciseLocation } from '../lib/textbook-exercises';
-import { sortKnowledge, knowledgeNumber, knowledgeTitle, searchable } from '../lib/data';
+import { sortKnowledge, knowledgeNumber, knowledgeTitle } from "../lib/data";
 import { STUDY_CSS } from '../lib/study-content';
-import './exercises.css';
 
 const TONES = ['#a74050','#287248','#906e0e','#396fd0','#aa5722','#009ca0','#009ca0','#009ca0','#009ca0'];
 export function ExercisesView({ mastered = {}, mistakes = {}, setProgress, setMistake, saving, targetBook, language, targetKey, openExercise, openKnowledge, onAsk, onBank }) {

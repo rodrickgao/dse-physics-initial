@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Copy, Check, LifeBuoy } from 'lucide-react';
-import './support.css';
 export function SupportView({language='chn'}) {
  const en=language==='eng';const [copied,setCopied]=useState(false),[failed,setFailed]=useState(false);
  async function copy(){try{await navigator.clipboard.writeText('rodrick666');setCopied(true);setFailed(false);}catch{setFailed(true);setCopied(false);}}

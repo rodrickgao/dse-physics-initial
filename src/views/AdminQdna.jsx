@@ -1,6 +1,5 @@
 import {useEffect,useState} from 'react';
 import {adminApi as api} from '../lib/admin-api';
-import '../components/qdna-profile.css';
 
 export function AdminWeeklyPreview({studentId,language,revision}) {
  const en=language==='eng',[data,setData]=useState(null),[busy,setBusy]=useState(false),[error,setError]=useState('');

@@ -17,6 +17,6 @@ body{font-size:16px}
 .book-card strong{font-size:20px}.book-card small{font-size:15px}
 .profile-label,.profile-choices,.profile-email,.profile-review-list strong{font-size:16px}.profile-review-note,.profile-review-empty,.profile-password p{font-size:15px}
 .auth-card>p,.auth-card label,.auth-note,.student-privacy{font-size:15px}
-.dse-countdown>span,.dse-goal>span,.language-pill{font-size:15px;line-height:1.5}.dse-countdown>strong{font-size:30px}
+.dse-goal>span,.language-pill{font-size:15px;line-height:1.5}
 @media(max-width:1050px){.app-shell .mobile-nav{grid-template-columns:repeat(6,minmax(0,1fr))}.mobile-nav button{min-width:0;font-size:13px;padding-left:2px;padding-right:2px}.mobile-nav button span{font-size:13px;white-space:nowrap}.account-bar{flex-wrap:wrap}.membership-status{font-size:14px}}
-@media(max-width:600px){.view-heading h1{font-size:28px}.topbar .dse-countdown>span,.topbar .dse-goal>span{font-size:12px}.dse-countdown>strong{font-size:25px}.brand strong{font-size:19px}.question-header-actions{gap:12px}}
+@media(max-width:600px){.view-heading h1{font-size:28px}.topbar .dse-goal>span{font-size:12px}.brand strong{font-size:19px}.question-header-actions{gap:12px}}

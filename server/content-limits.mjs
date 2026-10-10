@@ -14,7 +14,7 @@ export function createContentLimiter({ db, clock = Date.now, config = {} }) {
   const put = db.prepare('INSERT OR REPLACE INTO content_limits VALUES(?,?,?,?,?)');
   let cleaned = 0;
   return (req, res, user, kind) => {
-    const now = clock(), ip = req.contentClientIp || req.socket.remoteAddress || 'unknown';
+    const now = clock(), ip = req.socket.remoteAddress || 'unknown';
     if (now - cleaned > 3600000) { db.prepare('DELETE FROM content_limits WHERE start<? AND blocked_until<?').run(now - 86400000, now); db.prepare('DELETE FROM content_reads WHERE at<?').run(now-3600000); cleaned = now; }
     if (kind === 'detail') {
       const bucket = user ? `u:${user.id}` : `guest:${ip}`;

@@ -9,7 +9,7 @@ const d=ctx.window.DSE_TEXTBOOK_DATA,n={...ctx.window.DSE_KNOWLEDGE_NETWORK,...c
 const report=JSON.parse(fs.readFileSync('scripts/textbook-evidence-update.json','utf8'));
 test('stable identities follow textbook order and readable cards retain source provenance',()=>{
  for(const lang of ['eng','chn']){
-  const points=d.languages[lang];assert.equal(points.length,410);assert.equal(new Set(points.map(p=>p.sequence)).size,410);
+  const points=d.languages[lang];assert.equal(points.length,411);assert.equal(new Set(points.map(p=>p.sequence)).size,411);
   const all=numberKnowledgePoints(points);
   assert.deepEqual(all.map(p=>p.sequence).sort((a,b)=>a-b),Array.from(points,p=>p.sequence).sort((a,b)=>a-b));
   assert.deepEqual(all.map(p=>p.sequence),numberKnowledgePoints(d.languages[lang==='eng'?'chn':'eng']).map(p=>p.sequence));
@@ -22,7 +22,7 @@ test('stable identities follow textbook order and readable cards retain source p
   for(const p of points.filter(p=>p.sequence>365)){
    assert.equal(p.importance,null);assert.equal(p.source_language,'eng');assert.equal(p.box,null);
    assert.ok(p.source_excerpts.length);assert.equal(p.content,p.source_excerpts.map(s=>s.text).join('\n\n'));
-   assert.ok(p.card_summary.length>40&&!p.card_summary.includes('\n'));
+   assert.ok(p.card_summary.length>40&&p.card_summary.split('\n\n').every(paragraph=>paragraph.trim()&&!paragraph.includes('\n')));
    assert.equal(p.card_format,'paragraph-and-diagrams');
    for(const s of p.source_excerpts)assert.ok(s.source&&s.page>0&&s.printed_page>0&&s.text.length>15);
    for(const f of p.figures){const png=fs.readFileSync(f.src);assert.equal(png.subarray(1,4).toString(),'PNG');assert.equal(png.readUInt32BE(16),f.width);assert.equal(png.readUInt32BE(20),f.height);}

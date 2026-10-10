@@ -10,6 +10,21 @@
 .knowledge-inline-equation {display:inline-block;max-width:100%;vertical-align:middle}
 .knowledge-inline-equation .katex {white-space:nowrap}
 .knowledge-summary .katex {font-size:1.05em}
+.knowledge-comparison-table {width:100%;table-layout:fixed;border-collapse:collapse;margin:16px 0 24px;font-size:15px;line-height:1.8;overflow-wrap:anywhere}
+.knowledge-comparison-table th,.knowledge-comparison-table td {border:1px solid var(--border);padding:12px;text-align:left;vertical-align:top}
+.knowledge-comparison-table thead th {background:color-mix(in srgb,var(--point-tint,var(--card)) 55%,var(--card));font-weight:600}
+.knowledge-comparison-table th:first-child {width:23%}
+.knowledge-comparison-table th:nth-child(2) {width:27%}
+.knowledge-comparison-table tbody th {font-weight:600}
+@media(max-width:600px){
+ .knowledge-comparison-table,.knowledge-comparison-table tbody {display:block}
+ .knowledge-comparison-table thead {position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+ .knowledge-comparison-table tbody tr {display:block;border:1px solid var(--border);margin-bottom:12px}
+ .knowledge-comparison-table tbody th,.knowledge-comparison-table tbody td {display:block;width:auto;border:0;padding:10px 12px}
+ .knowledge-comparison-table tbody th:first-child {width:auto}
+ .knowledge-comparison-table tbody th {background:color-mix(in srgb,var(--point-tint,var(--card)) 55%,var(--card));border-bottom:1px solid var(--border)}
+ .knowledge-comparison-table tbody td::before {content:attr(data-label);display:block;font-size:12px;font-weight:600;color:var(--muted-foreground);margin-bottom:4px}
+}
 .knowledge-notation {font-size:14px;line-height:1.9;margin:16px 0 0;padding-top:14px;border-top:1px solid var(--border);overflow-wrap:anywhere}
 .knowledge-notation .katex,.textbook-figure .katex {font-size:1.05em}
 .textbook-figure {margin:20px 0 24px;padding:0;min-width:0}

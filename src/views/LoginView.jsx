@@ -2,10 +2,9 @@ import { LoginSupport } from './SupportView';
 import { BrandLogo } from '../components/BrandLogo';
 import { rememberedAccounts, forgetAccount } from '../lib/remembered-accounts';
 import { useEffect, useRef, useState } from 'react';
-import { Atom, ArrowRight, ChevronDown } from 'lucide-react';
+import { ArrowRight, ChevronDown } from "lucide-react";
 import { Button } from '../components/ui/button';
 import { api } from '../lib/api';
-import './login.css';
 
 export function LoginView({ language, setLanguage, onLogin, mailMode }) {
   const [accounts, setAccounts] = useState(rememberedAccounts);
@@ -41,4 +40,3 @@ export function LoginView({ language, setLanguage, onLogin, mailMode }) {
 {showAccounts && <div id="login-account-suggestions" className="login-account-suggestions" onPointerDown={event => { if (event.target.closest('button')) event.preventDefault(); }} role="group" aria-label="之前登录的账号">{matchingAccounts.map(item => <div key={item}><button type="button" className="remembered-email" onClick={() => chooseAccount(item)}>{item}</button><button type="button" className="forget-account" aria-label={'移除记录 ' + item} onClick={() => { setAccounts(forgetAccount(item)); emailField.current?.focus(); }}>×</button></div>)}</div>}
 </div>{mode === 'password' ? <label>登录密码<input ref={passwordField} type="password" autoComplete="current-password" required maxLength={128} value={password} onChange={e => setPassword(e.target.value)} /></label> : <label>六位数验证码<div className="auth-code"><input ref={codeField} inputMode="numeric" autoComplete="one-time-code" pattern="[0-9]{6}" maxLength={6} placeholder="000000" required value={code} onChange={e => setCode(e.target.value.replace(/\D/g, ''))} /><Button type="button" variant="outline" disabled={busy || seconds > 0 || !email} onClick={send}>{seconds ? `${seconds} 秒后重发` : '获取验证码'}</Button></div></label>}</>}{message && <p role="status">{message}</p>}{preview && <div className="local-code">本机验证码 <strong>{preview}</strong><small>仅供本机测试，没有寄出邮箱。</small></div>}{error && <p className="account-error" role="alert">{error}</p>}<Button className="auth-submit" type="submit" disabled={busy || (mode === 'code' && (!sentEmail || sentEmail !== email.trim().toLowerCase()))}>{busy ? '处理中…' : mode === 'password' ? '使用密码登录' : '注册 / 登录'}<ArrowRight /></Button></form><LoginSupport language={language}/>{mode === 'password' && <button className="auth-switch" type="button" onClick={() => { setMode('code'); setPassword(''); setError(''); }}>忘记密码或尚未设定？使用邮箱验证码登录</button>}{mailMode === 'local' && <p className="auth-note">目前为本机测试模式 · 邮箱尚未启用</p>}</section></main>;
 }
-

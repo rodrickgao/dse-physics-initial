@@ -54,46 +54,6 @@
     "previous_src": "assets/textbook/review-diagrams/heating-curve.png"
   },
   {
-    "id": "T01-1",
-    "src": "assets/textbook/figures-chn/T01-1.png",
-    "source": "DSEPHY_TE_105_TN_ce.pdf",
-    "page": 12,
-    "printed_page": 148,
-    "width": 400,
-    "height": 179,
-    "caption": "把壓強—攝氏溫度直線外推至壓強為零。",
-    "bbox_fraction": [
-      0.625,
-      0.624,
-      0.885,
-      0.713
-    ],
-    "original_src": "assets/textbook/supplement-eng/105-p12.png",
-    "code": "105",
-    "language": "chn",
-    "previous_src": "assets/textbook/card-diagrams/T01-1.png"
-  },
-  {
-    "id": "T02-1",
-    "src": "assets/textbook/figures-chn/T02-1.png",
-    "source": "DSEPHY_TE_105_TN_ce.pdf",
-    "page": 15,
-    "printed_page": 151,
-    "width": 423,
-    "height": 431,
-    "caption": "水浴、溫度計和待測氣體的實驗裝置。",
-    "bbox_fraction": [
-      0.635,
-      0.265,
-      0.91,
-      0.479
-    ],
-    "original_src": "assets/textbook/supplement-eng/105-p15.png",
-    "code": "105",
-    "language": "chn",
-    "previous_src": "assets/textbook/card-diagrams/T02-1.png"
-  },
-  {
     "id": "velocity-time",
     "caption": "等時間內速度增加相同，形成直線 v–t 圖。斜率表示加速度，有向面積表示位移。",
     "src": "assets/textbook/figures-chn/velocity-time.png",
@@ -364,46 +324,6 @@
     "previous_src": "assets/textbook/review-diagrams/convex-images.png"
   },
   {
-    "id": "N04-1",
-    "src": "assets/textbook/figures-chn/N04-1.png",
-    "source": "DSEPHY_TE_3A03_TN_ce(1).pdf",
-    "page": 24,
-    "printed_page": 102,
-    "width": 308,
-    "height": 588,
-    "caption": "凹透鏡的三條主光線：保留主軸、焦點與光線方向。",
-    "bbox_fraction": [
-      0.71,
-      0.635,
-      0.91,
-      0.927
-    ],
-    "original_src": "assets/textbook/supplement-eng/3A03-p24.png",
-    "code": "3A03",
-    "language": "chn",
-    "previous_src": "assets/textbook/card-diagrams/N04-1.png"
-  },
-  {
-    "id": "N04-2",
-    "src": "assets/textbook/figures-chn/N04-2.png",
-    "source": "DSEPHY_TE_3A03_TN_ce(1).pdf",
-    "page": 16,
-    "printed_page": 94,
-    "width": 661,
-    "height": 231,
-    "caption": "斜向平行光經凸透鏡後會聚於焦平面。",
-    "bbox_fraction": [
-      0.39,
-      0.435,
-      0.82,
-      0.55
-    ],
-    "original_src": "assets/textbook/supplement-eng/3A03-p16.png",
-    "code": "3A03",
-    "language": "chn",
-    "previous_src": "assets/textbook/card-diagrams/N04-2.png"
-  },
-  {
     "id": "diverging-lens-rays",
     "caption": "發散光線的反向延長線相交，形成物體同側的正立縮小虛像。原圖標出距離大小；帶符號的透鏡計算須取 v < 0。",
     "src": "assets/textbook/figures-chn/diverging-lens-rays.png",
@@ -548,26 +468,6 @@
     "previous_src": "assets/textbook/figures/interference-path.png"
   },
   {
-    "id": "N03-1",
-    "src": "assets/textbook/figures-chn/N03-1.png",
-    "source": "DSEPHY_TE_3B05_TN_ce.pdf",
-    "page": 42,
-    "printed_page": 78,
-    "width": 625,
-    "height": 200,
-    "caption": "固定端反射使波峰變成波谷，並反轉傳播方向。",
-    "bbox_fraction": [
-      0.07,
-      0.2,
-      0.48,
-      0.3
-    ],
-    "original_src": "assets/textbook/supplement-eng/3B05-p42.png",
-    "code": "3B05",
-    "language": "chn",
-    "previous_src": "assets/textbook/card-diagrams/N03-1.png"
-  },
-  {
     "id": "stationary-wave",
     "caption": "波節保持靜止，波腹振幅最大。相鄰波節相距半個波長，波節與相鄰波腹相距四分之一波長。",
     "src": "assets/textbook/figures-chn/stationary-wave.png",
@@ -620,66 +520,6 @@
       0.351
     ],
     "previous_src": "assets/textbook/figures/grating.png"
-  },
-  {
-    "id": "N06-1",
-    "src": "assets/textbook/figures-chn/N06-1.png",
-    "source": "DSEPHY_TE_3B06_TN_ce.pdf",
-    "page": 30,
-    "printed_page": 130,
-    "width": 1284,
-    "height": 441,
-    "caption": "波長由左至右減少，頻率增加；下方標示典型尺度。",
-    "bbox_fraction": [
-      0.085,
-      0.326,
-      0.92,
-      0.545
-    ],
-    "original_src": "assets/textbook/supplement-eng/3B06-p30.png",
-    "code": "3B06",
-    "language": "chn",
-    "previous_src": "assets/textbook/card-diagrams/N06-1.png"
-  },
-  {
-    "id": "N02-1",
-    "src": "assets/textbook/figures-chn/N02-1.png",
-    "source": "DSEPHY_TE_3B07_TN_ce.pdf",
-    "page": 6,
-    "printed_page": 158,
-    "width": 923,
-    "height": 230,
-    "caption": "比較平衡位置和最大位移處的粒子運動。",
-    "bbox_fraction": [
-      0.325,
-      0.315,
-      0.925,
-      0.429
-    ],
-    "original_src": "assets/textbook/supplement-eng/3B07-p6.png",
-    "code": "3B07",
-    "language": "chn",
-    "previous_src": "assets/textbook/card-diagrams/N02-1.png"
-  },
-  {
-    "id": "N01-1",
-    "src": "assets/textbook/figures-chn/N01-1.png",
-    "source": "DSEPHY_TE_3B07_TN_ce.pdf",
-    "page": 11,
-    "printed_page": 163,
-    "width": 915,
-    "height": 193,
-    "caption": "相鄰粒子向內擠近形成密部，向外分開形成疏部。",
-    "bbox_fraction": [
-      0.31,
-      0.194,
-      0.905,
-      0.29
-    ],
-    "original_src": "assets/textbook/supplement-eng/3B07-p11.png",
-    "code": "3B07",
-    "language": "chn",
-    "previous_src": "assets/textbook/card-diagrams/N01-1.png"
   },
   {
     "id": "N08-1",
@@ -772,6 +612,27 @@
       0.49
     ],
     "previous_src": "assets/textbook/figures/potential-divider.png"
+  },
+  {
+    "id": "three-pin-plug-socket",
+    "code": "404",
+    "page": 8,
+    "printed_page": 152,
+    "figure_label": "4.2b",
+    "source": "DSEPHY_TE_404_TN_ce.pdf",
+    "src": "assets/textbook/figures-chn/three-pin-plug-socket.png",
+    "width": 726,
+    "height": 690,
+    "bbox_fraction": [
+      0.635,
+      0.725,
+      0.93,
+      0.939
+    ],
+    "render_scale": 4,
+    "language": "chn",
+    "caption": "L＝活線（火線），N＝中線（零線），E＝地線。面向插座：上 E、左 N、右 L；插頭與插座按相同字母對應。",
+    "previous_src": "assets/textbook/review-diagrams/three-pin-plug-socket.png"
   },
   {
     "id": "sine-rms",
@@ -936,22 +797,25 @@
     "previous_src": "assets/textbook/review-diagrams/lenz.png"
   },
   {
-    "id": "generator",
+    "id": "dc-generator-principle",
     "code": "407",
     "page": 16,
-    "caption": "線圈轉動改變磁通鏈，換向器把外電路電流整流為同向脈動。",
-    "src": "assets/textbook/figures-chn/generator.png",
-    "width": 1330,
-    "height": 644,
+    "printed_page": 282,
+    "figure_label": "7.2c",
     "source": "DSEPHY_TE_407_TN_ce.pdf",
+    "src": "assets/textbook/figures-chn/dc-generator-principle.png",
+    "width": 1330,
+    "height": 816,
     "bbox_fraction": [
       0.065,
-      0.15,
+      0.105,
       0.93,
-      0.47
+      0.51
     ],
+    "render_scale": 2.5,
     "language": "chn",
-    "previous_src": "assets/textbook/review-diagrams/generator.png"
+    "caption": "換向器每半圈交換連接；線圈電流反向，外電路電流仍由 Q 流向 P。",
+    "previous_src": "assets/textbook/review-diagrams/dc-generator-principle.png"
   },
   {
     "id": "flux-angle",
@@ -1044,26 +908,6 @@
     "previous_src": "assets/textbook/review-diagrams/decay-curve.png"
   },
   {
-    "id": "N19-1",
-    "src": "assets/textbook/figures-chn/N19-1.png",
-    "source": "DSEPHY_TE_E101_TN_ce.pdf",
-    "page": 5,
-    "printed_page": 5,
-    "width": 466,
-    "height": 590,
-    "caption": "比較星系、星系團與超星系團的尺度層級。",
-    "bbox_fraction": [
-      0.465,
-      0.586,
-      0.771,
-      0.881
-    ],
-    "original_src": "assets/textbook/supplement-eng/E101-p5.png",
-    "code": "E101",
-    "language": "chn",
-    "previous_src": "assets/textbook/card-diagrams/N19-1.png"
-  },
-  {
     "id": "parallax",
     "caption": "1 AU 基線對應周年視差角；相隔半年的視位置總角位移是該角的兩倍。",
     "src": "assets/textbook/figures-chn/parallax.png",
@@ -1080,46 +924,6 @@
       0.304
     ],
     "previous_src": "assets/textbook/figures/parallax.png"
-  },
-  {
-    "id": "N20-1",
-    "src": "assets/textbook/figures-chn/N20-1.png",
-    "source": "DSEPHY_TE_E101_TN_ce.pdf",
-    "page": 30,
-    "printed_page": 30,
-    "width": 952,
-    "height": 390,
-    "caption": "金星相位改變時，視直徑也改變。",
-    "bbox_fraction": [
-      0.29,
-      0.155,
-      0.915,
-      0.35
-    ],
-    "original_src": "assets/textbook/supplement-eng/E101-p30.png",
-    "code": "E101",
-    "language": "chn",
-    "previous_src": "assets/textbook/card-diagrams/N20-1.png"
-  },
-  {
-    "id": "N20-2",
-    "src": "assets/textbook/figures-chn/N20-2.png",
-    "source": "DSEPHY_TE_E101_TN_ce.pdf",
-    "page": 30,
-    "printed_page": 30,
-    "width": 1021,
-    "height": 485,
-    "caption": "比較托勒密模型與日心模型對金星相位的預測。",
-    "bbox_fraction": [
-      0.25,
-      0.47,
-      0.92,
-      0.713
-    ],
-    "original_src": "assets/textbook/supplement-eng/E101-p30.png",
-    "code": "E101",
-    "language": "chn",
-    "previous_src": "assets/textbook/card-diagrams/N20-2.png"
   },
   {
     "id": "elliptical-orbit",
@@ -1176,26 +980,6 @@
     "previous_src": "assets/textbook/figures/blackbody-spectrum.png"
   },
   {
-    "id": "N21-1",
-    "src": "assets/textbook/figures-chn/N21-1.png",
-    "source": "DSEPHY_TE_E103_TN_ce.pdf",
-    "page": 26,
-    "printed_page": 120,
-    "width": 931,
-    "height": 499,
-    "caption": "外層氣體吸收特定波長，使恆星光譜出現暗線。",
-    "bbox_fraction": [
-      0.299,
-      0.475,
-      0.91,
-      0.725
-    ],
-    "original_src": "assets/textbook/supplement-eng/E103-p26.png",
-    "code": "E103",
-    "language": "chn",
-    "previous_src": "assets/textbook/card-diagrams/N21-1.png"
-  },
-  {
     "id": "N24-1",
     "src": "assets/textbook/figures-chn/N24-1.png",
     "source": "DSEPHY_TE_E103_TN_ce.pdf",
@@ -1234,24 +1018,25 @@
     "previous_src": "assets/textbook/review-diagrams/radial-velocity.png"
   },
   {
-    "id": "N23-1",
-    "src": "assets/textbook/figures-chn/N23-1.png",
-    "source": "DSEPHY_TE_E103_TN_ce.pdf",
-    "page": 44,
-    "printed_page": 138,
-    "width": 940,
-    "height": 502,
-    "caption": "外圍軌道速率的觀測曲線與只計可見質量的預測不同。",
+    "id": "cooking-appliances-comparison",
+    "code": "E301",
+    "page": 18,
+    "printed_page": 18,
+    "figure_label": "1.2a",
+    "source": "DSEPHY_TE_E301_TN_ce.pdf",
+    "src": "assets/textbook/figures-chn/cooking-appliances-comparison.png",
+    "width": 1528,
+    "height": 724,
     "bbox_fraction": [
-      0.298,
-      0.2,
-      0.915,
-      0.451
+      0.085,
+      0.09,
+      0.92,
+      0.392
     ],
-    "original_src": "assets/textbook/supplement-eng/E103-p44.png",
-    "code": "E103",
+    "render_scale": 3,
     "language": "chn",
-    "previous_src": "assets/textbook/card-diagrams/N23-1.png"
+    "caption": "課本表 1.2a · 第 18 頁",
+    "previous_src": "assets/textbook/review-diagrams/cooking-appliances-comparison.png"
   },
   {
     "id": "N39-1",
@@ -1274,26 +1059,6 @@
     "previous_src": "assets/textbook/card-diagrams/N39-1.png"
   },
   {
-    "id": "N32-1",
-    "src": "assets/textbook/figures-chn/N32-1.png",
-    "source": "DSEPHY_TE_E302_TN_ce.pdf",
-    "page": 9,
-    "printed_page": 53,
-    "width": 1078,
-    "height": 290,
-    "caption": "正向電壓使電子與空穴在接面結合並發光。",
-    "bbox_fraction": [
-      0.233,
-      0.207,
-      0.94,
-      0.352
-    ],
-    "original_src": "assets/textbook/supplement-eng/E302-p9.png",
-    "code": "E302",
-    "language": "chn",
-    "previous_src": "assets/textbook/card-diagrams/N32-1.png"
-  },
-  {
     "id": "wall-conduction",
     "code": "E303",
     "page": 3,
@@ -1310,46 +1075,6 @@
     ],
     "language": "chn",
     "previous_src": "assets/textbook/review-diagrams/wall-conduction.png"
-  },
-  {
-    "id": "N38-1",
-    "src": "assets/textbook/figures-chn/N38-1.png",
-    "source": "DSEPHY_TE_E303_TN_ce.pdf",
-    "page": 29,
-    "printed_page": 113,
-    "width": 716,
-    "height": 516,
-    "caption": "混合動力車中引擎、電動機和電池的能量流向。",
-    "bbox_fraction": [
-      0.37,
-      0.213,
-      0.84,
-      0.471
-    ],
-    "original_src": "assets/textbook/supplement-eng/E303-p29.png",
-    "code": "E303",
-    "language": "chn",
-    "previous_src": "assets/textbook/card-diagrams/N38-1.png"
-  },
-  {
-    "id": "N31-1",
-    "src": "assets/textbook/figures-chn/N31-1.png",
-    "source": "DSEPHY_TE_E304_TN_ce.pdf",
-    "page": 10,
-    "printed_page": 140,
-    "width": 1242,
-    "height": 648,
-    "caption": "壓水式反應堆的一次、二次和外部冷卻迴路。",
-    "bbox_fraction": [
-      0.105,
-      0.134,
-      0.92,
-      0.458
-    ],
-    "original_src": "assets/textbook/supplement-eng/E304-p10.png",
-    "code": "E304",
-    "language": "chn",
-    "previous_src": "assets/textbook/card-diagrams/N31-1.png"
   },
   {
     "id": "wind-volume",
@@ -1386,46 +1111,6 @@
     ],
     "language": "chn",
     "previous_src": "assets/textbook/review-diagrams/hydropower.png"
-  },
-  {
-    "id": "N34-1",
-    "src": "assets/textbook/figures-chn/N34-1.png",
-    "source": "DSEPHY_TE_E304_TN_ce.pdf",
-    "page": 22,
-    "printed_page": 152,
-    "width": 293,
-    "height": 170,
-    "caption": "θ 是光線與板面法線的夾角。",
-    "bbox_fraction": [
-      0.71,
-      0.775,
-      0.902,
-      0.86
-    ],
-    "original_src": "assets/textbook/supplement-eng/E304-p22.png",
-    "code": "E304",
-    "language": "chn",
-    "previous_src": "assets/textbook/card-diagrams/N34-1.png"
-  },
-  {
-    "id": "N33-1",
-    "src": "assets/textbook/figures-chn/N33-1.png",
-    "source": "DSEPHY_TE_E304_TN_ce.pdf",
-    "page": 27,
-    "printed_page": 157,
-    "width": 953,
-    "height": 857,
-    "caption": "光伏電池中的電場、電子移動和外電路電流方向。",
-    "bbox_fraction": [
-      0.3,
-      0.16,
-      0.925,
-      0.589
-    ],
-    "original_src": "assets/textbook/supplement-eng/E304-p27.png",
-    "code": "E304",
-    "language": "chn",
-    "previous_src": "assets/textbook/card-diagrams/N33-1.png"
   },
   {
     "id": "greenhouse",
@@ -1482,26 +1167,6 @@
     "previous_src": "assets/textbook/review-diagrams/stopping-graph.png"
   },
   {
-    "id": "N22-1",
-    "src": "assets/textbook/figures-chn/N22-1.png",
-    "source": "DSEPHY_TE_E202_TN_ce_.pdf",
-    "page": 14,
-    "printed_page": 54,
-    "width": 795,
-    "height": 931,
-    "caption": "按同一波長位置比對已知元素與未知樣本的譜線。",
-    "bbox_fraction": [
-      0.32,
-      0.154,
-      0.842,
-      0.62
-    ],
-    "original_src": "assets/textbook/supplement-eng/E202-p14.png",
-    "code": "E202",
-    "language": "chn",
-    "previous_src": "assets/textbook/card-diagrams/N22-1.png"
-  },
-  {
     "id": "hydrogen-levels",
     "caption": "量子數 n 增加時，束縛態能量由負值趨近零，軌道半徑增大，而能級間距縮小。",
     "src": "assets/textbook/figures-chn/hydrogen-levels.png",
@@ -1538,46 +1203,6 @@
     "code": "E203",
     "language": "chn",
     "previous_src": "assets/textbook/card-diagrams/N28-1.png"
-  },
-  {
-    "id": "N29-1",
-    "src": "assets/textbook/figures-chn/N29-1.png",
-    "source": "DSEPHY_TE_E203_TN_ce.pdf",
-    "page": 11,
-    "printed_page": 105,
-    "width": 938,
-    "height": 402,
-    "caption": "二氧化鈦塗層的親水自潔過程。",
-    "bbox_fraction": [
-      0.306,
-      0.145,
-      0.921,
-      0.346
-    ],
-    "original_src": "assets/textbook/supplement-eng/E203-p11.png",
-    "code": "E203",
-    "language": "chn",
-    "previous_src": "assets/textbook/card-diagrams/N29-1.png"
-  },
-  {
-    "id": "N28-2",
-    "src": "assets/textbook/figures-chn/N28-2.png",
-    "source": "DSEPHY_TE_E203_TN_ce.pdf",
-    "page": 10,
-    "printed_page": 104,
-    "width": 518,
-    "height": 330,
-    "caption": "蓮葉的疏水表面讓水滴滾走並帶走污物。",
-    "bbox_fraction": [
-      0.57,
-      0.65,
-      0.91,
-      0.815
-    ],
-    "original_src": "assets/textbook/supplement-eng/E203-p10.png",
-    "code": "E203",
-    "language": "chn",
-    "previous_src": "assets/textbook/card-diagrams/N28-2.png"
   },
   {
     "id": "rayleigh-resolution",
@@ -1652,26 +1277,6 @@
       0.733
     ],
     "previous_src": "assets/textbook/figures/eye-optics.png"
-  },
-  {
-    "id": "N48-1",
-    "src": "assets/textbook/figures-chn/N48-1.png",
-    "source": "DSEPHY_TE_E401_TN_ce_.pdf",
-    "page": 7,
-    "printed_page": 7,
-    "width": 787,
-    "height": 545,
-    "caption": "角膜提供主要折射，晶狀體負責調節焦距。",
-    "bbox_fraction": [
-      0.35,
-      0.46,
-      0.866,
-      0.733
-    ],
-    "original_src": "assets/textbook/supplement-eng/E401-p7.png",
-    "code": "E401",
-    "language": "chn",
-    "previous_src": "assets/textbook/card-diagrams/N48-1.png"
   },
   {
     "id": "rods-cones",
@@ -1780,26 +1385,6 @@
     ],
     "language": "chn",
     "previous_src": "assets/textbook/review-diagrams/cochlea-frequency.png"
-  },
-  {
-    "id": "N42-1",
-    "src": "assets/textbook/figures-chn/N42-1.png",
-    "source": "DSEPHY_TE_E402_TN_ce_.pdf",
-    "page": 12,
-    "printed_page": 70,
-    "width": 946,
-    "height": 823,
-    "caption": "等響曲線：同一主觀響度在不同頻率需要不同聲級。",
-    "bbox_fraction": [
-      0.299,
-      0.188,
-      0.92,
-      0.6
-    ],
-    "original_src": "assets/textbook/supplement-eng/E402-p12.png",
-    "code": "E402",
-    "language": "chn",
-    "previous_src": "assets/textbook/card-diagrams/N42-1.png"
   },
   {
     "id": "piezo",
@@ -1930,5 +1515,508 @@
       0.477
     ],
     "previous_src": "assets/textbook/figures/ct-projections.png"
+  },
+  {
+    "id": "N01-1",
+    "src": "assets/textbook/figures-chn/N01-1.png",
+    "source": "DSEPHY_TE_3B07_TN_ce.pdf",
+    "page": 11,
+    "printed_page": 163,
+    "width": 915,
+    "height": 193,
+    "caption": "相鄰粒子向內擠近形成密部，向外分開形成疏部。",
+    "bbox_fraction": [
+      0.31,
+      0.194,
+      0.905,
+      0.29
+    ],
+    "original_src": "assets/textbook/supplement-eng/3B07-p11.png",
+    "code": "3B07",
+    "language": "chn",
+    "previous_src": "assets/textbook/card-diagrams/N01-1.png"
+  },
+  {
+    "id": "longitudinal-displacement-particles",
+    "code": "3B07",
+    "page": 10,
+    "printed_page": 162,
+    "figure_label": "7.1g",
+    "source": "DSEPHY_TE_3B07_TN_ce.pdf",
+    "src": "assets/textbook/figures-chn/longitudinal-displacement-particles.png",
+    "width": 1292,
+    "height": 275,
+    "bbox_fraction": [
+      0.215,
+      0.408,
+      0.915,
+      0.522
+    ],
+    "render_scale": 3,
+    "language": "chn",
+    "caption": "同一時刻粒子 A–M 的實際位置。藍色箭頭表示水平位移：向右為正、向左為負。",
+    "previous_src": "assets/textbook/review-diagrams/longitudinal-displacement-particles.png"
+  },
+  {
+    "id": "longitudinal-displacement-graph",
+    "code": "3B07",
+    "page": 10,
+    "printed_page": 162,
+    "figure_label": "7.1h",
+    "source": "DSEPHY_TE_3B07_TN_ce.pdf",
+    "src": "assets/textbook/figures-chn/longitudinal-displacement-graph.png",
+    "width": 1089,
+    "height": 471,
+    "bbox_fraction": [
+      0.31,
+      0.741,
+      0.9,
+      0.936
+    ],
+    "render_scale": 3,
+    "language": "chn",
+    "caption": "A–M 逐點對應上圖；橫軸是粒子的平衡位置，縱軸是水平位移。C、G、K 位移為零，速率最大；A、E、I、M 位移量值最大，瞬時靜止。曲線的高低表示位移，粒子仍左右振動。",
+    "previous_src": "assets/textbook/review-diagrams/longitudinal-displacement-graph.png"
+  },
+  {
+    "id": "N03-1",
+    "src": "assets/textbook/figures-chn/N03-1.png",
+    "source": "DSEPHY_TE_3B05_TN_ce.pdf",
+    "page": 42,
+    "printed_page": 78,
+    "width": 625,
+    "height": 200,
+    "caption": "固定端反射使波峰變成波谷，並反轉傳播方向。",
+    "bbox_fraction": [
+      0.07,
+      0.2,
+      0.48,
+      0.3
+    ],
+    "original_src": "assets/textbook/supplement-eng/3B05-p42.png",
+    "code": "3B05",
+    "language": "chn",
+    "previous_src": "assets/textbook/card-diagrams/N03-1.png"
+  },
+  {
+    "id": "N04-1",
+    "src": "assets/textbook/figures-chn/N04-1.png",
+    "source": "DSEPHY_TE_3A03_TN_ce(1).pdf",
+    "page": 24,
+    "printed_page": 102,
+    "width": 308,
+    "height": 588,
+    "caption": "凹透鏡的三條主光線：保留主軸、焦點與光線方向。",
+    "bbox_fraction": [
+      0.71,
+      0.635,
+      0.91,
+      0.927
+    ],
+    "original_src": "assets/textbook/supplement-eng/3A03-p24.png",
+    "code": "3A03",
+    "language": "chn",
+    "previous_src": "assets/textbook/card-diagrams/N04-1.png"
+  },
+  {
+    "id": "N04-2",
+    "src": "assets/textbook/figures-chn/N04-2.png",
+    "source": "DSEPHY_TE_3A03_TN_ce(1).pdf",
+    "page": 16,
+    "printed_page": 94,
+    "width": 661,
+    "height": 231,
+    "caption": "斜向平行光經凸透鏡後會聚於焦平面。",
+    "bbox_fraction": [
+      0.39,
+      0.435,
+      0.82,
+      0.55
+    ],
+    "original_src": "assets/textbook/supplement-eng/3A03-p16.png",
+    "code": "3A03",
+    "language": "chn",
+    "previous_src": "assets/textbook/card-diagrams/N04-2.png"
+  },
+  {
+    "id": "N06-1",
+    "src": "assets/textbook/figures-chn/N06-1.png",
+    "source": "DSEPHY_TE_3B06_TN_ce.pdf",
+    "page": 30,
+    "printed_page": 130,
+    "width": 1284,
+    "height": 441,
+    "caption": "波長由左至右減少，頻率增加；下方標示典型尺度。",
+    "bbox_fraction": [
+      0.085,
+      0.326,
+      0.92,
+      0.545
+    ],
+    "original_src": "assets/textbook/supplement-eng/3B06-p30.png",
+    "code": "3B06",
+    "language": "chn",
+    "previous_src": "assets/textbook/card-diagrams/N06-1.png"
+  },
+  {
+    "id": "N19-1",
+    "src": "assets/textbook/figures-chn/N19-1.png",
+    "source": "DSEPHY_TE_E101_TN_ce.pdf",
+    "page": 5,
+    "printed_page": 5,
+    "width": 466,
+    "height": 590,
+    "caption": "比較星系、星系團與超星系團的尺度層級。",
+    "bbox_fraction": [
+      0.465,
+      0.586,
+      0.771,
+      0.881
+    ],
+    "original_src": "assets/textbook/supplement-eng/E101-p5.png",
+    "code": "E101",
+    "language": "chn",
+    "previous_src": "assets/textbook/card-diagrams/N19-1.png"
+  },
+  {
+    "id": "N20-1",
+    "src": "assets/textbook/figures-chn/N20-1.png",
+    "source": "DSEPHY_TE_E101_TN_ce.pdf",
+    "page": 30,
+    "printed_page": 30,
+    "width": 952,
+    "height": 390,
+    "caption": "金星相位改變時，視直徑也改變。",
+    "bbox_fraction": [
+      0.29,
+      0.155,
+      0.915,
+      0.35
+    ],
+    "original_src": "assets/textbook/supplement-eng/E101-p30.png",
+    "code": "E101",
+    "language": "chn",
+    "previous_src": "assets/textbook/card-diagrams/N20-1.png"
+  },
+  {
+    "id": "N20-2",
+    "src": "assets/textbook/figures-chn/N20-2.png",
+    "source": "DSEPHY_TE_E101_TN_ce.pdf",
+    "page": 30,
+    "printed_page": 30,
+    "width": 1021,
+    "height": 485,
+    "caption": "比較托勒密模型與日心模型對金星相位的預測。",
+    "bbox_fraction": [
+      0.25,
+      0.47,
+      0.92,
+      0.713
+    ],
+    "original_src": "assets/textbook/supplement-eng/E101-p30.png",
+    "code": "E101",
+    "language": "chn",
+    "previous_src": "assets/textbook/card-diagrams/N20-2.png"
+  },
+  {
+    "id": "N21-1",
+    "src": "assets/textbook/figures-chn/N21-1.png",
+    "source": "DSEPHY_TE_E103_TN_ce.pdf",
+    "page": 26,
+    "printed_page": 120,
+    "width": 931,
+    "height": 499,
+    "caption": "外層氣體吸收特定波長，使恆星光譜出現暗線。",
+    "bbox_fraction": [
+      0.299,
+      0.475,
+      0.91,
+      0.725
+    ],
+    "original_src": "assets/textbook/supplement-eng/E103-p26.png",
+    "code": "E103",
+    "language": "chn",
+    "previous_src": "assets/textbook/card-diagrams/N21-1.png"
+  },
+  {
+    "id": "N22-1",
+    "src": "assets/textbook/figures-chn/N22-1.png",
+    "source": "DSEPHY_TE_E202_TN_ce_.pdf",
+    "page": 14,
+    "printed_page": 54,
+    "width": 795,
+    "height": 931,
+    "caption": "按同一波長位置比對已知元素與未知樣本的譜線。",
+    "bbox_fraction": [
+      0.32,
+      0.154,
+      0.842,
+      0.62
+    ],
+    "original_src": "assets/textbook/supplement-eng/E202-p14.png",
+    "code": "E202",
+    "language": "chn",
+    "previous_src": "assets/textbook/card-diagrams/N22-1.png"
+  },
+  {
+    "id": "N23-1",
+    "src": "assets/textbook/figures-chn/N23-1.png",
+    "source": "DSEPHY_TE_E103_TN_ce.pdf",
+    "page": 44,
+    "printed_page": 138,
+    "width": 940,
+    "height": 502,
+    "caption": "外圍軌道速率的觀測曲線與只計可見質量的預測不同。",
+    "bbox_fraction": [
+      0.298,
+      0.2,
+      0.915,
+      0.451
+    ],
+    "original_src": "assets/textbook/supplement-eng/E103-p44.png",
+    "code": "E103",
+    "language": "chn",
+    "previous_src": "assets/textbook/card-diagrams/N23-1.png"
+  },
+  {
+    "id": "N28-2",
+    "src": "assets/textbook/figures-chn/N28-2.png",
+    "source": "DSEPHY_TE_E203_TN_ce.pdf",
+    "page": 10,
+    "printed_page": 104,
+    "width": 518,
+    "height": 330,
+    "caption": "蓮葉的疏水表面讓水滴滾走並帶走污物。",
+    "bbox_fraction": [
+      0.57,
+      0.65,
+      0.91,
+      0.815
+    ],
+    "original_src": "assets/textbook/supplement-eng/E203-p10.png",
+    "code": "E203",
+    "language": "chn",
+    "previous_src": "assets/textbook/card-diagrams/N28-2.png"
+  },
+  {
+    "id": "N29-1",
+    "src": "assets/textbook/figures-chn/N29-1.png",
+    "source": "DSEPHY_TE_E203_TN_ce.pdf",
+    "page": 11,
+    "printed_page": 105,
+    "width": 938,
+    "height": 402,
+    "caption": "二氧化鈦塗層的親水自潔過程。",
+    "bbox_fraction": [
+      0.306,
+      0.145,
+      0.921,
+      0.346
+    ],
+    "original_src": "assets/textbook/supplement-eng/E203-p11.png",
+    "code": "E203",
+    "language": "chn",
+    "previous_src": "assets/textbook/card-diagrams/N29-1.png"
+  },
+  {
+    "id": "N31-1",
+    "src": "assets/textbook/figures-chn/N31-1.png",
+    "source": "DSEPHY_TE_E304_TN_ce.pdf",
+    "page": 10,
+    "printed_page": 140,
+    "width": 1242,
+    "height": 648,
+    "caption": "壓水式反應堆的一次、二次和外部冷卻迴路。",
+    "bbox_fraction": [
+      0.105,
+      0.134,
+      0.92,
+      0.458
+    ],
+    "original_src": "assets/textbook/supplement-eng/E304-p10.png",
+    "code": "E304",
+    "language": "chn",
+    "previous_src": "assets/textbook/card-diagrams/N31-1.png"
+  },
+  {
+    "id": "N32-1",
+    "src": "assets/textbook/figures-chn/N32-1.png",
+    "source": "DSEPHY_TE_E302_TN_ce.pdf",
+    "page": 9,
+    "printed_page": 53,
+    "width": 1078,
+    "height": 290,
+    "caption": "正向電壓使電子與空穴在接面結合並發光。",
+    "bbox_fraction": [
+      0.233,
+      0.207,
+      0.94,
+      0.352
+    ],
+    "original_src": "assets/textbook/supplement-eng/E302-p9.png",
+    "code": "E302",
+    "language": "chn",
+    "previous_src": "assets/textbook/card-diagrams/N32-1.png"
+  },
+  {
+    "id": "N33-1",
+    "src": "assets/textbook/figures-chn/N33-1.png",
+    "source": "DSEPHY_TE_E304_TN_ce.pdf",
+    "page": 27,
+    "printed_page": 157,
+    "width": 953,
+    "height": 857,
+    "caption": "光伏電池中的電場、電子移動和外電路電流方向。",
+    "bbox_fraction": [
+      0.3,
+      0.16,
+      0.925,
+      0.589
+    ],
+    "original_src": "assets/textbook/supplement-eng/E304-p27.png",
+    "code": "E304",
+    "language": "chn",
+    "previous_src": "assets/textbook/card-diagrams/N33-1.png"
+  },
+  {
+    "id": "N34-1",
+    "src": "assets/textbook/figures-chn/N34-1.png",
+    "source": "DSEPHY_TE_E304_TN_ce.pdf",
+    "page": 22,
+    "printed_page": 152,
+    "width": 293,
+    "height": 170,
+    "caption": "θ 是光線與板面法線的夾角。",
+    "bbox_fraction": [
+      0.71,
+      0.775,
+      0.902,
+      0.86
+    ],
+    "original_src": "assets/textbook/supplement-eng/E304-p22.png",
+    "code": "E304",
+    "language": "chn",
+    "previous_src": "assets/textbook/card-diagrams/N34-1.png"
+  },
+  {
+    "id": "N38-1",
+    "src": "assets/textbook/figures-chn/N38-1.png",
+    "source": "DSEPHY_TE_E303_TN_ce.pdf",
+    "page": 29,
+    "printed_page": 113,
+    "width": 716,
+    "height": 516,
+    "caption": "混合動力車中引擎、電動機和電池的能量流向。",
+    "bbox_fraction": [
+      0.37,
+      0.213,
+      0.84,
+      0.471
+    ],
+    "original_src": "assets/textbook/supplement-eng/E303-p29.png",
+    "code": "E303",
+    "language": "chn",
+    "previous_src": "assets/textbook/card-diagrams/N38-1.png"
+  },
+  {
+    "id": "N42-1",
+    "src": "assets/textbook/figures-chn/N42-1.png",
+    "source": "DSEPHY_TE_E402_TN_ce_.pdf",
+    "page": 12,
+    "printed_page": 70,
+    "width": 946,
+    "height": 823,
+    "caption": "等響曲線：同一主觀響度在不同頻率需要不同聲級。",
+    "bbox_fraction": [
+      0.299,
+      0.188,
+      0.92,
+      0.6
+    ],
+    "original_src": "assets/textbook/supplement-eng/E402-p12.png",
+    "code": "E402",
+    "language": "chn",
+    "previous_src": "assets/textbook/card-diagrams/N42-1.png"
+  },
+  {
+    "id": "N48-1",
+    "src": "assets/textbook/figures-chn/N48-1.png",
+    "source": "DSEPHY_TE_E401_TN_ce_.pdf",
+    "page": 7,
+    "printed_page": 7,
+    "width": 787,
+    "height": 545,
+    "caption": "角膜提供主要折射，晶狀體負責調節焦距。",
+    "bbox_fraction": [
+      0.35,
+      0.46,
+      0.866,
+      0.733
+    ],
+    "original_src": "assets/textbook/supplement-eng/E401-p7.png",
+    "code": "E401",
+    "language": "chn",
+    "previous_src": "assets/textbook/card-diagrams/N48-1.png"
+  },
+  {
+    "id": "T01-1",
+    "src": "assets/textbook/figures-chn/T01-1.png",
+    "source": "DSEPHY_TE_105_TN_ce.pdf",
+    "page": 12,
+    "printed_page": 148,
+    "width": 400,
+    "height": 179,
+    "caption": "把壓強—攝氏溫度直線外推至壓強為零。",
+    "bbox_fraction": [
+      0.625,
+      0.624,
+      0.885,
+      0.713
+    ],
+    "original_src": "assets/textbook/supplement-eng/105-p12.png",
+    "code": "105",
+    "language": "chn",
+    "previous_src": "assets/textbook/card-diagrams/T01-1.png"
+  },
+  {
+    "id": "T02-1",
+    "src": "assets/textbook/figures-chn/T02-1.png",
+    "source": "DSEPHY_TE_105_TN_ce.pdf",
+    "page": 15,
+    "printed_page": 151,
+    "width": 423,
+    "height": 431,
+    "caption": "水浴、溫度計和待測氣體的實驗裝置。",
+    "bbox_fraction": [
+      0.635,
+      0.265,
+      0.91,
+      0.479
+    ],
+    "original_src": "assets/textbook/supplement-eng/105-p15.png",
+    "code": "105",
+    "language": "chn",
+    "previous_src": "assets/textbook/card-diagrams/T02-1.png"
+  },
+  {
+    "id": "ac-generator-principle",
+    "code": "407",
+    "page": 17,
+    "printed_page": 283,
+    "figure_label": "7.2e",
+    "source": "DSEPHY_TE_407_TN_ce.pdf",
+    "src": "assets/textbook/figures-chn/ac-generator-principle.png",
+    "width": 1276,
+    "height": 517,
+    "bbox_fraction": [
+      0.1,
+      0.193,
+      0.93,
+      0.45
+    ],
+    "render_scale": 2.5,
+    "language": "chn",
+    "caption": "滑環保持原來連接；轉過半圈後，外電路電流由 Q → P 反轉為 P → Q。",
+    "previous_src": "assets/textbook/review-diagrams/ac-generator-principle.png"
   }
 ]

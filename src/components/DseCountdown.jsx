@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { getDseCountdown } from '../lib/dse-countdown';
-import './dse-countdown.css';
 
 export function DseCountdown({ target, targetMajor }) {
   const [countdown, setCountdown] = useState(() => getDseCountdown());

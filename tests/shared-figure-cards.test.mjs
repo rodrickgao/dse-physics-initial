@@ -42,3 +42,16 @@ test('duplicate explanations and shared illustrations retain all identities, equ
  }
  assert.deepEqual(structures[0],structures[1]);
 });
+
+test('a.c. and d.c. generators remain independent cards with matching textbook diagrams',()=>{
+ for(const lang of ['chn','eng']){
+  const points=numberKnowledgePoints(c.window.DSE_TEXTBOOK_DATA.languages[lang]);
+  const cards=sharedFigureCards(points),dc=cards.find(p=>p.sequence===215),ac=cards.find(p=>p.sequence===417);
+  assert.ok(dc&&!dc.members);assert.ok(ac&&!ac.members);
+  assert.equal(dc.number,'4.7.4');assert.equal(ac.number,'4.7.5');
+  assert.equal(cardFigures(dc)[0].figure_label,'7.2c');assert.equal(cardFigures(dc)[0].page,16);
+  assert.equal(cardFigures(ac)[0].figure_label,'7.2e');assert.equal(cardFigures(ac)[0].page,17);
+  assert.notEqual(cardFigures(dc)[0].src,cardFigures(ac)[0].src);
+  assert.equal(cardFigures(dc)[0].language,lang);assert.equal(cardFigures(ac)[0].language,lang);
+ }
+});

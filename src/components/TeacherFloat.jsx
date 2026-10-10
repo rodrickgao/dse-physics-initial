@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 import { useMembership } from './Membership';
-import './teacher-float.css';
 
 const POSITION_KEY = 'dse-physics-teacher-position-v1';
 function bounds() {

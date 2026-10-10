@@ -1,0 +1,92 @@
+{
+  "date": "2026-10-10",
+  "knowledge_sequence": 367,
+  "figures": {
+    "chn": [
+      {
+        "id": "longitudinal-displacement-particles",
+        "code": "3B07",
+        "page": 10,
+        "printed_page": 162,
+        "figure_label": "7.1g",
+        "source": "DSEPHY_TE_3B07_TN_ce.pdf",
+        "src": "assets/textbook/figures-chn/longitudinal-displacement-particles.png",
+        "width": 1292,
+        "height": 275,
+        "bbox_fraction": [
+          0.215,
+          0.408,
+          0.915,
+          0.522
+        ],
+        "render_scale": 3,
+        "language": "chn",
+        "caption": "同一時刻粒子 A–M 的實際位置。藍色箭頭表示水平位移：向右為正、向左為負。"
+      },
+      {
+        "id": "longitudinal-displacement-graph",
+        "code": "3B07",
+        "page": 10,
+        "printed_page": 162,
+        "figure_label": "7.1h",
+        "source": "DSEPHY_TE_3B07_TN_ce.pdf",
+        "src": "assets/textbook/figures-chn/longitudinal-displacement-graph.png",
+        "width": 1089,
+        "height": 471,
+        "bbox_fraction": [
+          0.31,
+          0.741,
+          0.9,
+          0.936
+        ],
+        "render_scale": 3,
+        "language": "chn",
+        "caption": "A–M 逐點對應上圖；橫軸是粒子的平衡位置，縱軸是水平位移。C、G、K 位移為零，速率最大；A、E、I、M 位移量值最大，瞬時靜止。曲線的高低表示位移，粒子仍左右振動。"
+      }
+    ],
+    "eng": [
+      {
+        "id": "longitudinal-displacement-particles",
+        "code": "3B07",
+        "page": 10,
+        "printed_page": 162,
+        "figure_label": "7.1g",
+        "source": "DSEPHY_TE_3B07_TN_.pdf",
+        "src": "assets/textbook/review-diagrams/longitudinal-displacement-particles.png",
+        "width": 1292,
+        "height": 285,
+        "bbox_fraction": [
+          0.215,
+          0.43,
+          0.915,
+          0.548
+        ],
+        "render_scale": 3,
+        "language": "eng",
+        "caption": "Actual positions of particles A–M at the same instant. Blue arrows show horizontal displacement: right is positive and left is negative."
+      },
+      {
+        "id": "longitudinal-displacement-graph",
+        "code": "3B07",
+        "page": 10,
+        "printed_page": 162,
+        "figure_label": "7.1h",
+        "source": "DSEPHY_TE_3B07_TN_.pdf",
+        "src": "assets/textbook/review-diagrams/longitudinal-displacement-graph.png",
+        "width": 1089,
+        "height": 466,
+        "bbox_fraction": [
+          0.31,
+          0.747,
+          0.9,
+          0.94
+        ],
+        "render_scale": 3,
+        "language": "eng",
+        "caption": "Match A–M to the particles above. The horizontal axis gives equilibrium position; the vertical axis gives horizontal displacement. C, G and K have zero displacement and maximum speed; A, E, I and M have maximum displacement magnitude and are momentarily at rest. Graph height represents displacement; particles still oscillate horizontally."
+      }
+    ]
+  },
+  "preservedOriginalContent": true,
+  "localOnly": true
+}

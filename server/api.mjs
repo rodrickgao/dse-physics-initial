@@ -1,3 +1,5 @@
+import { createProgressStore } from './progress-store.mjs';
+import { createAdminReports } from './admin-reports.mjs';
 import { createWeeklyReportScheduler } from './weekly-report-scheduler.mjs';
 import { createPaymentNotifications } from './payment-notifications.mjs';
 import { createAdminInsights } from './admin-insights.mjs';
@@ -7,14 +9,12 @@ import { createQdnaLearning } from './qdna-learning.mjs';
 import { createContentLimiter } from './content-limits.mjs';
 import { weeklyReportEmail } from './weekly-report-email.mjs';
 import { createContent } from './content.mjs';
-import { studentLearning } from './student-learning.mjs';
 import { createTutoring } from './tutoring.mjs';
-import { DatabaseSync } from 'node:sqlite';
+import { openDatabase, databaseQueries } from './database.mjs';
 import { createHash, randomBytes, randomInt, timingSafeEqual } from 'node:crypto';
 import { mkdirSync, existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { questions, pointInfo } from './catalog.mjs';
-import { exportRows, toWorkbook } from './student-export.mjs';
+import { questions } from './catalog.mjs';
 import { publicProfile, validateProfile } from './profile.mjs';
 import { encodePassword, checkPassword } from './password.mjs';
 import { createManagement } from './management.mjs';
@@ -34,27 +34,8 @@ export function createApi({ directory, mailer, paymentNotifier, weeklyMailer, we
   const keyPath = join(directory, 'admin-key.txt');
   if (!suppliedKey && !existsSync(keyPath)) writeFileSync(keyPath, token(), { mode: 0o600 });
   const adminKey = suppliedKey || readFileSync(keyPath, 'utf8').trim();
-  const db = new DatabaseSync(join(directory, 'students.sqlite'));
-  db.exec(`PRAGMA journal_mode=WAL; PRAGMA foreign_keys=ON;
-    CREATE TABLE IF NOT EXISTS users(id INTEGER PRIMARY KEY, email TEXT UNIQUE NOT NULL, role TEXT NOT NULL DEFAULT 'student', created_at INTEGER NOT NULL, last_login INTEGER NOT NULL);
-    CREATE TABLE IF NOT EXISTS codes(email TEXT PRIMARY KEY, digest TEXT NOT NULL, salt TEXT NOT NULL, expires INTEGER NOT NULL, attempts INTEGER NOT NULL DEFAULT 0, sent_at INTEGER NOT NULL);
-    CREATE TABLE IF NOT EXISTS sessions(digest TEXT PRIMARY KEY, user_id INTEGER NOT NULL REFERENCES users(id), expires INTEGER NOT NULL);
-    CREATE TABLE IF NOT EXISTS mistakes(user_id INTEGER NOT NULL REFERENCES users(id), question_key TEXT NOT NULL, marked_at INTEGER NOT NULL, PRIMARY KEY(user_id,question_key));
-    CREATE TABLE IF NOT EXISTS progress_undo(id TEXT PRIMARY KEY, user_id INTEGER NOT NULL REFERENCES users(id), snapshot TEXT NOT NULL, after_state TEXT NOT NULL, created_at INTEGER NOT NULL);
-    CREATE TABLE IF NOT EXISTS mastered(user_id INTEGER NOT NULL REFERENCES users(id), question_key TEXT NOT NULL, marked_at INTEGER NOT NULL, PRIMARY KEY(user_id,question_key));
-    CREATE TABLE IF NOT EXISTS events(id INTEGER PRIMARY KEY, user_id INTEGER NOT NULL REFERENCES users(id), question_key TEXT NOT NULL, action TEXT NOT NULL, at INTEGER NOT NULL);
-    CREATE TABLE IF NOT EXISTS focus_sessions(user_id INTEGER NOT NULL REFERENCES users(id), id TEXT NOT NULL, elapsed_ms INTEGER NOT NULL, PRIMARY KEY(user_id,id));
-    CREATE TABLE IF NOT EXISTS limits(bucket TEXT NOT NULL, at INTEGER NOT NULL);
-    CREATE INDEX IF NOT EXISTS limits_bucket ON limits(bucket,at);
-    CREATE INDEX IF NOT EXISTS events_at ON events(at);`);
-  const columns = new Set(db.prepare('PRAGMA table_info(users)').all().map(c => c.name));
-  for (const [name, type] of Object.entries({ nickname: 'TEXT', grade: 'TEXT', target: 'TEXT', target_major: 'TEXT', avatar: 'TEXT', avatar_data: 'BLOB', avatar_version: 'TEXT', password_hash: 'TEXT' })) {
-    if (!columns.has(name)) db.exec(`ALTER TABLE users ADD COLUMN ${name} ${type}`);
-  }
-  const get = (sql, ...params) => db.prepare(sql).get(...params);
-  const all = (sql, ...params) => db.prepare(sql).all(...params);
-  const run = (sql, ...params) => db.prepare(sql).run(...params);
-  const transaction = fn => { db.exec('BEGIN IMMEDIATE'); try { const result = fn(); db.exec('COMMIT'); return result; } catch (e) { db.exec('ROLLBACK'); throw e; } };
+  const db = openDatabase(directory);
+  const { get, all, run, transaction } = databaseQueries(db);
   const insights = createAdminInsights({db,clock,fail});
   const management = createManagement({ db, clock, fail, transaction });
   const content = createContent({ db, clock, secret: adminKey, membership: management.membership, limiterConfig: contentLimits, qdnaDirectory });
@@ -65,8 +46,8 @@ export function createApi({ directory, mailer, paymentNotifier, weeklyMailer, we
   const learningLimit=createContentLimiter({db,clock,config:contentLimits});
   const archive = createMistakeArchive({ db, clock, fail, transaction, record: management.record, questions, statusStore });
   const tutoring = createTutoring({ db, clock, fail });
-  const mastered = userId => Object.fromEntries(all('SELECT question_key,marked_at FROM mastered WHERE user_id=?',userId).map(r => [r.question_key,{markedAt:new Date(r.marked_at).toISOString()}]));
-  const progress = userId => ({ mistakes:marked(userId), mastered:mastered(userId) });
+  const progress = createProgressStore({ db, clock, fail, archive, management, statusStore, token });
+  const reports = createAdminReports({ db, clock, fail, management, learning });
   const paymentNotifications = createPaymentNotifications({db,clock,sendMail:paymentNotifier});
   const payments = createPaymentOrders({ db, clock, fail, transaction, management, notifications:paymentNotifications });
   function limit(bucket, count, interval) {
@@ -89,33 +70,6 @@ export function createApi({ directory, mailer, paymentNotifier, weeklyMailer, we
     if (role === 'admin') run('UPDATE sessions SET expires=? WHERE digest=?', clock() + 28800000, hash(raw));
     else management.record(user.id, 'login');
     return publicUser(user);
-  }
-  function marked(userId) {
-    return Object.fromEntries(all('SELECT question_key,marked_at FROM mistakes WHERE user_id=?', userId).map(row => [row.question_key, { markedAt: new Date(row.marked_at).toISOString(), chapterCode: questions.get(row.question_key)?.chapterCode || '', primaryChapterCode: questions.get(row.question_key)?.primaryChapterCode || '' }]));
-  }
-  function setMarked(userId, key, value) {
-    if (!questions.has(key)) fail(400, '題目不存在。');
-    if (value) run('DELETE FROM mastered WHERE user_id=? AND question_key=?',userId,key);
-    const exists = get('SELECT 1 FROM mistakes WHERE user_id=? AND question_key=?', userId, key);
-    if (Boolean(exists) === value) return;
-    if (value) run('INSERT INTO mistakes VALUES(?,?,?)', userId, key, clock());
-    else run('DELETE FROM mistakes WHERE user_id=? AND question_key=?', userId, key);
-    archive.mark(userId, key, value);
-    const event = run('INSERT INTO events(user_id,question_key,action,at) VALUES(?,?,?,?)', userId, key, value ? 'mark' : 'unmark', clock());
-    if (get('SELECT role FROM users WHERE id=?', userId)?.role === 'student') management.record(userId, value ? 'mark' : 'unmark', key, `legacy-${event.lastInsertRowid}`);
-  }
-  function aggregate(rows) {
-    const byPoint = new Map(); const byQuestion = new Map(); const byChapter = new Map();
-    const add = (map, key, info, user) => { if (!map.has(key)) map.set(key, { ...info, count: 0, students: new Set() }); const v = map.get(key); v.count++; v.students.add(user); };
-    for (const row of rows) {
-      const q = questions.get(row.question_key); if (!q) continue;
-      add(byQuestion, q.key, q, row.user_id);
-      const chapters = new Set();
-      for (const id of q.points) { const info = pointInfo(id); add(byPoint, id, info, row.user_id); chapters.add(info.chapter); }
-      for (const chapter of chapters) add(byChapter, chapter, { chapter }, row.user_id);
-    }
-    const list = map => [...map.values()].map(v => ({ ...v, students: v.students.size })).sort((a, b) => b.count - a.count);
-    return { points: list(byPoint), questions: list(byQuestion), chapters: list(byChapter) };
   }
   async function handler(req, res, next) {
     req.contentClientIp = (trustProxy && String(req.headers['x-forwarded-for'] || '').split(',').at(-1).trim()) || req.socket.remoteAddress;
@@ -266,84 +220,16 @@ export function createApi({ directory, mailer, paymentNotifier, weeklyMailer, we
       if (path === '/api/tutoring' && req.method === 'POST') {
         limit(`tutoring:${user.id}`,20,3600000); return send(tutoring.submit(user.id,body));
       }
-      const progressSnapshot = keys => keys.map(key => ({key,
-        mistake:get('SELECT marked_at FROM mistakes WHERE user_id=? AND question_key=?',user.id,key)?.marked_at ?? null,
-        mastered:get('SELECT marked_at FROM mastered WHERE user_id=? AND question_key=?',user.id,key)?.marked_at ?? null,
-        archive:get('SELECT marked_at,status,trashed_at,deleted_at FROM mistake_archive WHERE user_id=? AND question_key=?',user.id,key) || null
-      }));
-      if (path === '/api/progress/undo' && req.method === 'POST') {
-        const undo=get('SELECT * FROM progress_undo WHERE id=? AND user_id=?',String(body.id||''),user.id);
-        if(!undo || clock()-undo.created_at>600000) fail(409,'撤销已过期，请重新调整学习状态。');
-        const snapshot=JSON.parse(undo.snapshot),keys=snapshot.map(row=>row.key);
-        transaction(()=>{
-          const before=statusStore.snapshot(user.id);
-          if(JSON.stringify(progressSnapshot(keys))!==undo.after_state) fail(409,'这些题目的状态已再次改变，请刷新后查看。');
-          for(const row of snapshot){
-            for(const table of ['mistakes','mastered','mistake_archive']) run(`DELETE FROM ${table} WHERE user_id=? AND question_key=?`,user.id,row.key);
-            if(row.mistake!==null) run('INSERT INTO mistakes VALUES(?,?,?)',user.id,row.key,row.mistake);
-            if(row.mastered!==null) run('INSERT INTO mastered VALUES(?,?,?)',user.id,row.key,row.mastered);
-            if(row.archive) run('INSERT INTO mistake_archive VALUES(?,?,?,?,?,?)',user.id,row.key,row.archive.marked_at,row.archive.status,row.archive.trashed_at,row.archive.deleted_at);
-          }
-          run('DELETE FROM progress_undo WHERE id=?',undo.id);
-          statusStore.record(user.id,before);
-        });
-        return send(progress(user.id));
-      }
-      if (path === '/api/progress' && req.method === 'PUT') {
-        if (!Array.isArray(body.keys) || !body.keys.length || body.keys.length>questions.size || body.keys.some(k=>!questions.has(k)) || !['mastered','mistake','clear'].includes(body.status)) fail(400,'请选择有效的题目和学习状态。');
-        const undoId=token(), keys=[...new Set(body.keys)];
-        transaction(() => { const before=statusStore.snapshot(user.id); const snapshot=progressSnapshot(keys); for (const key of keys) {
-          setMarked(user.id,key,body.status==='mistake');
-          if(body.status==='mastered') run('INSERT INTO mastered VALUES(?,?,?) ON CONFLICT(user_id,question_key) DO UPDATE SET marked_at=excluded.marked_at',user.id,key,clock());
-          else run('DELETE FROM mastered WHERE user_id=? AND question_key=?',user.id,key);
-        }
-          run('DELETE FROM progress_undo WHERE created_at<?',clock()-600000);
-          run('INSERT INTO progress_undo VALUES(?,?,?,?,?)',undoId,user.id,JSON.stringify(snapshot),JSON.stringify(progressSnapshot(keys)),clock());
-          statusStore.record(user.id,before);
-        });
-        return send({...progress(user.id),undoId});
-      }
-      if (path === '/api/mistakes' && req.method === 'GET') return send(progress(user.id));
-      if (path === '/api/mistakes/trash' && req.method === 'GET') return send({ trash: archive.list(user.id) });
-      if (path === '/api/mistakes/trash' && req.method === 'POST') {
-        archive.act(user.id, body);
-        return send({ ...progress(user.id), trash: archive.list(user.id) });
-      }
-      if (path === '/api/mistakes' && req.method === 'PUT') {
-        if (typeof body.marked !== 'boolean' || typeof body.key !== 'string') fail(400, '錯題格式不正確。');
-        transaction(() => {const before=statusStore.snapshot(user.id);setMarked(user.id, body.key, body.marked);statusStore.record(user.id,before);}); return send(progress(user.id));
-      }
-      if (path === '/api/mistakes/import' && req.method === 'POST') {
-        if (!Array.isArray(body.keys) || body.keys.length > questions.size || body.keys.some(k => !questions.has(k))) fail(400, '匯入的題目資料不正確。');
-        transaction(() => {const before=statusStore.snapshot(user.id); for (const key of new Set(body.keys)) setMarked(user.id, key, true);statusStore.record(user.id,before); });
-        return send(progress(user.id));
-      }
-      if (path === '/api/admin/export' && req.method === 'GET') {
-        const generatedAt = new Date(clock()).toISOString();
-        const exportData = transaction(() => ({ rows: exportRows(
-          all("SELECT id,email,role,created_at,last_login,nickname,grade,target,target_major,avatar FROM users WHERE role='student' ORDER BY id"),
-          all('SELECT user_id,question_key,marked_at FROM mistakes ORDER BY user_id,marked_at,question_key'),
-          all('SELECT id,user_id,question_key,action,at FROM events ORDER BY user_id,at,id'), generatedAt), extra:{generatedAt,students:management.overview().students,mastered:all('SELECT user_id,question_key,marked_at FROM mastered ORDER BY user_id,marked_at,question_key')} }));
-        const bytes = await toWorkbook(exportData.rows,exportData.extra);
-        return send({ filename: '學生完整學習資料.xlsx', base64: Buffer.from(bytes).toString('base64'), generatedAt });
-      }
-      if (path === '/api/admin/stats' && req.method === 'GET') {
-        const rows = all("SELECT m.* FROM mistakes m JOIN users u ON m.user_id=u.id WHERE u.role='student'");
-        const students = all("SELECT id,email,role,created_at,last_login,nickname,grade,target,target_major,avatar,avatar_version FROM users WHERE role='student' ORDER BY last_login DESC").map(u => {
-          const saved = rows.filter(r => r.user_id === u.id); const stats = aggregate(saved);
-          return { ...u, ...publicUser(u), mistakeCount: saved.length, pointCount: stats.points.length };
-        });
-        return send({ students, ...aggregate(rows), summary: { students: students.length, marks: rows.length, questions: new Set(rows.map(r => r.question_key)).size, points: aggregate(rows).points.length }, activity: all("SELECT strftime('%Y-%m-%d',e.at/1000,'unixepoch','+8 hours') day,e.action,count(*) count FROM events e JOIN users u ON u.id=e.user_id WHERE u.role='student' AND e.at>? GROUP BY day,e.action ORDER BY day DESC", clock() - 30 * 86400000), generatedAt: new Date(clock()).toISOString() });
-      }
-      if (path === '/api/admin/student' && req.method === 'GET') {
-        const student = get("SELECT id,email,role,created_at,last_login,nickname,grade,target,target_major,avatar,avatar_version FROM users WHERE id=? AND role='student'", Number(url.searchParams.get('id')) || 0);
-        if (!student) fail(404, '找不到學生。');
-        const rows = all('SELECT * FROM mistake_archive WHERE user_id=? ORDER BY marked_at DESC', student.id);
-        const active = all('SELECT question_key,marked_at FROM mistakes WHERE user_id=?', student.id);
-        const masteredRows = all('SELECT question_key,marked_at FROM mastered WHERE user_id=? ORDER BY marked_at DESC', student.id);
-        const analytics=learning.dashboard(student.id,{language:url.searchParams.get("language")==="eng"?"eng":"chn"});
-        return send({ student, analytics, learning: studentLearning(active, masteredRows, rows, analytics.recommendations), ...aggregate(rows), mistakes: rows.map(r => ({ ...questions.get(r.question_key), status: r.status, trashedAt: r.trashed_at, deletedAt: r.deleted_at, markedAt: new Date(r.marked_at).toISOString(), knowledge: (questions.get(r.question_key)?.points || []).map(pointInfo) })) });
-      }
+      if (path === '/api/progress/undo' && req.method === 'POST') return send(progress.undo(user.id, body));
+      if (path === '/api/progress' && req.method === 'PUT') return send(progress.update(user.id, body));
+      if (path === '/api/mistakes' && req.method === 'GET') return send(progress.read(user.id));
+      if (path === '/api/mistakes/trash' && req.method === 'GET') return send({ trash: progress.listTrash(user.id) });
+      if (path === '/api/mistakes/trash' && req.method === 'POST') return send(progress.trash(user.id, body));
+      if (path === '/api/mistakes' && req.method === 'PUT') return send(progress.setMistake(user.id, body));
+      if (path === '/api/mistakes/import' && req.method === 'POST') return send(progress.importMistakes(user.id, body));
+      if (path === '/api/admin/export' && req.method === 'GET') return send(await reports.exportWorkbook());
+      if (path === '/api/admin/stats' && req.method === 'GET') return send(reports.stats());
+      if (path === '/api/admin/student' && req.method === 'GET') return send(reports.student(url));
       fail(404, '找不到此操作。');
     } catch (error) { res.statusCode = error.status || 500; send({ error: error.status ? error.message : '服務暫時無法使用，請重試。' }); if (!error.status) console.error('API request failed', {path:req.url.split('?')[0],type:error.name}); }
   }

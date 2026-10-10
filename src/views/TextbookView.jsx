@@ -1,15 +1,14 @@
 import { exerciseNumber } from '../lib/exercise-numbering';
 import { useMembership, MemberNotice } from '../components/Membership';
-import { loadExerciseIndex, relatedExercises } from '../lib/textbook-exercises';
-import { relatedExamples } from '../lib/textbook-examples';
+import { loadExerciseIndex } from "../lib/textbook-exercises";
+import { loadAllRelatedQuestions } from "../lib/textbook-related";
 import { track } from '../lib/activity';
 import { useEffect, useMemo, useRef, useState } from "react";
 import { ArrowLeft, BookOpen, Check, Clipboard, FileQuestion, Search, X } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Card } from "../components/ui/card";
 import { Input } from "../components/ui/input";
-import { booksFor, pointsByLanguage, questionLabelFromKey, relatedQuestionKeys, searchable, extendedPractice } from "../lib/data";
-
+import { booksFor, pointsByLanguage, questionLabelFromKey, searchable } from "../lib/data";
 import { cn } from "../lib/utils";
 import { sharedFigureCards, cardSections } from '../lib/shared-figure-cards';
 import { TextbookContent, TextbookSources } from "../components/TextbookContent";
@@ -23,23 +22,19 @@ function PointCard({ mastered, mistakes, point, language, openPaper, exerciseInd
   const [copied, setCopied] = useState(false);
   const members = point.members || [point];
   const linksAllowed=membership.active||members.every(p=>p.book_key==='compulsory-1');
-  const [related,setRelated]=useState({results:[],hasMore:false});
-  const [relatedOffset,setRelatedOffset]=useState(0);
+  const [related,setRelated]=useState({results:[]});
   const [relatedError,setRelatedError]=useState(false);
   const cardRef=useRef(null);
   const memberIds=members.map(member=>member.sequence).join(',');
   useEffect(()=>{
-    let live=true;setRelated({results:[],hasMore:false});setRelatedError(false);
+    let live=true;const controller=new AbortController();setRelated({results:[]});setRelatedError(false);
     if(!linksAllowed)return;
     const observer=new IntersectionObserver(entries=>{if(!entries.some(e=>e.isIntersecting))return;observer.disconnect();
-      fetch(`/api/content/related?${new URLSearchParams({language,points:memberIds,offset:relatedOffset,limit:30})}`,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error();return r.json();}).then(data=>{if(live)setRelated(data);}).catch(()=>{if(live)setRelatedError(true);});
-    },{rootMargin:'200px'});if(cardRef.current)observer.observe(cardRef.current);return()=>{live=false;observer.disconnect();};
-  },[memberIds,language,membership.revision,relatedOffset]);
+      loadAllRelatedQuestions({language,points:memberIds,signal:controller.signal}).then(data=>{if(live)setRelated(data);}).catch(()=>{if(live)setRelatedError(true);});
+    },{rootMargin:'200px'});if(cardRef.current)observer.observe(cardRef.current);return()=>{live=false;controller.abort();observer.disconnect();};
+  },[memberIds,language,membership.revision,linksAllowed]);
   const exercises=related.results.filter(q=>q.source!=='past-paper');
-  const questionKeys=related.results.filter(q=>q.source==='past-paper'&&q.relationship!=='background').map(q=>q.key);
-  const practice=related.results.filter(q=>q.source==='past-paper'&&q.relationship==='background').map(q=>q.key);
-  const chapters = [...new Set(members.map(member => member.chapter))];
-  const books = [...new Set(members.map(member => member.book))];
+  const questionKeys=related.results.filter(q=>q.source==='past-paper').map(q=>q.key);
   const [copyError, setCopyError] = useState(false);
   const copy = async () => {
     try {
@@ -56,11 +51,9 @@ function PointCard({ mastered, mistakes, point, language, openPaper, exerciseInd
       {copied && <span className="sr-only" role="status">{en ? "Copied" : "已复制"}</span>}{copyError && <p role="status">{en ? 'Clipboard is unavailable.' : '无法使用剪贴簿。'}</p>}
       {(point.card_title || point.title) && <h3 className="textbook-card-title">{point.card_title || point.title}</h3>}
       <TextbookContent point={point} language={language} />
-      {linksAllowed && !!practice.length && <details className="knowledge-questions"><summary>{en ? "Further practice / background applications" : "延伸练习／背景应用"} · {practice.length}{en ? " (excluded from this card’s direct question frequency)" : "（不计本卡直接题频）"}</summary><div>{practice.map(key => <button data-tour={`knowledge-question-${point.sequence}`} key={key} data-marked={!!(mastered[key] || mistakes[key])} data-study-status={mistakes[key]?'mistake':mastered[key]?'mastered':'unmarked'} onClick={() => openPaper(key)}>{questionLabelFromKey(key)}</button>)}</div></details>}
-      <div className="knowledge-meta"><span>{books.length > 1 ? books.join(' / ') : chapters.join(' / ')}</span></div>
       {!linksAllowed && <MemberNotice>{en ? "Members only · Related questions" : "会员专享 · 知识点关联"}</MemberNotice>}{linksAllowed && questionKeys.length > 0 && <div data-tour="knowledge-links" className="knowledge-questions related-past-questions"><span><FileQuestion /> {en ? "Related past-paper questions" : "相关真题"} · {questionKeys.length}</span><div>{questionKeys.slice(0, 10).map((key) => <button data-tour={`knowledge-question-${point.sequence}`} key={key} data-marked={!!(mastered[key] || mistakes[key])} data-study-status={mistakes[key]?'mistake':mastered[key]?'mastered':'unmarked'} onClick={() => openPaper(key)}>{questionLabelFromKey(key)}</button>)}</div>{questionKeys.length > 10 && <details><summary>{language === 'eng' ? `Show ${questionKeys.length - 10} more` : `展开其余 ${questionKeys.length - 10} 题`}</summary><div>{questionKeys.slice(10).map(key => <button data-tour={`knowledge-question-${point.sequence}`} key={key} data-marked={!!(mastered[key] || mistakes[key])} data-study-status={mistakes[key]?'mistake':mastered[key]?'mastered':'unmarked'} onClick={() => openPaper(key)}>{questionLabelFromKey(key)}</button>)}</div></details>}</div>}
-      {linksAllowed && (relatedError || exercises.length > 0) && <div className="knowledge-questions related-textbook-exercises"><span><BookOpen /> {en ? "Related exercises" : "相关习题"}{exerciseIndex && <> · {exercises.length}</>}</span>{relatedError ? <p>{en ? "Exercise links could not be loaded. Please refresh." : "习题关联暂时未能加载，请刷新重试。"}</p> : <><div>{exercises.slice(0,10).map(item => <button data-tour={`knowledge-question-${point.sequence}`} key={item.id} data-marked={!!(mastered[item.id] || mistakes[item.id])} data-study-status={mistakes[item.id]?'mistake':mastered[item.id]?'mastered':'unmarked'} onClick={() => item.id.startsWith('ex-') ? openPaper(item.id) : openExercise(item.id)}>{item.chapter} · {item.id.startsWith('ex-')?'E':'Q'}{item.id.startsWith('tb-')?exerciseNumber(item.id):item.number}</button>)}</div>{exercises.length > 10 && <details><summary>{en ? `Show ${exercises.length - 10} more` : `展开其余 ${exercises.length - 10} 题`}</summary><div>{exercises.slice(10).map(item => <button data-tour={`knowledge-question-${point.sequence}`} key={item.id} data-marked={!!(mastered[item.id] || mistakes[item.id])} data-study-status={mistakes[item.id]?'mistake':mastered[item.id]?'mastered':'unmarked'} onClick={() => item.id.startsWith('ex-') ? openPaper(item.id) : openExercise(item.id)}>{item.chapter} · {item.id.startsWith('ex-')?'E':'Q'}{item.id.startsWith('tb-')?exerciseNumber(item.id):item.number}</button>)}</div></details>}</>}</div>}
-      {linksAllowed && <div>{relatedError&&<p role="alert">{en?'Links unavailable. Please refresh.':'关联暂时无法加载，请刷新。'}</p>}{relatedOffset>0&&<Button variant="outline" onClick={()=>setRelatedOffset(v=>Math.max(0,v-30))}>{en?'Previous related questions':'上一页关联题'}</Button>}{related.hasMore&&<Button variant="outline" onClick={()=>setRelatedOffset(v=>v+30)}>{en?'More related questions':'下一页关联题'}</Button>}</div>}
+      {linksAllowed && (relatedError || exercises.length > 0) && <div className="knowledge-questions related-textbook-exercises"><span><BookOpen /> {en ? "Related exercises" : "相关习题"} · {exercises.length}</span>{relatedError ? <p>{en ? "Exercise links could not be loaded. Please refresh." : "习题关联暂时未能加载，请刷新重试。"}</p> : <><div>{exercises.slice(0,10).map(item => <button data-tour={`knowledge-question-${point.sequence}`} key={item.id} data-marked={!!(mastered[item.id] || mistakes[item.id])} data-study-status={mistakes[item.id]?'mistake':mastered[item.id]?'mastered':'unmarked'} onClick={() => item.id.startsWith('ex-') ? openPaper(item.id) : openExercise(item.id)}>{item.chapter} · {item.id.startsWith('ex-')?'E':'Q'}{item.id.startsWith('tb-')?exerciseNumber(item.id):item.number}</button>)}</div>{exercises.length > 10 && <details><summary>{en ? `Show ${exercises.length - 10} more` : `展开其余 ${exercises.length - 10} 题`}</summary><div>{exercises.slice(10).map(item => <button data-tour={`knowledge-question-${point.sequence}`} key={item.id} data-marked={!!(mastered[item.id] || mistakes[item.id])} data-study-status={mistakes[item.id]?'mistake':mastered[item.id]?'mastered':'unmarked'} onClick={() => item.id.startsWith('ex-') ? openPaper(item.id) : openExercise(item.id)}>{item.chapter} · {item.id.startsWith('ex-')?'E':'Q'}{item.id.startsWith('tb-')?exerciseNumber(item.id):item.number}</button>)}</div></details>}</>}</div>}
+      {linksAllowed && relatedError && <p role="alert">{en?'Links unavailable. Please refresh.':'关联暂时无法加载，请刷新。'}</p>}
       <TextbookSources point={point} language={language} />
     </Card>
   );

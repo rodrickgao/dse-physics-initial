@@ -2,7 +2,6 @@ import { useDraft } from '../lib/use-draft';
 import { getUiLanguage } from '../lib/ui-translations';
 import { useEffect, useState } from 'react';
 import { adminApi } from '../lib/admin-api';
-import './tutoring.css';
 export function AdminTutoring({ refreshVersion = 0, actorId, filter, setFilter }){
   const [drafts,setDrafts] = useDraft(`admin:${actorId}:replies`, {});
   const [rows,setRows]=useState([]),[error,setError]=useState(''),[busy,setBusy]=useState('');

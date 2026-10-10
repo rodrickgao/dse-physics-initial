@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-10",
+  "code": "402",
+  "removedFrom": [
+    171,
+    175,
+    176
+  ],
+  "retainedAt": {
+    "series": 181,
+    "parallel": [
+      182,
+      183
+    ]
+  },
+  "languages": {
+    "chn": {
+      "before": [
+        "series-circuit",
+        "parallel-circuit",
+        "series-circuit",
+        "parallel-circuit",
+        "series-circuit",
+        "parallel-circuit"
+      ],
+      "after": [
+        "series-circuit",
+        "parallel-circuit"
+      ]
+    },
+    "eng": {
+      "before": [
+        "series-circuit",
+        "parallel-circuit",
+        "series-circuit",
+        "parallel-circuit",
+        "series-circuit",
+        "parallel-circuit"
+      ],
+      "after": [
+        "series-circuit",
+        "parallel-circuit"
+      ]
+    }
+  }
+}

@@ -1977,9 +1977,11 @@
   "ex-407-6": {
     "title": "Current produced by an a.c. generator",
     "knowledge": [
-      215
+      417
     ],
-    "contentSha256": "7a092ef2d8f16c34f386ceee7e7a8630dfd5ca2404ac751dd6af00de1fc6c7e5"
+    "contentSha256": "7a092ef2d8f16c34f386ceee7e7a8630dfd5ca2404ac751dd6af00de1fc6c7e5",
+    "review": "2026-10-10-generator-split",
+    "evidence": "Question explicitly states that the current is produced by a simple a.c. generator."
   },
   "ex-407-7": {
     "title": "Calculation of flux linkage",

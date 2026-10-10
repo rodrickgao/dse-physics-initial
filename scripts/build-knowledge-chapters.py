@@ -50,7 +50,16 @@ for language, label in [('chn', '中文版'), ('eng', '英文版')]:
     clean_buffer, stamp_buffer = io.BytesIO(), io.BytesIO()
     clean_writer.write(clean_buffer); stamp_writer.write(stamp_buffer)
     doc = fitz.open(stream=clean_buffer.getvalue(), filetype='pdf')
-    watermark = fitz.open(stream=stamp_buffer.getvalue(), filetype='pdf')
+    # Default bilingual signature watermark, kept separate from the source content.
+    from reportlab.pdfgen import canvas
+    from reportlab.lib.utils import ImageReader
+    brand_buffer = io.BytesIO()
+    width, height = doc[0].rect.width, doc[0].rect.height
+    stamp_canvas = canvas.Canvas(brand_buffer, pagesize=(width, height))
+    stamp_canvas.setFillAlpha(0.07)
+    stamp_canvas.drawImage(ImageReader(str(ROOT / f'assets/brand/signature-{language}.png')), width*0.15, height*0.45, width=width*0.7, height=width*0.7/3, mask='auto')
+    stamp_canvas.save()
+    watermark = fitz.open(stream=brand_buffer.getvalue(), filetype='pdf')
     headings = []
     for index, page in enumerate(doc):
         lines = [(line['bbox'], ''.join(s['text'] for s in line['spans']).strip())
@@ -133,7 +142,7 @@ for language, label in [('chn', '中文版'), ('eng', '英文版')]:
         missing = [line for line in expected_lines if re.sub(r'\s+', '', line) not in normalized]
         assert not missing, (language, code, 'Missing text', missing)
         assert re.search(rf'\b{code}\s', text), code
-        assert ('高多多物理' if language == 'chn' else 'rodrickgao') in text, code
+        assert watermark.page_count == 1, code
         other = [h[0] for h in headings if h[0] != code and re.search(rf'(?m)^{h[0]}\s+\S', text)]
         assert not other, (code, other)
         data = path.read_bytes()

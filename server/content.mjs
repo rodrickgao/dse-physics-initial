@@ -7,7 +7,7 @@ import { root, questions, points } from './catalog.mjs';
 import { createContentLimiter } from './content-limits.mjs';
 import { indexQuestion, rankQuestionEntries } from './search-engine.mjs';
 import { analyzeMistakes } from './learning-analysis.mjs';
-import { profileReview } from './recommendations.mjs';
+
 
 const read = name => JSON.parse(readFileSync(resolve(root, name), 'utf8'));
 const context = {window:{}};

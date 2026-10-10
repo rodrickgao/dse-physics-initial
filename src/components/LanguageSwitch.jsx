@@ -1,5 +1,4 @@
 import { Languages } from 'lucide-react';
-import './language-switch.css';
 
 export function LanguageSwitch({ language, setLanguage }) {
   const english = language === 'eng';

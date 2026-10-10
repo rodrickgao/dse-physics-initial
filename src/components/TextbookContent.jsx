@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Expand, X } from 'lucide-react';
 import katex from 'katex';
-import 'katex/dist/katex.min.css';
 import { cardFigures, cardSections } from '../lib/shared-figure-cards';
 
 function Equation({ latex, inline = false }) {
@@ -36,7 +35,14 @@ function SectionContent({ section }) {
  const equations=[...new Set(section.members.flatMap(p=>p.formula_latex||[]))];
  const notes=[...new Set(section.members.map(p=>p.card_formula_notes||p.formula_notes).filter(Boolean))];
  return <>
-  <div className="knowledge-content knowledge-summary"><p><Notation text={point.card_summary || point.content} /></p></div>
+  <div className="knowledge-content knowledge-summary">{String(point.card_summary || point.content).split(/\n\s*\n/).map((paragraph,i)=><p key={i}><Notation text={paragraph} /></p>)}</div>
+  {point.card_table && <table className="knowledge-comparison-table" aria-label={point.card_table.label} role="table">
+   <thead role="rowgroup"><tr role="row">{point.card_table.headers.map(header=><th key={header} scope="col" role="columnheader">{header}</th>)}</tr></thead>
+   <tbody role="rowgroup">{point.card_table.rows.map((row,i)=><tr key={i} role="row">
+    <th scope="row" role="rowheader"><Notation text={row[0]}/></th>
+    {row.slice(1).map((cell,j)=><td key={j} role="cell" data-label={point.card_table.headers[j+1]}><Notation text={cell}/></td>)}
+   </tr>)}</tbody>
+  </table>}
   {!!equations.length && <section className="knowledge-formulas" aria-label={point.card_summary_language === "eng" ? "Equations and symbols" : "公式及符号"}>
    {equations.map(latex=><Equation key={latex} latex={latex}/>)}
    {notes.map(text=><p key={text} className="knowledge-notation"><Notation text={text}/></p>)}
@@ -54,6 +60,7 @@ export function TextbookSources({ point, language }) {
    <summary>{en ? "Textbook sources" : "课本来源"}</summary>
    {figures.map((f,i)=><p key={f.src} className="textbook-image-source">{figures.length>1?(en?'Figure ':'图 ')+(i+1)+' · ':''}{f.language === 'chn' ? (en ? "Original Chinese textbook figure" : "中文课本原图") : (en ? "Original English textbook figure" : "英文课本原图")} · {f.source} · PDF {f.page}</p>)}
    {sources.map((source,i)=><div key={i}>{source.text&&<blockquote lang="en">{source.text}</blockquote>}<p className="textbook-citation">{source.source || source.code} · PDF {source.page}{source.printed_page ? (en?' · Printed page ':' · 书页 ')+source.printed_page:''}</p></div>)}
+   {members.filter(p=>p.card_table).map(p=><p key={p.sequence} className="textbook-citation">{en?'Table adapted from ':'表格整理自 '}{p.card_table.source} · PDF {p.card_table.page} · {en?'Table ':'表 '}{p.card_table.table_label}</p>)}
    {members.flatMap(p=>p.textbook_supplements||[]).map(supplement=><div key={supplement.id}>
     {supplement.source_excerpts.map((source,i)=><div key={i}><blockquote lang="en">{source.text}</blockquote><p className="textbook-citation">{source.code} · PDF {source.page}</p></div>)}
     {(en ? supplement.explanation_en : supplement.explanation_zh)&&<p>{en ? supplement.explanation_en : supplement.explanation_zh}</p>}

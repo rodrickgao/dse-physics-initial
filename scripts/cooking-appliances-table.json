@@ -1,0 +1,48 @@
+{
+  "date": "2026-10-10",
+  "knowledge_sequence": 278,
+  "figures": {
+    "chn": {
+      "id": "cooking-appliances-comparison",
+      "code": "E301",
+      "page": 18,
+      "printed_page": 18,
+      "figure_label": "1.2a",
+      "source": "DSEPHY_TE_E301_TN_ce.pdf",
+      "src": "assets/textbook/figures-chn/cooking-appliances-comparison.png",
+      "width": 1528,
+      "height": 724,
+      "bbox_fraction": [
+        0.085,
+        0.09,
+        0.92,
+        0.392
+      ],
+      "render_scale": 3,
+      "language": "chn",
+      "caption": "課本表 1.2a · 第 18 頁"
+    },
+    "eng": {
+      "id": "cooking-appliances-comparison",
+      "code": "E301",
+      "page": 18,
+      "printed_page": 18,
+      "figure_label": "1.2a",
+      "source": "DSEPHY_TE_E301_TN.pdf",
+      "src": "assets/textbook/review-diagrams/cooking-appliances-comparison.png",
+      "width": 1528,
+      "height": 748,
+      "bbox_fraction": [
+        0.085,
+        0.11,
+        0.92,
+        0.422
+      ],
+      "render_scale": 3,
+      "language": "eng",
+      "caption": "Textbook Table 1.2a · p.18"
+    }
+  },
+  "preservedOriginalContent": true,
+  "localOnly": true
+}

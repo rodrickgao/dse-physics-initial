@@ -1,0 +1,85 @@
+{
+  "date": "2026-10-10",
+  "knowledge_sequence": 404,
+  "source_table": "E301 Table 1.3a, PDF and printed page 22",
+  "updates": {
+    "chn": {
+      "card_title": "製冷循環的四個部件",
+      "card_summary": "製冷劑依次經過蒸發管道、壓縮機、冷凝管道和膨脹閥，循環把熱從室內移至室外。下表按課本的簡化模型列出各部件內的物態變化及原理。",
+      "card_table": {
+        "label": "製冷劑的物態變化與四個部件的原理",
+        "headers": [
+          "部件",
+          "物態變化（入口 → 出口）",
+          "原理與作用"
+        ],
+        "rows": [
+          [
+            "① 蒸發管道（蒸發器）",
+            "液體＋氣體 → 氣體",
+            "低温製冷劑從室內空氣吸收汽化潛熱，液體部分蒸發成氣體，令室內降温。製冷劑温度上升，但仍低於室温。"
+          ],
+          [
+            "② 壓縮機",
+            "氣體 → 氣體（不改變物態）",
+            "壓縮機對氣體製冷劑作功，提高其壓強和温度，使它比室外空氣熱。"
+          ],
+          [
+            "③ 冷凝管道（冷凝器）",
+            "氣體 → 液體",
+            "高温氣體向室外空氣釋放汽化潛熱，凝結成液體。製冷劑温度下降，但仍高於室外温度。"
+          ],
+          [
+            "④ 膨脹閥",
+            "液體 → 液體＋氣體（部分汽化）",
+            "通過閥後壓強降低，部分液體汽化。汽化所需能量主要來自製冷劑本身，使其降温至低於室温，再流回蒸發管道。"
+          ]
+        ],
+        "source": "DSEPHY_TE_E301_TN_ce.pdf",
+        "page": 22,
+        "printed_page": 22,
+        "table_label": "1.3a"
+      }
+    },
+    "eng": {
+      "card_title": "The four components of the refrigeration cycle",
+      "card_summary": "Refrigerant passes through the evaporator coil, compressor, condensing coil and expansion valve in a repeating cycle that transfers heat from indoors to outdoors. The table follows the textbook’s simplified model and shows the state changes and processes in each component.",
+      "card_table": {
+        "label": "Refrigerant state changes and processes in the four components",
+        "headers": [
+          "Component",
+          "State change (inlet → outlet)",
+          "Process and function"
+        ],
+        "rows": [
+          [
+            "① Evaporator coil",
+            "Liquid + gas → gas",
+            "Cold refrigerant absorbs latent heat of vaporization from indoor air. The liquid portion evaporates into gas, cooling the room. The refrigerant warms but remains colder than the room."
+          ],
+          [
+            "② Compressor",
+            "Gas → gas (no change of state)",
+            "The compressor does work on the gaseous refrigerant, increasing its pressure and temperature until it is hotter than the outdoor air."
+          ],
+          [
+            "③ Condensing coil",
+            "Gas → liquid",
+            "Hot gas releases latent heat of vaporization to the outdoor air and condenses into liquid. The refrigerant cools but remains hotter than the outdoor air."
+          ],
+          [
+            "④ Expansion valve",
+            "Liquid → liquid + gas (partial evaporation)",
+            "Pressure drops after the valve and some liquid evaporates. The energy for evaporation comes mainly from the refrigerant itself, cooling it below room temperature before it returns to the evaporator coil."
+          ]
+        ],
+        "source": "DSEPHY_TE_E301_TN.pdf",
+        "page": 22,
+        "printed_page": 22,
+        "table_label": "1.3a"
+      }
+    }
+  },
+  "preservedOriginalContent": true,
+  "localOnly": true
+}

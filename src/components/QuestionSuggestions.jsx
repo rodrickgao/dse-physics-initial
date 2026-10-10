@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { questionLabelFromKey } from '../lib/data';
-import './question-suggestions.css';
 import { track } from '../lib/activity';
 import { useMembership } from './Membership';
 

@@ -5,7 +5,6 @@ import { useEffect, useRef, useState } from 'react';
 import { api } from '../lib/api';
 import { Button } from '../components/ui/button';
 import { useMembership } from '../components/Membership';
-import './subscription.css';
 
 const freeFeatures = ['真题与课本习题标答', '课本例题、课本解答与思考题解答', '课本知识内容', '必修一题目与知识点双向关联', '错题库与回收站', '原卷下载与专注计时'];
 function Features({ items }) { return <ul className="plan-features">{items.map(item => <li key={item}><Check aria-hidden="true"/>{item}</li>)}</ul>; }

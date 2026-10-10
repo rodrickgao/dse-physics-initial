@@ -1,7 +1,8 @@
+import { databaseQueries } from './database.mjs';
 import { randomUUID } from 'node:crypto';
 import sharp from 'sharp';
 export function createPaymentOrders({ db, clock, fail, transaction, management, notifications }) {
-  const get=(sql,...args)=>db.prepare(sql).get(...args), all=(sql,...args)=>db.prepare(sql).all(...args), run=(sql,...args)=>db.prepare(sql).run(...args);
+  const { get, all, run } = databaseQueries(db);
   db.exec(`CREATE TABLE IF NOT EXISTS payment_orders(id TEXT PRIMARY KEY,user_id INTEGER NOT NULL REFERENCES users(id),request_id TEXT NOT NULL,amount_fen INTEGER NOT NULL,days INTEGER NOT NULL,status TEXT NOT NULL CHECK(status IN ('pending','approved','rejected')),created_at INTEGER NOT NULL,reviewed_at INTEGER,reviewed_by INTEGER REFERENCES users(id),UNIQUE(user_id,request_id));
     CREATE UNIQUE INDEX IF NOT EXISTS one_pending_payment ON payment_orders(user_id) WHERE status='pending';`);
   db.exec('CREATE TABLE IF NOT EXISTS payment_receipts(order_id TEXT PRIMARY KEY REFERENCES payment_orders(id), image BLOB NOT NULL)');

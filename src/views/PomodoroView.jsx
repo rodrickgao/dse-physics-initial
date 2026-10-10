@@ -1,5 +1,4 @@
 import { Button } from '../components/ui/button';
-import './pomodoro.css';
 
 export function PomodoroView({ timer, language, visible }) {
   if (!timer) return null;

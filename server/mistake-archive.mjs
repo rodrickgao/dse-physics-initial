@@ -1,7 +1,6 @@
+import { databaseQueries } from './database.mjs';
 export function createMistakeArchive({ db, clock, fail, transaction, record, questions, statusStore }) {
-  const all = (sql,...args) => db.prepare(sql).all(...args);
-  const get = (sql,...args) => db.prepare(sql).get(...args);
-  const run = (sql,...args) => db.prepare(sql).run(...args);
+  const { get, all, run } = databaseQueries(db);
   db.exec(`CREATE TABLE IF NOT EXISTS mistake_archive (
     user_id INTEGER NOT NULL REFERENCES users(id), question_key TEXT NOT NULL,
     marked_at INTEGER NOT NULL, status TEXT NOT NULL CHECK(status IN ('active','trash','deleted')),

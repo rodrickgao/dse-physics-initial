@@ -1,11 +1,11 @@
 import { BrandLogo } from '../components/BrandLogo';
 import { useRef, useState } from 'react';
-import { Atom, ArrowLeft, ArrowRight, Check, Camera, Upload, UserRound, Settings, LogOut } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Check, Camera, Upload, UserRound, Settings, LogOut } from "lucide-react";
 import { api } from '../lib/api';
 import { Button } from '../components/ui/button';
 import { AVATARS, PHYSICISTS, GRADES, TARGETS } from '../lib/avatar-catalog';
 
-export function ProfileView({ dark, toggleDark, embedded = false, logoutError, user, onSaved, onLogout, onCancel, mistakes = {}, language = 'chn', openPaper, openKnowledge }) {
+export function ProfileView({ embedded = false, logoutError, user, onSaved, onLogout, onCancel, mistakes = {}, language = 'chn', openPaper, openKnowledge }) {
   const [showAvatars, setShowAvatars] = useState(!user.profileComplete);
   const picker = useRef(null); const camera = useRef(null);
   function togglePicker() { setShowAvatars(true); requestAnimationFrame(() => { picker.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }); picker.current?.focus({ preventScroll: true }); }); }
@@ -65,6 +65,6 @@ export function ProfileView({ dark, toggleDark, embedded = false, logoutError, u
       </section>
 
     </form>
-    {toggleDark && <section className="profile-appearance"><h2>{language==='eng'?'Appearance':'外观设置'}</h2><Button type="button" variant="outline" aria-pressed={dark} onClick={toggleDark}>{language==='eng'?(dark?'Switch to light mode':'Switch to dark mode'):(dark?'切换为浅色模式':'切换为深色模式')}</Button></section>}<footer className="profile-footer">{logoutError && <p className="account-error" role="alert">{logoutError}</p>}<Button className="profile-logout" variant="outline" type="button" disabled={busy || processing} onClick={onLogout}><LogOut aria-hidden="true" />退出登录</Button></footer>
+    <footer className="profile-footer">{logoutError && <p className="account-error" role="alert">{logoutError}</p>}<Button className="profile-logout" variant="outline" type="button" disabled={busy || processing} onClick={onLogout}><LogOut aria-hidden="true" />退出登录</Button></footer>
   </section>;
 }
