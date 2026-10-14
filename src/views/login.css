@@ -21,7 +21,15 @@
 .welcome-page .login-logo-chinese { width: min(100%, 560px); }
 .welcome-page .login-logo-english { width: min(66%, 370px); }
 .welcome-page[data-brand-ready="false"] .login-brand-stage { visibility: hidden; }
-.welcome-page[data-brand-ready="true"] .login-brand-stage { animation: login-form-emerge 550ms cubic-bezier(.22,1,.36,1); }
+.welcome-page[data-brand-ready="true"] :is(.login-logo-chinese,.login-logo-english,.login-brand-highlights li,.welcome-actions) {
+  animation: welcome-row-emerge 1000ms var(--reveal-delay, 0ms) cubic-bezier(.22,1,.36,1) backwards;
+}
+.welcome-page .login-logo-english { --reveal-delay: 400ms; }
+.welcome-page .login-brand-highlights li:nth-child(1) { --reveal-delay: 1000ms; }
+.welcome-page .login-brand-highlights li:nth-child(2) { --reveal-delay: 1500ms; }
+.welcome-page .login-brand-highlights li:nth-child(3) { --reveal-delay: 2000ms; }
+.welcome-page .login-brand-highlights li:nth-child(4) { --reveal-delay: 2500ms; }
+.welcome-page .welcome-actions { --reveal-delay: 3100ms; }
 .login-brand-highlights { list-style: disc; display: grid; gap: 24px; max-width: 590px; margin: 44px auto 0; padding: 0 0 0 24px; color: #294a80; text-align: left; font-size: 18px; font-weight: 400; line-height: 1.85; }
 .login-brand-highlights li { padding-left: 6px; font: inherit; }
 .login-brand-highlights li::marker { color: #285bc7; }
@@ -59,6 +67,10 @@
 .login-account-suggestions .forget-account { flex: 0 0 36px; color: var(--muted-foreground); }
 .login-page .login-account-suggestions button:hover, .login-page .login-account-suggestions button:focus-visible { background: #eff5ff; outline: 2px solid transparent; }
 @keyframes login-form-emerge { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes welcome-row-emerge {
+  from { opacity: 0; transform: translateY(8px); visibility: hidden; }
+  to { opacity: 1; transform: translateY(0); visibility: visible; }
+}
 @media (max-width: 800px) {
   .auth-page.login-page { grid-template-columns: minmax(0, 430px); gap: 20px; padding: 80px 20px 32px; }
   .login-logo-chinese { width: 220px; }
@@ -77,5 +89,5 @@
   .login-page .auth-card input { font-size: 16px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .login-page :is(.login-brand-stage,.auth-card) { animation: none !important; }
+  .login-page :is(.login-brand-stage,.login-logo-chinese,.login-logo-english,.login-brand-highlights li,.welcome-actions,.auth-card) { animation: none !important; }
 }
