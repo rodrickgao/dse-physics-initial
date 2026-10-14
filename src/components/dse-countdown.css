@@ -3,15 +3,14 @@
 .dse-countdown-group { display: flex; flex: 1; min-width: 0; align-items: baseline; justify-content: center; flex-wrap: wrap; gap: 8px 24px; }
 .dse-goal { display: flex; align-items: baseline; justify-content: center; gap: 4px; max-width: 100%; line-height: 1.5; color: var(--muted-foreground); }
 .dse-goal > span:first-child { flex-shrink: 0; }
-.topbar .dse-countdown > span, .topbar .dse-countdown > strong, .topbar .dse-goal > .dse-goal-value { font-size: 30px; }
+.topbar .dse-countdown > span, .topbar .dse-goal > span:first-child { font-size: 18px; line-height: 1.4; }
+.topbar .dse-countdown > strong, .topbar .dse-goal > .dse-goal-value { font-size: 30px; }
 .topbar .dse-goal > .dse-goal-value { color: var(--primary); font-weight: 800; line-height: 1.1; white-space: nowrap; }
 .dse-countdown { display: flex; align-items: baseline; justify-content: center; gap: 9px; color: var(--muted-foreground); font-size: 13px; white-space: nowrap; }
 .dse-countdown strong { color: var(--primary); font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; letter-spacing: -.04em; }
 .dse-countdown-cheer { color: var(--primary); font-weight: 700; white-space: normal; text-align: center; }
 @media (min-width: 721px) and (max-width: 1366px) {
-  .topbar .dse-countdown > span { font-size: 18px; }
   .topbar .dse-countdown > strong, .topbar .dse-goal > .dse-goal-value { font-size: 20px; }
-  .topbar .dse-goal > span:first-child { font-size: 13px; }
   .dse-countdown { gap: 6px; }
   .dse-goal { min-width: 0; }
   .topbar .dse-goal > .dse-goal-value { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
@@ -28,5 +27,5 @@
 }
 
 @media (max-width: 600px) {
-  .topbar .dse-countdown > span, .topbar .dse-countdown > strong, .topbar .dse-goal > .dse-goal-value { font-size: 25px; }
+  .topbar .dse-countdown > strong, .topbar .dse-goal > .dse-goal-value { font-size: 25px; }
 }
