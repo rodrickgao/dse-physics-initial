@@ -14,7 +14,8 @@ function LoginBrand() {
 
 export function LoginView({ language, onLogin, mailMode }) {
   const [screen, setScreen] = useState('welcome');
-  const [choicesReady, setChoicesReady] = useState(false);
+  const [brandReady, setBrandReady] = useState(false);
+  const welcomeStage = useRef(null);
   const authTitle = useRef(null);
   const [accounts, setAccounts] = useState(rememberedAccounts);
   const [accountsOpen, setAccountsOpen] = useState(false);
@@ -38,12 +39,12 @@ export function LoginView({ language, onLogin, mailMode }) {
   useEffect(() => {
     if (screen !== 'welcome') return;
     window.scrollTo({ top: 0, behavior: 'instant' });
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const reveal = () => { if (reduced.matches) setChoicesReady(true); };
-    reveal();
-    const timer = setTimeout(() => setChoicesReady(true), 3000);
-    reduced.addEventListener('change', reveal);
-    return () => { clearTimeout(timer); reduced.removeEventListener('change', reveal); };
+    let active = true;
+    // Decode both logos before the single reveal so delayed images cannot pop in.
+    const images = [...welcomeStage.current.querySelectorAll('img')];
+    Promise.all(images.map(image => image.decode().catch(() => {})))
+      .then(() => { if (active) setBrandReady(true); });
+    return () => { active = false; };
   }, [screen]);
   function openAuth(next) {
     setScreen(next); setMode('code'); setPassword(''); setError(''); setAccountsOpen(false);
@@ -61,7 +62,7 @@ export function LoginView({ language, onLogin, mailMode }) {
     try { const result = await api(mode === 'password' ? 'auth/password' : 'auth/verify', mode === 'password' ? { email, password } : { email, code }); await onLogin(result.user); }
     catch (e) { setError(e.message); } finally { setBusy(false); }
   }
-  if (screen === 'welcome') return <main className="auth-page login-page welcome-page"><section className="login-brand-stage"><LoginBrand/><ul className="login-brand-highlights"><li>由神科 BBA（IBGM）学霸打造。</li><li>{MEMBERSHIP_ENABLED?'纯干货，不卖焦虑。':'全部功能免费，纯干货，不卖焦虑。'}</li><li>2400道题，281个知识点，不漏每一个细节。</li><li>错题自动整理到错题本，随时练习。</li></ul><div className="welcome-actions-slot">{choicesReady && <div className="welcome-actions"><Button type="button" onClick={() => openAuth('login')}>登录<ArrowRight aria-hidden="true"/></Button><Button type="button" onClick={() => openAuth('register')}>注册<ArrowRight aria-hidden="true"/></Button></div>}</div></section></main>;
+  if (screen === 'welcome') return <main className="auth-page login-page welcome-page" data-brand-ready={brandReady}><section ref={welcomeStage} className="login-brand-stage"><LoginBrand/><ul className="login-brand-highlights"><li>由神科 BBA（IBGM）学霸打造。</li><li>{MEMBERSHIP_ENABLED?'纯干货，不卖焦虑。':'全部功能免费，纯干货，不卖焦虑。'}</li><li>2400道题，281个知识点，不漏每一个细节。</li><li>错题自动整理到错题本，随时练习。</li></ul><div className="welcome-actions-slot"><div className="welcome-actions"><Button type="button" onClick={() => openAuth('login')}>登录<ArrowRight aria-hidden="true"/></Button><Button type="button" onClick={() => openAuth('register')}>注册<ArrowRight aria-hidden="true"/></Button></div></div></section></main>;
   return <main className="auth-page login-page login-form-page"><section className="login-brand-stage"><LoginBrand/></section><section className="auth-card" key={screen}><div className="login-form-heading"><h2 ref={authTitle} tabIndex={-1}>{registering ? '注册 ddphysics' : '登录 ddphysics'}</h2></div><form ref={formMotion} onSubmit={submit}>{!registering && <div className="login-methods"><button type="button" aria-pressed={mode === 'password'} onClick={() => { setMode('password'); setError(''); }}>密码登录</button><button type="button" aria-pressed={mode === 'code'} onClick={() => { setMode('code'); setPassword(''); setError(''); }}>验证码登录</button></div>}{<><div className="login-email-field" onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) setAccountsOpen(false); }} onKeyDown={event => { if (event.key === 'Escape') { event.preventDefault(); emailField.current?.focus(); setAccountsOpen(false); } }}>
 <label htmlFor="login-email">邮箱地址</label>
 <div className="login-email-input"><input ref={emailField} id="login-email" type="email" autoComplete="email" placeholder="you@example.com" required value={email} aria-expanded={showAccounts} aria-controls={showAccounts ? 'login-account-suggestions' : undefined} onFocus={() => setAccountsOpen(true)} onClick={() => setAccountsOpen(true)} onKeyDown={event => { if(event.key === 'ArrowDown' && showAccounts) { event.preventDefault(); event.currentTarget.closest('.login-email-field').querySelector('.remembered-email')?.focus(); } }} onChange={e => { setEmail(e.target.value); setPreview(''); setMessage(''); setAllAccounts(false); setAccountsOpen(true); }} />{accounts.length > 0 && <button type="button" className="login-accounts-toggle" aria-label={language === 'eng' ? 'Choose a saved email' : '选择之前登录的邮箱'} aria-expanded={showAccounts} aria-controls={showAccounts ? 'login-account-suggestions' : undefined} onPointerDown={event => event.preventDefault()} onClick={() => { emailField.current?.focus(); setAllAccounts(true); setAccountsOpen(!showAccounts); }}><ChevronDown aria-hidden="true" /></button>}</div>
