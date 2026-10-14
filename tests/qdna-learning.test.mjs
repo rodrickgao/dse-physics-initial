@@ -63,7 +63,7 @@ test('API status transitions, history, own-user isolation, admin counts, bounded
  const q=i=>`2012|paper-1a|${i}`,dnaDirectory=join(directory,'dna'),files=[];
  const records=Array.from({length:16},(_,i)=>({question_id:q(i+1),knowledge_weights:weights(i===3?.6:1).map(w=>({...w,evidence:'Private evidence never returned to students'})),reasoning_steps:['Private annotation'],issues:[]}));
  for(const lang of ['中文版','英文版']){const folder=join(dnaDirectory,lang,'json');mkdirSync(folder,{recursive:true});const file=join(folder,'QDNA.json');writeFileSync(file,JSON.stringify(records));files.push([file,readFileSync(file,'utf8')]);}
- let api=createApi({directory,adminKey:'qdna-local-test',clock:()=>now,qdnaDirectory:dnaDirectory,contentLimits:{similar:1000}});
+ let api=createApi({membershipEnabled:true,directory,adminKey:'qdna-local-test',clock:()=>now,qdnaDirectory:dnaDirectory,contentLimits:{similar:1000}});
  const server=createServer((req,res)=>api.handler(req,res,()=>{res.statusCode=404;res.end();}));await new Promise(r=>server.listen(0,'127.0.0.1',r));const base=`http://127.0.0.1:${server.address().port}/api/`;
  const client=()=>{let cookie='';return async(path,body,method='POST')=>{const r=await fetch(base+path,{headers:{cookie,...(body?{'Content-Type':'application/json'}:{})},...(body?{method,body:JSON.stringify(body)}:{})});if(r.headers.get('set-cookie'))cookie=r.headers.get('set-cookie').split(';')[0];return {status:r.status,headers:r.headers,...await r.json()};};};
  const a=client(),b=client(),admin=client(),guest=client();
@@ -124,7 +124,7 @@ test('API status transitions, history, own-user isolation, admin counts, bounded
   assert.equal((await admin('admin/membership',{userId:id,action:'revoke',reason:'Fixture revoke',revision:1,requestId:crypto.randomUUID()})).status,200);await checkTrial();
   assert.equal((await admin('admin/membership',{userId:id,action:'extend',days:1,reason:'Fixture renewal',revision:2,requestId:crypto.randomUUID()})).status,200);assert.ok((await a('learning/dashboard')).recommendations.new_questions.length);
   now+=86400001;await checkTrial();await admin('admin/login',{key:'qdna-local-test'});assert.ok((await dash()).recommendations.new_questions.length,'Admin retains analysis after student expiry');
-  api.close();api=createApi({directory,adminKey:'qdna-local-test',clock:()=>now,qdnaDirectory:dnaDirectory,contentLimits:{similar:1000}});assert.equal((await dash()).qdna_version,version);assert.deepEqual((await dash()).counts,before.counts);
+  api.close();api=createApi({membershipEnabled:true,directory,adminKey:'qdna-local-test',clock:()=>now,qdnaDirectory:dnaDirectory,contentLimits:{similar:1000}});assert.equal((await dash()).qdna_version,version);assert.deepEqual((await dash()).counts,before.counts);
  }finally{await new Promise(r=>server.close(r));api.close();rmSync(directory,{recursive:true});}
 });
 
@@ -147,7 +147,7 @@ test('QDNA startup index adapts existing weights, deduplicates IDs, uses languag
 });
 
 test('learning API rate limits are temporary, per account and applied to detail as well as recommendations',async()=>{
- const directory=mkdtempSync(join(tmpdir(),'dse-qdna-limit-'));let now=Date.now();const api=createApi({directory,clock:()=>now,adminKey:'limit-fixture',contentLimits:{similar:2}});
+ const directory=mkdtempSync(join(tmpdir(),'dse-qdna-limit-'));let now=Date.now();const api=createApi({membershipEnabled:true,directory,clock:()=>now,adminKey:'limit-fixture',contentLimits:{similar:2}});
  const server=createServer((req,res)=>api.handler(req,res,()=>{res.writeHead(404);res.end();}));await new Promise(r=>server.listen(0,'127.0.0.1',r));const base=`http://127.0.0.1:${server.address().port}/api/`;
  const login=async email=>{const code=await (await fetch(base+'auth/code',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({email})})).json();const res=await fetch(base+'auth/verify',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({email,code:code.developmentCode})});return res.headers.get('set-cookie').split(';')[0];};
  try{const a=await login('qdna-limit-a@test.example'),b=await login('qdna-limit-b@test.example');const get=(cookie,path='learning/dashboard')=>fetch(base+path,{headers:{cookie}});

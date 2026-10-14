@@ -4,7 +4,8 @@ import { useSourceSearch } from '../lib/use-source-search';
 import { NavigatorToggle } from '../components/NavigatorToggle';
 import { SearchReturn } from '../components/SearchReturn';
 import { StudyContent } from '../components/StudyContent';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useContentMotion } from '../lib/use-content-motion';
 import { ArrowLeft, ArrowRight, BookOpen, ChevronRight, ChevronDown } from "lucide-react";
 import { Button } from '../components/ui/button';
 import { STUDY_CSS } from '../lib/study-content';
@@ -57,7 +58,9 @@ export function ExamplesView({ language, targetKey, targetBook, navigate, openKn
   const rich = (value,type) => <StudyContent html={value} type={type} language={language}/>;
   const search=useSourceSearch(query,language,'examples');
   const visible=search.results.map(entry=>({id:entry.key,chapter:entry.chapter,number:entry.key.split("-").at(-1),title:entry.label,preview:entry.excerpt}));
-  return <div data-tour="example-state" data-ready={Boolean(index&&!error&&(!targetKey||record?.id===targetKey))} data-question={targetKey||''} data-answer={Boolean(record&&answer)} className="exercises-view examples-view page-enter">
+  const contentRef = useRef(null);
+  useContentMotion(contentRef, `${language}:${targetKey || targetBook || 'directory'}`, '', { initial: true, ready: Boolean(index && !error && (!targetKey || record?.id === targetKey)) });
+  return <div ref={contentRef} data-tour="example-state" data-ready={Boolean(index&&!error&&(!targetKey||record?.id===targetKey))} data-question={targetKey||''} data-answer={Boolean(record&&answer)} className="exercises-view examples-view page-enter">
     <style>{STUDY_CSS}</style>
     <div className="exercise-toolbar"><nav className="exercise-breadcrumb study-breadcrumb" aria-label={en ? 'Example location' : '例题位置'}>
       <button onClick={() => navigate('bank')}>{en ? 'Question bank' : '题库'}</button><ChevronRight/><button onClick={() => open()}>{en ? 'Textbook examples' : '课本例题'}</button>

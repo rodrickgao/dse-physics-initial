@@ -1,3 +1,4 @@
+import { MEMBERSHIP_ENABLED } from '../lib/access-policy';
 import { clearExerciseCache } from '../lib/textbook-exercises';
 import { getUiLanguage } from '../lib/ui-translations';
 import { clearSearchIndexes } from '../lib/question-search-loader';
@@ -9,7 +10,16 @@ import { membershipFailure } from '../lib/membership-state';
 
 const Context = createContext({ active: false, revision: 0, loading: true });
 export const useMembership = () => useContext(Context);
-export function MembershipProvider({ userId, children }) {
+export function MembershipProvider(props) {
+  return MEMBERSHIP_ENABLED ? <ManagedMembershipProvider {...props}/> : <FreeAccessProvider {...props}/>;
+}
+function FreeAccessProvider({userId, children}) {
+  useEffect(() => {
+    replaceKnowledgeNetwork({}); clearStudyCache(); clearExerciseCache(); clearSearchIndexes();
+  }, [userId]);
+  return <Context.Provider value={{active: true, revision: userId, userId, loading: false, error: false, status: 'free'}}>{children}</Context.Provider>;
+}
+function ManagedMembershipProvider({ userId, children }) {
   const [value, setValue] = useState({ active: false, revision: 0, loading: true });
   const retry = useRef(() => {});
   const [checking, setChecking] = useState(false);
@@ -53,8 +63,10 @@ export function MembershipStatus() {
   const membership = useMembership();
   const en = getUiLanguage() === 'eng';
   const labels = en ? {revoked:'Membership paused',expired:'Membership expired',none:'Not subscribed'} : {revoked:'会员已暂停',expired:'会员已到期',none:'未开通会员'};
+  if (!MEMBERSHIP_ENABLED) return null;
   return <span className="membership-status">{membership.active ? `会员至 ${new Date(membership.endsAt).toLocaleDateString(en ? 'en-HK' : 'zh-HK')}` : labels[membership.status]}</span>;
 }
 export function MemberNotice({ children }) {
+  if (!MEMBERSHIP_ENABLED) return null;
   return <div className="member-notice">{children || '会员专享 · 知识点关联'}</div>;
 }

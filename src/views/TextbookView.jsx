@@ -1,3 +1,5 @@
+import { MEMBERSHIP_ENABLED } from '../lib/access-policy';
+import chapterDownloads from '../lib/textbook-downloads.json';
 import { exerciseNumber } from '../lib/exercise-numbering';
 import { useMembership, MemberNotice } from '../components/Membership';
 import { loadExerciseIndex } from "../lib/textbook-exercises";
@@ -13,8 +15,9 @@ import { cn } from "../lib/utils";
 import { sharedFigureCards, cardSections } from '../lib/shared-figure-cards';
 import { TextbookContent } from "../components/TextbookContent";
 import { useContentMotion } from "../lib/use-content-motion";
+import {api} from '../lib/api';
 
-const BOOK_TONES = ["#a74050", "#287248", "#906e0e", "#396fd0", "#aa5722", "#009ca0", "#009ca0", "#009ca0", "#009ca0"];
+import { BOOK_TONES } from '../lib/book-colors';
 
 function PointCard({ mastered, mistakes, point, language, openPaper, exerciseIndex, exerciseError, openExercise }) {
   const en = language === "eng";
@@ -99,6 +102,12 @@ export function TextbookView({ mastered = {}, mistakes = {}, language, targetSeq
   const searchRef = useRef(null);
   const panelRef = useRef(null);
   const pendingPoint = useRef(null);
+  const pendingReview = useRef(null);
+  const [reviewError,setReviewError]=useState(null);
+  const saveReview=async review=>{
+    try{await api('weak-topics/viewed',{knowledge_id:String(review.id),revision:review.revision});setReviewError(null);}
+    catch(error){setReviewError({review,message:error.message});}
+  };
   const chapterRef = useRef(null);
   const panelKey = `${language}:${query ? 'search' : selectedBook ?? 'directory'}`;
   useContentMotion(panelRef, panelKey);
@@ -111,15 +120,18 @@ export function TextbookView({ mastered = {}, mistakes = {}, language, targetSeq
     if (nextBook >= 0 && point) {
       setSelectedBook(nextBook); setChapter(point.code); setQuery("");
       pendingPoint.current = targetSequence;
+      const params=new URLSearchParams(location.hash.split('?')[1]),value=params.get('weakRevision');
+      pendingReview.current=value!==null&&/^\d+$/.test(value)&&Number.isSafeInteger(Number(value))?{id:targetSequence,revision:Number(value)}:null;
     }
     clearTarget?.();
   }, [targetSequence, books, clearTarget]);
 
   useEffect(() => {
-    const target = document.getElementById(`point-${pendingPoint.current}`);
+    const target = document.getElementById(`point-${pendingPoint.current}`)||[...document.querySelectorAll('[data-knowledge-sequences]')].find(node=>node.dataset.knowledgeSequences.split(',').includes(String(pendingPoint.current)));
     if (!pendingPoint.current || !target) return;
     const frame = requestAnimationFrame(() => {
       target.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'start' });
+      if(pendingReview.current){const review=pendingReview.current;pendingReview.current=null;saveReview(review);}
       pendingPoint.current = null;
     });
     return () => cancelAnimationFrame(frame);
@@ -157,6 +169,7 @@ export function TextbookView({ mastered = {}, mistakes = {}, language, targetSeq
 
   return (
     <div className="textbook-view page-enter">
+      {reviewError&&<p role="alert">{reviewError.message} <button onClick={()=>saveReview(reviewError.review)}>{en?'Retry':'重试'}</button></p>}
       <div className="view-heading textbook-heading">
         <div><h1>{en ? "Textbook knowledge library" : "课本知识库"}</h1></div>
         <div className="textbook-count"><strong>{allCards.length}</strong><span>{en ? "knowledge points" : "个知识点"}</span></div>
@@ -176,7 +189,7 @@ export function TextbookView({ mastered = {}, mistakes = {}, language, targetSeq
           <p className="chapter-label">{en ? "Chapters" : "章节"}</p>
           <div className="chapter-list"><button className={cn(chapter === "all" && "active")} aria-pressed={chapter === "all"} onClick={() => selectChapter("all")}><span>{en ? "All chapters" : "全部章节"}</span><small>{sharedFigureCards(activeBook.points).length}</small></button>{chapters.map(([code, name]) => <button key={code} className={cn(chapter === code && "active")} aria-pressed={chapter === code} onClick={() => selectChapter(code)}><span><b>{code}</b>{name}</span><small>{sharedFigureCards(activeBook.points.filter((point) => point.code === code)).length}</small></button>)}</div>
         </aside>
-        <section ref={chapterRef} tabIndex={-1} className="knowledge-browser-content"><div className="knowledge-browser-heading"><p>{activeBook.name}</p><h2>{chapter === "all" ? (en ? "All knowledge points" : "全部知识点") : chapters.find(([code]) => code === chapter)?.[1]}</h2><span>{visibleCards.length} {en ? "knowledge points" : "个知识点"}</span></div><div className="knowledge-card-list">{visibleCards.map((point) => <PointCard mastered={mastered} mistakes={mistakes} key={point.sequence} point={point} language={language} openPaper={openPaper} exerciseIndex={exerciseIndex} exerciseError={exerciseError} openExercise={openExercise} />)}</div></section>
+        <section ref={chapterRef} tabIndex={-1} className="knowledge-browser-content"><div className="knowledge-browser-heading"><p>{activeBook.name}</p><h2>{chapter === "all" ? (en ? "All knowledge points" : "全部知识点") : chapters.find(([code]) => code === chapter)?.[1]}</h2>{!MEMBERSHIP_ENABLED && chapterDownloads[language]?.[chapter] && <a data-tour="chapter-download" className="source-download" href={chapterDownloads[language][chapter].url} download={chapterDownloads[language][chapter].filename}>{en?'Download chapter PDF':'下载章节 PDF'}</a>}<span>{visibleCards.length} {en ? "knowledge points" : "个知识点"}</span></div><div className="knowledge-card-list">{visibleCards.map((point) => <PointCard mastered={mastered} mistakes={mistakes} key={point.sequence} point={point} language={language} openPaper={openPaper} exerciseIndex={exerciseIndex} exerciseError={exerciseError} openExercise={openExercise} />)}</div></section>
       </div>}
       </div>
     </div>

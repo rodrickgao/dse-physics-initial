@@ -1,4 +1,5 @@
 import { databaseQueries } from './database.mjs';
+import { createHash } from 'node:crypto';
 export function createMistakeArchive({ db, clock, fail, transaction, record, questions, statusStore }) {
   const { get, all, run } = databaseQueries(db);
   db.exec(`CREATE TABLE IF NOT EXISTS mistake_archive (
@@ -19,10 +20,23 @@ export function createMistakeArchive({ db, clock, fail, transaction, record, que
   }
   function list(userId) { return all("SELECT question_key AS key,marked_at AS markedAt,trashed_at AS trashedAt FROM mistake_archive WHERE user_id=? AND status='trash' ORDER BY trashed_at DESC",userId); }
   function act(userId,body) {
-    if (!['restore','delete'].includes(body.action) || !Array.isArray(body.keys) || !body.keys.length || body.keys.length>500 || body.keys.some(key=>typeof key!=='string'||!questions.has(key))) fail(400,'请选择有效的错题和操作。');
+    if (!['restore','delete'].includes(body.action)) fail(400,'请选择有效的错题和操作。');
     transaction(() => {
+      let keys=body.keys;
+      if(body.all===true){
+        const exceptKeys=body.exceptKeys===undefined?[]:body.exceptKeys;
+        if(!Array.isArray(exceptKeys)||exceptKeys.length>questions.size||exceptKeys.some(key=>typeof key!=='string'||!questions.has(key))||!Number.isSafeInteger(body.expectedCount)||body.expectedCount<1||body.expectedCount>questions.size) fail(400,'请选择有效的错题和操作。');
+        const excluded=new Set(exceptKeys);
+        keys=all("SELECT question_key FROM mistake_archive WHERE user_id=? AND status='trash'",userId).map(row=>row.question_key).filter(key=>!excluded.has(key));
+        if(keys.length!==body.expectedCount) fail(409,'回收站内容已变化，请刷新后重新选择。');
+        if(body.selectionHash!==undefined){
+          if(typeof body.selectionHash!=='string'||!/^[a-f0-9]{64}$/.test(body.selectionHash)) fail(400,'请选择有效的错题和操作。');
+          if(createHash('sha256').update([...keys].sort().join('\n')).digest('hex')!==body.selectionHash) fail(409,'回收站内容已变化，请刷新后重新选择。');
+        }
+      }
+      if(!Array.isArray(keys)||!keys.length||keys.length>questions.size||keys.some(key=>typeof key!=='string'||!questions.has(key))) fail(400,'请选择有效的错题和操作。');
       const before=statusStore?.snapshot(userId);
-      for (const key of new Set(body.keys)) {
+      for (const key of new Set(keys)) {
         const row=get('SELECT * FROM mistake_archive WHERE user_id=? AND question_key=?',userId,key);
         if (!row) fail(404,'回收站中找不到这道题。');
         if ((body.action==='restore' && row.status==='active') || (body.action==='delete' && row.status==='deleted')) continue;

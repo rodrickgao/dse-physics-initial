@@ -17,6 +17,15 @@
 .app-shell :is(.study-image-dialog,.textbook-image-dialog)::backdrop { animation:dialog-backdrop 160ms ease-out; }
 
 /* Larger hit areas without changing the compact question-number grids. */
+/* One reveal per surface; child panels inherit a running page reveal. */
+[data-motion-surface="page"] :is(.page-enter,.focus-view:not([hidden]),.tutoring-view,.subscription-view,.payment-view) { animation:none; }
+[data-motion-active] .study-stage { animation:none; }
+.study-flow>.study-stage:first-of-type { animation:none; }
+.app-shell :is(.mobile-more-menu,.navigator-shell.is-open .paper-navigator,.example-supplement),
+.management-shell :is(.confirm-dialog,details[open]>:not(summary)),.admin-login form { animation:content-enter 180ms cubic-bezier(.22,1,.36,1); }
+@media(prefers-reduced-motion:reduce) {
+  :is(.app-shell,.management-shell,.admin-login) :is(.mobile-more-menu,.paper-navigator,.example-supplement,.confirm-dialog,details[open]>:not(summary),form) { animation:none!important; }
+}
 @media(pointer:coarse) {
   :is(.app-shell,.auth-page,.profile-page,.management-shell,.admin-login) :is(.tour-help,.account-settings,.support-link,.language-switch button,.sidebar-toggle,.physicist-tabs button,.avatar-mode button) { min-height:44px; }
   .app-shell :is(.book-card,.library-card):hover:not(:active) { transform:none; }

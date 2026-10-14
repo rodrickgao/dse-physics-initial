@@ -2,25 +2,34 @@
   --card: #fff; --background: #fff; --foreground: #192b46; --muted-foreground: #6b7a91;
   --primary: #285bc7; --primary-foreground: #fff; --border: #dfe7f2;
   position: relative; isolation: isolate; max-width: none; min-height: 100svh;
-  display: grid; grid-template-columns: minmax(0, 600px) minmax(0, 500px);
-  align-items: center; justify-content: center; gap: clamp(48px, 7vw, 112px);
-  padding: 88px 48px 56px; background: #f8faff; color: var(--foreground);
+  display: grid; grid-template-columns: minmax(0, 500px);
+  align-content: center; justify-content: center; gap: 24px;
+  padding: 88px 24px 40px; background: #f8faff; color: var(--foreground);
   font-family: Inter, "Microsoft YaHei UI", "Microsoft YaHei", sans-serif; color-scheme: light;
 }
 .login-page::before {
   content: ""; position: absolute; z-index: -1; inset: 0; pointer-events: none;
   background: radial-gradient(ellipse at 25% 42%, #e5edfc 0, transparent 48%);
 }
-.login-brand-stage { text-align: center; min-width: 0; padding: 32px 0; }
+.login-brand-stage { text-align: center; min-width: 0; }
 .login-brand-name { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .login-brand-logos { display: grid; justify-items: center; gap: 2px; }
 .login-brand-logos .signature-logo { width: 100%; max-width: 100%; height: auto; filter: none; }
-.login-logo-chinese { width: 100%; animation: login-logo-emerge 1100ms cubic-bezier(.2,.7,.2,1) both; }
-.login-logo-english { width: 66%; animation: login-logo-emerge 1100ms 160ms cubic-bezier(.2,.7,.2,1) both; }
-.login-brand-highlights { list-style: disc; display: grid; gap: 14px; max-width: 560px; margin: 32px auto 0; padding: 0 0 0 20px; color: #294a80; text-align: left; font-size: 18px; font-weight: 400; line-height: 1.75; animation: login-form-emerge 750ms 320ms ease both; }
-.login-brand-highlights li { padding-left: 4px; font: inherit; }
+.login-logo-chinese { width: 260px; }
+.login-logo-english { width: 172px; }
+.auth-page.welcome-page { grid-template-columns: minmax(0, 650px); }
+.welcome-page .login-logo-chinese { width: min(100%, 560px); animation: login-logo-emerge 1400ms cubic-bezier(.2,.7,.2,1) both; }
+.welcome-page .login-logo-english { width: min(66%, 370px); animation: login-logo-emerge 1400ms 180ms cubic-bezier(.2,.7,.2,1) both; }
+.login-brand-highlights { list-style: disc; display: grid; gap: 14px; max-width: 560px; margin: 32px auto 0; padding: 0 0 0 20px; color: #294a80; text-align: left; font-size: 18px; font-weight: 400; line-height: 1.75; }
+.login-brand-highlights li { padding-left: 4px; font: inherit; animation: login-form-emerge 850ms 500ms ease both; }
+.login-brand-highlights li:nth-child(2) { animation-delay: 900ms; }
+.login-brand-highlights li:nth-child(3) { animation-delay: 1300ms; }
+.login-brand-highlights li:nth-child(4) { animation-delay: 1700ms; }
 .login-brand-highlights li::marker { color: #285bc7; }
-.login-page .auth-card { width: 100%; max-width: 500px; margin: 0; padding: 44px 40px 34px; background: #fff; border: 1px solid #e2e9f3; border-radius: 24px; box-shadow: 0 16px 60px #2446780a; animation: login-form-emerge 850ms 180ms ease both; }
+.welcome-actions-slot { min-height: 54px; margin-top: 32px; }
+.welcome-actions { display: flex; justify-content: center; gap: 16px; animation: login-form-emerge 500ms ease both; }
+.welcome-actions button { min-width: 160px; min-height: 54px; border-radius: 12px; font-size: 18px; }
+.login-page .auth-card { width: 100%; max-width: 500px; margin: 0; padding: 36px 40px 30px; background: #fff; border: 1px solid #e2e9f3; border-radius: 24px; box-shadow: 0 16px 60px #2446780a; animation: login-form-emerge 300ms ease both; }
 .login-page .login-form-heading h2 { margin: 0 0 8px; color: #192b46; font-size: 32px; font-weight: 700; letter-spacing: -.035em; }
 .login-page .login-form-heading p { margin: 0; font-size: 17px; line-height: 1.6; color: var(--muted-foreground); }
 .login-page .auth-card form { display: grid; gap: 20px; margin-top: 26px; }
@@ -34,6 +43,8 @@
 .login-page .auth-code button { min-height: 54px; flex-shrink: 0; padding: 0 14px; font-size: 15px; border-radius: 10px; }
 .login-page .auth-submit { min-height: 54px; font-size: 17px; border-radius: 10px; }
 .login-page .auth-switch { margin-top: 18px; text-align: left; font-size: 12px; line-height: 1.7; }
+.login-page .auth-account-switch { display: block; font-size: 14px; min-height: 44px; margin-top: 12px; }
+.login-form-heading h2:focus { outline: none; }
 .login-page .auth-note { margin-top: 20px; font-size: 12px !important; }
 .login-page button, .login-page input { font-family: inherit; }
 .login-email-field { position: relative; display: grid; gap: 9px; }
@@ -50,24 +61,16 @@
 .login-page .login-account-suggestions button:hover, .login-page .login-account-suggestions button:focus-visible { background: #eff5ff; outline: 2px solid transparent; }
 @keyframes login-logo-emerge { from { opacity: 0; transform: translateY(22px) scale(.97); filter: blur(5px); } to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); } }
 @keyframes login-form-emerge { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-@media (max-width: 1280px) and (min-width: 801px) {
-  .auth-page.login-page { grid-template-columns: minmax(0, 1fr) minmax(0, 440px); gap: 40px; padding: 72px 32px 40px; }
-  .login-brand-stage { padding: 0; }
-  .login-brand-highlights { font-size: 16px; gap: 12px; margin-top: 24px; }
-  .login-page .auth-card { padding: 34px 30px 28px; }
-  .login-page .login-form-heading h2 { font-size: 29px; }
-}
-@media (max-width: 1000px) and (min-width: 801px) {
-  .auth-page.login-page { grid-template-columns: minmax(0, 1fr) minmax(0, 380px); gap: 30px; padding-inline: 24px; }
-}
 @media (max-width: 800px) {
-  .auth-page.login-page { grid-template-columns: minmax(0, 430px); gap: 26px; padding: 76px 24px 32px; align-content: center; }
-  .login-brand-stage { display: contents; }
-  .login-brand-logos { order: 0; }
-  .login-logo-chinese { width: min(300px, 85%); }
-  .login-logo-english { width: 174px; }
-  .login-brand-highlights { order: 2; margin-top: 0; gap: 10px; font-size: 15px; line-height: 1.7; }
-  .login-page .auth-card { order: 1; padding: 28px 24px 24px; border-radius: 20px; }
+  .auth-page.login-page { grid-template-columns: minmax(0, 430px); gap: 20px; padding: 80px 20px 32px; }
+  .login-logo-chinese { width: 220px; }
+  .login-logo-english { width: 146px; }
+  .welcome-page .login-logo-chinese { width: min(300px, 100%); }
+  .welcome-page .login-logo-english { width: min(200px, 66%); }
+  .login-brand-highlights { margin-top: 28px; gap: 10px; font-size: 15px; line-height: 1.7; }
+  .welcome-actions { gap: 12px; }
+  .welcome-actions button { min-width: 0; flex: 1; max-width: 180px; font-size: 17px; }
+  .login-page .auth-card { padding: 28px 24px 24px; border-radius: 20px; }
   .login-page .login-form-heading h2 { font-size: 26px; }
   .login-page .login-form-heading p { font-size: 16px; }
   .login-page .login-methods button { font-size: 13px; }
@@ -75,5 +78,5 @@
   .login-page .auth-card input { font-size: 16px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .login-page :is(.login-logo-chinese,.login-logo-english,.login-brand-highlights,.auth-card) { animation: none; }
+  .login-page :is(.login-logo-chinese,.login-logo-english,.login-brand-highlights li,.welcome-actions,.auth-card) { animation: none; }
 }

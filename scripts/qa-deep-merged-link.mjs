@@ -1,0 +1,8 @@
+import fs from 'node:fs';import path from 'node:path';import assert from 'node:assert/strict';
+import {chromium} from 'file:///C:/Users/rodri/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs';
+import {fixture,output} from './deep-test-fixture.mjs';
+const f=await fixture('merged-link'),client=f.client(),user=await f.register(client,'tab-logout@local.test');
+const browser=await chromium.launch({channel:'chrome',headless:true}),context=await browser.newContext({reducedMotion:'reduce'});
+await context.addCookies([{name:'dse_session',value:client.jar.get('dse_session'),url:f.base,httpOnly:true,sameSite:'Strict'}]);await context.addInitScript(id=>localStorage.setItem('ddphysics-tour:v4:'+encodeURIComponent(id),JSON.stringify({version:4,status:'skipped'})),user.id);
+f.db.prepare('INSERT INTO memberships VALUES(?,?,0,1)').run(user.id,f.clock()+30*86400000);const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));let report;
+try{await page.setViewportSize({width:1440,height:800});await page.goto(f.base+'#textbook?knowledge=15');await page.locator('[data-knowledge-sequences]').first().waitFor();await page.waitForTimeout(400);const nodes=await page.locator('[data-knowledge-sequences]').evaluateAll(nodes=>nodes.filter(el=>el.dataset.knowledgeSequences.split(',').includes('15')).map(el=>({sequence:el.dataset.studyKnowledgeCard,top:el.getBoundingClientRect().top,bottom:el.getBoundingClientRect().bottom})));report={nodes,errors};report.passed=nodes.length===1&&nodes[0].top<700&&nodes[0].bottom>80;console.log(JSON.stringify(report));}finally{fs.writeFileSync(path.join(output,'merged-link-initial.json'),JSON.stringify(report,null,2));await browser.close();await f.close();}

@@ -23,9 +23,11 @@ function ScanImages({ yearId, paths, label }) {
 }
 
 function ReportPage({year,language,page}) {
+ const contentRef=useRef(null);
  const [state,setState]=useState(null);
+ useContentMotion(contentRef,`${year}:${language}:${page}`,'',{initial:true,ready:Boolean(state&&!state.error)});
  useEffect(()=>{let live=true;setState(null);fetch(`/api/content/report?${new URLSearchParams({year,language,page})}`,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error();return r.json();}).then(data=>{if(live)setState(data);}).catch(()=>{if(live)setState({error:true});});return()=>{live=false;};},[year,language,page]);
- return state?.error?<p role="alert">{language==='eng'?'Report unavailable. Please retry.':'报告暂时无法加载，请重试。'}</p>:!state?<p role="status">{language==='eng'?'Loading…':'正在加载…'}</p>:<div className="scan-stack">{state.images.map(src=><img key={src} src={src} alt="Report"/>)}</div>;
+ return state?.error?<p role="alert">{language==='eng'?'Report unavailable. Please retry.':'报告暂时无法加载，请重试。'}</p>:!state?<p role="status">{language==='eng'?'Loading…':'正在加载…'}</p>:<div ref={contentRef} className="scan-stack">{state.images.map(src=><img key={src} src={src} alt="Report"/>)}</div>;
 }
 export function PapersView({ mastered = {}, setProgress, saving, directoryVersion, onDirectory, onYearOpen, language, mistakes, setMistake, targetKey, clearTarget, initialQuery = "", openKnowledge, onQuestionChange, onAsk, onBank }) {
   const membership = useMembership();

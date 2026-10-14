@@ -2,6 +2,7 @@
 .language-switch svg{width:20px;height:20px;flex-shrink:0}
 .language-switch:hover{border-color:var(--primary,#2563eb)}
 .language-switch:focus-visible{outline:3px solid var(--primary,#2563eb);outline-offset:3px}
+body>.language-switch{position:fixed;margin:0;animation:none;}
 .app-shell .app-main>.topbar{padding-right:128px}
 .profile-page{padding-top:80px!important}
 body .management-shell>main{padding-top:80px}

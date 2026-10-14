@@ -1,3 +1,4 @@
+import { MEMBERSHIP_ENABLED } from '../src/lib/access-policy.js';
 import ExcelJS from 'exceljs';
 import { regionLabel } from '../src/lib/region-catalog.js';
 import { questions, pointInfo } from './catalog.mjs';
@@ -27,7 +28,7 @@ export function exportRows(users, mistakes, events, generatedAt) {
         '知識點ID列表': JSON.stringify(links.map(p => p.sequence)), '知識點編號列表': JSON.stringify(links.map(p => p.number)),
         '章節編號列表': JSON.stringify([...new Set(links.map(p => p.number.split('.').slice(0, 2).join('.')))]) };
     };
-    push({ '記錄類型': '學生摘要', '目前錯題總數': saved.length, '目前知識點總數': byPoint.size, '目前章節總數': byChapter.size });
+    push({ '記錄類型': '學生摘要', '目前錯題總數': saved.length, '目前知識點總數': new Set([...byPoint.keys()].map(id=>pointInfo(id).number)).size, '目前章節總數': byChapter.size });
     for (const m of saved) push({ '記錄類型': '目前錯題', ...question(m.question_key) });
     for (const [id, count] of byPoint) {
       const p = pointInfo(id);
@@ -38,17 +39,24 @@ export function exportRows(users, mistakes, events, generatedAt) {
   }
   return rows;
 }
-export async function toWorkbook(rows, extra = null) {
+export async function toWorkbook(rows, extra = null, {membershipEnabled = MEMBERSHIP_ENABLED} = {}) {
   const workbook = new ExcelJS.Workbook();
   workbook.creator = 'DSE Physics';
+  const summaries = new Map(rows.slice(1).filter(row=>row[0]==='學生摘要').map(row=>[row[headers.indexOf('學生ID')],Object.fromEntries(headers.map((field,index)=>[field,row[index]]))]));
   if (extra) {
     const sheet = workbook.addWorksheet('总览', {views:[{state:'frozen',ySplit:1}]});
     sheet.columns=[{header:'指标',width:28},{header:'数值 / 说明',width:80}];
-    sheet.addRows([['导出时间',extra.generatedAt],['导出范围','全部学生，不受后台搜索和会员筛选影响'],['学生人数',extra.students.length],['有效会员',extra.students.filter(s=>s.membership.active).length],['当前错题',extra.students.reduce((n,s)=>n+s.activeMistakes,0)],['当前已掌握',extra.students.reduce((n,s)=>n+s.mastered,0)],['时间格式','ISO 8601（UTC），末尾 Z 表示 UTC 时间'],['统计说明','已掌握与错题来自自主标记；不是作答次数或正确率。知识点关联可重叠。']]);
-    const student=workbook.addWorksheet('学生学习与会员',{views:[{state:'frozen',ySplit:1}]});
-    student.columns=['学生ID','昵称','邮箱','年级','地区','目标等级','会员状态','会员到期时间','当前错题','当前已掌握','累计专注分钟','最近活动时间'].map(header=>({header,width:header.includes('时间')?28:header==='邮箱'?34:18}));
-    const states={none:'未开通',active:'有效会员',expired:'已到期',revoked:'已暂停'};
-    student.addRows(extra.students.map(s=>[s.id,s.nickname||'',s.email,s.grade||'',s.region ? regionLabel(s.region) : '',s.target||'',states[s.membership.status]||s.membership.status,iso(s.membership.endsAt),s.activeMistakes,s.mastered,s.focusMinutes,iso(s.lastActivity)]));
+    sheet.addRows([['导出时间',extra.generatedAt],['导出范围','全部学生，不受后台搜索影响'],['学生人数',extra.students.length],...(membershipEnabled?[['有效会员',extra.students.filter(s=>s.membership?.active).length]]:[]),['当前错题',extra.students.reduce((n,s)=>n+s.activeMistakes,0)],['当前已掌握',extra.students.reduce((n,s)=>n+s.mastered,0)],['时间格式','ISO 8601（UTC），末尾 Z 表示 UTC 时间'],['统计说明','已掌握与错题来自自主标记；不是作答次数或正确率。知识点关联可重叠。']]);
+  }
+  const student=workbook.addWorksheet('学生学习',{views:[{state:'frozen',ySplit:1}],pageSetup:{orientation:'landscape',fitToPage:true,fitToWidth:1,fitToHeight:0,printTitlesRow:'1:1'}});
+  student.columns=['学生ID','昵称','邮箱','年级','地区','目标等级','当前错题','当前已掌握','累计专注分钟','最近活动时间','角色','头像','注册时间','最近登录时间','相关知识点数','相关章节数','导出时间',...(membershipEnabled?['会员状态','会员到期时间']:[])].map(header=>({header,width:header.includes('时间')?28:header==='邮箱'?34:18}));
+  const learning=new Map((extra?.students||[]).map(s=>[s.id,s]));
+  const ids=[...new Set([...summaries.keys(),...learning.keys()])].sort((a,b)=>a-b);
+  student.addRows(ids.map(id=>{
+    const s=learning.get(id)||{},summary=summaries.get(id)||{};
+    return [id,s.nickname??summary['暱稱']??'',s.email??summary['電郵']??'',s.grade??summary['年級']??'',s.region!=null?(s.region?regionLabel(s.region):''):summary['地區']||'',s.target??summary['目標等級']??'',s.activeMistakes??summary['目前錯題總數']??0,s.mastered??0,s.focusMinutes??0,iso(s.lastActivity),s.role??summary['角色']??'student',s.avatar??summary['頭像']??'',s.created_at!=null?iso(s.created_at):summary['註冊時間']||'',s.last_login!=null?iso(s.last_login):summary['最近登入時間']||'',summary['目前知識點總數']??0,summary['目前章節總數']??0,extra?.generatedAt??summary['匯出時間']??'',...(membershipEnabled?[({none:'未开通',active:'有效会员',expired:'已到期',revoked:'已暂停'})[s.membership?.status||'none'],iso(s.membership?.endsAt)]:[])];
+  }));
+  if (extra) {
     const mastered=workbook.addWorksheet('已掌握明细',{views:[{state:'frozen',ySplit:1}]});
     mastered.columns=['学生ID','邮箱','题目ID','标记时间'].map(header=>({header,width:header==='邮箱'?34:28}));
     const users=new Map(extra.students.map(s=>[s.id,s]));
@@ -57,7 +65,6 @@ export async function toWorkbook(rows, extra = null) {
   const base = ['學生ID', '電郵'];
   const question = ['題目ID', '年份', '試卷', '題號', '目前仍標記', '目前標記時間', '知識點ID列表', '知識點編號列表', '章節編號列表'];
   const sheets = [
-    ['學生摘要', [...base, '角色', '暱稱', '年級', '地區', '目標等級', '頭像', '註冊時間', '最近登入時間', '目前錯題總數', '目前知識點總數', '目前章節總數']],
     ['目前錯題', [...base, ...question]],
     ['知識點統計', [...base, '知識點ID', '知識點編號', '章節編號', '關聯錯題數']],
     ['章節統計', [...base, '章節編號', '關聯錯題數']],

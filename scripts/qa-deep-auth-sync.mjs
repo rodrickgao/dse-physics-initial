@@ -1,0 +1,8 @@
+import fs from 'node:fs';import path from 'node:path';import assert from 'node:assert/strict';
+import {chromium} from 'file:///C:/Users/rodri/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs';
+import {fixture,output} from './deep-test-fixture.mjs';
+const f=await fixture('auth-sync'),client=f.client(),user=await f.register(client,'tab-logout@local.test');
+const browser=await chromium.launch({channel:'chrome',headless:true}),context=await browser.newContext({reducedMotion:'reduce'});
+await context.addCookies([{name:'dse_session',value:client.jar.get('dse_session'),url:f.base,httpOnly:true,sameSite:'Strict'}]);await context.addInitScript(id=>localStorage.setItem('ddphysics-tour:v4:'+encodeURIComponent(id),JSON.stringify({version:4,status:'skipped'})),user.id);
+const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));let report;
+try{await page.goto(f.base+'#home');await page.locator('.app-shell').waitFor();assert.ok((await context.request.post(f.base+'api/auth/logout',{data:{}})).ok());await page.evaluate(()=>dispatchEvent(new Event('focus')));await page.waitForTimeout(1200);report={loginVisible:await page.locator('.login-page').count()===1,oldAppVisible:await page.locator('.app-shell').count()!==0,errors};report.passed=report.loginVisible&&!report.oldAppVisible&&errors.length===0;console.log(JSON.stringify(report));}finally{fs.writeFileSync(path.join(output,process.env.DSE_AUTH_INITIAL?'auth-sync-initial.json':'auth-sync-report.json'),JSON.stringify(report,null,2));await browser.close();await f.close();}

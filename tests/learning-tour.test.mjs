@@ -17,7 +17,7 @@ test('core completion is monotonic and major pages have bilingual guides',()=>{
  assert.deepEqual(completeTourStep({...state,skippedSteps:[2]},2).skippedSteps,[]);
  assert.equal(coreSteps.length,10);assert.equal(new Set(coreSteps.map(s=>s.id)).size,10);
  for(const s of coreSteps){assert.ok(s.title.chn&&s.title.eng&&s.permission);if(s.mode==='action')assert.ok(s.complete.includes('data-'));}
- for(const p of ['home','bank','papers','examples','exercises','textbook','mistakes','membership','ask','focus','profile'])assert.ok(pageTours[p]?.length);
+ for(const p of ['home','bank','papers','examples','exercises','textbook','mistakes','ask','focus','profile'])assert.ok(pageTours[p]?.length);
 });
 
 test('v1 completion and skip preferences survive the new flow without forcing a popup',()=>{

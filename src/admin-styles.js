@@ -1,5 +1,6 @@
 // Preserve the established cascade independently of component import order.
 import './components/admin-charts.css';
+import './motion.css';
 import './components/brand-logo.css';
 import './components/qdna-profile.css';
 import './components/language-switch.css';

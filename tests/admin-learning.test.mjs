@@ -21,7 +21,7 @@ test('legacy admin record DTO keeps current, trash and deleted counts separate',
 test('admin learning detail and overview follow mastery, trash and restoration without leaking to students',async()=>{
  const directory=mkdtempSync(join(tmpdir(),'dse-admin-learning-'));
  let now=Date.now();
- const api=createApi({directory,adminKey:'test-admin-learning',clock:()=>now});
+ const api=createApi({membershipEnabled:true,directory,adminKey:'test-admin-learning',clock:()=>now});
  const server=createServer((req,res)=>api.handler(req,res,()=>{res.statusCode=404;res.end();}));
  await new Promise(r=>server.listen(0,'127.0.0.1',r));
  const base=`http://127.0.0.1:${server.address().port}/api/`;

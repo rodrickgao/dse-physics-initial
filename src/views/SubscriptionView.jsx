@@ -1,5 +1,6 @@
 import { getUiLanguage } from '../lib/ui-translations';
 import { MEMBER_FEATURES } from '../lib/membership-benefits';
+import { useContentMotion } from '../lib/use-content-motion';
 import { Check, Crown, ArrowLeft } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { api } from '../lib/api';
@@ -19,13 +20,16 @@ export function SubscriptionView({ navigate }) {
 }
 export function PaymentView({ navigate, user, uploadPage = false }) {
   const membership = useMembership();
-  const en = getUiLanguage() === 'eng';
+  const language = getUiLanguage();
+  const en = language === 'eng';
   const [paymentMethod, setPaymentMethod] = useState(null);
   const paymentCodes = {
     wechat: { logo: '/assets/payments/wechat-pay-logo.svg', name: en ? 'WeChat Pay' : '微信支付', image: '/assets/payments/wechat-receive-20260929.jpg', width: 750, height: 1020 },
     alipay: { logo: '/assets/payments/alipay-logo.svg', name: en ? 'Alipay' : '支付宝', image: '/assets/payments/alipay-receive-20260929.jpg', width: 1182, height: 1772 },
   };
   const selectedPayment = paymentCodes[paymentMethod];
+  const paymentMotion = useRef(null);
+  useContentMotion(paymentMotion, `${paymentMethod || 'choose'}:${language}`);
   const [order, setOrder] = useState(null), [ready, setReady] = useState(false), [busy, setBusy] = useState(false), [error, setError] = useState('');
   const requestId = useRef(crypto.randomUUID());
   useEffect(() => { if (uploadPage) navigate('payment'); }, [uploadPage, navigate]);
@@ -51,7 +55,7 @@ export function PaymentView({ navigate, user, uploadPage = false }) {
 
   return <div className="subscription-view payment-view page-enter"><Button variant="ghost" onClick={() => navigate('membership')}><ArrowLeft/>返回会员方案</Button><div className="view-heading"><h1>{'开通会员'}</h1></div>
     <section className="payment-card">{<div className="payment-summary"><span className="plan-tag">会员版 · 30 天</span><div className="plan-price"><span>¥</span><strong>59</strong><span>/ 30 天</span></div><Features items={MEMBER_FEATURES}/><div className="payment-account"><span>会员账号</span><strong>{user.email}</strong></div></div>}
-      <div className="payment-code-panel"><h2>{selectedPayment ? selectedPayment.name : (en ? 'Choose a payment method' : '选择支付方式')}</h2>{(!selectedPayment ? <div className="payment-methods" role="group" aria-label={en ? 'Payment method' : '支付方式'}>{Object.entries(paymentCodes).map(([method, details]) => <button type="button" key={method} className={`payment-method payment-method-${method}`} onClick={() => setPaymentMethod(method)}><span className="payment-method-label"><img className="payment-method-logo" src={details.logo} width="36" height="36" alt="" aria-hidden="true"/><span>{details.name}</span></span><span aria-hidden="true">→</span></button>)}</div> : <><Button className="payment-change-method" variant="ghost" onClick={() => setPaymentMethod(null)}>{en ? 'Change payment method' : '更换支付方式'}</Button><a className="payment-code-image" href={selectedPayment.image} target="_blank" rel="noopener noreferrer"><img src={selectedPayment.image} width={selectedPayment.width} height={selectedPayment.height} alt={en ? `${selectedPayment.name} collection code` : `${selectedPayment.name}收款码`}/><span>{en ? 'Open full-size code · Long press to save on mobile' : '点击查看原图 · 手机可长按保存'}</span></a></>)}{selectedPayment && <><p role="status">{membership.active ? '会员已开通' : order?.status === 'rejected' ? '会员已暂停：' + (order.rejection_reason || '付款申请未通过') : (en ? 'After paying, click below to activate your membership.' : '付款后点击下方按钮，即可开通会员。')}</p><Button disabled={!ready || busy || membership.active} onClick={submit}>{membership.active ? '会员已开通' : busy ? (en ? 'Activating…' : '正在开通…') : '我已付款'}</Button></>}{error && <p role="alert">{error}</p>}{!ready && error && <Button variant="outline" onClick={() => window.location.reload()}>重新加载</Button>}</div>
+      <div ref={paymentMotion} className="payment-code-panel"><h2>{selectedPayment ? selectedPayment.name : (en ? 'Choose a payment method' : '选择支付方式')}</h2>{(!selectedPayment ? <div className="payment-methods" role="group" aria-label={en ? 'Payment method' : '支付方式'}>{Object.entries(paymentCodes).map(([method, details]) => <button type="button" key={method} className={`payment-method payment-method-${method}`} onClick={() => setPaymentMethod(method)}><span className="payment-method-label"><img className="payment-method-logo" src={details.logo} width="36" height="36" alt="" aria-hidden="true"/><span>{details.name}</span></span><span aria-hidden="true">→</span></button>)}</div> : <><Button className="payment-change-method" variant="ghost" onClick={() => setPaymentMethod(null)}>{en ? 'Change payment method' : '更换支付方式'}</Button><a className="payment-code-image" href={selectedPayment.image} target="_blank" rel="noopener noreferrer"><img src={selectedPayment.image} width={selectedPayment.width} height={selectedPayment.height} alt={en ? `${selectedPayment.name} collection code` : `${selectedPayment.name}收款码`}/><span>{en ? 'Open full-size code · Long press to save on mobile' : '点击查看原图 · 手机可长按保存'}</span></a></>)}{selectedPayment && <><p role="status">{membership.active ? '会员已开通' : order?.status === 'rejected' ? '会员已暂停：' + (order.rejection_reason || '付款申请未通过') : (en ? 'After paying, click below to activate your membership.' : '付款后点击下方按钮，即可开通会员。')}</p><Button disabled={!ready || busy || membership.active} onClick={submit}>{membership.active ? '会员已开通' : busy ? (en ? 'Activating…' : '正在开通…') : '我已付款'}</Button></>}{error && <p role="alert">{error}</p>}{!ready && error && <Button variant="outline" onClick={() => window.location.reload()}>重新加载</Button>}</div>
     </section>
   </div>;
 }

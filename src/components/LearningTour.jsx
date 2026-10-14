@@ -51,6 +51,12 @@ export function LearningTour({userId,page,language,navigate}){
   const next={...view,index:view.index+1};prepare(steps[next.index]);setView(next);
  }
  run.current={view,current,reviewing,advance,close};
+ useEffect(()=>{
+  if(view?.kind!=='run'||!current?.advanceOnNavigate?.includes(page))return;
+  const identity=`${view.tour}:${view.index}`;
+  if(advanced.current===identity)return;
+  advanced.current=identity;run.current.advance();
+ },[page,current,view?.tour,view?.index]);
  // First visits offer a dismissible, non-modal invitation. Offering is persisted
  // too: ignoring it never causes a popup every time the user revisits a page.
  useEffect(()=>{if(view)document.documentElement.dataset.tourActive='true';else delete document.documentElement.dataset.tourActive;return()=>{delete document.documentElement.dataset.tourActive;};},[!!view]);
@@ -95,10 +101,11 @@ export function LearningTour({userId,page,language,navigate}){
    setLayout(old=>JSON.stringify(old)===JSON.stringify(next)?old:next);
    if(first&&settled&&Date.now()-scrollAt>(reducedMotion?0:250)){first=false;(current.mode==='action'&&focusables(node)[0]||panel.current)?.focus({preventScroll:true});}
   };
-  let frame=0,observed=null;
+  let frame=0,observed=null,observedInert=false;
   const schedule=()=>{if(!frame)frame=requestAnimationFrame(()=>{frame=0;update();observeTarget();});};
   const observer=new ResizeObserver(schedule);
-  const observeTarget=()=>{if(target.current===observed)return;if(observed){observer.unobserve(observed);delete observed.dataset.tourSpotlight;}observed=target.current;if(observed){observer.observe(observed);observed.dataset.tourSpotlight='true';}};
+  const releaseTarget=()=>{if(observed){observer.unobserve(observed);delete observed.dataset.tourSpotlight;if(current.interactive===false)observed.inert=observedInert;}};
+  const observeTarget=()=>{if(target.current===observed)return;releaseTarget();observed=target.current;if(observed){observedInert=observed.inert;if(current.interactive===false)observed.inert=true;observer.observe(observed);observed.dataset.tourSpotlight='true';}};
   // Committed marks and async route content wake the guide immediately. The
   // interval only covers layout changes that do not resize the target itself.
   const mutations=new MutationObserver(records=>{if(records.some(record=>!record.target.closest?.('.learning-tour')))schedule();});
@@ -107,7 +114,7 @@ export function LearningTour({userId,page,language,navigate}){
   const timer=setInterval(schedule,400);
   window.addEventListener('scroll',schedule,{passive:true,capture:true});window.addEventListener('resize',schedule);
   window.visualViewport?.addEventListener('resize',schedule);window.visualViewport?.addEventListener('scroll',schedule,{passive:true});
-  return()=>{clearInterval(timer);clearTimeout(completionTimer);clearTimeout(settleTimer);cancelAnimationFrame(frame);observer.disconnect();mutations.disconnect();if(observed)delete observed.dataset.tourSpotlight;window.removeEventListener('scroll',schedule,true);window.removeEventListener('resize',schedule);window.visualViewport?.removeEventListener('resize',schedule);window.visualViewport?.removeEventListener('scroll',schedule);};
+  return()=>{clearInterval(timer);clearTimeout(completionTimer);clearTimeout(settleTimer);cancelAnimationFrame(frame);releaseTarget();observer.disconnect();mutations.disconnect();window.removeEventListener('scroll',schedule,true);window.removeEventListener('resize',schedule);window.visualViewport?.removeEventListener('resize',schedule);window.visualViewport?.removeEventListener('scroll',schedule);};
  },[current,view?.tour,view?.index,language]);
  // Keep keyboard interaction within the guide AND its real target. Native
  // controls remain native. No body scroll lock or permanent tabindex changes.
@@ -119,7 +126,7 @@ export function LearningTour({userId,page,language,navigate}){
    if(e.key==='Escape'){e.preventDefault();e.stopPropagation();dialog?.close();run.current.close();return;}
    if(dialog)return;
    if(e.key!=='Tab')return;
-   const controls=[...focusables(target.current),...focusables(panel.current)];
+   const controls=[...(run.current.current?.interactive===false?[]:focusables(target.current)),...focusables(panel.current)];
    if(!controls.length){e.preventDefault();panel.current?.focus();return;}
    const i=controls.indexOf(document.activeElement),next=e.shiftKey?(i<=0?controls.length-1:i-1):(i+1)%controls.length;
    e.preventDefault();controls[next]?.focus();
@@ -139,12 +146,13 @@ export function LearningTour({userId,page,language,navigate}){
  {view&&createPortal(<div className="learning-tour" data-tour-overlay="true">
   {layout&&stepReady? <svg className="tour-mask" aria-hidden="true">
    <path className="tour-mask-shade" fillRule="evenodd" d={`M0 0 H${layout.width} V${layout.height} H0 Z ${roundedSpotlightPath(layout)}`}/>
+   {current?.interactive===false&&<rect data-tour-blocker="true" x={layout.left} y={layout.top} width={layout.right-layout.left} height={layout.bottom-layout.top} rx={layout.radius} fill="transparent" pointerEvents="all"/>}
    <g key={current?.id} className="tour-highlight">
     <rect className="tour-highlight-base" x={layout.left} y={layout.top} width={layout.right-layout.left} height={layout.bottom-layout.top} rx={layout.radius}/>
     <rect className="tour-highlight-edge" x={layout.left} y={layout.top} width={layout.right-layout.left} height={layout.bottom-layout.top} rx={layout.radius}/>
    </g>
   </svg>:<div className="tour-shade" style={{inset:0}}/>}
-  <section ref={panel} tabIndex={-1} role="dialog" aria-modal={view.kind!=='run'||!layout?true:undefined} aria-labelledby="tour-title" aria-describedby="tour-body" aria-hidden={panelPending||undefined} className={`tour-panel ${panelLayout?'tour-positioned':''} ${panelPending?'tour-pending':''}`} style={panelLayout?{'--tour-x':`${panelLayout.x}px`,'--tour-y':`${panelLayout.y}px`,width:panelLayout.pw}:undefined} data-tour-step={current?.id||view.kind}>
+  <section ref={panel} tabIndex={-1} role="dialog" aria-modal={view.kind!=='run'||!layout||current?.interactive===false?true:undefined} aria-labelledby="tour-title" aria-describedby="tour-body" aria-hidden={panelPending||undefined} className={`tour-panel ${panelLayout?'tour-positioned':''} ${panelPending?'tour-pending':''}`} style={panelLayout?{'--tour-x':`${panelLayout.x}px`,'--tour-y':`${panelLayout.y}px`,width:panelLayout.pw}:undefined} data-tour-step={current?.id||view.kind}>
    <header><span>{view.kind==='run'?say(`第 ${view.index+1} 步，共 ${steps.length} 步`,`Step ${view.index+1} of ${steps.length}`):'DDPhysics'}</span><button onClick={close} aria-label={say('退出教程','Exit tutorial')}>×</button></header>
    <h2 id="tour-title">{title}</h2>
    <div key={current?.id||view.kind} id="tour-body" aria-live="polite">

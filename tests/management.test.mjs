@@ -11,7 +11,7 @@ import { questions } from '../server/catalog.mjs';
 test('separate admin sessions, membership lifecycle, concurrent edits, private content and activity persistence', async () => {
   const directory = mkdtempSync(join(tmpdir(), 'dse-management-'));
   let now = Date.now();
-  let service = createApi({ directory, adminKey: 'test-key', clock: () => now });
+  let service = createApi({membershipEnabled:true, directory, adminKey: 'test-key', clock: () => now });
   const server = createServer((req,res) => service.handler(req,res,() => { if (!service.protectFiles(req,res)) { res.statusCode=200; res.end('Static resource'); } }));
   await new Promise(resolve => server.listen(0,'127.0.0.1',resolve));
   const base = `http://127.0.0.1:${server.address().port}`;
@@ -68,7 +68,7 @@ test('separate admin sessions, membership lifecycle, concurrent edits, private c
     const activity = (await call('/api/admin/activity?action=question_view')).data;
     assert.equal(activity.total,1); assert.equal(activity.rows[0].user_id,id);
     const count = (await call('/api/admin/activity')).data.total;
-    service.close(); service = createApi({directory,adminKey:'test-key',clock:()=>now});
+    service.close(); service = createApi({membershipEnabled:true,directory,adminKey:'test-key',clock:()=>now});
     assert.equal((await call('/api/admin/activity')).data.total,count);
     assert.equal((await call('/api/membership')).data.membership.active,true);
     await call('/api/admin/membership',{...grant,action:'revoke',revision:2,requestId:crypto.randomUUID()});

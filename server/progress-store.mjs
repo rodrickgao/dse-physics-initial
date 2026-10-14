@@ -68,7 +68,17 @@ export function createProgressStore({ db, clock, fail, archive, management, stat
     return progress(userId);
   }
   function trash(userId, body) {
-    archive.act(userId, body);
+    if (body.action === 'trash') {
+      transaction(() => {
+        const keys = body.all === true ? all('SELECT question_key FROM mistakes WHERE user_id=?', userId).map(row => row.question_key) : body.keys;
+        if (body.all === true && (!Number.isSafeInteger(body.expectedCount) || body.expectedCount < 1 || body.expectedCount > questions.size)) fail(400, '请选择有效的错题。');
+        if (body.all === true && keys.length !== body.expectedCount) fail(409, '错题数量已变化，请重新确认全部删除。');
+        if (!Array.isArray(keys) || !keys.length || keys.length > questions.size || keys.some(key => !questions.has(key))) fail(400, '请选择有效的错题。');
+        const before = statusStore.snapshot(userId);
+        for (const key of new Set(keys)) setMarked(userId, key, false);
+        statusStore.record(userId, before);
+      });
+    } else archive.act(userId, body);
     return { ...progress(userId), trash: archive.list(userId) };
   }
   return { read: progress, undo, update, setMistake, importMistakes, trash, listTrash: userId => archive.list(userId) };

@@ -5,7 +5,7 @@ import { exportRows, toWorkbook } from './student-export.mjs';
 import { studentLearning } from './student-learning.mjs';
 
 // Read-only reporting and spreadsheet preparation, separate from HTTP routing.
-export function createAdminReports({ db, clock, fail, management, learning }) {
+export function createAdminReports({ db, clock, fail, management, learning, membershipEnabled }) {
   const { get, all, transaction } = databaseQueries(db);
   function aggregate(rows) {
     const byPoint = new Map(); const byQuestion = new Map(); const byChapter = new Map();
@@ -27,7 +27,7 @@ export function createAdminReports({ db, clock, fail, management, learning }) {
       all("SELECT id,email,role,created_at,last_login,nickname,grade,region,target,target_major,avatar FROM users WHERE role='student' ORDER BY id"),
       all('SELECT user_id,question_key,marked_at FROM mistakes ORDER BY user_id,marked_at,question_key'),
       all('SELECT id,user_id,question_key,action,at FROM events ORDER BY user_id,at,id'), generatedAt), extra:{generatedAt,students:management.overview().students,mastered:all('SELECT user_id,question_key,marked_at FROM mastered ORDER BY user_id,marked_at,question_key')} }));
-    const bytes = await toWorkbook(exportData.rows,exportData.extra);
+    const bytes = await toWorkbook(exportData.rows,exportData.extra,{membershipEnabled});
     return { filename: '學生完整學習資料.xlsx', base64: Buffer.from(bytes).toString('base64'), generatedAt };
   }
   function stats() {
@@ -39,10 +39,10 @@ export function createAdminReports({ db, clock, fail, management, learning }) {
     }
     const students = all("SELECT id,email,role,created_at,last_login,nickname,grade,region,target,target_major,avatar,avatar_version FROM users WHERE role='student' ORDER BY last_login DESC").map(u => {
       const saved = byStudent.get(u.id) || []; const stats = aggregate(saved);
-      return { ...u, ...publicUser(u), mistakeCount: saved.length, pointCount: stats.points.length };
+      return { ...u, ...publicUser(u), mistakeCount: saved.length, pointCount: new Set(stats.points.map(p=>p.number)).size };
     });
     const totals = aggregate(rows);
-    return { students, ...totals, summary: { students: students.length, marks: rows.length, questions: new Set(rows.map(r => r.question_key)).size, points: totals.points.length }, activity: all("SELECT strftime('%Y-%m-%d',e.at/1000,'unixepoch','+8 hours') day,e.action,count(*) count FROM events e JOIN users u ON u.id=e.user_id WHERE u.role='student' AND e.at>? GROUP BY day,e.action ORDER BY day DESC", clock() - 30 * 86400000), generatedAt: new Date(clock()).toISOString() };
+    return { students, ...totals, summary: { students: students.length, marks: rows.length, questions: new Set(rows.map(r => r.question_key)).size, points: new Set(totals.points.map(p=>p.number)).size }, activity: all("SELECT strftime('%Y-%m-%d',e.at/1000,'unixepoch','+8 hours') day,e.action,count(*) count FROM events e JOIN users u ON u.id=e.user_id WHERE u.role='student' AND e.at>? GROUP BY day,e.action ORDER BY day DESC", clock() - 30 * 86400000), generatedAt: new Date(clock()).toISOString() };
   }
   function student(url) {
     const student = get("SELECT id,email,role,created_at,last_login,nickname,grade,region,target,target_major,avatar,avatar_version FROM users WHERE id=? AND role='student'", Number(url.searchParams.get('id')) || 0);

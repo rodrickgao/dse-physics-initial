@@ -45,7 +45,7 @@ try{
   const popupPromise=page.waitForEvent('popup');await page.getByRole('button',{name,exact:true}).click();const popup=await popupPromise;
   await popup.locator('.print-question').first().waitFor();
   assert.deepEqual(await popup.locator('.print-question').evaluateAll(nodes=>nodes.map(n=>n.dataset.question)),expected);
-  if(name==='打印原题版'){assert.equal(await popup.locator('.answer-line').count(),4);assert.equal(await popup.locator('.working-space').count(),1);}
+  if(name==='打印原题版'){assert.equal(await popup.locator('.answer-line,.answer-blank').count(),0);assert.equal(await popup.locator('.print-choice').count(),4);assert.equal(await popup.locator('.working-space').count(),1);}
   else {assert.match(await popup.locator('[data-question="tb-201-12"]').innerText(),/课本答案/);assert.ok(await popup.locator('[data-question="tb-201-12"] math').count());}
   await popup.close();
  }

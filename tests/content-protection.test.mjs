@@ -13,7 +13,7 @@ test('content boundary: trial, membership, static bypasses, bounded results, coo
  const directory=mkdtempSync(join(tmpdir(),'dse-protection-'));let now=Date.now();
  const dnaDirectory=join(directory,'dna');
  for(const label of ['中文版','英文版']) {const folder=join(dnaDirectory,label,'json');mkdirSync(folder,{recursive:true});writeFileSync(join(folder,'QDNA.json'),JSON.stringify([{question_id:'2012|paper-1a|1',knowledge_weights:[{knowledge_id:16,weight:1,evidence:'Fixture evidence'}],reasoning_steps:['Fixture step'],issues:[]}]));}
- const api=createApi({directory,adminKey:'fixture-only-key',clock:()=>now,qdnaDirectory:dnaDirectory,contentLimits:{detail:8}});
+ const api=createApi({membershipEnabled:true,directory,adminKey:'fixture-only-key',clock:()=>now,qdnaDirectory:dnaDirectory,contentLimits:{detail:8}});
  const server=createServer((req,res)=>api.handler(req,res,()=>{if(!api.protectFiles(req,res)){res.writeHead(404);res.end();}}));
  await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));const base=`http://127.0.0.1:${server.address().port}`;
  const client=()=>{let cookie='';return async(path,body)=>{const r=await fetch(base+path,{headers:{cookie,...(body?{'Content-Type':'application/json'}:{})},...(body?{method:'POST',body:JSON.stringify(body)}:{})});if(r.headers.get('set-cookie'))cookie=r.headers.get('set-cookie').split(';')[0];const raw=await r.text();let data;try{data=JSON.parse(raw);}catch{data=raw;}return {status:r.status,data,headers:r.headers};};};

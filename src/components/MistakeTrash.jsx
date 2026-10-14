@@ -9,6 +9,7 @@ export function MistakeTrash({ onAction, openPaper }) {
   const [rows,setRows]=useState([]), [selected,setSelected]=useState(new Set());
   const [busy,setBusy]=useState(false), [error,setError]=useState(''), [loading,setLoading]=useState(true), [confirm,setConfirm]=useState(null);
   const dialogRef = useRef(null);
+  const pending = useRef(false);
   const closeDialog = useCallback(() => setConfirm(null), []);
   useDialogFocus(dialogRef, Boolean(confirm), closeDialog, busy);
   async function load() {
@@ -18,9 +19,19 @@ export function MistakeTrash({ onAction, openPaper }) {
   }
   useEffect(()=>{void load();},[]);
   async function act(action,keys) {
+    if(pending.current)return;
+    pending.current=true;
     setBusy(true);setError('');
-    try { if(await onAction(action,keys)){setConfirm(null);await load();}else setError('操作失败，请重试。'); }
-    catch(e){setError(e.message);}finally{setBusy(false);}
+    const chosen=new Set(keys);
+    try {
+      const selection=chosen.size>rows.length/2?{all:true,exceptKeys:rows.filter(row=>!chosen.has(row.key)).map(row=>row.key),expectedCount:chosen.size}:undefined;
+      if(selection){
+        const digest=await crypto.subtle.digest('SHA-256',new TextEncoder().encode([...chosen].sort().join('\n')));
+        selection.selectionHash=[...new Uint8Array(digest)].map(byte=>byte.toString(16).padStart(2,'0')).join('');
+      }
+      if(await onAction(action,keys,selection)){setConfirm(null);await load();}else setError('操作失败，请重试。');
+    }
+    catch(e){setError(e.message);}finally{pending.current=false;setBusy(false);}
   }
   return <section data-tour="mistake-trash" data-ready={!loading&&!error} data-error={Boolean(error)} className="mistake-trash" aria-label="错题回收站">
     <div className="selection-toolbar"><label><input type="checkbox" disabled={busy||!rows.length} checked={!!rows.length&&selected.size===rows.length} onChange={e=>setSelected(e.target.checked?new Set(rows.map(r=>r.key)):new Set())}/>全选</label><Button variant="outline" disabled={busy||!selected.size} onClick={()=>act('restore',[...selected])}>恢复所选</Button><Button variant="danger" disabled={busy||!selected.size} onClick={()=>setConfirm([...selected])}>彻底删除所选</Button></div>

@@ -1,3 +1,4 @@
+import { MEMBERSHIP_ENABLED } from '../../lib/access-policy';
 import { BookOpen, Clock3, PanelLeftClose, PanelLeftOpen, CircleAlert, FileQuestion, Home, Crown, Moon, Sun } from 'lucide-react';
 import { BrandLogo } from '../BrandLogo';
 import { FocusCountdown } from '../FocusCountdown';
@@ -21,7 +22,7 @@ export function Sidebar({ page, navigate, dark, toggleDark, language, mistakeCou
   return <aside className="sidebar" aria-label={english?'Main navigation':'主目录'}>
     <div className="sidebar-heading"><button className="brand" aria-label="DSE Physics" title="DSE Physics" onClick={() => navigate("home")}><BrandLogo language={language}/></button>
     <button className="sidebar-toggle" onClick={toggleCollapsed} aria-expanded={!collapsed} aria-controls="main-navigation" aria-label={toggleLabel} title={toggleLabel}>{collapsed?<PanelLeftOpen/>:<PanelLeftClose/>}</button></div>
-    <nav id="main-navigation" className="nav-list" aria-label="Main navigation">{NAVIGATION.map(({ id, zh, en, icon: Icon }) => {
+    <nav id="main-navigation" className="nav-list" aria-label="Main navigation">{NAVIGATION.filter(item=>MEMBERSHIP_ENABLED||item.id!=='membership').map(({ id, zh, en, icon: Icon }) => {
       const label=id==='membership'&&membership.active?(english?'My membership':'我的会员'):(english?en:zh);
       return <button key={id} aria-label={label} title={collapsed?label:undefined} aria-current={page === id ? "page" : undefined} className={cn("nav-item", page === id && "active")} onClick={() => navigate(id)}><Icon /><span className="nav-label"><strong>{label}</strong></span>{id === "mistakes" && mistakeCount > 0 ? <em className="nav-count">{mistakeCount}</em> : page === id && <span className="nav-dot" />}</button>;
     })}</nav>

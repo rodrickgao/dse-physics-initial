@@ -11,15 +11,29 @@ const base=process.env.QA_URL || 'http://127.0.0.1:5177/';
 const output='text-papers/official-screenshots';fs.mkdirSync(output,{recursive:true});
 const browser=await chromium.launch({headless:true,channel:'chrome'});
 const page=await browser.newPage({viewport:{width:900,height:1000},deviceScaleFactor:2});
+if(process.env.DSE_SCREENSHOT_SESSION)await page.context().addCookies([{name:'dse_session',value:process.env.DSE_SCREENSHOT_SESSION,url:base,httpOnly:true,sameSite:'Strict'}]);
+await page.route(base,route=>route.fulfill({contentType:'text/html',body:'<!doctype html><html><body></body></html>'}));
+await page.goto(base);
+await page.unroute(base);
 let original=0,typeset=0;
 try {
  for(const year of context.window.DSE_SITE_DATA.years) {
+  if(process.env.DSE_SCREENSHOT_YEAR && String(year.year)!==process.env.DSE_SCREENSHOT_YEAR)continue;
+  if(process.env.DSE_SCREENSHOT_LANGUAGE && year.language!==process.env.DSE_SCREENSHOT_LANGUAGE)continue;
   const file=`text-papers/${year.year}-${year.language}.json`;
   const data=JSON.parse(fs.readFileSync(file,'utf8'));
+  const original2025=Number(year.year)===2025 && year.language==='chn'
+   ? JSON.parse(fs.readFileSync('text-papers/2025-eng.json','utf8')) : null;
   for(const [pi,paper] of year.papers.slice(0,3).entries()) for(const q of paper.questions) {
    const key=`${year.year}|${['paper-1a','paper-1b','paper-2'][pi]}|${q.id || q.label.replace(/^Q/,'')}`;
    const record=data[key];assert.ok(record,key);
    let html=record.officialOriginal?.includes('<img ') ? record.officialOriginal : scanHtml(q.answer,year.id);
+   if(original2025 && pi!==0 && (pi===1 || key.endsWith('.S'))) {
+    const original=original2025[key]?.officialOriginal;
+    assert.ok(original?.includes('<img '),`Missing complete 2025 marking source: ${key}`);
+    // Preserve the original English source, but show the full Chinese translation.
+    html='';record.officialOriginal=original;
+   }
    let kind='original';
    if(!html) {
     const source=record.official;assert.ok(source,key);

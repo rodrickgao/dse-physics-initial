@@ -3,7 +3,13 @@ import { readAdminLocation, adminHash } from './admin-location';
 export function useAdminLocation() {
   const [route, setRoute] = useState(() => readAdminLocation(location.hash));
   useEffect(() => {
-    const read = () => setRoute(readAdminLocation(location.hash));
+    const read = () => {
+      const next = readAdminLocation(location.hash);
+      const hash = adminHash(next);
+      if (location.hash !== hash) history.replaceState({}, '', hash);
+      setRoute(next);
+    };
+    read();
     window.addEventListener('popstate', read); window.addEventListener('hashchange', read);
     return () => { window.removeEventListener('popstate', read); window.removeEventListener('hashchange', read); };
   }, []);

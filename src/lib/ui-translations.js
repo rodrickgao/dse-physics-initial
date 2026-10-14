@@ -1,5 +1,15 @@
 // UI labels only. Student messages, teacher replies and form values are never translated.
 const pairs = `
+注册=Sign up
+登录 ddphysics=Sign in to ddphysics
+注册 ddphysics=Sign up to ddphysics
+验证码登录=Email code sign in
+已有账号？登录=Already have an account? Sign in
+还没有账号？注册=New here? Sign up
+纯干货，不卖焦虑。=Practical resources, without the pressure.
+全部功能免费，纯干货，不卖焦虑。=All features are free. Clear physics resources, without the pressure.
+近 7 天注册=New students · Last 7 days
+下载章节 PDF=Download chapter PDF
 会员账号=Membership account
 必修一题目与知识点双向关联=Compulsory 1 question–knowledge links in both directions
 课本例题、课本解答与思考题解答=Textbook examples, solutions and Think about answers

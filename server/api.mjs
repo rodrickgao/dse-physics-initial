@@ -1,3 +1,4 @@
+import { MEMBERSHIP_ENABLED } from '../src/lib/access-policy.js';
 import { createProgressStore } from './progress-store.mjs';
 import { createAdminReports } from './admin-reports.mjs';
 import { questionStatsWorkbook } from './question-stats-export.mjs';
@@ -27,7 +28,7 @@ const token = () => randomBytes(32).toString('hex');
 const fail = (status, message) => { throw Object.assign(new Error(message), { status }); };
 const publicUser = publicProfile;
 
-export function createApi({ directory, mailer, paymentNotifier, weeklyMailer, weeklyFrom, clock = Date.now, adminKey: suppliedKey, publicOrigins = [], secureCookies = false, trustProxy = false, contentLimits, qdnaDirectory = process.env.DSE_QDNA_DIR } = {}) {
+export function createApi({ membershipEnabled = MEMBERSHIP_ENABLED, directory, mailer, paymentNotifier, weeklyMailer, weeklyFrom, clock = Date.now, adminKey: suppliedKey, publicOrigins = [], secureCookies = false, trustProxy = false, contentLimits, qdnaDirectory = process.env.DSE_QDNA_DIR } = {}) {
   const allowedOrigins = new Set(publicOrigins);
   const allowedHosts = new Set(publicOrigins.map(value => new URL(value).host));
   if (secureCookies && (!mailer || !allowedOrigins.size)) throw new Error('Production requires email delivery and an explicit HTTPS origin.');
@@ -38,19 +39,19 @@ export function createApi({ directory, mailer, paymentNotifier, weeklyMailer, we
   const db = openDatabase(directory);
   const { get, all, run, transaction } = databaseQueries(db);
   const insights = createAdminInsights({db,clock,fail});
-  const management = createManagement({ db, clock, fail, transaction });
-  const content = createContent({ db, clock, secret: adminKey, membership: management.membership, limiterConfig: contentLimits, qdnaDirectory });
+  const management = createManagement({ db, clock, fail, transaction, membershipEnabled });
+  const content = createContent({ db, clock, membership:management.membership, membershipEnabled, limiterConfig: contentLimits, qdnaDirectory });
   const statusStore = createQuestionStatus({db,clock});
   const learning = createQdnaLearning({db,clock,statusStore});
   content.setLearning(learning);
-  const weeklyForStudent=(id,options)=>{const active=management.membership(id).active;return memberWeeklyReport(learning.weekly(id,{...options,trialOnly:!active}),active);};
-  const weeklyReports=createWeeklyReportScheduler({db,clock,buildReport:weeklyForStudent,prepareReport:(id,report)=>memberWeeklyReport(report,management.membership(id).active),sendMail:weeklyMailer,from:weeklyFrom});
+  const weeklyForStudent=(id,options)=>{const active=!membershipEnabled||management.membership(id).active;return memberWeeklyReport(learning.weekly(id,{...options,trialOnly:!active}),active);};
+  const weeklyReports=createWeeklyReportScheduler({db,clock,buildReport:weeklyForStudent,prepareReport:(id,report)=>memberWeeklyReport(report,!membershipEnabled||management.membership(id).active,!membershipEnabled&&report.recommendations_trial_only?learning.weekly(id,{start:report.start,end:report.end,language:report.language}).recommended_questions:null),sendMail:weeklyMailer,from:weeklyFrom});
   const learningLimit=createContentLimiter({db,clock,config:contentLimits});
   const archive = createMistakeArchive({ db, clock, fail, transaction, record: management.record, questions, statusStore });
   const tutoring = createTutoring({ db, clock, fail });
   const progress = createProgressStore({ db, clock, fail, archive, management, statusStore, token });
-  const reports = createAdminReports({ db, clock, fail, management, learning });
-  const paymentNotifications = createPaymentNotifications({db,clock,sendMail:paymentNotifier});
+  const reports = createAdminReports({ db, clock, fail, management, learning, membershipEnabled });
+  const paymentNotifications = createPaymentNotifications({db,clock,sendMail:membershipEnabled?paymentNotifier:undefined});
   const payments = createPaymentOrders({ db, clock, fail, transaction, management, notifications:paymentNotifications });
   function limit(bucket, count, interval) {
     run('DELETE FROM limits WHERE at < ?', clock() - 3600000);
@@ -86,6 +87,7 @@ export function createApi({ directory, mailer, paymentNotifier, weeklyMailer, we
       if (req.headers['sec-fetch-site'] === 'cross-site') fail(403, '來源驗證失敗。');
       const url = new URL(req.url, 'http://localhost');
       const path = url.pathname;
+      if (!membershipEnabled && ['POST','PUT','DELETE'].includes(req.method) && ['/api/orders','/api/admin/orders/review','/api/admin/membership'].includes(path)) fail(410, '全站已免费开放，付款与会员变更暂时停用。');
       let body = {};
       if (['POST', 'PUT', 'DELETE'].includes(req.method)) {
         if (!req.headers['content-type']?.startsWith('application/json')) fail(415, '需要 JSON 格式。');
@@ -142,6 +144,17 @@ export function createApi({ directory, mailer, paymentNotifier, weeklyMailer, we
       }
       const user = path.startsWith('/api/admin/') ? session(req, true) || session(req) : session(req) || (/^\/api\/avatar\//.test(path) ? session(req, true) : null); if (!user) fail(401, '請先登入。');
       if (path.startsWith('/api/admin/') && user.role !== 'admin') fail(403, '只限開發者存取。');
+      if(path==='/api/weak-topics'||path.startsWith('/api/weak-topics/')) {
+        if(user.role!=='student')fail(403,'只限学生使用。');
+        for(const key of url.searchParams.keys())if(key!=='language'||url.searchParams.getAll(key).length!==1)fail(400,'请求参数不正确。');
+        const language=url.searchParams.get('language')||'chn';if(!['chn','eng'].includes(language))fail(400,'语言不正确。');
+        res.setHeader('Cache-Control','private, no-store');res.setHeader('Vary','Cookie');
+        if(path==='/api/weak-topics'&&req.method==='GET')return send(learning.homeTopics.list(user.id,language));
+        if(req.method!=='POST'||!['/api/weak-topics/viewed','/api/weak-topics/dismiss'].includes(path))fail(405,'操作不支持。');
+        if(Object.keys(body).some(key=>!['knowledge_id','revision'].includes(key))||typeof body.knowledge_id!=='string'||!/^\d+$/.test(body.knowledge_id)||!Number.isSafeInteger(body.revision)||body.revision<0)fail(400,'请求参数不正确。');
+        limit(`weak-topics:${user.id}`,120,60000);
+        return send(learning.homeTopics.update(user.id,body,path.split('/').at(-1),language));
+      }
       if (path.startsWith('/api/learning/') || path.startsWith('/api/admin/learning/')) {
         if(req.method!=='GET')fail(405,'只支持 GET。');
         const admin=path.startsWith('/api/admin/'),kind=path.split('/').at(-1);
@@ -153,7 +166,7 @@ export function createApi({ directory, mailer, paymentNotifier, weeklyMailer, we
         const studentId=admin?number('studentId',0,Number.MAX_SAFE_INTEGER):user.id;
         if(admin&&kind!=='overview'&&!get("SELECT id FROM users WHERE id=? AND role='student'",studentId))fail(404,'找不到学生。');
         learningLimit(req,res,user,'similar');res.setHeader('Cache-Control','private, no-store');res.setHeader('Vary','Cookie');
-        const recommendationAccess=admin||management.membership(user.id).active;
+        const recommendationAccess=!membershipEnabled||admin||management.membership(user.id).active;
         if(kind==='dashboard'){const result=learning.dashboard(studentId,{language,offset,limit:size,trialOnly:!recommendationAccess});return send(admin?result:studentLearningView(result,{recommendationAccess}));}
         if(kind==='knowledge'){const status=url.searchParams.get('status')||'ALL';if(!['ALL','MASTERED','WRONG','UNMARKED'].includes(status))fail(400,'状态不正确。');const result=learning.knowledge(studentId,url.searchParams.get('id'),{language,status,offset,limit:size,trialOnly:!recommendationAccess});if(!result)fail(404,'找不到知识点。');return send(admin?result:studentLearningView(result,{recommendationAccess}));}
         if(admin&&kind==='overview'){const type=url.searchParams.get('type')||'questions';if(!['questions','knowledge'].includes(type))fail(400,'统计类型不正确。');return send(learning.adminOverview({language,type,offset,limit:size}));}
@@ -162,9 +175,9 @@ export function createApi({ directory, mailer, paymentNotifier, weeklyMailer, we
       }
       if (path === '/api/admin/content/dna'  && req.method === 'GET') return send(content.adminDna(url));
       if (path === '/api/admin/session' && req.method === 'GET') return send({ user: publicUser(user) });
-      if (path === '/api/membership' && req.method === 'GET') return send({ membership: management.membership(user.id), accessMode: 'links-reasoning-tutoring' });
+      if (path === '/api/membership' && req.method === 'GET') return send({ membership:management.membership(user.id), accessMode:membershipEnabled?'links-reasoning-tutoring':'free' });
       if (path === '/api/premium/network' && req.method === 'GET') {
-        if (user.role !== 'admin' && !management.membership(user.id).active) fail(403, '知識點關聯需要有效會員。');
+        if(membershipEnabled&&user.role!=='admin'&&!management.membership(user.id).active)fail(403,'知識點關聯需要有效會員。');
         fail(410, '请使用按题目或知识点分页的内容接口。');
       }
       if (path === '/api/admin/tutoring' && req.method === 'GET') return send({ rows:tutoring.list() });
@@ -182,11 +195,11 @@ export function createApi({ directory, mailer, paymentNotifier, weeklyMailer, we
       if (path === '/api/admin/overview' && req.method === 'GET') return send({...management.overview(),...insights.dailyUsage()});
       if (path === '/api/admin/activity' && req.method === 'GET') return send(management.activity(url));
       if (path === '/api/admin/membership-history' && req.method === 'GET') return send({ rows: management.history(Number(url.searchParams.get('userId')) || 0) });
-      if (path === '/api/admin/membership' && req.method === 'POST') return send(management.change(user, body));
+      if (path === '/api/admin/membership' && req.method === 'POST') return send(management.change(user,body));
       if (path === '/api/orders' && req.method === 'GET') return send({order:payments.latest(user.id)});
       if (path === '/api/admin/orders' && req.method === 'GET') return send(payments.list());
       if (path === '/api/admin/orders/receipt' && req.method === 'GET') { const image = payments.receipt(url.searchParams.get('id')); res.setHeader('Content-Type','image/webp'); return res.end(image); }
-      if (path === '/api/admin/orders/review' && req.method === 'POST') { const result=payments.review(user,body); void paymentNotifications.flush(); return send(result); }
+      if (path === '/api/admin/orders/review' && req.method === 'POST') {const result=payments.review(user,body);void paymentNotifications.flush();return send(result);}
       if (path === '/api/profile' && req.method === 'PUT') {
         if (user.role !== 'student') fail(403, '此功能供學生使用。');
         limit(`profile:${user.id}`, 30, 60000);
@@ -210,8 +223,7 @@ export function createApi({ directory, mailer, paymentNotifier, weeklyMailer, we
       }
       if (user.role === 'student' && !publicUser(user).profileComplete && req.method !== 'GET') fail(403, '請先完成學生資料。');
       if (path === '/api/orders' && req.method === 'POST') {
-        limit(`payment:${user.id}`,20,60000);
-        const result=await payments.submit(user,body); void paymentNotifications.flush(); return send(result);
+        limit(`payment:${user.id}`,20,60000);const result=await payments.submit(user,body);void paymentNotifications.flush();return send(result);
       }
       if (path === '/api/activity' && req.method === 'POST') {
         limit(`activity:${user.id}`, 180, 60000);
@@ -224,7 +236,7 @@ export function createApi({ directory, mailer, paymentNotifier, weeklyMailer, we
         }
         return send({ sessions: all('SELECT id,elapsed_ms AS elapsedMs FROM focus_sessions WHERE user_id=?', user.id) });
       }
-      if (path === '/api/tutoring' && user.role !== 'admin' && !management.membership(user.id).active) fail(403, '问老师需要有效会员。');
+      if(path==='/api/tutoring'&&membershipEnabled&&user.role!=='admin'&&!management.membership(user.id).active)fail(403,'问老师需要有效会员。');
       if (path === '/api/tutoring' && req.method === 'GET') return send({ rows:tutoring.list(user.id) });
       if (path === '/api/tutoring' && req.method === 'POST') {
         limit(`tutoring:${user.id}`,20,3600000); return send(tutoring.submit(user.id,body));
@@ -242,5 +254,5 @@ export function createApi({ directory, mailer, paymentNotifier, weeklyMailer, we
       fail(404, '找不到此操作。');
     } catch (error) { res.statusCode = error.status || 500; send({ error: error.status ? error.message : '服務暫時無法使用，請重試。' }); if (!error.status) console.error('API request failed', {path:req.url.split('?')[0],type:error.name}); }
   }
-  return { handler, buildWeeklyReport: weeklyForStudent, protectFiles: (req,res) => content.file(req,res,session(req) || session(req,true)), hasPremium: req => { const user = session(req); return Boolean(user && (user.role === 'admin' || management.membership(user.id).active)); }, close: () => { weeklyReports.close(); paymentNotifications.close(); db.close(); }, adminKeyPath: keyPath };
+  return { handler, buildWeeklyReport: weeklyForStudent, protectFiles: (req,res) => content.file(req,res,session(req) || session(req,true)), close: () => { weeklyReports.close(); paymentNotifications.close(); db.close(); }, adminKeyPath: keyPath };
 }

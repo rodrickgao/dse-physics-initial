@@ -31,8 +31,8 @@ for(const language of (process.env.DSE_TOUR_QA_LANGUAGE?[process.env.DSE_TOUR_QA
  await page.reload();await step('welcome').waitFor();await step('welcome').getByRole('button',{name:text('继续教程','Resume tour'),exact:true}).click();await ready('mistake-review');
  await target('tour-mistake-open').click();await ready('question-knowledge');await target('question-knowledge').click();await ready('knowledge-question');
  await page.screenshot({path:`${out}/v2-${language}-knowledge.png`});
- await target('knowledge-question-2').click();await ready('analysis-open');assert.ok(page.url().endsWith('#mistakes'));
- await target('mistake-profile-toggle').click();await ready('analysis-report');await step('analysis-report').getByRole('button',{name:text('下一步','Next'),exact:true}).click();await ready('replay');
+ await target('knowledge-question-2').click();await ready('analysis-open');assert.ok(page.url().endsWith('#home'));
+ await step('analysis-open').getByRole('button',{name:text('下一步','Next'),exact:true}).click();await ready('analysis-report');await step('analysis-report').getByRole('button',{name:text('下一步','Next'),exact:true}).click();await ready('replay');
  await step('replay').getByRole('button',{name:text('下一步','Next'),exact:true}).click();await step('done').waitFor();await page.keyboard.press('Escape');
  const key=`ddphysics-tour:v4:${encodeURIComponent(auth.user.id)}`;assert.equal(await page.evaluate(k=>JSON.parse(localStorage.getItem(k)).status,key),'completed');
  await page.goto(base+'/#home');await target('profile-settings').waitFor();await page.waitForTimeout(800);assert.equal(await page.locator('.qdna-recommendations').count(),0);assert.equal(await page.locator('[data-tour-overlay]').count(),0);

@@ -3,6 +3,8 @@ import {points,questions,pointInfo} from './catalog.mjs';
 import {calculateKnowledgeWeakness,weaknessConfiguration} from './knowledge-weakness.mjs';
 import {getRecommendedQuestions,questionUrl} from './qdna-recommendations.mjs';
 import {isTrialKnowledge,isTrialPractice,isTrialRecommendation,trialRecommendations} from './recommendation-access.mjs';
+import {createTopicPractice} from './topic-practice.mjs';
+import {createWeakTopicStore} from './weak-topic-store.mjs';
 
 export function createQdnaLearning({db,clock,statusStore,config=weaknessConfiguration(),canonicalLanguage=process.env.DSE_QDNA_CANONICAL_LANGUAGE||'chn'}) {
  if(!['chn','eng'].includes(canonicalLanguage))throw new Error('Invalid canonical QDNA language');
@@ -18,6 +20,12 @@ export function createQdnaLearning({db,clock,statusStore,config=weaknessConfigur
  }
  const version='qdna-'+createHash('sha256').update(JSON.stringify({canonicalLanguage,source})).digest('hex').slice(0,16);
  const info=(id,language)=>{const p=pointInfo(Number(id));return {knowledge_id:String(id),name:language==='eng'?p.titleEn||p.title:p.title,number:p.number,chapter:language==='eng'?p.chapterEn:p.chapter};};
+ const topicPractice=createTopicPractice({catalog:questions,knowledgeIds:points.keys(),knowledgeInfo:info,isFreeTopic:isTrialKnowledge,isFreeQuestion:isTrialPractice});
+ const cardFor=new Map([...points].map(([id,p])=>[String(id),String(p.card_sequence)]));
+ const questionCards=new Map([...questions].map(([id,q])=>[id,new Set([...(q.points||[]).map(String),...(dna.get(id)||[]).map(w=>w.knowledge_id)].map(id=>cardFor.get(id)).filter(Boolean))]));
+ let homeStore;
+ const store=()=>homeStore??=createWeakTopicStore({db,cardFor,questionCards,topics:(id,language)=>topicPractice({states:statusStore.snapshot(id),dna,language,limit:0})});
+ const homeTopics={list:(...args)=>store().list(...args),update:(...args)=>store().update(...args)};
  const compare=(a,b)=>Number(b.sufficient_data)-Number(a.sufficient_data)||(b.weakness_signal??-1)-(a.weakness_signal??-1)||Number(a.knowledge_id)-Number(b.knowledge_id);
  const recommendationScope=trialOnly=>trialOnly?{questionFilter:isTrialPractice,knowledgeFilter:isTrialKnowledge}:{};
  function snapshot(studentId,language='chn',limit=8,{trialOnly=false}={}) {
@@ -25,7 +33,8 @@ export function createQdnaLearning({db,clock,statusStore,config=weaknessConfigur
   const recommendations=getRecommendedQuestions({states,dna,signals,catalog:questions,knowledgeInfo:info,language,limit,...recommendationScope(trialOnly)});
   return {generated_at:clock(),qdna_version:version,counts:{marked:states.size,wrong:[...states.values()].filter(r=>r.status==='WRONG').length,mastered:[...states.values()].filter(r=>r.status==='MASTERED').length},
    highlights:Object.fromEntries(['NEEDS_REVIEW','STRONG'].map(status=>[status,signals.rows.filter(r=>r.status===status).sort((a,b)=>status==='STRONG'?a.weakness_signal-b.weakness_signal:compare(a,b)).slice(0,3).map(r=>({...r,...info(r.knowledge_id,language)}))])),
-   signals:{...signals,rows:signals.rows.map(r=>({...r,...info(r.knowledge_id,language)})).sort(compare)},recommendations};
+   signals:{...signals,rows:signals.rows.map(r=>({...r,...info(r.knowledge_id,language)})).sort(compare)},recommendations,
+   weak_points:topicPractice({states,dna,language,trialOnly})};
  }
  function dashboard(studentId,{language='chn',offset=0,limit=20,recommendationLimit=8,trialOnly=false}={}) {
   const result=snapshot(studentId,language,recommendationLimit,{trialOnly});return {...result,signals:{...result.signals,total:result.signals.rows.length,rows:result.signals.rows.slice(offset,offset+limit)}};
@@ -54,7 +63,7 @@ export function createQdnaLearning({db,clock,statusStore,config=weaknessConfigur
   return {kind:'qdna-weekly',name:user?.nickname|| (language==='eng'?'Student':'同学'),language,start,end,generated_at:current.generated_at,qdna_version:version,history_since:statusStore.historySince,partial_history:start<statusStore.historySince,
    activity:{newly_mastered:counts.find(r=>r.to_status==='MASTERED')?.n||0,newly_wrong:counts.find(r=>r.to_status==='WRONG')?.n||0},focus_areas:current.signals.rows.filter(r=>r.status==='NEEDS_REVIEW').slice(0,3),recommended_questions:current.recommendations.new_questions.slice(0,3),continue_url:'/#mistakes',personalized:current.recommendations.personalized};
  }
- return {snapshot,dashboard,knowledge,adminOverview,weekly,version};
+ return {snapshot,dashboard,knowledge,adminOverview,weekly,version,homeTopics};
 }
 
 // Student responses expose only actionable learning guidance, never analysis internals.
@@ -62,10 +71,15 @@ export function studentLearningView(result, {recommendationAccess=false}={}) {
  const point=p=>({knowledge_id:p.knowledge_id,name:p.name,number:p.number,chapter:p.chapter});
  const question=q=>({question_id:q.question_id,question_title:q.question_title,question_url:q.question_url,chapter:q.chapter,primary_knowledge:point(q.primary_knowledge),recommendation_reason:q.recommendation_reason,trialAvailable:isTrialRecommendation(q)});
  const recommendations=recommendationAccess?result.recommendations:trialRecommendations(result.recommendations);
- return {...(result.knowledge?{knowledge:point(result.knowledge)}:{weak_points:[...new Map([...(result.highlights?.NEEDS_REVIEW||[]),...(result.recommendations.focus_points||[])].map(p=>[p.number || p.knowledge_id,point(p)])).values()].slice(0,3)}),recommendations:!recommendationAccess&&result.knowledge&&!isTrialKnowledge(result.knowledge.knowledge_id)?{locked:true}:{...(!recommendationAccess?{trialOnly:true}:{}),personalized:recommendations.personalized,new_questions:recommendations.new_questions.map(question),wrong_review:recommendations.wrong_review.map(question)}};
+ const weakPoints=result.weak_points?.map(p=>{
+  const locked=!recommendationAccess&&!isTrialKnowledge(p.knowledge_id);
+  return {...point(p),practice:{locked,trialAvailable:isTrialKnowledge(p.knowledge_id),items:locked?[]:(p.practice.items||[]).filter(q=>recommendationAccess||isTrialRecommendation(q)).map(question)}};
+ })||[...new Map([...(result.highlights?.NEEDS_REVIEW||[]),...(result.recommendations.focus_points||[])].map(p=>[p.number || p.knowledge_id,point(p)])).values()].slice(0,3);
+ return {...(result.knowledge?{knowledge:point(result.knowledge)}:{weak_points:weakPoints}),recommendations:!recommendationAccess&&result.knowledge&&!isTrialKnowledge(result.knowledge.knowledge_id)?{locked:true}:{...(!recommendationAccess?{trialOnly:true}:{}),personalized:recommendations.personalized,new_questions:recommendations.new_questions.map(question),wrong_review:recommendations.wrong_review.map(question)}};
 }
 
 // Recheck entitlement when sending a queued report, including retries after expiry.
-export function memberWeeklyReport(report, active) {
+export function memberWeeklyReport(report, active, fullRecommendations = null) {
+ if(active && fullRecommendations) return {...report,recommendations_trial_only:false,recommendations_locked:false,recommended_questions:fullRecommendations,personalized:report.personalized||fullRecommendations.length>0};
  return active?report:{...report,recommendations_locked:false,recommendations_trial_only:true,recommended_questions:report.recommended_questions.filter(isTrialRecommendation)};
 }

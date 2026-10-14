@@ -16,6 +16,8 @@ header{margin-bottom:24px;flex-wrap:wrap}header>div{min-width:0}
 .panel{padding:28px;margin:24px 0;border-radius:16px}
 .metrics{gap:20px;margin:26px 0}.metrics>div{padding:26px}.metrics span{font-size:18px;color:#243b59}.metrics strong{font-size:42px;line-height:1.3}
 .admin-shortcuts{display:flex;gap:16px;flex-wrap:wrap}.admin-shortcuts button{color:#245eda}
+.admin-overview-students>h2{margin-bottom:0}.admin-overview-membership{border-top:1px solid #dce5ef;margin:36px 0 28px;padding-top:28px}.admin-overview-membership>h2{margin-bottom:20px}.admin-membership-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.admin-membership-grid>.metrics{grid-template-columns:repeat(2,minmax(0,1fr));margin:0}.admin-membership-grid>.panel{margin:0}.admin-membership-chart h3{margin:0 0 14px}.admin-overview-membership>.admin-shortcuts{margin-top:20px}
+@media(max-width:1200px){.admin-membership-grid{grid-template-columns:minmax(0,1fr)}}
 .toolbar{gap:16px;align-items:end}.toolbar>span{font-size:16px;color:#243b59}.toolbar label{min-width:180px}.toolbar .grow{min-width:0;flex:1 1 260px}
 .toolbar h3{margin:0}.toolbar button{flex-shrink:0}
 table{font-size:17px}th{font-size:16px;color:#243b59;padding:16px;text-align:left}td{padding:18px 16px;max-width:340px;color:#172b46}td small{font-size:15px;color:#344b67;line-height:1.6;margin-top:4px}

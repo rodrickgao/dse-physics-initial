@@ -1,5 +1,6 @@
+import { MEMBERSHIP_ENABLED } from './access-policy.js';
 export const PRIMARY_YEAR = 2012;
-export const PAGES = ['home', 'support', 'bank', 'ask', 'papers', 'textbook', 'exercises', 'examples', 'mistakes', 'focus', 'membership', 'payment', 'receipt', 'activating', 'member-success', 'admin'];
+export const PAGES = ['home', 'support', 'bank', 'ask', 'papers', 'textbook', 'exercises', 'examples', 'mistakes', 'focus', 'membership', 'payment', 'receipt', 'activating', 'member-success', 'admin'].filter(page=>MEMBERSHIP_ENABLED||!['membership','payment','receipt','activating','member-success'].includes(page));
 
 export function readRoute(hash = '') {
   const [name, query = ''] = hash.replace(/^#/, '').split('?');
@@ -12,7 +13,7 @@ export function readRoute(hash = '') {
 }
 
 export function pageHash(page, question = '', options = {}) {
-  if(page === 'textbook' && Number.isInteger(options.knowledge) && options.knowledge>0) return `#textbook?knowledge=${options.knowledge}`;
+  if(page === 'textbook' && Number.isInteger(options.knowledge) && options.knowledge>0) return `#textbook?knowledge=${options.knowledge}${Number.isSafeInteger(options.weakRevision)&&options.weakRevision>=0?`&weakRevision=${options.weakRevision}`:''}`;
   if(['exercises', 'examples'].includes(page) && !question && /^(compulsory-[1-5]|elective-[1-4])$/.test(options.book || '')) return `#${page}?book=${options.book}`;
   return `#${PAGES.includes(page) ? page : 'home'}${['papers', 'exercises', 'examples'].includes(page) && question ? `?question=${encodeURIComponent(question)}` : ''}`;
 }

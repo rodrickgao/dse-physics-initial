@@ -1,3 +1,4 @@
+import { MEMBERSHIP_ENABLED } from './access-policy.js';
 // Completion selectors expose committed React state, never raw click events.
 // Only browsing routes are prepared. Tutorials never invoke mutations or payments.
 const t=(zh,en)=>({chn:zh,eng:en});
@@ -10,8 +11,8 @@ export const coreSteps=[
  step('mistake-review','tour-mistake-open',["复习错题", "Review a mistake"],["错题可重做、导出，或标为已掌握。", "Revisit, export or mark saved mistakes as mastered."],['点击这道题的「打开」。','Click “Open” on this question.'],{mode:'action',route:['mistakes'],complete:'[data-tour="example-state"][data-ready="true"][data-question="ex-101-1"]'}),
  step('question-knowledge','question-knowledge',["题目关联知识点", "Question to knowledge"],["查看本题相关概念。必修一关联免费开放。", "Review related concepts. Compulsory 1 links are free."],['点击关联知识点，打开知识卡。','Click the related knowledge point to open its card.'],{mode:'action',route:['examples','ex-101-1'],complete:'[data-tour="knowledge-card"][data-study-knowledge-card="2"]'}),
  step('knowledge-question','knowledge-question-2',["知识点关联题目", "Knowledge to questions"],["用关联题目练习刚学的概念。", "Practise the concept with linked questions."],['点击任一道关联题目。','Click a related question.'],{mode:'action',route:['textbook','',{knowledge:2}],complete:'[data-tour="example-state"][data-ready="true"][data-question]:not([data-question=""]), [data-tour="paper-solution"], [data-tour="exercise-ready"]'}),
- step('analysis-open','mistake-profile-toggle',["展开推荐练习", "See recommended practice"],["根据错题练习相关题目，必修一推荐免费开放。", "Practise questions related to your mistakes. Compulsory 1 recommendations are free."],['点击「推荐练习」展开题目。','Expand “Recommended practice”.'],{mode:'action',route:['mistakes'],complete:'[data-tour="mistake-profile"][open]'}),
- step('analysis-report','knowledge-profile',["选择复习内容", "Choose what to review"],["点击知识点或推荐题进入。每个知识点最多推荐 3 题，已掌握题目不再推荐。", "Open a topic or question. Each topic has up to 3 recommendations; mastered questions are excluded."],['查看分析后点击「下一步」。','Review the analysis, then click “Next”.']),
+ step('analysis-open','knowledge-profile',["薄弱知识点", "Topics to review"],["主页显示最薄弱的 3 个知识点，展开可查看全部。", "Home shows your three weakest topics. Expand to see all."],['点击「下一步」。','Click “Next”.'],{route:['home'],interactive:false}),
+ step('analysis-report','knowledge-profile',["选择复习内容", "Choose what to review"],["打开知识点查看后，回到主页可点击叉号隐藏。再次做错相关题目时会重新显示。", "After reading a topic, return home and use the cross to hide it. A new related mistake brings it back."],['也可点击「下一步」。','You can also click “Next”.'],{route:['home'],advanceOnNavigate:['textbook']}),
  step('replay','tour-help',["随时重看", "Replay anytime"],["顶部「使用教程」可重看。示范题已保存到错题库，复习后可标为已掌握。", "Replay from User guide at the top. Your saved example can be marked mastered after review."],['点击「下一步」，结束教程。','Click “Next” to finish the guide.'])
 ];
 const intro=(id,target,title,body,permission='signed-in')=>step(id,target,title,body,['了解后点击「下一步」。','Click “Next” when ready.'],{permission});
@@ -380,24 +381,22 @@ export const pageTours={
     {
       "id": "profile",
       "target": [
-        "mistake-profile-toggle",
         "mistake-active-tab"
       ],
       "title": {
-        "chn": "展开推荐练习",
-        "eng": "Explore your knowledge profile"
+        "chn": "复习错题",
+        "eng": "Review mistakes"
       },
       "body": {
-        "chn": "薄弱知识点始终显示，推荐练习可展开。若在回收站，先返回错题库。",
-        "eng": "Weak topics stay visible; expand recommendations below. Return from Trash first if needed."
+        "chn": "打开错题重做，掌握后点击「标为已掌握」。",
+        "eng": "Open a saved mistake and try again. Mark it mastered when ready."
       },
       "instruction": {
-        "chn": "点击「推荐练习」展开。",
-        "eng": "Expand “Recommended practice”."
+        "chn": "查看后点击「下一步」。",
+        "eng": "Review the mistakes, then click “Next”."
       },
       "permission": "signed-in",
-      "mode": "action",
-      "complete": "[data-tour=\"mistake-profile\"][open]"
+      "mode": "intro"
     },
     {
       "id": "trash",
@@ -581,3 +580,22 @@ pageTours.activating=pageTours.membership;
 export const pageSteps=page=>pageTours[page]||pageTours.home;
 
 export const CORE_STEP_COUNT=coreSteps.length;
+
+// Preserve paid-mode tutorial copy for later restoration.
+if (!MEMBERSHIP_ENABLED) {
+  const clean = value => {
+    if (typeof value === 'string') return value
+      .replace('；受限内容需会员。','。')
+      .replace(' Restricted content requires membership.','')
+      .replace('点击关联题目练习。必修一关联免费，其他分册关联及章节 PDF 需会员。','点击关联题目练习或下载章节 PDF。')
+      .replace('Open linked questions. Compulsory 1 links are free; other books and chapter PDFs require membership.','Open linked questions or download the chapter PDF.')
+      .replace('勾选题目后导出：原题版用于练习，详解版用于核对，需会员。','勾选题目后导出：原题版用于练习，详解版用于核对。')
+      .replace('Select questions to export. Use Questions for practice; Solutions requires membership.','Select questions to export. Use Questions for practice and Solutions to check your work.');
+    if (value && typeof value === 'object') for (const key of Object.keys(value)) value[key] = clean(value[key]);
+    return value;
+  };
+  clean(pageTours);
+  clean(coreSteps);
+  const linked = coreSteps.find(step=>step.id==='question-knowledge');
+  linked.body = {chn:'查看本题相关概念。',eng:'Review related concepts.'};
+}

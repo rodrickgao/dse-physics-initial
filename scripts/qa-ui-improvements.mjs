@@ -41,15 +41,17 @@ try{
   await page.goBack();await page.locator('[data-exercise="tb-201-1"][aria-busy="false"]').waitFor();
   await page.goBack();await page.locator('.exercise-directory').waitFor();
  });
- await check('bulk mastery and undo restore exact mistake timestamp',async()=>{
+ await check('bulk mastery and reset update status without a feedback label',async()=>{
   const keys=index.questions.filter(q=>q.chapter==='201').map(q=>q.id);
   await context.request.put(base+'/api/progress',{data:{keys,status:'clear'}});
-  const marked=await(await context.request.put(base+'/api/mistakes',{data:{key:keys[0],marked:true}})).json();
+  await context.request.put(base+'/api/mistakes',{data:{key:keys[0],marked:true}});
   await go('exercises?question=tb-201-1');await ready();await page.getByRole('button',{name:'标记本章已掌握',exact:true}).click();await page.getByRole('button',{name:'本章已掌握 ✓',exact:true}).waitFor();
   assert.equal(await page.locator('#exercise-navigator .mastered').count(),keys.length);
-  await page.locator('.study-feedback').getByRole('button',{name:'撤销',exact:true}).click();await page.getByRole('button',{name:'已加入错题',exact:true}).waitFor();
-  const after=await(await context.request.get(base+'/api/mistakes')).json();assert.deepEqual(after,marked);
-  await page.reload();await ready();await page.getByRole('button',{name:'已加入错题',exact:true}).waitFor();
+  assert.equal(await page.locator('.study-feedback').count(),0);
+  await page.getByRole('button',{name:'本章已掌握 ✓',exact:true}).click();await page.getByRole('button',{name:'标记本章已掌握',exact:true}).waitFor();
+  const after=await(await context.request.get(base+'/api/mistakes')).json();assert.ok(keys.every(key=>!after.mastered[key]));
+  assert.equal(await page.locator('.study-feedback').count(),0);
+  await page.reload();await ready();assert.equal(await page.locator('#exercise-navigator .mastered').count(),0);
  });
  await check('exercise and past-paper ask context',async()=>{
   await go('exercises?question=tb-201-1');await ready();await page.getByRole('button',{name:'问这道题',exact:true}).click();await page.locator('.ask-context').waitFor();assert.match(await page.locator('.ask-context').innerText(),/201.*Q1/);assert.equal(await page.locator('.tutoring-form select').count(),0);

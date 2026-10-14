@@ -12,7 +12,7 @@ export function activityContent(row) {
 }
 
 const DAY = 86400000;
-export function createManagement({ db, clock, fail, transaction }) {
+export function createManagement({ db, clock, fail, transaction, membershipEnabled = true }) {
   const { get, all, run } = databaseQueries(db);
   db.exec(`CREATE TABLE IF NOT EXISTS memberships(user_id INTEGER PRIMARY KEY REFERENCES users(id), ends_at INTEGER NOT NULL, revoked INTEGER NOT NULL DEFAULT 0, revision INTEGER NOT NULL DEFAULT 0);
     CREATE TABLE IF NOT EXISTS membership_audit(id INTEGER PRIMARY KEY, request_id TEXT UNIQUE NOT NULL, user_id INTEGER NOT NULL REFERENCES users(id), actor_id INTEGER NOT NULL REFERENCES users(id), action TEXT NOT NULL, days INTEGER NOT NULL, reason TEXT NOT NULL, before_end INTEGER, after_end INTEGER, at INTEGER NOT NULL);
@@ -32,10 +32,10 @@ export function createManagement({ db, clock, fail, transaction }) {
   function track(user, body) {
     if (user.role !== 'student') fail(403, '僅記錄學生操作。');
     if (!allowed.has(body.action) || typeof body.eventId !== 'string' || !/^[a-zA-Z0-9-]{16,80}$/.test(body.eventId) || typeof body.target !== 'string' || body.target.length > 160) fail(400, '操作記錄格式不正確。');
-    if (body.action === 'reasoning_view' && !membership(user.id).active) fail(403, '詳細思路需要有效會員。');
+    if (membershipEnabled && body.action === 'reasoning_view' && !membership(user.id).active) fail(403, '詳細思路需要有效會員。');
     if (['question_view', 'answer_view', 'reasoning_view'].includes(body.action) && !questions.has(body.target)) fail(400, '題目不存在。');
     if (body.action === 'knowledge_view' && !points.has(Number(body.target))) fail(400, '知識點不存在。');
-    if (body.action === 'page_view' && !['home','bank','ask','papers','textbook','exercises','mistakes','focus','profile','membership','payment','receipt','activating','member-success'].includes(body.target)) fail(400, '頁面不存在。');
+    if (body.action === 'page_view' && !['home','support','bank','ask','papers','textbook','exercises','examples','mistakes','focus','profile','membership','payment','receipt','activating','member-success'].includes(body.target)) fail(400, '頁面不存在。');
     record(user.id, body.action, body.target, body.eventId);
     return { ok: true };
   }
@@ -63,7 +63,7 @@ export function createManagement({ db, clock, fail, transaction }) {
   function overview() {
     const now = clock();
     const students = all(safeStudent + ' ORDER BY last_login DESC').map(u => ({ ...u, membership: membership(u.id), lastActivity: get('SELECT MAX(at) at FROM learning_activity WHERE user_id=?', u.id)?.at || null, operations: get('SELECT COUNT(*) n FROM learning_activity WHERE user_id=?', u.id).n, focusMinutes: Math.round(get('SELECT COALESCE(SUM(elapsed_ms),0) n FROM focus_sessions WHERE user_id=?', u.id).n / 60000), mistakes: get('SELECT COUNT(*) n FROM mistake_archive WHERE user_id=?', u.id).n, activeMistakes: get('SELECT COUNT(*) n FROM mistakes WHERE user_id=?', u.id).n, mastered: get('SELECT COUNT(*) n FROM mastered WHERE user_id=?', u.id).n }));
-    return { students, summary: { students: students.length, members: students.filter(s => s.membership.active).length, expiring: students.filter(s => s.membership.active && s.membership.endsAt <= now + 7 * DAY).length, active: get("SELECT COUNT(DISTINCT a.user_id) n FROM learning_activity a JOIN users u ON u.id=a.user_id WHERE u.role='student' AND a.at>=?", now - 7 * DAY).n, operations: get('SELECT COUNT(*) n FROM learning_activity WHERE at>=?', now - DAY).n, focusMinutes: students.reduce((sum, s) => sum + s.focusMinutes, 0) }, daily: all("SELECT strftime('%Y-%m-%d',at/1000,'unixepoch','+8 hours') day,COUNT(*) operations,COUNT(DISTINCT user_id) students FROM learning_activity WHERE user_id IN (SELECT id FROM users WHERE role='student') AND at>=? GROUP BY day ORDER BY day DESC", now - 30 * DAY), generatedAt: now };
+    return { students, summary: { students: students.length, newStudents:students.filter(s=>s.created_at>=now-7*DAY).length, mistakes:students.reduce((n,s)=>n+s.activeMistakes,0), members: students.filter(s => s.membership.active).length, expiring: students.filter(s => s.membership.active && s.membership.endsAt <= now + 7 * DAY).length, active: get("SELECT COUNT(DISTINCT a.user_id) n FROM learning_activity a JOIN users u ON u.id=a.user_id WHERE u.role='student' AND a.at>=?", now - 7 * DAY).n, operations: get('SELECT COUNT(*) n FROM learning_activity WHERE at>=?', now - DAY).n, focusMinutes: students.reduce((sum, s) => sum + s.focusMinutes, 0) }, daily: all("SELECT strftime('%Y-%m-%d',at/1000,'unixepoch','+8 hours') day,COUNT(*) operations,COUNT(DISTINCT user_id) students FROM learning_activity WHERE user_id IN (SELECT id FROM users WHERE role='student') AND at>=? GROUP BY day ORDER BY day DESC", now - 30 * DAY), generatedAt: now };
   }
   function activity(url) {
     const id = Number(url.searchParams.get('userId')) || 0;

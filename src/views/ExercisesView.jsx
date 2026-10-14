@@ -5,7 +5,8 @@ import { NavigatorToggle } from '../components/NavigatorToggle';
 import { useSourceSearch } from '../lib/use-source-search';
 import { SearchReturn } from '../components/SearchReturn';
 import { StudyContent } from '../components/StudyContent';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useContentMotion } from '../lib/use-content-motion';
 import { ArrowLeft, ArrowRight, BookOpen, ChevronRight, ChevronDown, Check } from "lucide-react";
 import { Button } from '../components/ui/button';
 import { Card } from '../components/ui/card';
@@ -70,7 +71,9 @@ export function ExercisesView({ mastered = {}, mistakes = {}, setProgress, setMi
   const position = siblings.indexOf(targetKey);
   const chapterMastered = siblings.length > 0 && siblings.every(key => mastered[key]);
   const rich = (value,type) => <StudyContent html={value} type={type} language={language}/>;
-  return <div data-tour={record?'exercise-ready':undefined} className="exercises-view page-enter">
+  const contentRef = useRef(null);
+  useContentMotion(contentRef, `${language}:${targetKey || bookId || 'directory'}`, '', { initial: true, ready: Boolean(index && !error && (!targetKey || record?.id === targetKey)) });
+  return <div ref={contentRef} data-tour={record?'exercise-ready':undefined} className="exercises-view page-enter">
     <style>{STUDY_CSS}</style>
     <div className="exercise-toolbar"><nav className="exercise-breadcrumb study-breadcrumb" aria-label={en ? 'Exercise location' : '习题位置'}>
       <button onClick={onBank}>{en?'Question bank':'题库'}</button><ChevronRight/><button onClick={() => selectLevel('books')}>{en ? 'Textbook exercises' : '课本习题'}</button>

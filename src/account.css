@@ -4,7 +4,7 @@
 
 .source-download-unavailable{font-size:12px;color:var(--muted-foreground);line-height:1.6;max-width:300px}
 
-.member-notice{margin:14px 0;padding:14px 18px;border:1px solid #dbe4f2;border-radius:10px;background:#f2f6fd;color:#48658c;font-size:13px;line-height:1.7}.membership-status{font-size:11px;color:var(--muted-foreground);margin-right:auto}
+.member-notice{margin:14px 0;padding:14px 18px;border:1px solid #dbe4f2;border-radius:10px;background:#f2f6fd;color:#48658c;font-size:13px;line-height:1.7}.membership-status{font-size:11px;color:var(--muted-foreground);margin-right:auto;text-align:left}
 
 .student-privacy{margin-top:16px;font-size:12px;color:var(--muted-foreground)}.student-privacy summary{cursor:pointer;width:fit-content}.student-privacy p{margin-top:8px;line-height:1.6}
 

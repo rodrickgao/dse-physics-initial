@@ -2,7 +2,8 @@ import { readerStage } from '../lib/reader-return';
 import { StudyContent } from './StudyContent';
 import { useMembership, MemberNotice } from './Membership';
 import { track } from '../lib/activity';
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useContentMotion } from '../lib/use-content-motion';
 import { loadStudyQuestion, officialAnswerHtml, STUDY_CSS } from "../lib/study-content";
 import { Button } from "./ui/button";
 
@@ -14,13 +15,15 @@ export function StudyQuestion({ year, language, questionKey, question, ScanImage
   const [revision, setRevision] = useState(0);
   const [stage, setStage] = useState(1);
   const en = language === "eng";
+  const contentRef = useRef(null);
+  useContentMotion(contentRef, `${language}:${questionKey}`, '', { initial: true, ready: !loading });
   useEffect(() => {
     let cancelled = false;setRecord(null);setStage(readerStage(questionKey));setLoading(true);setError(false);
     loadStudyQuestion(questionKey, language).then((data) => {if (!cancelled) setRecord(data);}).catch(() => {if (!cancelled) setError(true);}).finally(() => {if (!cancelled) setLoading(false);});
     return () => {cancelled = true;};
   }, [year.year, language, questionKey, revision, membership.revision]);
   const rich = (value,type) => <StudyContent html={value} type={type} language={language}/>;
-  return <div className="study-flow" data-question={questionKey} data-focus-target={!loading ? `question:${questionKey}` : undefined} aria-busy={loading}>
+  return <div ref={contentRef} className="study-flow" data-question={questionKey} data-focus-target={!loading ? `question:${questionKey}` : undefined} aria-busy={loading}>
     <style>{STUDY_CSS}</style>
 
     <section className="study-stage"><h3><span>1</span>{"题目"}</h3>

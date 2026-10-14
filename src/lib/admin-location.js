@@ -1,11 +1,12 @@
+import { MEMBERSHIP_ENABLED } from './access-policy.js';
 export function readAdminLocation(hash = '') {
   const [tab, search] = hash.replace(/^#/, '').split('?');
   const params = new URLSearchParams(search);
   const number = key => Math.max(1, Math.min(100000, Math.floor(Number(params.get(key))) || 1));
   return {
-    tab: ['overview','users','questions','visits','tutoring','payments','activity','audit'].includes(tab) ? tab : 'overview',
+    tab: ['overview','users','questions','visits','tutoring','payments','activity','audit'].filter(id=>MEMBERSHIP_ENABLED||!['payments','audit'].includes(id)).includes(tab) ? tab : 'overview',
     query: params.get('query') || '',
-    filter: ['none','active','expired','revoked','expiring'].includes(params.get('filter')) ? params.get('filter') : 'all',
+    filter: MEMBERSHIP_ENABLED && ['none','active','expired','revoked','expiring'].includes(params.get('filter')) ? params.get('filter') : 'all',
     selectedId: params.has('student') ? number('student') : null,
     page: number('page'), actionFilter: params.get('action') || '',
     tutoringFilter: ['answered','all'].includes(params.get('tutoring')) ? params.get('tutoring') : 'pending',

@@ -7,5 +7,7 @@
 .profile-header>button.profile-home{font-size:24px;color:var(--primary);font-weight:700}.profile-home:focus-visible{outline:2px solid var(--primary);outline-offset:6px;border-radius:4px}@media(max-width:800px){.profile-header>button.profile-home{font-size:18px}}
 
 .account-bar .account-settings{display:inline-flex;align-items:center;gap:6px}.account-settings svg{width:16px;height:16px}.profile-welcome h1{display:flex;align-items:center;justify-content:center;gap:10px}.profile-welcome h1 svg{width:28px;height:28px;flex-shrink:0}.profile-footer{margin-top:32px;padding-top:24px;border-top:1px solid var(--border);text-align:center}.profile-logout{min-width:200px;min-height:44px}
+.profile-details fieldset{min-width:0}
+@media(max-width:440px){html[lang="en"] .profile-choices:has(input[name="grade"]){grid-template-columns:1fr}}
 
 .profile-registration{grid-template-columns:minmax(0,540px);justify-content:center}.profile-registration .profile-details{order:0}.profile-registration .profile-email{margin-top:0;font-size:14px}.profile-details>select{display:block;margin-top:8px;width:100%;min-width:0;min-height:46px;border:1px solid var(--border);border-radius:9px;background:var(--background);padding:12px;color:var(--foreground);font:inherit}.profile-details>select:focus-visible{outline:2px solid var(--primary);outline-offset:2px}

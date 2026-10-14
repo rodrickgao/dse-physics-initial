@@ -1,3 +1,4 @@
+import { MEMBERSHIP_ENABLED } from '../src/lib/access-policy.js';
 import { compareMistakePrintEntries } from '../src/lib/study-content.js';
 import { numberKnowledgePoints } from '../src/lib/knowledge-numbering.js';
 import { readFileSync, readdirSync, createReadStream, statSync, existsSync } from 'node:fs';
@@ -29,7 +30,7 @@ const fail = (status, message) => { throw Object.assign(new Error(message),{stat
 const text = value => String(value || '').replace(/<annotation[\s\S]*?<\/annotation>/g,'').replace(/<[^>]*>/g,' ').replace(/&nbsp;/g,' ').replace(/\s+/g,' ').trim();
 const pick = (object, keys) => Object.fromEntries(keys.filter(k => object[k] !== undefined).map(k=>[k,object[k]]));
 
-export function createContent({ db, clock, membership, limiterConfig, qdnaDirectory }) {
+export function createContent({ db, clock, membership, membershipEnabled = MEMBERSHIP_ENABLED, limiterConfig, qdnaDirectory }) {
   const limit = createContentLimiter({db,clock,config:limiterConfig});
   db.exec('CREATE TABLE IF NOT EXISTS protected_content(language TEXT, id TEXT, source TEXT, body TEXT, PRIMARY KEY(language,id))');
   db.exec('CREATE TABLE IF NOT EXISTS protected_dna(language TEXT, id TEXT, body TEXT, PRIMARY KEY(language,id))');
@@ -86,7 +87,8 @@ export function createContent({ db, clock, membership, limiterConfig, qdnaDirect
   // Scan fallbacks and reports are public under the pre-existing trial policy.
   for (const year of context.window.DSE_SITE_DATA.years) for (const paper of year.papers) for (const q of paper.questions) for (const field of ['question','answer']) for (const file of q[field]||[]) files.set(`/assets/${year.id}/${file}`,false);
   for (const file of read('downloads/catalog.json').files) if (file.kind==='paper' && file.edition==='original') files.set('/'+file.url,false);
-  const premium = user => !!user && (user.role==='admin'||membership(user.id).active);
+  if (!membershipEnabled) for (const lang of ['chn','eng']) for (const code of new Set([...points.values()].map(p=>p.code))) files.set(`/assets/textbook/pdfs/${lang}/${code}.pdf`,true);
+  const premium = user => !!user && (!membershipEnabled||user.role==='admin'||membership(user.id).active);
   const requirePremium = user => {if (!user) fail(401,'请先登录。'); if (!premium(user)) fail(403,'此内容需要有效会员。');};
   const displayLinks = ids => ids.map(sequence=>({sequence,chapterZh:points.get(sequence)?.chapter,chapterEn:points.get(sequence)?.chapter}));
   const trialChapters=new Set([...points.values()].filter(p=>p.book_key==='compulsory-1').map(p=>p.code));
@@ -111,6 +113,7 @@ export function createContent({ db, clock, membership, limiterConfig, qdnaDirect
     if(premium(user))result.reasoning=body.reasoning||'';
     result.linksAvailable=premium(user)||trialQuestion(id);
     if(result.linksAvailable){result.network=links(id,user);result.knowledge=result.network.links.map(l=>l.sequence);}
+    result.kind=questions.get(id)?.kind || body.kind;
     return result;
   }
   let learning;
@@ -158,8 +161,8 @@ export function createContent({ db, clock, membership, limiterConfig, qdnaDirect
       if(route==='related') {
         validate(url,['language','points','offset','limit']);limit(req,res,user,'links');
         const ids=(url.searchParams.get('points')||'').split(',');if(ids.length>12||ids.some(id=>!/^\d+$/.test(id)||!points.has(Number(id))))fail(400,'知识点参数不正确。');
-        if(!ids.every(id=>trialPoint(Number(id))))requirePremium(user);
         const size=integer(url,'limit',30,50), offset=integer(url,'offset',0,10000);if(size<1)fail(400,'无效分页。');
+        if(!ids.every(id=>trialPoint(Number(id))))requirePremium(user);
         const wanted=new Set(ids.map(Number));const rows=[...questions.values()].filter(q=>q.points.some(p=>wanted.has(p))||(q.relatedPoints||[]).some(p=>wanted.has(p)));
         return send({results:rows.slice(offset,offset+size).map(q=>({key:q.key,id:q.key,source:q.source||'past-paper',relationship:q.points.some(p=>wanted.has(p))?'direct':'background',chapter:q.key.split('-').slice(1,-1).join('-'),number:q.key.split('-').at(-1)})),hasMore:offset+size<rows.length});
       }
@@ -167,14 +170,15 @@ export function createContent({ db, clock, membership, limiterConfig, qdnaDirect
         validate(url,['language','point']);if(!user)fail(401,'请先登录。');limit(req,res,user,'links');
         const saved=db.prepare('SELECT question_key, marked_at FROM mistakes WHERE user_id=?').all(user.id);
         const owned=saved.map(r=>questions.get(r.question_key)).filter(Boolean);
-        const entries=owned.map(q=>{const row=records.get(lang).get(q.key);return {key:q.key,network:premium(user)?links(q.key,user):{links:[]},primaryChapterCode:q.primaryChapterCode,sortChapter:q.chapterCode,paperIndex:q.key.includes('paper-1a')?0:1,question:{kind:row?.body.kind}};});
-        const summary=analyzeMistakes(entries,context.window.DSE_TEXTBOOK_DATA.languages[lang],lang);
+        const entries=owned.map(q=>({key:q.key,source:q.source,exerciseChapter:q.exerciseChapter,network:premium(user)?links(q.key,user):{links:[]},primaryChapterCode:q.primaryChapterCode,sortChapter:q.chapterCode,paperIndex:q.key.includes('paper-1a')?0:1,question:{kind:q.kind}}));
+        const summary=analyzeMistakes(entries,numberKnowledgePoints(context.window.DSE_TEXTBOOK_DATA.languages[lang]),lang);
         summary.recommendations=learning.snapshot(user.id,lang).signals.rows.filter(r=>r.status==='NEEDS_REVIEW').slice(0,3).map(r=>({sequence:Number(r.knowledge_id),count:r.wrong_question_count}));
         if(url.searchParams.has('point')){requirePremium(user);const point=integer(url,'point',0,1000);summary.filterKeys=owned.filter(q=>q.points.includes(point)).map(q=>q.key);}
         // Return only this user's ordered identities; keep knowledge mappings on the server.
         const marked = new Map(saved.map(r=>[r.question_key,r.marked_at]));
         summary.orderedKeys=entries.map(entry=>({...entry,markedAt:new Date(marked.get(entry.key)).toISOString(),network:{links:questions.get(entry.key).points.map(sequence=>({sequence}))}}))
           .sort(compareMistakePrintEntries(numberKnowledgePoints(context.window.DSE_TEXTBOOK_DATA.languages[lang]))).map(entry=>entry.key);
+        summary.questionKinds=Object.fromEntries(owned.map(q=>[q.key,q.kind]));
         return send(summary);
       }
       if(route==='recommendations') {
@@ -194,8 +198,8 @@ export function createContent({ db, clock, membership, limiterConfig, qdnaDirect
       if(!protectedPath)return false;
       if(!files.has(path))return deny();
       try {
-        if(!['GET','HEAD'].includes(req.method))fail(405,'Method not allowed');
         if(files.get(path))requirePremium(user);
+        if(!['GET','HEAD'].includes(req.method))fail(405,'Method not allowed');
         limit(req,res,user,extname(path)==='.pdf'?'download':'image');
         const file=resolve(root,'.'+path), stat=statSync(file);
         const mime={'.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.webp':'image/webp','.svg':'image/svg+xml','.pdf':'application/pdf'};

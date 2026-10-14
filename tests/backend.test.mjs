@@ -13,7 +13,7 @@ import { questions } from '../server/catalog.mjs';
 async function fixture(options = {}) {
   const directory = mkdtempSync(join(tmpdir(), 'dse-auth-'));
   let now = Date.now();
-  const api = createApi({ directory, adminKey: 'test-admin-key', clock: () => now, ...options });
+  const api = createApi({membershipEnabled:true, directory, adminKey: 'test-admin-key', clock: () => now, ...options });
   const server = createServer((req, res) => api.handler(req, res, () => { res.statusCode = 404; res.end(); }));
   await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
   const base = `http://127.0.0.1:${server.address().port}`;
@@ -61,9 +61,9 @@ test('a new student registers without choosing an avatar, and region persists th
     assert.equal((await admin(`admin/student?id=${saved.data.user.id}`)).data.student.region, 'shenzhen');
     const exported = await admin('admin/export');
     const book = new ExcelJS.Workbook(); await book.xlsx.load(Buffer.from(exported.data.base64, 'base64'));
-    for (const name of ['学生学习与会员', '學生摘要']) {
+    for (const name of ['学生学习']) {
       const sheet = book.getWorksheet(name), headers = sheet.getRow(1).values;
-      const column = headers.indexOf(name === '學生摘要' ? '地區' : '地区');
+      const column = headers.indexOf('地区');
       assert.ok(column > 0); assert.equal(sheet.getRow(2).getCell(column).value, '深圳');
     }
   } finally { await f.close(); }
@@ -203,7 +203,7 @@ test('profile completion, validation, uploaded image normalization and account i
     const stats = (await admin('admin/stats')).data;
     assert.equal(stats.students.find(s => s.email === email).nickname, '更新暱稱');
     const book = new ExcelJS.Workbook(); await book.xlsx.load(Buffer.from((await admin('admin/export')).data.base64, 'base64'));
-    const summary = book.getWorksheet('學生摘要').getSheetValues();
+    const summary = book.getWorksheet('学生学习').getSheetValues();
     assert.ok(JSON.stringify(summary).includes('更新暱稱')); assert.ok(JSON.stringify(summary).includes('5**'));
     assert.equal((await student('profile', { ...valid, nickname: 'Safe again' }, 'PUT')).data.user.avatar, 'curie-read');
   } finally { await f.close(); }
@@ -246,8 +246,8 @@ test('registration, persistent sessions, isolation, idempotent marks, import and
     assert.equal(exported.data.filename, '學生完整學習資料.xlsx');
     const workbook = new ExcelJS.Workbook(); await workbook.xlsx.load(Buffer.from(exported.data.base64, 'base64'));
     const exportedText = JSON.stringify(workbook.worksheets.map(s => ({name:s.name, rows:s.getSheetValues()})));
-    assert.equal(workbook.worksheets.length, 8);
-    for (const expected of ['學生摘要', '目前錯題', '知識點統計', '章節統計', '操作歷史', '移入回收站', 'studenta@example.com', 'studentb@example.com', keys[0], keys[1]]) assert.ok(exportedText.includes(expected), expected);
+    assert.equal(workbook.worksheets.length, 7);
+    for (const expected of ['学生学习', '目前錯題', '知識點統計', '章節統計', '操作歷史', '移入回收站', 'studenta@example.com', 'studentb@example.com', keys[0], keys[1]]) assert.ok(exportedText.includes(expected), expected);
     for (const excluded of ['developer@local.invalid', 'test-admin-key', 'digest', 'salt', first.code]) assert.ok(!exportedText.includes(excluded));
     await a('auth/logout', {}); assert.equal((await a('mistakes')).status, 401);
     f.advance(31 * 86400000); assert.equal((await b('mistakes')).status, 401);
@@ -281,7 +281,7 @@ test('SMTP does not expose codes and failed delivery can be retried', async () =
 });
 test('database and session survive service restart', async () => {
   const directory = mkdtempSync(join(tmpdir(), 'dse-restart-'));
-  let api = createApi({ directory, adminKey: 'key' });
+  let api = createApi({membershipEnabled:true, directory, adminKey: 'key' });
   const server = createServer((req, res) => api.handler(req, res, () => res.end()));
   await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
   const base = `http://127.0.0.1:${server.address().port}/api/`;
@@ -294,7 +294,7 @@ test('database and session survive service restart', async () => {
     const key = [...questions.keys()][0];
     await (await fetch(base + 'mistakes', { method: 'PUT', headers: { cookie, 'Content-Type': 'application/json' }, body: JSON.stringify({ key, marked: true }) })).json();
     await fetch(base + 'focus', { method: 'PUT', headers: { cookie, 'Content-Type': 'application/json' }, body: JSON.stringify({sessions:[{id:'persist-focus',elapsedMs:3600000}]}) });
-    api.close(); api = createApi({ directory, adminKey: 'key' });
+    api.close(); api = createApi({membershipEnabled:true, directory, adminKey: 'key' });
     assert.equal((await (await fetch(base + 'focus', {headers:{cookie}})).json()).sessions[0].elapsedMs,3600000);
     const response = await fetch(base + 'mistakes', { headers: { cookie } });
     assert.equal(response.status, 200); assert.ok((await response.json()).mistakes[key]);

@@ -9,7 +9,7 @@ import { questions } from '../server/catalog.mjs';
 
 test('trash restores, deletes, isolates accounts, retains admin history and survives restart', async()=>{
   const directory=mkdtempSync(join(tmpdir(),'dse-trash-'));
-  let api=createApi({directory,adminKey:'trash-test'});
+  let api=createApi({membershipEnabled:true,directory,adminKey:'trash-test'});
   const server=createServer((req,res)=>api.handler(req,res,()=>{res.statusCode=404;res.end();}));
   await new Promise(r=>server.listen(0,'127.0.0.1',r));
   const base=`http://127.0.0.1:${server.address().port}/api/`;
@@ -36,7 +36,7 @@ test('trash restores, deletes, isolates accounts, retains admin history and surv
     const detail=await admin(`admin/student?id=${id}`);
     assert.equal(detail.mistakes[0].status,'deleted');assert.ok(detail.mistakes[0].deletedAt);
     assert.equal((await admin('admin/overview')).students.find(s=>s.id===id).mistakes,1);
-    api.close();api=createApi({directory,adminKey:'trash-test'});
+    api.close();api=createApi({membershipEnabled:true,directory,adminKey:'trash-test'});
     assert.equal((await a('mistakes/trash')).trash.length,0);
     assert.equal((await admin(`admin/student?id=${id}`)).mistakes[0].status,'deleted');
     await a('mistakes',{key,marked:true},'PUT');

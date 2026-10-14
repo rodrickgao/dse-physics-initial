@@ -1,22 +1,22 @@
-import { useEffect, useRef } from 'react';
-import { X } from 'lucide-react';
-import { Button } from './ui/button';
+import { ArrowRight } from 'lucide-react';
+import { BOOK_COLORS } from '../lib/book-colors';
+import { useRef } from 'react';
+import { useContentMotion } from '../lib/use-content-motion';
 
-export function MistakeStatistics({ open, onClose, chapters, language, onSelect }) {
-  const dialog = useRef(null), en = language === 'eng';
+export function MistakeStatistics({ books, bookKey, onBookChange, unclassified, language, onSelect }) {
+  const en = language === 'eng';
+  const book = books.find(row => row.key === bookKey);
+  const rows = bookKey === 'all' ? [...books.flatMap(row => row.chapters), unclassified] : bookKey === 'unclassified' ? [unclassified] : book?.chapters || [];
+  const chapters = rows.filter(row => row.keys.length > 0).sort((a, b) => b.keys.length - a.keys.length);
   const total = chapters.reduce((sum, row) => sum + row.keys.length, 0);
-  useEffect(() => {
-    if (open && !dialog.current.open) dialog.current.showModal();
-    if (!open && dialog.current.open) dialog.current.close();
-  }, [open]);
-  return <dialog ref={dialog} className="mistake-statistics" aria-labelledby="mistake-statistics-title" onClose={onClose} onClick={event => {
-    const bounds = event.currentTarget.getBoundingClientRect();
-    if (event.target === event.currentTarget && (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom)) dialog.current.close();
-  }}>
-    <header><h2 id="mistake-statistics-title">{en ? 'Detailed chapter statistics' : '章节详细统计'}</h2><Button autoFocus variant="ghost" size="icon" aria-label={en ? 'Close statistics' : '关闭统计'} onClick={() => dialog.current.close()}><X/></Button></header>
-    <p>{en ? `${total} questions to review · Each question counts in one main chapter.` : `共 ${total} 道待复习错题 · 每题只计入一个主要章节`}</p>
-    <div className="statistics-table-wrap"><table><thead><tr>{(en ? ['Chapter', 'Questions', 'Share', 'MC', 'Structured', ''] : ['章节', '题数', '占比', '选择题', '大题', '']).map((name, index) => <th key={index} scope="col">{name}</th>)}</tr></thead><tbody>
-      {chapters.map(row => <tr key={row.code}><th scope="row">{row.code !== 'unclassified' && <small>{row.code}</small>}{row.name}</th><td data-label={en ? 'Questions' : '题数'}>{row.keys.length}</td><td data-label={en ? 'Share' : '占比'}>{total ? (row.keys.length / total * 100).toFixed(1) : '0'}%</td><td data-label={en ? 'MC' : '选择题'}>{row.multipleChoice}</td><td data-label={en ? 'Structured' : '大题'}>{row.structured}</td><td><button onClick={() => { dialog.current.close(); onSelect(row); }}>{en ? 'View questions' : '查看错题'}</button></td></tr>)}
-    </tbody><tfoot><tr><th scope="row">{en ? 'Total' : '合计'}</th><td data-label={en ? 'Questions' : '题数'}>{total}</td><td data-label={en ? 'Share' : '占比'}>{total ? '100%' : '0%'}</td><td data-label={en ? 'MC' : '选择题'}>{chapters.reduce((n,r)=>n+r.multipleChoice,0)}</td><td data-label={en ? 'Structured' : '大题'}>{chapters.reduce((n,r)=>n+r.structured,0)}</td><td/></tr></tfoot></table></div>
-  </dialog>;
+  const contentRef = useRef(null);
+  useContentMotion(contentRef, `${language}:${bookKey}`);
+  return <div ref={contentRef} className="mistake-book-statistics" style={{ '--book-tone': BOOK_COLORS[book?.key] || 'var(--border)' }}>
+    <label className="statistics-book-selector" htmlFor="statistics-book">{en ? 'Book' : '书册'}<select id="statistics-book" value={bookKey} onChange={event => onBookChange(event.target.value)}><option value="all">{en ? 'All' : '全部'}</option>{books.map(row => <option key={row.key} value={row.key}>{row.name}</option>)}{!!unclassified.keys.length && <option value="unclassified">{unclassified.name}</option>}</select></label>
+    <div className="statistics-chapter-heading"><span>{en ? 'Chapter' : '章节'}</span><span>{en ? 'Mistakes' : '错题数'}</span></div>
+    {chapters.length ? <ul className="statistics-chapter-list">{chapters.map(row => <li key={row.code} data-chapter={row.code}>
+      <button type="button" onClick={() => onSelect(row)}><span><small>{row.code}</small>{row.name}</span><strong>{row.keys.length}</strong><ArrowRight aria-hidden="true"/></button>
+    </li>)}</ul> : <p className="statistics-book-empty">{en ? 'No mistakes in this book.' : '本册暂无错题'}</p>}
+    {!!chapters.length && <div className="statistics-book-total"><span>{en ? 'Total' : '合计'}</span><strong>{total}</strong></div>}
+  </div>;
 }

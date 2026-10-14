@@ -167,3 +167,5 @@ Object.assign(translations, {
  '当前错题':'Current mistakes','已掌握':'Mastered','专注分钟':'Focus minutes','会员管理':'Membership management',
  '付款凭证':'Payment receipt','会员开通':'Membership activation','会员开通成功':'Membership activated','学习问题':'Study question'
 });
+
+Object.assign(translations,{'近 7 天注册':'Registered in the past 7 days','题目与知识点统计':'Question and knowledge statistics','近 30 天学习动态明细':'Study activity over the past 30 days'});

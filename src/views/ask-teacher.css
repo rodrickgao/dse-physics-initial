@@ -1,0 +1,198 @@
+/* Student page only: preserve the content and cascading selectors. */
+.app-shell .tutoring-view {
+  --ask-heading: color-mix(in srgb, var(--foreground) 82%, var(--primary));
+  --ask-label: color-mix(in srgb, var(--foreground) 66%, var(--muted-foreground));
+  --ask-field: color-mix(in srgb, var(--card) 88%, var(--background));
+}
+
+.app-shell .tutoring-view > h1 {
+  margin: 0 0 22px;
+  color: var(--ask-heading);
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -.02em;
+}
+
+.app-shell .tutoring-form,
+.app-shell .tutoring-thread {
+  border-color: color-mix(in srgb, var(--border) 88%, var(--card));
+  border-radius: 18px;
+  background: var(--card);
+  box-shadow: 0 3px 16px rgb(28 49 83 / 3%);
+}
+
+.app-shell .tutoring-form {
+  margin: 0;
+  padding: 30px;
+}
+
+.app-shell .tutoring-form label {
+  min-width: 0;
+  gap: 9px;
+  margin-bottom: 22px;
+  color: var(--ask-label);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.app-shell .tutoring-form :is(input, select, textarea) {
+  min-width: 0;
+  max-width: 100%;
+  padding: 13px 15px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--ask-field);
+  color: var(--foreground);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.55;
+  transition: border-color 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+}
+
+.app-shell .tutoring-form select {
+  min-height: 49px;
+}
+
+.app-shell .tutoring-form select:has(option:checked[value=""]) {
+  color: var(--muted-foreground);
+}
+
+.app-shell .tutoring-form textarea {
+  min-height: 184px;
+  line-height: 1.75;
+  resize: vertical;
+}
+
+.app-shell .tutoring-form textarea::placeholder {
+  color: var(--muted-foreground);
+  opacity: .9;
+  font-weight: 400;
+}
+
+.app-shell .tutoring-form :is(input, select, textarea):focus-visible {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  border-color: color-mix(in srgb, var(--primary) 65%, var(--border));
+  background: var(--card);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 12%, transparent);
+}
+
+.app-shell .tutoring-form button {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.app-shell .tutoring-form > button:last-child {
+  min-height: 43px;
+  padding-inline: 21px;
+  border-radius: 10px;
+}
+
+.app-shell .tutoring-form > small {
+  display: block;
+  margin: -8px 0 15px;
+  color: var(--muted-foreground);
+  font-size: 13px;
+}
+
+.app-shell .tutoring-view .ask-context {
+  padding: 13px 16px;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  background: var(--ask-field);
+}
+
+.app-shell .tutoring-view .ask-context strong {
+  min-width: 0;
+  color: var(--ask-heading);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.app-shell .tutoring-view > h2 {
+  margin: 34px 0 14px;
+  color: var(--ask-heading);
+  font-size: 21px;
+  font-weight: 550;
+  line-height: 1.5;
+}
+
+.app-shell .tutoring-thread {
+  margin: 14px 0;
+}
+
+.app-shell .tutoring-thread-heading {
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.app-shell .tutoring-thread-heading > strong {
+  min-width: 0;
+  color: var(--ask-heading);
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.app-shell .tutoring-thread-heading > span {
+  flex-shrink: 0;
+  padding: 4px 9px;
+  border-radius: 6px;
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.app-shell .tutoring-thread > button {
+  padding: 7px 0;
+  color: var(--primary);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.app-shell .tutoring-thread small {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.app-shell .tutoring-thread .tutoring-message {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.8;
+}
+
+.app-shell .tutoring-thread .teacher-reply {
+  padding: 17px 19px;
+  border-left-width: 2px;
+  border-left-color: color-mix(in srgb, var(--primary) 45%, var(--border));
+  border-radius: 0 10px 10px 0;
+  background: var(--ask-field);
+}
+
+.app-shell .tutoring-thread .teacher-reply > strong {
+  color: var(--ask-heading);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+@media (max-width: 700px) {
+  .app-shell .tutoring-view > h1 { font-size: 28px; margin-bottom: 18px; }
+  .app-shell .tutoring-form { padding: 20px; }
+  .app-shell .tutoring-form label { font-size: 14px; margin-bottom: 19px; }
+  .app-shell .tutoring-form :is(input, select, textarea) { font-size: 16px; padding: 12px; }
+  .app-shell .tutoring-form textarea { min-height: 170px; }
+  .app-shell .tutoring-view > h2 { font-size: 19px; }
+  .app-shell .tutoring-thread-heading > strong { font-size: 16px; }
+  .app-shell .tutoring-thread-heading > span { align-self: flex-start; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-shell .tutoring-form :is(input, select, textarea) { transition: none; }
+}

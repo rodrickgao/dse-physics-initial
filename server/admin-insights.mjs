@@ -46,8 +46,13 @@ export function createAdminInsights({db, clock, fail}) {
     return {ok:true};
   }
   function visits(url) {
-    const userId = Number(url.searchParams.get('userId')) || 0;
-    const page = Math.max(1,Math.floor(Number(url.searchParams.get('page')))||1);
+    const number = (key,fallback) => {
+      const raw=url.searchParams.get(key);if(raw===null)return fallback;
+      if(!/^\d+$/.test(raw)||!Number.isSafeInteger(Number(raw)))fail(400,'分页参数不正确。');
+      return Number(raw);
+    };
+    const userId = number('userId',0);
+    const page = Math.max(1,Math.min(100000,number('page',1)));
     const where = "FROM page_visits v JOIN users u ON u.id=v.user_id WHERE u.role='student' AND v.duration_ms>60000 AND (?=0 OR u.id=?)";
     return {total:db.prepare(`SELECT COUNT(*) n ${where}`).get(userId,userId).n,
       rows:db.prepare(`SELECT v.*,u.nickname,u.email ${where} ORDER BY v.updated_at DESC LIMIT 50 OFFSET ?`).all(userId,userId,(page-1)*50)};

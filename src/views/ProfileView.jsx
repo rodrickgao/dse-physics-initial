@@ -1,4 +1,5 @@
 import { BrandLogo } from '../components/BrandLogo';
+import { useContentMotion } from '../lib/use-content-motion';
 import { useRef, useState } from 'react';
 import { ArrowLeft, ArrowRight, Check, Camera, Upload, UserRound, Settings, LogOut } from "lucide-react";
 import { api } from '../lib/api';
@@ -9,8 +10,8 @@ import { REGIONS } from '../lib/region-catalog';
 export function ProfileView({ embedded = false, logoutError, user, onSaved, onLogout, onCancel, mistakes = {}, language = 'chn', openPaper, openKnowledge }) {
   const [showAvatars, setShowAvatars] = useState(false);
   const picker = useRef(null); const camera = useRef(null);
-  function togglePicker() { setShowAvatars(true); requestAnimationFrame(() => { picker.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }); picker.current?.focus({ preventScroll: true }); }); }
-  function closePicker() { setShowAvatars(false); camera.current?.focus(); }
+  function togglePicker() { setShowAvatars(true); requestAnimationFrame(() => { picker.current?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'start' }); picker.current?.focus({ preventScroll: true }); }); }
+  function closePicker() { setShowAvatars(false); camera.current?.focus({ preventScroll: true }); }
   const [password, setPassword] = useState(''); const [confirmPassword, setConfirmPassword] = useState('');
   const [nickname, setNickname] = useState(user.nickname || '');
   const [grade, setGrade] = useState(user.grade || '');
@@ -20,6 +21,7 @@ export function ProfileView({ embedded = false, logoutError, user, onSaved, onLo
   const [avatar, setAvatar] = useState(user.avatar || '');
   const [person, setPerson] = useState(AVATARS.find(a => a.id === user.avatar)?.person || 'newton');
   const [mode, setMode] = useState(user.avatar === 'upload' ? 'upload' : 'physicists');
+  useContentMotion(picker, `${mode}:${person}`, '', { initial: true, ready: showAvatars });
   const [image, setImage] = useState('');
   const [error, setError] = useState(''); const [busy, setBusy] = useState(false); const [processing, setProcessing] = useState(false);
   const uploadVersion = useRef(0); const fileInput = useRef(null);

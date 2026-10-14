@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useMembership } from '../components/Membership';
 import { searchQuestions } from '../lib/question-search-loader';
+import { useContentMotion } from '../lib/use-content-motion';
 import { questionLabelFromKey } from '../lib/data';
 import { readSaved } from '../lib/study-state';
 import { readSearchSession, saveSearchSession } from '../lib/search-session';
@@ -24,6 +25,8 @@ export function QuestionBankView({ language, navigate, initialQuery = '', openQu
   },[language,membership.revision,retry,search,limit]);
   const ranked=data?.results||[];
   const results=ranked;
+  const resultsRef=useRef(null);
+  useContentMotion(resultsRef,`${search}:${limit}:${language}`,'',{initial:true,ready:Boolean(data)});
   const intent={concepts:[]};
   useEffect(()=>{if(!data||restored.current)return;restored.current=true;const saved=readSearchSession(membership.userId);if(saved?.hash===location.hash)requestAnimationFrame(()=>window.scrollTo({top:saved.scroll,behavior:'instant'}));},[data,membership.userId]);
   const updateQuery=value=>{setQuery(value);setLimit(30);restored.current=true;};
@@ -34,7 +37,7 @@ export function QuestionBankView({ language, navigate, initialQuery = '', openQu
   return <div className="question-bank-view page-enter">
     <div className="view-heading"><h1>{en?'Question bank':'题库'}</h1></div>
     <form className="bank-search" onSubmit={event=>{event.preventDefault();setSearch(query);}}><input data-tour="bank-search" type="search" id="bank-search" aria-label={en?'Describe what you want to practise':'描述你想练习的内容'} placeholder={en?'Describe a topic, situation or question you want to practise':'想练什么？描述知识点、情境或解题方法'} value={query} onChange={event=>updateQuery(event.target.value)}/>{query&&<button type="button" onClick={()=>updateQuery('')} aria-label={en?'Clear search':'清空搜索'}>×</button>}</form>
-    {query.trim()?<section className="bank-search-results" aria-live="polite" aria-busy={!error&&(!data||query!==search)}>
+    {query.trim()?<section ref={resultsRef} className="bank-search-results" aria-live="polite" aria-busy={!error&&(!data||query!==search)}>
       {error?<p role="alert">{en?'Search could not be loaded.':'搜索加载失败。'}<button onClick={()=>setRetry(v=>v+1)}>{en?'Retry':'重试'}</button></p>:!data?<p role="status">{en?'Preparing question search…':'正在准备题目索引…'}</p>:<>
         <p className="search-summary">{en?'Sorted by relevance':'按相关程度排序'} · {data?.total || 0} {en?'results':'条结果'}</p>
         {!!intent.concepts.length&&<p className="search-understood">{en?'Topics recognised: ':'识别到：'}{intent.concepts.map(c=>en?c.aliases.find(a=>/^[a-z]/.test(a)):c.label).join(' · ')}</p>}

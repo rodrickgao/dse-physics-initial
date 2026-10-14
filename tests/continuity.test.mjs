@@ -1,8 +1,8 @@
+import {MEMBERSHIP_ENABLED} from '../src/lib/access-policy.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readDraft, writeDraft, clearDraft } from '../src/lib/draft-store.js';
 import { readAdminLocation, adminHash } from '../src/lib/admin-location.js';
-import { membershipFailure } from '../src/lib/membership-state.js';
 import { activityContent } from '../server/management.mjs';
 import { questions } from '../server/catalog.mjs';
 import { studentLearning } from '../server/student-learning.mjs';
@@ -26,25 +26,17 @@ test('drafts survive a module remount, remain isolated by account and question, 
 });
 
 test('admin URLs round trip filters, student detail, pagination and learning tabs', () => {
-  const state={...readAdminLocation(),tab:'users',query:'高 + a@b.test',filter:'expired',selectedId:3,page:2,actionFilter:'knowledge_view',learningTab:'mastered',tutoringFilter:'all'};
+  const state={...readAdminLocation(),tab:'users',query:'高 + a@b.test',filter:MEMBERSHIP_ENABLED?'expired':'all',selectedId:3,page:2,actionFilter:'knowledge_view',learningTab:'mastered',tutoringFilter:'all'};
   assert.deepEqual(readAdminLocation(adminHash(state)),state);
   const previous=adminHash(state), next=adminHash({...state,tab:'tutoring',selectedId:null});
   assert.equal(readAdminLocation(previous).selectedId,3);
   assert.equal(readAdminLocation(next).tab,'tutoring');
   assert.equal(readAdminLocation('#unknown?page=-9&filter=bad').page,1);
   assert.equal(readAdminLocation('#unknown').tab,'overview');
+  assert.equal(readAdminLocation('#payments').tab,MEMBERSHIP_ENABLED?'payments':'overview');
+  assert.equal(readAdminLocation('#audit?filter=expired').filter,MEMBERSHIP_ENABLED?'expired':'all');
 });
 
-test('temporary membership failures preserve verified access; authentication failures do not', () => {
-  const member={active:true,status:'active',revision:7,userId:1,endsAt:123456};
-  assert.deepEqual(membershipFailure(member,503,1),{...member,loading:false,error:true});
-  const first=membershipFailure({active:false,revision:0,loading:true},undefined,1);
-  assert.equal(first.status,undefined); assert.equal(first.error,true);
-  for (const status of [401,403]) {
-    const result=membershipFailure(member,status,1);
-    assert.equal(result.active,false); assert.equal(result.revision,0); assert.equal(result.status,undefined);
-  }
-});
 
 test('activity links identify actual knowledge and bilingual exercises without linking search text', () => {
   const knowledge=activityContent({action:'knowledge_view',target:'17'});
