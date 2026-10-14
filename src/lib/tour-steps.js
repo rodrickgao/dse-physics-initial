@@ -300,8 +300,8 @@ export const pageTours={
         "eng": "Linked practice"
       },
       "body": {
-        "chn": "点击关联题目练习。必修一关联免费，其他分册关联及章节 PDF 需会员。",
-        "eng": "Open linked questions. Compulsory 1 links are free; other books and chapter PDFs require membership."
+        "chn": "点击关联题目练习。必修一关联免费，其他分册关联需会员。",
+        "eng": "Open linked questions. Compulsory 1 links are free; other books require membership."
       },
       "instruction": {
         "chn": "了解后点击「下一步」。",
@@ -587,8 +587,8 @@ if (!MEMBERSHIP_ENABLED) {
     if (typeof value === 'string') return value
       .replace('；受限内容需会员。','。')
       .replace(' Restricted content requires membership.','')
-      .replace('点击关联题目练习。必修一关联免费，其他分册关联及章节 PDF 需会员。','点击关联题目练习或下载章节 PDF。')
-      .replace('Open linked questions. Compulsory 1 links are free; other books and chapter PDFs require membership.','Open linked questions or download the chapter PDF.')
+      .replace('点击关联题目练习。必修一关联免费，其他分册关联需会员。','点击关联题目练习。')
+      .replace('Open linked questions. Compulsory 1 links are free; other books require membership.','Open linked questions.')
       .replace('勾选题目后导出：原题版用于练习，详解版用于核对，需会员。','勾选题目后导出：原题版用于练习，详解版用于核对。')
       .replace('Select questions to export. Use Questions for practice; Solutions requires membership.','Select questions to export. Use Questions for practice and Solutions to check your work.');
     if (value && typeof value === 'object') for (const key of Object.keys(value)) value[key] = clean(value[key]);

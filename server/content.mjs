@@ -87,7 +87,6 @@ export function createContent({ db, clock, membership, membershipEnabled = MEMBE
   // Scan fallbacks and reports are public under the pre-existing trial policy.
   for (const year of context.window.DSE_SITE_DATA.years) for (const paper of year.papers) for (const q of paper.questions) for (const field of ['question','answer']) for (const file of q[field]||[]) files.set(`/assets/${year.id}/${file}`,false);
   for (const file of read('downloads/catalog.json').files) if (file.kind==='paper' && file.edition==='original') files.set('/'+file.url,false);
-  if (!membershipEnabled) for (const lang of ['chn','eng']) for (const code of new Set([...points.values()].map(p=>p.code))) files.set(`/assets/textbook/pdfs/${lang}/${code}.pdf`,true);
   const premium = user => !!user && (!membershipEnabled||user.role==='admin'||membership(user.id).active);
   const requirePremium = user => {if (!user) fail(401,'请先登录。'); if (!premium(user)) fail(403,'此内容需要有效会员。');};
   const displayLinks = ids => ids.map(sequence=>({sequence,chapterZh:points.get(sequence)?.chapter,chapterEn:points.get(sequence)?.chapter}));
@@ -192,6 +191,7 @@ export function createContent({ db, clock, membership, membershipEnabled = MEMBE
       if (path.includes('%') || path.includes('\0') || (/^\/@fs\//i.test(path) && !path.includes('/node_modules/'))) {res.writeHead(404);res.end('Not found');return true;}
       const deny=()=>{res.writeHead(404,{'Cache-Control':'no-store'});res.end('Not found');return true;};
       if(/(?:^|\/)(?:\.[^/]+|private|dist|server|scripts|tests|output|deployment|src\/lib\/(?:textbook-example-knowledge|question-search\.js|search-concepts|profile-review|mistake-analysis))|\.(?:sqlite(?:-wal|-shm)?|db|pem|key|map)$|(?:QDNA|knowledge_catalog)/i.test(path))return deny();
+      if(/^\/assets\/textbook\/pdfs(?:\/|$)/i.test(path))return deny();
       const bootstrap={'/site-data.js':`window.DSE_SITE_DATA=${JSON.stringify(navigation)};`,'/textbook-data.js':`window.DSE_TEXTBOOK_DATA=${JSON.stringify(publicTextbook)};`,'/statistics-data.js':`window.DSE_STATISTICS=${JSON.stringify(publicStatistics)};`,'/knowledge-network-data.js':'window.DSE_KNOWLEDGE_NETWORK={};','/paper2-knowledge-data.js':'window.DSE_PAPER2_KNOWLEDGE={};'};
       if(bootstrap[path]){res.writeHead(200,{'Content-Type':'application/javascript; charset=utf-8','Cache-Control':'no-store'});res.end(bootstrap[path]);return true;}
       const protectedPath=/^\/(?:text-papers|downloads|assets\/(?:textbook-exercises|textbook-examples|20\d{2}[^/]*|textbook\/pdfs))(?:\/|$)/i.test(path);

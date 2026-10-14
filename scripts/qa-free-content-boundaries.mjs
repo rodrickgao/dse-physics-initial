@@ -13,10 +13,10 @@ try{
  }
  for(const language of ['chn','eng']){
   const route=`assets/textbook/pdfs/${language}/101.pdf`;
-  assert.equal((await fetch(f.base+route,{method:'HEAD'})).status,401);
-  const r=await fetch(f.base+route,{method:'HEAD',headers:{cookie:c.cookie()}});assert.equal(r.status,200);checks.push({route,status:200,signedIn:true});
+  assert.equal((await fetch(f.base+route,{method:'HEAD'})).status,404);
+  const r=await fetch(f.base+route,{method:'HEAD',headers:{cookie:c.cookie()}});assert.equal(r.status,404);checks.push({route,status:404,signedIn:true});
  }
  assert.equal(report.editions,4936);assert.equal(report.issues.length,0);assert.ok(report.layouts.every(l=>l.checked===13660&&l.failures.length===0));
- delete report.failure;report.boundaryRecheck={reason:'Free chapters require a signed-in account; the old audit expected them to be closed to every account.',checks,passed:true};report.passed=true;
+ delete report.failure;report.boundaryRecheck={reason:'Chapter PDF downloads have been removed; their old addresses are closed for every account.',checks,passed:true};report.passed=true;
  fs.writeFileSync(path.join(output,'all-content-report.json'),JSON.stringify(report,null,2));console.log(JSON.stringify({editions:report.editions,blocks:report.blocks,layouts:report.layouts.length,boundaries:checks.length,passed:true}));
 }finally{await f.close();}

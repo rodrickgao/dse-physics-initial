@@ -1,12 +1,10 @@
-import { MEMBERSHIP_ENABLED } from '../lib/access-policy';
-import chapterDownloads from '../lib/textbook-downloads.json';
 import { exerciseNumber } from '../lib/exercise-numbering';
 import { useMembership, MemberNotice } from '../components/Membership';
 import { loadExerciseIndex } from "../lib/textbook-exercises";
 import { loadAllRelatedQuestions } from "../lib/textbook-related";
 import { track } from '../lib/activity';
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ArrowLeft, BookOpen, Check, Clipboard, FileQuestion, Search, X } from "lucide-react";
+import { ArrowLeft, BookOpen, Check, Clipboard, FileQuestion, PanelLeftClose, PanelLeftOpen, Search, X } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Card } from "../components/ui/card";
 import { Input } from "../components/ui/input";
@@ -15,6 +13,7 @@ import { cn } from "../lib/utils";
 import { sharedFigureCards, cardSections } from '../lib/shared-figure-cards';
 import { TextbookContent } from "../components/TextbookContent";
 import { useContentMotion } from "../lib/use-content-motion";
+import { readSaved, writeSaved } from '../lib/study-state';
 import {api} from '../lib/api';
 
 import { BOOK_TONES } from '../lib/book-colors';
@@ -79,6 +78,12 @@ export function TextbookView({ mastered = {}, mistakes = {}, language, targetSeq
   const [selectedBook, setSelectedBook] = useState(null);
   const [chapter, setChapter] = useState("all");
   const [query, setQuery] = useState("");
+  const [directoryCollapsed, setDirectoryCollapsed] = useState(() => readSaved('dse-textbook-directory-collapsed', false) === true);
+  const toggleDirectory = () => {
+    const next = !directoryCollapsed;
+    setDirectoryCollapsed(next);
+    writeSaved('dse-textbook-directory-collapsed', next);
+  };
   useEffect(()=>{
     const restore=()=>{
       if(!location.hash.startsWith('#textbook'))return;
@@ -182,14 +187,17 @@ export function TextbookView({ mastered = {}, mistakes = {}, language, targetSeq
         <div className="directory-heading"><div><h2>{en ? "Choose a textbook" : "选择课本"}</h2></div><span>{books.length} {en ? "books" : "册"}</span></div>
         <div className="book-grid">{books.map((book, index) => <button key={book.name} className="book-card" style={{ "--book-tone": BOOK_TONES[index] }} onClick={() => selectBook(index)}><span className="book-number">{String(index + 1).padStart(2, "0")}</span><span className="book-icon"><BookOpen /></span><strong>{book.name}</strong><small>{new Set(book.points.map((point) => point.code)).size} {en ? "chapters" : "章"} · {sharedFigureCards(book.points).length} {en ? "knowledge points" : "个知识点"}</small></button>)}</div>
       </section>
-      : <div className="textbook-browser">
-        <aside className="chapter-sidebar">
+      : <div className={cn("textbook-browser", directoryCollapsed && "is-directory-collapsed")}>
+        <div className="chapter-navigator">
+          <Button variant="outline" className="chapter-directory-toggle" aria-expanded={!directoryCollapsed} aria-controls="textbook-chapter-directory" aria-label={directoryCollapsed ? (en ? 'Expand chapter directory' : '展开章节目录') : (en ? 'Collapse chapter directory' : '收起章节目录')} title={directoryCollapsed ? (en ? 'Expand chapter directory' : '展开章节目录') : (en ? 'Collapse chapter directory' : '收起章节目录')} onClick={toggleDirectory}>{directoryCollapsed ? <PanelLeftOpen aria-hidden="true" /> : <PanelLeftClose aria-hidden="true" />}<span>{directoryCollapsed ? (en ? 'Show chapters' : '展开目录') : (en ? 'Hide chapters' : '收起目录')}</span></Button>
+        <aside className="chapter-sidebar" id="textbook-chapter-directory" hidden={directoryCollapsed}>
           <Button variant="ghost" className="back-books" onClick={() => selectBook(null)}><ArrowLeft />{en ? "All textbooks" : "所有课本"}</Button>
           <div className="active-book-name" style={{ "--book-tone": BOOK_TONES[selectedBook] }}><span><BookOpen /></span><div><strong>{activeBook.name}</strong><small>{sharedFigureCards(activeBook.points).length} {en ? "knowledge points" : "个知识点"}</small></div></div>
           <p className="chapter-label">{en ? "Chapters" : "章节"}</p>
           <div className="chapter-list"><button className={cn(chapter === "all" && "active")} aria-pressed={chapter === "all"} onClick={() => selectChapter("all")}><span>{en ? "All chapters" : "全部章节"}</span><small>{sharedFigureCards(activeBook.points).length}</small></button>{chapters.map(([code, name]) => <button key={code} className={cn(chapter === code && "active")} aria-pressed={chapter === code} onClick={() => selectChapter(code)}><span><b>{code}</b>{name}</span><small>{sharedFigureCards(activeBook.points.filter((point) => point.code === code)).length}</small></button>)}</div>
         </aside>
-        <section ref={chapterRef} tabIndex={-1} className="knowledge-browser-content"><div className="knowledge-browser-heading"><p>{activeBook.name}</p><h2>{chapter === "all" ? (en ? "All knowledge points" : "全部知识点") : chapters.find(([code]) => code === chapter)?.[1]}</h2>{!MEMBERSHIP_ENABLED && chapterDownloads[language]?.[chapter] && <a data-tour="chapter-download" className="source-download" href={chapterDownloads[language][chapter].url} download={chapterDownloads[language][chapter].filename}>{en?'Download chapter PDF':'下载章节 PDF'}</a>}<span>{visibleCards.length} {en ? "knowledge points" : "个知识点"}</span></div><div className="knowledge-card-list">{visibleCards.map((point) => <PointCard mastered={mastered} mistakes={mistakes} key={point.sequence} point={point} language={language} openPaper={openPaper} exerciseIndex={exerciseIndex} exerciseError={exerciseError} openExercise={openExercise} />)}</div></section>
+        </div>
+        <section ref={chapterRef} tabIndex={-1} className="knowledge-browser-content"><div className="knowledge-browser-heading"><p>{activeBook.name}</p><h2>{chapter === "all" ? (en ? "All knowledge points" : "全部知识点") : chapters.find(([code]) => code === chapter)?.[1]}</h2><span>{visibleCards.length} {en ? "knowledge points" : "个知识点"}</span></div><div className="knowledge-card-list">{visibleCards.map((point) => <PointCard mastered={mastered} mistakes={mistakes} key={point.sequence} point={point} language={language} openPaper={openPaper} exerciseIndex={exerciseIndex} exerciseError={exerciseError} openExercise={openExercise} />)}</div></section>
       </div>}
       </div>
     </div>

@@ -1,6 +1,6 @@
 import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import crypto from 'node:crypto';import vm from 'node:vm';
 const catalog=JSON.parse(fs.readFileSync('src/lib/textbook-downloads.json','utf8'));
-test('all 46 chapters in both languages download the corresponding watermarked knowledge PDF',()=>{
+test('all 46 chapters retain their original bilingual watermarked PDF source files',()=>{
  const c={window:{}};vm.runInNewContext(fs.readFileSync('textbook-data.js','utf8'),c);
  for(const language of ['chn','eng']){
   const points=c.window.DSE_TEXTBOOK_DATA.languages[language].filter(p=>p.sequence<=365);

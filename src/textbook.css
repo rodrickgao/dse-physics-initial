@@ -45,6 +45,21 @@
 .textbook-dialog-head svg {width:18px;height:18px}
 .textbook-view .knowledge-meta {flex-wrap:wrap;gap:8px;line-height:1.6}
 .textbook-view .knowledge-browser-content,.textbook-view .knowledge-card-list {min-width:0}
+.chapter-navigator {position:sticky;top:88px;min-width:0}
+.chapter-navigator .chapter-sidebar {position:static;max-height:calc(100svh - 160px)}
+.chapter-sidebar[hidden] {display:none}
+.textbook-view .chapter-directory-toggle {width:100%;min-height:44px;height:auto;margin-bottom:10px;padding:10px 12px;font-size:15px;line-height:1.4}
+.textbook-view .chapter-directory-toggle svg {flex-shrink:0;width:20px;height:20px}
+.textbook-view .textbook-browser.is-directory-collapsed {grid-template-columns:44px minmax(0,1fr)}
+.is-directory-collapsed .chapter-directory-toggle {width:44px;padding:10px;margin-bottom:0}
+.is-directory-collapsed .chapter-directory-toggle span {display:none}
+@media(max-width:820px){
+ .chapter-navigator {position:static}
+ .chapter-navigator .chapter-sidebar {max-height:none}
+ .textbook-view .textbook-browser.is-directory-collapsed {grid-template-columns:minmax(0,1fr);gap:12px}
+ .textbook-view .is-directory-collapsed .chapter-directory-toggle {width:auto;max-width:100%;padding:10px 12px}
+ .is-directory-collapsed .chapter-directory-toggle span {display:inline}
+}
 .knowledge-questions details {margin-top:8px}
 .knowledge-questions summary {cursor:pointer;padding:6px 0;color:var(--primary);font-size:12px}
 .knowledge-questions details>div {display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}

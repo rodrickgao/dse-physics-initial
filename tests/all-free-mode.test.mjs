@@ -40,7 +40,9 @@ test('free default grants complete learning to all historical states without alt
   const c=f.client(),u=await f.register(c,'download@local.test');
   for(const language of ['chn','eng'])for(const code of new Set([...points.values()].map(p=>p.code))){
    f.advance(61000);
-   const r=await fetch(f.base+`assets/textbook/pdfs/${language}/${code}.pdf`,{method:'HEAD',headers:{cookie:c.cookie()}});assert.equal(r.status,200);assert.equal(r.headers.get('content-type'),'application/pdf');
+   const r=await fetch(f.base+`assets/textbook/pdfs/${language}/${code}.pdf`,{method:'HEAD',headers:{cookie:c.cookie()}});assert.equal(r.status,404);assert.equal(r.headers.get('cache-control'),'no-store');
+   assert.equal((await fetch(f.base+`assets/textbook/pdfs/${language}/${code}.pdf?download=1`,{headers:{cookie:admin.cookie()}})).status,404);
+   assert.equal((await fetch(f.base+`assets/textbook/pdfs/${language}/${code}.pdf`,{method:'HEAD'})).status,404);
   }
   const book=new ExcelJS.Workbook();const exported=await admin.call('admin/export');await book.xlsx.load(Buffer.from(exported.data.base64,'base64'));assert.equal(book.getWorksheet('学生学习').columnCount,17);assert.doesNotMatch(book.getWorksheet('学生学习').getRow(1).values.join(' '),/会员|到期/);
   assert.equal((await f.client().call('learning/dashboard')).status,401);assert.equal((await c.call('admin/overview')).status,403);
