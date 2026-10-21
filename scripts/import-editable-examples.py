@@ -29,3 +29,5 @@ for lang in ['eng','chn']:
 assert len(questions)==373 and len(counts)==46 and sum(r['thinkCount'] for r in report)==51
 (ROOT/'scripts/textbook-example-sources.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf8')
 print('Imported 373 examples / 46 chapters / 51 Think about blocks')
+import subprocess
+subprocess.run(['node',str(ROOT/'scripts/example-layout-review.mjs'),'eng'],check=True)

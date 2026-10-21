@@ -5,6 +5,7 @@ import katex from 'katex';
 import {createHash} from 'node:crypto';
 import {localizeChineseExampleFigures} from './chinese-example-figures.mjs';
 import {omitTextbookReferences} from './omit-textbook-references.mjs';
+import {applyExampleLayoutReview} from './example-layout-review.mjs';
 const site=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),root=path.dirname(site);
 const read=p=>JSON.parse(fs.readFileSync(p,'utf8'));
 const esc=s=>s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
@@ -88,4 +89,5 @@ for(const [code,records] of staged){
 fs.writeFileSync(path.join(site,'assets/textbook-examples/index-chn.json'),JSON.stringify(index));
 fs.writeFileSync(path.join(output,'index.html'),`<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><title>中文課本例題（文本版）</title><style>${css}</style><h1>中文課本例題（文本版）</h1><p>46 章 · 373 道例題 · 51 組思考題及解答</p>${links.join('')}</html>`);
 fs.writeFileSync(path.join(output,'validation.json'),JSON.stringify(audit,null,2));
+applyExampleLayoutReview('chn');
 console.log(JSON.stringify({examples:373,chapters:46,thinkAnswers:51,formulaCount,diagramFallbacks:fallbacks.length,output}));
