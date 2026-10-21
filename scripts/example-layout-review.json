@@ -1,0 +1,468 @@
+{
+  "eng": {
+    "ex-103-2": {
+      "tips": {
+        "before": "<p><b>Tip</b></p><p>C of the glass of water is constant. According to</p><p>Q = CΔT, the same Q always</p><p>gives the same ΔT.</p>",
+        "beforeSha256": "0a473f9f9cd5d5310c43ca2237ed7825042d426f472d41ed245b12717a938c8a",
+        "after": "<p><b>Tip</b></p><p>C of the glass of water is constant. According to Q = CΔT, the same Q always gives the same ΔT.</p>",
+        "afterSha256": "c60aecd539efb87b9812861179530e8c8736948043faaf3e13509184d2551618"
+      }
+    },
+    "ex-103-4": {
+      "tips": {
+        "before": "<p><b>Skill</b></p><p><b>Mathematics</b></p><p>Significant figures and rounding Depending on the accuracy required, we can round the calculation result to different <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>s</mtext></mrow><mrow><mtext>i</mtext></mrow><mrow><mtext>g</mtext></mrow><mrow><mtext>n</mtext></mrow><mrow><mtext>i</mtext></mrow><mrow><mtext>f</mtext></mrow><mrow><mtext>i</mtext></mrow><mrow><mtext>c</mtext></mrow><mrow><mtext>a</mtext></mrow><mrow><mtext>n</mtext></mrow><mrow><mtext>t</mtext></mrow></mrow></math> <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>f</mtext></mrow><mrow><mtext>i</mtext></mrow><mrow><mtext>g</mtext></mrow><mrow><mtext>u</mtext></mrow><mrow><mtext>r</mtext></mrow><mrow><mtext>e</mtext></mrow><mrow><mtext>s</mtext></mrow></mrow></math> (sig. fig.).</p><p>Typically, answers are expressed in 3 significant figures in this series of books. p.193</p><p><b>Skill</b></p><p><b>Experiment</b></p><p>Percentage error All measurements contain errors. If the measured value of a quantity is <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>M</mtext></mrow></mrow></math> while the standard value of this quantity is <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>S</mtext></mrow></mrow></math>, the error <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>E</mtext></mrow></mrow></math> in this measurement is the difference between <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>M</mtext></mrow></mrow></math> and <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>S</mtext></mrow><mrow><mtext>,</mtext></mrow></mrow></math></p><p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>i</mtext></mrow><mrow><mtext>.</mtext></mrow><mrow><mtext>e</mtext></mrow><mrow><mtext>.</mtext></mrow></mrow></math> <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>E</mtext></mrow></mrow></math> <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>=</mtext></mrow></mrow></math> <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>|</mtext></mrow><mrow><mtext>M</mtext></mrow></mrow></math> – <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>S</mtext></mrow><mrow><mtext>|</mtext></mrow></mrow></math>. Then,</p><p>percentage error</p><p>= <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mfrac><mrow><mrow><mrow><mtext>|</mtext></mrow><mrow><mtext>M</mtext></mrow><mrow><mtext> </mtext></mrow><mrow><mtext>–</mtext></mrow><mrow><mtext> </mtext></mrow><mrow><mtext>S</mtext></mrow><mrow><mtext>|</mtext></mrow></mrow></mrow><mrow><mrow><mrow><mtext>S</mtext></mrow></mrow></mrow></mfrac></mrow></math> × 100%</p><p>The smaller the percentage error, the more precise the measurement.</p>",
+        "beforeSha256": "db6a56fdef0f7f9ebed3b81de9d945d355b39e2f9bb26f426d7afc6271b8b889",
+        "after": "<p><b>Skill</b></p><p><b>Mathematics</b></p><p>Significant figures and rounding Depending on the accuracy required, we can round the calculation result to different <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>s</mtext></mrow><mrow><mtext>i</mtext></mrow><mrow><mtext>g</mtext></mrow><mrow><mtext>n</mtext></mrow><mrow><mtext>i</mtext></mrow><mrow><mtext>f</mtext></mrow><mrow><mtext>i</mtext></mrow><mrow><mtext>c</mtext></mrow><mrow><mtext>a</mtext></mrow><mrow><mtext>n</mtext></mrow><mrow><mtext>t</mtext></mrow></mrow></math> <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>f</mtext></mrow><mrow><mtext>i</mtext></mrow><mrow><mtext>g</mtext></mrow><mrow><mtext>u</mtext></mrow><mrow><mtext>r</mtext></mrow><mrow><mtext>e</mtext></mrow><mrow><mtext>s</mtext></mrow></mrow></math> (sig. fig.).</p><p>Typically, answers are expressed in 3 significant figures in this series of books. p.193</p><p><b>Skill</b></p><p><b>Experiment</b></p><p>Percentage error All measurements contain errors. If the measured value of a quantity is <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>M</mtext></mrow></mrow></math> while the standard value of this quantity is <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>S</mtext></mrow></mrow></math>, the error <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>E</mtext></mrow></mrow></math> in this measurement is the difference between <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>M</mtext></mrow></mrow></math> and <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>S</mtext></mrow><mrow><mtext>,</mtext></mrow></mrow></math> <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>i</mtext></mrow><mrow><mtext>.</mtext></mrow><mrow><mtext>e</mtext></mrow><mrow><mtext>.</mtext></mrow></mrow></math> <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>E</mtext></mrow></mrow></math> <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>=</mtext></mrow></mrow></math> <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>|</mtext></mrow><mrow><mtext>M</mtext></mrow></mrow></math> – <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>S</mtext></mrow><mrow><mtext>|</mtext></mrow></mrow></math>. Then,</p><p>percentage error</p><p>= <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mfrac><mrow><mrow><mrow><mtext>|</mtext></mrow><mrow><mtext>M</mtext></mrow><mrow><mtext> </mtext></mrow><mrow><mtext>–</mtext></mrow><mrow><mtext> </mtext></mrow><mrow><mtext>S</mtext></mrow><mrow><mtext>|</mtext></mrow></mrow></mrow><mrow><mrow><mrow><mtext>S</mtext></mrow></mrow></mrow></mfrac></mrow></math> × 100%</p><p>The smaller the percentage error, the more precise the measurement.</p>",
+        "afterSha256": "94fe8f7df003c78b058e58ce04fed20eba2fdbee018368e692d161738bc9fffe"
+      }
+    },
+    "ex-104-8": {
+      "tips": {
+        "before": "<p><b>Tip</b></p><p>The temperature of water rises from 20 °C to 100 °C during 0−2 min.</p><p><b>Tip</b></p><p>All the water becomes steam during 2−17 min.</p><p><b>Tip</b></p><p>A higher specific heat capacity means more energy is needed to raise the temperature by</p><p>1 °C.</p><p><b>Tip</b></p><p>A higher specific latent heat means more energy is needed to change 1 kg of a substance from one state to another.</p>",
+        "beforeSha256": "5c40c9a9a1a6f2410747789a9865c53f1d7594db5585eb33af31e20fc8d99d09",
+        "after": "<p><b>Tip</b></p><p>The temperature of water rises from 20 °C to 100 °C during 0−2 min.</p><p><b>Tip</b></p><p>All the water becomes steam during 2−17 min.</p><p><b>Tip</b></p><p>A higher specific heat capacity means more energy is needed to raise the temperature by 1 °C.</p><p><b>Tip</b></p><p>A higher specific latent heat means more energy is needed to change 1 kg of a substance from one state to another.</p>",
+        "afterSha256": "69d89f3b5d64f3ca61f390833676d07579832ae8af47e0e37559475045caec93"
+      }
+    },
+    "ex-201-3": {
+      "tips": {
+        "before": "<p><b>Skill</b></p><p>Problem-solving</p><p>Finding average velocity Follow the steps below to find the average velocity. ① Draw the path of the object. ② Draw the total displacement (an arrow from the initial position to the final position). ③ Find the magnitude and direction of the average velocity.</p>",
+        "beforeSha256": "f08eb0a7a1f39531b55f90321ef4fa51cad5a4a8110681b52bbf3ab7070075da",
+        "after": "<p><b>Skill</b></p><p>Problem-solving</p><p>Finding average velocity Follow the steps below to find the average velocity.</p><p class=\"numbered-step\">① Draw the path of the object.</p><p class=\"numbered-step\">② Draw the total displacement (an arrow from the initial position to the final position).</p><p class=\"numbered-step\">③ Find the magnitude and direction of the average velocity.</p>",
+        "afterSha256": "8dd88b5e5d4821a15a616ea40a5d73db72b1c0fbe64096f003dc143f96d28bd5"
+      }
+    },
+    "ex-203-3": {
+      "tips": {
+        "before": "<p><b>Tip</b></p><p>F<sub>net</sub> acts along the moving direction. We need to consider only the force(s) acting along this direction when applying</p><p>F<sub>net</sub> = ma. The weight and the</p><p>normal force cancel each other out.</p>",
+        "beforeSha256": "14e37362212804401cadb26264624b25a1f43c896a7a542188b177002d2a7f24",
+        "after": "<p><b>Tip</b></p><p>F<sub>net</sub> acts along the moving direction. We need to consider only the force(s) acting along this direction when applying F<sub>net</sub> = ma. The weight and the normal force cancel each other out.</p>",
+        "afterSha256": "6065ae27037c926e31902f7174308b8015f711ee4e7d3a5079e7f3ab87ec22de"
+      }
+    },
+    "ex-203-4": {
+      "tips": {
+        "before": "<p><b>Tip</b></p><p>F<sub>net</sub> acts along Susan’s moving direction. We need to consider only the force(s) acting along this direction when applying</p><p>F<sub>net</sub> = ma. Note that T and f</p><p>represent the magnitudes of forces. You need to add a negative sign if a force points to the negative direction.</p><p><b>Tip</b></p><p>After Susan lets go of the rope, the tension no longer acts on Susan and the resistive force becomes the net force acting on Susan.</p>",
+        "beforeSha256": "b021285a72441a705908add3c504697763d61f8bd7943a5048c1fedbc2cff7bb",
+        "after": "<p><b>Tip</b></p><p>F<sub>net</sub> acts along Susan’s moving direction. We need to consider only the force(s) acting along this direction when applying F<sub>net</sub> = ma. Note that T and f represent the magnitudes of forces. You need to add a negative sign if a force points to the negative direction.</p><p><b>Tip</b></p><p>After Susan lets go of the rope, the tension no longer acts on Susan and the resistive force becomes the net force acting on Susan.</p>",
+        "afterSha256": "64c2f2ef29886df5c3b6d03757ffb7674cb053d6fe5d228803965fcb65208ee1"
+      }
+    },
+    "ex-204-7": {
+      "question": {
+        "before": "<p>A frog of weight 8 N jumps from the ground. The force acting on its feet by the ground is 20 N and makes an angle of 40° to the horizontal (Fig a). Find the net force acting on the frog.</p><p class=\"study-figure\"><img src=\"assets/textbook-examples/media/0581d0d357d73e42a1e8b8f3.png\" alt=\"\" style=\"width:129.9px\"/></p><p class=\"study-figure\"><img src=\"assets/textbook-examples/media/66ebe98961b717b1bb82db4f.png\" alt=\"\" style=\"width:41.4px\"/></p>",
+        "beforeSha256": "8c61f3289e328e3da602f0fc4d75cf3631d176f9d997a297b44329de4b61c5a1",
+        "after": "<p>A frog of weight 8 N jumps from the ground. The force acting on its feet by the ground is 20 N and makes an angle of 40° to the horizontal (Fig a). Find the net force acting on the frog.</p><p class=\"study-figure\"><img src=\"assets/textbook-examples/media/frog-complete-20261022.png\" alt=\"\" style=\"width:220px\"/></p><p class=\"study-figure\"><img src=\"assets/textbook-examples/media/66ebe98961b717b1bb82db4f.png\" alt=\"\" style=\"width:41.4px\"/></p>",
+        "afterSha256": "f5b95b17c08e696cda8a22facf6423ce3d9e08a2008efed5a639e70ee9a78226"
+      }
+    },
+    "ex-204-10": {
+      "tips": {
+        "before": "<p><b>Skill</b></p><p>Problem-solving</p><p>Resolving forces when net force is non-zero ① Draw a free-body diagram for the object of interest. ② Choose two perpendicular directions that are convenient to solve the problem, e.g. parallel and perpendicular to the object’s moving direction. ③ Define the positive directions. ④ Resolve forces and find the resultant force in each direction in ②. ⑤ Apply the equation</p><p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><msub><mrow><mrow><mrow><mtext>F</mtext></mrow></mrow></mrow><mrow><mrow><mrow><mtext>n</mtext></mrow><mrow><mtext>e</mtext></mrow><mrow><mtext>t</mtext></mrow></mrow></mrow></msub></mrow></math> = <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>m</mtext></mrow><mrow><mtext>a</mtext></mrow></mrow></math> and solve</p><p>for the unknowns.</p><p><b>Tip</b></p><p>Since the truck does not move in vertical direction, the resultant force along this direction is zero.</p>",
+        "beforeSha256": "589ee799c7f385d4fb2048ba8fb54852dbe2638e03cff6b922f3682231929fbd",
+        "after": "<p><b>Skill</b></p><p>Problem-solving</p><p>Resolving forces when net force is non-zero</p><p class=\"numbered-step\">① Draw a free-body diagram for the object of interest.</p><p class=\"numbered-step\">② Choose two perpendicular directions that are convenient to solve the problem, e.g. parallel and perpendicular to the object’s moving direction.</p><p class=\"numbered-step\">③ Define the positive directions.</p><p class=\"numbered-step\">④ Resolve forces and find the resultant force in each direction in ②.</p><p class=\"numbered-step\">⑤ Apply the equation <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><msub><mrow><mrow><mrow><mtext>F</mtext></mrow></mrow></mrow><mrow><mrow><mrow><mtext>n</mtext></mrow><mrow><mtext>e</mtext></mrow><mrow><mtext>t</mtext></mrow></mrow></mrow></msub></mrow></math> = <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>m</mtext></mrow><mrow><mtext>a</mtext></mrow></mrow></math> and solve for the unknowns.</p><p><b>Tip</b></p><p>Since the truck does not move in vertical direction, the resultant force along this direction is zero.</p>",
+        "afterSha256": "dd49a4f639c257415264237004f6d2482e317c4d4d805b7328fff928f71874f9"
+      }
+    },
+    "ex-205-4": {
+      "tips": {
+        "before": "<p><b>Skill</b></p><p>Problem-solving</p><p>Object in equilibrium ① Draw a free-body diagram for the object. ② Set up the equations</p><p>using <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><msub><mrow><mrow><mrow><mtext>F</mtext></mrow></mrow></mrow><mrow><mrow><mrow><mtext>n</mtext></mrow><mrow><mtext>e</mtext></mrow><mrow><mtext>t</mtext></mrow></mrow></mrow></msub></mrow></math> = 0.</p><p>③ Set up equations</p><p>using τ<sub>net</sub> = 0 about</p><p>any point. Choose a point to set an equation with one unknown if possible. ④ Solve the equation(s).</p><p><b>Tip</b></p><p>As the moment provided by F<sub>Y</sub> is 0, this equation has one unknown only.</p><p><b>Tip</b></p><p>If the monkey walks too close to the left end, the tree trunk will turn anticlockwise about X. Just before this happens, the tree trunk is about to leave the</p><p>stone at Y and therefore F<sub>Y</sub> = 0</p>",
+        "beforeSha256": "c3f8d2fb44386874a12782187fed6ae6ed52d5869cb11265566ebada90c70605",
+        "after": "<p><b>Skill</b></p><p>Problem-solving</p><p>Object in equilibrium</p><p class=\"numbered-step\">① Draw a free-body diagram for the object.</p><p class=\"numbered-step\">② Set up the equations using <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><msub><mrow><mrow><mrow><mtext>F</mtext></mrow></mrow></mrow><mrow><mrow><mrow><mtext>n</mtext></mrow><mrow><mtext>e</mtext></mrow><mrow><mtext>t</mtext></mrow></mrow></mrow></msub></mrow></math> = 0.</p><p class=\"numbered-step\">③ Set up equations using τ<sub>net</sub> = 0 about any point. Choose a point to set an equation with one unknown if possible.</p><p class=\"numbered-step\">④ Solve the equation(s).</p><p><b>Tip</b></p><p>As the moment provided by F<sub>Y</sub> is 0, this equation has one unknown only.</p><p><b>Tip</b></p><p>If the monkey walks too close to the left end, the tree trunk will turn anticlockwise about X. Just before this happens, the tree trunk is about to leave the stone at Y and therefore F<sub>Y</sub> = 0</p>",
+        "afterSha256": "b8c86a9e94810bac1d1e878c549cdc9298f70428241e496375bd4f547fd37f17"
+      }
+    },
+    "ex-206-5": {
+      "tips": {
+        "before": "<p>Skill Problem-solving — Method 1</p><p>Solving problems with KE<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><msub><mrow><mrow><mrow><mtext> </mtext></mrow></mrow></mrow><mrow><mrow><mrow><mtext>1</mtext></mrow></mrow></mrow></msub></mrow></math> + PE<sub>1</sub> = KE<sub>2</sub> + PE<sub>2</sub></p><p>① Choose a reference level where PE = 0.</p><p>② Determine the speeds and heights of the object at the initial and final positions.</p><p>③ Set an equation with KE<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><msub><mrow><mrow><mrow><mtext> </mtext></mrow></mrow></mrow><mrow><mrow><mrow><mtext>1</mtext></mrow></mrow></mrow></msub></mrow></math> + PE<sub>1</sub> = KE<sub>2</sub> + PE<sub>2</sub>.</p><p>④ Solve the equation.</p><p>Skill Problem-solving — Method 2</p><p>Solving problems with loss in KE / PE = gain in PE / KE</p><p>① Determine the speeds of the object at the initial and final positions and its change in height.</p><p>② Determine whether the KE and PE of the object has a gain or a loss.</p><p>③ Set an equation with loss in KE / PE = gain in PE / KE.</p><p>④ Solve the equation.</p>",
+        "beforeSha256": "114934df460ca3cd97d7d00e7bcc4c0c32269534f2d039124d5f0a101d295f76",
+        "after": "<p>Skill Problem-solving — Method 1</p><p>Solving problems with KE<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><msub><mrow><mrow><mrow><mtext> </mtext></mrow></mrow></mrow><mrow><mrow><mrow><mtext>1</mtext></mrow></mrow></mrow></msub></mrow></math> + PE<sub>1</sub> = KE<sub>2</sub> + PE<sub>2</sub></p><p class=\"numbered-step\">① Choose a reference level where PE = 0.</p><p class=\"numbered-step\">② Determine the speeds and heights of the object at the initial and final positions.</p><p class=\"numbered-step\">③ Set an equation with KE<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><msub><mrow><mrow><mrow><mtext> </mtext></mrow></mrow></mrow><mrow><mrow><mrow><mtext>1</mtext></mrow></mrow></mrow></msub></mrow></math> + PE<sub>1</sub> = KE<sub>2</sub> + PE<sub>2</sub>.</p><p class=\"numbered-step\">④ Solve the equation.</p><p>Skill Problem-solving — Method 2</p><p>Solving problems with loss in KE / PE = gain in PE / KE</p><p class=\"numbered-step\">① Determine the speeds of the object at the initial and final positions and its change in height.</p><p class=\"numbered-step\">② Determine whether the KE and PE of the object has a gain or a loss.</p><p class=\"numbered-step\">③ Set an equation with loss in KE / PE = gain in PE / KE.</p><p class=\"numbered-step\">④ Solve the equation.</p>",
+        "afterSha256": "23acd104a8b2aa71cd2a5467f1182730623bfcf05d95baa2eba3599cc60bcb7b"
+      }
+    },
+    "ex-206-6": {
+      "tips": {
+        "before": "<p><b>Tip</b></p><p>EPE = 0 as the string is not</p><p>taut yet.</p>",
+        "beforeSha256": "e5e450609bc45bde8e5761a7b4381561f0213fc31bf4a2f2453bc241c2aa2318",
+        "after": "<p><b>Tip</b></p><p>EPE = 0 as the string is not taut yet.</p>",
+        "afterSha256": "3024a8a29be825cc6b7a454c49f67ff98789499ecacdb1789c942358ed91e7d7"
+      }
+    },
+    "ex-207-2": {
+      "tips": {
+        "before": "<p><b>Skill</b></p><p>Problem-solving</p><p>Applying conservation of momentum ① Define the positive direction. ② Check the external forces acting on the system. Conservation of momentum is valid only if the external net force is zero. ③ Set an equation with the conservation of momentum. ④ Solve the equation.</p><p><b>Tip</b></p><p>u<sub>M</sub> = 0 and u<sub>J</sub> = 0</p>",
+        "beforeSha256": "22de0f2a5329ff9f86594826dab181d9a6e8ee66c11f8cfefb561c3fc3d9dfb2",
+        "after": "<p><b>Skill</b></p><p>Problem-solving</p><p>Applying conservation of momentum</p><p class=\"numbered-step\">① Define the positive direction.</p><p class=\"numbered-step\">② Check the external forces acting on the system. Conservation of momentum is valid only if the external net force is zero.</p><p class=\"numbered-step\">③ Set an equation with the conservation of momentum.</p><p class=\"numbered-step\">④ Solve the equation.</p><p><b>Tip</b></p><p>u<sub>M</sub> = 0 and u<sub>J</sub> = 0</p>",
+        "afterSha256": "946efdbf56cb4b32b8fab0681d7e7103323a31811734dadb28bbbc110c6811de"
+      }
+    },
+    "ex-208-2": {
+      "tips": {
+        "before": "<p><b>Tip</b></p><p>Apply s<sub>x</sub> = u<sub>x</sub>t.</p><p><b>Tip</b></p><p>From (a), the dart takes 0.3 s from launching to hitting the dartboard. In this journey,</p><p>u<sub>y</sub> = 0 and a<sub>y</sub> = 9.81 m s<sup>–2</sup>.</p>",
+        "beforeSha256": "bf7b2181c4f64985e376d4fd1516a4986dc4698147b5f63f8ce00125179ab7b1",
+        "after": "<p><b>Tip</b></p><p>Apply s<sub>x</sub> = u<sub>x</sub>t.</p><p><b>Tip</b></p><p>From (a), the dart takes 0.3 s from launching to hitting the dartboard. In this journey, u<sub>y</sub> = 0 and a<sub>y</sub> = 9.81 m s<sup>–2</sup>.</p>",
+        "afterSha256": "0fe1748d359042287d0e4fc16a17f18a1df9b45b23f34ced50dfc589516f1172"
+      }
+    },
+    "ex-209-7": {
+      "tips": {
+        "before": "<p><b>Tip</b></p><p>According to cos θ = <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mfrac><mrow><mrow><mrow><mtext>g</mtext></mrow></mrow></mrow><mrow><mrow><msup><mrow><mrow><mrow><mtext>ω</mtext></mrow></mrow></mrow><mrow><mrow><mrow><mtext>2</mtext></mrow></mrow></mrow></msup><mrow><mtext>L</mtext></mrow></mrow></mrow></mfrac></mrow></math>,</p><p>for constant L,</p><p>ω ↑ ⇒ cos θ ↓ ⇒ θ ↑</p>",
+        "beforeSha256": "d57120b81a7d7761e52a06ce1467da32894ecaa799e48c4ac9e148d1ed9ac0de",
+        "after": "<p><b>Tip</b></p><p>According to cos θ = <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mfrac><mrow><mrow><mrow><mtext>g</mtext></mrow></mrow></mrow><mrow><mrow><msup><mrow><mrow><mrow><mtext>ω</mtext></mrow></mrow></mrow><mrow><mrow><mrow><mtext>2</mtext></mrow></mrow></mrow></msup><mrow><mtext>L</mtext></mrow></mrow></mrow></mfrac></mrow></math>, for constant L, ω ↑ ⇒ cos θ ↓ ⇒ θ ↑</p>",
+        "afterSha256": "39e8a9077aed8892f829c47ccfa340193bbdb692eb9fdc92f064cee7baedc27d"
+      }
+    },
+    "ex-3A01-4": {
+      "tips": {
+        "before": "<p><b>Skill</b></p><p>Drawing</p><p>Drawing an image formed by a mirror</p><p>1 Draw a dotted line from a tip of the object to pass through the mirror perpendicularly.</p><p>2 Apply image distance</p><p>= object distance to</p><p>locate the image of the tip.</p><p>3 Locate the image of the other tip of the object. Join the two image points with a dotted arrow to draw the image.</p><p><b>Tip</b></p><p>When the mirror is inclined at 45°, the image of a horizontal object is vertical, and vice versa.</p>",
+        "beforeSha256": "e0e4e5243de6565cfff034d24f1eac279fda11730a4f83228c34fbe0bd6ef295",
+        "after": "<p><b>Skill</b></p><p>Drawing</p><p>Drawing an image formed by a mirror</p><p>1 Draw a dotted line from a tip of the object to pass through the mirror perpendicularly.</p><p>2 Apply image distance = object distance to locate the image of the tip.</p><p>3 Locate the image of the other tip of the object. Join the two image points with a dotted arrow to draw the image.</p><p><b>Tip</b></p><p>When the mirror is inclined at 45°, the image of a horizontal object is vertical, and vice versa.</p>",
+        "afterSha256": "5da09c10b7315f16df4fc51e37258e921f83b4562567c901865c3d3bb3be5c53"
+      }
+    },
+    "ex-3A02-7": {
+      "tips": {
+        "before": "<p><b>Tip</b></p><p>n = <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mfrac><mrow><mrow><mrow><mtext>s</mtext></mrow><mrow><mtext>i</mtext></mrow><mrow><mtext>n</mtext></mrow><mrow><mtext> </mtext></mrow><mrow><mtext>6</mtext></mrow><mrow><mtext>0</mtext></mrow><mrow><mtext>°</mtext></mrow></mrow></mrow><mrow><mrow><mrow><mtext>s</mtext></mrow><mrow><mtext>i</mtext></mrow><mrow><mtext>n</mtext></mrow><mrow><mtext> </mtext></mrow><mrow><mtext>3</mtext></mrow><mrow><mtext>2</mtext></mrow><mrow><mtext>.</mtext></mrow><mrow><mtext>3</mtext></mrow><mrow><mtext>°</mtext></mrow></mrow></mrow></mfrac></mrow></math> = 1.62</p><p>sin C = <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mfrac><mrow><mrow><mrow><mtext>1</mtext></mrow></mrow></mrow><mrow><mrow><mrow><mtext>n</mtext></mrow></mrow></mrow></mfrac></mrow></math> = <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mfrac><mrow><mrow><mrow><mtext>1</mtext></mrow></mrow></mrow><mrow><mrow><mrow><mtext>1</mtext></mrow><mrow><mtext>.</mtext></mrow><mrow><mtext>6</mtext></mrow><mrow><mtext>2</mtext></mrow></mrow></mrow></mfrac></mrow></math></p><p>C = 38.1°</p><p>At side AB,</p><p>i = 90° – 32.3°</p><p>= 57.7°</p><p>&gt; 38.1°</p><p>∴ T otal internal reflection</p><p>occurs.</p>",
+        "beforeSha256": "3ce4ca6ef2d64182340ca7e7b3446b4bc92ff294150f06a30006e882e61005f7",
+        "after": "<p><b>Tip</b></p><p>n = <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mfrac><mrow><mrow><mrow><mtext>s</mtext></mrow><mrow><mtext>i</mtext></mrow><mrow><mtext>n</mtext></mrow><mrow><mtext> </mtext></mrow><mrow><mtext>6</mtext></mrow><mrow><mtext>0</mtext></mrow><mrow><mtext>°</mtext></mrow></mrow></mrow><mrow><mrow><mrow><mtext>s</mtext></mrow><mrow><mtext>i</mtext></mrow><mrow><mtext>n</mtext></mrow><mrow><mtext> </mtext></mrow><mrow><mtext>3</mtext></mrow><mrow><mtext>2</mtext></mrow><mrow><mtext>.</mtext></mrow><mrow><mtext>3</mtext></mrow><mrow><mtext>°</mtext></mrow></mrow></mrow></mfrac></mrow></math> = 1.62</p><p>sin C = <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mfrac><mrow><mrow><mrow><mtext>1</mtext></mrow></mrow></mrow><mrow><mrow><mrow><mtext>n</mtext></mrow></mrow></mrow></mfrac></mrow></math> = <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mfrac><mrow><mrow><mrow><mtext>1</mtext></mrow></mrow></mrow><mrow><mrow><mrow><mtext>1</mtext></mrow><mrow><mtext>.</mtext></mrow><mrow><mtext>6</mtext></mrow><mrow><mtext>2</mtext></mrow></mrow></mrow></mfrac></mrow></math></p><p>C = 38.1°</p><p>At side AB,</p><p>i = 90° – 32.3°</p><p>= 57.7°</p><p>&gt; 38.1°</p><p>∴ T otal internal reflection occurs.</p>",
+        "afterSha256": "2b0ffb79d728bf45f11176485814ef2e89194118c1762806aa2d652406e633b4"
+      }
+    },
+    "ex-3A03-2": {
+      "tips": {
+        "before": "<p><b>Tip</b></p><p>① Complete rays p and r according to the construction rules. ② Locate the image A′B′ by extending the rays in ① backwards. ③ Since ray q comes from A, it appears to come from A&#x27; after passing through the lens. ④ Since ray s comes from B, it appears to come from B′ after passing through the lens.</p>",
+        "beforeSha256": "6ceb96e23f979e753c8188f0df63b81d61d4fbc055874512526709c952264519",
+        "after": "<p><b>Tip</b></p><p class=\"numbered-step\">① Complete rays p and r according to the construction rules.</p><p class=\"numbered-step\">② Locate the image A′B′ by extending the rays in ① backwards.</p><p class=\"numbered-step\">③ Since ray q comes from A, it appears to come from A' after passing through the lens.</p><p class=\"numbered-step\">④ Since ray s comes from B, it appears to come from B′ after passing through the lens.</p>",
+        "afterSha256": "adfdb541e42b375f61468ba96d6737472f5f81c67f885306e08b32b4e6321fd5"
+      }
+    },
+    "ex-3A03-3": {
+      "tips": {
+        "before": "<p><b>Tip</b></p><p>① According to rule 3, q travels straight on. ② Draw the focal plane. ③ Since p and q are parallel before passing through the lens, they must intersect on the focal plane.</p>",
+        "beforeSha256": "d236d10665b83d710aaeb24c73515c79c76059791d7b5ba3711c725cf5242dc9",
+        "after": "<p><b>Tip</b></p><p class=\"numbered-step\">① According to rule 3, q travels straight on.</p><p class=\"numbered-step\">② Draw the focal plane.</p><p class=\"numbered-step\">③ Since p and q are parallel before passing through the lens, they must intersect on the focal plane.</p>",
+        "afterSha256": "147da98a5a6119891d103998be5e52f42ea2483275446b1af5632c4645ba1dce"
+      }
+    },
+    "ex-3A03-6": {
+      "tips": {
+        "before": "<p><b>Tip</b></p><p>① According to rule 3, q travels straight on. ② Draw the focal plane. ③ Since p and q are parallel before passing through the lens, they appear to come from the same point on the focal plane after passing through the lens.</p>",
+        "beforeSha256": "457acf29786c140fed8d02deb8f0b72d04d93ac2b460a51c0339b63025ebab22",
+        "after": "<p><b>Tip</b></p><p class=\"numbered-step\">① According to rule 3, q travels straight on.</p><p class=\"numbered-step\">② Draw the focal plane.</p><p class=\"numbered-step\">③ Since p and q are parallel before passing through the lens, they appear to come from the same point on the focal plane after passing through the lens.</p>",
+        "afterSha256": "278f2c523d8b26288a91affab5342d7e6bd3d03043a5b1bc9744db72c40ca751"
+      }
+    },
+    "ex-3A03-9": {
+      "tips": {
+        "before": "<p><b>Tip</b></p><p>① Draw a ray from A using rule 3. ② Extended ray p backwards. ③ The intersection is A′. Then draw A′B′ using a dotted arrow. ④ To locate F′, draw a ray from A using rule 1. The emerging ray appears to come from A′ and cut the principal axis at F′.</p>",
+        "beforeSha256": "4ee9a1094a00c069265f995de269c092bbea0da33a39e0bc1c545d87536c645d",
+        "after": "<p><b>Tip</b></p><p class=\"numbered-step\">① Draw a ray from A using rule 3.</p><p class=\"numbered-step\">② Extended ray p backwards.</p><p class=\"numbered-step\">③ The intersection is A′. Then draw A′B′ using a dotted arrow.</p><p class=\"numbered-step\">④ To locate F′, draw a ray from A using rule 1. The emerging ray appears to come from A′ and cut the principal axis at F′.</p>",
+        "afterSha256": "457965512955a1c448063bdf17ed27a63bf2e63c58573cde8f7e440185da402b"
+      }
+    },
+    "ex-3B04-2": {
+      "tips": {
+        "before": "<p><b>Skill</b></p><p>Problem-solving</p><p>Sketching the waveform after a certain time ① Express the time interval in terms of period <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>T</mtext></mrow></mrow></math>. ② Find the distance (in terms of wavelength λ) that the wave travels in the time interval. ③ Displace the original waveform along the travelling direction by the distance obtained in ② . Then draw the remaining waveform.</p>",
+        "beforeSha256": "edbce55557004621cc03a1ea3347cc36e30d01a5f65f14555b257637c8fbb6ff",
+        "after": "<p><b>Skill</b></p><p>Problem-solving</p><p>Sketching the waveform after a certain time</p><p class=\"numbered-step\">① Express the time interval in terms of period <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>T</mtext></mrow></mrow></math>.</p><p class=\"numbered-step\">② Find the distance (in terms of wavelength λ) that the wave travels in the time interval.</p><p class=\"numbered-step\">③ Displace the original waveform along the travelling direction by the distance obtained in ② . Then draw the remaining waveform.</p>",
+        "afterSha256": "b945bf55158f9b525d815880ffb748ca5b03c7ad145c323f7bf0135b07b49cc1"
+      }
+    },
+    "ex-3B05-9": {
+      "tips": {
+        "before": "<p><b>Tip</b></p><p>If this were a travelling wave, X and Z would move in opposite directions.</p><p class=\"study-figure\"><img src=\"assets/textbook-examples/media/54ab6938587699a717c983f6.png\" alt=\"\" style=\"width:179.4px\"/></p><p><b>Tip</b></p><p>Since X is moving downwards</p><p>at t = 0, it is not at the</p><p>maximum displacement. s<sub>X</sub> is smaller than the amplitude and is decreasing. As Y vibrates in phase with X, its s−t graph has the same shape but with a larger amplitude.</p>",
+        "beforeSha256": "2231b5cfc8a51a5a546fb94cf5c9edd4c0178c6a1cbdc7fe85f131142754ac58",
+        "after": "<p><b>Tip</b></p><p>If this were a travelling wave, X and Z would move in opposite directions.</p><p class=\"study-figure\"><img src=\"assets/textbook-examples/media/54ab6938587699a717c983f6.png\" alt=\"\" style=\"width:179.4px\"></p><p><b>Tip</b></p><p>Since X is moving downwards at t = 0, it is not at the maximum displacement. s<sub>X</sub> is smaller than the amplitude and is decreasing. As Y vibrates in phase with X, its s−t graph has the same shape but with a larger amplitude.</p>",
+        "afterSha256": "1a05b8b0c067889719fd08814ccb51a3845bc82161b1bd6c141eaa9bc6b21ba8"
+      }
+    },
+    "ex-3B07-4": {
+      "tips": {
+        "before": "<p><b>Tip</b></p><p>s changes from 0 to a positive</p><p>value just after t = 0, so P</p><p>is moving in the positive direction. Pay attention to the positive direction defined in the question. Do not answer upwards.</p>",
+        "beforeSha256": "96b825711e58159d5dbb9635992bbf476d03ce1ad103ad8edbd94ef49377c70a",
+        "after": "<p><b>Tip</b></p><p>s changes from 0 to a positive value just after t = 0, so P is moving in the positive direction. Pay attention to the positive direction defined in the question. Do not answer upwards.</p>",
+        "afterSha256": "166145396dcff70ff35672c550de23555941942ca88ea729ddb1e1e801811d22"
+      }
+    },
+    "ex-3B07-5": {
+      "tips": {
+        "before": "<p><b>Tip</b></p><p>The s–d graph after a very short time:</p><p class=\"study-figure\"><img src=\"assets/textbook-examples/media/a7ae42a250a6d6a263aca66b.png\" alt=\"\" style=\"width:182.5px\"/></p><p>∴ Z is moving in the negative</p><p>direction, i.e. towards left.</p>",
+        "beforeSha256": "91aa17fd7e07213649ddf254c5f7e49a4b0750e7ed7b34f94700a9373e62fa5c",
+        "after": "<p><b>Tip</b></p><p>The s–d graph after a very short time:</p><p class=\"study-figure\"><img src=\"assets/textbook-examples/media/a7ae42a250a6d6a263aca66b.png\" alt=\"\" style=\"width:182.5px\"></p><p>∴ Z is moving in the negative direction, i.e. towards left.</p>",
+        "afterSha256": "68da5e2237f011830dddc8f0e619839a65ad378e66c32b21c8ec752142e213fc"
+      }
+    },
+    "ex-402-11": {
+      "tips": {
+        "before": "<p><b>Skill</b></p><p>Problem-solving</p><p>Resistor network Finding equivalent resistance: ① Choose a partial network which is in series or parallel connection and calculate <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><msub><mrow><mrow><mrow><mtext>R</mtext></mrow></mrow></mrow><mrow><mrow><mrow><mtext>e</mtext></mrow><mrow><mtext>q</mtext></mrow></mrow></mrow></msub></mrow></math> for it. ② Replace that partial network with a single resistor of resistance <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><msub><mrow><mrow><mrow><mtext>R</mtext></mrow></mrow></mrow><mrow><mrow><mrow><mtext>e</mtext></mrow><mrow><mtext>q</mtext></mrow></mrow></mrow></msub></mrow></math>. ③ Repeat the steps for the other parts.</p><p><b>Tip</b></p><p>The branch with the 4-Ω and 8-Ω resistors, and the branch with the 12-Ω resistor are parallel to the battery, so the p.d. across each branch is 6 V.</p>",
+        "beforeSha256": "150f707170af26bba5a833ff1117d25f3eabf1db59c0660bfd27140439e0b2c9",
+        "after": "<p><b>Skill</b></p><p>Problem-solving</p><p>Resistor network Finding equivalent resistance:</p><p class=\"numbered-step\">① Choose a partial network which is in series or parallel connection and calculate <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><msub><mrow><mrow><mrow><mtext>R</mtext></mrow></mrow></mrow><mrow><mrow><mrow><mtext>e</mtext></mrow><mrow><mtext>q</mtext></mrow></mrow></mrow></msub></mrow></math> for it.</p><p class=\"numbered-step\">② Replace that partial network with a single resistor of resistance <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><msub><mrow><mrow><mrow><mtext>R</mtext></mrow></mrow></mrow><mrow><mrow><mrow><mtext>e</mtext></mrow><mrow><mtext>q</mtext></mrow></mrow></mrow></msub></mrow></math>.</p><p class=\"numbered-step\">③ Repeat the steps for the other parts.</p><p><b>Tip</b></p><p>The branch with the 4-Ω and 8-Ω resistors, and the branch with the 12-Ω resistor are parallel to the battery, so the p.d. across each branch is 6 V.</p>",
+        "afterSha256": "e497edbb48cac0881829fe4d35bdf1951b150b0ee26fda417d6de3ea2749797b"
+      }
+    },
+    "ex-403-9": {
+      "tips": {
+        "before": "<p><b>Tip</b></p><p>X and Y are connected in parallel to an ideal battery.</p><p>V<sub>X</sub> = ε and is not affected by the</p><p>parallel branch containing Y.</p>",
+        "beforeSha256": "22ca744bc275c2d5d30456eedb098562137f890ca239632a9059c5b39750ac61",
+        "after": "<p><b>Tip</b></p><p>X and Y are connected in parallel to an ideal battery.</p><p>V<sub>X</sub> = ε and is not affected by the parallel branch containing Y.</p>",
+        "afterSha256": "f43ca8583a0758b67f6a2590f02fb75e51f75ae45602770fa09b52814f75568b"
+      }
+    },
+    "ex-406-6": {
+      "tips": {
+        "before": "<p><b>Tip</b></p><p>By F = B<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>I</mtext></mrow><mrow><mtext>l</mtext></mrow></mrow></math> sin θ, since B, <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>I</mtext></mrow></mrow></math></p><p>and <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>l</mtext></mrow></mrow></math> are all constant and θ is always 90°, the magnitude of F is constant.</p><p><b>Tip</b></p><p>From Example 5 (p.235),</p><p>τ = B<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>I</mtext></mrow></mrow></math>AN sin ϕ</p><p>When the coil is horizonal,</p><p>ϕ = 90° and τ is max.</p><p>When the coil is vertical, ϕ = 0°</p><p>and τ = 0.</p><p><b>Tip</b></p><p>By τ = B<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>I</mtext></mrow></mrow></math>AN sin ϕ, the turning</p><p>effect of a motor increases when B, <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>I</mtext></mrow></mrow></math>, A or N increases.</p>",
+        "beforeSha256": "029678097a20d00a870dae19761e5a67edea06003ab97adfb4afee44bb81f2b0",
+        "after": "<p><b>Tip</b></p><p>By F = B<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>I</mtext></mrow><mrow><mtext>l</mtext></mrow></mrow></math> sin θ, since B, <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>I</mtext></mrow></mrow></math> and <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>l</mtext></mrow></mrow></math> are all constant and θ is always 90°, the magnitude of F is constant.</p><p><b>Tip</b></p><p>From Example 5 (p.235),</p><p>τ = B<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>I</mtext></mrow></mrow></math>AN sin ϕ</p><p>When the coil is horizonal, ϕ = 90° and τ is max.</p><p>When the coil is vertical, ϕ = 0° and τ = 0.</p><p><b>Tip</b></p><p>By τ = B<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>I</mtext></mrow></mrow></math>AN sin ϕ, the turning effect of a motor increases when B, <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>I</mtext></mrow></mrow></math>, A or N increases.</p>",
+        "afterSha256": "c0f46da7d5cfdf59703521525ab704a11408734d8511c71af3c4aa5dd5dfaee7"
+      }
+    },
+    "ex-501-2": {
+      "tips": {
+        "before": "<p><b>Skill</b></p><p>Problem-solving</p><p>Radiations and absorbers ① Identify the type of radiation that can be absorbed by each absorber. ② Start from the weakest absorber. ③ Compare the count rates. Since an absorber may be able to absorb more than one type of radiation, you need to compare the counts rates between cases of different absorbers, not just with the case with no absorber.</p>",
+        "beforeSha256": "f61a332a25229a51343a709df3e1cc0d3fe214c8c0fa9b79b0650a8e04662a06",
+        "after": "<p><b>Skill</b></p><p>Problem-solving</p><p>Radiations and absorbers</p><p class=\"numbered-step\">① Identify the type of radiation that can be absorbed by each absorber.</p><p class=\"numbered-step\">② Start from the weakest absorber.</p><p class=\"numbered-step\">③ Compare the count rates. Since an absorber may be able to absorb more than one type of radiation, you need to compare the counts rates between cases of different absorbers, not just with the case with no absorber.</p>",
+        "afterSha256": "57fc7605ea0b28648f7c27b9176f16515d8c5fb364377581bd42ca3508a0a236"
+      }
+    },
+    "ex-502-7": {
+      "tips": {
+        "before": "<p><b>Tip</b></p><p>The mass number is reduced by 4 during an α decay and remains unchanged during a β decay.</p><p><b>Tip</b></p><p>Year and year<sup>−1</sup> (yr<sup>−1</sup>) are used as the units of t and k respectively.</p><p><b>Tip</b></p><p>In applying this equation, the number of half-lives n needs not be an integer and can be</p><p>expressed as <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mfrac><mrow><mrow><mrow><mtext>t</mtext></mrow></mrow></mrow><mrow><mrow><msub><mrow><mrow><mrow><mtext>t</mtext></mrow></mrow></mrow><mrow><mrow><mrow><mtext>½</mtext></mrow></mrow></mrow></msub></mrow></mrow></mfrac></mrow></math>.</p>",
+        "beforeSha256": "f25bda3aee8a2fad1e3086877e85762b48fe20c89bac713f6d696b3a883fe4ba",
+        "after": "<p><b>Tip</b></p><p>The mass number is reduced by 4 during an α decay and remains unchanged during a β decay.</p><p><b>Tip</b></p><p>Year and year<sup>−1</sup> (yr<sup>−1</sup>) are used as the units of t and k respectively.</p><p><b>Tip</b></p><p>In applying this equation, the number of half-lives n needs not be an integer and can be expressed as <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mfrac><mrow><mrow><mrow><mtext>t</mtext></mrow></mrow></mrow><mrow><mrow><msub><mrow><mrow><mrow><mtext>t</mtext></mrow></mrow></mrow><mrow><mrow><mrow><mtext>½</mtext></mrow></mrow></mrow></msub></mrow></mrow></mfrac></mrow></math>.</p>",
+        "afterSha256": "a117cf0bdbaa18d4505e4678ccfe61488990360bf4b29419309faeaaf57ba178"
+      }
+    },
+    "ex-E303-7": {
+      "tips": {
+        "before": "<p><b>Tip</b></p><p>In equation E = VIt, if E is</p><p>measured in W h, the unit of t should be h.</p>",
+        "beforeSha256": "c2d7faeb43c33910e9ea96745d07ecba94bef51b70ae4cec6d966d7ffeb2bf5b",
+        "after": "<p><b>Tip</b></p><p>In equation E = VIt, if E is measured in W h, the unit of t should be h.</p>",
+        "afterSha256": "4c86e67d1a3a79c9494b6411396b11fdab8f7d0bca90f27bc9c6dffd0f8a8e7d"
+      }
+    }
+  },
+  "chn": {
+    "ex-103-2": {
+      "tips": {
+        "before": "<p>提示</p><p>這杯水的 C 保持不變。根據</p><p>Q = CΔT，相同的 Q 總會</p><p>產生相同的 ΔT。</p>",
+        "beforeSha256": "4cc982ac4d318b261b5370714a3b021cea4e2d175e346ab5192480d4c094a04e",
+        "after": "<p>提示</p><p>這杯水的 C 保持不變。根據 Q = CΔT，相同的 Q 總會產生相同的 ΔT。</p>",
+        "afterSha256": "1b3c411298521f9a08b72859da8a9465311202a3053594993c940423e62fb88c"
+      }
+    },
+    "ex-201-3": {
+      "tips": {
+        "before": "<p>技巧</p><p>解難</p><p>求平均速度：① 畫出物體的路徑。② 畫出總位移，即由初位置指向末位置的箭頭。③ 求平均速度的量值和方向。</p>",
+        "beforeSha256": "b8eb9f7f5422d9b18ca180978081ac7b56ee3a7360cf30df4abfbe290024f8d4",
+        "after": "<p>技巧</p><p>解難</p><p>求平均速度：</p><p class=\"numbered-step\">① 畫出物體的路徑。</p><p class=\"numbered-step\">② 畫出總位移，即由初位置指向末位置的箭頭。</p><p class=\"numbered-step\">③ 求平均速度的量值和方向。</p>",
+        "afterSha256": "4c51e27352dc2b4231008d2c5b1e9ae24c900e52bc43c4ed51bfe371c094e978"
+      }
+    },
+    "ex-203-3": {
+      "tips": {
+        "before": "<p>提示</p><p>F<sub>net</sub> 沿運動方向作用。應用下式時，只需考慮沿該方向作用的力：</p><p>F<sub>net</sub> = ma。重力和</p><p>正向反作用力互相抵消。</p>",
+        "beforeSha256": "bed3ac7b17a543a7144d0ce3fa6e5acb151a188f24c83c443a2e64e84dcbaa88",
+        "after": "<p>提示</p><p>F<sub>net</sub> 沿運動方向作用。應用下式時，只需考慮沿該方向作用的力：</p><p>F<sub>net</sub> = ma。重力和正向反作用力互相抵消。</p>",
+        "afterSha256": "cd55dc60023d172c19e4e32984523d8dc5eb40d5ed776fa3e892a6f6a3e4d93c"
+      }
+    },
+    "ex-203-4": {
+      "tips": {
+        "before": "<p>提示</p><p>F<sub>net</sub> 沿 Susan 的運動方向作用。應用下式時，只需考慮沿該方向作用的力：</p><p>F<sub>net</sub> = ma。注意 T 和 f</p><p>代表力的量值；若某力指向負方向，須加上負號。</p><p>提示</p><p>Susan 放開繩子後，張力不再作用於她身上，阻力便成為作用於她的合力。</p>",
+        "beforeSha256": "08890a1b0ffd049f488e008cef5202472f35e5b77ea7df8c07a0e927602143cf",
+        "after": "<p>提示</p><p>F<sub>net</sub> 沿 Susan 的運動方向作用。應用下式時，只需考慮沿該方向作用的力：</p><p>F<sub>net</sub> = ma。注意 T 和 f 代表力的量值；若某力指向負方向，須加上負號。</p><p>提示</p><p>Susan 放開繩子後，張力不再作用於她身上，阻力便成為作用於她的合力。</p>",
+        "afterSha256": "82b6b5dc9ad1efb0b761027b4f2d428d128529fc45fae81f1ba3c0484e4a0d52"
+      }
+    },
+    "ex-204-7": {
+      "question": {
+        "before": "<p>重量為 8 N 的青蛙從地面跳起。</p><p>地面對牠的腳施加一道 20 N 力，力與水平線構成40 °角（圖 a）。</p><p>求作用於青蛙的淨力。</p><p>圖 a</p><p class=\"study-figure\"><img src=\"assets/textbook-examples/media/0581d0d357d73e42a1e8b8f3.png\" alt=\"\" style=\"width:129.9px\"/></p><p class=\"study-figure\"><img src=\"assets/textbook-examples/figures-chn/66ebe98961b717b1bb82db4f.png\" alt=\"\" style=\"width:41.4px\"/></p>",
+        "beforeSha256": "5fa3b87ea23d6132c47096850df95c73ae10c313450ef63aae11ae07506806dd",
+        "after": "<p>重量為 8 N 的青蛙從地面跳起。</p><p>地面對牠的腳施加一道 20 N 力，力與水平線構成40 °角（圖 a）。</p><p>求作用於青蛙的淨力。</p><p>圖 a</p><p class=\"study-figure\"><img src=\"assets/textbook-examples/media/frog-complete-20261022.png\" alt=\"\" style=\"width:220px\"/></p><p class=\"study-figure\"><img src=\"assets/textbook-examples/figures-chn/66ebe98961b717b1bb82db4f.png\" alt=\"\" style=\"width:41.4px\"/></p>",
+        "afterSha256": "2109236fb5b78cdd77b11e4efcd77732f401ac30c8a7c3ac40e1f246970d11bd"
+      }
+    },
+    "ex-204-10": {
+      "tips": {
+        "before": "<p>技巧</p><p>解難</p><p>合力不為零時的力分解：① 為研究的物體畫受力圖。② 選取兩個方便解題的互相垂直方向，例如平行和垂直於物體運動的方向。③ 定義正方向。④ 分解各力，求出步驟②所選各方向的合力。⑤ 應用方程</p><p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><msub><mrow><mrow><mrow><mtext>F</mtext></mrow></mrow></mrow><mrow><mrow><mrow><mtext>n</mtext></mrow><mrow><mtext>e</mtext></mrow><mrow><mtext>t</mtext></mrow></mrow></mrow></msub></mrow></math> = <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>m</mtext></mrow><mrow><mtext>a</mtext></mrow></mrow></math>，並求出</p><p>未知量。</p><p>提示</p><p>貨車在垂直方向沒有運動，因此該方向的合力為零。</p>",
+        "beforeSha256": "b00dc37ebeda00144e99b92ab27ab870e0664ee5b79fb9756fd75aea0a77ec6e",
+        "after": "<p>技巧</p><p>解難</p><p>合力不為零時的力分解：</p><p class=\"numbered-step\">① 為研究的物體畫受力圖。</p><p class=\"numbered-step\">② 選取兩個方便解題的互相垂直方向，例如平行和垂直於物體運動的方向。</p><p class=\"numbered-step\">③ 定義正方向。</p><p class=\"numbered-step\">④ 分解各力，求出步驟②所選各方向的合力。</p><p class=\"numbered-step\">⑤ 應用方程 <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><msub><mrow><mrow><mrow><mtext>F</mtext></mrow></mrow></mrow><mrow><mrow><mrow><mtext>n</mtext></mrow><mrow><mtext>e</mtext></mrow><mrow><mtext>t</mtext></mrow></mrow></mrow></msub></mrow></math> = <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>m</mtext></mrow><mrow><mtext>a</mtext></mrow></mrow></math>，並求出未知量。</p><p>提示</p><p>貨車在垂直方向沒有運動，因此該方向的合力為零。</p>",
+        "afterSha256": "c0b8b1b4daf37520399d82a86b91a2b4ea43d8811dbf6395a14834f24a73ea93"
+      }
+    },
+    "ex-205-4": {
+      "tips": {
+        "before": "<p>技巧</p><p>解難</p><p>處於平衡的物體 ① 畫出物體的自由體圖。② 建立方程</p><p>使用 <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><msub><mrow><mrow><mrow><mtext>F</mtext></mrow></mrow></mrow><mrow><mrow><mrow><mtext>n</mtext></mrow><mrow><mtext>e</mtext></mrow><mrow><mtext>t</mtext></mrow></mrow></mrow></msub></mrow></math> = 0。</p><p>③ 建立方程</p><p>使用繞任何一點的 τ<sub>net</sub> = 0。</p><p>如有可能，選取一點，使所建立的方程只有一個未知數。④ 解方程。</p><p>提示</p><p>由於 F<sub>Y</sub> 所產生的力矩為 0，這條方程只有一個未知數。</p><p>提示</p><p>如果猴子走得太接近左端，樹幹便會繞 X 逆時針轉動。在這情況剛要發生時，樹幹即將離開</p><p>位於 Y 的石頭，因此 F<sub>Y</sub> = 0。</p>",
+        "beforeSha256": "827444b27a994bedfc4d949312105823f4306504626896c55b54e4f831730f70",
+        "after": "<p>技巧</p><p>解難</p><p>處於平衡的物體</p><p class=\"numbered-step\">① 畫出物體的自由體圖。</p><p class=\"numbered-step\">② 建立方程使用 <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><msub><mrow><mrow><mrow><mtext>F</mtext></mrow></mrow></mrow><mrow><mrow><mrow><mtext>n</mtext></mrow><mrow><mtext>e</mtext></mrow><mrow><mtext>t</mtext></mrow></mrow></mrow></msub></mrow></math> = 0。</p><p class=\"numbered-step\">③ 建立方程使用繞任何一點的 τ<sub>net</sub> = 0。</p><p>如有可能，選取一點，使所建立的方程只有一個未知數。</p><p class=\"numbered-step\">④ 解方程。</p><p>提示</p><p>由於 F<sub>Y</sub> 所產生的力矩為 0，這條方程只有一個未知數。</p><p>提示</p><p>如果猴子走得太接近左端，樹幹便會繞 X 逆時針轉動。在這情況剛要發生時，樹幹即將離開位於 Y 的石頭，因此 F<sub>Y</sub> = 0。</p>",
+        "afterSha256": "11128599cf56c0af6980bfeb782b84fa7d46393902d68401b63e55e69d14ba9e"
+      },
+      "answer": {
+        "before": "<p>(a) 樹幹的隔離體圖：</p><p>對 <span class=\"katex\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>Y</mi></mrow><annotation encoding=\"application/x-tex\">Y</annotation></semantics></math></span> 點計算力矩。</p><p>順時針合力矩 = 逆時針合力矩</p><p><span class=\"katex\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><msub><mi>F</mi><mi>X</mi></msub></mrow><annotation encoding=\"application/x-tex\">F_{X}</annotation></semantics></math></span> × 1 = 300 × (0.1 + 1) + 240 × (1 − 0.4)</p><p><span class=\"katex\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><msub><mi>F</mi><mi>X</mi></msub></mrow><annotation encoding=\"application/x-tex\">F_{X}</annotation></semantics></math></span> = 474 N 對 <span class=\"katex\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>X</mi></mrow><annotation encoding=\"application/x-tex\">X</annotation></semantics></math></span> 點計算力矩。</p><p>順時針合力矩 = 逆時針合力矩</p><p>240 × 0.4 = 300 × 0.1 + <span class=\"katex\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><msub><mi>F</mi><mi>Y</mi></msub></mrow><annotation encoding=\"application/x-tex\">F_{Y}</annotation></semantics></math></span> × 1</p><p><span class=\"katex\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><msub><mi>F</mi><mi>Y</mi></msub></mrow><annotation encoding=\"application/x-tex\">F_{Y}</annotation></semantics></math></span> = 66 N</p><p>(b) 樹幹的隔離體圖：</p><p>F<sub>X</sub></p><p>d X Y 0.4 m</p><p>240 N 300 N</p><p>對 <span class=\"katex\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>X</mi></mrow><annotation encoding=\"application/x-tex\">X</annotation></semantics></math></span> 點計算力矩。</p><p>順時針合力矩 = 逆時針合力矩</p><p>240 × 0.4 = 300 × <span class=\"katex\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>d</mi></mrow><annotation encoding=\"application/x-tex\">d</annotation></semantics></math></span></p><p><span class=\"katex\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>d</mi></mrow><annotation encoding=\"application/x-tex\">d</annotation></semantics></math></span> = 0.32 m</p><p class=\"study-figure\"><img src=\"assets/textbook-examples/media/e3137edf709b1ece612080a7.png\" alt=\"\" style=\"width:250.7px\"/></p><p class=\"study-figure\"><img src=\"assets/textbook-examples/media/34d1d623d02b547aa3a4235a.png\" alt=\"\" style=\"width:250.7px\"/></p>",
+        "beforeSha256": "b15903c8606acc8a21235ac4fcdc84dd91a68ec3267eae843f8951034d4af3b4",
+        "after": "<p>(a) 樹幹的隔離體圖：</p><p class=\"study-figure\"><img src=\"assets/textbook-examples/media/e3137edf709b1ece612080a7.png\" alt=\"\" style=\"width:250.7px\"></p><p>對 <span class=\"katex\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>Y</mi></mrow><annotation encoding=\"application/x-tex\">Y</annotation></semantics></math></span> 點計算力矩。</p><p>順時針合力矩 = 逆時針合力矩</p><p><span class=\"katex\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><msub><mi>F</mi><mi>X</mi></msub></mrow><annotation encoding=\"application/x-tex\">F_{X}</annotation></semantics></math></span> × 1 = 300 × (0.1 + 1) + 240 × (1 − 0.4)</p><p><span class=\"katex\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><msub><mi>F</mi><mi>X</mi></msub></mrow><annotation encoding=\"application/x-tex\">F_{X}</annotation></semantics></math></span> = 474 N</p><p>對 <span class=\"katex\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>X</mi></mrow><annotation encoding=\"application/x-tex\">X</annotation></semantics></math></span> 點計算力矩。</p><p>順時針合力矩 = 逆時針合力矩</p><p>240 × 0.4 = 300 × 0.1 + <span class=\"katex\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><msub><mi>F</mi><mi>Y</mi></msub></mrow><annotation encoding=\"application/x-tex\">F_{Y}</annotation></semantics></math></span> × 1</p><p><span class=\"katex\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><msub><mi>F</mi><mi>Y</mi></msub></mrow><annotation encoding=\"application/x-tex\">F_{Y}</annotation></semantics></math></span> = 66 N</p><p>(b) 樹幹的隔離體圖：</p><p class=\"study-figure\"><img src=\"assets/textbook-examples/media/34d1d623d02b547aa3a4235a.png\" alt=\"\" style=\"width:250.7px\"></p><p>對 <span class=\"katex\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>X</mi></mrow><annotation encoding=\"application/x-tex\">X</annotation></semantics></math></span> 點計算力矩。</p><p>順時針合力矩 = 逆時針合力矩</p><p>240 × 0.4 = 300 × <span class=\"katex\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>d</mi></mrow><annotation encoding=\"application/x-tex\">d</annotation></semantics></math></span></p><p><span class=\"katex\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>d</mi></mrow><annotation encoding=\"application/x-tex\">d</annotation></semantics></math></span> = 0.32 m</p>",
+        "afterSha256": "656ae355e02e500a1de54567b50619cf6bd144f33abafde061ae916d2634fc81"
+      }
+    },
+    "ex-206-5": {
+      "tips": {
+        "before": "<p>解難技巧 — 方法一</p><p>使用 KE<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><msub><mrow><mrow><mrow><mtext> </mtext></mrow></mrow></mrow><mrow><mrow><mrow><mtext>1</mtext></mrow></mrow></mrow></msub></mrow></math> + PE<sub>1</sub> = KE<sub>2</sub> + PE<sub>2</sub> 解題</p><p>① 選取 PE = 0 的參考水平。</p><p>② 確定物體在初始及最終位置的速率和高度。</p><p>③ 使用 KE<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><msub><mrow><mrow><mrow><mtext> </mtext></mrow></mrow></mrow><mrow><mrow><mrow><mtext>1</mtext></mrow></mrow></mrow></msub></mrow></math> + PE<sub>1</sub> = KE<sub>2</sub> + PE<sub>2</sub> 建立方程。</p><p>④ 解方程。</p><p>解難技巧 — 方法二</p><p>使用損失的動能／勢能 = 獲得的勢能／動能解題</p><p>① 確定物體在初始及最終位置的速率，以及高度的改變。</p><p>② 判斷物體的動能和勢能是增加還是減少。</p><p>③ 使用損失的動能／勢能 = 獲得的勢能／動能建立方程。</p><p>④ 解方程。</p>",
+        "beforeSha256": "dd71062119effc65026511e2d8baaab5fc82b99a73992b0f3d34d62902149ddb",
+        "after": "<p>解難技巧 — 方法一</p><p>使用 KE<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><msub><mrow><mrow><mrow><mtext> </mtext></mrow></mrow></mrow><mrow><mrow><mrow><mtext>1</mtext></mrow></mrow></mrow></msub></mrow></math> + PE<sub>1</sub> = KE<sub>2</sub> + PE<sub>2</sub> 解題</p><p class=\"numbered-step\">① 選取 PE = 0 的參考水平。</p><p class=\"numbered-step\">② 確定物體在初始及最終位置的速率和高度。</p><p class=\"numbered-step\">③ 使用 KE<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><msub><mrow><mrow><mrow><mtext> </mtext></mrow></mrow></mrow><mrow><mrow><mrow><mtext>1</mtext></mrow></mrow></mrow></msub></mrow></math> + PE<sub>1</sub> = KE<sub>2</sub> + PE<sub>2</sub> 建立方程。</p><p class=\"numbered-step\">④ 解方程。</p><p>解難技巧 — 方法二</p><p>使用損失的動能／勢能 = 獲得的勢能／動能解題</p><p class=\"numbered-step\">① 確定物體在初始及最終位置的速率，以及高度的改變。</p><p class=\"numbered-step\">② 判斷物體的動能和勢能是增加還是減少。</p><p class=\"numbered-step\">③ 使用損失的動能／勢能 = 獲得的勢能／動能建立方程。</p><p class=\"numbered-step\">④ 解方程。</p>",
+        "afterSha256": "7f009fb44a317c3c48c0290bcf3a1213f2ae61bc15720b7f471d4ac91f4492ce"
+      }
+    },
+    "ex-206-6": {
+      "tips": {
+        "before": "<p>提示</p><p>彈性勢能 = 0，因為繩子尚未</p><p>拉緊。</p>",
+        "beforeSha256": "62d53fb09ec500c35c218e574f82488ae402f20692145b9ba7c074e56ab0c886",
+        "after": "<p>提示</p><p>彈性勢能 = 0，因為繩子尚未拉緊。</p>",
+        "afterSha256": "9fa9ec8bb6ea5a631405d2d2840413ff101cd01a1a4d0517f0cc8db6c4d4d754"
+      }
+    },
+    "ex-207-2": {
+      "tips": {
+        "before": "<p>技巧</p><p>解難</p><p>應用動量守恆 ① 定義正方向。② 檢查作用於系統的外力。只有當外淨力為零時，才可應用動量守恆。③ 根據動量守恆建立方程。④ 解方程。</p><p>提示</p><p>u<sub>M</sub> = 0 及 u<sub>J</sub> = 0</p>",
+        "beforeSha256": "237ca3aa5d33bb00e576926ad8fe498d262b5970f46e1b304f23263ebbabc579",
+        "after": "<p>技巧</p><p>解難</p><p>應用動量守恆</p><p class=\"numbered-step\">① 定義正方向。</p><p class=\"numbered-step\">② 檢查作用於系統的外力。只有當外淨力為零時，才可應用動量守恆。</p><p class=\"numbered-step\">③ 根據動量守恆建立方程。</p><p class=\"numbered-step\">④ 解方程。</p><p>提示</p><p>u<sub>M</sub> = 0 及 u<sub>J</sub> = 0</p>",
+        "afterSha256": "54abd9cea84beae6d6b6a9e97a3b3d12fbc3d9392f49837df9e26b3e6356136f"
+      }
+    },
+    "ex-208-2": {
+      "tips": {
+        "before": "<p>提示</p><p>應用 s<sub>x</sub> = u<sub>x</sub>t。</p><p>提示</p><p>由 (a) 可知，飛鏢從擲出至擊中鏢靶需時 0.3 s。在這段路程中，</p><p>u<sub>y</sub> = 0 及 a<sub>y</sub> = 9.81 m s<sup>–2</sup>。</p>",
+        "beforeSha256": "19ead74e22636fac783ee36a7fd2b5c61a2d72f2021e5d6055588c63893c9a46",
+        "after": "<p>提示</p><p>應用 s<sub>x</sub> = u<sub>x</sub>t。</p><p>提示</p><p>由 (a) 可知，飛鏢從擲出至擊中鏢靶需時 0.3 s。在這段路程中， u<sub>y</sub> = 0 及 a<sub>y</sub> = 9.81 m s<sup>–2</sup>。</p>",
+        "afterSha256": "345b37d7f2363c308bec01658c77710ca0d1cf36f8536243d7bd0e3b9ef52b84"
+      }
+    },
+    "ex-209-7": {
+      "tips": {
+        "before": "<p>提示</p><p>根據 cos θ = <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mfrac><mrow><mrow><mrow><mtext>g</mtext></mrow></mrow></mrow><mrow><mrow><msup><mrow><mrow><mrow><mtext>ω</mtext></mrow></mrow></mrow><mrow><mrow><mrow><mtext>2</mtext></mrow></mrow></mrow></msup><mrow><mtext>L</mtext></mrow></mrow></mrow></mfrac></mrow></math>，</p><p>當 L 恆定時，</p><p>ω ↑ ⇒ cos θ ↓ ⇒ θ ↑</p>",
+        "beforeSha256": "932f3d07aa3e05847ae4c2436b9167c4712ecba410dee0854a02c683dce5fd51",
+        "after": "<p>提示</p><p>根據 cos θ = <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mfrac><mrow><mrow><mrow><mtext>g</mtext></mrow></mrow></mrow><mrow><mrow><msup><mrow><mrow><mrow><mtext>ω</mtext></mrow></mrow></mrow><mrow><mrow><mrow><mtext>2</mtext></mrow></mrow></mrow></msup><mrow><mtext>L</mtext></mrow></mrow></mrow></mfrac></mrow></math>，當 L 恆定時， ω ↑ ⇒ cos θ ↓ ⇒ θ ↑</p>",
+        "afterSha256": "13754f1b85d9ea9b666d57acd80e27959ffde3cc827606fae3767a5c47498b48"
+      }
+    },
+    "ex-3A01-4": {
+      "tips": {
+        "before": "<p>技巧</p><p>繪圖</p><p>繪畫鏡子所成的像</p><p>1 從物體的一個端點畫一條虛線，垂直穿過鏡面。</p><p>2 應用像距</p><p>= 物距，</p><p>確定該端點的像的位置。</p><p>3 確定物體另一端點的像的位置。用虛線箭嘴連接兩個像點，畫出物體的像。</p><p>提示</p><p>鏡面傾斜 45° 時，水平物體的像是鉛直的，反之亦然。</p>",
+        "beforeSha256": "ad5dba12b948e22930a989c54ee944f1ca1280f83e79496093c0f4f11c7d67e0",
+        "after": "<p>技巧</p><p>繪圖</p><p>繪畫鏡子所成的像</p><p>1 從物體的一個端點畫一條虛線，垂直穿過鏡面。</p><p>2 應用像距 = 物距，</p><p>確定該端點的像的位置。</p><p>3 確定物體另一端點的像的位置。用虛線箭嘴連接兩個像點，畫出物體的像。</p><p>提示</p><p>鏡面傾斜 45° 時，水平物體的像是鉛直的，反之亦然。</p>",
+        "afterSha256": "9c5f1fc19e1a64c05ded1436c87a65cd21e3987326b04fc84976ee6b6b3c2f40"
+      }
+    },
+    "ex-3A03-2": {
+      "tips": {
+        "before": "<p>提示</p><p>① 根據作圖規則完成光線 p 和 r。② 把 ① 的光線向後延長，確定像 A′B′ 的位置。③ 由於光線 q 來自 A，通過透鏡後便像從 A′ 發出。④ 由於光線 s 來自 B，通過透鏡後便像從 B′ 發出。</p>",
+        "beforeSha256": "e9d5a89c0ddd6f774229f0f30de148e0a1133c7ee167aca17d497451cf9c9ebb",
+        "after": "<p>提示</p><p class=\"numbered-step\">① 根據作圖規則完成光線 p 和 r。</p><p class=\"numbered-step\">② 把 ① 的光線向後延長，確定像 A′B′ 的位置。</p><p class=\"numbered-step\">③ 由於光線 q 來自 A，通過透鏡後便像從 A′ 發出。</p><p class=\"numbered-step\">④ 由於光線 s 來自 B，通過透鏡後便像從 B′ 發出。</p>",
+        "afterSha256": "dd256515653876cd0fc41731f08636576ddca94a4d53eea6b1a0ced142e41be5"
+      }
+    },
+    "ex-3A03-3": {
+      "tips": {
+        "before": "<p>提示</p><p>① 根據規則 3，q 繼續直行。② 畫出焦平面。③ 由於 p 和 q 在通過透鏡前互相平行，它們必定在焦平面上相交。</p>",
+        "beforeSha256": "d76064c9721e23a4ee818ed40a8576c06dfdf40b9e9c23425c63a1a313611fa8",
+        "after": "<p>提示</p><p class=\"numbered-step\">① 根據規則 3，q 繼續直行。</p><p class=\"numbered-step\">② 畫出焦平面。</p><p class=\"numbered-step\">③ 由於 p 和 q 在通過透鏡前互相平行，它們必定在焦平面上相交。</p>",
+        "afterSha256": "1e33038db9116a50ae965e0c94749850e4283f4d6afa62e3bcc28e5289abb854"
+      }
+    },
+    "ex-3A03-6": {
+      "tips": {
+        "before": "<p>提示</p><p>① 根據規則 3，q 繼續直行。② 畫出焦平面。③ 由於 p 和 q 在通過透鏡前互相平行，通過透鏡後，它們像從焦平面上的同一點發出。</p>",
+        "beforeSha256": "8d5d6864ad7b0167b2cc253ac0b9f128d558f54a3308a2a0ef7cebe7af4733a7",
+        "after": "<p>提示</p><p class=\"numbered-step\">① 根據規則 3，q 繼續直行。</p><p class=\"numbered-step\">② 畫出焦平面。</p><p class=\"numbered-step\">③ 由於 p 和 q 在通過透鏡前互相平行，通過透鏡後，它們像從焦平面上的同一點發出。</p>",
+        "afterSha256": "3cc4f54547df1f7f7d651741ed9aa7573f0e7c29e75058acc096612c369fe08c"
+      }
+    },
+    "ex-3A03-9": {
+      "tips": {
+        "before": "<p>提示</p><p>① 根據規則 3，畫出從 A 發出的光線。② 把光線 p 向後延長。③ 交點是 A′，然後用虛線箭嘴畫出 A′B′。④ 為確定 F′ 的位置，根據規則 1，畫出從 A 發出的光線。射出的光線像從 A′ 發出，並與主軸相交於 F′。</p>",
+        "beforeSha256": "b537aedd2442ecffd8e1e203808e10416f1cc7528bc68bda5eb09fdb4ad1dbaa",
+        "after": "<p>提示</p><p class=\"numbered-step\">① 根據規則 3，畫出從 A 發出的光線。</p><p class=\"numbered-step\">② 把光線 p 向後延長。</p><p class=\"numbered-step\">③ 交點是 A′，然後用虛線箭嘴畫出 A′B′。</p><p class=\"numbered-step\">④ 為確定 F′ 的位置，根據規則 1，畫出從 A 發出的光線。射出的光線像從 A′ 發出，並與主軸相交於 F′。</p>",
+        "afterSha256": "ecddbc257e3c4249d2c2aa0ccd42dc0e7d46a501cf8488ceb7e1b3587059df39"
+      }
+    },
+    "ex-3B04-2": {
+      "tips": {
+        "before": "<p>技巧</p><p>解難</p><p>繪畫某段時間後的波形 ① 以周期 <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>T</mtext></mrow></mrow></math> 表示時間間隔。② 求波在該時間間隔內傳播的距離（以波長 λ 表示）。③ 把原來的波形沿傳播方向平移 ② 所得的距離，然後畫出其餘波形。</p>",
+        "beforeSha256": "c1b4c5089d0eb051e838950f46aa6873fb7ac46f283805d3970adde1938d4f08",
+        "after": "<p>技巧</p><p>解難</p><p>繪畫某段時間後的波形</p><p class=\"numbered-step\">① 以周期 <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>T</mtext></mrow></mrow></math> 表示時間間隔。</p><p class=\"numbered-step\">② 求波在該時間間隔內傳播的距離（以波長 λ 表示）。</p><p class=\"numbered-step\">③ 把原來的波形沿傳播方向平移 ② 所得的距離，然後畫出其餘波形。</p>",
+        "afterSha256": "c2c5c28c136ed60c1969264a765c9deb171b9960dd7fc379e6d9d242a1f1119f"
+      }
+    },
+    "ex-3B05-9": {
+      "tips": {
+        "before": "<p>提示</p><p>如果這是行波，X 和 Z 會朝相反方向移動。</p><p class=\"study-figure\"><img src=\"assets/textbook-examples/media/54ab6938587699a717c983f6.png\" alt=\"\" style=\"width:179.4px\"></p><p>提示</p><p>由於 X 在 t = 0 時向下移動，</p><p>它並非位於最大位移處。</p><p>s<sub>X</sub> 小於振幅，而且正在減少。由於 Y 與 X 同相振動，其 s−t 圖的形狀相同，但振幅較大。</p>",
+        "beforeSha256": "4dcf0f8c3b0d5e63179ba527055d5eec7664bad5df181de86e63e9bf4fb63aec",
+        "after": "<p>提示</p><p>如果這是行波，X 和 Z 會朝相反方向移動。</p><p class=\"study-figure\"><img src=\"assets/textbook-examples/media/54ab6938587699a717c983f6.png\" alt=\"\" style=\"width:179.4px\"></p><p>提示</p><p>由於 X 在 t = 0 時向下移動，它並非位於最大位移處。</p><p>s<sub>X</sub> 小於振幅，而且正在減少。由於 Y 與 X 同相振動，其 s−t 圖的形狀相同，但振幅較大。</p>",
+        "afterSha256": "182e497850deee574e1b2d14e48e708ddac8fa7106b5c1233e7c1d1cbc55b8d8"
+      }
+    },
+    "ex-3B07-4": {
+      "tips": {
+        "before": "<p>提示</p><p>在 t = 0 剛過之後，s 由 0 變為正值，</p><p>所以 P</p><p>沿正方向移動。留意題目所定義的正方向，不要回答「向上」。</p>",
+        "beforeSha256": "a1bab85bcc121feb0cf5964b00b2b05b621af519c6f1d0391aa2832be9416065",
+        "after": "<p>提示</p><p>在 t = 0 剛過之後，s 由 0 變為正值，所以 P 沿正方向移動。留意題目所定義的正方向，不要回答「向上」。</p>",
+        "afterSha256": "026bd3a80a23ef7146ce9e58657c3dbf8013ecaf9b3a74cb83441d1394824c48"
+      }
+    },
+    "ex-3B07-5": {
+      "tips": {
+        "before": "<p>提示</p><p>極短時間後的 s–d 圖：</p><p class=\"study-figure\"><img src=\"assets/textbook-examples/figures-chn/a7ae42a250a6d6a263aca66b.png\" alt=\"\" style=\"width:182.5px\"></p><p>∴ Z 沿負方向移動，</p><p>即向左移動。</p>",
+        "beforeSha256": "426c068fd49a6e7ed1c03a410cae81a6aa294da5639f8b2289a2ce1156a71801",
+        "after": "<p>提示</p><p>極短時間後的 s–d 圖：</p><p class=\"study-figure\"><img src=\"assets/textbook-examples/figures-chn/a7ae42a250a6d6a263aca66b.png\" alt=\"\" style=\"width:182.5px\"></p><p>∴ Z 沿負方向移動，即向左移動。</p>",
+        "afterSha256": "dd0f4e927448b5ccb2127bcc887949895e53d0bd7d9d9ccf54b2256833526b6d"
+      }
+    },
+    "ex-402-11": {
+      "tips": {
+        "before": "<p>技巧</p><p>解難</p><p>電阻網絡：求等效電阻 ① 選取網絡中串聯或並聯的一部分，計算其 <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><msub><mrow><mrow><mrow><mtext>R</mtext></mrow></mrow></mrow><mrow><mrow><mrow><mtext>e</mtext></mrow><mrow><mtext>q</mtext></mrow></mrow></mrow></msub></mrow></math>。② 用一個電阻為 <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><msub><mrow><mrow><mrow><mtext>R</mtext></mrow></mrow></mrow><mrow><mrow><mrow><mtext>e</mtext></mrow><mrow><mtext>q</mtext></mrow></mrow></mrow></msub></mrow></math> 的電阻器取代該部分。③ 對其餘部分重複以上步驟。</p><p>提示</p><p>含有 4 Ω 和 8 Ω 電阻器的支路，以及含有 12 Ω 電阻器的支路，均與電池並聯，因此每條支路兩端的電勢差為 6 V。</p>",
+        "beforeSha256": "79e30e5d8ab3539d29c212fd941b5510b3d539a2d783e6156937cf14c87e5cd7",
+        "after": "<p>技巧</p><p>解難</p><p>電阻網絡：求等效電阻</p><p class=\"numbered-step\">① 選取網絡中串聯或並聯的一部分，計算其 <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><msub><mrow><mrow><mrow><mtext>R</mtext></mrow></mrow></mrow><mrow><mrow><mrow><mtext>e</mtext></mrow><mrow><mtext>q</mtext></mrow></mrow></mrow></msub></mrow></math>。</p><p class=\"numbered-step\">② 用一個電阻為 <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><msub><mrow><mrow><mrow><mtext>R</mtext></mrow></mrow></mrow><mrow><mrow><mrow><mtext>e</mtext></mrow><mrow><mtext>q</mtext></mrow></mrow></mrow></msub></mrow></math> 的電阻器取代該部分。</p><p class=\"numbered-step\">③ 對其餘部分重複以上步驟。</p><p>提示</p><p>含有 4 Ω 和 8 Ω 電阻器的支路，以及含有 12 Ω 電阻器的支路，均與電池並聯，因此每條支路兩端的電勢差為 6 V。</p>",
+        "afterSha256": "d542b6dcebf9753ac929326c58b1d59d35115c50eb3fac3b39a12e87ef07b55a"
+      }
+    },
+    "ex-403-9": {
+      "tips": {
+        "before": "<p>提示</p><p>X 和 Y 與理想電池並聯。</p><p>V<sub>X</sub> = ε，且不受</p><p>含有 Y 的並聯支路影響。</p>",
+        "beforeSha256": "0e78775ffccbb7a90f8135412331353a92db227c82516bca70ed07ab150bd12d",
+        "after": "<p>提示</p><p>X 和 Y 與理想電池並聯。</p><p>V<sub>X</sub> = ε，且不受含有 Y 的並聯支路影響。</p>",
+        "afterSha256": "b7cf9baa367d23e41fa2440d90c9233d0009a1efd276c8c6235bcb74a74708c8"
+      }
+    },
+    "ex-406-6": {
+      "tips": {
+        "before": "<p>提示</p><p>由 F = B<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>I</mtext></mrow><mrow><mtext>l</mtext></mrow></mrow></math> sin θ，由於 B、<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>I</mtext></mrow></mrow></math></p><p>和 <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>l</mtext></mrow></mrow></math> 均恆定，且 θ 始終為 90°，F 的大小恆定。</p><p>提示</p><p>由例題 5（第 235 頁），</p><p>τ = B<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>I</mtext></mrow></mrow></math>AN sin ϕ</p><p>當線圈水平時，</p><p>ϕ = 90°，τ 為最大值。</p><p>當線圈鉛直時，ϕ = 0°，</p><p>τ = 0。</p><p>提示</p><p>由 τ = B<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>I</mtext></mrow></mrow></math>AN sin ϕ，電動機的轉動效應</p><p>會隨 B、<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>I</mtext></mrow></mrow></math>、A 或 N 增加而增加。</p>",
+        "beforeSha256": "a707f7182bb63d8e0c8c6b4dfb894c8a6608c8f0a2e4744efed8456309943a5e",
+        "after": "<p>提示</p><p>由 F = B<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>I</mtext></mrow><mrow><mtext>l</mtext></mrow></mrow></math> sin θ，由於 B、<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>I</mtext></mrow></mrow></math> 和 <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>l</mtext></mrow></mrow></math> 均恆定，且 θ 始終為 90°，F 的大小恆定。</p><p>提示</p><p>由例題 5（第 235 頁），</p><p>τ = B<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>I</mtext></mrow></mrow></math>AN sin ϕ</p><p>當線圈水平時， ϕ = 90°，τ 為最大值。</p><p>當線圈鉛直時，ϕ = 0°，</p><p>τ = 0。</p><p>提示</p><p>由 τ = B<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>I</mtext></mrow></mrow></math>AN sin ϕ，電動機的轉動效應會隨 B、<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mtext>I</mtext></mrow></mrow></math>、A 或 N 增加而增加。</p>",
+        "afterSha256": "224459a03f78ca483fdc391644b66bb7fcd7f970db60ded0c6f2473d998dab51"
+      }
+    },
+    "ex-501-2": {
+      "tips": {
+        "before": "<p>技巧</p><p>解難</p><p>輻射與吸收體 ① 辨認每種吸收體能吸收的輻射種類。② 從吸收能力最弱的吸收體開始。③ 比較計數率。由於一種吸收體可能吸收多於一種輻射，必須比較使用不同吸收體時的計數率，而不只是與沒有吸收體的情況比較。</p>",
+        "beforeSha256": "65ffbdfe9becedec7f5a1d5be5eba1d3e1d91790fe9b13b980922850bc43144b",
+        "after": "<p>技巧</p><p>解難</p><p>輻射與吸收體</p><p class=\"numbered-step\">① 辨認每種吸收體能吸收的輻射種類。</p><p class=\"numbered-step\">② 從吸收能力最弱的吸收體開始。</p><p class=\"numbered-step\">③ 比較計數率。由於一種吸收體可能吸收多於一種輻射，必須比較使用不同吸收體時的計數率，而不只是與沒有吸收體的情況比較。</p>",
+        "afterSha256": "3ac3508d681f775ecab7e0a021ea1915b3ae86cb21df8cb44dd462bce312e30a"
+      }
+    },
+    "ex-502-7": {
+      "tips": {
+        "before": "<p>提示</p><p>α 衰變令質量數減少 4，β 衰變則不改變質量數。</p><p>提示</p><p>t 和 k 的單位分別使用年及年<sup>−1</sup>（yr<sup>−1</sup>）。</p><p>提示</p><p>應用此方程時，半衰期數目 n 不必是整數，可以</p><p>表示為 <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mfrac><mrow><mrow><mrow><mtext>t</mtext></mrow></mrow></mrow><mrow><mrow><msub><mrow><mrow><mrow><mtext>t</mtext></mrow></mrow></mrow><mrow><mrow><mrow><mtext>½</mtext></mrow></mrow></mrow></msub></mrow></mrow></mfrac></mrow></math>。</p>",
+        "beforeSha256": "b9aae6eb4aa78d6060669498a96877e3ba4a9e4bec0a79314ffbd9be13bb399c",
+        "after": "<p>提示</p><p>α 衰變令質量數減少 4，β 衰變則不改變質量數。</p><p>提示</p><p>t 和 k 的單位分別使用年及年<sup>−1</sup>（yr<sup>−1</sup>）。</p><p>提示</p><p>應用此方程時，半衰期數目 n 不必是整數，可以表示為 <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mfrac><mrow><mrow><mrow><mtext>t</mtext></mrow></mrow></mrow><mrow><mrow><msub><mrow><mrow><mrow><mtext>t</mtext></mrow></mrow></mrow><mrow><mrow><mrow><mtext>½</mtext></mrow></mrow></mrow></msub></mrow></mrow></mfrac></mrow></math>。</p>",
+        "afterSha256": "a0ea53eea6cc24cfc20652fb29d6ed807ba7ebc5276bca43fa6663cb60901cf9"
+      }
+    },
+    "ex-E303-7": {
+      "tips": {
+        "before": "<p>提示</p><p>在方程 E = VIt 中，如果 E</p><p>以 W h 表示，t 的單位應為 h。</p>",
+        "beforeSha256": "7bf6009c41e4ee966cb4b59c82c65bc2d222480a8f5ae9568d38ea580afc8659",
+        "after": "<p>提示</p><p>在方程 E = VIt 中，如果 E 以 W h 表示，t 的單位應為 h。</p>",
+        "afterSha256": "06601c0fbf4e41da2d03f74605a4a4aa3025bb1669685c1cc8a361941da423e0"
+      }
+    }
+  }
+}
