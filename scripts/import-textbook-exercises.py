@@ -178,4 +178,5 @@ def main():
  # Keep authored explanations as a source-checked layer, not as purported Word text.
  import runpy
  runpy.run_path(str(ROOT/'scripts/apply-exercise-reasoning.py'))['apply']()
+ runpy.run_path(str(ROOT/'scripts/apply-exercise-figure-review.py'))['apply']()
 if __name__=='__main__':main()

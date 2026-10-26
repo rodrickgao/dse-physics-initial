@@ -1,0 +1,241 @@
+[
+  {
+    "language": "eng",
+    "id": "tb-204-6",
+    "field": "question",
+    "original": "<p><i><b>A trolley travels down an inclined plane from rest. </b></i><i><b>Its </b></i><i><b>v</b></i><i><b>−</b></i><i><b>t</b></i><i><b> graph is shown in Figure d.</b></i></p><p class=\"study-figure\"><img src=\"assets/textbook-exercises/media/c1cd83619b272851d406c368.png\" alt=\"\" style=\"width:119.3px\"/></p><p><i><b> </b></i><i><b>Then the inclined angle of the plane is decreased </b></i><i><b>and the trolley travels down the plane from rest </b></i><i><b>again. Which of the following best shows the new </b></i><i><b>v</b></i><i><b>−</b></i><i><b>t</b></i><i><b> graph (the red line) of the trolley?</b></i></p><p class=\"study-figure\"><img src=\"assets/textbook-exercises/media/48309b8ed9b29deac7b10435.png\" alt=\"\" style=\"width:305.1px\"/></p><p><i><b> </b></i><i><b> </b></i><i><b>t</b></i><i><b> </b></i><i><b> </b></i><i><b>t</b></i></p><p><i><b> </b></i><i><b> </b></i><i><b>t</b></i><i><b> </b></i><i><b> </b></i><i><b>t</b></i></p>",
+    "replacement": "<p><i><b>A trolley travels down an inclined plane from rest. </b></i><i><b>Its </b></i><i><b>v</b></i><i><b>−</b></i><i><b>t</b></i><i><b> graph is shown in Figure d.</b></i></p><p class=\"study-figure\"><img src=\"assets/textbook-exercises/media/c1cd83619b272851d406c368.png\" alt=\"\" style=\"width:119.3px\"></p><p><i><b> </b></i><i><b>Then the inclined angle of the plane is decreased </b></i><i><b>and the trolley travels down the plane from rest </b></i><i><b>again. Which of the following best shows the new </b></i><i><b>v</b></i><i><b>−</b></i><i><b>t</b></i><i><b> graph (the red line) of the trolley?</b></i></p><p class=\"study-figure\"><img src=\"assets/textbook-exercises/media/204-6-complete-labels.png\" alt=\"Four velocity-time options with their time-axis labels\" style=\"width:432px\"></p>",
+    "source": {
+      "pdf": "DSEPHY_TE_204_TN_.pdf",
+      "sha256": "9a9141d1e09ff742a668f24bddc8853a9fb38bbba51f0586c6003e68e4d4b505",
+      "page": 33,
+      "rect": [
+        68,
+        246,
+        284,
+        396
+      ]
+    },
+    "image": "assets/textbook-exercises/media/204-6-complete-labels.png",
+    "imageSha256": "0206cff5e70ffffeab3bc1ce4da3c7db10830cf1a54e7ea06835626152e29ba7",
+    "removedLabels": [
+      "t t"
+    ],
+    "optionCorrections": []
+  },
+  {
+    "language": "eng",
+    "id": "tb-204-13",
+    "field": "question",
+    "original": "<p><i><b>Blocks </b></i><i><b>X</b></i><i><b> and </b></i><i><b>Y</b></i><i><b> are placed on a smooth plane </b></i><i><b>inclined at 30° to the horizontal. A horizontal </b></i><i><b>force of 50 N acts on </b></i><i><b>X</b></i><i><b> (Fig j). The weight of </b></i><i><b>X</b></i><i><b> </b></i><i><b>is 20 N and the weight of </b></i><i><b>Y</b></i><i><b> is 30 N. Find the </b></i><i><b>magnitude of the force acting on </b></i><i><b>X</b></i><i><b> by </b></i><i><b>Y</b></i><i><b>.</b></i></p><p class=\"study-figure\"><img src=\"assets/textbook-exercises/media/f855b2dfd85e6e804de9b211.png\" alt=\"\" style=\"width:192.6px\"/></p><p><i><b>A </b></i><i><b> </b></i><i><b>0</b></i></p><p><i><b>B </b></i><i><b>7.32 N</b></i><i><b>Y</b></i></p><p><i><b>C </b></i><i><b> </b></i><i><b>26.0 N</b></i></p><p><i><b>D </b></i><i><b> </b></i><i><b>36.6 N</b></i></p>",
+    "replacement": "<p><i><b>Blocks </b></i><i><b>X</b></i><i><b> and </b></i><i><b>Y</b></i><i><b> are placed on a smooth plane </b></i><i><b>inclined at 30° to the horizontal. A horizontal </b></i><i><b>force of 50 N acts on </b></i><i><b>X</b></i><i><b> (Fig j). The weight of </b></i><i><b>X</b></i><i><b> </b></i><i><b>is 20 N and the weight of </b></i><i><b>Y</b></i><i><b> is 30 N. Find the </b></i><i><b>magnitude of the force acting on </b></i><i><b>X</b></i><i><b> by </b></i><i><b>Y</b></i><i><b>.</b></i></p><p class=\"study-figure\"><img src=\"assets/textbook-exercises/media/204-13-complete-labels.png\" alt=\"Blocks X and Y on a 30 degree incline under a 50 N horizontal force\" style=\"width:244px\"></p><p><i><b>A </b></i><i><b> </b></i><i><b>0</b></i></p><p><b>B 7.32 N</b></p><p><i><b>C </b></i><i><b> </b></i><i><b>26.0 N</b></i></p><p><i><b>D </b></i><i><b> </b></i><i><b>36.6 N</b></i></p>",
+    "source": {
+      "pdf": "DSEPHY_TE_204_TN_.pdf",
+      "sha256": "9a9141d1e09ff742a668f24bddc8853a9fb38bbba51f0586c6003e68e4d4b505",
+      "page": 34,
+      "rect": [
+        168,
+        657,
+        290,
+        728
+      ]
+    },
+    "image": "assets/textbook-exercises/media/204-13-complete-labels.png",
+    "imageSha256": "e332495cbff0f82fb04f0ad2d1edd21981c8c8d0f90bf5e37fd6b13a3a42f471",
+    "removedLabels": [],
+    "optionCorrections": [
+      "B 7.32 NY"
+    ]
+  },
+  {
+    "language": "eng",
+    "id": "tb-205-5",
+    "field": "question",
+    "original": "<p><i><b>The side view of a folding table is shown (Fig e). </b></i><i><b>Its weight is 150 N. A horizontal force </b></i><i><b>F</b></i><i><b> acts at </b></i><i><b>the top end of the table.</b></i></p><p><i><b> </b></i><i><b>What is the minimum value of </b></i><i><b>F</b></i><i><b> needed to make </b></i><i><b>the table topple?</b></i></p><p class=\"study-figure\"><img src=\"assets/textbook-exercises/media/681d22e66968d7a4e32e2339.png\" alt=\"\" style=\"width:222.4px\"/></p><p><i><b>A </b></i><i><b> </b></i><i><b>10 N</b></i><i><b>F</b></i></p><p><i><b>B </b></i><i><b> </b></i><i><b>12 N</b></i></p><p><i><b>C </b></i><i><b> </b></i><i><b>14.4 N</b></i></p><p><i><b>D </b></i><i><b> </b></i><i><b>72 N</b></i></p>",
+    "replacement": "<p><i><b>The side view of a folding table is shown (Fig e). </b></i><i><b>Its weight is 150 N. A horizontal force </b></i><i><b>F</b></i><i><b> acts at </b></i><i><b>the top end of the table.</b></i></p><p><i><b> </b></i><i><b>What is the minimum value of </b></i><i><b>F</b></i><i><b> needed to make </b></i><i><b>the table topple?</b></i></p><p class=\"study-figure\"><img src=\"assets/textbook-exercises/media/205-5-complete-labels.png\" alt=\"Folding table with horizontal force F and all dimensions\" style=\"width:300px\"></p><p><b>A 10 N</b></p><p><i><b>B </b></i><i><b> </b></i><i><b>12 N</b></i></p><p><i><b>C </b></i><i><b> </b></i><i><b>14.4 N</b></i></p><p><i><b>D </b></i><i><b> </b></i><i><b>72 N</b></i></p>",
+    "source": {
+      "pdf": "DSEPHY_TE_205_TN_.pdf",
+      "sha256": "baab07a9b2020d15cbf3254a93a1d1e0671e09d1854d3329618b3d3796fbc073",
+      "page": 26,
+      "rect": [
+        145,
+        132,
+        295,
+        282
+      ]
+    },
+    "image": "assets/textbook-exercises/media/205-5-complete-labels.png",
+    "imageSha256": "d43e4f9d66262b7cbc8f1d71802a54cdaaccbd876fc27da278dd48f75aeeed95",
+    "removedLabels": [],
+    "optionCorrections": [
+      "A 10 NF"
+    ]
+  },
+  {
+    "language": "eng",
+    "id": "tb-206-7",
+    "field": "question",
+    "original": "<p><i><b>A block is allowed to slide down a smooth inclined </b></i><i><b>plane from rest from different positions (Fig e). </b></i><i><b>When the block is released from </b></i><i><b>X</b></i><i><b>, its velocity </b></i><i><b>at </b></i><i><b>Z</b></i><i><b> is </b></i><i><b>v</b></i><i><b>. When the block is released from </b></i><i><b>Y</b></i><i><b>, its </b></i><i><b>velocity at </b></i><i><b>Z</b></i><i><b> is 2</b></i><i><b>v</b></i><i><b>. If the vertical distance between </b></i><i><b>X</b></i><i><b> and </b></i><i><b>Z</b></i><i><b> is </b></i><i><b>h</b></i><i><b>, what is the vertical distance between </b></i><i><b>Y</b></i><i><b> and </b></i><i><b>Z</b></i><i><b>?</b></i></p><p class=\"study-figure\"><img src=\"assets/textbook-exercises/media/9bc5c7b4639a42de52dcac76.png\" alt=\"\" style=\"width:320.2px\"/></p><p><i><b> </b></i><i><b> </b></i><i><b>Fig e</b></i><i><b>Z</b></i></p><p><i><b>A </b></i><i><b>2 </b></i><i><b>h</b></i><i><b> </b></i></p><p><i><b>B </b></i><i><b> </b></i><i><b>2</b></i><i><b>h</b></i></p><p><i><b>C </b></i><i><b> </b></i><i><b>4</b></i><i><b>h</b></i><i><b> </b></i></p><p><i><b>D </b></i><i><b> </b></i><i><b>8</b></i><i><b>h</b></i></p>",
+    "replacement": "<p><i><b>A block is allowed to slide down a smooth inclined </b></i><i><b>plane from rest from different positions (Fig e). </b></i><i><b>When the block is released from </b></i><i><b>X</b></i><i><b>, its velocity </b></i><i><b>at </b></i><i><b>Z</b></i><i><b> is </b></i><i><b>v</b></i><i><b>. When the block is released from </b></i><i><b>Y</b></i><i><b>, its </b></i><i><b>velocity at </b></i><i><b>Z</b></i><i><b> is 2</b></i><i><b>v</b></i><i><b>. If the vertical distance between </b></i><i><b>X</b></i><i><b> and </b></i><i><b>Z</b></i><i><b> is </b></i><i><b>h</b></i><i><b>, what is the vertical distance between </b></i><i><b>Y</b></i><i><b> and </b></i><i><b>Z</b></i><i><b>?</b></i></p><p class=\"study-figure\"><img src=\"assets/textbook-exercises/media/206-7-complete-labels.png\" alt=\"Inclined plane with release positions X and Y and endpoint Z\" style=\"width:336px\"></p><p><i><b>A </b></i><i><b>2 </b></i><i><b>h</b></i><i><b> </b></i></p><p><i><b>B </b></i><i><b> </b></i><i><b>2</b></i><i><b>h</b></i></p><p><i><b>C </b></i><i><b> </b></i><i><b>4</b></i><i><b>h</b></i><i><b> </b></i></p><p><i><b>D </b></i><i><b> </b></i><i><b>8</b></i><i><b>h</b></i></p>",
+    "source": {
+      "pdf": "DSEPHY_TE_206_TN_.pdf",
+      "sha256": "8c2864693575cda8f4d538feb0ef8e4d5597391bd831de858871c84df2ceaf21",
+      "page": 40,
+      "rect": [
+        78,
+        539,
+        246,
+        603
+      ]
+    },
+    "image": "assets/textbook-exercises/media/206-7-complete-labels.png",
+    "imageSha256": "cf7e0a4de85d71e2eca3e86096f9fe4766365a672491f4dd9f6fc45d6cf47c93",
+    "removedLabels": [
+      "Fig eZ"
+    ],
+    "optionCorrections": []
+  },
+  {
+    "language": "eng",
+    "id": "tb-207-7",
+    "field": "question",
+    "original": "<p><i><b>Two bumper cars </b></i><i><b>X</b></i><i><b> and </b></i><i><b>Y</b></i><i><b> are travelling towards </b></i><i><b>the right. </b></i><i><b>X</b></i><i><b> is travelling at 1.5 m s</b></i><i><b><sup>−1</sup></b></i><i><b> while </b></i><i><b>Y</b></i><i><b> is </b></i><i><b>travelling at 1.1 m s</b></i><i><b><sup>−1</sup></b></i><i><b> when they collide. The </b></i><i><b>velocities of </b></i><i><b>X</b></i><i><b> and </b></i><i><b>Y</b></i><i><b> are 1.1 m s</b></i><i><b><sup>−1</sup></b></i><i><b> and 1.6 m s</b></i><i><b><sup>−1</sup></b></i><i><b> </b></i><i><b>towards the right after the collision (Fig e). What </b></i><i><b>is the ratio of the mass of </b></i><i><b>X</b></i><i><b> to that of </b></i><i><b>Y</b></i><i><b>? Assume </b></i><i><b>that the external net force acting on the bumper </b></i><i><b>car system is negligible.</b></i></p><p class=\"study-figure\"><img src=\"assets/textbook-exercises/media/4eba150cedabed6d7cb2fdd3.png\" alt=\"\" style=\"width:303.1px\"/></p><p><i><b>1.5 m s</b></i><i><b><sup>–1</sup></b></i><i><b>1.1 m s</b></i><i><b><sup>–1</sup></b></i><i><b>1.1 m s</b></i><i><b><sup>–1</sup></b></i><i><b>1.6 m s</b></i><i><b><sup>–1</sup></b></i></p><p class=\"study-figure\"><img src=\"assets/textbook-exercises/media/14f67d1ac674cd1b591665cb.png\" alt=\"\" style=\"width:361.3px\"/></p><p><i><b>A </b></i><i><b> </b></i><i><b>1 : 0.8</b></i></p><p><i><b>B </b></i><i><b> </b></i><i><b>1 : 1</b></i></p><p><i><b>C </b></i><i><b> </b></i><i><b>1 : 1.17</b></i></p><p><i><b>D </b></i><i><b> </b></i><i><b>1 : 1.4</b></i></p>",
+    "replacement": "<p><i><b>Two bumper cars </b></i><i><b>X</b></i><i><b> and </b></i><i><b>Y</b></i><i><b> are travelling towards </b></i><i><b>the right. </b></i><i><b>X</b></i><i><b> is travelling at 1.5 m s</b></i><i><b><sup>−1</sup></b></i><i><b> while </b></i><i><b>Y</b></i><i><b> is </b></i><i><b>travelling at 1.1 m s</b></i><i><b><sup>−1</sup></b></i><i><b> when they collide. The </b></i><i><b>velocities of </b></i><i><b>X</b></i><i><b> and </b></i><i><b>Y</b></i><i><b> are 1.1 m s</b></i><i><b><sup>−1</sup></b></i><i><b> and 1.6 m s</b></i><i><b><sup>−1</sup></b></i><i><b> </b></i><i><b>towards the right after the collision (Fig e). What </b></i><i><b>is the ratio of the mass of </b></i><i><b>X</b></i><i><b> to that of </b></i><i><b>Y</b></i><i><b>? Assume </b></i><i><b>that the external net force acting on the bumper </b></i><i><b>car system is negligible.</b></i></p><p class=\"study-figure\"><img src=\"assets/textbook-exercises/media/207-7-complete-labels.png\" alt=\"Bumper cars X and Y with all four speeds before and after collision\" style=\"width:460px\"></p><p><i><b>A </b></i><i><b> </b></i><i><b>1 : 0.8</b></i></p><p><i><b>B </b></i><i><b> </b></i><i><b>1 : 1</b></i></p><p><i><b>C </b></i><i><b> </b></i><i><b>1 : 1.17</b></i></p><p><i><b>D </b></i><i><b> </b></i><i><b>1 : 1.4</b></i></p>",
+    "source": {
+      "pdf": "DSEPHY_TE_207_TN_.pdf",
+      "sha256": "ae54b7606391d6298236c3ec7af7fc9878e7ff14d5a5f628b8bcb3d2632c025e",
+      "page": 43,
+      "rect": [
+        333,
+        173,
+        581,
+        282
+      ]
+    },
+    "image": "assets/textbook-exercises/media/207-7-complete-labels.png",
+    "imageSha256": "cde4de9d4800175b9726dfe966fcd0efe305083f91fe722fe3a24568d2b39591",
+    "removedLabels": [
+      "1.5 m s–11.1 m s–11.1 m s–11.6 m s–1"
+    ],
+    "optionCorrections": []
+  },
+  {
+    "language": "eng",
+    "id": "tb-207-18",
+    "field": "question",
+    "original": "<p><i><b>Carts </b></i><i><b>X</b></i><i><b> and </b></i><i><b>Y</b></i><i><b> have the same mass of 0.5 kg. </b></i><i><b>They move in the same direction along a smooth </b></i><i><b>horizontal straight track. Initially, </b></i><i><b>X</b></i><i><b> moves at </b></i><i><b>2 m s</b></i><i><b><sup>−1</sup></b></i><i><b> and </b></i><i><b>Y</b></i><i><b> moves at 1 m s</b></i><i><b><sup>−1</sup></b></i><i><b> (Fig o). </b></i><i><b>X</b></i><i><b> moves </b></i><i><b>at 1 m s</b></i><i><b><sup>−1</sup></b></i><i><b> towards the right after colliding with </b></i><i><b>Y</b></i><i><b>. What is the work done on </b></i><i><b>Y</b></i><i><b> by </b></i><i><b>X</b></i><i><b>?</b></i></p><p class=\"study-figure\"><img src=\"assets/textbook-exercises/media/7ef12b840239e7de7f04b9d5.png\" alt=\"\" style=\"width:211.2px\"/></p><p><i><b> </b></i><i><b>Fig o</b></i><i><b>smooth horizontal track</b></i></p><p><i><b>A </b></i><i><b>0.25 J </b></i></p><p><i><b>B </b></i><i><b> </b></i><i><b>0.5 J</b></i></p><p><i><b>C </b></i><i><b> </b></i><i><b>0.75 J </b></i></p><p><i><b>D </b></i><i><b> </b></i><i><b>1 J</b></i> <i><b> </b></i></p>",
+    "replacement": "<p><i><b>Carts </b></i><i><b>X</b></i><i><b> and </b></i><i><b>Y</b></i><i><b> have the same mass of 0.5 kg. </b></i><i><b>They move in the same direction along a smooth </b></i><i><b>horizontal straight track. Initially, </b></i><i><b>X</b></i><i><b> moves at </b></i><i><b>2 m s</b></i><i><b><sup>−1</sup></b></i><i><b> and </b></i><i><b>Y</b></i><i><b> moves at 1 m s</b></i><i><b><sup>−1</sup></b></i><i><b> (Fig o). </b></i><i><b>X</b></i><i><b> moves </b></i><i><b>at 1 m s</b></i><i><b><sup>−1</sup></b></i><i><b> towards the right after colliding with </b></i><i><b>Y</b></i><i><b>. What is the work done on </b></i><i><b>Y</b></i><i><b> by </b></i><i><b>X</b></i><i><b>?</b></i></p><p class=\"study-figure\"><img src=\"assets/textbook-exercises/media/207-18-complete-labels.png\" alt=\"Carts X and Y on a smooth horizontal track\" style=\"width:364px\"></p><p><i><b>A </b></i><i><b>0.25 J </b></i></p><p><i><b>B </b></i><i><b> </b></i><i><b>0.5 J</b></i></p><p><i><b>C </b></i><i><b> </b></i><i><b>0.75 J </b></i></p><p><i><b>D </b></i><i><b> </b></i><i><b>1 J</b></i> <i><b> </b></i></p>",
+    "source": {
+      "pdf": "DSEPHY_TE_207_TN_.pdf",
+      "sha256": "ae54b7606391d6298236c3ec7af7fc9878e7ff14d5a5f628b8bcb3d2632c025e",
+      "page": 45,
+      "rect": [
+        351,
+        641,
+        533,
+        693
+      ]
+    },
+    "image": "assets/textbook-exercises/media/207-18-complete-labels.png",
+    "imageSha256": "e97097ee8283d830e0a897ed0dfb15d498c569f02f879dc97d834fa7c6da0ddd",
+    "removedLabels": [
+      "Fig osmooth horizontal track"
+    ],
+    "optionCorrections": []
+  },
+  {
+    "language": "eng",
+    "id": "tb-207-26",
+    "field": "question",
+    "original": "<p><i><b>A ball of mass 0.2 kg moves to the left on a </b></i><i><b>smooth horizontal surface and hits an object. </b></i><i><b>The ball moves at 1.5 m s</b></i><i><b><sup>−1</sup></b></i><i><b> towards the right </b></i><i><b>after the impact. The net force </b></i><i><b>F</b></i><i><b><sub>net</sub></b></i><i><b> acting on it </b></i><i><b>points to the right during the impact and varies </b></i><i><b>with time </b></i><i><b>t</b></i><i><b> as shown (Fig v). The area under the </b></i><i><b>graph is 0.7 N s.</b></i></p><p class=\"study-figure\"><img src=\"assets/textbook-exercises/media/f086a16ee115e5082528812e.png\" alt=\"\" style=\"width:168.7px\"/></p><p><i><b> </b></i><i><b> </b></i><i><b>Fig v</b></i><i><b>t</b></i><i><b> </b></i></p><p><i><b> </b></i><i><b>(a) </b></i><i><b> </b></i><i><b>State the physical meaning of the area under </b></i><i><b>the graph. </b></i><i><b>(1 mark)</b></i></p><p><i><b> </b></i><i><b>(b) </b></i><i><b> </b></i><i><b>Estimate the velocity of the ball before the </b></i><i><b>collision. </b></i><i><b>(2 marks)</b></i></p><p><i><b> </b></i><i><b>(c) </b></i><i><b> </b></i><i><b>If the average net force acting on the ball </b></i><i><b>during the impact is 17.5 N, estimate the </b></i><i><b>impact time. </b></i><i><b>(2 marks)</b></i></p>",
+    "replacement": "<p><i><b>A ball of mass 0.2 kg moves to the left on a </b></i><i><b>smooth horizontal surface and hits an object. </b></i><i><b>The ball moves at 1.5 m s</b></i><i><b><sup>−1</sup></b></i><i><b> towards the right </b></i><i><b>after the impact. The net force </b></i><i><b>F</b></i><i><b><sub>net</sub></b></i><i><b> acting on it </b></i><i><b>points to the right during the impact and varies </b></i><i><b>with time </b></i><i><b>t</b></i><i><b> as shown (Fig v). The area under the </b></i><i><b>graph is 0.7 N s.</b></i></p><p class=\"study-figure\"><img src=\"assets/textbook-exercises/media/207-26-complete-labels.png\" alt=\"Net force versus time t with area 0.7 N s\" style=\"width:300px\"></p><p><i><b> </b></i><i><b>(a) </b></i><i><b> </b></i><i><b>State the physical meaning of the area under </b></i><i><b>the graph. </b></i><i><b>(1 mark)</b></i></p><p><i><b> </b></i><i><b>(b) </b></i><i><b> </b></i><i><b>Estimate the velocity of the ball before the </b></i><i><b>collision. </b></i><i><b>(2 marks)</b></i></p><p><i><b> </b></i><i><b>(c) </b></i><i><b> </b></i><i><b>If the average net force acting on the ball </b></i><i><b>during the impact is 17.5 N, estimate the </b></i><i><b>impact time. </b></i><i><b>(2 marks)</b></i></p>",
+    "source": {
+      "pdf": "DSEPHY_TE_207_TN_.pdf",
+      "sha256": "ae54b7606391d6298236c3ec7af7fc9878e7ff14d5a5f628b8bcb3d2632c025e",
+      "page": 47,
+      "rect": [
+        369,
+        344,
+        519,
+        439
+      ]
+    },
+    "image": "assets/textbook-exercises/media/207-26-complete-labels.png",
+    "imageSha256": "b732e2812d00d9ceee61a3297c026e215a617e6f4da376488d2ed24a7e93eb12",
+    "removedLabels": [
+      "Fig vt"
+    ],
+    "optionCorrections": []
+  },
+  {
+    "language": "eng",
+    "id": "tb-208-4",
+    "field": "question",
+    "original": "<p><i><b>‘The tarik’ (Fig c), or pulling tea, is popular in </b></i><i><b>countries like India, Malaysia and Singapore. </b></i><i><b>Suppose the tea leaves the upper jar horizontally </b></i><i><b>with a speed of 0.5 m s</b></i><i><b><sup>−1</sup></b></i><i><b>. Which of the following </b></i><i><b>are the possible horizontal distance </b></i><i><b>s</b></i><i><b><sub>x</sub></b></i><i><b> and vertical </b></i><i><b>distance </b></i><i><b>s</b></i><i><b><sub>y</sub></b></i><i><b> between the two jars so that the lower </b></i><i><b>jar can catch the tea? Neglect the sizes of the jars.</b></i></p><p class=\"study-figure\"><img src=\"assets/textbook-exercises/media/b4be626bb97d88bc57b4168f.png\" alt=\"\" style=\"width:173.6px\"/></p><div class=\"study-table-wrap\"><table><tbody><tr><td><p><b>Option</b></p></td><td><p><b>sₓ / m</b></p></td><td><p><b>sᵧ / m</b></p></td></tr><tr><td><p><b>A</b></p></td><td><p><b>0.10</b></p></td><td><p><b>0.39</b></p></td></tr><tr><td><p><b>B</b></p></td><td><p><b>0.20</b></p></td><td><p><b>0.39</b></p></td></tr><tr><td><p><b>C</b></p></td><td><p><b>0.10</b></p></td><td><p><b>0.78</b></p></td></tr><tr><td><p><b>D</b></p></td><td><p><b>0.20</b></p></td><td><p><b>0.78</b></p></td></tr></tbody></table></div>",
+    "replacement": "<p><i><b>‘The tarik’ (Fig c), or pulling tea, is popular in </b></i><i><b>countries like India, Malaysia and Singapore. </b></i><i><b>Suppose the tea leaves the upper jar horizontally </b></i><i><b>with a speed of 0.5 m s</b></i><i><b><sup>−1</sup></b></i><i><b>. Which of the following </b></i><i><b>are the possible horizontal distance </b></i><i><b>s</b></i><i><b><sub>x</sub></b></i><i><b> and vertical </b></i><i><b>distance </b></i><i><b>s</b></i><i><b><sub>y</sub></b></i><i><b> between the two jars so that the lower </b></i><i><b>jar can catch the tea? Neglect the sizes of the jars.</b></i></p><p class=\"study-figure\"><img src=\"assets/textbook-exercises/media/208-4-complete-labels.png\" alt=\"Pouring tea with the full horizontal sx and vertical sy labels\" style=\"width:310px\"></p><div class=\"study-table-wrap\"><table><tbody><tr><td><p><b>Option</b></p></td><td><p><b>sₓ / m</b></p></td><td><p><b>sᵧ / m</b></p></td></tr><tr><td><p><b>A</b></p></td><td><p><b>0.10</b></p></td><td><p><b>0.39</b></p></td></tr><tr><td><p><b>B</b></p></td><td><p><b>0.20</b></p></td><td><p><b>0.39</b></p></td></tr><tr><td><p><b>C</b></p></td><td><p><b>0.10</b></p></td><td><p><b>0.78</b></p></td></tr><tr><td><p><b>D</b></p></td><td><p><b>0.20</b></p></td><td><p><b>0.78</b></p></td></tr></tbody></table></div>",
+    "source": {
+      "pdf": "DSEPHY_TE_208_TN_.pdf",
+      "sha256": "d8905fc3a84b27c826a3f6ff4f7fcc9616affd8357a1e065a2672bcf383b19ca",
+      "page": 30,
+      "rect": [
+        345,
+        158,
+        500,
+        333
+      ]
+    },
+    "image": "assets/textbook-exercises/media/208-4-complete-labels.png",
+    "imageSha256": "d9ccf5ba5ca8d10cd2460235cd24468059b845144a1278ea12e5a40ddf6bc1dd",
+    "removedLabels": [],
+    "optionCorrections": []
+  },
+  {
+    "language": "eng",
+    "id": "tb-208-5",
+    "field": "question",
+    "original": "<p><i><b>Two objects, </b></i><i><b>P</b></i><i><b> and </b></i><i><b>Q</b></i><i><b>, are projected from the same </b></i><i><b>level at the same time. </b></i><i><b>P</b></i><i><b> is projected vertically </b></i><i><b>upwards at a speed of 30 m s</b></i><i><b><sup>−1</sup></b></i><i><b> while </b></i><i><b>Q</b></i><i><b> is </b></i><i><b>projected at an angle of 60° to the vertical at a </b></i><i><b>speed of 60 m s</b></i><i><b><sup>−1</sup></b></i><i><b> (Fig d). The objects land on </b></i><i><b>positions at the same level.</b></i></p><p class=\"study-figure\"><img src=\"assets/textbook-exercises/media/bafc5228eba235f1d7a454da.png\" alt=\"\" style=\"width:205.3px\"/></p><p><i><b>  </b></i><i><b>Fig d</b></i><i><b>P</b></i><i><b>Q</b></i></p><p><i><b> </b></i><i><b>Which of the following statements are correct?</b></i></p><p><i><b> </b></i><i><b>(1) </b></i><i><b> </b></i><i><b>P</b></i><i><b> and </b></i><i><b>Q</b></i><i><b> land at the same time.</b></i></p><p><i><b> </b></i><i><b>(2) </b></i><i><b> </b></i><i><b>P</b></i><i><b> and </b></i><i><b>Q</b></i><i><b> have the same acceleration </b></i><i><b>throughout their flights.</b></i></p><p><i><b> </b></i><i><b>(3) </b></i><i><b> </b></i><i><b>P</b></i><i><b> and </b></i><i><b>Q</b></i><i><b> are momentarily at rest when they </b></i><i><b>reach their maximum height.</b></i></p><p><i><b>A </b></i><i><b> </b></i><i><b>(1) and (2) only </b></i></p><p><i><b>B </b></i><i><b> </b></i><i><b>(1) and (3) only</b></i></p><p><i><b>C </b></i><i><b> </b></i><i><b>(2) and (3) only </b></i></p><p><i><b>D </b></i><i><b> </b></i><i><b>(1), (2) and (3)</b></i></p>",
+    "replacement": "<p><i><b>Two objects, </b></i><i><b>P</b></i><i><b> and </b></i><i><b>Q</b></i><i><b>, are projected from the same </b></i><i><b>level at the same time. </b></i><i><b>P</b></i><i><b> is projected vertically </b></i><i><b>upwards at a speed of 30 m s</b></i><i><b><sup>−1</sup></b></i><i><b> while </b></i><i><b>Q</b></i><i><b> is </b></i><i><b>projected at an angle of 60° to the vertical at a </b></i><i><b>speed of 60 m s</b></i><i><b><sup>−1</sup></b></i><i><b> (Fig d). The objects land on </b></i><i><b>positions at the same level.</b></i></p><p class=\"study-figure\"><img src=\"assets/textbook-exercises/media/208-5-complete-labels.png\" alt=\"Projectiles P and Q with their launch velocities and angle\" style=\"width:366px\"></p><p><i><b> </b></i><i><b>Which of the following statements are correct?</b></i></p><p><i><b> </b></i><i><b>(1) </b></i><i><b> </b></i><i><b>P</b></i><i><b> and </b></i><i><b>Q</b></i><i><b> land at the same time.</b></i></p><p><i><b> </b></i><i><b>(2) </b></i><i><b> </b></i><i><b>P</b></i><i><b> and </b></i><i><b>Q</b></i><i><b> have the same acceleration </b></i><i><b>throughout their flights.</b></i></p><p><i><b> </b></i><i><b>(3) </b></i><i><b> </b></i><i><b>P</b></i><i><b> and </b></i><i><b>Q</b></i><i><b> are momentarily at rest when they </b></i><i><b>reach their maximum height.</b></i></p><p><i><b>A </b></i><i><b> </b></i><i><b>(1) and (2) only </b></i></p><p><i><b>B </b></i><i><b> </b></i><i><b>(1) and (3) only</b></i></p><p><i><b>C </b></i><i><b> </b></i><i><b>(2) and (3) only </b></i></p><p><i><b>D </b></i><i><b> </b></i><i><b>(1), (2) and (3)</b></i></p>",
+    "source": {
+      "pdf": "DSEPHY_TE_208_TN_.pdf",
+      "sha256": "d8905fc3a84b27c826a3f6ff4f7fcc9616affd8357a1e065a2672bcf383b19ca",
+      "page": 30,
+      "rect": [
+        345,
+        539,
+        528,
+        612
+      ]
+    },
+    "image": "assets/textbook-exercises/media/208-5-complete-labels.png",
+    "imageSha256": "9391ac7ce26d72b918a9357d5f6ce18faf13bb281ef9a2c2ce6e691c05d66527",
+    "removedLabels": [
+      "Fig dPQ"
+    ],
+    "optionCorrections": []
+  },
+  {
+    "language": "eng",
+    "id": "tb-208-17",
+    "field": "question",
+    "original": "<p><i><b>A transport helicopter flies horizontally at a </b></i><i><b>constant velocity of 20 m s</b></i><i><b><sup>−1</sup></b></i><i><b> at a height of </b></i><i><b>125 m (Fig o). It releases a package to a target </b></i><i><b>site on the ground.</b></i></p><p class=\"study-figure\"><img src=\"assets/textbook-exercises/media/40826cf518cd9ef20b938d88.png\" alt=\"\" style=\"width:100.8px\"/></p><p><i><b>target site</b></i></p><p><i><b>Fig o</b></i></p><p><i><b> </b></i><i><b>(a) </b></i><i><b> </b></i><i><b>How long does it take for the package to fall </b></i><i><b>from the helicopter to the ground? </b></i><i><b> </b></i><i><b>(2 marks)</b></i></p><p><i><b> </b></i><i><b>(b) </b></i><i><b> </b></i><i><b>Find the horizontal distance of the helicopter </b></i><i><b>from the target site when the package is </b></i><i><b>released. </b></i><i><b>(2 marks)</b></i></p><p><i><b> </b></i><i><b> </b></i><i><b> </b></i><i><b>(c) </b></i><i><b> </b></i><i><b>(i) </b></i><i><b> </b></i><i><b>The package is released at time </b></i><i><b>t</b></i><i><b> = 0. </b></i><i><b>Express the vertical distance </b></i><i><b>d</b></i><i><b> from the </b></i><i><b>ground in terms of </b></i><i><b>t</b></i><i><b>.</b></i></p><p><i><b> </b></i><i><b> </b></i><i><b> </b></i><i><b> </b></i><i><b>(ii)  Sketch a graph of </b></i><i><b>d</b></i><i><b> against </b></i><i><b>t</b></i><i><b> during the </b></i><i><b>flight of the package. </b></i><i><b> </b></i><i><b>(3 marks)</b></i></p>",
+    "replacement": "<p><i><b>A transport helicopter flies horizontally at a </b></i><i><b>constant velocity of 20 m s</b></i><i><b><sup>−1</sup></b></i><i><b> at a height of </b></i><i><b>125 m (Fig o). It releases a package to a target </b></i><i><b>site on the ground.</b></i></p><p class=\"study-figure\"><img src=\"assets/textbook-exercises/media/208-17-complete-labels.png\" alt=\"Helicopter and ground target site in their original positions\" style=\"width:330px\"></p><p><i><b> </b></i><i><b>(a) </b></i><i><b> </b></i><i><b>How long does it take for the package to fall </b></i><i><b>from the helicopter to the ground? </b></i><i><b> </b></i><i><b>(2 marks)</b></i></p><p><i><b> </b></i><i><b>(b) </b></i><i><b> </b></i><i><b>Find the horizontal distance of the helicopter </b></i><i><b>from the target site when the package is </b></i><i><b>released. </b></i><i><b>(2 marks)</b></i></p><p><i><b> </b></i><i><b> </b></i><i><b> </b></i><i><b>(c) </b></i><i><b> </b></i><i><b>(i) </b></i><i><b> </b></i><i><b>The package is released at time </b></i><i><b>t</b></i><i><b> = 0. </b></i><i><b>Express the vertical distance </b></i><i><b>d</b></i><i><b> from the </b></i><i><b>ground in terms of </b></i><i><b>t</b></i><i><b>.</b></i></p><p><i><b> </b></i><i><b> </b></i><i><b> </b></i><i><b> </b></i><i><b>(ii)  Sketch a graph of </b></i><i><b>d</b></i><i><b> against </b></i><i><b>t</b></i><i><b> during the </b></i><i><b>flight of the package. </b></i><i><b> </b></i><i><b>(3 marks)</b></i></p>",
+    "source": {
+      "pdf": "DSEPHY_TE_208_TN_.pdf",
+      "sha256": "d8905fc3a84b27c826a3f6ff4f7fcc9616affd8357a1e065a2672bcf383b19ca",
+      "page": 33,
+      "rect": [
+        95,
+        614,
+        260,
+        748
+      ]
+    },
+    "image": "assets/textbook-exercises/media/208-17-complete-labels.png",
+    "imageSha256": "a35c83b2fe627d572e8e7cad4b81bd08b7e026d06ff6b4f21f5705afa1baf79f",
+    "removedLabels": [
+      "target site",
+      "Fig o"
+    ],
+    "optionCorrections": []
+  }
+]
