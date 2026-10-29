@@ -1,0 +1,175 @@
+{
+  "description": "Source-reviewed complete figures for 2023 Paper 1A. Only question image references change; answers and question text remain intact.",
+  "reviews": [
+    {
+      "language": "eng",
+      "key": "2023|paper-1a|14",
+      "index": 0,
+      "sourcePdf": "downloads/originals/eng/2023-paper-1a.pdf",
+      "page": 7,
+      "cropAtScale2": [
+        285,
+        765,
+        920,
+        960
+      ],
+      "oldImageTag": "<img src=\"text-papers/media/22aec216fc4622652ba84890.jpg\" alt=\"\" style=\"width:460.8px\"/>",
+      "newImageTag": "<img src=\"text-papers/media/2023-eng-paper-1a-q14-1-complete.png\" alt=\"\" style=\"width:460.8px\"/>",
+      "asset": "text-papers/media/2023-eng-paper-1a-q14-1-complete.png",
+      "sha256": "85762aa3151fb83469fb12f829559a0f29b5bd142c77bb576b724d877ccea462"
+    },
+    {
+      "language": "eng",
+      "key": "2023|paper-1a|16",
+      "index": 0,
+      "sourcePdf": "downloads/originals/eng/2023-paper-1a.pdf",
+      "page": 8,
+      "cropAtScale2": [
+        370,
+        780,
+        760,
+        1035
+      ],
+      "oldImageTag": "<img src=\"text-papers/media/ee9b120140deed34f6e6c8ff.jpg\" alt=\"\" style=\"width:345.6px\"/>",
+      "newImageTag": "<img src=\"text-papers/media/2023-eng-paper-1a-q16-1-complete.png\" alt=\"\" style=\"width:345.6px\"/>",
+      "asset": "text-papers/media/2023-eng-paper-1a-q16-1-complete.png",
+      "sha256": "6d89ea87cf0466f13458971b090efa09dee55272e4512dd367f9310f65b7f32f"
+    },
+    {
+      "language": "eng",
+      "key": "2023|paper-1a|22",
+      "index": 0,
+      "sourcePdf": "downloads/originals/eng/2023-paper-1a.pdf",
+      "page": 10,
+      "cropAtScale2": [
+        195,
+        1110,
+        1040,
+        1305
+      ],
+      "oldImageTag": "<img src=\"text-papers/media/069d36e40fc1951c942fb9d3.png\" alt=\"\" style=\"width:585.6px\"/>",
+      "newImageTag": "<img src=\"text-papers/media/2023-eng-paper-1a-q22-1-complete.png\" alt=\"\" style=\"width:585.6px\"/>",
+      "asset": "text-papers/media/2023-eng-paper-1a-q22-1-complete.png",
+      "sha256": "9c88f1132f95b457c647e3caffc89a1b1dbc9c6a0c3c024db3f8b0ccf2ac6932"
+    },
+    {
+      "language": "eng",
+      "key": "2023|paper-1a|25",
+      "index": 0,
+      "sourcePdf": "downloads/originals/eng/2023-paper-1a.pdf",
+      "page": 12,
+      "cropAtScale2": [
+        450,
+        170,
+        700,
+        390
+      ],
+      "oldImageTag": "<img src=\"text-papers/media/ce41af8712de40558ae040bb.jpg\" alt=\"\" style=\"width:240.0px\"/>",
+      "newImageTag": "<img src=\"text-papers/media/2023-eng-paper-1a-q25-1-complete.png\" alt=\"\" style=\"width:240.0px\"/>",
+      "asset": "text-papers/media/2023-eng-paper-1a-q25-1-complete.png",
+      "sha256": "4deaed50c7085d50c16709267ed10a262dee75a65f6b798e3db525dd83734358"
+    },
+    {
+      "language": "eng",
+      "key": "2023|paper-1a|26",
+      "index": 0,
+      "sourcePdf": "downloads/originals/eng/2023-paper-1a.pdf",
+      "page": 12,
+      "cropAtScale2": [
+        370,
+        658,
+        735,
+        820
+      ],
+      "oldImageTag": "<img src=\"text-papers/media/ce41af8712de40558ae040bb.jpg\" alt=\"\" style=\"width:326.4px\"/>",
+      "newImageTag": "<img src=\"text-papers/media/2023-eng-paper-1a-q26-1-complete.png\" alt=\"\" style=\"width:326.4px\"/>",
+      "asset": "text-papers/media/2023-eng-paper-1a-q26-1-complete.png",
+      "sha256": "6bfdb802233cffab7f460edef67187602eb78d566bc871c4ae51d5b5abcf932e"
+    },
+    {
+      "language": "eng",
+      "key": "2023|paper-1a|27",
+      "index": 0,
+      "sourcePdf": "downloads/originals/eng/2023-paper-1a.pdf",
+      "page": 12,
+      "cropAtScale2": [
+        460,
+        1090,
+        830,
+        1315
+      ],
+      "oldImageTag": "<img src=\"text-papers/media/5670d3e9ce3bec48c589df7d.png\" alt=\"\" style=\"width:412.8px\"/>",
+      "newImageTag": "<img src=\"text-papers/media/2023-eng-paper-1a-q27-1-complete.png\" alt=\"\" style=\"width:412.8px\"/>",
+      "asset": "text-papers/media/2023-eng-paper-1a-q27-1-complete.png",
+      "sha256": "23c0040975a4d7fd2f13f6f485962f8eca267d792847fd2a3fb935b9329856cc"
+    },
+    {
+      "language": "chn",
+      "key": "2023|paper-1a|18",
+      "index": 0,
+      "sourcePdf": "downloads/originals/chn/2023-paper-1a.pdf",
+      "page": 9,
+      "cropAtScale2": [
+        305,
+        628,
+        1030,
+        760
+      ],
+      "oldImageTag": "<img src=\"text-papers/media/ceb89ec4d87313f928a6e93b.png\" alt=\"\" style=\"width:278.4px\"/>",
+      "newImageTag": "<img src=\"text-papers/media/2023-chn-paper-1a-q18-1-complete.png\" alt=\"\" style=\"width:278.4px\"/>",
+      "asset": "text-papers/media/2023-chn-paper-1a-q18-1-complete.png",
+      "sha256": "1131fbe269c7c3c3fabc4d775015d778cfc8dae5db0bfdf42275493555f4b1e6"
+    },
+    {
+      "language": "chn",
+      "key": "2023|paper-1a|18",
+      "index": 1,
+      "sourcePdf": "downloads/originals/chn/2023-paper-1a.pdf",
+      "page": 9,
+      "cropAtScale2": [
+        305,
+        760,
+        1030,
+        860
+      ],
+      "oldImageTag": "<img src=\"text-papers/media/49c7dde210134c9d86c98fd4.png\" alt=\"\" style=\"width:278.4px\"/>",
+      "newImageTag": "<img src=\"text-papers/media/2023-chn-paper-1a-q18-2-complete.png\" alt=\"\" style=\"width:278.4px\"/>",
+      "asset": "text-papers/media/2023-chn-paper-1a-q18-2-complete.png",
+      "sha256": "eb2082a80867a31da6ad351929410cc29bf796b6a85e801d23d251644dc96f79"
+    },
+    {
+      "language": "chn",
+      "key": "2023|paper-1a|18",
+      "index": 2,
+      "sourcePdf": "downloads/originals/chn/2023-paper-1a.pdf",
+      "page": 9,
+      "cropAtScale2": [
+        300,
+        860,
+        1030,
+        958
+      ],
+      "oldImageTag": "<img src=\"text-papers/media/738baae56eaaa367ca04df33.png\" alt=\"\" style=\"width:278.4px\"/>",
+      "newImageTag": "<img src=\"text-papers/media/2023-chn-paper-1a-q18-3-complete.png\" alt=\"\" style=\"width:278.4px\"/>",
+      "asset": "text-papers/media/2023-chn-paper-1a-q18-3-complete.png",
+      "sha256": "80612b1258df36a003fd40a70b7cc006a205cdb9aa038c103a3b843c93bf0d46"
+    },
+    {
+      "language": "chn",
+      "key": "2023|paper-1a|18",
+      "index": 3,
+      "sourcePdf": "downloads/originals/chn/2023-paper-1a.pdf",
+      "page": 9,
+      "cropAtScale2": [
+        305,
+        960,
+        1030,
+        1065
+      ],
+      "oldImageTag": "<img src=\"text-papers/media/1e8bc9a265fc705fb7acf52b.png\" alt=\"\" style=\"width:278.4px\"/>",
+      "newImageTag": "<img src=\"text-papers/media/2023-chn-paper-1a-q18-4-complete.png\" alt=\"\" style=\"width:278.4px\"/>",
+      "asset": "text-papers/media/2023-chn-paper-1a-q18-4-complete.png",
+      "sha256": "511bc04aa761fac56ec7e9818f2cdb7522fc564e7b3cb5c310cdeafd2b735fea"
+    }
+  ]
+}
