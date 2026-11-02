@@ -44,7 +44,12 @@ export function officialAnswerHtml(content, question, yearId) {
   return content?.officialScreenshot || content?.officialOriginal || scanHtml(question?.answer, yearId);
 }
 
-export function printableQuestion(entry, content, { language, mode }) {
+function mistakePrintSource(entry) {
+  return entry.source === 'examples' || entry.key.startsWith('ex-') ? 0
+    : entry.source === 'textbook' || entry.key.startsWith('tb-') ? 1 : 2;
+}
+
+export function printableQuestion(entry, content, { language, mode, sourceHeading = '' }) {
   const en = language === "eng";
   const example = entry.source === 'examples';
   const title = example ? `${en?'Textbook example':'课本例题'} ${entry.exerciseChapter} · ${entry.question.label}` : entry.source === 'textbook' ? `${en ? 'Textbook' : '课本'} ${entry.exerciseChapter} · ${entry.question.label}` : `${entry.year.year} · ${["1A", "1B", "2"][entry.paperIndex]} · ${entry.question.label}`;
@@ -52,7 +57,7 @@ export function printableQuestion(entry, content, { language, mode }) {
   const question = content?.question || scanHtml(entry.question.question, entry.year.id);
   const official = example || entry.source === 'textbook' ? content?.answer : officialAnswerHtml(content, entry.question, entry.year.id);
   const isChoice = entry.paperIndex === 0 || content?.kind === 'multiple-choice' || entry.question.kind === 'multiple-choice';
-  return `<article class="print-question ${isChoice ? 'print-choice' : 'print-structured'}${entry.source === 'textbook' ? ' textbook-exercise' : ''}" data-question="${escapeHtml(entry.key)}"><div class="print-question-body"><h2>${escapeHtml(title)}</h2>
+  return `<article class="print-question ${isChoice ? 'print-choice' : 'print-structured'}${entry.source === 'textbook' ? ' textbook-exercise' : ''}" data-question="${escapeHtml(entry.key)}"><div class="print-question-body">${sourceHeading ? `<h2 class="print-source-title">[${escapeHtml(sourceHeading)}]</h2>` : ''}<h2>${escapeHtml(title)}</h2>
     <div class="study-content question-content">${question}</div></div>
     ${mode === "questions" ? (isChoice ? '' : `<div class="working-space"></div>`) : `
       <h3>2. ${example ? 'Textbook solution' : entry.source === 'textbook' ? (en ? 'Textbook answer / worked solution' : '课本答案／解题过程') : translate("考评局官方解答／评分参考", en ? "eng" : "chn")}</h3><div class="study-content official-content">${official || `<p>${translate("暂缺官方来源。", en ? "eng" : "chn")}</p>`}</div>
@@ -142,9 +147,11 @@ export function preparePrintedAnswerSpaces(document) {
     for (const figure of content.querySelectorAll('.print-duplicate-figure')) figure.classList.remove('print-duplicate-figure');
     // Leave a small allowance for browser page rounding and keep the question
     // heading with the first prompt rather than forcing that prompt to split.
-    const heading = content.previousElementSibling?.matches('h2') ? content.previousElementSibling : null;
-    const headingStyle = heading && view.getComputedStyle(heading);
-    const headingHeight = heading ? heading.getBoundingClientRect().height + parseFloat(headingStyle.marginTop) + parseFloat(headingStyle.marginBottom) : 0;
+    const headings = [...content.parentElement.children].filter(node => node.matches('h2'));
+    const headingHeight = headings.reduce((height, heading) => {
+      const style = view.getComputedStyle(heading);
+      return height + heading.getBoundingClientRect().height + parseFloat(style.marginTop) + parseFloat(style.marginBottom);
+    }, 0);
     const firstPart = content.querySelector('.print-part'), firstSubpart = content.querySelector('.print-subpart');
     const capacity = group => pageHeight - 2 / 25.4 * 96 - (group === firstPart || group === firstSubpart ? headingHeight : 0);
     for (const img of content.querySelectorAll('img')) {
@@ -205,13 +212,20 @@ export function preparePrintedAnswerSpaces(document) {
   }
 }
 
-// Source takes priority over type; each type follows the book/chapter codes.
-// Server ordering preserves the same result when protected links are unavailable.
+// Source takes priority over type; chapters follow Compulsory 1-5, Elective 1-4.
+// Primary chapter identities are available without protected knowledge links.
 export function compareMistakePrintEntries(points = []) {
   const byPoint = new Map(points.map(point => [Number(point.sequence), point]));
   const numericOrder = new Intl.Collator('en', {numeric:true});
-  const source = entry => entry.source === 'examples' || entry.key.startsWith('ex-') ? 0
-    : entry.source === 'textbook' || entry.key.startsWith('tb-') ? 1 : 2;
+  const chapterPosition = code => {
+    const compulsory = /^([1-5])(\d{2})$/.exec(code);
+    if (compulsory) return [Number(compulsory[1]), 0, Number(compulsory[2])];
+    const split = /^3([AB])(\d{2})$/.exec(code);
+    if (split) return [3, split[1] === 'A' ? 0 : 1, Number(split[2])];
+    const elective = /^E([1-4])(\d{2})$/.exec(code);
+    if (elective) return [5 + Number(elective[1]), 0, Number(elective[2])];
+    return null;
+  };
   const chapter = entry => {
     const links = entry.network?.links || [];
     const primary = links.find(link => link.type === 'primary' && byPoint.has(Number(link.sequence)))
@@ -220,12 +234,14 @@ export function compareMistakePrintEntries(points = []) {
   };
   const chapterOrder = (a, b) => {
     const x = chapter(a), y = chapter(b);
-    return x && y ? numericOrder.compare(x, y) : x ? -1 : y ? 1 : 0;
+    if (!x || !y) return x ? -1 : y ? 1 : 0;
+    const xp = chapterPosition(x), yp = chapterPosition(y);
+    if (xp && yp) return xp[0] - yp[0] || xp[1] - yp[1] || xp[2] - yp[2] || numericOrder.compare(x, y);
+    return xp ? -1 : yp ? 1 : numericOrder.compare(x, y);
   };
   const kind = entry => entry.paperIndex === 0 || entry.question?.kind === 'multiple-choice' ? 0 : 1;
-  return (a, b) => source(a) - source(b) || kind(a) - kind(b)
-    || (Number.isInteger(a.mistakeOrder) && Number.isInteger(b.mistakeOrder)
-      ? a.mistakeOrder - b.mistakeOrder : chapterOrder(a, b))
+  return (a, b) => mistakePrintSource(a) - mistakePrintSource(b) || kind(a) - kind(b)
+    || chapterOrder(a, b)
     || (Date.parse(a.markedAt) || 0) - (Date.parse(b.markedAt) || 0)
     || a.key.localeCompare(b.key, 'en', { numeric: true });
 }
@@ -237,6 +253,12 @@ export function printDocumentHtml(entries, contents, options) {
   const compare = compareMistakePrintEntries(options.knowledgePoints);
   const rows = entries.map((entry, i) => ({ entry: {...entry, question: {...entry.question, kind: contents[i]?.kind || entry.question?.kind}}, content: contents[i] }))
     .sort((a, b) => compare(a.entry, b.entry));
+  const sourceTitles = en ? ['Textbook examples', 'Textbook exercises', 'Past papers'] : ['课本例题', '课本习题', '真题'];
+  const printedRows = rows.map(({entry, content}, index) => printableQuestion(entry, content, {
+    ...options,
+    sourceHeading: index === 0 || mistakePrintSource(rows[index - 1].entry) !== mistakePrintSource(entry)
+      ? sourceTitles[mistakePrintSource(entry)] : '',
+  })).join('');
   return `<!doctype html><html lang="${en ? 'en' : 'zh-CN'}"><head><meta charset="utf-8"><title>${escapeHtml(title)}</title><base href="${escapeHtml(options.baseUrl)}"><style>${STUDY_CSS}
     @page {size:A4;margin:0}
     * {box-sizing:border-box}body{margin:0;background:white;color:black;font:11.5pt/1.6 "Times New Roman",SimSun,"Songti SC",serif}
@@ -269,13 +291,14 @@ export function printDocumentHtml(entries, contents, options) {
     .print-structured .study-content td p{margin-bottom:4px}
     .print-structured .study-content td .study-figure{margin:4pt 0}
     .print-structured .working-space{margin-top:12pt}
+    .print-question .print-source-title{font-size:13.5pt;font-weight:bold;margin:0 0 5mm;break-after:avoid;page-break-after:avoid}
     .working-space{break-inside:avoid;margin-top:15pt;height:150mm;border:1pt solid #555}
     .working-space.full-page-space{break-before:page;margin-top:0;height:calc(241mm - 2px)}
     .print-document{width:210mm;padding:38mm 18mm 18mm;box-decoration-break:clone;-webkit-box-decoration-break:clone}
     .print-actions{font-family:system-ui;padding:16px;background:#fff;border-bottom:1px solid #ddd;margin-bottom:20px}.print-actions button{padding:10px;margin-right:10px}
     @media print{.print-actions{display:none}*{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
     @media screen{body{width:210mm;margin:20px auto;padding:7mm 18mm 18mm}.print-header{position:relative;top:auto;left:auto;right:auto;margin-bottom:5mm}.print-document{width:174mm;padding:0}.print-actions{margin:0 0 7mm}.print-watermark{position:absolute;top:148.5mm;left:50%}}
-    </style></head><body class="${options.mode === 'questions' ? 'print-practice' : 'print-detailed'}"><img class="print-watermark" src="assets/brand/signature-${en?'eng':'chn'}.png" alt="" aria-hidden="true"/><div class="print-actions"><button id="print">${translate("打印／另存为 PDF", en ? "eng" : "chn")}</button></div><header class="print-header"><div class="print-brand"><img src="assets/brand/signature-chn.png" alt="高多多物理"/><img src="assets/brand/signature-eng.png" alt="ddphysics"/></div><h1>${escapeHtml(title)}</h1><span class="print-site">ddphysics.com</span></header><main class="print-document">${rows.map(({entry, content}) => printableQuestion(entry, content, options)).join("")}</main></body></html>`;
+    </style></head><body class="${options.mode === 'questions' ? 'print-practice' : 'print-detailed'}"><img class="print-watermark" src="assets/brand/signature-${en?'eng':'chn'}.png" alt="" aria-hidden="true"/><div class="print-actions"><button id="print">${translate("打印／另存为 PDF", en ? "eng" : "chn")}</button></div><header class="print-header"><div class="print-brand"><img src="assets/brand/signature-chn.png" alt="高多多物理"/><img src="assets/brand/signature-eng.png" alt="ddphysics"/></div><h1>${escapeHtml(title)}</h1><span class="print-site">ddphysics.com</span></header><main class="print-document">${printedRows}</main></body></html>`;
 }
 
 export async function openMistakePrint(entries, options) {
