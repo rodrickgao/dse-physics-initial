@@ -1,6 +1,6 @@
 :root { --motion-duration:180ms; --motion-ease:cubic-bezier(.22,1,.36,1); }
 @keyframes content-enter {
-  from { opacity:.35; }
+  from { opacity:.80; }
   to { opacity:1; }
 }
 .page-enter { animation:content-enter var(--motion-duration) var(--motion-ease); }
@@ -10,6 +10,23 @@
   transition:background-color 160ms ease,border-color 160ms ease,color 160ms ease,box-shadow 160ms ease,opacity 160ms ease,transform var(--motion-duration) var(--motion-ease);
 }
 .book-card:active { transform:translateY(0) scale(.985); }
+/* A nested study view inherits the page reveal during navigation. */
+.page-enter[data-motion-active],
+[data-motion-active] .page-enter,
+[data-motion-active] .study-stage,
+.study-stage[data-motion-active] { animation:none; }
+@media (prefers-reduced-motion:no-preference) {
+  .active-interface .mobile-nav button svg {
+    transition:transform var(--motion-duration) var(--motion-ease),color var(--motion-duration) var(--motion-ease);
+  }
+  .active-interface .mobile-nav button:active svg { transform:scale(.92); }
+  .active-interface :is(.stage-toggle,.question-chip-grid button,.year-grid button):active {
+    transform:scale(.98);
+  }
+  .active-interface :is(.stage-toggle,.question-chip-grid button,.year-grid button,.chapter-list button) {
+    transition-timing-function:var(--motion-ease);
+  }
+}
 @media (prefers-reduced-motion:reduce) {
   html { scroll-behavior:auto; }
   .page-enter,.study-stage { animation:none; }
