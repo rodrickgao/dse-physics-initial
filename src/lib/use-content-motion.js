@@ -8,7 +8,7 @@ export function useContentMotion(ref, key, scope = '', { initial = false, ready 
   useLayoutEffect(() => {
     const old = previous.current;
     previous.current = { key, scope, ready };
-    if (!ready || !ref.current || (!old && !initial)) return;
+    if (!ready || !ref.current || (!old && !initial)) { interrupted.current = null; return; }
     if (old && ((old.key === key && old.ready) || old.scope !== scope)) return;
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
     const element = ref.current;
@@ -18,12 +18,14 @@ export function useContentMotion(ref, key, scope = '', { initial = false, ready 
     for (const child of element.querySelectorAll('[data-motion-active]')) {
       motions.get(child)?.cancel(); motions.delete(child); delete child.dataset.motionActive;
     }
-    const opacity = interrupted.current?.element === element ? interrupted.current.opacity : .55;
+    const page = element.dataset.motionSurface === 'page';
+    const opacity = interrupted.current?.element === element ? interrupted.current.opacity : page ? .83 : .76;
     interrupted.current = null;
     element.dataset.motionActive = 'true';
     const animation = element.animate(
+      // Opacity keeps fixed dialogs and tutorial positioning anchored while pages change.
       [{ opacity }, { opacity: 1 }],
-      { duration: 200, easing: 'cubic-bezier(.22,1,.36,1)' },
+      { duration: page ? 220 : 170, easing: 'cubic-bezier(.22,1,.36,1)' },
     );
     motions.set(element, animation);
     const finish = () => { if (motions.get(element) === animation) { motions.delete(element); delete element.dataset.motionActive; } };
