@@ -3,7 +3,7 @@ import { Topbar } from './components/layout/Topbar';
 import { StudyPages } from './views/StudyPages';
 import { useContentMotion } from './lib/use-content-motion';
 import { startPageVisits } from './lib/page-visits';
-import { LifeBuoy } from 'lucide-react';
+import { CircleHelp } from 'lucide-react';
 import { LearningTour } from './components/LearningTour';
 import { FocusCountdown } from './components/FocusCountdown';
 import { MobileNavigation } from './components/MobileNavigation';
@@ -156,7 +156,7 @@ export function App() {
   const clearPaperTarget = useCallback(() => setPaperTarget(""), []);
   const clearKnowledgeTarget = useCallback(() => setKnowledgeTarget(null), []);
   const navigationPage = ['papers', 'exercises', 'examples'].includes(page) ? 'bank' : page;
-  const withLanguage = content => <>{user && <button className="top-support" type="button" onClick={()=>navigate('support')} aria-label={language==='eng'?'Technical support':'技术支持'} title={language==='eng'?'Technical support':'技术支持'}><LifeBuoy aria-hidden="true"/><span>{language==='eng'?'Technical support':'技术支持'}</span></button>}<LanguageSwitch language={language} setLanguage={setLanguage}/>{content}</>;
+  const withLanguage = content => <>{user && <button className="top-support" type="button" onClick={()=>navigate('support')} aria-label={language==='eng'?'Technical support':'技术支持'} title={language==='eng'?'Technical support':'技术支持'}><CircleHelp aria-hidden="true" strokeWidth={1.75}/></button>}<LanguageSwitch language={language} setLanguage={setLanguage}/>{content}</>;
   if (page === 'admin') { location.replace('/admin.html'); return null; }
   if (!authReady) return withLanguage(<div className="account-loading"><p role={authError ? 'alert' : 'status'}>{authError || '正在加载账号…'}</p>{authError && <Button onClick={initialize}>重试连线</Button>}</div>);
   if (!user) return withLanguage(<LoginView language={language} setLanguage={setLanguage} onLogin={loggedIn} mailMode={mailMode} />);

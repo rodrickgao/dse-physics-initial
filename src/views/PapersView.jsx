@@ -50,15 +50,15 @@ export function PapersView({ mastered = {}, setProgress, saving, directoryVersio
   const hasQuery = Boolean(query.trim());
   useEffect(() => {
     if (!hasQuery) return;
-    let cancelled = false;
+    const controller = new AbortController();
     setSearchError(false);
-    import('../lib/question-search-loader').then(loader=>loader.searchQuestions(language,query,{source:'past-paper',offset:Math.max(0,resultLimit-30),limit:30})).then(data=>({language,query,results:data.results,hasMore:data.hasMore}))
-      .then(result => { if (!cancelled) setSearchIndex(result); })
-      .catch(() => { if (!cancelled) setSearchError(true); });
-    return () => { cancelled = true; };
+    const timer=setTimeout(()=>import('../lib/question-search-loader').then(loader=>loader.searchQuestions(language,query,{source:'past-paper',offset:Math.max(0,resultLimit-30),limit:30,signal:controller.signal})).then(data=>({language,query,limit:resultLimit,revision:membership.revision,results:data.results,hasMore:data.hasMore}))
+      .then(result => { if (!controller.signal.aborted) setSearchIndex(result); })
+      .catch(() => { if (!controller.signal.aborted) setSearchError(true); }),180);
+    return () => { clearTimeout(timer); controller.abort(); };
   }, [language, query, resultLimit, searchRetry, membership.revision]);
   useEffect(() => { if (!query.trim()) return; const timer = setTimeout(() => track('search', query), 1000); return () => clearTimeout(timer); }, [query]);
-  const searchReady = searchIndex?.language === language && searchIndex?.query === query;
+  const searchReady = searchIndex?.language === language && searchIndex?.query === query && searchIndex?.limit === resultLimit && searchIndex?.revision === membership.revision;
 
 
   useEffect(() => {

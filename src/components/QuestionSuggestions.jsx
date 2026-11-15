@@ -9,18 +9,18 @@ export function QuestionSuggestions({ query, language, onSelect }) {
   useEffect(() => { if (!query.trim()) return; const timer = setTimeout(() => track('search', query), 1000); return () => clearTimeout(timer); }, [query]);
   useEffect(() => {
     if (!query.trim()) return;
-    let cancelled = false;
+    const controller = new AbortController();
     const timer = setTimeout(async () => {
       try {
         const {searchQuestions}=await import('../lib/question-search-loader');
-        const {results}=await searchQuestions(language,query,{limit:8});
-        if (!cancelled) setState({ query, language, results });
-      } catch { if (!cancelled) setState({ query, language, error: true }); }
+        const {results}=await searchQuestions(language,query,{limit:8,signal:controller.signal});
+        if (!controller.signal.aborted) setState({ query, language, revision: membership.revision, results });
+      } catch { if (!controller.signal.aborted) setState({ query, language, revision: membership.revision, error: true }); }
     }, 120);
-    return () => { cancelled = true; clearTimeout(timer); };
+    return () => { controller.abort(); clearTimeout(timer); };
   }, [query, language, membership.revision]);
   if (!query.trim()) return null;
-  const ready = state?.query === query && state?.language === language;
+  const ready = state?.query === query && state?.language === language && state?.revision === membership.revision;
   return <div className="global-question-results" aria-label={'题目建议'}>
     {!ready ? <p role="status">{language==='eng'?'Searching…':'正在搜索…'}</p>
       : state.error ? <p>{language==='eng'?'Press Enter to open search and try again.':'请按 Enter 打开搜索并重试。'}</p>

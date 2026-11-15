@@ -129,7 +129,7 @@
 .active-interface .active-nav-trail{display:block;position:absolute;z-index:2;top:0;left:-5px;width:3px;height:24px;border-radius:4px;background:#779be8;pointer-events:none;transition:transform 300ms cubic-bezier(.22,1,.36,1),height 240ms ease,opacity 160ms ease}
 .active-interface .global-search { border-radius:12px;border-color:#e3eaf5;background:#f8faff; }
 .active-interface .library-card { border-radius:21px;border-color:#e5ebf5;box-shadow:0 5px 22px #1d427505;transition:transform 240ms cubic-bezier(.22,1,.36,1),box-shadow 240ms ease,border-color 240ms ease; }
-.active-interface .library-card:hover { transform:translateY(-4px);box-shadow:0 16px 35px #294d8010;border-color:#b9cdf0; }
+.active-interface .library-card:hover { transform:none;box-shadow:0 16px 35px #294d8010;border-color:#b9cdf0; }
 .active-interface .continue-study { border:1px solid #dce7fa;border-radius:19px;background:linear-gradient(110deg,#eef4ff,#f8fbff 65%,#fff8ef);box-shadow:0 6px 25px #294d8005; }
 .active-interface .continue-study button { border-radius:11px;box-shadow:0 4px 12px #315fc814; }
 .active-interface :is(.book-card,.question-card,.exercise-reader,.knowledge-browser-heading,.chapter-sidebar,.paper-navigator,.analysis-card,.mistake-empty) { border-color:var(--border);box-shadow:var(--shadow-card); }
@@ -301,17 +301,17 @@ body:has(.landing-page) .language-switch,body:has(.active-auth) .language-switch
 
 @media screen and (min-width: 721px) {
   body:has(.app-shell) :is(.top-support, .language-switch) {
-    top: 8px;
-    height: 32px;
-    min-height: 32px;
-    padding: 0 9px;
-    gap: 5px;
+    top: max(2px,env(safe-area-inset-top));
+    height: 44px;
+    min-height: 44px;
+    padding: 0;
+    gap: 0;
     font-size: 13px;
-    border-radius: 8px;
+    border-radius: 10px;
   }
-  body:has(.app-shell) .language-switch { right: 12px; width: 62px; }
-  body:has(.app-shell) .top-support { right: 82px; width: auto; }
-  body:has(.app-shell) :is(.top-support, .language-switch) svg { width: 16px; height: 16px; }
+  body:has(.app-shell) .language-switch { right: max(12px,env(safe-area-inset-right)); width: 44px; }
+  body:has(.app-shell) .top-support { right: calc(max(12px,env(safe-area-inset-right)) + 52px); width: 44px; }
+  body:has(.app-shell) :is(.top-support, .language-switch) svg { width: 20px; height: 20px; }
   .app-shell.active-interface .app-main > .topbar { min-height: 48px; }
   /* Scale each reading surface once so formulas and inline units stay in proportion. */
   .active-interface :is(.knowledge-point-card, .question-body) { zoom: .85; }

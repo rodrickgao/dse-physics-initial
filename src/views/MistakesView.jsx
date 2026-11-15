@@ -92,18 +92,31 @@ export function MistakesView({ mastered, setProgress, saving, language, mistakes
   const exerciseEntries = Object.keys(mistakes).filter(key=>key.startsWith('tb-')).map(key=>({key,source:'textbook',exerciseChapter:key.split('-')[1],year:{year:0,id:''},paperIndex:1,questionIndex:Number(key.split('-').at(-1)),question:{label:'Q'+exerciseNumber(key),kind:'structured'},paper:{title:en?'Textbook exercises':'课本习题'},chapter:key.split('-')[1],network:{links:[]}}));
   const map = new Map([...entriesByLanguage[language], ...exerciseEntries, ...exampleEntries(pointsByLanguage[language],language)].map(entry => [entry.key, entry]));
   const [summary,setSummary]=useState(null);
+  const [summaryLoading,setSummaryLoading]=useState(true);
   const summaryPoint = filter?.kind === 'point' && membership.active ? filter.value : null;
+  const summaryContext=JSON.stringify([language,summaryPoint,membership.active,membership.revision]);
+  const summaryReady=summary?.context===summaryContext;
   const contentRef = useRef(null);
-  useContentMotion(contentRef, `${language}:${view}`, '', { initial: true, ready: summary?.language === language });
+  useContentMotion(contentRef, `${language}:${view}`, '', { initial: true, ready: summaryReady });
   const order = new Map((summary?.orderedKeys || []).map((key,index)=>[key,index]));
   const entries = Object.keys(mistakes).filter(key => map.has(key)).map(key => ({...map.get(key), question:{...map.get(key).question,kind:summary?.questionKinds?.[key] || map.get(key).question.kind}, mistakeOrder: order.get(key), markedAt: mistakes[key].markedAt, sortChapter: mistakes[key].chapterCode, primaryChapterCode: mistakes[key].primaryChapterCode})).sort(compareMistakePrintEntries(pointsByLanguage[language]));
-  useEffect(()=>{let live=true;setSummary(null);setLoadError('');const params=new URLSearchParams({language});if(summaryPoint!==null)params.set('point',summaryPoint);fetch(`/api/content/mistake-summary?${params}`,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error();return r.json();}).then(data=>{if(live)setSummary({...data,language});}).catch(()=>{if(live)setLoadError(en?'Unable to load mistakes. Please retry.':'错题加载失败，请重试。');});return()=>{live=false;};},[language,mistakes,summaryPoint,membership.active,membership.revision,loadVersion]);
+  useEffect(()=>{
+    const controller=new AbortController();
+    setSummary(previous=>previous?.context===summaryContext?previous:null);setSummaryLoading(true);setLoadError('');
+    const params=new URLSearchParams({language});if(summaryPoint!==null)params.set('point',summaryPoint);
+    fetch(`/api/content/mistake-summary?${params}`,{cache:'no-store',signal:controller.signal})
+      .then(r=>{if(!r.ok)throw new Error();return r.json();})
+      .then(data=>{if(!controller.signal.aborted)setSummary({...data,language,context:summaryContext});})
+      .catch(()=>{if(!controller.signal.aborted)setLoadError(en?'Unable to load mistakes. Please retry.':'错题加载失败，请重试。');})
+      .finally(()=>{if(!controller.signal.aborted)setSummaryLoading(false);});
+    return()=>controller.abort();
+  },[language,mistakes,summaryPoint,membership.active,membership.revision,loadVersion,summaryContext]);
   const analysis = {knowledgeDistribution:[],...(summary || {chapters:[],recommendations:[],pointCount:0})};
   const chapters = analysis.chapters.map(row => [row.name, row.keys.length]);
   const distribution = mistakeBookDistribution(analysis.chapters, booksFor(language), language);
   const activeFilter = filter && (filter.kind==='chapter'||filter.kind==='book'||membership.active) ? filter : null;
   const questionsRef = useRef(null);
-  useContentMotion(questionsRef, `${language}:${activeFilter?.kind || 'all'}:${activeFilter?.value || ''}`, '', { ready: summary?.language === language });
+  useContentMotion(questionsRef, `${language}:${activeFilter?.kind || 'all'}:${activeFilter?.value || ''}`, '', { ready: summaryReady });
   const displayedEntries = !activeFilter ? entries : entries.filter(entry => activeFilter.kind === 'book' ? distribution.books.find(book => book.key === activeFilter.value)?.keys.includes(entry.key) : activeFilter.kind === 'topic' ? analysis.knowledgeDistribution.find(row=>row.sequence===activeFilter.value)?.keys.includes(entry.key) : activeFilter.kind === 'point'
     ? summary?.filterKeys?.includes(entry.key)
     : analysis.chapters.find(row => row.code === activeFilter.value)?.keys.includes(entry.key));
@@ -130,10 +143,11 @@ export function MistakesView({ mastered, setProgress, saving, language, mistakes
     } finally { setExporting(false); }
   };
 
-  if (summary?.language !== language && !deleteKeys) return <div className="mistakes-view"><h1>{en ? 'Mistakes' : '错题库'}</h1>{loadError ? <p role="alert">{loadError}<Button onClick={() => setLoadVersion(v => v + 1)}>{en ? 'Retry' : '重试'}</Button></p> : <p role="status">{en ? 'Loading…' : '正在加载…'}</p>}</div>;
+  if (!summaryReady && !deleteKeys) return <div className="mistakes-view"><h1>{en ? 'Mistakes' : '错题库'}</h1>{loadError ? <p role="alert">{loadError}<Button onClick={() => setLoadVersion(v => v + 1)}>{en ? 'Retry' : '重试'}</Button></p> : <p role="status">{en ? 'Loading…' : '正在加载…'}</p>}</div>;
   return (
-    <div ref={contentRef} className="mistakes-view page-enter" style={{ minHeight: filterMinimumHeight.current || undefined, overflowAnchor: 'none' }}>
+    <div ref={contentRef} className="mistakes-view page-enter" aria-busy={summaryLoading} style={{ minHeight: filterMinimumHeight.current || undefined, overflowAnchor: 'none' }}>
       <div className="view-heading mistakes-heading"><div><h1>{"错题库"}</h1></div></div>
+      {loadError&&<p className="account-error" role="alert">{loadError}<Button variant="ghost" onClick={()=>setLoadVersion(v=>v+1)}>{en?'Retry':'重试'}</Button></p>}
       <div data-tour="mistake-tabs" className="mistake-tabs"><Button data-tour="mistake-active-tab" variant={view==='active'?'default':'outline'} onClick={()=>setView('active')}>错题库</Button><Button data-tour="mistake-trash-tab" variant={view==='trash'?'default':'outline'} onClick={()=>setView('trash')}>回收站</Button></div>
       {view==='trash' ? <MistakeTrash onAction={manageTrash} openPaper={openPaper}/> : <>
       {!!entries.length && <section data-tour="mistake-export" className="export-controls"><div className="export-title"><div><h2>{"选择错题本版本"}</h2></div><span>{selectedEntries.length} / {displayedEntries.length} {"题已选"}</span></div><div className="export-mode"><strong>{"01 · 先独立练习"}</strong><Button disabled={exporting || !selectedEntries.length} onClick={() => exportPdf("questions")}>{exporting ? <LoaderCircle className="spin"/> : <Download/>}{en?'Questions':'原题版'}</Button></div><div className="export-mode"><strong>{"02 · 再核对思路"}</strong><Button disabled={exporting || !selectedEntries.length} onClick={() => exportPdf("detailed")}><Download/>{en?'Solutions':'详解版'}</Button></div></section>}

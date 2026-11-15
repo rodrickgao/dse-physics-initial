@@ -1,9 +1,11 @@
 import { translate, getUiLanguage } from './ui-translations';
 import { simplifyApiMessage as message } from './api-messages';
 export async function api(path, body, method = 'POST') {
-  const response = await fetch(`/api/${path}`, { credentials: 'same-origin', ...(body === undefined ? {} : { method, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }) });
+  let response;
+  try { response = await fetch(`/api/${path}`, { credentials: 'same-origin', ...(body === undefined ? {} : { method, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }) }); }
+  catch { throw new Error(getUiLanguage()==='eng'?'Connection interrupted. Please try again.':'网络连接中断，请重试。'); }
   let data;
-  try { data = await response.json(); } catch { throw new Error('本地后端未启动，请使用“启动本地网站”打开。'); }
+  try { data = await response.json(); } catch { throw Object.assign(new Error(getUiLanguage()==='eng'?'The service is temporarily unavailable. Please try again.':'服务暂时不可用，请稍后重试。'),{status:response.status}); }
   if (!response.ok) {
     let error = message(data.error || '操作失败，请重试。');
     if (getUiLanguage() === 'eng') {

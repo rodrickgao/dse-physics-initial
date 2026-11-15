@@ -3,6 +3,15 @@ import {useMembership} from '../components/Membership';
 import {searchQuestions} from './question-search-loader';
 export function useSourceSearch(query,language,source){
  const {revision}=useMembership();const [state,setState]=useState({});
- useEffect(()=>{let live=true;if(!query.trim())return;setState({});const timer=setTimeout(()=>searchQuestions(language,query,{source,limit:50}).then(data=>{if(live)setState({query,results:data.results});}).catch(()=>{if(live)setState({query,error:true});}),250);return()=>{live=false;clearTimeout(timer);};},[query,language,source,revision]);
- return {results:state.query===query?state.results||[]:[],loading:!!query.trim()&&state.query!==query,error:state.query===query&&state.error};
+ const key=JSON.stringify([query,language,source,revision]);
+ useEffect(()=>{
+  if(!query.trim())return;
+  const controller=new AbortController();
+  const timer=setTimeout(()=>searchQuestions(language,query,{source,limit:50,signal:controller.signal})
+   .then(data=>{if(!controller.signal.aborted)setState({key,results:data.results});})
+   .catch(()=>{if(!controller.signal.aborted)setState({key,error:true});}),250);
+  return()=>{clearTimeout(timer);controller.abort();};
+ },[query,language,source,revision,key]);
+ const ready=state.key===key;
+ return {results:ready?state.results||[]:[],loading:!!query.trim()&&!ready,error:ready&&state.error};
 }

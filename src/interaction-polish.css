@@ -4,14 +4,14 @@
 }
 :is(.app-shell,.auth-page,.profile-page,.learning-tour,.tour-invite,.management-shell,.admin-login) button {
   -webkit-appearance:none;appearance:none;
-  transition:background-color 160ms ease,color 160ms ease,border-color 160ms ease,box-shadow 160ms ease,opacity 120ms ease,transform 200ms cubic-bezier(.22,1,.36,1);
+  transition:background-color 140ms ease,color 140ms ease,border-color 140ms ease,box-shadow 140ms ease,opacity 120ms ease,filter 100ms ease;
 }
-:is(.app-shell,.auth-page,.profile-page,.learning-tour,.tour-invite,.management-shell,.admin-login) button:not(:disabled):active { transform:scale(.98); }
+:is(.app-shell,.auth-page,.profile-page,.learning-tour,.tour-invite,.management-shell,.admin-login) button:not(:disabled):active { transform:none;filter:brightness(.96); }
 :is(.app-shell,.auth-page,.profile-page,.learning-tour,.tour-invite,.management-shell,.admin-login) button:focus-visible {
-  outline:2px solid transparent;outline-offset:3px;
-  box-shadow:0 0 0 1px var(--primary,#245ccc),0 0 0 4px color-mix(in srgb,var(--primary,#245ccc) 18%,transparent);
+  outline:2px solid var(--primary,#245ccc);outline-offset:3px;box-shadow:none;
 }
-.app-shell :is(.book-card,.library-card):not(:disabled):active { transform:translateY(0) scale(.985); }
+.app-shell :is(.book-card,.library-card):is(:hover,:active) { transform:none; }
+.language-switch,.top-support{transition:background-color 140ms ease,color 140ms ease}
 .app-shell :is(.global-question-results,.study-feedback),.login-account-suggestions { animation:content-enter 160ms ease-out; }
 .app-shell :is(.study-image-dialog,.textbook-image-dialog)[open] { animation:content-enter 160ms ease-out; }
 .app-shell :is(.study-image-dialog,.textbook-image-dialog)::backdrop { animation:dialog-backdrop 160ms ease-out; }
