@@ -5,3 +5,16 @@
 
 .receipt-link{color:#245eda;text-decoration:underline;white-space:nowrap}
 
+.security-alerts article {
+  overflow-wrap: anywhere;
+}
+
+.security-alert-details {
+  display: grid;
+  grid-template-columns: minmax(0, max-content) minmax(0, 1fr);
+  gap: .4rem 1rem;
+}
+
+.security-alert-details dd {
+  margin: 0;
+}

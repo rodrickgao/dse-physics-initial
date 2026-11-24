@@ -82,6 +82,7 @@ const pairs = `
 验证码已失效，请重新索取。=This verification code has expired. Request a new code.
 验证码不正确。=The verification code is incorrect.
 邮箱或密码不正确；未设定密码可使用邮箱验证码登录。=Incorrect email or password. You can also sign in with an email code.
+此账号已被封禁。=This account has been banned.
 验证码已寄出，10 分钟内有效。=Your verification code has been sent and is valid for 10 minutes.
 本机测试模式：验证码未寄出，请使用下方预览。=Local test mode: no email was sent. Use the code shown below.
 请先完成学生资料。=Please complete your student profile first.

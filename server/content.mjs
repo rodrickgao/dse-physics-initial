@@ -26,12 +26,19 @@ delete publicTextbook.review;
 for (const list of Object.values(publicTextbook.languages)) for(const point of list) {
   for(const field of ['link_policy','card_review','review_version','importance','box']) delete point[field];
 }
+const bootstrap = {
+  '/site-data.js': `window.DSE_SITE_DATA=${JSON.stringify(navigation)};`,
+  '/textbook-data.js': `window.DSE_TEXTBOOK_DATA=${JSON.stringify(publicTextbook)};`,
+  '/statistics-data.js': `window.DSE_STATISTICS=${JSON.stringify(publicStatistics)};`,
+  '/knowledge-network-data.js': 'window.DSE_KNOWLEDGE_NETWORK={};',
+  '/paper2-knowledge-data.js': 'window.DSE_PAPER2_KNOWLEDGE={};'
+};
 const fail = (status, message) => { throw Object.assign(new Error(message),{status}); };
 const text = value => String(value || '').replace(/<annotation[\s\S]*?<\/annotation>/g,'').replace(/<[^>]*>/g,' ').replace(/&nbsp;/g,' ').replace(/\s+/g,' ').trim();
 const pick = (object, keys) => Object.fromEntries(keys.filter(k => object[k] !== undefined).map(k=>[k,object[k]]));
 
-export function createContent({ db, clock, membership, membershipEnabled = MEMBERSHIP_ENABLED, limiterConfig, qdnaDirectory }) {
-  const limit = createContentLimiter({db,clock,config:limiterConfig});
+export function createContent({ db, clock, membership, membershipEnabled = MEMBERSHIP_ENABLED, limiterConfig, onLimit, qdnaDirectory }) {
+  const limit = createContentLimiter({db,clock,config:limiterConfig,onLimit});
   db.exec('CREATE TABLE IF NOT EXISTS protected_content(language TEXT, id TEXT, source TEXT, body TEXT, PRIMARY KEY(language,id))');
   db.exec('CREATE TABLE IF NOT EXISTS protected_dna(language TEXT, id TEXT, body TEXT, PRIMARY KEY(language,id))');
   if (qdnaDirectory) {
@@ -192,8 +199,15 @@ export function createContent({ db, clock, membership, membershipEnabled = MEMBE
       const deny=()=>{res.writeHead(404,{'Cache-Control':'no-store'});res.end('Not found');return true;};
       if(/(?:^|\/)(?:\.[^/]+|private|dist|server|scripts|tests|output|deployment|src\/lib\/(?:textbook-example-knowledge|question-search\.js|search-concepts|profile-review|mistake-analysis))|\.(?:sqlite(?:-wal|-shm)?|db|pem|key|map)$|(?:QDNA|knowledge_catalog)/i.test(path))return deny();
       if(/^\/assets\/textbook\/pdfs(?:\/|$)/i.test(path))return deny();
-      const bootstrap={'/site-data.js':`window.DSE_SITE_DATA=${JSON.stringify(navigation)};`,'/textbook-data.js':`window.DSE_TEXTBOOK_DATA=${JSON.stringify(publicTextbook)};`,'/statistics-data.js':`window.DSE_STATISTICS=${JSON.stringify(publicStatistics)};`,'/knowledge-network-data.js':'window.DSE_KNOWLEDGE_NETWORK={};','/paper2-knowledge-data.js':'window.DSE_PAPER2_KNOWLEDGE={};'};
-      if(bootstrap[path]){res.writeHead(200,{'Content-Type':'application/javascript; charset=utf-8','Cache-Control':'no-store'});res.end(bootstrap[path]);return true;}
+      if(bootstrap[path]){
+        if(!['GET','HEAD'].includes(req.method)){res.writeHead(405,{'Allow':'GET, HEAD'});res.end();return true;}
+        if(path==='/textbook-data.js' && req.method==='GET'){
+          try { limit(req,res,user,'knowledge'); }
+          catch(error){res.writeHead(error.status||500,{'Cache-Control':'no-store'});res.end(error.status?error.message:'Service unavailable');return true;}
+        }
+        res.writeHead(200,{'Content-Type':'application/javascript; charset=utf-8','Cache-Control':'no-store','Vary':'Cookie'});
+        res.end(req.method==='HEAD'?undefined:bootstrap[path]);return true;
+      }
       const protectedPath=/^\/(?:text-papers|downloads|assets\/(?:textbook-exercises|textbook-examples|20\d{2}[^/]*|textbook\/pdfs))(?:\/|$)/i.test(path);
       if(!protectedPath)return false;
       if(!files.has(path))return deny();

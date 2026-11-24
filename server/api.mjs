@@ -4,6 +4,7 @@ import { createAdminReports } from './admin-reports.mjs';
 import { questionStatsWorkbook } from './question-stats-export.mjs';
 import { createWeeklyReportScheduler } from './weekly-report-scheduler.mjs';
 import { createPaymentNotifications } from './payment-notifications.mjs';
+import { createSecurityAlerts } from './security-alerts.mjs';
 import { createAdminInsights } from './admin-insights.mjs';
 import {studentLearningView,memberWeeklyReport} from './qdna-learning.mjs';
 import { createQuestionStatus } from './question-status.mjs';
@@ -28,7 +29,7 @@ const token = () => randomBytes(32).toString('hex');
 const fail = (status, message) => { throw Object.assign(new Error(message), { status }); };
 const publicUser = publicProfile;
 
-export function createApi({ membershipEnabled = MEMBERSHIP_ENABLED, directory, mailer, paymentNotifier, weeklyMailer, weeklyFrom, clock = Date.now, adminKey: suppliedKey, publicOrigins = [], secureCookies = false, trustProxy = false, contentLimits, qdnaDirectory = process.env.DSE_QDNA_DIR } = {}) {
+export function createApi({ membershipEnabled = MEMBERSHIP_ENABLED, directory, mailer, paymentNotifier, weeklyMailer, weeklyFrom, securityMailer, securityFrom, securityOrigin = 'https://ddphysics.com', clock = Date.now, adminKey: suppliedKey, publicOrigins = [], secureCookies = false, trustProxy = false, contentLimits, qdnaDirectory = process.env.DSE_QDNA_DIR } = {}) {
   const allowedOrigins = new Set(publicOrigins);
   const allowedHosts = new Set(publicOrigins.map(value => new URL(value).host));
   if (secureCookies && (!mailer || !allowedOrigins.size)) throw new Error('Production requires email delivery and an explicit HTTPS origin.');
@@ -40,13 +41,14 @@ export function createApi({ membershipEnabled = MEMBERSHIP_ENABLED, directory, m
   const { get, all, run, transaction } = databaseQueries(db);
   const insights = createAdminInsights({db,clock,fail});
   const management = createManagement({ db, clock, fail, transaction, membershipEnabled });
-  const content = createContent({ db, clock, membership:management.membership, membershipEnabled, limiterConfig: contentLimits, qdnaDirectory });
+  const security = createSecurityAlerts({ db, clock, fail, sendMail: securityMailer, from: securityFrom, origin: securityOrigin });
+  const content = createContent({ db, clock, membership:management.membership, membershipEnabled, limiterConfig: contentLimits, onLimit: security.record, qdnaDirectory });
   const statusStore = createQuestionStatus({db,clock});
   const learning = createQdnaLearning({db,clock,statusStore});
   content.setLearning(learning);
   const weeklyForStudent=(id,options)=>{const active=!membershipEnabled||management.membership(id).active;return memberWeeklyReport(learning.weekly(id,{...options,trialOnly:!active}),active);};
   const weeklyReports=createWeeklyReportScheduler({db,clock,buildReport:weeklyForStudent,prepareReport:(id,report)=>memberWeeklyReport(report,!membershipEnabled||management.membership(id).active,!membershipEnabled&&report.recommendations_trial_only?learning.weekly(id,{start:report.start,end:report.end,language:report.language}).recommended_questions:null),sendMail:weeklyMailer,from:weeklyFrom});
-  const learningLimit=createContentLimiter({db,clock,config:contentLimits});
+  const learningLimit=createContentLimiter({db,clock,config:contentLimits,onLimit:security.record});
   const archive = createMistakeArchive({ db, clock, fail, transaction, record: management.record, questions, statusStore });
   const tutoring = createTutoring({ db, clock, fail });
   const progress = createProgressStore({ db, clock, fail, archive, management, statusStore, token });
@@ -61,9 +63,10 @@ export function createApi({ membershipEnabled = MEMBERSHIP_ENABLED, directory, m
   function session(req, admin = false) {
     const name = admin ? 'dse_admin_session' : 'dse_session';
     const raw = new RegExp(`(?:^|;\\s*)${name}=([a-f0-9]{64})(?:;|$)`).exec(req.headers.cookie || '')?.[1];
-    return raw && get('SELECT users.* FROM sessions JOIN users ON users.id=sessions.user_id WHERE digest=? AND expires>?', hash(raw), clock());
+    return raw && get('SELECT users.* FROM sessions JOIN users ON users.id=sessions.user_id WHERE digest=? AND expires>? AND NOT EXISTS (SELECT 1 FROM security_bans WHERE user_id=users.id)', hash(raw), clock());
   }
   function signIn(res, email, role = 'student') {
+    if (role === 'student' && security.isBanned(email)) fail(403, '此账号已被封禁。');
     run('INSERT INTO users(email,role,created_at,last_login) VALUES(?,?,?,?) ON CONFLICT(email) DO UPDATE SET last_login=excluded.last_login', email, role, clock(), clock());
     const user = get('SELECT * FROM users WHERE email=?', email);
     const raw = token();
@@ -144,6 +147,8 @@ export function createApi({ membershipEnabled = MEMBERSHIP_ENABLED, directory, m
       }
       const user = path.startsWith('/api/admin/') ? session(req, true) || session(req) : session(req) || (/^\/api\/avatar\//.test(path) ? session(req, true) : null); if (!user) fail(401, '請先登入。');
       if (path.startsWith('/api/admin/') && user.role !== 'admin') fail(403, '只限開發者存取。');
+      if (path === '/api/admin/security-alerts' && req.method === 'GET') return send(security.read(url.searchParams.get('id')));
+      if (path === '/api/admin/security-alerts/review' && req.method === 'POST') return send(security.review(user, body));
       if(path==='/api/weak-topics'||path.startsWith('/api/weak-topics/')) {
         if(user.role!=='student')fail(403,'只限学生使用。');
         for(const key of url.searchParams.keys())if(key!=='language'||url.searchParams.getAll(key).length!==1)fail(400,'请求参数不正确。');
@@ -192,7 +197,7 @@ export function createApi({ membershipEnabled = MEMBERSHIP_ENABLED, directory, m
         return send(await questionStatsWorkbook(insights.questionStats().rows, new Date(clock()).toISOString(), language));
       }
       if (path === '/api/admin/weekly-status' && req.method === 'GET') return send(weeklyReports.status());
-      if (path === '/api/admin/overview' && req.method === 'GET') return send({...management.overview(),...insights.dailyUsage()});
+      if (path === '/api/admin/overview' && req.method === 'GET') return send({...management.overview(),...insights.dailyUsage(),securityPending:security.pendingCount()});
       if (path === '/api/admin/activity' && req.method === 'GET') return send(management.activity(url));
       if (path === '/api/admin/membership-history' && req.method === 'GET') return send({ rows: management.history(Number(url.searchParams.get('userId')) || 0) });
       if (path === '/api/admin/membership' && req.method === 'POST') return send(management.change(user,body));
@@ -254,5 +259,5 @@ export function createApi({ membershipEnabled = MEMBERSHIP_ENABLED, directory, m
       fail(404, '找不到此操作。');
     } catch (error) { res.statusCode = error.status || 500; send({ error: error.status ? error.message : '服務暫時無法使用，請重試。' }); if (!error.status) console.error('API request failed', {path:req.url.split('?')[0],type:error.name}); }
   }
-  return { handler, buildWeeklyReport: weeklyForStudent, protectFiles: (req,res) => content.file(req,res,session(req) || session(req,true)), close: () => { weeklyReports.close(); paymentNotifications.close(); db.close(); }, adminKeyPath: keyPath };
+  return { handler, buildWeeklyReport: weeklyForStudent, protectFiles: (req,res) => content.file(req,res,session(req) || session(req,true)), close: () => { security.close(); weeklyReports.close(); paymentNotifications.close(); db.close(); }, adminKeyPath: keyPath };
 }

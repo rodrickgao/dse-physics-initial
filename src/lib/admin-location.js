@@ -4,7 +4,8 @@ export function readAdminLocation(hash = '') {
   const params = new URLSearchParams(search);
   const number = key => Math.max(1, Math.min(100000, Math.floor(Number(params.get(key))) || 1));
   return {
-    tab: ['overview','users','questions','visits','tutoring','payments','activity','audit'].filter(id=>MEMBERSHIP_ENABLED||!['payments','audit'].includes(id)).includes(tab) ? tab : 'overview',
+    tab: ['overview','users','questions','visits','tutoring','payments','activity','audit','security'].filter(id=>MEMBERSHIP_ENABLED||!['payments','audit'].includes(id)).includes(tab) ? tab : 'overview',
+    alertId: tab === 'security' && /^[a-f0-9-]{36}$/.test(params.get('alert') || '') ? params.get('alert') : null,
     query: params.get('query') || '',
     filter: MEMBERSHIP_ENABLED && ['none','active','expired','revoked','expiring'].includes(params.get('filter')) ? params.get('filter') : 'all',
     selectedId: params.has('student') ? number('student') : null,
@@ -17,7 +18,8 @@ export function adminHash(state) {
   const params = new URLSearchParams();
   for (const [key, value, fallback] of [
     ['query',state.query,''],['filter',state.filter,'all'],['student',state.selectedId,null],
-    ['page',state.page,1],['action',state.actionFilter,''],['tutoring',state.tutoringFilter,'pending'],['learning',state.learningTab,'active']
+    ['page',state.page,1],['action',state.actionFilter,''],['tutoring',state.tutoringFilter,'pending'],['learning',state.learningTab,'active'],
+    ['alert',state.tab === 'security' ? state.alertId : null,null]
   ]) if (value != null && value !== fallback) params.set(key, String(value));
   return `#${state.tab}${params.size ? '?' + params : ''}`;
 }

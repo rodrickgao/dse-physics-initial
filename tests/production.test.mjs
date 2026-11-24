@@ -58,6 +58,49 @@ test('production cannot silently enable local verification codes or insecure ori
   assert.throws(() => createApi({ secureCookies: true, publicOrigins: ['https://study.example.com'] }), /email delivery/);
 });
 
+test('security alert delivery and bans use the production origin, cookie and trusted client address', async () => {
+  const directory = mkdtempSync(join(tmpdir(), 'dse-production-security-'));
+  const origin = 'https://study.example.com';
+  const accessHeaders = { origin, 'x-forwarded-for': '192.0.2.1, 198.51.100.12' };
+  const codes = new Map(), alerts = [];
+  const api = createApi({
+    directory, adminKey: 'production-security-test', publicOrigins: [origin], secureCookies: true, trustProxy: true,
+    mailer: async (email, code) => { codes.set(email, code); }, contentLimits: { detail: 1 },
+    securityMailer: async message => { alerts.push(message); }, securityFrom: 'support@example.com', securityOrigin: origin
+  });
+  const server = createProductionServer({ api, origins: [origin] });
+  await new Promise(done => server.listen(0, '127.0.0.1', done));
+  const send = (path, body, cookie, headers) => fetchLocal(server, path, {
+    body, headers: { ...accessHeaders, ...headers, ...(cookie && { cookie }) }
+  });
+  const email = 'fixture@example.com';
+  const question = '/api/content/question?id=2025%7Cpaper-1a%7C1';
+  try {
+    assert.equal((await send('/api/auth/code', { email })).status, 200);
+    const login = await send('/api/auth/verify', { email, code: codes.get(email) });
+    assert.match(login.headers['set-cookie'][0], /; Secure$/);
+    const student = login.headers['set-cookie'][0].split(';')[0];
+    assert.equal((await send(question, undefined, student)).status, 200);
+    assert.equal((await send(question, undefined, student)).status, 429);
+    const adminLogin = await send('/api/admin/login', { key: 'production-security-test' });
+    const admin = adminLogin.headers['set-cookie'][0].split(';')[0];
+    const result = await send('/api/admin/security-alerts', undefined, admin);
+    const [alert] = JSON.parse(result.text).rows;
+    assert.equal(alert.evidence.ip, '198.51.100.12');
+    assert.equal(alert.mailStatus, 'sent');
+    assert.equal(alerts.length, 1);
+    assert.ok(alerts[0].text.includes(origin + '/admin.html#security?alert=' + alert.id));
+    const action = { id: alert.id, action: 'ban' };
+    assert.equal((await send('/api/admin/security-alerts/review', action, admin, { 'sec-fetch-site': 'cross-site' })).status, 403);
+    assert.equal((await send('/api/admin/security-alerts/review', action, admin)).status, 200);
+    assert.equal(JSON.parse((await send('/api/auth/session', undefined, student)).text).user, null);
+  } finally {
+    await new Promise(done => server.close(done));
+    api.close();
+    rmSync(directory, { recursive: true, force: true });
+  }
+});
+
 test('maintenance permits health checks but blocks all student and admin activity', async () => {
   const server = createProductionServer({ api: { handler: () => { throw new Error('API must not run'); } }, origins: ['https://study.example.com'], maintenance: true });
   await new Promise(done => server.listen(0, '127.0.0.1', done));
